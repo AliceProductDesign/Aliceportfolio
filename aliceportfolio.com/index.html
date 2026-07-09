@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alice Curiel — Product Designer</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+  --coral:#F2665A;
+  --amber:#F5A94A;
+  --ink:#33454A;
+  --ink-soft:#5B6A6D;
+  --paper:#FBF9F4;
+  --paper-alt:#F2EDE1;
+  --graphite:#8B9290;
+  --line:#33454A1a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif; overflow-x:hidden;}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}}
+
+/* ---- NAV ---- */
+nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-content:space-between; align-items:center; padding:22px 48px; background:linear-gradient(var(--paper) 60%, transparent);}
+.nav-mark{font-family:'Poppins',sans-serif; font-weight:700; font-size:22px; color:var(--ink); letter-spacing:-0.01em;}
+.nav-mark span{color:var(--coral);}
+.nav-links{display:flex; align-items:center; gap:30px; list-style:none;}
+.nav-links a{font-family:'Inter',sans-serif; font-weight:600; font-size:13.5px; color:var(--ink-soft); text-decoration:none;}
+.nav-links a:hover{color:var(--coral);}
+.nav-links a:focus-visible{outline:2px solid var(--coral); outline-offset:3px; border-radius:4px;}
+.nav-cta{background:var(--ink); color:var(--paper)!important; padding:11px 20px; border-radius:100px; font-weight:600!important;}
+.nav-cta:hover{background:var(--coral)!important;}
+
+/* ---- HERO: icon field + overlapping headline ---- */
+.hero{
+  position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center;
+  padding:140px 48px 60px; overflow:hidden;
+}
+.icon-field{position:absolute; inset:0; z-index:1;}
+.icon-field svg{position:absolute; overflow:visible;}
+.icon-float{animation:float 6s ease-in-out infinite;}
+.icon-float.a{animation-duration:5.2s;}
+.icon-float.b{animation-duration:6.4s; animation-delay:.4s;}
+.icon-float.c{animation-duration:5.8s; animation-delay:.8s;}
+@keyframes float{0%,100%{transform:translateY(0) rotate(var(--r,0deg));} 50%{transform:translateY(-16px) rotate(var(--r,0deg));}}
+
+.hero-textwrap{
+  position:relative; z-index:2; text-align:center; max-width:820px;
+  padding:56px 60px; border-radius:32px;
+  background:radial-gradient(circle at 50% 45%, #FBF9F4f2 0%, #FBF9F4d9 60%, transparent 100%);
+}
+.eyebrow{display:inline-flex; align-items:center; gap:8px; font-weight:600; font-size:13.5px; color:var(--ink-soft); margin-bottom:20px; background:#fff; padding:8px 16px; border-radius:100px; box-shadow:0 4px 14px -6px #33454A22;}
+h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(36px,5.4vw,64px); line-height:1.08; letter-spacing:-0.01em;}
+h1 .highlight{color:var(--coral);}
+.hero-sub{margin:22px auto 0; font-size:17.5px; line-height:1.65; color:var(--ink-soft); max-width:480px;}
+.hero-cta{margin-top:34px; display:flex; gap:14px; align-items:center; justify-content:center; flex-wrap:wrap;}
+.btn{font-family:'Inter',sans-serif; font-weight:600; font-size:14px; padding:14px 26px; border-radius:100px; text-decoration:none; transition:all .25s; display:inline-flex; align-items:center; gap:8px;}
+.btn.filled{background:var(--coral); color:#fff;}
+.btn.filled:hover{background:var(--ink); transform:translateY(-2px);}
+.btn.outline{border:2px solid var(--ink); color:var(--ink);}
+.btn.outline:hover{background:var(--ink); color:var(--paper); transform:translateY(-2px);}
+.btn svg{width:16px; height:16px;}
+
+/* ---- SECTION SHELL ---- */
+.section{padding:100px 48px; position:relative;}
+.section-head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:50px;}
+.section-eyebrow{font-weight:700; font-size:13px; color:var(--coral); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px;}
+.section-title{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(30px,3.2vw,42px);}
+.section-note{font-size:14px; color:var(--graphite); max-width:240px; text-align:right;}
+
+/* ---- WORK GRID ---- */
+.work-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:28px;}
+.card{
+  background:#fff; border-radius:22px; padding:26px; border:1px solid var(--line);
+  cursor:pointer; transition:transform .3s ease, box-shadow .3s ease;
+  opacity:0; transform:translateY(24px);
+  display:flex; flex-direction:column;
+}
+.card.visible{opacity:1; transform:translateY(0); transition:opacity .55s ease, transform .55s ease;}
+.card:hover{transform:translateY(-6px); box-shadow:0 20px 44px -14px #33454A26;}
+.tag{display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; padding:6px 12px; border-radius:100px; width:fit-content; margin-bottom:16px;}
+.tag.medical{background:#F2665A1a; color:var(--coral);}
+.tag.civic{background:#F5A94A24; color:#B87519;}
+.tag.academic{background:#33454A14; color:var(--ink-soft);}
+.tag.personal{background:#33454A0d; color:var(--graphite);}
+
+/* ---- DEVICE FRAMES (reusable templates) ---- */
+/* PHONE FRAME TEMPLATE — copy this block for any mobile app preview */
+.device-stage{display:flex; align-items:center; justify-content:center; padding:20px 0 26px; min-height:260px;}
+.phone-shell{
+  width:150px; background:var(--ink); border-radius:28px; padding:8px;
+  box-shadow:0 24px 44px -16px #33454A44; transition:transform .4s ease;
+}
+.card:hover .phone-shell{transform:rotate(-1.5deg) scale(1.03);}
+.phone-notch{width:46px; height:14px; background:var(--ink); border-radius:0 0 10px 10px; margin:0 auto; position:relative; z-index:2;}
+.phone-screen{background:#fff; border-radius:20px; overflow:hidden; height:250px; position:relative; margin-top:-14px;}
+.screen-scroll{position:absolute; inset:0; padding:22px 12px 12px; display:flex; flex-direction:column; gap:8px; animation:scrollUp 7s linear infinite;}
+.screen-scroll .bar{height:10px; border-radius:5px; background:var(--paper-alt);}
+.screen-scroll .bar.w60{width:60%;}
+.screen-scroll .bar.w80{width:80%;}
+.screen-scroll .bar.w40{width:40%;}
+.screen-scroll .block{height:64px; border-radius:12px; background:linear-gradient(135deg,#F2665A22,#F5A94A22); margin:4px 0;}
+
+/* REAL SCREENSHOT CYCLE — crossfades through 2-4 real app screens on a loop */
+.screen-cycle{position:absolute; inset:0;}
+.screen-cycle img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top;
+  opacity:0; animation:cycleFade 6s infinite;
+}
+.screen-cycle img:nth-child(1){animation-delay:0s;}
+.screen-cycle img:nth-child(2){animation-delay:2s;}
+.screen-cycle img:nth-child(3){animation-delay:4s;}
+@keyframes cycleFade{
+  0%{opacity:0;}
+  5%{opacity:1;}
+  28%{opacity:1;}
+  33%{opacity:0;}
+  100%{opacity:0;}
+}
+@keyframes scrollUp{0%,15%{transform:translateY(0);} 50%,65%{transform:translateY(-90px);} 100%{transform:translateY(0);}}
+
+/* BROWSER FRAME TEMPLATE — copy this block for any web app preview */
+.browser-shell{
+  width:100%; max-width:340px; background:#fff; border-radius:14px; overflow:hidden;
+  box-shadow:0 24px 44px -16px #33454A33; border:1px solid var(--line); transition:transform .4s ease;
+}
+.card:hover .browser-shell{transform:translateY(-4px);}
+.browser-bar{display:flex; align-items:center; gap:6px; padding:10px 14px; background:var(--paper-alt); border-bottom:1px solid var(--line);}
+.browser-dot{width:8px; height:8px; border-radius:50%;}
+.browser-dot.d1{background:var(--coral);} .browser-dot.d2{background:var(--amber);} .browser-dot.d3{background:#9BB08A;}
+.browser-url{flex-grow:1; background:#fff; border-radius:8px; padding:4px 10px; font-size:10.5px; color:var(--graphite); margin-left:8px; border:1px solid var(--line);}
+.browser-screen{height:190px; position:relative; overflow:hidden; padding:16px; display:flex; flex-direction:column; gap:8px;}
+.browser-screen .bar{height:9px; border-radius:5px; background:var(--paper-alt);}
+.browser-screen .row{display:flex; gap:8px; margin-top:4px;}
+.browser-screen .row .block{flex:1; height:70px; border-radius:10px; background:linear-gradient(135deg,#F5A94A20,#F2665A20);}
+
+.card h3{font-family:'Poppins',sans-serif; font-size:22px; font-weight:600; margin-bottom:8px;}
+.card p{font-size:13.5px; color:var(--ink-soft); line-height:1.6;}
+.card-foot{display:flex; justify-content:space-between; align-items:center; margin-top:18px; padding-top:14px; border-top:1px solid var(--line);}
+.card-foot .status{font-size:12px; font-weight:600; color:var(--graphite);}
+.card-arrow{width:32px; height:32px; border-radius:50%; background:var(--paper-alt); display:flex; align-items:center; justify-content:center; transition:all .3s; flex-shrink:0;}
+.card-arrow svg{width:15px; height:15px; stroke:var(--ink); transition:transform .3s;}
+.card:hover .card-arrow{background:var(--coral);}
+.card:hover .card-arrow svg{stroke:#fff; transform:translateX(3px);}
+
+/* ---- PROCESS ---- */
+.process-row{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+.process-item{position:relative; padding:30px 24px; background:var(--paper-alt); border-radius:18px;}
+.process-item .picon{width:40px; height:40px; margin-bottom:16px;}
+.process-item h4{font-family:'Poppins',sans-serif; font-size:19px; font-weight:600; margin-bottom:8px;}
+.process-item p{font-size:13.5px; color:var(--ink-soft); line-height:1.55;}
+
+/* ---- ABOUT ---- */
+.about-strip{background:var(--ink); border-radius:28px; padding:64px 56px; display:grid; grid-template-columns:auto 1fr 1fr; gap:44px; align-items:center; color:var(--paper);}
+.about-photo{width:150px; height:150px; border-radius:50%; background:#ffffff12; border:2px dashed #ffffff44; display:flex; align-items:center; justify-content:center; text-align:center; color:#C7D0D1; font-size:11px; font-weight:600; flex-shrink:0;}
+.about-strip h2{font-family:'Poppins',sans-serif; font-size:34px; font-weight:600; margin-bottom:18px;}
+.about-strip p{color:#C7D0D1; line-height:1.7; font-size:15.5px;}
+.about-stats{display:flex; gap:36px; flex-wrap:wrap;}
+.about-stats div b{display:block; font-family:'Poppins',sans-serif; font-size:30px; color:var(--amber);}
+.about-stats div span{font-size:12px; color:#B7C0C1; text-transform:uppercase; letter-spacing:0.04em;}
+
+footer{padding:80px 48px 50px; display:flex; justify-content:space-between; align-items:flex-end;}
+footer .foot-title{font-family:'Poppins',sans-serif; font-size:32px; font-weight:600; max-width:440px; line-height:1.25;}
+footer .foot-links{display:flex; flex-direction:column; gap:10px; align-items:flex-end;}
+footer .foot-links a{font-size:14px; font-weight:600; color:var(--ink-soft); text-decoration:none;}
+footer .foot-links a:hover{color:var(--coral);}
+.foot-social{display:flex; gap:14px; margin-top:4px;}
+.foot-social a{width:38px; height:38px; border-radius:50%; background:var(--paper-alt); display:flex; align-items:center; justify-content:center; transition:all .25s;}
+.foot-social a:hover{background:var(--ink);}
+.foot-social a svg{width:18px; height:18px; fill:var(--ink); transition:fill .25s;}
+.foot-social a:hover svg{fill:var(--paper);}
+
+@media (max-width:900px){
+  .icon-field svg{width:32px !important; height:32px !important; opacity:.6;}
+  .work-grid{grid-template-columns:1fr;}
+  .process-row{grid-template-columns:1fr 1fr;}
+  .about-strip{grid-template-columns:1fr; text-align:center;}
+  .about-photo{margin:0 auto;}
+  .nav-links{display:none;}
+  footer{flex-direction:column; align-items:flex-start; gap:24px;}
+  footer .foot-links{align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-mark">
+    <svg width="120" height="26" viewBox="150 95 465 115" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="navLogoGrad" x1="0" y1="73.98" x2="0" y2="314.82" gradientUnits="userSpaceOnUse">
+          <stop offset=".04" stop-color="#254444"/>
+          <stop offset=".34" stop-color="#2a4748"/>
+          <stop offset=".69" stop-color="#385354"/>
+          <stop offset="1" stop-color="#4b6264"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#navLogoGrad)" d="M156.97,201.31l33.3-93.09,25.04-.25,36.15,93.34h-23.93l-7.85-18.87-33.12-.61-6.28,19.48h-23.32ZM213.42,163.28l-10.43-31.91-9.2,31.91h19.63Z"/>
+      <polygon fill="url(#navLogoGrad)" points="303 108.06 303 181.68 338.59 181.68 338.59 201.31 279.69 201.31 279.69 108.06 303 108.06"/>
+      <polygon fill="url(#navLogoGrad)" points="391.36 108.06 391.36 201.31 371.11 201.31 369.27 199.47 369.27 108.06 391.36 108.06"/>
+      <path fill="url(#navLogoGrad)" d="M510.31,113.06l-6.07,20.77c-24.52-14.96-57.03-9.44-54.03,25.21,1.63,18.8,18.53,26.29,35.7,23.33,7.25-1.25,12.91-5.63,19.55-8.04l6.09,18.3c-39.73,26.4-99.84.74-84.65-52.08,10.25-35.65,53.69-44.65,83.4-27.48Z"/>
+      <path fill="url(#navLogoGrad)" d="M608.56,108.06v18.4h-39.88c-2.97,3.94-3.01,14.32,0,18.4h37.43v18.4h-39.27v18.4h42.95v19.63h-65.04v-93.25h63.81Z"/>
+    </svg>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Let's talk</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <!-- ICON FIELD: 9 exact recreations of the ALICE logo icon set -->
+  <div class="icon-field">
+    <!-- 1. hashtag (amber) -->
+    <svg class="icon-float a" style="top:10%; left:7%; --r:-3deg;" width="62" height="62" viewBox="175 175 70 70" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#F5A94A" d="M195.18,185.29c1.3-.38,6.17-.7,6.21,1.26l.02,47.27-.8,1.95c-2.54.81-6.5,1.53-6.95-1.95-1.81-13.97,1.42-31.8,0-46.19,0-1.04.46-2.03,1.51-2.34Z"/>
+      <path fill="#F5A94A" d="M216.05,185.29c1.3-.38,6.17-.7,6.21,1.26l.02,47.27-.8,1.95c-2.54.81-6.5,1.53-6.95-1.95-1.81-13.97,1.42-31.8,0-46.19,0-1.04.46-2.03,1.51-2.34Z"/>
+      <path fill="#F5A94A" d="M234.51,197.68c.38,1.3.7,6.17-1.26,6.21l-47.27.02-1.95-.8c-.81-2.54-1.53-6.5,1.95-6.95,13.97-1.81,31.8,1.42,46.19,0,1.04,0,2.03.46,2.34,1.51Z"/>
+      <path fill="#F5A94A" d="M234.51,219.9c.38,1.3.7,6.17-1.26,6.21l-47.27.02-1.95-.8c-.81-2.54-1.53-6.5,1.95-6.95,13.97-1.81,31.8,1.42,46.19,0,1.04,0,2.03.46,2.34,1.51Z"/>
+    </svg>
+    <!-- 2. butterfly (amber) -->
+    <svg class="icon-float b" style="top:7%; left:42%; --r:2deg;" width="88" height="70" viewBox="160 55 100 80" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#F5A94A" fill-rule="evenodd" d="M209.06,91.4c2.71-3.52,4.56-7.54,7.41-11,5.72-6.93,16.88-15.03,26.36-13.68,2.09.3,2.29.96,2.5,2.96,1.23,11.57-4.95,26.07-15.39,31.62l.35,1.13c3.38,1.58,4.82,6.08,5.14,9.58.27,3.02.43,15.86-.85,17.82-2.54,3.92-11.95-1.1-14.94-3.14-4.87-3.32-7.5-7.12-10.32-12.21-2.37,5.56-5.87,9.98-11.1,13.08-3.69,2.19-13.64,7.02-14.47-.15-.51-4.39-.48-17.99,1.55-21.56,1.01-1.79,2.92-2.8,3.96-4.55-9.99-5.02-17.23-20.12-15.95-31.08.57-4.87,4.7-4.08,8.38-3.41,12.64,2.31,22.83,12.99,27.37,24.58ZM204.11,98.54c-3.61-10.91-11.63-22.22-23.64-24.17,1.61,12.39,10.47,23.84,23.64,24.17ZM238.19,74.37c-11.38,3.12-20.23,13.63-23.63,24.73,13.34-1.3,22.45-11.65,23.63-24.73ZM204.66,106.79h-9.07c-1.44,0-4.67,2.68-4.67,4.12v11.82c7.37-2.03,11.71-9.01,13.74-15.94ZM227.74,122.73v-12.92c0-.51-3.35-3.02-4.12-3.02h-9.07c1.38,6.91,6.59,13.44,13.19,15.94Z"/>
+    </svg>
+    <!-- 3. heart (coral) -->
+    <svg class="icon-float c" style="top:13%; right:7%; --r:5deg;" width="64" height="68" viewBox="55 55 80 85" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#F2665A" fill-rule="evenodd" d="M105.37,72.95c11.1-1.23,18.79,9.97,17.46,20.11-1.34,10.16-14.49,24.19-22.93,29.5-2.08,1.31-2.74,2.35-5.53,1.94-5.64-.84-19.47-16.52-22.21-21.85-4.97-9.68-5.46-24.96,7.12-28.54,7.06-2.01,11.57-.11,16.77,4.52,2.48-2.58,5.59-5.25,9.33-5.66ZM82.68,82.02c-2.05.45-4.62,3.33-4.96,5.41-1.51,9.31,7.2,19.33,13.9,24.87,4.65,3.85,4.98,2.19,9.38-1.59,5.85-5.03,19.19-19.95,10.32-27.17-8.22-6.69-10.32,7.77-15.79,7.41-4.84-.31-5.59-10.54-12.85-8.93Z"/>
+    </svg>
+    <!-- 4. vector hook (coral) -->
+    <svg class="icon-float a" style="top:41%; left:4%; --r:-2deg;" width="58" height="58" viewBox="65 175 75 75" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#F2665A" d="M114.41,190.47c5.55-.28,4.24,2.65,3.83,7.26-2.01,1.9-4.93.83-7.38,1.18-9.45,1.38-18.93,10.49-21.61,19.48-.93,3.12-.15,7.44-3.52,7.89-6.85.91-5.32-5.77-4.14-10.42,3.64-14.39,18.32-24.67,32.83-25.4Z"/>
+      <path fill="#F2665A" d="M77,235.52c.51-.44,2.72-.67,3.55-.73,13.78-1.07,28.9.85,42.83.01,4.36-.49,5,7.4,1.7,8l-47.99-.52c-1.29-1.04-1.06-5.93-.09-6.77Z"/>
+    </svg>
+    <!-- 5. collab / badge (coral) -->
+    <svg class="icon-float b" style="top:45%; left:46%; --r:8deg;" width="78" height="52" viewBox="295 180 90 60" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#F2665A" fill-rule="evenodd" d="M353.04,193.62l8.28,21.29-19.69,7.66-8.28-21.29,19.69-7.66M353.04,186.77c-.83,0-1.67.15-2.48.47l-19.69,7.66c-1.69.66-3.06,1.96-3.79,3.63-.73,1.66-.77,3.55-.11,5.25l8.28,21.29c1.06,2.71,3.65,4.37,6.39,4.37.83,0,1.67-.15,2.48-.47l19.69-7.66c1.69-.66,3.06-1.96,3.79-3.63.73-1.66.77-3.55.11-5.25l-8.28-21.29c-1.06-2.71-3.65-4.37-6.39-4.37h0Z"/>
+      <path fill="#F2665A" fill-rule="evenodd" d="M327.58,203.93c.93,2.42,1.88,4.82,2.34,5.86.44.99,1.43,3.22,3.33,4.8-.03.12-.06.24-.09.36-.29,1.33-.19,2.71.3,3.97l2.42,6.21-18.07,7.03-8.26-21.22,18.02-7.01M331.53,195.04l-30.85,12,13.23,34,30.85-12-4.9-12.6s.37-1.67,2.62-1.67c.73,0,1.66.18,2.84.64.53.21,1.04.31,1.53.31,3.9,0,6.06-6.27,3.51-9.83-1.42-1.98-3.56-3.09-5.56-3.09s-3.92,1.15-4.74,3.68c-.72,2.22-1.37,3.01-1.95,3.01-.74,0-1.37-1.26-1.91-2.48-.97-2.18-4.66-11.97-4.66-11.97h0Z"/>
+    </svg>
+    <!-- 6. arrow (amber) -->
+    <svg class="icon-float c" style="top:39%; right:6%; --r:0deg;" width="58" height="50" viewBox="680 70 75 65" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#EC7E23" d="M725.96,92.35l-30.24,29.94c-3.3,2.58-8.52-1.46-6.31-5.15l30.28-29.93h-15.12c-1.7-2.01-.82-5.6-.29-7.99h28.25c.89,0,1.9,2.75,2.01,3.7.46,3.89.6,21.02-.14,24.42-.83,3.83-8.43,2.1-8.43.7v-15.69Z"/>
+    </svg>
+    <!-- 7. eye (coral) -->
+    <svg class="icon-float a" style="bottom:9%; left:9%; --r:-3deg;" width="80" height="62" viewBox="295 55 90 70" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#F2665A" fill-rule="evenodd" d="M371.86,95.71c4.79,4.98,4.14,5.92-.66,10.81-17.71,18.04-49.35,17.96-67.41.57-6.92-6.67-5.4-8.12,1.33-13.94,18.77-16.25,49.36-15.51,66.75,2.56ZM334.78,91.66c-10.73,1.99-8.32,19.17,2.39,18.84,12.86-.4,12.29-21.56-2.39-18.84ZM320.37,107.41c-.85-2-1.34-4.09-1.37-6.28-.05-2.9,1.05-4.96,1.05-7.63-1.36,1.54-10.11,5.6-9.62,7.6l9.95,6.31ZM354.19,107.41l9.93-6.96-9.93-6.3c.84,4.36,1.14,8.95,0,13.26Z"/>
+      <path fill="#F2665A" d="M324.19,77.42c-4.87,4.83-15.1-5.75-9.85-10.18,5.06-4.27,13.82,6.24,9.85,10.18Z"/>
+      <path fill="#F2665A" d="M349.72,77.41c-3.9-4.13,6.37-14.82,10.74-9.75s-6.39,14.36-10.74,9.75Z"/>
+      <path fill="#F2665A" d="M336.11,60.46c6.96-1.44,8.79,12.21,1.77,13.12s-7.3-11.98-1.77-13.12Z"/>
+    </svg>
+    <!-- 8. puzzle (amber) -->
+    <svg class="icon-float b" style="bottom:8%; left:44%; --r:4deg;" width="70" height="62" viewBox="400 45 90 80" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#F5A94A" d="M438.04,95.05v17.12h36.52v-35.95h-26.54c-.16,0-1.33-.59-1.45-.96v-6.65c.14-.6,1.5-.82,2.06-.89,9.5-1.17,21.01.71,30.74-.02,2.05.32,2.68,1.27,3.04,3.24-.73,14.25,1.44,30.35.16,44.39-.14,1.53-.32,3.11-1.4,4.31h-50.33c-.88-.69-.74-1.62-.83-2.59-.56-5.98-.75-21.71,0-27.45.25-1.87.68-2.32,2.57-2.57,2.27-.3,17.09-.35,18.74.14,2.7.79,1.7,7.87.11,7.87h-13.41Z"/>
+    </svg>
+    <!-- 9. cloud (amber) -->
+    <svg class="icon-float c" style="bottom:11%; right:7%; --r:-4deg;" width="84" height="54" viewBox="535 65 110 70" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#F5A94A" d="M614.8,116.13c1.43-1.26-7.58-7.06-8.73-7.54-5.07-2.1-8.08-.88-12.64-1.63-4.51-.74-2.75-4.05-3.18-7.09-1.29-9.12-9.75-17.6-18.69-19.55-5.89-1.28-12.12,1.47-9.32-7.75,1.52-2.41,11.9.03,14.47.89,11.17,3.72,19.76,13.85,21.58,25.5,11.52.05,23.12,8.1,26.87,19.07.73,2.13,1.58,3.78-.34,5.57l-61.09.51-1.73-1.12c-.69-1.61-.57-6.85,1.71-6.85h51.08Z"/>
+    </svg>
+  </div>
+
+  <div class="hero-textwrap">
+    <div class="eyebrow">Product &amp; Visual Design — Healthtech / Civic Tech</div>
+    <h1>Design that earns <span class="highlight">trust</span>, not just clicks.</h1>
+    <p class="hero-sub">[Draft copy — swap for your voice] Seven years designing medical devices, clinical platforms, and civic systems — places where clarity isn't a style choice, it's the whole job.</p>
+    <div class="hero-cta">
+      <a href="#work" class="btn filled">See the work
+        <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#contact" class="btn outline">Get resume</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow">Selected Work</div>
+      <div class="section-title">Six projects, one throughline</div>
+    </div>
+    <div class="section-note">Tell me the role you're applying for and I'll reorder these for you.</div>
+  </div>
+
+  <div class="work-grid" id="workGrid">
+
+    <!-- WAVE — PHONE FRAME TEMPLATE -->
+    <div class="card">
+      <span class="tag medical">Medical Device</span>
+      <div class="device-stage">
+        <div class="phone-shell">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-scroll">
+              <div class="bar w60"></div><div class="bar w40"></div>
+              <div class="block"></div>
+              <div class="bar w80"></div><div class="bar w60"></div>
+              <div class="block"></div>
+              <div class="bar w40"></div><div class="bar w80"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3>WAVE</h3>
+      <p>Patient-facing companion app UI and FDA label compliance review for an active medical device client.</p>
+      <div class="card-foot"><span class="status">Active client · iOS/Android</span><div class="card-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    </div>
+
+    <!-- DIAPULSE — BROWSER FRAME TEMPLATE -->
+    <div class="card">
+      <span class="tag medical">Corporate / Clinical</span>
+      <div class="device-stage">
+        <div class="browser-shell">
+          <div class="browser-bar"><div class="browser-dot d1"></div><div class="browser-dot d2"></div><div class="browser-dot d3"></div><div class="browser-url">diapulse.com</div></div>
+          <div class="browser-screen">
+            <div class="bar" style="width:40%"></div>
+            <div class="row"><div class="block"></div><div class="block"></div><div class="block"></div></div>
+            <div class="bar" style="width:70%"></div>
+          </div>
+        </div>
+      </div>
+      <h3>Diapulse</h3>
+      <p>Full sitemap, wireframes, and partner inquiry flow for a legacy medical device brand's website redesign.</p>
+      <div class="card-foot"><span class="status">Active client · Web</span><div class="card-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    </div>
+
+    <!-- BERGEN COUNTY — BROWSER FRAME -->
+    <div class="card">
+      <span class="tag civic">Civic Tech</span>
+      <div class="device-stage">
+        <div class="browser-shell">
+          <div class="browser-bar"><div class="browser-dot d1"></div><div class="browser-dot d2"></div><div class="browser-dot d3"></div><div class="browser-url">permits.bergencounty.gov</div></div>
+          <div class="browser-screen">
+            <div class="bar" style="width:50%"></div>
+            <div class="row"><div class="block"></div><div class="block"></div></div>
+            <div class="bar" style="width:80%"></div>
+          </div>
+        </div>
+      </div>
+      <h3>Bergen County Permit Portal</h3>
+      <p>Reworked information architecture for residents navigating municipal permit applications.</p>
+      <div class="card-foot"><span class="status">Shipped · Web</span><div class="card-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    </div>
+
+    <!-- TIRIVELO — PHONE FRAME -->
+    <div class="card">
+      <span class="tag academic">Marketplace</span>
+      <div class="device-stage">
+        <div class="phone-shell">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-scroll">
+              <div class="bar w40"></div><div class="bar w80"></div>
+              <div class="block"></div>
+              <div class="bar w60"></div><div class="bar w40"></div>
+              <div class="block"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3>TiriVelo</h3>
+      <p>Search, filters, and provider profile flows for a pet-care marketplace app, WCAG AA audited.</p>
+      <div class="card-foot"><span class="status">Capstone · iOS/Android</span><div class="card-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    </div>
+
+    <!-- RAPIMD — PHONE FRAME -->
+    <div class="card">
+      <span class="tag academic">Healthcare Booking</span>
+      <div class="device-stage">
+        <div class="phone-shell">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-scroll">
+              <div class="bar w60"></div><div class="block"></div>
+              <div class="bar w80"></div><div class="bar w40"></div>
+              <div class="block"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3>RapiMD</h3>
+      <p>Map-based provider booking flow, navigation architecture, and Figma plugin scripting.</p>
+      <div class="card-foot"><span class="status">Academic · iOS/Android</span><div class="card-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    </div>
+
+    <!-- SIFTED — PHONE FRAME -->
+    <div class="card">
+      <span class="tag personal">AI Concept</span>
+      <div class="device-stage">
+        <div class="phone-shell">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-cycle">
+              <img src="assets/sifted-scan-1.jpg" alt="Sifted — barcode scanner">
+              <img src="assets/sifted-scan-2.jpg" alt="Sifted — product nutrition result">
+              <img src="assets/sifted-scan-3.jpg" alt="Sifted — All Clear confirmation">
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3>Sifted</h3>
+      <p>A personal AI nutrition concept, born from tracking my own ketogenic intake and ketone levels.</p>
+      <div class="card-foot"><span class="status">Concept · iOS/Android</span><div class="card-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="process">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow">How I Work</div>
+      <div class="section-title">Four stages, every project</div>
+    </div>
+  </div>
+  <div class="process-row">
+    <div class="process-item"><svg class="picon" viewBox="0 0 100 100" fill="none"><path d="M50 82 C20 60 10 40 22 26 C32 15 48 20 50 34 C52 20 68 15 78 26 C90 40 80 60 50 82Z" stroke="#F2665A" stroke-width="8" stroke-linejoin="round"/></svg><h4>Learn</h4><p>Talk to stakeholders and users before a single wireframe. Understand what "wrong" costs here.</p></div>
+    <div class="process-item"><svg class="picon" viewBox="0 0 100 100" fill="none"><rect x="15" y="15" width="70" height="70" rx="14" stroke="#F5A94A" stroke-width="8"/><path d="M15 40 H85 M40 40 V85" stroke="#F5A94A" stroke-width="8"/></svg><h4>Map</h4><p>Sitemaps and flows first. Structure carries the trust, decoration comes after.</p></div>
+    <div class="process-item"><svg class="picon" viewBox="0 0 100 100" fill="none"><rect x="15" y="30" width="70" height="45" rx="10" stroke="#33454A" stroke-width="8"/><circle cx="65" cy="52" r="9" fill="#33454A"/></svg><h4>Build</h4><p>High-fidelity Figma, dev-ready specs, and close collaboration through handoff.</p></div>
+    <div class="process-item"><svg class="picon" viewBox="0 0 100 100" fill="none"><path d="M30 55 L45 70 L75 30" stroke="#F2665A" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50" cy="50" r="38" stroke="#F2665A" stroke-width="6"/></svg><h4>Test</h4><p>Usability testing and compliance review before ship — the actual gate, not a formality.</p></div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="about-strip">
+    <div class="about-photo">[Your photo]</div>
+    <div>
+      <h2>A little about me</h2>
+      <p>[Draft — swap for your voice] I'm a Brooklyn/NJ-based product and graphic designer with a soft spot for systems that have to work right the first time — because someone's health, or someone's paperwork, depends on it. Outside of that: soccer and calligraphy keep me sane.</p>
+    </div>
+    <div class="about-stats">
+      <div><b>7</b><span>Years designing</span></div>
+      <div><b>2</b><span>Active clients</span></div>
+      <div><b>6</b><span>Case files</span></div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="foot-title">Building something in healthtech or civic tech? Let's talk.</div>
+  <div class="foot-links">
+    <a href="mailto:hello@aliceportfolio.com">hello@aliceportfolio.com</a>
+    <a href="#">LinkedIn</a>
+    <a href="#">Resume — PDF</a>
+    <div class="foot-social">
+      <a href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.29 9.4 7.86 10.93.57.1.79-.25.79-.55v-2.02c-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.58.23 2.75.11 3.04.73.8 1.18 1.83 1.18 3.08 0 4.41-2.7 5.38-5.26 5.67.41.36.78 1.07.78 2.15v3.19c0 .3.21.66.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const cards = document.querySelectorAll('.card');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach((e,idx)=>{
+    if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'), idx*80); io.unobserve(e.target); }
+  });
+},{threshold:0.15});
+cards.forEach(c=>io.observe(c));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RapiMD — Case Study — Alice Curiel</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+  --coral:#F2665A; --amber:#F5A94A; --ink:#33454A; --ink-soft:#5B6A6D;
+  --paper:#FBF9F4; --paper-alt:#F2EDE1; --graphite:#8B9290; --line:#33454A1a;
+  --rapi-navy:#1B2A4A; --rapi-red:#D6362B;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif;}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
+
+nav{position:sticky; top:0; z-index:200; display:flex; justify-content:space-between; align-items:center; padding:20px 48px; background:#FBF9F4ee; backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+.back-link{display:flex; align-items:center; gap:8px; font-weight:600; font-size:14px; color:var(--ink-soft); text-decoration:none;}
+.back-link:hover{color:var(--coral);}
+.back-link svg{width:16px; height:16px;}
+.nav-mark svg{display:block;}
+
+.cs-header{padding:56px 48px 30px; max-width:1000px; margin:0 auto;}
+.header-top{display:grid; grid-template-columns:1fr 0.9fr; gap:44px; align-items:stretch;}
+.header-top .hero-image{margin:0; min-height:280px;}
+.tag{display:inline-flex; font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; padding:6px 12px; border-radius:100px; background:#F2665A1a; color:var(--coral); margin-bottom:20px;}
+h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw,52px); line-height:1.05; letter-spacing:-0.01em; max-width:760px;}
+.cs-sub{margin-top:14px; font-size:15px; color:var(--graphite); font-weight:600;}
+
+.meta-row{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin:32px auto 0; padding:26px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+.meta-item span{display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--graphite); margin-bottom:5px;}
+.meta-item b{font-family:'Poppins',sans-serif; font-size:16px; font-weight:600;}
+.meta-note{font-size:13px; color:var(--graphite); margin-top:14px; font-style:italic;}
+
+/* ---- TABS ---- */
+.tab-nav{position:sticky; top:65px; z-index:150; display:flex; gap:6px; max-width:1000px; margin:0 auto; padding:14px 48px 0; background:var(--paper); overflow-x:auto;}
+.tab-btn{font-family:'Inter',sans-serif; font-weight:600; font-size:14px; color:var(--graphite); background:none; border:none; padding:12px 20px; border-radius:100px 100px 0 0; cursor:pointer; border-bottom:3px solid transparent; transition:all .2s; white-space:nowrap;}
+.tab-btn.active{color:var(--coral); border-bottom-color:var(--coral);}
+.tab-btn:hover:not(.active){color:var(--ink);}
+.tab-btn:focus-visible{outline:2px solid var(--coral); outline-offset:2px;}
+
+.tab-panel{display:none; max-width:1000px; margin:0 auto; padding:44px 48px 90px; animation:fadeIn .35s ease;}
+.tab-panel.active{display:block;}
+@keyframes fadeIn{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);}}
+
+.hero-image{margin-bottom:44px; border-radius:22px; background:linear-gradient(135deg,var(--rapi-navy)10,var(--rapi-red)0d); border:2px dashed var(--line); min-height:340px; display:flex; align-items:center; justify-content:center; padding:30px; gap:24px; flex-wrap:wrap;}
+.placeholder-note{color:var(--graphite); font-size:13px; font-weight:600; text-align:center;}
+
+.section-eyebrow{font-weight:700; font-size:12.5px; color:var(--coral); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px;}
+h2{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(24px,2.8vw,30px); margin-bottom:18px;}
+h3{font-family:'Poppins',sans-serif; font-weight:600; font-size:19px; margin-bottom:10px;}
+p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; max-width:740px;}
+.block{margin-bottom:56px;}
+.block:last-child{margin-bottom:0;}
+.gap-statement{font-style:italic; color:var(--coral); font-size:15px; border-top:1px solid var(--line); padding-top:18px; margin-top:6px;}
+
+/* ---- ACCORDION ---- */
+.accordion{border-top:1px solid var(--line); margin-top:20px;}
+.acc-item{border-bottom:1px solid var(--line);}
+.acc-head{display:flex; justify-content:space-between; align-items:center; padding:22px 4px; cursor:pointer; background:none; border:none; width:100%; text-align:left;}
+.acc-head h4{font-family:'Poppins',sans-serif; font-size:17px; font-weight:600; display:flex; align-items:center; gap:12px;}
+.acc-num{font-family:'Inter',sans-serif; font-size:12px; font-weight:700; color:var(--coral); background:#F2665A14; width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+.acc-icon{width:20px; height:20px; flex-shrink:0; transition:transform .3s;}
+.acc-item.open .acc-icon{transform:rotate(45deg);}
+.acc-body{max-height:0; overflow:hidden; transition:max-height .35s ease;}
+.acc-body-inner{padding:0 4px 24px 42px;}
+.acc-body-inner p{font-size:14.5px;}
+
+/* ---- STATS BAND ---- */
+.stats-band{background:var(--ink); border-radius:22px; padding:44px; display:grid; grid-template-columns:repeat(4,1fr); gap:26px; color:var(--paper); margin-bottom:10px;}
+.stat b{display:block; font-family:'Poppins',sans-serif; font-size:32px; color:var(--amber);}
+.stat span{font-size:12.5px; color:#B7C0C1; line-height:1.5;}
+
+/* ---- GALLERY ---- */
+.gallery{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+.gallery-item{border-radius:16px; background:var(--paper-alt); border:2px dashed var(--line); min-height:220px; display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--graphite); font-size:13px; font-weight:600; text-align:center; padding:16px;}
+.gallery-item.wide{grid-column:1/-1; min-height:200px;}
+.gallery-caption{font-size:12px; font-style:italic; color:var(--ink-soft); margin-top:10px; text-align:center; max-width:none;}
+
+/* ---- PERSONA ---- */
+.persona-full{background:#fff; border:1px solid var(--line); border-radius:20px; overflow:hidden; margin-top:20px; display:grid; grid-template-columns:0.85fr 1.15fr;}
+.persona-photo{background:var(--rapi-navy); padding:32px; display:flex; flex-direction:column; align-items:center; text-align:center; color:#fff;}
+.persona-avatar{width:72px; height:72px; border-radius:50%; background:#ffffff22; border:2px dashed #ffffff55; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; margin-bottom:14px;}
+.persona-photo .p-name{font-family:'Poppins',sans-serif; font-size:19px; font-weight:600;}
+.persona-photo .p-meta{font-size:12px; color:#B7C0D0; margin-top:4px;}
+.persona-tags{display:flex; gap:6px; flex-wrap:wrap; justify-content:center; margin-top:14px;}
+.persona-tags span{font-size:10px; font-weight:700; text-transform:uppercase; background:#ffffff18; padding:4px 9px; border-radius:100px; letter-spacing:0.04em;}
+.persona-quote-full{font-style:italic; font-size:13.5px; color:#DCE3EE; margin-top:16px; border-top:1px solid #ffffff22; padding-top:16px;}
+.persona-detail{padding:28px 30px;}
+.persona-col-title{font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--coral); margin-top:16px; margin-bottom:8px;}
+.persona-col-title:first-child{margin-top:0;}
+.persona-detail p{font-size:13.5px; margin-bottom:10px;}
+.persona-detail ul{list-style:none; margin-bottom:6px;}
+.persona-detail li{font-size:13.5px; color:var(--ink-soft); padding:4px 0; padding-left:16px; position:relative;}
+.persona-detail li::before{content:'—'; position:absolute; left:0; color:var(--coral);}
+
+/* ---- PROBLEM CARDS ---- */
+.problem-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:20px;}
+.problem-card{background:#F2665A0d; border:1px solid #F2665A33; border-radius:16px; padding:22px;}
+.problem-card h4{font-family:'Poppins',sans-serif; font-size:16px; color:var(--coral); margin-bottom:14px;}
+.problem-card .p-label{font-size:11px; font-weight:700; text-transform:uppercase; color:var(--ink); margin-top:12px; margin-bottom:4px;}
+.problem-card .p-label:first-of-type{margin-top:0;}
+.problem-card p{font-size:13px; margin:0;}
+
+/* ---- FINDINGS LIST ---- */
+.finding-list{margin-top:16px;}
+.finding-item{display:flex; gap:12px; padding:16px 0; border-bottom:1px solid var(--line);}
+.finding-item:last-child{border-bottom:none;}
+.finding-dot{width:8px; height:8px; border-radius:50%; background:var(--coral); margin-top:7px; flex-shrink:0;}
+.finding-item b{font-family:'Poppins',sans-serif; font-size:15px; display:block; margin-bottom:3px;}
+.finding-item span{font-size:13.5px; color:var(--ink-soft);}
+
+.outcome-cta{display:inline-flex; align-items:center; gap:8px; background:var(--coral); color:#fff; font-weight:600; font-size:14px; padding:14px 26px; border-radius:100px; text-decoration:none; margin-top:10px;}
+.outcome-cta:hover{background:var(--ink);}
+
+/* ---- reflections ---- */
+.reflect-grid{display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:20px;}
+.reflect-card h4{font-family:'Poppins',sans-serif; font-size:17px; margin-bottom:10px;}
+.reflect-card p{font-size:14.5px;}
+
+/* ---- brand quote ---- */
+.pull-quote{background:#F2665A12; border-left:4px solid var(--coral); border-radius:0 16px 16px 0; padding:32px 36px; margin:20px 0 30px;}
+.pull-quote p{font-family:'Poppins',sans-serif; font-size:22px; font-weight:500; color:var(--ink); line-height:1.35; margin:0; max-width:640px;}
+
+/* ---- closing wordmark ---- */
+.closing-mark{text-align:center; padding:50px 0 10px;}
+.closing-mark .wordmark{font-family:'Poppins',sans-serif; font-size:34px; font-weight:600; color:var(--rapi-navy); display:inline-flex; align-items:baseline; gap:2px;}
+.closing-mark .wordmark .md{position:relative;}
+.closing-mark .wordmark .md::after{content:''; position:absolute; top:-6px; right:-4px; width:14px; height:10px; border-bottom:3px solid var(--rapi-red); border-right:3px solid var(--rapi-red); transform:rotate(35deg) scale(0.7);}
+.closing-mark .tagline{font-size:13px; color:var(--graphite); font-style:italic; margin-top:6px;}
+
+.next-project{margin:0 48px 60px; padding:44px 40px; background:var(--paper-alt); border-radius:24px; display:flex; justify-content:space-between; align-items:center; max-width:904px; margin-left:auto; margin-right:auto; text-decoration:none; color:inherit;}
+.next-project .label{font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--graphite); margin-bottom:6px;}
+.next-project h3{margin:0;}
+.next-arrow{width:50px; height:50px; border-radius:50%; background:var(--coral); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform .3s;}
+.next-arrow svg{width:20px; height:20px; stroke:#fff;}
+.next-project:hover .next-arrow{transform:translateX(6px);}
+
+footer{padding:0 48px 40px; text-align:center; color:var(--graphite); font-size:13.5px;}
+footer .foot-row{display:flex; align-items:center; justify-content:center; gap:14px;}
+footer .foot-row a.social{width:32px; height:32px; border-radius:50%; background:var(--paper-alt); display:flex; align-items:center; justify-content:center; transition:all .25s;}
+footer .foot-row a.social:hover{background:var(--ink);}
+footer .foot-row a.social svg{width:16px; height:16px; fill:var(--ink); transition:fill .25s;}
+footer .foot-row a.social:hover svg{fill:var(--paper);}
+
+.back-to-top{
+  position:fixed; bottom:28px; right:28px; width:48px; height:48px; border-radius:50%;
+  background:var(--ink); border:none; cursor:pointer; z-index:250;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transform:translateY(10px);
+  transition:opacity .3s ease, transform .3s ease, background .25s ease;
+  box-shadow:0 10px 24px -8px #33454A55;
+}
+.back-to-top.show{opacity:1; pointer-events:auto; transform:translateY(0);}
+.back-to-top:hover{background:var(--coral);}
+.back-to-top svg{width:20px; height:20px; stroke:#fff;}
+.back-to-top:focus-visible{outline:2px solid var(--coral); outline-offset:3px;}
+
+@media (max-width:900px){
+  .header-top{grid-template-columns:1fr;}
+  .header-top .hero-image{min-height:220px;}
+  .meta-row{grid-template-columns:1fr 1fr;}
+  .gallery, .reflect-grid{grid-template-columns:1fr;}
+  .stats-band{grid-template-columns:1fr 1fr;}
+  .problem-grid{grid-template-columns:1fr;}
+  .persona-full{grid-template-columns:1fr;}
+  .cs-header, .tab-panel{padding-left:24px; padding-right:24px;}
+  .next-project{flex-direction:column; align-items:flex-start; gap:20px; margin:0 24px 40px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="back-link">
+    <svg viewBox="0 0 100 100" fill="none"><path d="M75 50 H30 M50 25 L25 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    All work
+  </a>
+  <div class="nav-mark">
+    <svg width="105" height="23" viewBox="150 95 465 115" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="navLogoGradRM" x1="0" y1="73.98" x2="0" y2="314.82" gradientUnits="userSpaceOnUse">
+          <stop offset=".04" stop-color="#254444"/><stop offset=".34" stop-color="#2a4748"/><stop offset=".69" stop-color="#385354"/><stop offset="1" stop-color="#4b6264"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#navLogoGradRM)" d="M156.97,201.31l33.3-93.09,25.04-.25,36.15,93.34h-23.93l-7.85-18.87-33.12-.61-6.28,19.48h-23.32ZM213.42,163.28l-10.43-31.91-9.2,31.91h19.63Z"/>
+      <polygon fill="url(#navLogoGradRM)" points="303 108.06 303 181.68 338.59 181.68 338.59 201.31 279.69 201.31 279.69 108.06 303 108.06"/>
+      <polygon fill="url(#navLogoGradRM)" points="391.36 108.06 391.36 201.31 371.11 201.31 369.27 199.47 369.27 108.06 391.36 108.06"/>
+      <path fill="url(#navLogoGradRM)" d="M510.31,113.06l-6.07,20.77c-24.52-14.96-57.03-9.44-54.03,25.21,1.63,18.8,18.53,26.29,35.7,23.33,7.25-1.25,12.91-5.63,19.55-8.04l6.09,18.3c-39.73,26.4-99.84.74-84.65-52.08,10.25-35.65,53.69-44.65,83.4-27.48Z"/>
+      <path fill="url(#navLogoGradRM)" d="M608.56,108.06v18.4h-39.88c-2.97,3.94-3.01,14.32,0,18.4h37.43v18.4h-39.27v18.4h42.95v19.63h-65.04v-93.25h63.81Z"/>
+    </svg>
+  </div>
+</nav>
+
+<header class="cs-header">
+  <div class="header-top">
+    <div>
+      <span class="tag">Mobile App</span>
+      <h1>RapiMD</h1>
+      <p class="cs-sub">Health Tech · Uninsured Patients · Trust Architecture · Ethical UX</p>
+      <div class="meta-row" style="border-top:none; padding-top:0;">
+        <div class="meta-item"><span>Role</span><b>Solo Designer</b></div>
+        <div class="meta-item"><span>Scope</span><b>End-to-end</b></div>
+        <div class="meta-item"><span>Timeline</span><b>4 Weeks</b></div>
+        <div class="meta-item"><span>Year</span><b>2026</b></div>
+      </div>
+
+      <div class="block" style="margin-top:28px;">
+        <div class="section-eyebrow">The Challenge</div>
+        <h3 style="font-size:16px;">Design a booking experience that earns trust before asking for anything.</h3>
+        <p>More than 40 million Americans are uninsured, and many delay care because they can't predict what it will cost.</p>
+        <p>Healthcare apps designed to help them consistently fail at the first moment of contact by hiding pricing behind sign-up walls, using opaque fee structures, and triggering the exact distrust these users already carry toward the healthcare system.</p>
+      </div>
+
+      <div class="block" style="margin-bottom:0;">
+        <div class="section-eyebrow">The Solution</div>
+        <h3 style="font-size:16px;">A mobile-first healthcare booking platform for uninsured and self-pay patients, built entirely around one promise: show users exactly what they will pay before they commit.</h3>
+        <p>Delayed authentication until after users have seen pricing and availability.</p>
+        <p style="margin-bottom:0;">Flat-fee pricing on provider cards, billing accuracy sub-ratings, "What's Not Included" disclosures, and persistent No Surprise Bill messaging throughout the flow. Validated through moderated usability testing.</p>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="placeholder-note">[rapiMD app hero — "Care When You Need It, For Less" splash + phone mockup — GIF placeholder]</div>
+    </div>
+  </div>
+</header>
+
+<div class="tab-nav" id="tabNav">
+  <button class="tab-btn active" data-tab="overview">Overview</button>
+  <button class="tab-btn" data-tab="research">Research</button>
+  <button class="tab-btn" data-tab="design">Design &amp; Process</button>
+  <button class="tab-btn" data-tab="outcome">Outcome</button>
+</div>
+
+<!-- OVERVIEW -->
+<div class="tab-panel active" data-panel="overview">
+  <div class="block">
+    <div class="section-eyebrow">The Problem</div>
+    <h2>The cost of care is a barrier before a single appointment is booked.</h2>
+    <p>Uninsured Americans (roughly 26 million people) face a healthcare system designed around insurance. Searching for a provider means navigating a landscape of hidden pricing, credential ambiguity, and opaque booking flows.</p>
+    <p>RapiMD's core hypothesis: if you show uninsured patients the exact cost of a visit before they commit, and give them enough information about a provider to feel confident booking, you remove the primary barrier to care.</p>
+    <p class="gap-statement">The design challenge was making that transparency feel trustworthy, not transactional.</p>
+  </div>
+
+  <div class="block">
+    <h3>Who I designed for</h3>
+    <div class="persona-full">
+      <div class="persona-photo">
+        <div class="persona-avatar">[Photo]</div>
+        <div class="p-name">Nina Sabina</div>
+        <div class="p-meta">28 · Connecticut · Freelancer<br>Extreme Cost Sensitivity</div>
+        <div class="persona-tags"><span>Uninsured</span><span>Self-Pay</span><span>Price-Shops</span></div>
+        <div class="persona-quote-full">"I don't avoid doctors because I don't care about my health; I avoid them because I can't afford them."</div>
+      </div>
+      <div class="persona-detail">
+        <div class="persona-col-title">About</div>
+        <p>Nina hasn't had insurance in several years. Every medical visit is a financial decision — she saves up calls to compare prices, and delays or avoids care if she can't get a clear number upfront. She's been burned by surprise fees and vague "starting at" pricing. She researches more than she books.</p>
+        <div class="persona-col-title">Goals &amp; Motivations</div>
+        <ul><li>Know the exact total cost before committing</li><li>Avoid surprise bills or fees after appointments</li><li>Find one place she can trust for pricing info</li></ul>
+        <div class="persona-col-title">Pain Points</div>
+        <ul><li>Vague "starting at" pricing</li><li>Surprise charges upon checkout</li><li>Feeling penalized for being uninsured</li><li>Hours spent calling clinics to get quotes</li></ul>
+        <div class="persona-col-title">What Would Win Her Over</div>
+        <ul><li>Flat price upfront before booking</li><li>No hidden fees guarantee</li><li>Clear breakdown of what's included in visit price</li><li>Billing accuracy visible in reviews</li></ul>
+      </div>
+    </div>
+    <p class="gallery-caption" style="margin-top:10px;">User persona developed from user interviews highlighting the anxiety, uncertainty, and financial risk uninsured patients face when seeking medical care.</p>
+  </div>
+
+  <div class="block">
+    <h3>The three-sided problem</h3>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <h4>Patient Access Gap</h4>
+        <div class="p-label">Background</div>
+        <p>Many uninsured or high-deductible patients delay or avoid medical care due to high upfront costs and lack of transparent pricing.</p>
+        <div class="p-label">Problem</div>
+        <p>Cost-sensitive patients need an affordable, transparent way to find and book care without gambling on the final price.</p>
+        <div class="p-label">Business Impact</div>
+        <p>This results in lost patient acquisition opportunities and prevents providers from filling unused appointment capacity with a new customer segment.</p>
+      </div>
+      <div class="problem-card">
+        <h4>Provider Revenue Loss</h4>
+        <div class="p-label">Background</div>
+        <p>Medical practices frequently experience last-minute cancellations and unfilled appointment slots.</p>
+        <div class="p-label">Problem</div>
+        <p>Practices lack a dynamic system to redistribute these time-sensitive openings to patients willing to book at a lower cost.</p>
+        <div class="p-label">Business Impact</div>
+        <p>Empty slots reduce operational efficiency, lower daily revenue, and increase financial strain on small practices.</p>
+      </div>
+      <div class="problem-card">
+        <h4>Trust &amp; Booking Friction</h4>
+        <div class="p-label">Background</div>
+        <p>Patients seeking discounted care often question legitimacy, quality, and transparency when pricing deviates from standard rates.</p>
+        <div class="p-label">Problem</div>
+        <p>Patients need reassurance that discounted care is still credible — there's currently no standardized, accessible way to communicate provider credibility, pricing transparency, and booking certainty.</p>
+        <div class="p-label">Business Impact</div>
+        <p>Without trust signals and clarity, users abandon bookings, reducing conversion rates and limiting platform growth.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESEARCH -->
+<div class="tab-panel" data-panel="research">
+  <div class="block">
+    <div class="section-eyebrow">Research</div>
+    <h2>5 interviews. 4 sharp findings. 1 insight that shaped every product decision.</h2>
+    <div class="finding-list">
+      <div class="finding-item"><div class="finding-dot"></div><div><b>Pricing unpredictable</b><span>Costs unknown until after the appointment — sometimes weeks after.</span></div></div>
+      <div class="finding-item"><div class="finding-dot"></div><div><b>Hidden charges</b><span>Unexpected fees appeared regularly after visits, compounding distrust.</span></div></div>
+      <div class="finding-item"><div class="finding-dot"></div><div><b>Same-day = phone tag</b><span>Finding same-day availability required calling multiple offices manually.</span></div></div>
+      <div class="finding-item"><div class="finding-dot"></div><div><b>Systemic trust erosion</b><span>Users weren't uninformed. Experience had taught them that engaging cost more than they could predict.</span></div></div>
+    </div>
+    <p class="gap-statement" style="margin-top:20px;">The insight that shaped everything: these users weren't avoiding care because they were unaware of their options. They were avoiding it because experience had taught them that engaging with the system cost more than they could predict.</p>
+    <div class="gallery-item wide" style="margin-top:20px;">[Affinity mapping board — insurance friction, availability frustration, preferences, emotional load, trust signals]</div>
+  </div>
+</div>
+
+<!-- DESIGN & PROCESS -->
+<div class="tab-panel" data-panel="design">
+  <div class="block">
+    <div class="section-eyebrow">Delayed Authentication</div>
+    <h2>The most important product decision.</h2>
+    <p>Standard healthcare apps put account creation before value. For uninsured patients already primed to distrust systems that take without giving, this is a trust-ending moment.</p>
+    <p>RapiMD flipped the sequence entirely. Authentication was delayed until after users had selected a provider and an appointment slot — after they'd seen the flat fee, confirmed availability, and decided they wanted to proceed.</p>
+    <div class="gallery">
+      <div class="gallery-item">[Slot-hold countdown screen — "Account needed to continue," 06:12 timer]</div>
+      <div class="gallery-item">[Account creation screen — Google/Apple/email, "Continue as guest"]</div>
+    </div>
+    <p class="gallery-caption">To prevent slot abandonment, the app reassured users their selected appointment was being held while a streamlined account creation flow was required to confirm and lock in the booking.</p>
+    <div class="gallery-item wide" style="margin-top:20px;">[User flow — Browsing → Sign Up &amp; Onboarding → Booking, with auto-release path highlighted]</div>
+  </div>
+
+  <div class="block">
+    <div class="section-eyebrow">Logo &amp; Brand Identity Rationale</div>
+    <h2>The rapiMD logo was designed to communicate the platform's core promise.</h2>
+    <div class="pull-quote"><p>Fast, confirmed, affordable care — in a single mark.</p></div>
+    <p>The logo uses a checkmark over the letter "D," signaling speed and medical completion: in healthcare, a checkmark means done, confirmed, safe. The lowercase "rapi" keeps the wordmark approachable and consumer-friendly, while the uppercase "MD" anchors it in clinical credibility — the same tension the product itself navigates.</p>
+    <p>Deep navy and red were chosen deliberately: navy builds institutional trust, while red appears exclusively on the checkmark accent and key CTAs, training the eye to pay attention when it matters.</p>
+    <p>The Gabarito and Inconsolata type pairing reinforces the transparency promise at a subconscious level — Inconsolata's monospace precision feels exact and receipt-like, aligned with a product whose entire value proposition is showing users exactly what they will pay.</p>
+    <div class="gallery">
+      <div class="gallery-item">[Logo + app icon — light &amp; dark variants]</div>
+      <div class="gallery-item">[Typography — Gabarito + Inconsolata pairing]</div>
+      <div class="gallery-item wide">[Color palette — primary navy + red, with tint scales]</div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="section-eyebrow">Trust Architecture</div>
+    <h2>Every screen was designed to build or maintain trust.</h2>
+    <p>Trust architecture in healthcare UX means designing information hierarchy, interaction patterns, and visual language specifically to reduce patient anxiety and build confidence at each decision point. This included: transparent flat fees visible before login, provider credential display with verification signals, clear scope-of-service boundaries, and intentional friction at irreversible actions.</p>
+    <div class="gallery">
+      <div class="gallery-item">[Search results]<div class="gallery-caption">"Flat pricing visible before interaction"</div></div>
+      <div class="gallery-item">[Provider profile]<div class="gallery-caption">"Billing accuracy sub-rating reinforces trust"</div></div>
+      <div class="gallery-item">[Booking confirmation]<div class="gallery-caption">"No Surprise Bill guarantee persists through checkout"</div></div>
+      <div class="gallery-item">[Onboarding prompt]<div class="gallery-caption">"Authentication delayed until after user commitment"</div></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="section-eyebrow">Designing Transparency Into Every Interaction</div>
+    <h2>Every screen. Every decision point. Every place doubt could appear.</h2>
+    <div class="gallery">
+      <div class="gallery-item">[Provider pricing screen]<div class="gallery-caption">Provider Pricing Transparency: displays the usual visit cost alongside the active RapiMD flat-fee rate, making the discount immediately visible.</div></div>
+      <div class="gallery-item">[Price breakdown screen]<div class="gallery-caption">Price Breakdown &amp; Coverage: clarifies what the consultation covers and explicitly states what is not included, paired with the No Surprise Bill guarantee.</div></div>
+      <div class="gallery-item">[Same-day cancellation warning]<div class="gallery-caption">A clear notice informs users that same-day bookings cannot be cancelled once confirmed.</div></div>
+      <div class="gallery-item">[Appointment reminder screen]<div class="gallery-caption">Reminders sent the day before and 2 hours prior, prompting visit prep and reducing no-shows.</div></div>
+      <div class="gallery-item">[Appointments hub]<div class="gallery-caption">Summarizes exactly what the visit price includes, alongside directions to the provider.</div></div>
+      <div class="gallery-item">[Prepare for your visit screen]<div class="gallery-caption">Lists documents and information to bring, reducing uncertainty before the visit.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- OUTCOME -->
+<div class="tab-panel" data-panel="outcome">
+  <div class="block">
+    <div class="section-eyebrow">Usability Testing</div>
+    <h2>Testing focus: pricing comprehension, booking confidence, trust perception, data transparency. Two failures emerged.</h2>
+    <div class="stats-band">
+      <div class="stat"><b>5</b><span>Participants</span></div>
+      <div class="stat"><b>9</b><span>Screens tested</span></div>
+      <div class="stat"><b>100%</b><span>Task Completion Rate</span></div>
+      <div class="stat"><b>45–60</b><span>Minutes per session</span></div>
+    </div>
+    <div class="accordion">
+      <div class="acc-item open">
+        <button class="acc-head"><h4><span class="acc-num">1</span>Pricing breakdown misread as additional charges</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="#33454A" stroke-width="10" stroke-linecap="round"/></svg></button>
+        <div class="acc-body"><div class="acc-body-inner"><p>Participants were interpreting itemized breakdowns as fees stacked on top of the flat fee — the exact opposite of what the design intended. Fix: a dominant "Your total: $85 flat" summary line above the breakdown. In follow-up testing, the misreading disappeared.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head"><h4><span class="acc-num">2</span>Location data appeared without context</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="#33454A" stroke-width="10" stroke-linecap="round"/></svg></button>
+        <div class="acc-body"><div class="acc-body-inner"><p>Participants felt uneasy when location-based results appeared without explicit permission context. Fix: explicit location permission prompt before any location-based results, with clear language about data use.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="section-eyebrow">What This Project Taught Me About Trust</div>
+    <h2>Trust is not a visual property.</h2>
+    <p>You cannot design trust with just a color palette or reassuring headlines. Trust is built through clear expectations, explicit consent, transparent system behavior, and predictable outcomes — through what the product does, not how it looks.</p>
+    <p>For uninsured patients who have been systemically failed by healthcare, uncertainty itself is a barrier to care. Every interaction pattern that introduced ambiguity was a product failure with real consequences for real people.</p>
+  </div>
+
+  <div class="block">
+    <div class="section-eyebrow">Trust Architecture</div>
+    <h2>The trust system working end-to-end.</h2>
+    <a href="#" class="outcome-cta">RapiMD Prototype
+      <svg width="16" height="16" viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+
+  <div class="block">
+    <div class="section-eyebrow">Reflections</div>
+    <div class="reflect-grid">
+      <div class="reflect-card">
+        <h4>What I'd Do Differently</h4>
+        <p>With more time, I would run a second testing round specifically on the revised pricing hierarchy to confirm the fix held across different literacy levels. I'd also have pushed the billing accuracy rating system further — it's the feature most likely to drive long-term platform trust and deserved more design depth in V1.</p>
+      </div>
+      <div class="reflect-card">
+        <h4>What This Project Proved</h4>
+        <p>Trust is built through clear expectations, explicit consent, transparent system behavior, and predictable outcomes. Every ambiguous interaction pattern was a product failure with real consequences for real people.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="closing-mark">
+    <div class="wordmark">rapi<span class="md">MD</span></div>
+    <div class="tagline">Last-Minute Healthcare</div>
+  </div>
+</div>
+
+<a href="bergen-county-case-study.html" class="next-project">
+  <div><div class="label">Next case file</div><h3>Permit Portal</h3></div>
+  <div class="next-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+</a>
+
+<footer>
+  <div class="foot-row">
+    <span>© Alice Curiel — hello@aliceportfolio.com</span>
+    <a href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener" class="social" aria-label="GitHub">
+      <svg viewBox="0 0 24 24"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.29 9.4 7.86 10.93.57.1.79-.25.79-.55v-2.02c-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.58.23 2.75.11 3.04.73.8 1.18 1.83 1.18 3.08 0 4.41-2.7 5.38-5.26 5.67.41.36.78 1.07.78 2.15v3.19c0 .3.21.66.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
+    </a>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 100 100" fill="none"><path d="M50 75 V25 M25 50 L50 25 L75 50" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script>
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    const activePanel = document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`);
+    activePanel.classList.add('active');
+    const panelTop = activePanel.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({top: panelTop - 130, behavior:'smooth'});
+  });
+});
+document.querySelectorAll('.acc-head').forEach(head=>{
+  head.addEventListener('click', ()=>{
+    const item = head.parentElement;
+    const body = item.querySelector('.acc-body');
+    const isOpen = item.classList.contains('open');
+    item.parentElement.querySelectorAll('.acc-item').forEach(sib=>{
+      sib.classList.remove('open');
+      sib.querySelector('.acc-body').style.maxHeight = null;
+    });
+    if(!isOpen){ item.classList.add('open'); body.style.maxHeight = body.scrollHeight + 'px'; }
+  });
+});
+window.addEventListener('load', ()=>{
+  document.querySelectorAll('.acc-item.open .acc-body').forEach(b=>{ b.style.maxHeight = b.scrollHeight + 'px'; });
+});
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', ()=>{
+  if(window.scrollY > 500){ backToTop.classList.add('show'); }
+  else{ backToTop.classList.remove('show'); }
+});
+backToTop.addEventListener('click', ()=>{ window.scrollTo({top:0, behavior:'smooth'}); });
+</script>
+
+</body>
+</html>
