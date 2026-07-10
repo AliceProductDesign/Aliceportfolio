@@ -153,11 +153,14 @@ h1 .highlight{color:var(--coral);}
 .process-item p{font-size:13.5px; color:var(--ink-soft); line-height:1.55;}
 
 /* ---- ABOUT ---- */
-.about-strip{background:var(--ink); border-radius:28px; padding:64px 56px; display:grid; grid-template-columns:auto 1fr 1fr; gap:44px; align-items:center; color:var(--paper);}
-.about-photo{width:150px; height:150px; border-radius:50%; background:#ffffff12; border:2px dashed #ffffff44; display:flex; align-items:center; justify-content:center; text-align:center; color:#C7D0D1; font-size:11px; font-weight:600; flex-shrink:0;}
+.about-strip{background:var(--ink); border-radius:28px; padding:64px 56px; display:grid; grid-template-columns:auto 1fr; gap:48px; align-items:start; color:var(--paper);}
+.about-photo{width:220px; height:220px; border-radius:50%; overflow:hidden; flex-shrink:0;}
+.about-photo img{width:100%; height:100%; object-fit:cover; display:block;}
+.about-body{min-width:0;}
 .about-strip h2{font-family:'Poppins',sans-serif; font-size:34px; font-weight:600; margin-bottom:18px;}
 .about-strip p{color:#C7D0D1; line-height:1.7; font-size:15.5px;}
-.about-stats{display:flex; gap:36px; flex-wrap:wrap;}
+.about-strip p + p{margin-top:14px;}
+.about-stats{display:flex; gap:36px; flex-wrap:wrap; margin-top:32px;}
 .about-stats div b{display:block; font-family:'Poppins',sans-serif; font-size:30px; color:var(--amber);}
 .about-stats div span{font-size:12px; color:#B7C0C1; text-transform:uppercase; letter-spacing:0.04em;}
 
@@ -178,6 +181,7 @@ footer .foot-links a:hover{color:var(--coral);}
   .process-row{grid-template-columns:1fr 1fr;}
   .about-strip{grid-template-columns:1fr; text-align:center;}
   .about-photo{margin:0 auto;}
+  .about-stats{justify-content:center;}
   .nav-links{display:none;}
   footer{flex-direction:column; align-items:flex-start; gap:24px;}
   footer .foot-links{align-items:flex-start;}
@@ -424,21 +428,24 @@ footer .foot-links a:hover{color:var(--coral);}
 
 <section class="section" id="about">
   <div class="about-strip">
-    <div class="about-photo">[Your photo]</div>
-    <div>
+    <div class="about-photo"><img src="assets/alice-headshot.png" alt="Alice's headshot"></div>
+    <div class="about-body">
       <h2>A little about me</h2>
-      <p>[Draft — swap for your voice] I'm a Brooklyn/NJ-based product and graphic designer with a soft spot for systems that have to work right the first time — because someone's health, or someone's paperwork, depends on it. Outside of that: soccer and calligraphy keep me sane.</p>
-    </div>
-    <div class="about-stats">
-      <div><b>7</b><span>Years designing</span></div>
-      <div><b>2</b><span>Active clients</span></div>
-      <div><b>6</b><span>Case files</span></div>
+      <p>My name is Alice Curiel and I'm a product designer specializing in health tech, wellness, consumer apps, and AI products. My professional focus extends across healthcare, medical devices, marketplaces, and consumer wellness.</p>
+      <p>From redesigning clinical software used in hospitals to building an AI-powered nutrition app from the ground up, the common thread in my work is trust. I specialize in designing trust into experiences for users who don't give it easily.</p>
+      <p>My approach is rooted in my foundation as a graphic designer (BFA, magna cum laude, The City College of New York), which taught me that a product's visual system and its strategic goals must work seamlessly together.</p>
+      <p>I want to work with teams building things that matter. If you are developing a product where earning the user's trust is step one, we should talk.</p>
+      <div class="about-stats">
+        <div><b>7</b><span>Years designing</span></div>
+        <div><b>2</b><span>Active clients</span></div>
+        <div><b>6</b><span>Case files</span></div>
+      </div>
     </div>
   </div>
 </section>
 
 <footer id="contact">
-  <div class="foot-title">Building something in healthtech or civic tech? Let's talk.</div>
+  <div class="foot-title">Building something that needs to earn people's trust? Let's talk.</div>
   <div class="foot-links">
     <a href="mailto:hello@aliceportfolio.com">hello@aliceportfolio.com</a>
     <a href="#">LinkedIn</a>
