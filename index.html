@@ -40,17 +40,17 @@ h1 .highlight{color:var(--coral);}
 .btn.outline{border:2px solid var(--ink); color:var(--ink); background:none;}
 
 .fan-reveal{position:absolute; inset:0; opacity:0; pointer-events:none; transition:opacity .6s ease .1s; padding:0 80px; display:flex; align-items:center; justify-content:center;}
-.about-reveal, .footer-reveal{position:absolute; inset:0; opacity:0; pointer-events:none; transition:opacity .6s ease .1s; display:flex; align-items:center; justify-content:center; padding:0 60px;}
+.about-reveal, .process-reveal, .footer-reveal{position:absolute; inset:0; opacity:0; pointer-events:none; transition:opacity .6s ease .1s; display:flex; align-items:center; justify-content:center; padding:0 60px;}
 
 .hero.stage-0 .hero-text{opacity:1; transform:translateY(0); pointer-events:auto;}
-.hero.stage-0 .fan-reveal, .hero.stage-0 .about-reveal, .hero.stage-0 .footer-reveal{opacity:0; pointer-events:none;}
 
 .hero:not(.stage-0) .hero-text{opacity:0; transform:translateY(-40px); pointer-events:none;}
 .hero:not(.stage-0) .icon-field svg{opacity:.3; transform:scale(.85);}
 
 .hero.stage-1 .fan-reveal{opacity:1; pointer-events:auto;}
 .hero.stage-2 .about-reveal{opacity:1; pointer-events:auto;}
-.hero.stage-3 .footer-reveal{opacity:1; pointer-events:auto;}
+.hero.stage-3 .process-reveal{opacity:1; pointer-events:auto;}
+.hero.stage-4 .footer-reveal{opacity:1; pointer-events:auto;}
 
 .about-card{display:flex; align-items:center; gap:56px; max-width:920px; background:#fff; border-radius:28px; padding:50px 56px; box-shadow:0 30px 60px -30px #33454A33;}
 .about-photo{width:220px; height:220px; border-radius:50%; background:var(--paper-alt); border:2px dashed var(--line); flex-shrink:0; display:flex; align-items:center; justify-content:center; color:var(--graphite); font-size:12px; font-weight:600; text-align:center;}
@@ -66,6 +66,15 @@ h1 .highlight{color:var(--coral);}
 .footer-links a{display:flex; align-items:center; gap:10px; font-weight:600; font-size:14px; color:var(--ink); text-decoration:none; padding:10px 18px; border-radius:100px; background:var(--paper-alt); transition:all .25s;}
 .footer-links a:hover{background:var(--coral); color:#fff;}
 .footer-links svg{width:16px; height:16px;}
+
+.process-card{max-width:920px; width:100%;}
+.process-eyebrow{font-weight:700; font-size:12.5px; color:var(--coral); text-transform:uppercase; letter-spacing:0.06em; text-align:center; margin-bottom:8px;}
+.process-title{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(24px,3vw,32px); text-align:center; margin-bottom:36px;}
+.process-row{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+.process-item{background:#fff; border-radius:18px; padding:28px 24px; box-shadow:0 16px 32px -20px #33454A33;}
+.process-item .picon{width:36px; height:36px; margin-bottom:14px;}
+.process-item h4{font-family:'Poppins',sans-serif; font-size:17px; font-weight:600; margin-bottom:8px;}
+.process-item p{font-size:12.5px; color:var(--ink-soft); line-height:1.55;}
 
 .fan-stage{position:relative; height:100%; display:flex; align-items:center; justify-content:center;}
 
@@ -112,9 +121,10 @@ h1 .highlight{color:var(--coral);}
   .fan-reveal{position:relative; opacity:1; pointer-events:auto; padding:100px 20px 60px; display:block;}
   .hero-text{position:relative; height:100vh;}
   .hero:not(.stage-0) .hero-text{display:none;}
-  .about-reveal, .footer-reveal{position:relative; opacity:1; pointer-events:auto; padding:60px 24px; display:block;}
+  .about-reveal, .process-reveal, .footer-reveal{position:relative; opacity:1; pointer-events:auto; padding:60px 24px; display:block;}
   .about-card{flex-direction:column; text-align:center; padding:36px 28px; gap:28px;}
   .about-photo{width:160px; height:160px;}
+  .process-row{grid-template-columns:1fr 1fr; gap:14px;}
   .footer-card{flex-direction:column; text-align:center; gap:24px;}
   .icon-field{height:100vh; bottom:auto;}
   .icon-field svg{opacity:.3; transform:scale(.7);}
@@ -151,22 +161,10 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
 .nav-cta{background:var(--ink); color:var(--paper)!important; padding:11px 20px; border-radius:100px; font-weight:600!important;}
 .nav-cta:hover{background:var(--coral)!important;}
 
-/* ---- PROCESS ---- */
-.section{padding:100px 48px; position:relative;}
-.section-head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:50px;}
-.section-eyebrow{font-weight:700; font-size:13px; color:var(--coral); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px;}
-.section-title{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(30px,3.2vw,42px);}
-.process-row{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
-.process-item{position:relative; padding:30px 24px; background:var(--paper-alt); border-radius:18px;}
-.process-item .picon{width:40px; height:40px; margin-bottom:16px;}
-.process-item h4{font-family:'Poppins',sans-serif; font-size:19px; font-weight:600; margin-bottom:8px;}
-.process-item p{font-size:13.5px; color:var(--ink-soft); line-height:1.55;}
-
 .about-photo img{width:100%; height:100%; object-fit:cover; display:block;}
 .about-photo{overflow:hidden; border:none;}
 
 @media (max-width:900px){
-  .process-row{grid-template-columns:1fr 1fr;}
   .nav-links{display:none;}
 }
 </style>
@@ -199,7 +197,7 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
   </ul>
 </nav>
 
-<section class="hero" id="hero">
+<section class="hero stage-0" id="hero">
   <div class="icon-field">
     <svg class="icon-float a" style="top:10%; left:7%; --r:-3deg;" width="62" height="62" viewBox="175 175 70 70" xmlns="http://www.w3.org/2000/svg"><path fill="#F5A94A" d="M195.18,185.29c1.3-.38,6.17-.7,6.21,1.26l.02,47.27-.8,1.95c-2.54.81-6.5,1.53-6.95-1.95-1.81-13.97,1.42-31.8,0-46.19,0-1.04.46-2.03,1.51-2.34Z"/><path fill="#F5A94A" d="M216.05,185.29c1.3-.38,6.17-.7,6.21,1.26l.02,47.27-.8,1.95c-2.54.81-6.5,1.53-6.95-1.95-1.81-13.97,1.42-31.8,0-46.19,0-1.04.46-2.03,1.51-2.34Z"/><path fill="#F5A94A" d="M234.51,197.68c.38,1.3.7,6.17-1.26,6.21l-47.27.02-1.95-.8c-.81-2.54-1.53-6.5,1.95-6.95,13.97-1.81,31.8,1.42,46.19,0,1.04,0,2.03.46,2.34,1.51Z"/><path fill="#F5A94A" d="M234.51,219.9c.38,1.3.7,6.17-1.26,6.21l-47.27.02-1.95-.8c-.81-2.54-1.53-6.5,1.95-6.95,13.97-1.81,31.8,1.42,46.19,0,1.04,0,2.03.46,2.34,1.51Z"/></svg>
     <svg class="icon-float b" style="top:7%; left:42%; --r:2deg;" width="88" height="70" viewBox="160 55 100 80" xmlns="http://www.w3.org/2000/svg"><path fill="#F5A94A" fill-rule="evenodd" d="M209.06,91.4c2.71-3.52,4.56-7.54,7.41-11,5.72-6.93,16.88-15.03,26.36-13.68,2.09.3,2.29.96,2.5,2.96,1.23,11.57-4.95,26.07-15.39,31.62l.35,1.13c3.38,1.58,4.82,6.08,5.14,9.58.27,3.02.43,15.86-.85,17.82-2.54,3.92-11.95-1.1-14.94-3.14-4.87-3.32-7.5-7.12-10.32-12.21-2.37,5.56-5.87,9.98-11.1,13.08-3.69,2.19-13.64,7.02-14.47-.15-.51-4.39-.48-17.99,1.55-21.56,1.01-1.79,2.92-2.8,3.96-4.55-9.99-5.02-17.23-20.12-15.95-31.08.57-4.87,4.7-4.08,8.38-3.41,12.64,2.31,22.83,12.99,27.37,24.58ZM204.11,98.54c-3.61-10.91-11.63-22.22-23.64-24.17,1.61,12.39,10.47,23.84,23.64,24.17ZM238.19,74.37c-11.38,3.12-20.23,13.63-23.63,24.73,13.34-1.3,22.45-11.65,23.63-24.73ZM204.66,106.79h-9.07c-1.44,0-4.67,2.68-4.67,4.12v11.82c7.37-2.03,11.71-9.01,13.74-15.94ZM227.74,122.73v-12.92c0-.51-3.35-3.02-4.12-3.02h-9.07c1.38,6.91,6.59,13.44,13.19,15.94Z"/></svg>
@@ -260,13 +258,26 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
       </div>
     </div>
 
+    <div class="process-reveal">
+      <div class="process-card">
+        <div class="process-eyebrow">How I Work</div>
+        <div class="process-title">Four stages, every project</div>
+        <div class="process-row">
+          <div class="process-item"><svg class="picon" viewBox="0 0 100 100" fill="none"><path d="M50 82 C20 60 10 40 22 26 C32 15 48 20 50 34 C52 20 68 15 78 26 C90 40 80 60 50 82Z" stroke="#F2665A" stroke-width="8" stroke-linejoin="round"/></svg><h4>Learn</h4><p>Talk to stakeholders and users before a single wireframe. Understand what "wrong" costs here.</p></div>
+          <div class="process-item"><svg class="picon" viewBox="0 0 100 100" fill="none"><rect x="15" y="15" width="70" height="70" rx="14" stroke="#F5A94A" stroke-width="8"/><path d="M15 40 H85 M40 40 V85" stroke="#F5A94A" stroke-width="8"/></svg><h4>Map</h4><p>Sitemaps and flows first. Structure carries the trust, decoration comes after.</p></div>
+          <div class="process-item"><svg class="picon" viewBox="0 0 100 100" fill="none"><rect x="15" y="30" width="70" height="45" rx="10" stroke="#33454A" stroke-width="8"/><circle cx="65" cy="52" r="9" fill="#33454A"/></svg><h4>Build</h4><p>High-fidelity Figma, dev-ready specs, and close collaboration through handoff.</p></div>
+          <div class="process-item"><svg class="picon" viewBox="0 0 100 100" fill="none"><path d="M30 55 L45 70 L75 30" stroke="#F2665A" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50" cy="50" r="38" stroke="#F2665A" stroke-width="6"/></svg><h4>Test</h4><p>Usability testing and compliance review before ship — the actual gate, not a formality.</p></div>
+        </div>
+      </div>
+    </div>
+
     <div class="footer-reveal">
       <div class="footer-card">
         <div class="footer-headline">Building something that needs to earn people's trust? Let's talk.</div>
         <div class="footer-links">
           <a href="mailto:hello@aliceportfolio.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg>hello@aliceportfolio.com</a>
-          <a href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V9.75H5.67v8.59h2.67zM7 8.63a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.34 9.71v-4.71c0-2.52-1.35-3.69-3.15-3.69a2.72 2.72 0 0 0-2.46 1.35v-1.16H10.06c.04.75 0 8.21 0 8.21h2.67v-4.59c0-.25.02-.49.09-.67.2-.49.65-1 1.4-1 1 0 1.4.75 1.4 1.86v4.4h2.72z"/></svg>LinkedIn</a>
-          <a href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.29 9.4 7.86 10.93.57.1.79-.25.79-.55v-2.02c-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.58.23 2.75.11 3.04.73.8 1.18 1.83 1.18 3.08 0 4.41-2.7 5.38-5.26 5.67.41.36.78 1.07.78 2.15v3.19c0 .3.21.66.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>GitHub</a>
+          <a href="https://www.linkedin.com/in/alice-curiel-800817146/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V9.75H5.67v8.59h2.67zM7 8.63a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.34 9.71v-4.71c0-2.52-1.35-3.69-3.15-3.69a2.72 2.72 0 0 0-2.46 1.35v-1.16H10.06c.04.75 0 8.21 0 8.21h2.67v-4.59c0-.25.02-.49.09-.67.2-.49.65-1 1.4-1 1 0 1.4.75 1.4 1.86v4.4h2.72z"/></svg>LinkedIn</a>
+          <a href="https://github.com/AliceProductDesign" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.29 9.4 7.86 10.93.57.1.79-.25.79-.55v-2.02c-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.58.23 2.75.11 3.04.73.8 1.18 1.83 1.18 3.08 0 4.41-2.7 5.38-5.26 5.67.41.36.78 1.07.78 2.15v3.19c0 .3.21.66.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>GitHub</a>
         </div>
       </div>
     </div>
@@ -275,33 +286,25 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
   <div class="scroll-hint">Scroll down, or click "See the work" ↓ — then hover the card stack</div>
 </section>
 
-<div class="spacer" style="height:300vh;"></div>
+<div class="spacer" style="height:400vh;"></div>
 
-<section class="section" id="process">
-  <div class="section-head">
-    <div>
-      <div class="section-eyebrow">How I Work</div>
-      <div class="section-title">Four stages, every project</div>
-    </div>
-  </div>
-  <div class="process-row">
-    <div class="process-item"><svg class="picon" viewBox="0 0 100 100" fill="none"><path d="M50 82 C20 60 10 40 22 26 C32 15 48 20 50 34 C52 20 68 15 78 26 C90 40 80 60 50 82Z" stroke="#F2665A" stroke-width="8" stroke-linejoin="round"/></svg><h4>Learn</h4><p>Talk to stakeholders and users before a single wireframe. Understand what "wrong" costs here.</p></div>
-    <div class="process-item"><svg class="picon" viewBox="0 0 100 100" fill="none"><rect x="15" y="15" width="70" height="70" rx="14" stroke="#F5A94A" stroke-width="8"/><path d="M15 40 H85 M40 40 V85" stroke="#F5A94A" stroke-width="8"/></svg><h4>Map</h4><p>Sitemaps and flows first. Structure carries the trust, decoration comes after.</p></div>
-    <div class="process-item"><svg class="picon" viewBox="0 0 100 100" fill="none"><rect x="15" y="30" width="70" height="45" rx="10" stroke="#33454A" stroke-width="8"/><circle cx="65" cy="52" r="9" fill="#33454A"/></svg><h4>Build</h4><p>High-fidelity Figma, dev-ready specs, and close collaboration through handoff.</p></div>
-    <div class="process-item"><svg class="picon" viewBox="0 0 100 100" fill="none"><path d="M30 55 L45 70 L75 30" stroke="#F2665A" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50" cy="50" r="38" stroke="#F2665A" stroke-width="6"/></svg><h4>Test</h4><p>Usability testing and compliance review before ship — the actual gate, not a formality.</p></div>
-  </div>
-</section>
+<div style="text-align:center; padding:60px 24px;">
+  <button id="backToTopBtn" style="font-weight:600; font-size:14px; padding:14px 28px; border-radius:100px; border:2px solid var(--ink); background:none; color:var(--ink); cursor:pointer; display:inline-flex; align-items:center; gap:8px; transition:all .25s;" onmouseover="this.style.background='var(--coral)'; this.style.borderColor='var(--coral)'; this.style.color='#fff';" onmouseout="this.style.background='none'; this.style.borderColor='var(--ink)'; this.style.color='var(--ink)';">
+    Back to top
+    <svg width="14" height="14" viewBox="0 0 100 100" fill="none"><path d="M50 75 V25 M25 50 L50 25 L75 50" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+</div>
 
 <script>
 const heroEl = document.getElementById('hero');
 const btn = document.getElementById('seeWorkBtn');
 const fanStage = document.getElementById('fanStage');
-let currentStage = 0;
+let currentStage = -1;
 
 function setStage(stage){
   if(stage === currentStage) return;
   currentStage = stage;
-  heroEl.classList.remove('stage-0','stage-1','stage-2','stage-3');
+  heroEl.classList.remove('stage-0','stage-1','stage-2','stage-3','stage-4');
   heroEl.classList.add('stage-' + stage);
   if(stage !== 1){ fanStage.classList.remove('aligned'); }
 }
@@ -311,11 +314,14 @@ function getStageFromScroll(y){
   if(y < vh * 0.15) return 0;
   if(y < vh * 1.15) return 1;
   if(y < vh * 2.15) return 2;
-  return 3;
+  if(y < vh * 3.15) return 3;
+  return 4;
 }
 
-btn.addEventListener('click', ()=> setStage(1));
-window.addEventListener('scroll', ()=>{ setStage(getStageFromScroll(window.scrollY)); });
+function isMobile(){ return window.innerWidth <= 760; }
+
+btn.addEventListener('click', ()=>{ if(!isMobile()) setStage(1); });
+window.addEventListener('scroll', ()=>{ if(!isMobile()) setStage(getStageFromScroll(window.scrollY)); });
 setStage(0);
 
 fanStage.addEventListener('mouseenter', ()=> fanStage.classList.add('aligned'));
@@ -337,6 +343,10 @@ fanStage.addEventListener('scroll', ()=>{
     });
     dots.forEach((d, i)=> d.classList.toggle('active', i === closestIndex));
   }, 80);
+});
+
+document.getElementById('backToTopBtn').addEventListener('click', ()=>{
+  window.scrollTo({top:0, behavior:'smooth'});
 });
 </script>
 
