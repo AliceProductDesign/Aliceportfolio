@@ -140,9 +140,9 @@ h1 .highlight{color:var(--coral);}
 .card p{font-size:13.5px; color:var(--ink-soft); line-height:1.6;}
 .card-foot{display:flex; justify-content:space-between; align-items:center; margin-top:18px; padding-top:14px; border-top:1px solid var(--line);}
 .card-foot .status{font-size:12px; font-weight:600; color:var(--graphite);}
-.card-arrow{width:32px; height:32px; border-radius:50%; background:var(--paper-alt); display:flex; align-items:center; justify-content:center; transition:all .3s; flex-shrink:0;}
-.card-arrow svg{width:15px; height:15px; stroke:var(--ink); transition:transform .3s;}
-.card:hover .card-arrow{background:var(--coral);}
+.card-arrow{display:inline-flex; align-items:center; gap:6px; padding:8px 14px; border-radius:100px; background:var(--paper-alt); font-size:12.5px; font-weight:600; color:var(--ink); transition:all .3s; flex-shrink:0; white-space:nowrap;}
+.card-arrow svg{width:13px; height:13px; stroke:var(--ink); transition:transform .3s, stroke .3s;}
+.card:hover .card-arrow{background:var(--coral); color:#fff;}
 .card:hover .card-arrow svg{stroke:#fff; transform:translateX(3px);}
 
 /* ---- PROCESS ---- */
@@ -268,7 +268,7 @@ footer .foot-links a:hover{color:var(--coral);}
   <div class="hero-textwrap">
     <div class="eyebrow">Product &amp; Visual Design — Healthtech / Civic Tech</div>
     <h1>Design that earns <span class="highlight">trust</span>, not just clicks.</h1>
-    <p class="hero-sub">[Draft copy — swap for your voice] Seven years designing medical devices, clinical platforms, and civic systems — places where clarity isn't a style choice, it's the whole job.</p>
+    <p class="hero-sub">I'm Alice Curiel, a Product Designer focused on health tech, trust-driven experiences, and human-centered digital products.</p>
     <div class="hero-cta">
       <a href="#work" class="btn filled">See the work
         <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -284,31 +284,29 @@ footer .foot-links a:hover{color:var(--coral);}
       <div class="section-eyebrow">Selected Work</div>
       <div class="section-title">Six projects, one throughline</div>
     </div>
-    <div class="section-note">Tell me the role you're applying for and I'll reorder these for you.</div>
+    <div class="section-note">My focus extends across healthcare, medical devices, marketplaces, and consumer wellness.</div>
   </div>
 
   <div class="work-grid" id="workGrid">
 
-    <!-- WAVE — PHONE FRAME TEMPLATE -->
+    <!-- SIFTED — PHONE FRAME -->
     <div class="card">
-      <span class="tag medical">Medical Device</span>
+      <span class="tag personal">AI Concept</span>
       <div class="device-stage">
         <div class="phone-shell">
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <div class="screen-scroll">
-              <div class="bar w60"></div><div class="bar w40"></div>
-              <div class="block"></div>
-              <div class="bar w80"></div><div class="bar w60"></div>
-              <div class="block"></div>
-              <div class="bar w40"></div><div class="bar w80"></div>
+            <div class="screen-cycle">
+              <img src="assets/sifted-scan-1.jpg" alt="Sifted — barcode scanner">
+              <img src="assets/sifted-scan-2.jpg" alt="Sifted — product nutrition result">
+              <img src="assets/sifted-scan-3.jpg" alt="Sifted — All Clear confirmation">
             </div>
           </div>
         </div>
       </div>
-      <h3>WAVE</h3>
-      <p>Patient-facing companion app UI and FDA label compliance review for an active medical device client.</p>
-      <div class="card-foot"><span class="status">Active client · iOS/Android</span><div class="card-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      <h3>Sifted</h3>
+      <p>A personal AI nutrition concept, born from tracking my own ketogenic intake and ketone levels.</p>
+      <div class="card-foot"><span class="status">Concept · iOS/Android</span><div class="card-arrow">View Case <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
     </div>
 
     <!-- DIAPULSE — BROWSER FRAME TEMPLATE -->
@@ -326,25 +324,7 @@ footer .foot-links a:hover{color:var(--coral);}
       </div>
       <h3>Diapulse</h3>
       <p>Full sitemap, wireframes, and partner inquiry flow for a legacy medical device brand's website redesign.</p>
-      <div class="card-foot"><span class="status">Active client · Web</span><div class="card-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-    </div>
-
-    <!-- BERGEN COUNTY — BROWSER FRAME -->
-    <div class="card">
-      <span class="tag civic">Civic Tech</span>
-      <div class="device-stage">
-        <div class="browser-shell">
-          <div class="browser-bar"><div class="browser-dot d1"></div><div class="browser-dot d2"></div><div class="browser-dot d3"></div><div class="browser-url">permits.bergencounty.gov</div></div>
-          <div class="browser-screen">
-            <div class="bar" style="width:50%"></div>
-            <div class="row"><div class="block"></div><div class="block"></div></div>
-            <div class="bar" style="width:80%"></div>
-          </div>
-        </div>
-      </div>
-      <h3>Bergen County Permit Portal</h3>
-      <p>Reworked information architecture for residents navigating municipal permit applications.</p>
-      <div class="card-foot"><span class="status">Shipped · Web</span><div class="card-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      <div class="card-foot"><span class="status">Active client · Web</span><div class="card-arrow">View Case <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
     </div>
 
     <!-- TIRIVELO — PHONE FRAME -->
@@ -365,7 +345,7 @@ footer .foot-links a:hover{color:var(--coral);}
       </div>
       <h3>TiriVelo</h3>
       <p>Search, filters, and provider profile flows for a pet-care marketplace app, WCAG AA audited.</p>
-      <div class="card-foot"><span class="status">Capstone · iOS/Android</span><div class="card-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      <div class="card-foot"><span class="status">Capstone · iOS/Android</span><div class="card-arrow">View Case <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
     </div>
 
     <!-- RAPIMD — PHONE FRAME -->
@@ -385,27 +365,47 @@ footer .foot-links a:hover{color:var(--coral);}
       </div>
       <h3>RapiMD</h3>
       <p>Map-based provider booking flow, navigation architecture, and Figma plugin scripting.</p>
-      <div class="card-foot"><span class="status">Academic · iOS/Android</span><div class="card-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      <div class="card-foot"><span class="status">Academic · iOS/Android</span><div class="card-arrow">View Case <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
     </div>
 
-    <!-- SIFTED — PHONE FRAME -->
+    <!-- WAVE — PHONE FRAME TEMPLATE -->
     <div class="card">
-      <span class="tag personal">AI Concept</span>
+      <span class="tag medical">Medical Device</span>
       <div class="device-stage">
         <div class="phone-shell">
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <div class="screen-cycle">
-              <img src="assets/sifted-scan-1.jpg" alt="Sifted — barcode scanner">
-              <img src="assets/sifted-scan-2.jpg" alt="Sifted — product nutrition result">
-              <img src="assets/sifted-scan-3.jpg" alt="Sifted — All Clear confirmation">
+            <div class="screen-scroll">
+              <div class="bar w60"></div><div class="bar w40"></div>
+              <div class="block"></div>
+              <div class="bar w80"></div><div class="bar w60"></div>
+              <div class="block"></div>
+              <div class="bar w40"></div><div class="bar w80"></div>
             </div>
           </div>
         </div>
       </div>
-      <h3>Sifted</h3>
-      <p>A personal AI nutrition concept, born from tracking my own ketogenic intake and ketone levels.</p>
-      <div class="card-foot"><span class="status">Concept · iOS/Android</span><div class="card-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      <h3>WAVE</h3>
+      <p>Patient-facing companion app UI and FDA label compliance review for an active medical device client.</p>
+      <div class="card-foot"><span class="status">Active client · iOS/Android</span><div class="card-arrow">View Case <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    </div>
+
+    <!-- BERGEN COUNTY — BROWSER FRAME -->
+    <div class="card">
+      <span class="tag civic">Civic Tech</span>
+      <div class="device-stage">
+        <div class="browser-shell">
+          <div class="browser-bar"><div class="browser-dot d1"></div><div class="browser-dot d2"></div><div class="browser-dot d3"></div><div class="browser-url">permits.bergencounty.gov</div></div>
+          <div class="browser-screen">
+            <div class="bar" style="width:50%"></div>
+            <div class="row"><div class="block"></div><div class="block"></div></div>
+            <div class="bar" style="width:80%"></div>
+          </div>
+        </div>
+      </div>
+      <h3>Bergen County Permit Portal</h3>
+      <p>Reworked information architecture for residents navigating municipal permit applications.</p>
+      <div class="card-foot"><span class="status">Shipped · Web</span><div class="card-arrow">View Case <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
     </div>
 
   </div>
