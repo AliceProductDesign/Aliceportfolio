@@ -45,7 +45,9 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(30px,4vw,4
   display:inline-flex; align-items:center; gap:8px; margin-top:8px;
 }
 .submit-btn:hover{background:var(--ink); transform:translateY(-2px);}
-.submit-btn svg{width:16px; height:16px;}
+.submit-btn:disabled{opacity:.6; cursor:not-allowed; transform:none;}
+.form-error{display:none; margin-top:12px; font-size:13.5px; color:var(--coral);}
+.form-error.show{display:block;}
 
 .alt-contact{margin-top:36px; padding-top:28px; border-top:1px solid var(--line); font-size:13.5px; color:var(--graphite);}
 .alt-contact a{color:var(--ink); font-weight:600; text-decoration:none;}
@@ -96,7 +98,8 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(30px,4vw,4
       <h1>Let's talk about what you're building.</h1>
       <p class="subtext">Whether it's a project that needs to earn people's trust, a role you think I'd be right for, or just a question — send a note and I'll get back to you.</p>
 
-      <form id="contactForm">
+      <form id="contactForm" action="https://formspree.io/f/mdaqnjbz" method="POST">
+        <input type="hidden" name="_subject" value="New message from portfolio site">
         <div class="field">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" placeholder="Jane Smith" required>
@@ -117,6 +120,7 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(30px,4vw,4
           Send message
           <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
+        <p class="form-error" id="formError" role="alert">Something went wrong. Please try again or email hello@aliceportfolio.com directly.</p>
       </form>
 
       <div class="alt-contact">
@@ -135,10 +139,31 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(30px,4vw,4
 </main>
 
 <script>
-document.getElementById('contactForm').addEventListener('submit', function(e){
+document.getElementById('contactForm').addEventListener('submit', async function(e){
   e.preventDefault();
-  document.getElementById('formView').style.display = 'none';
-  document.getElementById('confirmView').classList.add('show');
+  const form = e.target;
+  const submitBtn = form.querySelector('.submit-btn');
+  const formError = document.getElementById('formError');
+  const formData = new FormData(form);
+
+  submitBtn.disabled = true;
+  formError.classList.remove('show');
+
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: formData
+    });
+
+    if(!response.ok){ throw new Error('Submission failed'); }
+
+    document.getElementById('formView').style.display = 'none';
+    document.getElementById('confirmView').classList.add('show');
+  } catch (error) {
+    formError.classList.add('show');
+    submitBtn.disabled = false;
+  }
 });
 </script>
 
