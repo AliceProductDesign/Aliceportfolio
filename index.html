@@ -38,6 +38,7 @@ h1 .highlight{color:var(--coral);}
 .btn.filled{background:var(--coral); color:#fff;}
 .btn.filled:hover{background:var(--ink); transform:translateY(-2px);}
 .btn.outline{border:2px solid var(--ink); color:var(--ink); background:none;}
+.btn-label-short{display:none;}
 
 .fan-reveal{position:absolute; inset:0; opacity:0; pointer-events:none; transition:opacity .6s ease .1s; padding:0 80px; display:flex; align-items:center; justify-content:center;}
 .about-reveal, .process-reveal, .footer-reveal{position:absolute; inset:0; opacity:0; pointer-events:none; transition:opacity .6s ease .1s; display:flex; align-items:center; justify-content:center; padding:0 60px;}
@@ -115,19 +116,21 @@ h1 .highlight{color:var(--coral);}
 .scroll-hint{position:absolute; bottom:28px; left:50%; transform:translateX(-50%); z-index:5; font-size:12px; color:var(--graphite); text-align:center; opacity:1; transition:opacity .4s ease;}
 .floating-back-to-top{
   position:fixed; bottom:28px; right:28px; width:48px; height:48px; border-radius:50%;
-  background:#254444; border:none; cursor:pointer; z-index:250;
+  background:var(--coral); border:none; cursor:pointer; z-index:250;
   display:flex; align-items:center; justify-content:center;
   opacity:0; pointer-events:none; transform:translateY(10px);
   transition:opacity .3s ease, transform .3s ease, background .25s ease;
   box-shadow:0 10px 24px -8px #33454A55;
 }
 .floating-back-to-top.show{opacity:1; pointer-events:auto; transform:translateY(0);}
-.floating-back-to-top:hover{background:#E14B3D;}
-.floating-back-to-top svg{width:20px; height:20px; stroke:#E14B3D; transition:stroke .25s ease;}
-.floating-back-to-top:hover svg{stroke:#254444;}
+.floating-back-to-top:hover{background:var(--ink);}
+.floating-back-to-top svg{width:20px; height:20px; stroke:#fff; transition:stroke .25s ease;}
+.floating-back-to-top:hover svg{stroke:#fff;}
 .spacer{height:400vh;}
 
 @media (max-width:760px){
+  .btn-label-full{display:none;}
+  .btn-label-short{display:inline;}
   .hero{position:relative; height:auto; min-height:100vh; overflow:visible;}
   .stage-inner{position:relative; top:auto; left:auto; right:auto; bottom:auto;}
   .fan-reveal{position:relative; opacity:1; pointer-events:auto; padding:100px 20px 60px; display:block;}
@@ -137,7 +140,9 @@ h1 .highlight{color:var(--coral);}
   .about-card{flex-direction:column; text-align:center; padding:36px 28px; gap:28px;}
   .about-photo{width:160px; height:160px;}
   .process-row{grid-template-columns:1fr 1fr; gap:14px;}
-  .footer-card{flex-direction:column; text-align:center; gap:24px;}
+  .footer-reveal{padding:88px 28px 36px;}
+  .footer-card{flex-direction:column; text-align:center; gap:40px;}
+  .footer-links{gap:20px;}
   .icon-field{height:100vh; bottom:auto;}
   .icon-field svg{opacity:.3; transform:scale(.7);}
   .fan-stage{
@@ -152,7 +157,16 @@ h1 .highlight{color:var(--coral);}
   .card-preview{height:45%;}
   .fan-card:hover, .fan-card:active{border-color:var(--yellow); box-shadow:0 20px 40px -22px #33454A33, 0 0 0 3px #F5C51833;}
   .fan-card:hover .goto, .fan-card:active .goto{color:var(--pink);}
-  .scroll-hint{opacity:0;}
+  .scroll-hint{
+    opacity:0;
+    position:static;
+    left:auto;
+    transform:none;
+    margin-top:32px;
+    padding:24px 28px 72px;
+    width:100%;
+    box-sizing:border-box;
+  }
   .spacer{height:0;}
   .dots{display:flex; gap:8px; justify-content:center; margin-top:20px;}
   .dot{width:7px; height:7px; border-radius:50%; background:var(--line); transition:all .3s ease;}
@@ -258,10 +272,10 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
         <h1>Design that earns <span class="highlight">trust</span>, not just clicks.</h1>
         <p class="hero-sub">I'm Alice Curiel, a Product Designer focused on health tech, trust-driven experiences, and human-centered digital products.</p>
         <div class="hero-cta">
-          <button class="btn filled" id="seeWorkBtn">See work
+          <button class="btn filled" id="seeWorkBtn"><span class="btn-label-full">See work</span><span class="btn-label-short">Work</span>
             <svg width="16" height="16" viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <button class="btn outline">Get resume</button>
+          <button class="btn outline"><span class="btn-label-full">Get resume</span><span class="btn-label-short">Resume</span></button>
         </div>
       </div>
     </div>

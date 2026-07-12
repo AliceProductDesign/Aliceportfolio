@@ -146,16 +146,16 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
 .back-to-top{
   position:fixed; bottom:28px; right:28px; width:48px; height:48px; border-radius:50%;
-  background:#254444; border:none; cursor:pointer; z-index:250;
+  background:var(--coral); border:none; cursor:pointer; z-index:250;
   display:flex; align-items:center; justify-content:center;
   opacity:0; pointer-events:none; transform:translateY(10px);
   transition:opacity .3s ease, transform .3s ease, background .25s ease;
   box-shadow:0 10px 24px -8px #33454A55;
 }
 .back-to-top.show{opacity:1; pointer-events:auto; transform:translateY(0);}
-.back-to-top:hover{background:#E14B3D;}
-.back-to-top svg{width:20px; height:20px; stroke:#E14B3D; transition:stroke .25s ease;}
-.back-to-top:hover svg{stroke:#254444;}
+.back-to-top:hover{background:var(--ink);}
+.back-to-top svg{width:20px; height:20px; stroke:#fff; transition:stroke .25s ease;}
+.back-to-top:hover svg{stroke:#fff;}
 .back-to-top:focus-visible{outline:2px solid var(--coral); outline-offset:3px;}
 
 @media (max-width:900px){
