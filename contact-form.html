@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Let's Talk — Alice Curiel</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+  --coral:#F2665A; --amber:#F5A94A; --ink:#33454A; --ink-soft:#5B6A6D;
+  --paper:#FBF9F4; --paper-alt:#F2EDE1; --graphite:#8B9290; --line:#33454A1a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif; min-height:100vh; display:flex; flex-direction:column;}
+
+nav{display:flex; justify-content:space-between; align-items:center; padding:22px 48px;}
+.nav-mark{display:inline-flex; font-family:'Poppins',sans-serif; font-weight:700; font-size:22px; color:var(--ink); letter-spacing:-0.01em; text-decoration:none;}
+.back-link{display:flex; align-items:center; gap:8px; font-weight:600; font-size:14px; color:var(--ink-soft); text-decoration:none;}
+.back-link:hover{color:var(--coral);}
+.back-link svg{width:16px; height:16px;}
+
+main{flex:1; display:flex; align-items:center; justify-content:center; padding:40px 24px 80px;}
+.form-wrap{max-width:560px; width:100%;}
+.eyebrow{font-weight:700; font-size:12.5px; color:var(--coral); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px;}
+h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(30px,4vw,42px); line-height:1.15; margin-bottom:14px;}
+.subtext{font-size:15.5px; color:var(--ink-soft); line-height:1.65; margin-bottom:40px; max-width:460px;}
+
+.field{margin-bottom:22px;}
+.field label{display:block; font-size:13px; font-weight:600; color:var(--ink); margin-bottom:8px;}
+.field input, .field textarea{
+  width:100%; padding:14px 16px; border-radius:12px; border:1px solid var(--line);
+  background:#fff; font-family:'Inter',sans-serif; font-size:14.5px; color:var(--ink);
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+.field input:focus, .field textarea:focus{
+  outline:none; border-color:var(--coral); box-shadow:0 0 0 3px #F2665A1a;
+}
+.field textarea{resize:vertical; min-height:130px; font-family:'Inter',sans-serif;}
+.field .optional{color:var(--graphite); font-weight:400;}
+
+.submit-btn{
+  font-weight:600; font-size:14.5px; padding:15px 32px; border-radius:100px; border:none;
+  background:var(--coral); color:#fff; cursor:pointer; transition:all .25s ease;
+  display:inline-flex; align-items:center; gap:8px; margin-top:8px;
+}
+.submit-btn:hover{background:var(--ink); transform:translateY(-2px);}
+.submit-btn svg{width:16px; height:16px;}
+
+.alt-contact{margin-top:36px; padding-top:28px; border-top:1px solid var(--line); font-size:13.5px; color:var(--graphite);}
+.alt-contact a{color:var(--ink); font-weight:600; text-decoration:none;}
+.alt-contact a:hover{color:var(--coral);}
+
+.confirm-msg{display:none; text-align:center; padding:60px 20px;}
+.confirm-msg.show{display:block;}
+.confirm-msg .icon{width:56px; height:56px; border-radius:50%; background:#4FC77A22; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;}
+.confirm-msg h2{font-family:'Poppins',sans-serif; font-size:24px; margin-bottom:10px;}
+.confirm-msg p{color:var(--ink-soft); font-size:14.5px;}
+
+@media (max-width:600px){
+  nav{padding:20px 24px;}
+  main{padding:20px 20px 60px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-mark">
+    <svg width="120" height="26" viewBox="150 95 465 115" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="navLogoGrad" x1="0" y1="73.98" x2="0" y2="314.82" gradientUnits="userSpaceOnUse">
+          <stop offset=".04" stop-color="#254444"/>
+          <stop offset=".34" stop-color="#2a4748"/>
+          <stop offset=".69" stop-color="#385354"/>
+          <stop offset="1" stop-color="#4b6264"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#navLogoGrad)" d="M156.97,201.31l33.3-93.09,25.04-.25,36.15,93.34h-23.93l-7.85-18.87-33.12-.61-6.28,19.48h-23.32ZM213.42,163.28l-10.43-31.91-9.2,31.91h19.63Z"/>
+      <polygon fill="url(#navLogoGrad)" points="303 108.06 303 181.68 338.59 181.68 338.59 201.31 279.69 201.31 279.69 108.06 303 108.06"/>
+      <polygon fill="url(#navLogoGrad)" points="391.36 108.06 391.36 201.31 371.11 201.31 369.27 199.47 369.27 108.06 391.36 108.06"/>
+      <path fill="url(#navLogoGrad)" d="M510.31,113.06l-6.07,20.77c-24.52-14.96-57.03-9.44-54.03,25.21,1.63,18.8,18.53,26.29,35.7,23.33,7.25-1.25,12.91-5.63,19.55-8.04l6.09,18.3c-39.73,26.4-99.84.74-84.65-52.08,10.25-35.65,53.69-44.65,83.4-27.48Z"/>
+      <path fill="url(#navLogoGrad)" d="M608.56,108.06v18.4h-39.88c-2.97,3.94-3.01,14.32,0,18.4h37.43v18.4h-39.27v18.4h42.95v19.63h-65.04v-93.25h63.81Z"/>
+    </svg>
+  </a>
+  <a href="index.html" class="back-link">
+    <svg viewBox="0 0 100 100" fill="none"><path d="M75 50 H30 M50 25 L25 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Back home
+  </a>
+</nav>
+
+<main>
+  <div class="form-wrap">
+    <div id="formView">
+      <div class="eyebrow">Get in touch</div>
+      <h1>Let's talk about what you're building.</h1>
+      <p class="subtext">Whether it's a project that needs to earn people's trust, a role you think I'd be right for, or just a question — send a note and I'll get back to you.</p>
+
+      <form id="contactForm">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="jane@company.com" required>
+        </div>
+        <div class="field">
+          <label for="phone">Phone <span class="optional">(optional)</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell me a bit about what you're working on..." required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">
+          Send message
+          <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
+
+      <div class="alt-contact">
+        Prefer email directly? Reach me at <a href="mailto:hello@aliceportfolio.com">hello@aliceportfolio.com</a>
+      </div>
+    </div>
+
+    <div class="confirm-msg" id="confirmView">
+      <div class="icon">
+        <svg width="24" height="24" viewBox="0 0 100 100" fill="none"><path d="M25 52 L42 68 L75 30" stroke="#2E8F52" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h2>Message sent</h2>
+      <p>Thanks for reaching out — I'll get back to you soon.</p>
+    </div>
+  </div>
+</main>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  document.getElementById('formView').style.display = 'none';
+  document.getElementById('confirmView').classList.add('show');
+});
+</script>
+
+</body>
+</html>
