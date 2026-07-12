@@ -371,7 +371,14 @@ function getStageFromScroll(y){
 
 function isMobile(){ return window.innerWidth <= 760; }
 
-btn.addEventListener('click', ()=>{ if(!isMobile()) setStage(1); });
+btn.addEventListener('click', ()=>{
+  if(isMobile()){
+    const workEl = document.getElementById('work');
+    if(workEl){ workEl.scrollIntoView({behavior:'smooth', block:'start'}); }
+  } else {
+    setStage(1);
+  }
+});
 window.addEventListener('scroll', ()=>{ if(!isMobile()) setStage(getStageFromScroll(window.scrollY)); });
 setStage(0);
 
