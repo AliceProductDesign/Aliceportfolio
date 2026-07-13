@@ -128,8 +128,12 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 
 /* ---- GALLERY ---- */
 .gallery{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
-.gallery-item{border-radius:16px; background:var(--paper-alt); border:2px dashed var(--line); height:240px; display:flex; align-items:center; justify-content:center; color:var(--graphite); font-size:13px; font-weight:600; text-align:center; padding:16px;}
-.gallery-item.wide{grid-column:1/-1; height:200px;}
+.two-col-block{display:grid; grid-template-columns:0.8fr 1.2fr; gap:36px; align-items:center; padding:32px 0;}
+@media (max-width:900px){
+  .two-col-block{grid-template-columns:1fr; padding:20px 0;}
+}
+.gallery-item{border-radius:16px; background:var(--paper-alt); border:2px dashed var(--line); min-height:220px; display:flex; align-items:center; justify-content:center; color:var(--graphite); font-size:13px; font-weight:600; text-align:center; padding:16px;}
+.gallery-item.wide{grid-column:1/-1; min-height:220px; height:auto;}
 
 /* ---- FAILURE CARDS ---- */
 .priority-tag{display:inline-block; font-size:10.5px; font-weight:700; text-transform:uppercase; padding:4px 10px; border-radius:100px; margin-bottom:8px;}
@@ -237,8 +241,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <p style="margin-bottom:0;">Built with a custom illustration system, an AI nutrition assistant, pantry and recipe integration, and a judgment-free design language built from the ground up.</p>
       </div>
     </div>
-    <div class="hero-image">
-      <div class="placeholder-note">[App hero screenshot / animated demo — GIF placeholder, to be replaced with a coded interactive preview]</div>
+    <div class="hero-image" style="border:none; padding:0; background:none; display:block; overflow:hidden; position:relative;">
+      <img src="assets/sifted/SIFTED-COVER.png" alt="Sifted app hero" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; border-radius:16px;">
     </div>
   </div>
 </header>
@@ -265,8 +269,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <p>Nutrition labels are designed to comply, not to communicate. Additives hide behind dozens of aliases. The apps that exist either oversimplify into vague letter grades or overwhelm with raw data.</p>
     <p class="gap-statement">The gap: actionable clarity at the point of decision, personalized to what each user is actually trying to avoid.</p>
     <div class="gallery" style="margin-top:20px;">
-      <div class="gallery-item">[Competitive audit — Fig, Yuka, and other scanner apps side by side]</div>
-      <div class="gallery-item">[Ingredient-list comparison chart across competitors]</div>
+      <div class="gallery-item wide" style="border:none; padding:0; background:none; display:flex; justify-content:center;"><img src="assets/sifted/problem-research-sifted.png" alt="Competitive audit" style="max-width:700px; width:100%; height:auto; display:block; border-radius:16px; margin:0 auto;"></div>
     </div>
   </div>
 </div>
@@ -290,26 +293,14 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="chip">Time and fatigue lead to choosing unhealthy convenience foods.</div>
       <div class="chip">Cooking fatigue and hunger, living with family that doesn't eat healthy.</div>
     </div>
-    <div class="gallery-item wide" style="margin-top:20px;">[Affinity mapping / themes board — research artifact placeholder]</div>
+    <div class="gallery-item wide" style="margin-top:20px; border:none; padding:0; background:none;"><img src="assets/sifted/research-interviews-sifted.png" alt="Affinity mapping and themes board" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
   </div>
 
   <div class="block">
     <h3>Who I designed for</h3>
     <div class="persona-grid">
-      <div class="persona-card">
-        <div class="avatar-placeholder">[Photo]</div>
-        <div class="persona-quote">"I wish there was a single source that combined everything."</div>
-        <div class="persona-name">Michael</div>
-        <div class="persona-role">Overwhelmed Gym-Goer</div>
-        <div class="persona-meta">Age 29 · Miami, FL · Bachelor's · Teacher<br>Juggling multiple disconnected apps to track meals, ingredients, and workouts.</div>
-      </div>
-      <div class="persona-card">
-        <div class="avatar-placeholder">[Photo]</div>
-        <div class="persona-quote">"I thought yogurt and granola were healthy, but it turns out they're full of sugar."</div>
-        <div class="persona-name">Maya</div>
-        <div class="persona-role">Overworked Professional</div>
-        <div class="persona-meta">Age 35 · NYC · High School · Manager<br>Time-strapped, misled by "healthy" packaging claims, needs fast and trustworthy answers.</div>
-      </div>
+      <img src="assets/sifted/persona-sifted-1.png" alt="Michael — Overwhelmed Gym-Goer persona" style="width:100%; height:auto; display:block; border-radius:16px;">
+      <img src="assets/sifted/persona-sifted-2.png" alt="Maya — Overworked Professional persona" style="width:100%; height:auto; display:block; border-radius:16px;">
     </div>
   </div>
 
@@ -357,7 +348,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <div class="acc-body"><div class="acc-body-inner"><p>Iterated from low- to high-fidelity, testing each layer before adding visual polish.</p></div></div>
       </div>
     </div>
-    <div class="gallery-item wide" style="margin-top:20px;">[Feature prioritization / affinity clustering board — placeholder]</div>
+    <div class="gallery-item wide" style="margin-top:20px; border:none; padding:0; background:none;"><img src="assets/sifted/biz-diagram-sifted.png" alt="Feature prioritization board" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
   </div>
 
   <div class="block">
@@ -381,13 +372,12 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="principle"><b>Graceful uncertainty</b><p>The interface surfaces AI uncertainty explicitly rather than presenting low-confidence responses as authoritative.</p></div>
     </div>
     <div class="gallery" style="margin-top:20px;">
-      <div class="gallery-item wide">[Sifted Chat flow diagram — placeholder]</div>
-      <div class="gallery-item">[Onboarding flow diagram — placeholder]</div>
-      <div class="gallery-item">[Scan Tool flow diagram — placeholder]</div>
+      <div class="gallery-item wide" style="border:none; padding:0; background:none;"><img src="assets/sifted/UX-ALICE-SIFTED-task-flow.png" alt="Sifted Chat flow diagram" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
+      <div class="gallery-item wide" style="border:none; padding:0; background:none;"><img src="assets/sifted/USERFLOW-all.png" alt="Onboarding and Scan Tool user flow" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
     </div>
     <div class="gallery" style="margin-top:18px;">
-      <div class="gallery-item">[AI chat screen — context-first response]</div>
-      <div class="gallery-item">[AI chat screen — flagged ingredient detail]</div>
+      <div class="gallery-item" style="border:none; padding:0; background:none; display:flex; justify-content:center;"><img src="assets/sifted/Chatroom.png" alt="AI chat screen — context-first response" style="width:65%; height:auto; display:block; border-radius:16px;"></div>
+      <div class="gallery-item" style="border:none; padding:0; background:none; display:flex; justify-content:center;"><img src="assets/sifted/Scanner-screen-result-answer.png" alt="AI chat screen — flagged ingredient detail" style="width:65%; height:auto; display:block; border-radius:16px;"></div>
     </div>
   </div>
 
@@ -395,40 +385,46 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <h3>Wireframe exploration</h3>
     <p>Having defined task and user flows early, I explored different structural options at low-fidelity to test layout variations quickly and identify what best supported clarity and usability before adding visual polish.</p>
     <div class="wire-row">
-      <div class="wire-item"><div class="wire-frame">V.1</div><div class="wire-label">Ingredient Decoding — V.1</div></div>
-      <div class="wire-item"><div class="wire-frame">V.2</div><div class="wire-label">Ingredient Decoding — V.2</div></div>
-      <div class="wire-item"><div class="wire-frame selected">V.3 ✓</div><div class="wire-label selected">Ingredient Decoding — V.3 (selected)</div></div>
+      <div class="wire-item"><div class="wire-frame" style="border:none; overflow:hidden; padding:0;"><img src="assets/sifted/v-1-prototyping.png" alt="Ingredient Decoding V.1" style="width:100%; height:100%; object-fit:contain; object-position:center; border-radius:16px;"></div><div class="wire-label">Ingredient Decoding — V.1</div></div>
+      <div class="wire-item"><div class="wire-frame" style="border:none; overflow:hidden; padding:0;"><img src="assets/sifted/v2-wireframe.png" alt="Ingredient Decoding V.2" style="width:100%; height:100%; object-fit:contain; object-position:center; border-radius:16px;"></div><div class="wire-label">Ingredient Decoding — V.2</div></div>
+      <div class="wire-item"><div class="wire-frame selected" style="overflow:hidden; padding:0;"><img src="assets/sifted/v3-wireframe.png" alt="Ingredient Decoding V.3 selected" style="width:100%; height:100%; object-fit:contain; object-position:center; border-radius:16px;"></div><div class="wire-label selected">Ingredient Decoding — V.3 (selected)</div></div>
     </div>
-    <p style="margin-top:20px;">After selecting the most effective mid-fidelity layouts, I developed high-fidelity screens mapped directly to the core task flows — each step simple, logical, and aligned with how users actually accomplish their goals. Mid-fidelity served as the validation stage, confirming functionality before investing in visual branding.</p>
-    <div class="gallery">
-      <div class="gallery-item">[Mid-fidelity — ingredient list screen]</div>
-      <div class="gallery-item">[High-fidelity — ingredient list screen, final]</div>
-    </div>
+    <div class="two-col-block" style="grid-template-columns:1.3fr 0.7fr; padding:0; margin-top:80px;">
+          <div style="display:flex; gap:14px;">
+            <img src="assets/sifted/wireframes-mid-fi.png" alt="Mid-fidelity ingredient list screen" style="width:100%; height:auto; display:block; border-radius:12px;">
+          </div>
+          <div>
+            <h3 style="font-family:'Poppins',sans-serif; font-size:22px; color:var(--sifted-navy); margin-bottom:14px;">From Mid-Fidelity to Hi-Fidelity</h3>
+            <p style="font-weight:600; color:var(--ink); margin-top:0;">After selecting the most effective mid-fidelity layouts, I developed high-fidelity screens mapped directly to the core task flows — each step simple, logical, and aligned with how users actually accomplish their goals. Mid-fidelity served as the validation stage, confirming functionality before investing in visual branding.</p>
+          </div>
+        </div>
   </div>
 
   <div class="block">
     <div class="section-eyebrow">Visual Design &amp; Brand</div>
-    <h2>Building a brand that reflects the mission</h2>
-    <p>Primary mint green for freshness without sterility. Deep navy for authority. Accent warning colors used exclusively for trust signals and critical flags — a consistent visual language that trains users to pay attention when it appears.</p>
-    <p>The bowl with a sifted powder cloud subtly suggests the act of sifting ingredients, mirroring the app's core function of scanning and clarifying foods.</p>
-    <div class="gallery-item wide">[Logo lockup exploration — Sifted wordmark + bowl mark, light &amp; dark versions]</div>
-    <div class="swatch-row" style="margin-top:18px;">
-      <div class="swatch"><div class="swatch-block" style="background:#8FC0A9;"></div><span>Mint — Primary</span></div>
-      <div class="swatch"><div class="swatch-block" style="background:#1F3A4D;"></div><span>Navy — Authority</span></div>
-      <div class="swatch"><div class="swatch-block" style="background:#F2665A;"></div><span>Danger / Flag</span></div>
-      <div class="swatch"><div class="swatch-block" style="background:#F5A94A;"></div><span>Warning</span></div>
+    <h2>Building a Brand That Reflects the Mission</h2>
+    <div class="two-col-block" style="grid-template-columns:0.7fr 1.3fr;">
+      <div>
+        <p>Primary mint green for freshness without sterility. Deep navy for authority. Accent warning colors used exclusively for trust signals and critical flags — a consistent visual language that trains users to pay attention when it appears.</p>
+        <p>The bowl with a sifted powder cloud subtly suggests the act of sifting ingredients, mirroring the app's core function of scanning and clarifying foods.</p>
+        <p style="margin-top:20px; font-weight:700; font-size:20.5px; color:var(--ink);">Mission statement: "Our goal is to bring clarity to food and make wellness a sustainable, daily habit."</p>
+      </div>
+      <img src="assets/sifted/sifted-brand-colors.png" alt="Sifted color and typography system" style="width:100%; height:auto; display:block; border-radius:16px;">
     </div>
-    <p style="margin-top:18px; font-style:italic;">Mission statement: "Our goal is to bring clarity to food and make wellness a sustainable, daily habit."</p>
   </div>
 </div>
 
 <!-- OUTCOME -->
 <div class="tab-panel" data-panel="outcome">
   <div class="block">
-    <div class="section-eyebrow">What This Product Is Built to Prove</div>
-    <h2>Clarity builds trust. Trust changes behavior. Behavior improves health.</h2>
-    <p>The people most motivated to eat well are the least supported by the tools that exist. Sifted aims to close that gap with ingredient-level transparency, judgment-free language, AI personalization, and visual design that makes the experience feel like a coach, not a critic.</p>
-    <div class="gallery-item wide">[Full product montage — illustration system, key screens, and brand assets]</div>
+    <div class="two-col-block" style="grid-template-columns:1.2fr 0.8fr;">
+      <div>
+        <div class="section-eyebrow">What This Product Is Built to Prove</div>
+        <h2>Clarity builds trust. Trust changes behavior. Behavior improves health.</h2>
+        <p style="margin-top:0;">The people most motivated to eat well are the least supported by the tools that exist. Sifted aims to close that gap with ingredient-level transparency, judgment-free language, AI personalization, and visual design that makes the experience feel like a coach, not a critic.</p>
+      </div>
+      <div class="gallery-item" style="border:none; padding:0; background:none;"><img src="assets/sifted/hi-fi-example-ingredients-sifted.png" alt="Full product montage" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
+    </div>
   </div>
 
   <div class="block">
@@ -462,12 +458,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <div class="acc-body"><div class="acc-body-inner"><p>Items like clickable info icons were documented for future iteration — deferred intentionally, since they had minimal impact on core tasks relative to the effort required.</p></div></div>
       </div>
     </div>
-    <div class="gallery" style="margin-top:20px;">
-      <div class="gallery-item">[Scan screen — in progress]</div>
-      <div class="gallery-item">[Flagged product result]</div>
-      <div class="gallery-item">[Full ingredient breakdown]</div>
-      <div class="gallery-item">[Personalized swap suggestion]</div>
-    </div>
+    <div class="gallery-item wide" style="margin-top:20px; border:none; padding:0; background:none;"><img src="assets/sifted/sifted-prototype-final.gif" alt="Sifted prototype walkthrough" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
   </div>
 
   <div class="block">
