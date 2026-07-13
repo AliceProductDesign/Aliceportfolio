@@ -47,6 +47,7 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 @keyframes fadeIn{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);}}
 
 .hero-image{margin-bottom:44px; border-radius:22px; background:linear-gradient(135deg,var(--civic-navy)10,var(--civic-lav)18); border:2px dashed var(--line); min-height:340px; display:flex; align-items:center; justify-content:center; padding:30px; gap:24px; flex-wrap:wrap;}
+.hero-image:has(img){border:none; background:none; min-height:0; padding:0; overflow:hidden;}
 .placeholder-note{color:var(--graphite); font-size:13px; font-weight:600; text-align:center;}
 
 .section-eyebrow{font-weight:700; font-size:12.5px; color:var(--coral); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px;}
@@ -56,11 +57,19 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .block{margin-bottom:56px;}
 .block:last-child{margin-bottom:0;}
 .gap-statement{font-style:italic; color:var(--coral); font-size:15px; border-top:1px solid var(--line); padding-top:18px; margin-top:6px;}
+.gap-statement--emphasis{font-weight:700; font-size:calc(15px + 2pt);}
 
 /* ---- GALLERY ---- */
 .gallery{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+.gallery-two-col{display:grid; grid-template-columns:1fr; gap:18px;}
+@media (min-width:768px){
+  .gallery-two-col{grid-template-columns:1fr 1fr;}
+}
 .gallery-item{border-radius:16px; background:var(--paper-alt); border:2px dashed var(--line); min-height:220px; display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--graphite); font-size:13px; font-weight:600; text-align:center; padding:16px;}
+.gallery-item:has(img){border:none; background:none; min-height:0; padding:0;}
 .gallery-item.wide{grid-column:1/-1; min-height:200px;}
+.gallery-item.wide:has(img){min-height:0;}
+.hero-image img, .gallery-item img, .block img{max-width:100%; height:auto; display:block; border-radius:16px;}
 .gallery-caption{font-size:12px; font-style:italic; color:var(--ink-soft); margin-top:10px; text-align:center; max-width:none;}
 
 /* ---- STATS BAND ---- */
@@ -192,7 +201,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       </div>
     </div>
     <div class="hero-image">
-      <div class="placeholder-note">[Permit Portal hero — tablet/desktop mockup of Renovation Permits screen — GIF placeholder]</div>
+      <img src="assets/bergenportal/bergenhero.png" alt="Permit Portal hero — Renovation Permits screen">
     </div>
   </div>
   <p class="meta-note" style="max-width:none;">Self-directed academic project built around a real municipal permit system. The workflow constraints, irreversible submissions, compliance requirements, and limited post-submission edits all reflect real-world civic portal behavior.</p>
@@ -213,6 +222,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="section-eyebrow">The Problem</div>
     <h2>Submitting a permit isn't complicated. It feels dangerous.</h2>
     <p>Early research revealed that users often lacked confidence when determining which permits were required for their projects. Because permit submissions can involve legal, financial, and procedural consequences, even small uncertainties created hesitation throughout the workflow.</p>
+    <img src="assets/bergenportal/defining-the-problem-img.png" alt="Permit portal screens illustrating uncertainty around requirements">
     <p class="gap-statement">The primary design challenge was not speed, it was trust — trust that they were doing the right thing. This distinction changed every single design decision that followed.</p>
   </div>
 </div>
@@ -223,12 +233,16 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="section-eyebrow">Discovery</div>
     <h2>Where the uncertainty actually lived</h2>
     <p>Affinity mapping surfaced recurring themes: confusion and lack of clarity around requirements, reliance on outdated manual and in-person processes, contractors doing homeowners' research for them, weak transparency into review timelines, and real emotional impact — stress and hesitation showing up well before submission.</p>
-    <div class="gallery-item wide">[Affinity mapping board — confusion &amp; lack of clarity, outdated manual processes, contractor pain points, emotional impact, desire for a modern digital solution]</div>
+    <div class="gallery-item wide">
+      <img src="assets/bergenportal/Affinity-mapping.png" alt="Affinity mapping board">
+    </div>
   </div>
   <div class="block">
     <h3>Mapping the full journey</h3>
     <p>The permit discovery and submission journey was mapped end-to-end, including decision branches for different project types, required document paths, and the review/confirmation loop.</p>
-    <div class="gallery-item wide">[User journey flow diagram — permit discovery through submission &amp; confirmation]</div>
+    <div class="gallery-item wide">
+      <img src="assets/bergenportal/permit-finder-flow.png" alt="User journey flow diagram — permit discovery through submission and confirmation">
+    </div>
   </div>
 </div>
 
@@ -248,10 +262,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="section-eyebrow">The Review Screen</div>
     <h2>A comprehensive view of everything entered, before anything is permanent.</h2>
     <p>The review screen was deliberately designed to slow users down. Rather than a quick summary before confirmation, it presented every entry with explicit language about what submission meant and what couldn't be changed afterward.</p>
-    <p class="gap-statement">Every element on the screen was there to answer one question: "Am I sure?"</p>
-    <div class="gallery">
-      <div class="gallery-item">[Review &amp; Submit screen — confirmation modal warning that submission becomes part of the official record]</div>
-      <div class="gallery-item">[Full application summary screen — every entry listed with edit affordances]</div>
+    <p class="gap-statement gap-statement--emphasis">Every element on the screen was there to answer one question: "Am I sure?"</p>
+    <div class="gallery-item wide">
+      <img src="assets/bergenportal/bergen-img.png" alt="Review and submit screens — confirmation modal and full application summary">
     </div>
   </div>
 
@@ -264,7 +277,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="principle-item"><b><span class="p-dot"></span>Visible Progress Indicators</b><p>Eliminated uncertainty about how long the process was. Users always knew where they stood.</p></div>
       <div class="principle-item"><b><span class="p-dot"></span>Clear Action Language</b><p>Every button label matched exactly what users expected to happen when they pressed it.</p></div>
     </div>
-    <div class="gallery-item wide" style="margin-top:20px;">["Tell us about yourself" screen — Home Owner / Contractor selection with helper microcopy]</div>
+    <div class="gallery-item wide" style="margin-top:20px;">
+      <img src="assets/bergenportal/bergen-county-prototype.gif" alt="Tell us about yourself screen">
+    </div>
     <p style="margin-top:16px;">The interface was designed around progressive disclosure, clear hierarchy, and strong instructional microcopy. Every screen aimed to reduce ambiguity while helping users understand both what to do and why the information mattered.</p>
     <p>High-fidelity prototypes were created in Figma with a strong emphasis on:</p>
     <ul class="key-list">
@@ -293,7 +308,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <p>Rather than testing for visual preference alone, the sessions focused heavily on comprehension, confidence, and emotional friction.</p>
       <p>The goal was to closely observe moments where users hesitated, misunderstood labels, or questioned whether they were completing tasks correctly. This research approach helped uncover deeper trust and expectation issues that might not appear through surface-level usability testing alone.</p>
     </div>
-    <div class="gallery-item wide" style="margin-top:20px;">[Flow improvements diagram — incomplete-application prevention, rewarded action buttons, revised review screen]</div>
+    <div class="gallery-item wide" style="margin-top:20px;">
+      <img src="assets/bergenportal/defining-the-problem.png" alt="Flow improvements diagram">
+    </div>
     <div class="callout-box">
       <p><b>What testing surfaced:</b> Participants expressed concern about submitting an application without the ability to make changes afterward.</p>
       <p><b>Observed behavior:</b> Users double-checked information repeatedly. Some asked if they could edit after submission. Anxiety increased near the final submission step.</p>
@@ -306,7 +323,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <h2>The confirmation screen had treated its job as done. But users disagreed.</h2>
     <p>An application tracking number was incorporated into both the success state and the dashboard.</p>
     <p>Post-submission messaging was rewritten to answer the four questions users actually had: what happens now, how it will be reviewed, where to find the submission, and who to contact if something is wrong.</p>
-    <div class="gallery-item wide">[Confirmation screen — application tracking number, expected timeline, "View My Dashboard"]</div>
+    <div class="gallery-item wide">
+      <img src="assets/bergenportal/Confirmation-screen.png" alt="Confirmation screen">
+    </div>
   </div>
 
   <div class="block">
@@ -318,6 +337,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <li>Stronger trust signals throughout the workflow reduced dependency on customer support</li>
     </ul>
   </div>
+
+ 
 
   <div class="block">
     <div class="section-eyebrow">Reflections</div>
@@ -343,7 +364,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   </div>
 
   <div class="block">
-    <div class="gallery-item wide">[Final product montage — landing page, "Tell us about yourself," permit selection, dashboard]</div>
+    <div class="gallery-item wide">
+      <img src="assets/bergenportal/mockup-allscreens.png" alt="Final product montage">
+    </div>
   </div>
 </div>
 

@@ -76,6 +76,26 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 
 /* ---- GALLERY ---- */
 .gallery{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+.gallery-force-2col{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+@media (max-width:600px){
+  .gallery-force-2col{grid-template-columns:1fr;}
+}
+.gallery-trust-arch{display:grid; grid-template-columns:1fr; gap:24px;}
+@media (min-width:768px){
+  .gallery-trust-arch{grid-template-columns:1fr 1fr 1fr;}
+}
+.trust-visual-grid{display:grid; grid-template-columns:1fr; gap:24px; align-items:center;}
+@media (min-width:768px){
+  .trust-visual-grid{grid-template-columns:1fr 1fr; gap:36px;}
+}
+.prototype-grid{display:grid; grid-template-columns:1fr; gap:24px; align-items:center;}
+@media (min-width:768px){
+  .prototype-grid{grid-template-columns:1fr 1fr; gap:32px;}
+}
+.prototype-gif{width:100%; border-radius:10%; display:block; overflow:hidden;}
+@media (min-width:768px){
+  .prototype-gif{width:60%; border-radius:50px;}
+}
 .gallery-item{border-radius:16px; background:var(--paper-alt); border:2px dashed var(--line); min-height:220px; display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--graphite); font-size:13px; font-weight:600; text-align:center; padding:16px;}
 .gallery-item.wide{grid-column:1/-1; min-height:200px;}
 .gallery-caption{font-size:12px; font-style:italic; color:var(--ink-soft); margin-top:10px; text-align:center; max-width:none;}
@@ -332,7 +352,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <h2>The most important product decision.</h2>
     <p>Standard healthcare apps put account creation before value. For uninsured patients already primed to distrust systems that take without giving, this is a trust-ending moment.</p>
     <p>RapiMD flipped the sequence entirely. Authentication was delayed until after users had selected a provider and an appointment slot — after they'd seen the flat fee, confirmed availability, and decided they wanted to proceed.</p>
-    <div class="gallery" style="grid-template-columns:1fr 1fr;">
+    <div class="gallery-force-2col">
       <div class="gallery-item" style="border:none; padding:0; background:none;"><img src="assets/rapidmd/account-needed-to-continue-rapimd.png" alt="Slot-hold countdown screen" style="width:68%; height:auto; display:block; margin:0 auto; border-radius:16px;"></div>
       <div class="gallery-item" style="border:none; padding:0; background:none;"><img src="assets/rapidmd/account-creation-screen-rapidmd.png" alt="Account creation screen" style="width:68%; height:auto; display:block; margin:0 auto; border-radius:16px;"></div>
     </div>
@@ -362,13 +382,31 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   <div class="block">
     <div class="section-eyebrow">Designing Transparency Into Every Interaction</div>
     <h2>Every screen. Every decision point. Every place doubt could appear.</h2>
-    <div class="gallery" style="grid-template-columns:1fr 1fr 1fr;">
-      <div class="gallery-item" style="border:none; padding:0; background:none;"><img src="assets/rapidmd/trust-arch/Provider Pricing Transparency.png" alt="Provider pricing screen" style="width:100%; height:auto; display:block; border-radius:16px;"><div class="gallery-caption">Provider Pricing Transparency: displays the usual visit cost alongside the active RapiMD flat-fee rate, making the discount immediately visible.</div></div>
-      <div class="gallery-item" style="border:none; padding:0; background:none;"><img src="assets/rapidmd/trust-arch/Price-coverage.png" alt="Price breakdown screen" style="width:100%; height:auto; display:block; border-radius:16px;"><div class="gallery-caption">Price Breakdown &amp; Coverage: clarifies what the consultation covers and explicitly states what is not included, paired with the No Surprise Bill guarantee.</div></div>
-      <div class="gallery-item" style="border:none; padding:0; background:none;"><img src="assets/rapidmd/trust-arch/CancellationWarning.png" alt="Same-day cancellation warning" style="width:100%; height:auto; display:block; border-radius:16px;"><div class="gallery-caption">A clear notice informs users that same-day bookings cannot be cancelled once confirmed.</div></div>
-      <div class="gallery-item" style="border:none; padding:0; background:none;"><img src="assets/rapidmd/trust-arch/Appointment-Reminders.png" alt="Appointment reminder screen" style="width:100%; height:auto; display:block; border-radius:16px;"><div class="gallery-caption">Reminders sent the day before and 2 hours prior, prompting visit prep and reducing no-shows.</div></div>
-      <div class="gallery-item" style="border:none; padding:0; background:none;"><img src="assets/rapidmd/trust-arch/appointment-hub.png" alt="Appointments hub" style="width:100%; height:auto; display:block; border-radius:16px;"><div class="gallery-caption">Summarizes exactly what the visit price includes, alongside directions to the provider.</div></div>
-      <div class="gallery-item" style="border:none; padding:0; background:none;"><img src="assets/rapidmd/trust-arch/preparefor-visit.png" alt="Prepare for your visit screen" style="width:100%; height:auto; display:block; border-radius:16px;"><div class="gallery-caption">Lists documents and information to bring, reducing uncertainty before the visit.</div></div>
+    <div class="gallery-trust-arch">
+      <div class="gallery-item" style="border:none; padding:0; background:none;">
+        <img src="assets/rapidmd/trust-arch/Provider Pricing Transparency.png" alt="Provider pricing screen" style="width:100%; height:auto; display:block; border-radius:16px;">
+        <div class="gallery-caption"><b>Provider Pricing Transparency:</b> Displays the usual visit cost alongside the active RapiMD flat-fee rate, making the discount immediately visible. Included services is shown upfront so users know exactly what they're paying for before committing.</div>
+      </div>
+      <div class="gallery-item" style="border:none; padding:0; background:none;">
+        <img src="assets/rapidmd/trust-arch/Price-coverage.png" alt="Price breakdown screen" style="width:100%; height:auto; display:block; border-radius:16px;">
+        <div class="gallery-caption"><b>Price Breakdown &amp; Coverage:</b> A full price breakdown clarifies what the consultation covers and explicitly states what is not included, paired with a No Surprise Bill guarantee to eliminate any remaining doubt before the user proceeds.</div>
+      </div>
+      <div class="gallery-item" style="border:none; padding:0; background:none;">
+        <img src="assets/rapidmd/trust-arch/CancellationWarning.png" alt="Same-day cancellation warning" style="width:100%; height:auto; display:block; border-radius:16px;">
+        <div class="gallery-caption"><b>Same-Day Cancellation Warning:</b> Before the user confirms a same-day appointment, a clear notice informs them that same-day bookings cannot be cancelled once confirmed, giving users the information they need to commit with full awareness, not discover it after.</div>
+      </div>
+      <div class="gallery-item" style="border:none; padding:0; background:none;">
+        <img src="assets/rapidmd/trust-arch/Appointment-Reminders.png" alt="Appointment reminder screen" style="width:100%; height:auto; display:block; border-radius:16px;">
+        <div class="gallery-caption"><b>Appointment Reminders &amp; Visit Prep Prompt:</b> RapiMD sends a reminder the day before and again 2 hours prior to the appointment. The notification also prompts users to begin preparing for their visit, reducing no-shows and last-minute anxiety.</div>
+      </div>
+      <div class="gallery-item" style="border:none; padding:0; background:none;">
+        <img src="assets/rapidmd/trust-arch/appointment-hub.png" alt="Appointments hub" style="width:100%; height:auto; display:block; border-radius:16px;">
+        <div class="gallery-caption"><b>Appointments Hub:</b> The appointment screen summarizes exactly what the visit price includes, alongside helpful tips and directions to the provider, giving users everything they need in one place after booking is confirmed.</div>
+      </div>
+      <div class="gallery-item" style="border:none; padding:0; background:none;">
+        <img src="assets/rapidmd/trust-arch/preparefor-visit.png" alt="Prepare for your visit screen" style="width:100%; height:auto; display:block; border-radius:16px;">
+        <div class="gallery-caption"><b>Prepare for Your Visit Screen:</b> A dedicated pre-visit screen lists the documents and information users should bring to their appointment, reducing uncertainty and helping users arrive prepared and confident.</div>
+      </div>
     </div>
   </div>
 </div>
@@ -397,9 +435,10 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   </div>
 
   <div class="block">
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center;">
+    <div class="trust-visual-grid">
       <div class="gallery-item" style="border:none; padding:0; background:none; margin-bottom:0;"><img src="assets/rapidmd/Trust-is-not-visualproperty.png" alt="Trust is not a visual property" style="width:100%; height:auto; border-radius:16px;"></div>
       <div>
+        
         <div class="section-eyebrow">What This Project Taught Me About Trust</div>
         <h2>Trust is not a visual property.</h2>
         <p>You cannot design trust with just a color palette or reassuring headlines. Trust is built through clear expectations, explicit consent, transparent system behavior, and predictable outcomes — through what the product does, not how it looks.</p>
@@ -409,15 +448,15 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   </div>
 
   <div class="block">
-    <div class="section-eyebrow">Trust Architecture</div>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:center;">
+    
+    <div class="prototype-grid">
       <div>
-        <h2>The trust system working end-to-end.</h2>
+        <h2>RapiMD Figma Prototype </h2>
         <a href="#" class="outcome-cta">RapiMD Prototype
           <svg width="16" height="16" viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
-      <img src="assets/rapidmd/rapidmd-prototype-final.gif" alt="RapiMD prototype walkthrough" style="width:60%; border-radius:50px; display:block; overflow:hidden;">
+      <img class="prototype-gif" src="assets/rapidmd/rapidmd-prototype-final.gif" alt="RapiMD prototype walkthrough">
     </div>
   </div>
 
