@@ -71,7 +71,8 @@ h1 .highlight{color:var(--coral);}
 .process-card{max-width:920px; width:100%;}
 .process-eyebrow{font-weight:700; font-size:12.5px; color:var(--coral); text-transform:uppercase; letter-spacing:0.06em; text-align:center; margin-bottom:8px;}
 .process-title{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(24px,3vw,32px); text-align:center; margin-bottom:36px;}
-.process-row{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+.process-row{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+@media (max-width:700px){.process-row{grid-template-columns:1fr;}}
 .process-item{background:#fff; border-radius:18px; padding:28px 24px; box-shadow:0 16px 32px -20px #33454A33;}
 .process-item .picon{width:36px; height:36px; margin-bottom:14px;}
 .process-item h4{font-family:'Poppins',sans-serif; font-size:17px; font-weight:600; margin-bottom:8px;}
@@ -321,6 +322,7 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
           <div class="process-item"><svg class="picon" viewBox="0 0 100 100" fill="none"><rect x="15" y="15" width="70" height="70" rx="14" stroke="#F5A94A" stroke-width="8"/><path d="M15 40 H85 M40 40 V85" stroke="#F5A94A" stroke-width="8"/></svg><h4>Map</h4><p>Sitemaps and flows first. Structure carries the trust, decoration comes after.</p></div>
           <div class="process-item"><svg class="picon" viewBox="0 0 100 100" fill="none"><rect x="15" y="30" width="70" height="45" rx="10" stroke="#33454A" stroke-width="8"/><circle cx="65" cy="52" r="9" fill="#33454A"/></svg><h4>Build</h4><p>High-fidelity Figma, dev-ready specs, and close collaboration through handoff.</p></div>
           <div class="process-item"><svg class="picon" viewBox="0 0 100 100" fill="none"><path d="M30 55 L45 70 L75 30" stroke="#F2665A" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50" cy="50" r="38" stroke="#F2665A" stroke-width="6"/></svg><h4>Test</h4><p>Usability testing and compliance review before ship — the actual gate, not a formality.</p></div>
+          <div class="process-item"><svg class="picon" viewBox="0 0 100 100" fill="none"><path d="M50 14 L58 42 L86 50 L58 58 L50 86 L42 58 L14 50 L42 42 Z" stroke="#F5A94A" stroke-width="8" stroke-linejoin="round"/></svg><h4>AI-Augmented</h4><p>I build AI into my workflow to move faster without cutting corners — automating the repetitive work so more time goes to strategy and craft.</p></div>
         </div>
       </div>
     </div>
