@@ -31,13 +31,14 @@ body{background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif; 
 .hero-textwrap{text-align:center; max-width:720px; padding:56px 60px; border-radius:32px; background:radial-gradient(circle at 50% 45%, #FBF9F4f2 0%, #FBF9F4d9 60%, transparent 100%);}
 .eyebrow{display:inline-flex; align-items:center; gap:8px; font-weight:600; font-size:13.5px; color:var(--ink-soft); margin-bottom:20px; background:#fff; padding:8px 16px; border-radius:100px; box-shadow:0 4px 14px -6px #33454A22;}
 h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(32px,4.8vw,54px); line-height:1.1; letter-spacing:-0.01em;}
-h1 .highlight{color:var(--coral);}
+h1 .highlight{color:var(--amber);}
 .hero-sub{margin:20px auto 0; font-size:16.5px; line-height:1.6; color:var(--ink-soft); max-width:460px;}
 .hero-cta{margin-top:30px; display:flex; gap:14px; align-items:center; justify-content:center;}
 .btn{font-weight:600; font-size:14px; padding:14px 26px; border-radius:100px; text-decoration:none; transition:all .25s; display:inline-flex; align-items:center; gap:8px; border:none; cursor:pointer;}
 .btn.filled{background:var(--coral); color:#fff;}
 .btn.filled:hover{background:var(--ink); transform:translateY(-2px);}
 .btn.outline{border:2px solid var(--ink); color:var(--ink); background:none;}
+.btn.outline:hover{border-color:var(--coral); color:var(--coral); transform:translateY(-2px);}
 .btn-label-short{display:none;}
 
 .fan-reveal{position:absolute; inset:0; opacity:0; pointer-events:none; transition:opacity .6s ease .1s; padding:0 80px; display:flex; align-items:center; justify-content:center;}
@@ -58,7 +59,7 @@ h1 .highlight{color:var(--coral);}
 .about-content h2{font-family:'Poppins',sans-serif; font-size:26px; font-weight:600; margin-bottom:14px;}
 .about-content p{font-size:14.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:12px;}
 .about-stats{display:flex; gap:28px; margin-top:20px; flex-wrap:wrap;}
-.about-stats div b{display:block; font-family:'Poppins',sans-serif; font-size:26px; color:var(--coral);}
+.about-stats div b{display:block; font-family:'Poppins',sans-serif; font-size:26px; color:var(--amber);}
 .about-stats div span{font-size:11px; color:var(--graphite); text-transform:uppercase; letter-spacing:0.04em;}
 
 .footer-card{display:flex; justify-content:space-between; align-items:center; max-width:920px; width:100%; gap:40px;}
@@ -69,7 +70,7 @@ h1 .highlight{color:var(--coral);}
 .footer-links svg{width:16px; height:16px;}
 
 .process-card{max-width:920px; width:100%;}
-.process-eyebrow{font-weight:700; font-size:12.5px; color:var(--coral); text-transform:uppercase; letter-spacing:0.06em; text-align:center; margin-bottom:8px;}
+.process-eyebrow{font-weight:700; font-size:12.5px; color:var(--ink); opacity:0.85; text-transform:uppercase; letter-spacing:0.06em; text-align:center; margin-bottom:8px;}
 .process-title{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(24px,3vw,32px); text-align:center; margin-bottom:36px;}
 .process-row{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
 @media (max-width:700px){.process-row{grid-template-columns:1fr;}}
@@ -283,12 +284,12 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
 
     <div class="fan-reveal" id="work">
       <div class="fan-stage" id="fanStage">
-        <a href="sifted-case-study.html" class="fan-card c1" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-sifted.png" alt="Sifted preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag" style="background:#33454A0d; color:var(--graphite);">AI Concept</span><h3>Sifted</h3><p>Personal AI nutrition concept.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
-        <a href="diapulse-case-study.html" class="fan-card c2" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-diapulse.png" alt="Diapulse preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag" style="background:#F2665A1a; color:var(--coral);">Corporate / Clinical</span><h3>Diapulse</h3><p>Legacy medical device rebrand.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
-        <a href="tirivelo-case-study.html" class="fan-card c3" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-tirivelo.png" alt="TiriVelo preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag" style="background:#33454A14; color:var(--ink-soft);">Marketplace</span><h3>TiriVelo</h3><p>Pet-care marketplace flows.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
-        <a href="rapimd-case-study.html" class="fan-card c4" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-rapidmd.png" alt="RapiMD preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag" style="background:#33454A14; color:var(--ink-soft);">Healthcare Booking</span><h3>RapiMD</h3><p>Provider booking architecture.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
-        <a href="wave-case-study.html" class="fan-card c5" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-wave.png" alt="WAVE preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag" style="background:#F2665A1a; color:var(--coral);">Medical Device</span><h3>WAVE</h3><p>Companion app and FDA labeling.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
-        <a href="bergen-county-case-study.html" class="fan-card c6" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-bergencountyportal.png" alt="Bergen County preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag" style="background:#F5A94A24; color:#B87519;">Civic Tech</span><h3>Bergen County</h3><p>Municipal permit portal.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
+        <a href="sifted-case-study.html" class="fan-card c1" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-sifted.png" alt="Sifted preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag" style="background:#F58D4733; color:var(--ink);">AI Concept</span><h3>Sifted</h3><p>Personal AI nutrition concept.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
+        <a href="diapulse-case-study.html" class="fan-card c2" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-diapulse.png" alt="Diapulse preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag" style="background:#F58D4733; color:var(--ink);">Corporate / Clinical</span><h3>Diapulse</h3><p>Legacy medical device rebrand.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
+        <a href="tirivelo-case-study.html" class="fan-card c3" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-tirivelo.png" alt="TiriVelo preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag" style="background:#F58D4733; color:var(--ink);">Marketplace</span><h3>TiriVelo</h3><p>Pet-care marketplace flows.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
+        <a href="rapimd-case-study.html" class="fan-card c4" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-rapidmd.png" alt="RapiMD preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag" style="background:#F58D4733; color:var(--ink);">Healthcare Booking</span><h3>RapiMD</h3><p>Provider booking architecture.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
+        <a href="wave-case-study.html" class="fan-card c5" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-wave.png" alt="WAVE preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag" style="background:#F58D4733; color:var(--ink);">Medical Device</span><h3>WAVE</h3><p>Companion app and FDA labeling.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
+        <a href="bergen-county-case-study.html" class="fan-card c6" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-bergencountyportal.png" alt="Bergen County preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag" style="background:#F58D4733; color:var(--ink);">Civic Tech</span><h3>Bergen County</h3><p>Municipal permit portal.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
       </div>
       <div class="dots" id="dots">
         <div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
@@ -351,14 +352,40 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
 const heroEl = document.getElementById('hero');
 const btn = document.getElementById('seeWorkBtn');
 const fanStage = document.getElementById('fanStage');
+const fanReveal = document.getElementById('work');
+const scrollHintEl = document.querySelector('.scroll-hint');
 let currentStage = -1;
+let alignedCardsTop = null;
+let alignedCardsBottom = null;
+let alignedBoundsTimer = null;
+
+const SCROLL_HINT_BY_STAGE = {
+  0: 'Scroll down, or click "See work"',
+  1: 'Scroll down for About',
+  2: 'Scroll down for How I Work',
+  3: 'Scroll down for Contact',
+};
+
+function getScrollHintText(stage){
+  return SCROLL_HINT_BY_STAGE[stage] ?? SCROLL_HINT_BY_STAGE[0];
+}
+
+function isMobile(){ return window.innerWidth <= 760; }
 
 function setStage(stage){
   if(stage === currentStage) return;
   currentStage = stage;
   heroEl.classList.remove('stage-0','stage-1','stage-2','stage-3','stage-4');
   heroEl.classList.add('stage-' + stage);
-  if(stage !== 1){ fanStage.classList.remove('aligned'); }
+  if(stage !== 1){
+    fanStage.classList.remove('aligned');
+    alignedCardsTop = null;
+    alignedCardsBottom = null;
+    clearTimeout(alignedBoundsTimer);
+  }
+  if(!isMobile() && stage < 4 && scrollHintEl){
+    scrollHintEl.textContent = getScrollHintText(stage);
+  }
 }
 
 function getStageFromScroll(y){
@@ -369,8 +396,6 @@ function getStageFromScroll(y){
   if(y < vh * 3.15) return 3;
   return 4;
 }
-
-function isMobile(){ return window.innerWidth <= 760; }
 
 btn.addEventListener('click', ()=>{
   if(isMobile()){
@@ -383,11 +408,41 @@ btn.addEventListener('click', ()=>{
 window.addEventListener('scroll', ()=>{ if(!isMobile()) setStage(getStageFromScroll(window.scrollY)); });
 setStage(0);
 
-fanStage.addEventListener('mouseenter', ()=> fanStage.classList.add('aligned'));
-fanStage.addEventListener('mouseleave', ()=> fanStage.classList.remove('aligned'));
-
 const dots = document.querySelectorAll('#dots .dot');
 const cards = document.querySelectorAll('.fan-card');
+
+function cacheAlignedCardsYBounds(){
+  if(!fanStage.classList.contains('aligned')){
+    alignedCardsTop = null;
+    alignedCardsBottom = null;
+    return;
+  }
+  const rects = Array.from(cards).map(card => card.getBoundingClientRect());
+  alignedCardsTop = Math.min(...rects.map(r => r.top));
+  alignedCardsBottom = Math.max(...rects.map(r => r.bottom));
+}
+
+fanStage.addEventListener('mouseenter', ()=>{
+  fanStage.classList.add('aligned');
+  clearTimeout(alignedBoundsTimer);
+  alignedBoundsTimer = setTimeout(cacheAlignedCardsYBounds, 520);
+});
+
+fanReveal.addEventListener('mousemove', (e)=>{
+  if(isMobile() || currentStage !== 1 || !fanStage.classList.contains('aligned')) return;
+  if(alignedCardsTop === null || alignedCardsBottom === null) return;
+  if(e.clientY < alignedCardsTop || e.clientY > alignedCardsBottom){
+    fanStage.classList.remove('aligned');
+    alignedCardsTop = null;
+    alignedCardsBottom = null;
+    clearTimeout(alignedBoundsTimer);
+  }
+});
+
+window.addEventListener('resize', ()=>{
+  if(!isMobile() && fanStage.classList.contains('aligned')) cacheAlignedCardsYBounds();
+});
+
 let scrollTimeout;
 fanStage.addEventListener('scroll', ()=>{
   clearTimeout(scrollTimeout);
@@ -408,11 +463,9 @@ document.getElementById('backToTopBtn').addEventListener('click', ()=>{
   window.scrollTo({top:0, behavior:'smooth'});
 });
 
-const scrollHintEl = document.querySelector('.scroll-hint');
 const backToTopBtn = document.getElementById('backToTopBtn');
 const footerRevealEl = document.querySelector('.footer-reveal');
 const copyrightText = '© 2026 Aliceportfolio.com · UX & Product Designer · All rights reserved';
-const scrollHintDefault = scrollHintEl.textContent;
 
 function showFooterState(){
   scrollHintEl.textContent = copyrightText;
@@ -420,7 +473,7 @@ function showFooterState(){
   backToTopBtn.classList.add('show');
 }
 function hideFooterState(){
-  scrollHintEl.textContent = scrollHintDefault;
+  scrollHintEl.textContent = isMobile() ? getScrollHintText(0) : getScrollHintText(currentStage);
   scrollHintEl.style.opacity = '';
   backToTopBtn.classList.remove('show');
 }
