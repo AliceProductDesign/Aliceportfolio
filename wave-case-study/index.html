@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>if(/\/index\.html$/.test(location.pathname))location.replace(location.pathname.replace(/index\.html$/,"")+location.search+location.hash);</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WAVE — Case Study — Alice Curiel</title>
@@ -8,12 +9,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
 :root{
-  --coral:#F2665A; --amber:#F5A94A; --ink:#33454A; --ink-soft:#5B6A6D;
+  --coral:#F2665A; --amber:#F5A94A; --amber-dark:#C97A1F; --ink:#33454A; --teal:#478383; --ink-soft:#5B6A6D;
   --paper:#FBF9F4; --paper-alt:#F2EDE1; --graphite:#8B9290; --line:#33454A1a;
   --wv-navy:#241E4E; --wv-pink:#F0A8C4; --wv-blue:#7FA8D9;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif;}
+/* ── TEAL ACCENT AUDIT (wave-case-study) ─────────────────────────
+   CHANGED → var(--teal): h1–h4, .section-eyebrow, .gap-statement,
+             .pull-quote p, .key-list li::before (✓ icons)
+   LEFT:    .stat b (amber), .meta-note/.ba-label (graphite),
+            .issue-list li::before (graphite ✕), coral nav/back-to-top SVGs
+   ─────────────────────────────────────────────────────────────── */
+
+/* ── CORAL INTERACTIVE AUDIT (wave-case-study) ───────────────────
+   CHANGED → (none) — no accordion/expand toggles on this page
+   LEFT:    .tab-btn, .back-link, .next-project/.next-arrow, .back-to-top
+            (already coral)
+   ─────────────────────────────────────────────────────────────── */
+
+h1,h2,h3,h4{color:var(--teal);}
+
 a{color:#F2665A; text-decoration:none; transition:color .2s ease;}
 a:hover{color:#33454A;}
 
@@ -55,6 +71,18 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
   .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow-x:visible;}
   .tab-nav-wrap.is-sticky .tab-track{width:100%; display:flex; justify-content:center; gap:8px; box-sizing:border-box; background:#FBD4D4; box-shadow:0 8px 20px -10px #33454A33;}
 }
+@media (max-width:760px){
+  /* Mobile sticky (CSS) — pill width unchanged; separate from desktop is-sticky */
+  .tab-nav{position:sticky; top:65px; z-index:150;}
+  .tab-btn{color:var(--coral);}
+  .tab-btn:active:not(.active){background:rgba(242,102,90,0.22); color:var(--coral);}
+  .tab-btn.progress-tab:active{color:#fff !important; background:var(--coral);}
+}
+@media (max-width:767px){
+  .tab-nav-wrap.is-sticky{position:relative; top:auto; left:auto; right:auto; width:auto; padding:0;}
+  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:auto;}
+  .tab-nav-wrap.is-sticky .tab-track{width:auto; display:inline-flex; justify-content:flex-start; background:rgba(242,102,90,0.1); box-shadow:none;}
+}
 
 .tab-panel{display:none; max-width:1240px; margin:0 auto; padding:44px 48px 90px; animation:fadeIn .35s ease;}
 .tab-panel.active{display:block;}
@@ -63,13 +91,13 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .hero-image{margin-bottom:44px; border-radius:22px; background:linear-gradient(160deg,var(--wv-navy),#3A2E6E); border:2px dashed #ffffff33; min-height:340px; display:flex; align-items:center; justify-content:center; padding:30px; gap:24px; flex-wrap:wrap;}
 .placeholder-note{color:#C7C0E8; font-size:13px; font-weight:600; text-align:center;}
 
-.section-eyebrow{font-weight:700; font-size:12.5px; color:var(--ink); opacity:0.85; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px;}
+.section-eyebrow{font-weight:700; font-size:12.5px; color:var(--amber-dark); opacity:0.85; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px;}
 h2{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(24px,2.8vw,30px); margin-bottom:18px;}
 h3{font-family:'Poppins',sans-serif; font-weight:600; font-size:19px; margin-bottom:10px;}
 p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; max-width:740px;}
 .block{margin-bottom:56px;}
 .block:last-child{margin-bottom:0;}
-.gap-statement{font-style:italic; color:var(--ink); font-size:15px; border-top:1px solid var(--line); padding-top:18px; margin-top:6px;}
+.gap-statement{font-style:italic; color:var(--teal); font-size:15px; border-top:1px solid var(--line); padding-top:18px; margin-top:6px;}
 
 /* ---- GALLERY ---- */
 .gallery{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
@@ -91,7 +119,7 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .key-list{list-style:none; margin-top:16px;}
 .key-list li{display:flex; gap:10px; padding:10px 0; font-size:14.5px; color:var(--ink-soft); border-bottom:1px solid var(--line);}
 .key-list li:last-child{border-bottom:none;}
-.key-list li::before{content:'✓'; color:var(--ink); font-weight:700; flex-shrink:0;}
+.key-list li::before{content:'✓'; color:var(--teal); font-weight:700; flex-shrink:0;}
 .issue-list{list-style:none; margin-top:16px;}
 .issue-list li{display:flex; gap:10px; padding:10px 0; font-size:14.5px; color:var(--ink-soft); border-bottom:1px solid var(--line);}
 .issue-list li:last-child{border-bottom:none;}
@@ -105,7 +133,7 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 
 /* ---- pull quote ---- */
 .pull-quote{background:linear-gradient(120deg,var(--wv-pink)22,var(--wv-blue)22); border-left:4px solid var(--wv-pink); border-radius:0 16px 16px 0; padding:32px 36px; margin:20px 0 30px;}
-.pull-quote p{font-family:'Poppins',sans-serif; font-size:19px; font-weight:500; color:var(--ink); line-height:1.4; margin:0; max-width:640px;}
+.pull-quote p{font-family:'Poppins',sans-serif; font-size:19px; font-weight:500; color:var(--teal); line-height:1.4; margin:0; max-width:640px;}
 
 /* ---- swatches ---- */
 .swatch-row{display:flex; gap:14px; margin-top:16px; flex-wrap:wrap;}
@@ -216,11 +244,11 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 <body>
 
 <nav>
-  <a href="/#work" class="back-link">
+  <a href="../#work" class="back-link">
     <svg viewBox="0 0 100 100" fill="none"><path d="M75 50 H30 M50 25 L25 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
     All work
   </a>
-  <a href="/" class="nav-mark" aria-label="Back to home">
+  <a href="../" class="nav-mark" aria-label="Back to home">
     <svg width="105" height="23" viewBox="150 95 465 115" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="navLogoGradWV" x1="0" y1="73.98" x2="0" y2="314.82" gradientUnits="userSpaceOnUse">
@@ -474,7 +502,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   </div>
 </div>
 
-<a href="/#work" class="next-project">
+<a href="../#work" class="next-project">
   <div><div class="label">Next case file</div><h3>More coming soon</h3></div>
   <div class="next-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
 </a>

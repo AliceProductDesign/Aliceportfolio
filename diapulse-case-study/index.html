@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>if(/\/index\.html$/.test(location.pathname))location.replace(location.pathname.replace(/index\.html$/,"")+location.search+location.hash);</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Diapulse — Case Study — Alice Curiel</title>
@@ -8,13 +9,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
 :root{
-  --coral:#F2665A; --amber:#F5A94A; --ink:#33454A; --ink-soft:#5B6A6D;
+  --coral:#F2665A; --amber:#F5A94A; --amber-dark:#C97A1F; --ink:#33454A; --teal:#478383; --ink-soft:#5B6A6D;
   --paper:#FBF9F4; --paper-alt:#F2EDE1; --graphite:#8B9290; --line:#33454A1a;
   --dp-navy:#1B1B3A; --dp-green:#4FC77A; --dp-lime:#C6E93B;
   --dp-coral:#993C1D; --dp-cream:#FAECE7;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif;}
+/* ── TEAL ACCENT AUDIT (diapulse-case-study) ─────────────────────
+   CHANGED → var(--teal): h1–h4, .section-eyebrow, .gap-statement,
+             .pull-quote p, .quote-block p, .flow-label, .key-list li::before
+   LEFT:    .meta-note/.ba-label/.gallery-caption (graphite/ink-soft),
+            .progress-status badges (green/amber), .progress-banner p (body),
+            coral nav/CTA/back-to-top SVGs
+   ─────────────────────────────────────────────────────────────── */
+
+/* ── CORAL INTERACTIVE AUDIT (diapulse-case-study) ───────────────
+   CHANGED → (none) — no accordion/expand toggles on this page
+   LEFT:    .tab-btn, .back-link, .next-project/.next-arrow, .back-to-top
+            (already coral)
+   ─────────────────────────────────────────────────────────────── */
+
+h1,h2,h3,h4{color:var(--teal);}
+
 a{color:#F2665A; text-decoration:none; transition:color .2s ease;}
 a:hover{color:#33454A;}
 
@@ -60,6 +77,18 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
   .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow-x:visible;}
   .tab-nav-wrap.is-sticky .tab-track{width:100%; display:flex; justify-content:center; gap:8px; box-sizing:border-box; background:#FBD4D4; box-shadow:0 8px 20px -10px #33454A33;}
 }
+@media (max-width:760px){
+  /* Mobile sticky (CSS) — pill width unchanged; separate from desktop is-sticky */
+  .tab-nav{position:sticky; top:65px; z-index:150;}
+  .tab-btn{color:var(--coral);}
+  .tab-btn:active:not(.active){background:rgba(242,102,90,0.22); color:var(--coral);}
+  .tab-btn.progress-tab:active{color:#fff !important; background:var(--coral);}
+}
+@media (max-width:767px){
+  .tab-nav-wrap.is-sticky{position:relative; top:auto; left:auto; right:auto; width:auto; padding:0;}
+  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:auto;}
+  .tab-nav-wrap.is-sticky .tab-track{width:auto; display:inline-flex; justify-content:flex-start; background:rgba(242,102,90,0.1); box-shadow:none;}
+}
 
 .tab-panel{display:none; max-width:1240px; margin:0 auto; padding:44px 48px 90px; animation:fadeIn .35s ease;}
 .tab-panel.active{display:block;}
@@ -68,13 +97,13 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .hero-image{margin-bottom:44px; border-radius:22px; background:linear-gradient(135deg,var(--dp-navy),#2A2A5A); border:2px dashed #ffffff33; min-height:340px; display:flex; align-items:center; justify-content:center; padding:30px; gap:24px; flex-wrap:wrap;}
 .placeholder-note{color:#B7B7D9; font-size:13px; font-weight:600; text-align:center;}
 
-.section-eyebrow{font-weight:700; font-size:12.5px; color:var(--ink); opacity:0.85; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px;}
+.section-eyebrow{font-weight:700; font-size:12.5px; color:var(--amber-dark); opacity:0.85; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px;}
 h2{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(24px,2.8vw,30px); margin-bottom:18px;}
 h3{font-family:'Poppins',sans-serif; font-weight:600; font-size:19px; margin-bottom:10px;}
 p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; max-width:740px;}
 .block{margin-bottom:56px;}
 .block:last-child{margin-bottom:0;}
-.gap-statement{font-style:italic; color:var(--ink); font-size:15px; border-top:1px solid var(--line); padding-top:18px; margin-top:6px;}
+.gap-statement{font-style:italic; color:var(--teal); font-size:15px; border-top:1px solid var(--line); padding-top:18px; margin-top:6px;}
 
 /* ---- GALLERY ---- */
 .gallery{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
@@ -93,11 +122,11 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 
 /* ---- pull quote / marketing banner ---- */
 .pull-quote{background:linear-gradient(120deg,var(--dp-green)22,var(--dp-lime)22); border-left:4px solid var(--dp-green); border-radius:0 16px 16px 0; padding:32px 36px; margin:20px 0 30px;}
-.pull-quote p{font-family:'Poppins',sans-serif; font-size:20px; font-weight:500; color:var(--ink); line-height:1.4; margin:0; max-width:640px;}
+.pull-quote p{font-family:'Poppins',sans-serif; font-size:20px; font-weight:500; color:var(--teal); line-height:1.4; margin:0; max-width:640px;}
 
 /* ---- callout with attribution ---- */
 .quote-block{background:var(--paper-alt); border-radius:16px; padding:28px 30px; margin-top:16px;}
-.quote-block p{font-style:italic; font-size:15px; margin-bottom:0;}
+.quote-block p{font-style:italic; font-size:15px; margin-bottom:0; color:var(--teal);}
 
 /* ---- swatches ---- */
 .swatch-row{display:flex; gap:14px; margin-top:16px; flex-wrap:wrap;}
@@ -109,7 +138,7 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .flow-list{margin-top:20px;}
 .flow-step{display:grid; grid-template-columns:180px 1fr; gap:20px; align-items:center; padding:18px 0; border-bottom:1px solid var(--line);}
 .flow-step:last-child{border-bottom:none;}
-.flow-label{font-family:'Poppins',sans-serif; font-size:14px; font-weight:600; color:var(--ink);}
+.flow-label{font-family:'Poppins',sans-serif; font-size:14px; font-weight:600; color:var(--teal);}
 .flow-screens{display:flex; gap:12px;}
 .flow-screen{flex:1; background:var(--paper-alt); border:2px dashed var(--line); border-radius:10px; height:70px; display:flex; align-items:center; justify-content:center; color:var(--graphite); font-size:11px; font-weight:600; text-align:center; padding:8px;}
 
@@ -122,7 +151,7 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .key-list{list-style:none; margin-top:16px;}
 .key-list li{display:flex; gap:10px; padding:10px 0; font-size:14.5px; color:var(--ink-soft); border-bottom:1px solid var(--line);}
 .key-list li:last-child{border-bottom:none;}
-.key-list li::before{content:'✓'; color:var(--ink); font-weight:700; flex-shrink:0;}
+.key-list li::before{content:'✓'; color:var(--teal); font-weight:700; flex-shrink:0;}
 
 /* ---- subproject split ---- */
 .subproject{border:1px solid var(--line); border-radius:18px; padding:28px 30px; margin-top:20px;}
@@ -190,11 +219,11 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 <body>
 
 <nav>
-  <a href="/#work" class="back-link">
+  <a href="../#work" class="back-link">
     <svg viewBox="0 0 100 100" fill="none"><path d="M75 50 H30 M50 25 L25 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
     All work
   </a>
-  <a href="/" class="nav-mark" aria-label="Back to home">
+  <a href="../" class="nav-mark" aria-label="Back to home">
     <svg width="105" height="23" viewBox="150 95 465 115" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="navLogoGradDP" x1="0" y1="73.98" x2="0" y2="314.82" gradientUnits="userSpaceOnUse">
@@ -439,7 +468,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   </div>
 </div>
 
-<a href="/wave-case-study/" class="next-project">
+<a href="../wave-case-study/" class="next-project">
   <div><div class="label">Next case file</div><h3>WAVE</h3></div>
   <div class="next-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
 </a>
