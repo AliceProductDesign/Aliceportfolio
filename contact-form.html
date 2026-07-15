@@ -13,12 +13,14 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif; min-height:100vh; display:flex; flex-direction:column;}
+a{color:#F2665A; text-decoration:none; transition:color .2s ease;}
+a:hover{color:#33454A;}
+
 
 nav{display:flex; justify-content:space-between; align-items:center; padding:22px 48px;}
 .nav-mark{display:inline-flex; font-family:'Poppins',sans-serif; font-weight:700; font-size:22px; color:var(--ink); letter-spacing:-0.01em; text-decoration:none;}
-.back-link{display:flex; align-items:center; gap:8px; font-weight:600; font-size:14px; color:var(--ink-soft); text-decoration:none;}
-.back-link:hover{color:var(--coral);}
-.back-link svg{width:16px; height:16px;}
+.back-link{display:inline-flex; align-items:center; gap:6px; font-weight:600; font-size:14px;}
+.back-link svg{width:16px; height:16px; flex-shrink:0;}
 
 main{flex:1; display:flex; align-items:center; justify-content:center; padding:40px 24px 80px;}
 .form-wrap{max-width:560px; width:100%;}

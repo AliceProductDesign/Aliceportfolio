@@ -14,6 +14,8 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif; overflow-x:hidden;}
+a{color:#F2665A; text-decoration:none; transition:color .2s ease;}
+a:hover{color:#33454A;}
 @media (prefers-reduced-motion: reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}}
 
 
@@ -37,8 +39,9 @@ h1 .highlight{color:var(--amber);}
 .btn{font-weight:600; font-size:14px; padding:14px 26px; border-radius:100px; text-decoration:none; transition:all .25s; display:inline-flex; align-items:center; gap:8px; border:none; cursor:pointer;}
 .btn.filled{background:var(--coral); color:#fff;}
 .btn.filled:hover{background:var(--ink); transform:translateY(-2px);}
-.btn.outline{border:2px solid var(--ink); color:var(--ink); background:none;}
-.btn.outline:hover{border-color:var(--coral); color:var(--coral); transform:translateY(-2px);}
+.btn.outline{border:1.5px solid #F2665A; background:rgba(242,102,90,0.1); color:#F2665A;}
+.btn.outline:hover{background:rgba(242,102,90,0.35); color:#F2665A; border-color:#F2665A; transform:translateY(-2px);}
+.btn.outline:active{background:#F2665A; border-color:#F2665A; color:#fff;}
 .btn-label-short{display:none;}
 
 .fan-reveal{position:absolute; inset:0; opacity:0; pointer-events:none; transition:opacity .6s ease .1s; padding:0 80px; display:flex; align-items:center; justify-content:center;}
@@ -65,8 +68,8 @@ h1 .highlight{color:var(--amber);}
 .footer-card{display:flex; justify-content:space-between; align-items:center; max-width:920px; width:100%; gap:40px;}
 .footer-headline{font-family:'Poppins',sans-serif; font-size:clamp(24px,3vw,34px); font-weight:600; max-width:420px; line-height:1.25;}
 .footer-links{display:flex; flex-direction:column; gap:12px; align-items:center;}
-.footer-links a{display:flex; align-items:center; gap:10px; font-weight:600; font-size:14px; color:var(--ink); text-decoration:none; padding:10px 18px; border-radius:100px; background:var(--paper-alt); transition:all .25s;}
-.footer-links a:hover{background:var(--coral); color:#fff;}
+.footer-links a{display:flex; align-items:center; gap:10px; font-weight:600; font-size:14px; color:var(--coral); text-decoration:none; padding:10px 18px; border-radius:100px; background:var(--paper-alt); transition:all .25s;}
+.footer-links a:hover{background:var(--ink); color:#fff;}
 .footer-links svg{width:16px; height:16px;}
 
 .process-card{max-width:920px; width:100%;}
@@ -93,7 +96,7 @@ h1 .highlight{color:var(--amber);}
 
 .card-preview{height:310px; background:linear-gradient(135deg,var(--paper-alt),#fff); border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--graphite); font-size:11px; font-weight:600; flex-shrink:0;}
 .card-body{padding:18px 20px; display:flex; flex-direction:column; flex-grow:1; justify-content:space-between;}
-.fan-card .tag{display:inline-flex; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.03em; padding:4px 9px; border-radius:100px; width:fit-content;}
+.fan-card .tag{display:inline-flex; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.03em; padding:2.5px 7.5px; border-radius:100px; width:fit-content; background:#F5A94A22; border:1.5px solid #C97A1F; color:#C97A1F;}
 .fan-card h3{font-family:'Poppins',sans-serif; font-size:19px; font-weight:600; margin-top:10px;}
 .fan-card p{font-size:11.5px; color:var(--ink-soft); line-height:1.5; margin-top:6px;}
 .fan-card .goto{font-size:12px; font-weight:600; color:var(--ink); display:flex; align-items:center; gap:5px; margin-top:12px; transition:color .3s ease;}
@@ -284,12 +287,12 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
 
     <div class="fan-reveal" id="work">
       <div class="fan-stage" id="fanStage">
-        <a href="sifted-case-study.html" class="fan-card c1" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-sifted.png" alt="Sifted preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag" style="background:#F58D4733; color:var(--ink);">AI Concept</span><h3>Sifted</h3><p>Personal AI nutrition concept.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
-        <a href="diapulse-case-study.html" class="fan-card c2" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-diapulse.png" alt="Diapulse preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag" style="background:#F58D4733; color:var(--ink);">Corporate / Clinical</span><h3>Diapulse</h3><p>Legacy medical device rebrand.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
-        <a href="tirivelo-case-study.html" class="fan-card c3" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-tirivelo.png" alt="TiriVelo preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag" style="background:#F58D4733; color:var(--ink);">Marketplace</span><h3>TiriVelo</h3><p>Pet-care marketplace flows.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
-        <a href="rapimd-case-study.html" class="fan-card c4" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-rapidmd.png" alt="RapiMD preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag" style="background:#F58D4733; color:var(--ink);">Healthcare Booking</span><h3>RapiMD</h3><p>Provider booking architecture.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
-        <a href="wave-case-study.html" class="fan-card c5" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-wave.png" alt="WAVE preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag" style="background:#F58D4733; color:var(--ink);">Medical Device</span><h3>WAVE</h3><p>Companion app and FDA labeling.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
-        <a href="bergen-county-case-study.html" class="fan-card c6" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-bergencountyportal.png" alt="Bergen County preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag" style="background:#F58D4733; color:var(--ink);">Civic Tech</span><h3>Bergen County</h3><p>Municipal permit portal.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
+        <a href="sifted-case-study.html" class="fan-card c1" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-sifted.png" alt="Sifted preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag">AI Concept</span><h3>Sifted</h3><p>Personal AI nutrition concept.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
+        <a href="diapulse-case-study.html" class="fan-card c2" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-diapulse.png" alt="Diapulse preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag">Corporate / Clinical</span><h3>Diapulse</h3><p>Legacy medical device rebrand.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
+        <a href="tirivelo-case-study.html" class="fan-card c3" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-tirivelo.png" alt="TiriVelo preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag">Marketplace</span><h3>TiriVelo</h3><p>Pet-care marketplace flows.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
+        <a href="rapimd-case-study.html" class="fan-card c4" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-rapidmd.png" alt="RapiMD preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag">Healthcare Booking</span><h3>RapiMD</h3><p>Provider booking architecture.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
+        <a href="wave-case-study.html" class="fan-card c5" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-wave.png" alt="WAVE preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag">Medical Device</span><h3>WAVE</h3><p>Companion app and FDA labeling.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
+        <a href="bergen-county-case-study.html" class="fan-card c6" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-bergencountyportal.png" alt="Bergen County preview" style="width:100%; height:100%; object-fit:cover;"></div><div class="card-body"><div><span class="tag">Civic Tech</span><h3>Bergen County</h3><p>Municipal permit portal.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
       </div>
       <div class="dots" id="dots">
         <div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
