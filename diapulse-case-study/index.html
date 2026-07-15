@@ -62,7 +62,7 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .tab-nav-anchor{position:relative;}
 .tab-nav-wrap{position:relative;}
 .tab-nav-sentinel{height:1px;width:100%;pointer-events:none;visibility:hidden;}
-.tab-nav-spacer{height:0;flex-shrink:0;}
+.tab-nav-spacer{height:0;flex-shrink:0;transition:height .25s ease;}
 .tab-nav{position:relative; z-index:150; display:flex; justify-content:flex-start; max-width:1240px; margin:0 auto; padding:16px 48px 0; background:transparent; overflow-x:auto; transition:background .25s ease, padding .25s ease, border-color .25s ease, box-shadow .25s ease, max-width .25s ease;}
 .tab-track{display:inline-flex; gap:4px; padding:5px; background:rgba(242,102,90,0.1); border:1.5px solid #F2665A; border-radius:100px; flex-shrink:0; transition:background .25s ease, border .25s ease, border-radius .25s ease, padding .25s ease, box-shadow .25s ease;}
 .tab-btn{font-family:'Inter',sans-serif; font-weight:600; font-size:13.5px; color:#F2665A; background:transparent; border:none; padding:10px 18px; border-radius:100px; cursor:pointer; transition:background-color .2s ease, color .2s ease; white-space:nowrap;}
@@ -82,9 +82,9 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
   .tab-btn{color:var(--coral);}
   .tab-btn:active:not(.active){background:rgba(242,102,90,0.22); color:var(--coral);}
   .tab-btn.progress-tab:active{color:#fff !important; background:var(--coral);}
-  .tab-nav-wrap.is-sticky{position:fixed; top:65px; left:0; right:0; width:100%; z-index:150; padding:14px 16px 0; box-sizing:border-box;}
+  .tab-nav-wrap.is-sticky{position:fixed; top:65px; left:0; right:0; width:100%; z-index:150; padding:14px 16px 0; box-sizing:border-box; background:#FBD4D4; box-shadow:0 8px 16px -10px #33454A33; transition:box-shadow .25s ease, background .25s ease;}
   .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:auto; padding:0; background:transparent; overflow-x:auto; justify-content:center;}
-  .tab-nav-wrap.is-sticky .tab-track{width:auto; display:inline-flex; justify-content:flex-start; background:rgba(242,102,90,0.1); box-shadow:none;}
+  .tab-nav-wrap.is-sticky .tab-track{width:auto; display:inline-flex; justify-content:flex-start; background:#FBD4D4; box-shadow:none;}
 }
 
 .tab-panel{display:none; max-width:1240px; margin:0 auto; padding:44px 48px 90px; animation:fadeIn .35s ease;}
@@ -520,17 +520,24 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
     }
   }
 
-  const observer = new IntersectionObserver(([entry])=>{
-    setSticky(!entry.isIntersecting);
-  }, { root:null, rootMargin:`-${stickTop}px 0px 0px 0px`, threshold:0 });
+  function updateSticky(){
+    setSticky(sentinel.getBoundingClientRect().top < stickTop);
+  }
+
+  const observer = new IntersectionObserver(()=>{
+    updateSticky();
+  }, { root:null, threshold:[0] });
   observer.observe(sentinel);
+  window.addEventListener('scroll', updateSticky, {passive:true});
 
   window.addEventListener('resize', ()=>{
     if(isStuck){
       cachedHeight = tabWrap.offsetHeight;
       spacer.style.height = cachedHeight + 'px';
     }
+    updateSticky();
   });
+  updateSticky();
 })();
 const backToTop = document.getElementById('backToTop');
 window.addEventListener('scroll', ()=>{
