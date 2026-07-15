@@ -4,7 +4,7 @@
 <script>if(/\/index\.html$/.test(location.pathname))location.replace(location.pathname.replace(/index\.html$/,"")+location.search+location.hash);</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RapiMD — Case Study — Alice Curiel</title>
+<title>RapiMD, Case Study, Alice Curiel</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
@@ -16,20 +16,14 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif;}
 /* ── TEAL ACCENT AUDIT (rapimd-case-study) ───────────────────────
-   CHANGED → var(--teal): h1–h4, .section-eyebrow, .gap-statement,
-             .pull-quote p, .problem-card h4/.p-label,
-             .persona-detail li::before
-   LEFT:    .stat b (amber), .persona-quote-full (#DCE3EE on dark panel),
-            .closing-mark .wordmark (rapi-navy), .meta-note/.gallery-caption
-            (graphite/ink-soft), .closing-mark .tagline (graphite),
-            coral nav/CTA/back-to-top SVGs
+   CHANGED → var(--teal): h1–h4, .section-eyebrow, .gap-statement, .pull-quote p, .problem-card h4/.p-label, .persona-detail li::before
+   LEFT:    .stat b (amber), .persona-quote-full (#DCE3EE on dark panel), .closing-mark .wordmark (rapi-navy), .meta-note/.gallery-caption
+            (graphite/ink-soft), .closing-mark .tagline (graphite), coral nav/CTA/back-to-top SVGs
    ─────────────────────────────────────────────────────────────── */
 
 /* ── CORAL INTERACTIVE AUDIT (rapimd-case-study) ─────────────────
-   CHANGED → var(--coral): .acc-head labels, .acc-head h4, .acc-head .acc-num,
-             .acc-icon plus/minus (currentColor); hover → var(--ink)
-   LEFT:    .tab-btn, .back-link, .outcome-cta, .next-project/.next-arrow,
-            .back-to-top (already coral)
+   CHANGED → var(--coral): .acc-head labels, .acc-head h4, .acc-head .acc-num, .acc-icon plus/minus (currentColor); hover → var(--ink)
+   LEFT:    .tab-btn, .back-link, .outcome-cta, .next-project/.next-arrow, .back-to-top (already coral)
    ─────────────────────────────────────────────────────────────── */
 
 h1,h2,h3,h4{color:var(--teal);}
@@ -73,7 +67,7 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
   .tab-nav-wrap.is-sticky .tab-track{width:100%; display:flex; justify-content:center; gap:8px; box-sizing:border-box; background:#FBD4D4; box-shadow:0 8px 20px -10px #33454A33;}
 }
 @media (max-width:767px){
-  /* Mobile sticky — JS is-sticky + fixed bar; pill width unchanged */
+  /* Mobile sticky, JS is-sticky + fixed bar; pill width unchanged */
   .tab-btn{color:var(--coral);}
   .tab-btn:active:not(.active){background:rgba(242,102,90,0.22); color:var(--coral);}
   .tab-btn.progress-tab:active{color:#fff !important; background:var(--coral);}
@@ -103,7 +97,7 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .acc-head{display:flex; justify-content:space-between; align-items:center; padding:22px 4px; cursor:pointer; background:none; border:none; width:100%; text-align:left;}
 .acc-head h4{font-family:'Poppins',sans-serif; font-size:17px; font-weight:600; display:flex; align-items:center; gap:12px;}
 
-/* CORAL: accordion expand toggles (clickable — overrides teal on h4/acc-num/icon) */
+/* CORAL: accordion expand toggles (clickable, overrides teal on h4/acc-num/icon) */
 .acc-head{color:var(--coral); transition:color .2s ease;}
 .acc-head:hover{color:var(--ink);}
 .acc-head h4{color:inherit;}
@@ -162,7 +156,7 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .persona-detail p{font-size:13.5px; margin-bottom:10px;}
 .persona-detail ul{list-style:none; margin-bottom:6px;}
 .persona-detail li{font-size:13.5px; color:var(--ink-soft); padding:4px 0; padding-left:16px; position:relative;}
-.persona-detail li::before{content:'—'; position:absolute; left:0; color:var(--teal);}
+.persona-detail li::before{content:'·'; position:absolute; left:0; color:var(--teal);}
 
 /* ---- PROBLEM CARDS ---- */
 .problem-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:20px;}
@@ -337,7 +331,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       </div>
       <div class="persona-detail">
         <div class="persona-col-title">About</div>
-        <p>Nina hasn't had insurance in several years. Every medical visit is a financial decision — she saves up calls to compare prices, and delays or avoids care if she can't get a clear number upfront. She's been burned by surprise fees and vague "starting at" pricing. She researches more than she books.</p>
+        <p>Nina hasn't had insurance in several years. Every medical visit is a financial decision, she saves up calls to compare prices, and delays or avoids care if she can't get a clear number upfront. She's been burned by surprise fees and vague "starting at" pricing. She researches more than she books.</p>
         <div class="persona-col-title">Goals &amp; Motivations</div>
         <ul><li>Know the exact total cost before committing</li><li>Avoid surprise bills or fees after appointments</li><li>Find one place she can trust for pricing info</li></ul>
         <div class="persona-col-title">Pain Points</div>
@@ -375,7 +369,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <div class="p-label">Background</div>
         <p>Patients seeking discounted care often question legitimacy, quality, and transparency when pricing deviates from standard rates.</p>
         <div class="p-label">Problem</div>
-        <p>Patients need reassurance that discounted care is still credible — there's currently no standardized, accessible way to communicate provider credibility, pricing transparency, and booking certainty.</p>
+        <p>Patients need reassurance that discounted care is still credible, there's currently no standardized, accessible way to communicate provider credibility, pricing transparency, and booking certainty.</p>
         <div class="p-label">Business Impact</div>
         <p>Without trust signals and clarity, users abandon bookings, reducing conversion rates and limiting platform growth.</p>
       </div>
@@ -389,7 +383,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="section-eyebrow">Research</div>
     <h2>5 interviews. 4 sharp findings. 1 insight that shaped every product decision.</h2>
     <div class="finding-list">
-      <div class="finding-item"><div class="finding-dot"></div><div><b>Pricing unpredictable</b><span>Costs unknown until after the appointment — sometimes weeks after.</span></div></div>
+      <div class="finding-item"><div class="finding-dot"></div><div><b>Pricing unpredictable</b><span>Costs unknown until after the appointment, sometimes weeks after.</span></div></div>
       <div class="finding-item"><div class="finding-dot"></div><div><b>Hidden charges</b><span>Unexpected fees appeared regularly after visits, compounding distrust.</span></div></div>
       <div class="finding-item"><div class="finding-dot"></div><div><b>Same-day = phone tag</b><span>Finding same-day availability required calling multiple offices manually.</span></div></div>
       <div class="finding-item"><div class="finding-dot"></div><div><b>Systemic trust erosion</b><span>Users weren't uninformed. Experience had taught them that engaging cost more than they could predict.</span></div></div>
@@ -405,24 +399,24 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="section-eyebrow">Delayed Authentication</div>
     <h2>The most important product decision.</h2>
     <p>Standard healthcare apps put account creation before value. For uninsured patients already primed to distrust systems that take without giving, this is a trust-ending moment.</p>
-    <p>RapiMD flipped the sequence entirely. Authentication was delayed until after users had selected a provider and an appointment slot — after they'd seen the flat fee, confirmed availability, and decided they wanted to proceed.</p>
+    <p>RapiMD flipped the sequence entirely. Authentication was delayed until after users had selected a provider and an appointment slot, after they'd seen the flat fee, confirmed availability, and decided they wanted to proceed.</p>
     <div class="gallery-force-2col">
       <div class="gallery-item" style="border:none; padding:0; background:none;"><img src="/assets/rapidmd/account-needed-to-continue-rapimd.png" alt="Slot-hold countdown screen" style="width:68%; height:auto; display:block; margin:0 auto; border-radius:16px;"></div>
       <div class="gallery-item" style="border:none; padding:0; background:none;"><img src="/assets/rapidmd/account-creation-screen-rapidmd.png" alt="Account creation screen" style="width:68%; height:auto; display:block; margin:0 auto; border-radius:16px;"></div>
     </div>
     <p class="gallery-caption">To prevent slot abandonment, the app reassured users their selected appointment was being held while a streamlined account creation flow was required to confirm and lock in the booking.</p>
-    <div class="gallery-item wide" style="margin-top:20px; border:none; padding:0; background:none;"><img src="/assets/rapidmd/rapi-md-fuser-flow-browsing.png" alt="User flow — Browsing to Booking" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
+    <div class="gallery-item wide" style="margin-top:20px; border:none; padding:0; background:none;"><img src="/assets/rapidmd/rapi-md-fuser-flow-browsing.png" alt="User flow, Browsing to Booking" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
   </div>
 
   <div class="block">
     <div class="section-eyebrow">Logo &amp; Brand Identity Rationale</div>
     <h2>The rapiMD logo was designed to communicate the platform's core promise.</h2>
-    <div class="pull-quote"><p>Fast, confirmed, affordable care — in a single mark.</p></div>
-    <p>The logo uses a checkmark over the letter "D," signaling speed and medical completion: in healthcare, a checkmark means done, confirmed, safe. The lowercase "rapi" keeps the wordmark approachable and consumer-friendly, while the uppercase "MD" anchors it in clinical credibility — the same tension the product itself navigates.</p>
+    <div class="pull-quote"><p>Fast, confirmed, affordable care, in a single mark.</p></div>
+    <p>The logo uses a checkmark over the letter "D," signaling speed and medical completion: in healthcare, a checkmark means done, confirmed, safe. The lowercase "rapi" keeps the wordmark approachable and consumer-friendly, while the uppercase "MD" anchors it in clinical credibility, the same tension the product itself navigates.</p>
     <p>Deep navy and red were chosen deliberately: navy builds institutional trust, while red appears exclusively on the checkmark accent and key CTAs, training the eye to pay attention when it matters.</p>
-    <p>The Gabarito and Inconsolata type pairing reinforces the transparency promise at a subconscious level — Inconsolata's monospace precision feels exact and receipt-like, aligned with a product whose entire value proposition is showing users exactly what they will pay.</p>
+    <p>The Gabarito and Inconsolata type pairing reinforces the transparency promise at a subconscious level, Inconsolata's monospace precision feels exact and receipt-like, aligned with a product whose entire value proposition is showing users exactly what they will pay.</p>
     <div class="gallery">
-      <div class="gallery-item wide" style="border:none; padding:0; background:none;"><img src="/assets/rapidmd/RAPIMD-BRAND-TILE.png" alt="RapiMD brand tile — logo, typography, and color palette" style="width:100%; height:100%; object-fit:cover; border-radius:16px;"></div>
+      <div class="gallery-item wide" style="border:none; padding:0; background:none;"><img src="/assets/rapidmd/RAPIMD-BRAND-TILE.png" alt="RapiMD brand tile, logo, typography, and color palette" style="width:100%; height:100%; object-fit:cover; border-radius:16px;"></div>
     </div>
   </div>
 
@@ -479,7 +473,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="accordion">
       <div class="acc-item open">
         <button class="acc-head"><h4><span class="acc-num">1</span>Pricing breakdown misread as additional charges</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-        <div class="acc-body"><div class="acc-body-inner"><p>Participants were interpreting itemized breakdowns as fees stacked on top of the flat fee — the exact opposite of what the design intended. Fix: a dominant "Your total: $85 flat" summary line above the breakdown. In follow-up testing, the misreading disappeared.</p></div></div>
+        <div class="acc-body"><div class="acc-body-inner"><p>Participants were interpreting itemized breakdowns as fees stacked on top of the flat fee, the exact opposite of what the design intended. Fix: a dominant "Your total: $85 flat" summary line above the breakdown. In follow-up testing, the misreading disappeared.</p></div></div>
       </div>
       <div class="acc-item">
         <button class="acc-head"><h4><span class="acc-num">2</span>Location data appeared without context</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
@@ -495,7 +489,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         
         <div class="section-eyebrow">What This Project Taught Me About Trust</div>
         <h2>Trust is not a visual property.</h2>
-        <p>You cannot design trust with just a color palette or reassuring headlines. Trust is built through clear expectations, explicit consent, transparent system behavior, and predictable outcomes — through what the product does, not how it looks.</p>
+        <p>You cannot design trust with just a color palette or reassuring headlines. Trust is built through clear expectations, explicit consent, transparent system behavior, and predictable outcomes through what the product does, not how it looks.</p>
         <p>For uninsured patients who have been systemically failed by healthcare, uncertainty itself is a barrier to care. Every interaction pattern that introduced ambiguity was a product failure with real consequences for real people.</p>
       </div>
     </div>
@@ -519,7 +513,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="reflect-grid">
       <div class="reflect-card">
         <h4>What I'd Do Differently</h4>
-        <p>With more time, I would run a second testing round specifically on the revised pricing hierarchy to confirm the fix held across different literacy levels. I'd also have pushed the billing accuracy rating system further — it's the feature most likely to drive long-term platform trust and deserved more design depth in V1.</p>
+        <p>With more time, I would run a second testing round specifically on the revised pricing hierarchy to confirm the fix held across different literacy levels. I'd also have pushed the billing accuracy rating system further, it's the feature most likely to drive long-term platform trust and deserved more design depth in V1.</p>
       </div>
       <div class="reflect-card">
         <h4>What This Project Proved</h4>
@@ -541,7 +535,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
 <footer>
   <div class="foot-row">
-    <span>© Alice Curiel — hello@aliceportfolio.com</span>
+    <span>© Alice Curiel, hello@aliceportfolio.com</span>
     <a href="https://www.linkedin.com/in/alice-curiel-800817146/" target="_blank" rel="noopener" class="social" aria-label="LinkedIn">
       <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V9.75H5.67v8.59h2.67zM7 8.63a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.34 9.71v-4.71c0-2.52-1.35-3.69-3.15-3.69a2.72 2.72 0 0 0-2.46 1.35v-1.16H10.06c.04.75 0 8.21 0 8.21h2.67v-4.59c0-.25.02-.49.09-.67.2-.49.65-1 1.4-1 1 0 1.4.75 1.4 1.86v4.4h2.72z"/></svg>
     </a>

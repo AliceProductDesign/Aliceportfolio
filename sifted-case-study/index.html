@@ -4,7 +4,7 @@
 <script>if(/\/index\.html$/.test(location.pathname))location.replace(location.pathname.replace(/index\.html$/,"")+location.search+location.hash);</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sifted — Case Study — Alice Curiel</title>
+<title>Sifted, Case Study, Alice Curiel</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
@@ -16,19 +16,13 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif;}
 /* ── TEAL ACCENT AUDIT (sifted-case-study) ───────────────────────
-   CHANGED → var(--teal): h1–h4, .section-eyebrow, .gap-statement,
-             .pull-quote p, .persona-quote, .principle b,
-             .feature-icon svg (static labels — not accordion toggles)
-   LEFT:    .stat b (amber), inline h3 var(--sifted-navy), .meta-note (graphite),
-            .priority-tag pills (amber-tinted), inline body p styles (ink),
-            coral nav/CTA/back-to-top SVGs
+   CHANGED → var(--teal): h1–h4, .section-eyebrow, .gap-statement, .pull-quote p, .persona-quote, .principle b, .feature-icon svg (static labels, not accordion toggles)
+   LEFT:    .stat b (amber), inline h3 var(--sifted-navy), .meta-note (graphite), .priority-tag pills (amber-tinted), inline body p styles (ink), coral nav/CTA/back-to-top SVGs
    ─────────────────────────────────────────────────────────────── */
 
 /* ── CORAL INTERACTIVE AUDIT (sifted-case-study) ─────────────────
-   CHANGED → var(--coral): .acc-head labels, .acc-head h4, .acc-head .acc-num,
-             .acc-icon plus/minus (currentColor); hover → var(--ink)
-   LEFT:    .tab-btn, .back-link, .outcome-cta, .next-project/.next-arrow,
-            .back-to-top (already coral); .priority-tag pills inside acc heads
+   CHANGED → var(--coral): .acc-head labels, .acc-head h4, .acc-head .acc-num, .acc-icon plus/minus (currentColor); hover → var(--ink)
+   LEFT:    .tab-btn, .back-link, .outcome-cta, .next-project/.next-arrow, .back-to-top (already coral); .priority-tag pills inside acc heads
    ─────────────────────────────────────────────────────────────── */
 
 h1,h2,h3,h4{color:var(--teal);}
@@ -72,7 +66,7 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
   .tab-nav-wrap.is-sticky .tab-track{width:100%; display:flex; justify-content:center; gap:8px; box-sizing:border-box; background:#FBD4D4; box-shadow:0 8px 20px -10px #33454A33;}
 }
 @media (max-width:767px){
-  /* Mobile sticky — JS is-sticky + fixed bar; pill width unchanged */
+  /* Mobile sticky, JS is-sticky + fixed bar; pill width unchanged */
   .tab-btn{color:var(--coral);}
   .tab-btn:active:not(.active){background:rgba(242,102,90,0.22); color:var(--coral);}
   .tab-btn.progress-tab:active{color:#fff !important; background:var(--coral);}
@@ -106,7 +100,7 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .acc-head{display:flex; justify-content:space-between; align-items:center; padding:22px 4px; cursor:pointer; background:none; border:none; width:100%; text-align:left;}
 .acc-head h4{font-family:'Poppins',sans-serif; font-size:17px; font-weight:600; display:flex; align-items:center; gap:12px;}
 
-/* CORAL: accordion expand toggles (clickable — overrides teal on h4/acc-num/icon) */
+/* CORAL: accordion expand toggles (clickable, overrides teal on h4/acc-num/icon) */
 .acc-head{color:var(--coral); transition:color .2s ease;}
 .acc-head:hover{color:var(--ink);}
 .acc-head h4{color:inherit;}
@@ -274,17 +268,16 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <div class="meta-item"><span>Timeline</span><b>6 Weeks</b></div>
         <div class="meta-item"><span>Year</span><b>2025</b></div>
       </div>
-      <p class="meta-note">Self-directed academic project, currently in active development — the design work documented here is the product foundation.</p>
 
       <div class="block" style="margin-top:28px;">
         <div class="section-eyebrow">The Challenge</div>
-        <p>Health-conscious shoppers — people managing keto, paleo, anti-inflammatory, diabetic, or PCOS diets — are highly motivated but profoundly underserved. Nutrition labels are designed to comply, not communicate. Additive names are deliberately obscure.</p>
-        <p>Existing scanner apps either oversimplify into vague grades or overwhelm with raw data. Every tool on the market treats all users the same — ignoring that what's safe for one dietary profile can be inflammatory for another.</p>
+        <p>Health-conscious shoppers, people managing keto, paleo, anti-inflammatory, diabetic, or PCOS diets, are highly motivated but profoundly underserved. Nutrition labels are designed to comply, not communicate. Additive names are deliberately obscure.</p>
+        <p>Existing scanner apps either oversimplify into vague grades or overwhelm with raw data. Every tool on the market treats all users the same, ignoring that what's safe for one dietary profile can be inflammatory for another.</p>
       </div>
 
       <div class="block" style="margin-bottom:0;">
         <div class="section-eyebrow">The Solution</div>
-        <p>An AI-powered mobile app that scans any food product and instantly flags hidden sugars, inflammatory ingredients, and misleading health claims, then explains why — in plain language, personalized to the user's specific dietary profile.</p>
+        <p>An AI-powered mobile app that scans any food product and instantly flags hidden sugars, inflammatory ingredients, and misleading health claims, then explains why, in plain language, personalized to the user's specific dietary profile.</p>
         <p style="margin-bottom:0;">Built with a custom illustration system, an AI nutrition assistant, pantry and recipe integration, and a judgment-free design language built from the ground up.</p>
       </div>
     </div>
@@ -333,7 +326,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="section-eyebrow">Research</div>
     <h2>5 qualitative interviews. 3 sharp findings.</h2>
     <div class="stats-band">
-      <div class="stat"><b>100%</b><span>of participants unaware of hidden sugar aliases — maltodextrin, tapioca starch — none recognized as sugar.</span></div>
+      <div class="stat"><b>100%</b><span>of participants unaware of hidden sugar aliases, maltodextrin, tapioca starch, none recognized as sugar.</span></div>
       <div class="stat"><b>4 of 5</b><span>felt actively misled by food packaging. "Organic," "natural," "low fat" claims obscured high sugar or inflammatory content.</span></div>
       <div class="stat"><b>3+ tools</b><span>Every participant was using multiple tools simultaneously, none connected. The fragmentation was the problem.</span></div>
     </div>
@@ -352,8 +345,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   <div class="block">
     <h3>Who I designed for</h3>
     <div class="persona-grid">
-      <img src="/assets/sifted/persona-sifted-1.png" alt="Michael — Overwhelmed Gym-Goer persona" style="width:100%; height:auto; display:block; border-radius:16px;">
-      <img src="/assets/sifted/persona-sifted-2.png" alt="Maya — Overworked Professional persona" style="width:100%; height:auto; display:block; border-radius:16px;">
+      <img src="/assets/sifted/persona-sifted-1.png" alt="Michael, Overwhelmed Gym-Goer persona" style="width:100%; height:auto; display:block; border-radius:16px;">
+      <img src="/assets/sifted/persona-sifted-2.png" alt="Maya, Overworked Professional persona" style="width:100%; height:auto; display:block; border-radius:16px;">
     </div>
   </div>
 
@@ -409,9 +402,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <h3>What the research told us to prioritize</h3>
     <div class="feature-grid" style="grid-template-columns:1fr 1fr;">
       <div class="feature-card" style="text-align:left;"><h4>Account Creation</h4><p>Registration, sign-in, and onboarding questionnaires so users get a personalized profile with access to saved searches and recipes.</p></div>
-      <div class="feature-card" style="text-align:left;"><h4>Barcode &amp; OCR Scanner</h4><p>A quick tool to detect unwanted ingredients from barcodes, ingredient lists, menus, or images — parsing recipes from links, screenshots, or typed input.</p></div>
+      <div class="feature-card" style="text-align:left;"><h4>Barcode &amp; OCR Scanner</h4><p>A quick tool to detect unwanted ingredients from barcodes, ingredient lists, menus, or images, parsing recipes from links, screenshots, or typed input.</p></div>
       <div class="feature-card" style="text-align:left;"><h4>Recommendation System</h4><p>Learns from user behavior and profile settings to suggest smarter swaps, common triggers, and safe go-to meals.</p></div>
-      <div class="feature-card" style="text-align:left;"><h4>Misleading Health Claims Detector</h4><p>Flags hidden sugars, high-carbs, seed oils, and inflammatory additives, and explains why — identifying deceptive labels like "low fat" or "organic."</p></div>
+      <div class="feature-card" style="text-align:left;"><h4>Misleading Health Claims Detector</h4><p>Flags hidden sugars, high-carbs, seed oils, and inflammatory additives, and explains why, identifying deceptive labels like "low fat" or "organic."</p></div>
     </div>
   </div>
 
@@ -429,8 +422,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="gallery-item wide" style="border:none; padding:0; background:none;"><img src="/assets/sifted/USERFLOW-all.png" alt="Onboarding and Scan Tool user flow" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
     </div>
     <div class="gallery" style="margin-top:18px;">
-      <div class="gallery-item" style="border:none; padding:0; background:none; display:flex; justify-content:center;"><img src="/assets/sifted/Chatroom.png" alt="AI chat screen — context-first response" style="width:65%; height:auto; display:block; border-radius:16px;"></div>
-      <div class="gallery-item" style="border:none; padding:0; background:none; display:flex; justify-content:center;"><img src="/assets/sifted/Scanner-screen-result-answer.png" alt="AI chat screen — flagged ingredient detail" style="width:65%; height:auto; display:block; border-radius:16px;"></div>
+      <div class="gallery-item" style="border:none; padding:0; background:none; display:flex; justify-content:center;"><img src="/assets/sifted/Chatroom.png" alt="AI chat screen, context-first response" style="width:65%; height:auto; display:block; border-radius:16px;"></div>
+      <div class="gallery-item" style="border:none; padding:0; background:none; display:flex; justify-content:center;"><img src="/assets/sifted/Scanner-screen-result-answer.png" alt="AI chat screen, flagged ingredient detail" style="width:65%; height:auto; display:block; border-radius:16px;"></div>
     </div>
   </div>
 
@@ -438,9 +431,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <h3>Wireframe exploration</h3>
     <p>Having defined task and user flows early, I explored different structural options at low-fidelity to test layout variations quickly and identify what best supported clarity and usability before adding visual polish.</p>
     <div class="wire-row">
-      <div class="wire-item"><div class="wire-frame" style="border:none; overflow:hidden; padding:0;"><img src="/assets/sifted/v-1-prototyping.png" alt="Ingredient Decoding V.1" style="width:100%; height:100%; object-fit:contain; object-position:center; border-radius:16px;"></div><div class="wire-label">Ingredient Decoding — V.1</div></div>
-      <div class="wire-item"><div class="wire-frame" style="border:none; overflow:hidden; padding:0;"><img src="/assets/sifted/v2-wireframe.png" alt="Ingredient Decoding V.2" style="width:100%; height:100%; object-fit:contain; object-position:center; border-radius:16px;"></div><div class="wire-label">Ingredient Decoding — V.2</div></div>
-      <div class="wire-item"><div class="wire-frame selected" style="overflow:hidden; padding:0;"><img src="/assets/sifted/v3-wireframe.png" alt="Ingredient Decoding V.3 selected" style="width:100%; height:100%; object-fit:contain; object-position:center; border-radius:16px;"></div><div class="wire-label selected">Ingredient Decoding — V.3 (selected)</div></div>
+      <div class="wire-item"><div class="wire-frame" style="border:none; overflow:hidden; padding:0;"><img src="/assets/sifted/v-1-prototyping.png" alt="Ingredient Decoding V.1" style="width:100%; height:100%; object-fit:contain; object-position:center; border-radius:16px;"></div><div class="wire-label">Ingredient Decoding, V.1</div></div>
+      <div class="wire-item"><div class="wire-frame" style="border:none; overflow:hidden; padding:0;"><img src="/assets/sifted/v2-wireframe.png" alt="Ingredient Decoding V.2" style="width:100%; height:100%; object-fit:contain; object-position:center; border-radius:16px;"></div><div class="wire-label">Ingredient Decoding, V.2</div></div>
+      <div class="wire-item"><div class="wire-frame selected" style="overflow:hidden; padding:0;"><img src="/assets/sifted/v3-wireframe.png" alt="Ingredient Decoding V.3 selected" style="width:100%; height:100%; object-fit:contain; object-position:center; border-radius:16px;"></div><div class="wire-label selected">Ingredient Decoding, V.3 (selected)</div></div>
     </div>
     <div class="two-col-block" style="grid-template-columns:1.3fr 0.7fr; padding:0; margin-top:80px;">
           <div style="display:flex; gap:14px;">
@@ -448,7 +441,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
           </div>
           <div>
             <h3 style="font-family:'Poppins',sans-serif; font-size:22px; color:var(--sifted-navy); margin-bottom:14px;">From Mid-Fidelity to Hi-Fidelity</h3>
-            <p style="font-weight:600; color:var(--ink); margin-top:0;">After selecting the most effective mid-fidelity layouts, I developed high-fidelity screens mapped directly to the core task flows — each step simple, logical, and aligned with how users actually accomplish their goals. Mid-fidelity served as the validation stage, confirming functionality before investing in visual branding.</p>
+            <p style="font-weight:600; color:var(--ink); margin-top:0;">After selecting the most effective mid-fidelity layouts, I developed high-fidelity screens mapped directly to the core task flows, each step simple, logical, and aligned with how users actually accomplish their goals. Mid-fidelity served as the validation stage, confirming functionality before investing in visual branding.</p>
           </div>
         </div>
   </div>
@@ -458,7 +451,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <h2>Building a Brand That Reflects the Mission</h2>
     <div class="two-col-block" style="grid-template-columns:0.7fr 1.3fr;">
       <div>
-        <p>Primary mint green for freshness without sterility. Deep navy for authority. Accent warning colors used exclusively for trust signals and critical flags — a consistent visual language that trains users to pay attention when it appears.</p>
+        <p>Primary mint green for freshness without sterility. Deep navy for authority. Accent warning colors used exclusively for trust signals and critical flags, a consistent visual language that trains users to pay attention when it appears.</p>
         <p>The bowl with a sifted powder cloud subtly suggests the act of sifting ingredients, mirroring the app's core function of scanning and clarifying foods.</p>
         <p style="margin-top:20px; font-weight:700; font-size:20.5px; color:var(--ink);">Mission statement: "Our goal is to bring clarity to food and make wellness a sustainable, daily habit."</p>
       </div>
@@ -492,11 +485,11 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="accordion">
       <div class="acc-item open">
         <button class="acc-head"><h4><span class="priority-tag high" style="margin:0;">High</span>&nbsp;Alert visibility</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-        <div class="acc-body"><div class="acc-body-inner"><p>The ingredient alert blended into the page — users missed it entirely, and those who noticed didn't realize it was clickable. Fix: increased visual weight, larger size, and a "Learn why" button that makes the alert explicitly actionable.</p></div></div>
+        <div class="acc-body"><div class="acc-body-inner"><p>The ingredient alert blended into the page, users missed it entirely, and those who noticed didn't realize it was clickable. Fix: increased visual weight, larger size, and a "Learn why" button that makes the alert explicitly actionable.</p></div></div>
       </div>
       <div class="acc-item">
         <button class="acc-head"><h4><span class="priority-tag high" style="margin:0;">High</span>&nbsp;Ingredients clarity</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-        <div class="acc-body"><div class="acc-body-inner"><p>Displaying the full ingredient list upfront overwhelmed users and buried what they actually needed. Fix: progressive disclosure — flagged ingredients surface first by default, with a "View All" option for full transparency.</p></div></div>
+        <div class="acc-body"><div class="acc-body-inner"><p>Displaying the full ingredient list upfront overwhelmed users and buried what they actually needed. Fix: progressive disclosure, flagged ingredients surface first by default, with a "View All" option for full transparency.</p></div></div>
       </div>
       <div class="acc-item">
         <button class="acc-head"><h4><span class="priority-tag medium" style="margin:0;">Medium</span>&nbsp;Scan discoverability</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
@@ -508,7 +501,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       </div>
       <div class="acc-item">
         <button class="acc-head"><h4><span class="priority-tag low" style="margin:0;">Low</span>&nbsp;Other enhancements</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-        <div class="acc-body"><div class="acc-body-inner"><p>Items like clickable info icons were documented for future iteration — deferred intentionally, since they had minimal impact on core tasks relative to the effort required.</p></div></div>
+        <div class="acc-body"><div class="acc-body-inner"><p>Items like clickable info icons were documented for future iteration, deferred intentionally, since they had minimal impact on core tasks relative to the effort required.</p></div></div>
       </div>
     </div>
     <div class="gallery-item wide" style="margin-top:20px; border:none; padding:0; background:none;"><img src="/assets/sifted/sifted-prototype-final.gif" alt="Sifted prototype walkthrough" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
@@ -543,7 +536,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
 <footer>
   <div class="foot-row">
-    <span>© Alice Curiel — hello@aliceportfolio.com</span>
+    <span>© Alice Curiel, hello@aliceportfolio.com</span>
     <a href="https://www.linkedin.com/in/alice-curiel-800817146/" target="_blank" rel="noopener" class="social" aria-label="LinkedIn">
       <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V9.75H5.67v8.59h2.67zM7 8.63a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.34 9.71v-4.71c0-2.52-1.35-3.69-3.15-3.69a2.72 2.72 0 0 0-2.46 1.35v-1.16H10.06c.04.75 0 8.21 0 8.21h2.67v-4.59c0-.25.02-.49.09-.67.2-.49.65-1 1.4-1 1 0 1.4.75 1.4 1.86v4.4h2.72z"/></svg>
     </a>
@@ -562,8 +555,7 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
     btn.classList.add('active');
     const activePanel = document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`);
     activePanel.classList.add('active');
-    // Target the panel itself (not sticky, so its position is always reliable),
-    // offset by the height of the fixed nav + tab bar (~130px combined).
+    // Target the panel itself (not sticky, so its position is always reliable), // offset by the height of the fixed nav + tab bar (~130px combined).
     const panelTop = activePanel.getBoundingClientRect().top + window.scrollY;
     window.scrollTo({top: panelTop - 130, behavior:'smooth'});
   });
