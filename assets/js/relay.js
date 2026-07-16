@@ -17,7 +17,7 @@
     if (document.getElementById('relay-styles')) return;
     var style = document.createElement('style');
     style.id = 'relay-styles';
-    style.textContent = '.relay-loader{position:fixed;inset:0;z-index:9999;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .5s ease,visibility .5s ease;}.relay-loader.is-hidden{opacity:0;visibility:hidden;pointer-events:none;}.relay-badge{border-radius:50%;background:var(--paper-alt);display:flex;align-items:center;justify-content:center;position:relative;transition:background .4s ease,transform .4s ease;}.relay-stage{position:relative;}.relay-stage svg{position:absolute;top:0;left:0;opacity:0;transform:scale(.85);transform-origin:center;transition:opacity .35s ease,transform .35s ease;}.relay-stage svg.is-active{opacity:1;transform:scale(1);}.relay-label{font-family:"Poppins",sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.04em;color:var(--ink-soft);text-transform:uppercase;display:flex;text-align:center;}.relay-dots span{animation:relay-blink 1.4s infinite;opacity:0;}.relay-dots span:nth-child(2){animation-delay:.2s;}.relay-dots span:nth-child(3){animation-delay:.4s;}@keyframes relay-blink{0%,80%,100%{opacity:0;}40%{opacity:1;}}.relay-image-wrap{position:relative;overflow:hidden;border-radius:16px;background:var(--paper-alt);}.relay-image-wrap img{position:relative;z-index:1;opacity:0;transition:opacity .4s ease;}.relay-image-wrap img.is-loaded{opacity:1;}.relay-image-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;z-index:2;transition:opacity .5s ease;padding:16px;}.relay-image-placeholder.is-hidden{opacity:0;pointer-events:none;}';
+    style.textContent = '.relay-loader{position:fixed;inset:0;z-index:9999;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .5s ease,visibility .5s ease;}.relay-loader.is-hidden{opacity:0;visibility:hidden;pointer-events:none;}.relay-badge{border-radius:50%;background:var(--paper-alt);display:flex;align-items:center;justify-content:center;position:relative;transition:background .4s ease,transform .4s ease;}.relay-stage{position:relative;}.relay-stage svg{position:absolute;top:0;left:0;opacity:0;transform:scale(.85);transform-origin:center;transition:opacity .35s ease,transform .35s ease;}.relay-stage svg.is-active{opacity:1;transform:scale(1);}.relay-label{font-family:"Poppins",sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.04em;color:var(--ink-soft);text-transform:uppercase;display:flex;text-align:center;}.relay-dots span{animation:relay-blink 1.4s infinite;opacity:0;}.relay-dots span:nth-child(2){animation-delay:.2s;}.relay-dots span:nth-child(3){animation-delay:.4s;}@keyframes relay-blink{0%,80%,100%{opacity:0;}40%{opacity:1;}}.relay-image-wrap{position:relative;overflow:hidden;border-radius:16px;background:var(--paper-alt);min-height:160px;}.relay-image-wrap img{position:relative;z-index:1;opacity:0;transition:opacity .4s ease;}.relay-image-wrap img.is-loaded{opacity:1;}.relay-image-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;z-index:2;transition:opacity .5s ease;padding:16px;}.relay-image-placeholder.is-hidden{opacity:0;pointer-events:none;}';
     document.head.appendChild(style);
   }
 
@@ -111,11 +111,11 @@
 
     var delay = opts.delay != null ? opts.delay : 200;
     var slowAfter = opts.slowAfter != null ? opts.slowAfter : 4000;
-    var aspect = opts.aspect || img.dataset.relayAspect || '16/9';
+    var aspect = opts.aspect || img.dataset.relayAspect || null;
 
     var wrap = document.createElement('div');
     wrap.className = 'relay-image-wrap';
-    wrap.style.aspectRatio = aspect;
+    if (aspect) { wrap.style.aspectRatio = aspect; }
     img.parentNode.insertBefore(wrap, img);
     wrap.appendChild(img);
 
@@ -161,6 +161,7 @@
         if (ctrl) ctrl.stop();
         if (state === 'loaded'){
           img.classList.add('is-loaded');
+          wrap.style.minHeight = '0';
           placeholder.classList.add('is-hidden');
           setTimeout(function(){ placeholder.remove(); }, 500);
         } else {
