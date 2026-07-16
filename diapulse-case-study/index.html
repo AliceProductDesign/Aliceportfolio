@@ -223,6 +223,15 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 </head>
 <body>
 
+<div id="relay-loader" class="relay-loader">
+  <div id="relay-badge" class="relay-badge">
+    <div id="relay-stage" class="relay-stage"></div>
+  </div>
+  <div class="relay-label">
+    <span id="relay-label-text">Loading</span><span id="relay-dots" class="relay-dots"></span>
+  </div>
+</div>
+
 <nav>
   <a href="../#work" class="back-link">
     <svg viewBox="0 0 100 100" fill="none"><path d="M75 50 H30 M50 25 L25 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -274,8 +283,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       </div>
       <p class="meta-note" style="max-width:none;">Active client engagement. The rebrand is fully deployed across all marketing materials and physical hardware. The clinical software UI is live in use in healthcare settings today. Work is ongoing, a full website redesign is currently in development.</p>
     </div>
-    <div class="hero-image">
-      <div class="placeholder-note">[Diapulse device hero, updated hardware with new pulse logo &amp; Treatment Setup UI]</div>
+    <div class="hero-image" style="border:none; padding:0; background:none; display:block; overflow:hidden; position:relative;">
+      <video src="/assets/diapulse/diapulse-hero.mp4" autoplay muted loop playsinline aria-label="Diapulse device hero" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; border-radius:16px;"></video>
     </div>
   </div>
 </header>
@@ -580,5 +589,6 @@ window.addEventListener('scroll', ()=>{
 backToTop.addEventListener('click', ()=>{ window.scrollTo({top:0, behavior:'smooth'}); });
 </script>
 
+<script src="/assets/js/relay.js"></script>
 </body>
 </html>

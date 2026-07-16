@@ -249,6 +249,15 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 </head>
 <body>
 
+<div id="relay-loader" class="relay-loader">
+  <div id="relay-badge" class="relay-badge">
+    <div id="relay-stage" class="relay-stage"></div>
+  </div>
+  <div class="relay-label">
+    <span id="relay-label-text">Loading</span><span id="relay-dots" class="relay-dots"></span>
+  </div>
+</div>
+
 <nav>
   <a href="../#work" class="back-link">
     <svg viewBox="0 0 100 100" fill="none"><path d="M75 50 H30 M50 25 L25 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -298,7 +307,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <p class="meta-note" style="max-width:none;">WAVE is an active client engagement. An ePRO (electronic patient-reported outcomes) app is currently in development as the next phase of the product, alongside a company website and e-commerce.</p>
     </div>
     <div class="hero-image has-img">
-      <img src="/assets/wave/hero-wave.png" alt="WAVE device packaging, navy box with pink wave graphic">
+      <img data-relay src="/assets/wave/hero-wave.png" alt="WAVE device packaging, navy box with pink wave graphic">
     </div>
   </div>
 </header>
@@ -335,8 +344,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <li>Logo mark and wordmark did not feel as if they belonged together</li>
     </ul>
     <div class="gallery" style="margin-top:20px;">
-      <div class="gallery-item has-img"><img src="/assets/wave/wave-before-after.png" alt="Previous primary logo, wave by HUSH TECH"></div>
-      <div class="gallery-item has-img"><img src="/assets/wave/wave-before-brand.png" alt="Previous packaging and inserts, the Wave script logo"></div>
+      <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-before-after.png" alt="Previous primary logo, wave by HUSH TECH"></div>
+      <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-before-brand.png" alt="Previous packaging and inserts, the Wave script logo"></div>
     </div>
   </div>
 </div>
@@ -348,7 +357,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <h2>Logo &amp; Visual Identity</h2>
     <p>Redesigned the logo to move away from generic medical iconography toward something cleaner and more ownable. The updated mark balances precision with softness, reflecting both the device's clinical efficacy and its role in everyday wellness.</p>
     <div class="ba-single has-img">
-      <img src="/assets/wave/wave-logo-before-after.png" alt="WAVE logo before and after redesign">
+      <img data-relay src="/assets/wave/wave-logo-before-after.png" alt="WAVE logo before and after redesign">
     </div>
   </div>
 
@@ -357,8 +366,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <h2>Color &amp; Typography System</h2>
     <p>Built a palette that moved away from the stark whites and blues of medical design toward calmer, more considered tones, still clean and trustworthy, but emotionally warmer. Typography hierarchy was simplified to prioritize readability and approachability over clinical density.</p>
     <div class="gallery color-type-grid">
-      <div class="gallery-item has-img"><img src="/assets/wave/wave-font.png" alt="Typography, Montserrat type specimen"></div>
-      <div class="gallery-item has-img"><img src="/assets/wave/wave-colors.png" alt="Color palette"></div>
+      <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-font.png" alt="Typography, Montserrat type specimen"></div>
+      <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-colors.png" alt="Color palette"></div>
     </div>
     <div class="swatch-row">
       <div class="swatch"><div class="swatch-block" style="background:#241E4E;"></div><span>Navy, Core</span></div>
@@ -393,8 +402,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <p>Designed packaging suitable for a bathroom shelf rather than a hospital supply catalog. Every decision, material feel, information hierarchy, and label language, was made to reinforce one idea:</p>
     <p class="gap-statement">This product respects you and the pain you're managing.</p>
     <div class="gallery">
-      <div class="gallery-item has-img"><img src="/assets/wave/wave-device.png" alt="WAVE device"></div>
-      <div class="gallery-item has-img"><img src="/assets/wave/wave-newbrand.png" alt="New packaging, navy box with pink wave graphic and insert cards"></div>
+      <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-device.png" alt="WAVE device"></div>
+      <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-newbrand.png" alt="New packaging, navy box with pink wave graphic and insert cards"></div>
     </div>
   </div>
 
@@ -402,7 +411,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="section-eyebrow">Messaging &amp; Social</div>
     <h2>Stigma-free communication.</h2>
     <p>Developed a messaging framework built around stigma-free communication. Menstrual pain is chronically dismissed and under-discussed. The brand voice was written to name it directly, without euphemism, and without the performative positivity that makes wellness brands feel hollow.</p>
-    <div class="gallery-item wide has-img"><img src="/assets/wave/wave-socials.png" alt="Social media carousel, Feel Better, Experience WAVE"></div>
+    <div class="gallery-item wide has-img"><img data-relay src="/assets/wave/wave-socials.png" alt="Social media carousel, Feel Better, Experience WAVE"></div>
   </div>
 
   <div class="block">
@@ -410,12 +419,12 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <h2>A system complete enough for independent execution.</h2>
     <p>Delivered a complete brand system that a separate designer could use to build the website: meaning every decision had to be documented, scalable, and clear enough for another designer to execute without direct oversight.</p>
     <div class="gallery-3">
-      <div class="gallery-item has-img"><img src="/assets/wave/wave-biz-cards.png" alt="Stationery, business cards"></div>
-      <div class="gallery-item has-img"><img src="/assets/wave/wave-marketing.png" alt="Outdoor signage / billboard"></div>
-      <div class="gallery-item has-img"><img src="/assets/wave/wave-banner.png" alt="Poster, Menstrual Pain Solution"></div>
-      <div class="gallery-item has-img"><img src="/assets/wave/wave-flyer.png" alt="Tri-fold brochure, clinical evidence"></div>
-      <div class="gallery-item has-img"><img src="/assets/wave/wavebox.png" alt="Packaging, blue variant"></div>
-      <div class="gallery-item has-img"><img src="/assets/wave/wave-back.png" alt="Packaging, pink and navy variant"></div>
+      <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-biz-cards.png" alt="Stationery, business cards"></div>
+      <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-marketing.png" alt="Outdoor signage / billboard"></div>
+      <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-banner.png" alt="Poster, Menstrual Pain Solution"></div>
+      <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-flyer.png" alt="Tri-fold brochure, clinical evidence"></div>
+      <div class="gallery-item has-img"><img data-relay src="/assets/wave/wavebox.png" alt="Packaging, blue variant"></div>
+      <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-back.png" alt="Packaging, pink and navy variant"></div>
     </div>
   </div>
 </div>
@@ -430,7 +439,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <p>The before/after tells the clearest story. WAVE went from a fragmented, inconsistent product presence to a unified brand with a distinct visual voice.</p>
         <p class="gap-statement">The new identity was strong enough to carry the product into the ACOG exhibit, one of the most important healthcare professional conferences in the US, and compete effectively in that environment.</p>
       </div>
-      <div class="gallery-item wide has-img"><img src="/assets/wave/exhibit-materials.png" alt="ACOG exhibit booth, banner, branded tablecloth, polo shirt"></div>
+      <div class="gallery-item wide has-img"><img data-relay src="/assets/wave/exhibit-materials.png" alt="ACOG exhibit booth, banner, branded tablecloth, polo shirt"></div>
     </div>
   </div>
 
@@ -449,7 +458,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   </div>
 
   <div class="block">
-    <div class="gallery-item wide has-img"><img src="/assets/wave/Reflection.png" alt="Closing illustration, flowing abstract figures in pink, blue and navy"></div>
+    <div class="gallery-item wide has-img"><img data-relay src="/assets/wave/Reflection.png" alt="Closing illustration, flowing abstract figures in pink, blue and navy"></div>
   </div>
   <a href="../#work" class="next-project">
     <div><div class="label">Next case file</div><h3>More coming soon</h3></div>
@@ -615,5 +624,6 @@ window.addEventListener('scroll', ()=>{
 backToTop.addEventListener('click', ()=>{ window.scrollTo({top:0, behavior:'smooth'}); });
 </script>
 
+<script src="/assets/js/relay.js"></script>
 </body>
 </html>

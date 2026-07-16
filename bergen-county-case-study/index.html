@@ -205,6 +205,15 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 </head>
 <body>
 
+<div id="relay-loader" class="relay-loader">
+  <div id="relay-badge" class="relay-badge">
+    <div id="relay-stage" class="relay-stage"></div>
+  </div>
+  <div class="relay-label">
+    <span id="relay-label-text">Loading</span><span id="relay-dots" class="relay-dots"></span>
+  </div>
+</div>
+
 <nav>
   <a href="../#work" class="back-link">
     <svg viewBox="0 0 100 100" fill="none"><path d="M75 50 H30 M50 25 L25 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -252,7 +261,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <p class="meta-note" style="max-width:none;">Self-directed academic project built around a real municipal permit system. The workflow constraints, irreversible submissions, compliance requirements, and limited post-submission edits all reflect real-world civic portal behavior.</p>
     </div>
     <div class="hero-image">
-      <img src="/assets/bergenportal/bergenhero.png" alt="Permit Portal hero, Renovation Permits screen">
+      <img data-relay src="/assets/bergenportal/bergenhero.png" alt="Permit Portal hero, Renovation Permits screen">
     </div>
   </div>
 </header>
@@ -278,7 +287,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="section-eyebrow">The Problem</div>
     <h2>Submitting a permit is not complicated. It feels dangerous.</h2>
     <p>Early research revealed that users often lacked confidence when determining which permits were required for their projects. Because permit submissions can involve legal, financial, and procedural consequences, even small uncertainties created hesitation throughout the workflow.</p>
-    <img src="/assets/bergenportal/defining-the-problem-img.png" alt="Permit portal screens illustrating uncertainty around requirements">
+    <img data-relay src="/assets/bergenportal/defining-the-problem-img.png" alt="Permit portal screens illustrating uncertainty around requirements">
     <p class="gap-statement">The primary design challenge was not speed, it was trust, that they were doing the right thing. This distinction changed every single design decision that followed.</p>
   </div>
 </div>
@@ -290,14 +299,14 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <h2>Where the uncertainty was concentrated</h2>
     <p>Affinity mapping surfaced recurring themes: confusion and lack of clarity around requirements, reliance on outdated manual and in-person processes, contractors doing homeowners' research for them, weak transparency into review timelines, and real emotional impact, stress and hesitation showing up well before submission.</p>
     <div class="gallery-item wide">
-      <img src="/assets/bergenportal/Affinity-mapping.png" alt="Affinity mapping board">
+      <img data-relay src="/assets/bergenportal/Affinity-mapping.png" alt="Affinity mapping board">
     </div>
   </div>
   <div class="block">
     <h3>Mapping the full journey</h3>
     <p>The permit discovery and submission journey was mapped end-to-end, including decision branches for different project types, required document paths, and the review/confirmation loop.</p>
     <div class="gallery-item wide">
-      <img src="/assets/bergenportal/permit-finder-flow.png" alt="User journey flow diagram, permit discovery through submission and confirmation">
+      <img data-relay src="/assets/bergenportal/permit-finder-flow.png" alt="User journey flow diagram, permit discovery through submission and confirmation">
     </div>
   </div>
 </div>
@@ -320,7 +329,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <p>The review screen was deliberately designed to slow users down. Rather than a quick summary before confirmation, it presented every entry with explicit language about what submission meant and what could not be changed afterward.</p>
     <p class="gap-statement gap-statement--emphasis">Every element on the screen was there to answer one question: "Am I sure?"</p>
     <div class="gallery-item wide">
-      <img src="/assets/bergenportal/bergen-img.png" alt="Review and submit screens, confirmation modal and full application summary">
+      <img data-relay src="/assets/bergenportal/bergen-img.png" alt="Review and submit screens, confirmation modal and full application summary">
     </div>
   </div>
 
@@ -334,7 +343,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="principle-item"><b><span class="p-dot"></span>Clear Action Language</b><p>Every button label matched exactly what users expected to happen when they pressed it.</p></div>
     </div>
     <div class="gallery-item wide" style="margin-top:20px;">
-      <img src="/assets/bergenportal/bergen-county-prototype.gif" alt="Tell us about yourself screen">
+      <img data-relay src="/assets/bergenportal/bergen-county-prototype.gif" alt="Tell us about yourself screen">
     </div>
     <p style="margin-top:16px;">The interface was designed around progressive disclosure, clear hierarchy, and strong instructional microcopy. Every screen aimed to reduce ambiguity while helping users understand both what to do and why the information mattered.</p>
     <p>High-fidelity prototypes were created in Figma with a strong emphasis on:</p>
@@ -365,7 +374,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <p>The goal was to closely observe moments where users hesitated, misunderstood labels, or questioned whether they were completing tasks correctly. This research approach helped uncover deeper trust and expectation issues that might not appear through surface-level usability testing alone.</p>
     </div>
     <div class="gallery-item wide" style="margin-top:20px;">
-      <img src="/assets/bergenportal/defining-the-problem.png" alt="Flow improvements diagram">
+      <img data-relay src="/assets/bergenportal/defining-the-problem.png" alt="Flow improvements diagram">
     </div>
     <div class="callout-box">
       <p><b>What testing surfaced:</b> Participants expressed concern about submitting an application without the ability to make changes afterward.</p>
@@ -380,7 +389,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <p>An application tracking number was incorporated into both the success state and the dashboard.</p>
     <p>Post-submission messaging was rewritten to answer the four questions users most often had: what happens now, how it will be reviewed, where to find the submission, and who to contact if something is wrong.</p>
     <div class="gallery-item wide">
-      <img src="/assets/bergenportal/Confirmation-screen.png" alt="Confirmation screen">
+      <img data-relay src="/assets/bergenportal/Confirmation-screen.png" alt="Confirmation screen">
     </div>
   </div>
 
@@ -421,7 +430,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
   <div class="block">
     <div class="gallery-item wide">
-      <img src="/assets/bergenportal/mockup-allscreens.png" alt="Final product montage">
+      <img data-relay src="/assets/bergenportal/mockup-allscreens.png" alt="Final product montage">
     </div>
   </div>
   <a href="../diapulse-case-study/" class="next-project">
@@ -533,5 +542,6 @@ window.addEventListener('scroll', ()=>{
 backToTop.addEventListener('click', ()=>{ window.scrollTo({top:0, behavior:'smooth'}); });
 </script>
 
+<script src="/assets/js/relay.js"></script>
 </body>
 </html>

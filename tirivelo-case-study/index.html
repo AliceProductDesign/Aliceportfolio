@@ -222,6 +222,15 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 </head>
 <body>
 
+<div id="relay-loader" class="relay-loader">
+  <div id="relay-badge" class="relay-badge">
+    <div id="relay-stage" class="relay-stage"></div>
+  </div>
+  <div class="relay-label">
+    <span id="relay-label-text">Loading</span><span id="relay-dots" class="relay-dots"></span>
+  </div>
+</div>
+
 <nav>
   <a href="../#work" class="back-link">
     <svg viewBox="0 0 100 100" fill="none"><path d="M75 50 H30 M50 25 L25 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -329,8 +338,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       </div>
     </div>
     <div class="gallery" style="margin-top:20px;">
-      <div class="gallery-item wide" style="border:none; padding:0; background:none;"><img src="/assets/tirivelo/Tirivelo-problems-higlight.jpg" alt="Annotated audit, fragmented profiles and non-functional filtering" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
-      <div class="gallery-item wide" style="margin-top:18px; border:none; padding:0; background:none;"><img src="/assets/tirivelo/BEFORE-TIRIVELO2.png" alt="Before — TiriVelo annotated audit" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
+      <div class="gallery-item wide" style="border:none; padding:0; background:none;"><img data-relay src="/assets/tirivelo/Tirivelo-problems-higlight.jpg" alt="Annotated audit, fragmented profiles and non-functional filtering" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
+      <div class="gallery-item wide" style="margin-top:18px; border:none; padding:0; background:none;"><img data-relay src="/assets/tirivelo/BEFORE-TIRIVELO2.png" alt="Before — TiriVelo annotated audit" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
     </div>
   </div>
 </div>
@@ -346,7 +355,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="compete-card"><b>Pawshake</b><p>Browse-first discovery reduced commitment anxiety early in the funnel.</p></div>
       <div class="compete-card"><b>Care.com</b><p>Early paywalls actively weakened trust at first contact, a lesson in what not to do.</p></div>
     </div>
-    <div class="gallery-item wide" style="margin-top:20px; border:none; padding:0; background:none;"><img src="/assets/tirivelo/Tirivelo-comp-analysis.jpg" alt="Competitive teardown, 4-platform comparison" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
+    <div class="gallery-item wide" style="margin-top:20px; border:none; padding:0; background:none;"><img data-relay src="/assets/tirivelo/Tirivelo-comp-analysis.jpg" alt="Competitive teardown, 4-platform comparison" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
   </div>
 </div>
 
@@ -368,7 +377,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       </div>
       <video src="/assets/tirivelo/providers-.mp4" autoplay muted loop playsinline style="width:100%; height:auto; display:block; border-radius:16px;"></video>
     </div>
-    <img src="/assets/tirivelo/Provider-profile-improvements.png" alt="Rebuilt filter panel" style="width:100%; height:auto; display:block; border-radius:16px;">
+    <img data-relay src="/assets/tirivelo/Provider-profile-improvements.png" alt="Rebuilt filter panel" style="width:100%; height:auto; display:block; border-radius:16px;">
     <div class="block" style="padding-top:40px;">
        
     </div>
@@ -386,9 +395,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="compete-card"><b>06 Waiting is designed</b><p>The matching state animates. A blank spinner reads as broken; motion reads as working.</p></div>
     </div>
   </div>
-  <div class="gallery-item wide" style="margin-top:20px; border:none; padding:0; background:none;"><img src="/assets/tirivelo/Tirivelo-search-flow.jpg" alt="Service booking flow" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
-  <div class="gallery-item wide" style="margin-top:20px; border:none; padding:0; background:none;"><img src="/assets/tirivelo/logged-guest-flows.png" alt="Logged-in and guest booking flows" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
-  <div class="gallery-item wide" style="margin-top:20px; border:none; padding:32px 0; background:none;"><img src="/assets/tirivelo/Tirivelo-seamless-flow-search.png" alt="User flow, logged-in vs guest path" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
+  <div class="gallery-item wide" style="margin-top:20px; border:none; padding:0; background:none;"><img data-relay src="/assets/tirivelo/Tirivelo-search-flow.jpg" alt="Service booking flow" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
+  <div class="gallery-item wide" style="margin-top:20px; border:none; padding:0; background:none;"><img data-relay src="/assets/tirivelo/logged-guest-flows.png" alt="Logged-in and guest booking flows" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
+  <div class="gallery-item wide" style="margin-top:20px; border:none; padding:32px 0; background:none;"><img data-relay src="/assets/tirivelo/Tirivelo-seamless-flow-search.png" alt="User flow, logged-in vs guest path" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
 
   </div>
 
@@ -407,7 +416,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <li>Availability reassurance</li>
       <li>Review credibility indicators</li>
     </ul>
-    <div class="gallery-item wide" style="margin-top:20px; border:none; padding:0; background:none;"><img src="/assets/tirivelo/banner-states-mockups-.png" alt="Provider profile, verification badges, ratings, availability calendar" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
+    <div class="gallery-item wide" style="margin-top:20px; border:none; padding:0; background:none;"><img data-relay src="/assets/tirivelo/banner-states-mockups-.png" alt="Provider profile, verification badges, ratings, availability calendar" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
     <p style="margin-top:16px; font-size:13.5px; font-style:italic;">The dynamic availability banner was designed to reduce booking uncertainty by adapting to the user's search context. If no date was selected, it encouraged exploration with "Check Availability"; date-specific searches provided immediate availability feedback to help users evaluate providers faster and with greater confidence.</p>
   </div>
 
@@ -446,7 +455,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="accordion">
         <div class="acc-item open">
           <button class="acc-head"><h4><span class="acc-num">1</span>Updated Navigation Semantics</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-          <div class="acc-body"><div class="acc-body-inner"><p>Combined service-category shapes with the magnifier to create a more specific and recognizable "browse services" interaction.</p><img src="/assets/tirivelo/1-semantics.png" alt="Updated navigation semantics" style="margin-top:14px; width:100%; height:auto; display:block; border-radius:16px;"></div></div>
+          <div class="acc-body"><div class="acc-body-inner"><p>Combined service-category shapes with the magnifier to create a more specific and recognizable "browse services" interaction.</p><img data-relay src="/assets/tirivelo/1-semantics.png" alt="Updated navigation semantics" style="margin-top:14px; width:100%; height:auto; display:block; border-radius:16px;"></div></div>
         </div>
         <div class="acc-item">
           <button class="acc-head"><h4><span class="acc-num">2</span>Message → Inbox Label Update</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
@@ -454,26 +463,26 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         </div>
         <div class="acc-item">
           <button class="acc-head"><h4><span class="acc-num">3</span>Improved Active Navigation State</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-          <div class="acc-body"><div class="acc-body-inner"><p>Replaced the underline indicator with a filled background state to create a stronger, more scannable active-tab affordance.</p><img src="/assets/tirivelo/3-va-states.png" alt="Improved active navigation state" style="margin-top:14px; width:100%; height:auto; display:block; border-radius:16px;"></div></div>
+          <div class="acc-body"><div class="acc-body-inner"><p>Replaced the underline indicator with a filled background state to create a stronger, more scannable active-tab affordance.</p><img data-relay src="/assets/tirivelo/3-va-states.png" alt="Improved active navigation state" style="margin-top:14px; width:100%; height:auto; display:block; border-radius:16px;"></div></div>
         </div>
         <div class="acc-item">
           <button class="acc-head"><h4><span class="acc-num">4</span>Unified &amp; Expanded Icon System</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-          <div class="acc-body"><div class="acc-body-inner"><p>Standardized icon styling and visual weight for consistency across navigation. Created filled and outline icon variants for clearer active/inactive states, improved accessibility, and native mobile interaction patterns.</p><img src="/assets/tirivelo/4-icons.png" alt="Unified and expanded icon system" style="margin-top:14px; width:100%; height:auto; display:block; border-radius:16px;"></div></div>
+          <div class="acc-body"><div class="acc-body-inner"><p>Standardized icon styling and visual weight for consistency across navigation. Created filled and outline icon variants for clearer active/inactive states, improved accessibility, and native mobile interaction patterns.</p><img data-relay src="/assets/tirivelo/4-icons.png" alt="Unified and expanded icon system" style="margin-top:14px; width:100%; height:auto; display:block; border-radius:16px;"></div></div>
         </div>
         <div class="acc-item">
           <button class="acc-head"><h4><span class="acc-num">5</span>Three-Tier CTA Hierarchy</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-          <div class="acc-body"><div class="acc-body-inner"><p>Replaced the single-button system with a three-tier CTA hierarchy that visually distinguishes high-commitment booking actions from secondary and low-risk utility actions.</p><img src="/assets/tirivelo/5-ctas.png" alt="Three-tier CTA hierarchy" style="margin-top:14px; width:100%; height:auto; display:block; border-radius:16px;"></div></div>
+          <div class="acc-body"><div class="acc-body-inner"><p>Replaced the single-button system with a three-tier CTA hierarchy that visually distinguishes high-commitment booking actions from secondary and low-risk utility actions.</p><img data-relay src="/assets/tirivelo/5-ctas.png" alt="Three-tier CTA hierarchy" style="margin-top:14px; width:100%; height:auto; display:block; border-radius:16px;"></div></div>
         </div>
         <div class="acc-item">
           <button class="acc-head"><h4><span class="acc-num">6</span>React Native-Ready Components</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-          <div class="acc-body"><div class="acc-body-inner"><p>Component organization built to hand off cleanly into a React Native codebase.</p><img src="/assets/tirivelo/6-components.png" alt="React Native-ready components" style="margin-top:14px; width:100%; height:auto; display:block; border-radius:16px;"></div></div>
+          <div class="acc-body"><div class="acc-body-inner"><p>Component organization built to hand off cleanly into a React Native codebase.</p><img data-relay src="/assets/tirivelo/6-components.png" alt="React Native-ready components" style="margin-top:14px; width:100%; height:auto; display:block; border-radius:16px;"></div></div>
         </div>
         <div class="acc-item">
           <button class="acc-head"><h4><span class="acc-num">7</span>Accessibility Improvements</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-          <div class="acc-body"><div class="acc-body-inner"><p>Ensured compliance with Apple HIG and WCAG touch target standards.</p><img src="/assets/tirivelo/7-accessibility.png" alt="Accessibility improvements" style="margin-top:14px; width:100%; height:auto; display:block; border-radius:16px;"></div></div>
+          <div class="acc-body"><div class="acc-body-inner"><p>Ensured compliance with Apple HIG and WCAG touch target standards.</p><img data-relay src="/assets/tirivelo/7-accessibility.png" alt="Accessibility improvements" style="margin-top:14px; width:100%; height:auto; display:block; border-radius:16px;"></div></div>
         </div>
       </div>
-      <div class="gallery-item" style="margin-top:0; border:none; padding:40px; background:var(--paper-alt);"><img src="/assets/tirivelo/tirivelo-prototype-transparent.webp" alt="Final prototype, provider cards with trust signals" style="width:50%; height:auto; display:block;"></div>
+      <div class="gallery-item" style="margin-top:0; border:none; padding:40px; background:var(--paper-alt);"><img data-relay src="/assets/tirivelo/tirivelo-prototype-transparent.webp" alt="Final prototype, provider cards with trust signals" style="width:50%; height:auto; display:block;"></div>
     </div>
   </div>
 
@@ -493,7 +502,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
   <div class="block">
     <div class="testimonial" style="padding:0; background:none; overflow:hidden; border-radius:22px;">
-      <img src="/assets/tirivelo/michael-squote.png" alt="Testimonial from Michael Navarro, CEO of TiriVelo Inc." style="width:100%; height:auto; display:block;">
+      <img data-relay src="/assets/tirivelo/michael-squote.png" alt="Testimonial from Michael Navarro, CEO of TiriVelo Inc." style="width:100%; height:auto; display:block;">
     </div>
   </div>
   <a href="../rapimd-case-study/" class="next-project">
@@ -621,5 +630,6 @@ window.addEventListener('scroll', ()=>{
 backToTop.addEventListener('click', ()=>{ window.scrollTo({top:0, behavior:'smooth'}); });
 </script>
 
+<script src="/assets/js/relay.js"></script>
 </body>
 </html>
