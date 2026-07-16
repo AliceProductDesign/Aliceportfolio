@@ -63,8 +63,8 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .tab-btn:focus-visible{outline:2px solid var(--coral); outline-offset:2px;}
 @media (min-width:768px){
   .tab-nav-wrap.is-sticky{position:fixed; top:65px; left:0; right:0; width:100%; z-index:150; padding:14px 48px 0; box-sizing:border-box;}
-  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow-x:visible;}
-  .tab-nav-wrap.is-sticky .tab-track{width:100%; display:flex; justify-content:center; gap:8px; box-sizing:border-box; background:#FBD4D4; box-shadow:0 8px 20px -10px #33454A33;}
+  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow-x:visible; justify-content:flex-start;}
+  .tab-nav-wrap.is-sticky .tab-track{width:50%; display:flex; justify-content:flex-start; gap:8px; box-sizing:border-box; background:#FBD4D4; box-shadow:0 8px 20px -10px #33454A33; transition:width .3s ease, background .25s ease, border .25s ease, border-radius .25s ease, padding .25s ease, box-shadow .25s ease;}
 }
 @media (max-width:767px){
   /* Mobile sticky, JS is-sticky + fixed bar; pill width unchanged */
@@ -143,6 +143,18 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .transfer-band .section-eyebrow{color:var(--amber-dark);}
 .transfer-band h2{color:#fff;}
 .transfer-band p{color:#C7CBE8; margin-bottom:0;}
+
+.panel-next{
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  margin:40px auto 0; padding:12px 22px;
+  background:rgba(242,102,90,0.1); border:1.5px solid #F2665A;
+  border-radius:100px; color:#F2665A; font-weight:600; font-size:14px;
+  cursor:pointer; transition:background-color .2s ease, color .2s ease;
+  width:fit-content;
+}
+.panel-next:hover{ background:#F2665A; color:#fff; }
+.panel-next svg{ width:14px; height:14px; transition:transform .2s ease; }
+.panel-next:hover svg{ transform:translateX(3px); }
 
 .next-project{margin:0 48px 60px; padding:44px 40px; background:var(--paper-alt); border-radius:24px; display:flex; justify-content:space-between; align-items:center; max-width:904px; margin-left:auto; margin-right:auto; text-decoration:none; color:inherit;}
 .next-project .label{font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--graphite); margin-bottom:6px;}
@@ -232,7 +244,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="block" style="margin-bottom:0;">
         <div class="section-eyebrow">The Solution</div>
         <p>A high-fidelity permit portal designed to help homeowners and contractors identify the right permits for their projects and submit them with confidence.</p>
-        <p style="margin-bottom:0;">Built around consequence-aware UX, intentional friction at the review screen to slow users down before irreversible submission, progressive disclosure to reduce cognitive overload, plain-language instructional microcopy throughout, and a post-submission experience redesigned to answer the questions users actually had after confirming. Validated through usability testing.</p>
+        <p style="margin-bottom:0;">Built around consequence-aware UX, intentional friction at the review screen to slow users down before irreversible submission, progressive disclosure to reduce cognitive overload, plain-language instructional microcopy throughout, and a post-submission experience redesigned to answer the questions users most often had after confirming. Validated through usability testing.</p>
       </div>
       <p class="meta-note" style="max-width:none;">Self-directed academic project built around a real municipal permit system. The workflow constraints, irreversible submissions, compliance requirements, and limited post-submission edits all reflect real-world civic portal behavior.</p>
     </div>
@@ -261,7 +273,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 <div class="tab-panel active" data-panel="overview">
   <div class="block">
     <div class="section-eyebrow">The Problem</div>
-    <h2>Submitting a permit isn't complicated. It feels dangerous.</h2>
+    <h2>Submitting a permit is not complicated. It feels dangerous.</h2>
     <p>Early research revealed that users often lacked confidence when determining which permits were required for their projects. Because permit submissions can involve legal, financial, and procedural consequences, even small uncertainties created hesitation throughout the workflow.</p>
     <img src="/assets/bergenportal/defining-the-problem-img.png" alt="Permit portal screens illustrating uncertainty around requirements">
     <p class="gap-statement">The primary design challenge was not speed, it was trust, that they were doing the right thing. This distinction changed every single design decision that followed.</p>
@@ -272,7 +284,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 <div class="tab-panel" data-panel="research">
   <div class="block">
     <div class="section-eyebrow">Discovery</div>
-    <h2>Where the uncertainty actually lived</h2>
+    <h2>Where the uncertainty was concentrated</h2>
     <p>Affinity mapping surfaced recurring themes: confusion and lack of clarity around requirements, reliance on outdated manual and in-person processes, contractors doing homeowners' research for them, weak transparency into review timelines, and real emotional impact, stress and hesitation showing up well before submission.</p>
     <div class="gallery-item wide">
       <img src="/assets/bergenportal/Affinity-mapping.png" alt="Affinity mapping board">
@@ -302,7 +314,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   <div class="block">
     <div class="section-eyebrow">The Review Screen</div>
     <h2>A comprehensive view of everything entered, before anything is permanent.</h2>
-    <p>The review screen was deliberately designed to slow users down. Rather than a quick summary before confirmation, it presented every entry with explicit language about what submission meant and what couldn't be changed afterward.</p>
+    <p>The review screen was deliberately designed to slow users down. Rather than a quick summary before confirmation, it presented every entry with explicit language about what submission meant and what could not be changed afterward.</p>
     <p class="gap-statement gap-statement--emphasis">Every element on the screen was there to answer one question: "Am I sure?"</p>
     <div class="gallery-item wide">
       <img src="/assets/bergenportal/bergen-img.png" alt="Review and submit screens, confirmation modal and full application summary">
@@ -355,7 +367,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="callout-box">
       <p><b>What testing surfaced:</b> Participants expressed concern about submitting an application without the ability to make changes afterward.</p>
       <p><b>Observed behavior:</b> Users double-checked information repeatedly. Some asked if they could edit after submission. Anxiety increased near the final submission step.</p>
-      <p style="margin-bottom:0;"><b>Fix:</b> Users wanted a clear review and reconfirmation screen before final submission, especially when changes are restricted, any edits after final submission now require explicit confirmation to proceed.</p>
+      <p style="margin-bottom:0;"><b>Resolution:</b> Users wanted a clear review and reconfirmation screen before final submission, especially when changes are restricted; any edits after final submission now require explicit confirmation to proceed.</p>
     </div>
   </div>
 
@@ -363,7 +375,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="section-eyebrow">Post-Submission Reassurance</div>
     <h2>The confirmation screen had treated its job as done. But users disagreed.</h2>
     <p>An application tracking number was incorporated into both the success state and the dashboard.</p>
-    <p>Post-submission messaging was rewritten to answer the four questions users actually had: what happens now, how it will be reviewed, where to find the submission, and who to contact if something is wrong.</p>
+    <p>Post-submission messaging was rewritten to answer the four questions users most often had: what happens now, how it will be reviewed, where to find the submission, and who to contact if something is wrong.</p>
     <div class="gallery-item wide">
       <img src="/assets/bergenportal/Confirmation-screen.png" alt="Confirmation screen">
     </div>
@@ -385,8 +397,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="section-eyebrow">Reflections</div>
     <div class="reflect-grid">
       <div class="reflect-card">
-        <h4>What I'd Do Differently</h4>
-        <p>With more time, I would have tested the intentional friction pattern specifically, running a version with and without the deliberate review screen to measure whether it improved submission accuracy or just increased time-on-task. I'd also have pushed further into the permit discovery flow, where the earliest and most consequential uncertainty lived.</p>
+        <h4>What I Would Do Differently</h4>
+        <p>With more time, I would have tested the intentional friction pattern specifically, running a version with and without the deliberate review screen to measure whether it improved submission accuracy or only increased time-on-task. I would also have pushed further into the permit discovery flow, where the earliest and most consequential uncertainty lived.</p>
       </div>
       <div class="reflect-card">
         <h4>What This Project Proved</h4>
@@ -400,7 +412,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="transfer-band">
       <div class="section-eyebrow">Why This Transfers to Health Tech</div>
       <h2>The trust failures in civic workflows and healthcare workflows are structurally identical.</h2>
-      <p>Irreversible actions. Unclear consequences. Processes users don't fully understand but can't afford to get wrong. The design thinking developed here, including intentional friction, post-submission reassurance, and consequence-aware information architecture, applies directly to clinical intake forms, insurance pre-authorization flows, and telehealth onboarding.</p>
+      <p>Irreversible actions. Unclear consequences. Processes users do not fully understand but cannot afford to get wrong. The design thinking developed here, including intentional friction, post-submission reassurance, and consequence-aware information architecture, applies directly to clinical intake forms, insurance pre-authorization flows, and telehealth onboarding.</p>
     </div>
   </div>
 
@@ -409,12 +421,11 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <img src="/assets/bergenportal/mockup-allscreens.png" alt="Final product montage">
     </div>
   </div>
+  <a href="../diapulse-case-study/" class="next-project">
+    <div><div class="label">Next case file</div><h3>Diapulse</h3></div>
+    <div class="next-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </a>
 </div>
-
-<a href="../diapulse-case-study/" class="next-project">
-  <div><div class="label">Next case file</div><h3>Diapulse</h3></div>
-  <div class="next-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-</a>
 
 <footer>
   <div class="foot-row">
@@ -441,6 +452,32 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
     window.scrollTo({top: panelTop - 130, behavior:'smooth'});
   });
 });
+(function(){
+  const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
+  if(!tabButtons.length) return;
+
+  tabButtons.forEach((btn, index)=>{
+    const panel = document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`);
+    if(!panel) return;
+    const isLast = index === tabButtons.length - 1;
+
+    if(!isLast){
+      const nextBtn = tabButtons[index + 1];
+      const continueBtn = document.createElement('button');
+      continueBtn.className = 'panel-next';
+      continueBtn.innerHTML = `Continue
+        <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      continueBtn.addEventListener('click', ()=> nextBtn.click());
+      panel.appendChild(continueBtn);
+    } else {
+      const nextProjectEl = document.querySelector('.next-project');
+      if(nextProjectEl){
+        nextProjectEl.remove();
+        panel.appendChild(nextProjectEl);
+      }
+    }
+  });
+})();
 (function(){
   const tabWrap = document.getElementById('tabNavWrap');
   const sentinel = document.getElementById('tabNavSentinel');

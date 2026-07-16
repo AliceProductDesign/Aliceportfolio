@@ -49,8 +49,8 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .tab-btn:focus-visible{outline:2px solid var(--coral); outline-offset:2px;}
 @media (min-width:768px){
   .tab-nav-wrap.is-sticky{position:fixed; top:65px; left:0; right:0; width:100%; z-index:150; padding:14px 48px 0; box-sizing:border-box;}
-  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow-x:visible;}
-  .tab-nav-wrap.is-sticky .tab-track{width:100%; display:flex; justify-content:center; gap:8px; box-sizing:border-box; background:#FBD4D4; box-shadow:0 8px 20px -10px #33454A33;}
+  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow-x:visible; justify-content:flex-start;}
+  .tab-nav-wrap.is-sticky .tab-track{width:50%; display:flex; justify-content:flex-start; gap:8px; box-sizing:border-box; background:#FBD4D4; box-shadow:0 8px 20px -10px #33454A33; transition:width .3s ease, background .25s ease, border .25s ease, border-radius .25s ease, padding .25s ease, box-shadow .25s ease;}
 }
 @media (max-width:767px){
   /* Mobile sticky, JS is-sticky + fixed bar; pill width unchanged */
@@ -86,6 +86,18 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .acc-body{max-height:0; overflow:hidden; transition:max-height .35s ease;}
 .acc-body-inner{padding:0 4px 24px 42px;}
 .acc-body-inner p{font-size:14.5px;}
+
+.panel-next{
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  margin:40px auto 0; padding:12px 22px;
+  background:rgba(242,102,90,0.1); border:1.5px solid #F2665A;
+  border-radius:100px; color:#F2665A; font-weight:600; font-size:14px;
+  cursor:pointer; transition:background-color .2s ease, color .2s ease;
+  width:fit-content;
+}
+.panel-next:hover{ background:#F2665A; color:#fff; }
+.panel-next svg{ width:14px; height:14px; transition:transform .2s ease; }
+.panel-next:hover svg{ transform:translateX(3px); }
 
 /* ---- GALLERY ---- */
 .gallery{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
@@ -297,12 +309,11 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="stat"><b>[X]</b><span>[Metric label]</span></div>
   </div>
   <p>[Draft] Close with a short reflection, what you'd do differently, or what this taught you that shows up in your next project.</p>
+  <a href="#" class="next-project">
+    <div><div class="label">Next case file</div><h3>[Next Project Name]</h3></div>
+    <div class="next-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </a>
 </div>
-
-<a href="#" class="next-project">
-  <div><div class="label">Next case file</div><h3>[Next Project Name]</h3></div>
-  <div class="next-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-</a>
 
 <footer>
   <div class="foot-row">
@@ -331,6 +342,32 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
     window.scrollTo({top: panelTop - 130, behavior:'smooth'});
   });
 });
+(function(){
+  const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
+  if(!tabButtons.length) return;
+
+  tabButtons.forEach((btn, index)=>{
+    const panel = document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`);
+    if(!panel) return;
+    const isLast = index === tabButtons.length - 1;
+
+    if(!isLast){
+      const nextBtn = tabButtons[index + 1];
+      const continueBtn = document.createElement('button');
+      continueBtn.className = 'panel-next';
+      continueBtn.innerHTML = `Continue
+        <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      continueBtn.addEventListener('click', ()=> nextBtn.click());
+      panel.appendChild(continueBtn);
+    } else {
+      const nextProjectEl = document.querySelector('.next-project');
+      if(nextProjectEl){
+        nextProjectEl.remove();
+        panel.appendChild(nextProjectEl);
+      }
+    }
+  });
+})();
 (function(){
   const tabWrap = document.getElementById('tabNavWrap');
   const sentinel = document.getElementById('tabNavSentinel');

@@ -66,19 +66,15 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .tab-btn.active{color:#fff; background:#F2665A; box-shadow:0 4px 10px -3px #F2665A66;}
 .tab-btn:hover:not(.active){background:rgba(242,102,90,0.22); color:#F2665A;}
 .tab-btn:focus-visible{outline:2px solid var(--coral); outline-offset:2px;}
-.tab-btn.progress-tab{color:#3F7A3E;}
-.tab-btn.progress-tab.active{border-bottom-color:#3F7A3E; color:#fff;}
-.tab-btn.progress-tab:hover{color:#fff !important; background:var(--coral);}
 @media (min-width:768px){
   .tab-nav-wrap.is-sticky{position:fixed; top:65px; left:0; right:0; width:100%; z-index:150; padding:14px 48px 0; box-sizing:border-box;}
-  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow-x:visible;}
-  .tab-nav-wrap.is-sticky .tab-track{width:100%; display:flex; justify-content:center; gap:8px; box-sizing:border-box; background:#FBD4D4; box-shadow:0 8px 20px -10px #33454A33;}
+  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow-x:visible; justify-content:flex-start;}
+  .tab-nav-wrap.is-sticky .tab-track{width:50%; display:flex; justify-content:flex-start; gap:8px; box-sizing:border-box; background:#FBD4D4; box-shadow:0 8px 20px -10px #33454A33; transition:width .3s ease, background .25s ease, border .25s ease, border-radius .25s ease, padding .25s ease, box-shadow .25s ease;}
 }
 @media (max-width:767px){
   /* Mobile sticky, JS is-sticky + fixed bar; pill width unchanged */
   .tab-btn{color:var(--coral);}
   .tab-btn:active:not(.active){background:rgba(242,102,90,0.22); color:var(--coral);}
-  .tab-btn.progress-tab:active{color:#fff !important; background:var(--coral);}
   .tab-nav-wrap.is-sticky{position:fixed; top:65px; left:0; right:0; width:100%; z-index:150; padding:14px 16px 0; box-sizing:border-box; background:transparent;}
   .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow:visible; justify-content:center;}
   .tab-nav-wrap.is-sticky .tab-track{width:auto; max-width:calc(100vw - 32px); display:inline-flex; justify-content:flex-start; background:#FBD4D4; border-radius:100px; box-shadow:0 8px 16px -10px #33454A33; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch;}
@@ -164,6 +160,18 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .progress-status.wip{background:#F5A94A24; color:#B87519;}
 .progress-status.upcoming{background:#33454A14; color:var(--graphite);}
 .progress-status.shipped{background:#4FC77A22; color:#2E8F52;}
+
+.panel-next{
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  margin:40px auto 0; padding:12px 22px;
+  background:rgba(242,102,90,0.1); border:1.5px solid #F2665A;
+  border-radius:100px; color:#F2665A; font-weight:600; font-size:14px;
+  cursor:pointer; transition:background-color .2s ease, color .2s ease;
+  width:fit-content;
+}
+.panel-next:hover{ background:#F2665A; color:#fff; }
+.panel-next svg{ width:14px; height:14px; transition:transform .2s ease; }
+.panel-next:hover svg{ transform:translateX(3px); }
 
 .next-project{margin:0 48px 60px; padding:44px 40px; background:var(--paper-alt); border-radius:24px; display:flex; justify-content:space-between; align-items:center; max-width:904px; margin-left:auto; margin-right:auto; text-decoration:none; color:inherit;}
 .next-project .label{font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--graphite); margin-bottom:6px;}
@@ -252,8 +260,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="block" style="margin-top:28px;">
         <div class="section-eyebrow">The Challenge</div>
         <h3 style="font-size:16px;">Evolve a 30-year-old brand without destroying the equity it had built.</h3>
-        <p>Diapulse had decades of clinical credibility in pulsed electromagnetic field therapy but a visual identity that hadn't evolved in years.</p>
-        <p>Outdated branding, inconsistent materials, disconnected device software, and hardware that looked like a different era were creating a gap between the product's medical authority and how modern healthcare professionals perceived it.</p>
+        <p>Diapulse had decades of clinical credibility in pulsed electromagnetic field therapy but a visual identity that had not evolved in years.</p>
+        <p>Outdated branding, inconsistent materials, disconnected device software, and hardware that appeared disconnected from the current brand were creating a gap between the product's medical authority and how modern healthcare professionals perceived it.</p>
       </div>
 
       <div class="block" style="margin-bottom:0;">
@@ -278,7 +286,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <button class="tab-btn active" data-tab="overview">Overview</button>
     <button class="tab-btn" data-tab="design">Design &amp; Process</button>
     <button class="tab-btn" data-tab="outcome">Outcome</button>
-    <button class="tab-btn progress-tab" data-tab="progress">Upcoming</button>
+    <button class="tab-btn" data-tab="progress">Upcoming</button>
   </div>
 </div>
 </div>
@@ -288,10 +296,10 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 <div class="tab-panel active" data-panel="overview">
   <div class="block">
     <div class="section-eyebrow">The Problem</div>
-    <h2>A 30-year legacy brand that didn't reflect the science behind it.</h2>
+    <h2>A 30-year legacy brand that did not reflect the science behind it.</h2>
     <p>Diapulse has been a legitimate force in medical technology for decades. Their FDA-cleared pulsed electromagnetic field therapy devices have been used in hospitals and clinical environments to support healing and recovery.</p>
-    <p class="gap-statement">The science is real. The clinical track record is real. But the brand didn't reflect any of it.</p>
-    <p>The logo was overly complex and didn't scale. Marketing materials were inconsistent, and the device software felt disconnected from any coherent design system.</p>
+    <p class="gap-statement">The science is real. The clinical track record is real. But the brand did not reflect any of it.</p>
+    <p>The logo was overly complex and did not scale. Marketing materials were inconsistent, and the device software felt disconnected from any coherent design system.</p>
   </div>
 
   <div class="block">
@@ -319,7 +327,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   <div class="block">
     <div class="section-eyebrow">The Strategic Decision</div>
     <h2>Preserve the equity. Modernize the system.</h2>
-    <p>Diapulse's pulse-inspired visual language had real recognition value in the clinical community. Wiping it out would have been the wrong move. I kept those foundational elements and rebuilt everything else around them, cleaner, more scalable, more considered.</p>
+    <p>Diapulse's pulse-inspired visual language had real recognition value in the clinical community. Removing it entirely would have been the wrong move. I kept those foundational elements and rebuilt everything else around them: cleaner, more scalable, and more considered.</p>
     <div class="gallery-3" style="grid-template-columns:repeat(4,1fr);">
       <div class="gallery-item">[Logo lockup, variant 1]</div>
       <div class="gallery-item">[Logo lockup, variant 2]</div>
@@ -331,7 +339,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   <div class="block">
     <div class="section-eyebrow">The Brand System</div>
     <h2>Logo &amp; Wordmark</h2>
-    <p>The original logo was doing too much. I redesigned it around a simplified custom wordmark paired with a modernized pulse motif, keeping the visual language HCPs associated with the brand, but making it clean enough to work at any scale, across any surface, digital or physical.</p>
+    <p>The original logo was visually overcomplicated. I redesigned it around a simplified custom wordmark paired with a modernized pulse motif, keeping the visual language HCPs associated with the brand while making it clean enough to work at any scale, across any surface, digital or physical.</p>
     <div class="gallery-item wide">[Final logo, pulse mark + "Diapulse Technologies" wordmark, with annotation: "Pulse graphics reflect the pulsed energy technology used in Diapulse's wound treatment systems" / "A simple, authoritative, clear logo reinforcing the company's role as a leader in medical device innovation"]</div>
   </div>
 
@@ -355,7 +363,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   <div class="block">
     <div class="section-eyebrow">Hardware Integration</div>
     <h2>Extending the brand onto the physical device.</h2>
-    <p>One of the more unusual aspects of this project was extending the brand onto the physical device itself. I worked with the product development team on hardware color selection and strategic logo placement, ensuring the device looked like it belonged to the same family as the updated brand.</p>
+    <p>One of the more unusual aspects of this project was extending the brand onto the physical device itself. I worked with the product development team on hardware color selection and strategic logo placement, ensuring the device aligned with the updated brand system.</p>
     <div class="gallery-item wide">[Updated hardware, device unit with new logo placement]</div>
   </div>
 
@@ -397,8 +405,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="section-eyebrow">Reflections</div>
     <div class="reflect-grid">
       <div class="reflect-card">
-        <h4>What I'd Do Differently</h4>
-        <p>The software UX was built from product team input and technical specs, which gave me strong functional clarity but limited direct visibility into how clinicians actually use the device in practice. With more access, I would have embedded observational research: watching HCPs use the software in real clinical environments.</p>
+        <h4>What I Would Do Differently</h4>
+        <p>The software UX was built from product team input and technical specs, which gave me strong functional clarity but limited direct visibility into how clinicians use the device in practice. With more access, I would have embedded observational research: watching HCPs use the software in real clinical environments.</p>
       </div>
       <div class="reflect-card">
         <h4>What This Project Proved</h4>
@@ -412,13 +420,17 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   <div class="block">
     <div class="gallery-item wide">[Closing image, patients photo with pulse-bar brand overlay]</div>
   </div>
+  <a href="../wave-case-study/" class="next-project">
+    <div><div class="label">Next case file</div><h3>WAVE</h3></div>
+    <div class="next-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </a>
 </div>
 
 <!-- CURRENT PROGRESS -->
 <div class="tab-panel" data-panel="progress">
   <div class="progress-banner">
     <div class="dot"></div>
-    <p>The brand, hardware, and clinical software are shipped and live. The website redesign is the active workstream right now.</p>
+    <p>The brand, hardware, and clinical software are shipped and live. The website redesign is the active workstream currently in progress.</p>
   </div>
 
   <div class="block">
@@ -427,7 +439,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <span class="subproject-tag">Corporate Website</span>
       <h3>A site built around two very different audiences</h3>
       <p>Clinicians evaluating the device for their practice and patients researching a treatment option come to the site with very different questions. The dual-audience split is built directly into the hero section as two clear calls to action, rather than a navigation fork.</p>
-      <h3 style="margin-top:20px;">Problems being solved right now</h3>
+      <h3 style="margin-top:20px;">Problems currently in progress</h3>
       <ul class="key-list">
         <li>Translating the brand refresh into a full site information architecture</li>
         <li>Making the company's own clinical research scannable for two different audiences at once</li>
@@ -462,11 +474,6 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   </div>
 </div>
 
-<a href="../wave-case-study/" class="next-project">
-  <div><div class="label">Next case file</div><h3>WAVE</h3></div>
-  <div class="next-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-</a>
-
 <footer>
   <div class="foot-row">
     <span>© Alice Curiel, hello@aliceportfolio.com</span>
@@ -492,6 +499,32 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
     window.scrollTo({top: panelTop - 130, behavior:'smooth'});
   });
 });
+(function(){
+  const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
+  if(!tabButtons.length) return;
+
+  tabButtons.forEach((btn, index)=>{
+    const panel = document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`);
+    if(!panel) return;
+    const isLast = index === tabButtons.length - 1;
+
+    if(!isLast){
+      const nextBtn = tabButtons[index + 1];
+      const continueBtn = document.createElement('button');
+      continueBtn.className = 'panel-next';
+      continueBtn.innerHTML = `Continue
+        <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      continueBtn.addEventListener('click', ()=> nextBtn.click());
+      panel.appendChild(continueBtn);
+    } else {
+      const nextProjectEl = document.querySelector('.next-project');
+      if(nextProjectEl){
+        nextProjectEl.remove();
+        panel.appendChild(nextProjectEl);
+      }
+    }
+  });
+})();
 (function(){
   const tabWrap = document.getElementById('tabNavWrap');
   const sentinel = document.getElementById('tabNavSentinel');

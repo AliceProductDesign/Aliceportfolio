@@ -62,8 +62,8 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .tab-btn:focus-visible{outline:2px solid var(--coral); outline-offset:2px;}
 @media (min-width:768px){
   .tab-nav-wrap.is-sticky{position:fixed; top:65px; left:0; right:0; width:100%; z-index:150; padding:14px 48px 0; box-sizing:border-box;}
-  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow-x:visible;}
-  .tab-nav-wrap.is-sticky .tab-track{width:100%; display:flex; justify-content:center; gap:8px; box-sizing:border-box; background:#FBD4D4; box-shadow:0 8px 20px -10px #33454A33;}
+  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow-x:visible; justify-content:flex-start;}
+  .tab-nav-wrap.is-sticky .tab-track{width:50%; display:flex; justify-content:flex-start; gap:8px; box-sizing:border-box; background:#FBD4D4; box-shadow:0 8px 20px -10px #33454A33; transition:width .3s ease, background .25s ease, border .25s ease, border-radius .25s ease, padding .25s ease, box-shadow .25s ease;}
 }
 @media (max-width:767px){
   /* Mobile sticky, JS is-sticky + fixed bar; pill width unchanged */
@@ -184,6 +184,18 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .outcome-cta{display:inline-flex; align-items:center; gap:8px; background:var(--coral); color:#fff; font-weight:600; font-size:14px; padding:14px 26px; border-radius:100px; text-decoration:none; margin-top:10px;}
 .outcome-cta:hover{background:var(--ink);}
 
+.panel-next{
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  margin:40px auto 0; padding:12px 22px;
+  background:rgba(242,102,90,0.1); border:1.5px solid #F2665A;
+  border-radius:100px; color:#F2665A; font-weight:600; font-size:14px;
+  cursor:pointer; transition:background-color .2s ease, color .2s ease;
+  width:fit-content;
+}
+.panel-next:hover{ background:#F2665A; color:#fff; }
+.panel-next svg{ width:14px; height:14px; transition:transform .2s ease; }
+.panel-next:hover svg{ transform:translateX(3px); }
+
 .next-project{margin:0 48px 60px; padding:44px 40px; background:var(--paper-alt); border-radius:24px; display:flex; justify-content:space-between; align-items:center; max-width:904px; margin-left:auto; margin-right:auto; text-decoration:none; color:inherit;}
 .next-project .label{font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--graphite); margin-bottom:6px;}
 .next-project h3{margin:0;}
@@ -272,7 +284,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="block" style="margin-top:28px;">
         <div class="section-eyebrow">The Challenge</div>
         <p>Health-conscious shoppers, people managing keto, paleo, anti-inflammatory, diabetic, or PCOS diets, are highly motivated but profoundly underserved. Nutrition labels are designed to comply, not communicate. Additive names are deliberately obscure.</p>
-        <p>Existing scanner apps either oversimplify into vague grades or overwhelm with raw data. Every tool on the market treats all users the same, ignoring that what's safe for one dietary profile can be inflammatory for another.</p>
+        <p>Existing scanner apps either oversimplify into vague grades or overwhelm with raw data. Every tool on the market treats all users the same, ignoring that products safe for one dietary profile can be inflammatory for another.</p>
       </div>
 
       <div class="block" style="margin-bottom:0;">
@@ -280,7 +292,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <p>An AI-powered mobile app that scans any food product and instantly flags hidden sugars, inflammatory ingredients, and misleading health claims, then explains why, in plain language, personalized to the user's specific dietary profile.</p>
         <p style="margin-bottom:0;">Built with a custom illustration system, an AI nutrition assistant, pantry and recipe integration, and a judgment-free design language built from the ground up.</p>
       </div>
-      <p class="meta-note">Self-directed academic project, currently in active development, the design work documented here is the product foundation.</p>
+      <p class="meta-note">Self-directed academic project, currently in active development. The design work documented here forms the product foundation.</p>
     </div>
     <div class="hero-image" style="border:none; padding:0; background:none; display:block; overflow:hidden; position:relative;">
       <img src="/assets/sifted/SIFTED-COVER.png" alt="Sifted app hero" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; border-radius:16px;">
@@ -311,10 +323,10 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
   <div class="block">
     <div class="section-eyebrow">The Problem</div>
-    <h2>Health-conscious shoppers have the knowledge. They don't have a tool that helps them act on it.</h2>
-    <p>The average health-conscious shopper is not uninformed. They know sugar is bad. What they don't have is a tool that helps them act on that knowledge at the moment it matters: standing in a grocery aisle, reading a label full of chemical names they don't recognize, or prepping a last-minute meal.</p>
+    <h2>Health-conscious shoppers have the knowledge. They lack a tool that helps them act on it.</h2>
+    <p>The average health-conscious shopper is not uninformed. They understand the risks of added sugar. What they lack is a tool that helps them act on that knowledge at the moment it matters: standing in a grocery aisle, reading a label full of chemical names they cannot interpret, or preparing a meal without advance planning.</p>
     <p>Nutrition labels are designed to comply, not to communicate. Additives hide behind dozens of aliases. The apps that exist either oversimplify into vague letter grades or overwhelm with raw data.</p>
-    <p class="gap-statement">The gap: actionable clarity at the point of decision, personalized to what each user is actually trying to avoid.</p>
+    <p class="gap-statement">The gap: actionable clarity at the point of decision, personalized to each user's specific dietary restrictions.</p>
     <div class="gallery" style="margin-top:20px;">
       <div class="gallery-item wide" style="border:none; padding:0; background:none; display:flex; justify-content:center;"><img src="/assets/sifted/problem-research-sifted.png" alt="Competitive audit" style="max-width:700px; width:100%; height:auto; display:block; border-radius:16px; margin:0 auto;"></div>
     </div>
@@ -325,7 +337,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 <div class="tab-panel" data-panel="research">
   <div class="block">
     <div class="section-eyebrow">Research</div>
-    <h2>5 qualitative interviews. 3 sharp findings.</h2>
+    <h2>5 qualitative interviews. 3 actionable findings.</h2>
     <div class="stats-band">
       <div class="stat"><b>100%</b><span>of participants unaware of hidden sugar aliases, maltodextrin, tapioca starch, none recognized as sugar.</span></div>
       <div class="stat"><b>4 of 5</b><span>felt actively misled by food packaging. "Organic," "natural," "low fat" claims obscured high sugar or inflammatory content.</span></div>
@@ -338,7 +350,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="chip-row">
       <div class="chip">Social situations and lack of planning.</div>
       <div class="chip">Time and fatigue lead to choosing unhealthy convenience foods.</div>
-      <div class="chip">Cooking fatigue and hunger, living with family that doesn't eat healthy.</div>
+      <div class="chip">Cooking fatigue and hunger, living with family members who do not share the same dietary goals.</div>
     </div>
     <div class="gallery-item wide" style="margin-top:20px; border:none; padding:0; background:none;"><img src="/assets/sifted/research-interviews-sifted.png" alt="Affinity mapping and themes board" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
   </div>
@@ -361,11 +373,11 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 <div class="tab-panel" data-panel="design">
   <div class="block">
     <div class="section-eyebrow">Strategic Framework</div>
-    <h2>Flipping industry defaults.</h2>
+    <h2>Challenging industry defaults.</h2>
     <table class="compare-table">
       <tr><th>Industry Default</th><th>Sifted's Approach</th></tr>
       <tr><td>Hide sugar complexity behind scores</td><td>Surface hidden sugar aliases automatically</td></tr>
-      <tr><td>Paywall ingredient details</td><td>Free and instant access to all ingredient info</td></tr>
+      <tr><td>Paywall ingredient details</td><td>Free and instant access to all ingredient information</td></tr>
       <tr><td>Grade food generically</td><td>Personalize feedback to each user's dietary profile</td></tr>
       <tr><td>Let "healthy" claims stand</td><td>Flag misleading labels explicitly</td></tr>
     </table>
@@ -380,11 +392,11 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       </div>
       <div class="acc-item">
         <button class="acc-head"><h4><span class="acc-num">2</span>Shape feature sets from user needs</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-        <div class="acc-body"><div class="acc-body-inner"><p>Translated research findings directly into a prioritized feature list rather than a wish list.</p></div></div>
+        <div class="acc-body"><div class="acc-body-inner"><p>Translated research findings directly into a prioritized feature list rather than an unfocused feature backlog.</p></div></div>
       </div>
       <div class="acc-item">
         <button class="acc-head"><h4><span class="acc-num">3</span>Validate structure through card sorting</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-        <div class="acc-body"><div class="acc-body-inner"><p>Confirmed the information architecture matched how users actually grouped nutrition concepts.</p></div></div>
+        <div class="acc-body"><div class="acc-body-inner"><p>Confirmed the information architecture matched how users grouped nutrition concepts in practice.</p></div></div>
       </div>
       <div class="acc-item">
         <button class="acc-head"><h4><span class="acc-num">4</span>Map user flows to key tasks</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
@@ -404,7 +416,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="feature-grid" style="grid-template-columns:1fr 1fr;">
       <div class="feature-card" style="text-align:left;"><h4>Account Creation</h4><p>Registration, sign-in, and onboarding questionnaires so users get a personalized profile with access to saved searches and recipes.</p></div>
       <div class="feature-card" style="text-align:left;"><h4>Barcode &amp; OCR Scanner</h4><p>A quick tool to detect unwanted ingredients from barcodes, ingredient lists, menus, or images, parsing recipes from links, screenshots, or typed input.</p></div>
-      <div class="feature-card" style="text-align:left;"><h4>Recommendation System</h4><p>Learns from user behavior and profile settings to suggest smarter swaps, common triggers, and safe go-to meals.</p></div>
+      <div class="feature-card" style="text-align:left;"><h4>Recommendation System</h4><p>Learns from user behavior and profile settings to suggest smarter swaps, common triggers, and reliable meal options aligned with their profile.</p></div>
       <div class="feature-card" style="text-align:left;"><h4>Misleading Health Claims Detector</h4><p>Flags hidden sugars, high-carbs, seed oils, and inflammatory additives, and explains why, identifying deceptive labels like "low fat" or "organic."</p></div>
     </div>
   </div>
@@ -414,7 +426,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <h2>Context-first. Ingredient-level. Gracefully uncertain.</h2>
     <p>The AI feature was the most complex design challenge, and the most relevant to where consumer wellness is heading.</p>
     <div class="principle-row">
-      <div class="principle"><b>Context-first responses</b><p>The AI leads with what's relevant to the user's specific dietary profile before providing general information.</p></div>
+      <div class="principle"><b>Context-first responses</b><p>The AI leads with information relevant to the user's specific dietary profile before providing general information.</p></div>
       <div class="principle"><b>Ingredient-level explanations</b><p>Rather than "this product scored a C," the AI explains why a specific ingredient is a flag for this specific user's context.</p></div>
       <div class="principle"><b>Graceful uncertainty</b><p>The interface surfaces AI uncertainty explicitly rather than presenting low-confidence responses as authoritative.</p></div>
     </div>
@@ -442,7 +454,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
           </div>
           <div>
             <h3 style="font-family:'Poppins',sans-serif; font-size:22px; color:var(--sifted-navy); margin-bottom:14px;">From Mid-Fidelity to Hi-Fidelity</h3>
-            <p style="font-weight:600; color:var(--ink); margin-top:0;">After selecting the most effective mid-fidelity layouts, I developed high-fidelity screens mapped directly to the core task flows, each step simple, logical, and aligned with how users actually accomplish their goals. Mid-fidelity served as the validation stage, confirming functionality before investing in visual branding.</p>
+            <p style="font-weight:600; color:var(--ink); margin-top:0;">After selecting the most effective mid-fidelity layouts, I developed high-fidelity screens mapped directly to the core task flows, with each step kept simple, logical, and aligned with how users accomplish their goals. Mid-fidelity served as the validation stage, confirming functionality before investing in visual branding.</p>
           </div>
         </div>
   </div>
@@ -468,7 +480,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div>
         <div class="section-eyebrow">What This Product Is Built to Prove</div>
         <h2>Clarity builds trust. Trust changes behavior. Behavior improves health.</h2>
-        <p style="margin-top:0;">The people most motivated to eat well are the least supported by the tools that exist. Sifted aims to close that gap with ingredient-level transparency, judgment-free language, AI personalization, and visual design that makes the experience feel like a coach, not a critic.</p>
+        <p style="margin-top:0;">The people most motivated to eat well are the least supported by the tools that exist. Sifted aims to close that gap with ingredient-level transparency, judgment-free language, AI personalization, and visual design that positions the experience as supportive guidance rather than judgment.</p>
       </div>
       <div class="gallery-item" style="border:none; padding:0; background:none;"><img src="/assets/sifted/hi-fi-example-ingredients-sifted.png" alt="Full product montage" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
     </div>
@@ -486,23 +498,23 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="accordion">
       <div class="acc-item open">
         <button class="acc-head"><h4><span class="priority-tag high" style="margin:0;">High</span>&nbsp;Alert visibility</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-        <div class="acc-body"><div class="acc-body-inner"><p>The ingredient alert blended into the page, users missed it entirely, and those who noticed didn't realize it was clickable. Fix: increased visual weight, larger size, and a "Learn why" button that makes the alert explicitly actionable.</p></div></div>
+        <div class="acc-body"><div class="acc-body-inner"><p>The ingredient alert blended into the page; users missed it entirely, and those who noticed did not realize it was clickable. <b>Resolution:</b> increased visual weight, larger size, and a "Learn why" button that makes the alert explicitly actionable.</p></div></div>
       </div>
       <div class="acc-item">
         <button class="acc-head"><h4><span class="priority-tag high" style="margin:0;">High</span>&nbsp;Ingredients clarity</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-        <div class="acc-body"><div class="acc-body-inner"><p>Displaying the full ingredient list upfront overwhelmed users and buried what they actually needed. Fix: progressive disclosure, flagged ingredients surface first by default, with a "View All" option for full transparency.</p></div></div>
+        <div class="acc-body"><div class="acc-body-inner"><p>Displaying the full ingredient list upfront overwhelmed users and buried the information they needed most. <b>Resolution:</b> progressive disclosure, flagged ingredients surface first by default, with a "View All" option for full transparency.</p></div></div>
       </div>
       <div class="acc-item">
         <button class="acc-head"><h4><span class="priority-tag medium" style="margin:0;">Medium</span>&nbsp;Scan discoverability</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-        <div class="acc-body"><div class="acc-body-inner"><p>Users could only initiate a scan from the home screen, and the nav icon wasn't intuitive at first glance. Fix: added a "Scan Another Item" CTA on results, and made the nav scan button more visually prominent.</p></div></div>
+        <div class="acc-body"><div class="acc-body-inner"><p>Users could only initiate a scan from the home screen, and the navigation icon was not intuitive at first glance. <b>Resolution:</b> added a "Scan Another Item" CTA on results, and made the navigation scan button more visually prominent.</p></div></div>
       </div>
       <div class="acc-item">
         <button class="acc-head"><h4><span class="priority-tag medium" style="margin:0;">Medium</span>&nbsp;Onboarding wording</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-        <div class="acc-body"><div class="acc-body-inner"><p>Onboarding copy was heavy and some users skipped it; a "None / Others" option was missing, leaving edge cases unaccounted for. Fix: simplified language and added the missing option, reducing first-use drop-off.</p></div></div>
+        <div class="acc-body"><div class="acc-body-inner"><p>Onboarding copy was heavy and some users skipped it; a "None / Others" option was missing, leaving edge cases unaccounted for. <b>Resolution:</b> simplified language and added the missing option, reducing first-use drop-off.</p></div></div>
       </div>
       <div class="acc-item">
         <button class="acc-head"><h4><span class="priority-tag low" style="margin:0;">Low</span>&nbsp;Other enhancements</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-        <div class="acc-body"><div class="acc-body-inner"><p>Items like clickable info icons were documented for future iteration, deferred intentionally, since they had minimal impact on core tasks relative to the effort required.</p></div></div>
+        <div class="acc-body"><div class="acc-body-inner"><p>Enhancements such as clickable information icons were documented for future iteration and deferred intentionally, since they had minimal impact on core tasks relative to the effort required.</p></div></div>
       </div>
     </div>
     <div class="gallery-item wide" style="margin-top:20px; border:none; padding:0; background:none;"><img src="/assets/sifted/sifted-prototype-final.gif" alt="Sifted prototype walkthrough" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
@@ -522,18 +534,17 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
   <div class="block">
     <div class="section-eyebrow">The Outcome</div>
-    <h2>An app designed like it matters. Because the problem does.</h2>
+    <h2>An app designed with purpose, because the problem demands it.</h2>
     <p>I encourage you to explore the interactive prototype and see how thoughtfully designed interactions can solve real nutritional challenges.</p>
     <a href="#" class="outcome-cta">Sifted Prototype
       <svg width="16" height="16" viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
   </div>
+  <a href="../tirivelo-case-study/" class="next-project">
+    <div><div class="label">Next case file</div><h3>TiriVelo</h3></div>
+    <div class="next-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </a>
 </div>
-
-<a href="../tirivelo-case-study/" class="next-project">
-  <div><div class="label">Next case file</div><h3>TiriVelo</h3></div>
-  <div class="next-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-</a>
 
 <footer>
   <div class="foot-row">
@@ -561,6 +572,32 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
     window.scrollTo({top: panelTop - 130, behavior:'smooth'});
   });
 });
+(function(){
+  const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
+  if(!tabButtons.length) return;
+
+  tabButtons.forEach((btn, index)=>{
+    const panel = document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`);
+    if(!panel) return;
+    const isLast = index === tabButtons.length - 1;
+
+    if(!isLast){
+      const nextBtn = tabButtons[index + 1];
+      const continueBtn = document.createElement('button');
+      continueBtn.className = 'panel-next';
+      continueBtn.innerHTML = `Continue
+        <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      continueBtn.addEventListener('click', ()=> nextBtn.click());
+      panel.appendChild(continueBtn);
+    } else {
+      const nextProjectEl = document.querySelector('.next-project');
+      if(nextProjectEl){
+        nextProjectEl.remove();
+        panel.appendChild(nextProjectEl);
+      }
+    }
+  });
+})();
 (function(){
   const tabWrap = document.getElementById('tabNavWrap');
   const sentinel = document.getElementById('tabNavSentinel');
