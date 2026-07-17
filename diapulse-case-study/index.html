@@ -135,7 +135,8 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .flow-step{display:grid; grid-template-columns:180px 1fr; gap:20px; align-items:center; padding:18px 0; border-bottom:1px solid var(--line);}
 .flow-step:last-child{border-bottom:none;}
 .flow-label{font-family:'Poppins',sans-serif; font-size:14px; font-weight:600; color:var(--teal);}
-.flow-screens{display:flex; gap:12px;}
+.flow-screens{display:flex; gap:12px; flex-wrap:wrap;}
+.flow-screens img{width:50%; height:auto; display:block; background:var(--paper-alt); border-radius:10px;}
 .flow-screen{flex:1; background:var(--paper-alt); border:2px dashed var(--line); border-radius:10px; height:70px; display:flex; align-items:center; justify-content:center; color:var(--graphite); font-size:11px; font-weight:600; text-align:center; padding:8px;}
 
 /* ---- reflections ---- */
@@ -357,13 +358,13 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="section-eyebrow">Typography &amp; Color</div>
     <h2>Precision without institutional coldness.</h2>
     <p>Updated the type hierarchy to prioritize readability in clinical contexts, environments where information needs to be processed quickly and without ambiguity. The color system was modernized within the existing palette, moving toward tones that read as professional and precise without institutional coldness.</p>
-    <div class="gallery-item wide">[Typography specimen, Futura PT type scale, tagline sample]</div>
+    <div class="gallery-item wide" style="border:none; padding:0; background:none;"><video src="/assets/diapulse/diapulse-screens-banner.mp4" autoplay muted loop playsinline aria-label="UI screens" style="width:100%; height:auto; display:block; border-radius:16px;"></video></div>
   </div>
 
   <div class="block"><div style="padding:0 32px;"><img src="/assets/diapulse/vessel-drawing.png" alt="Updated hardware, device unit with new logo placement" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
   
   
-    <div class="section-eyebrow">Hardware Integration</div>
+    <div class="section-eyebrow" style="margin-top:32px;">Hardware Integration</div>
     <h2>Extending the brand onto the physical device.</h2>
     <p>One of the more unusual aspects of this project was extending the brand onto the physical device itself. I worked with the product development team on hardware color selection and strategic logo placement, ensuring the device aligned with the updated brand system.</p>
     </div>
@@ -379,11 +380,12 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
   <div class="block">
     <h3>Software flow</h3>
-    <div class="flow-list">
-      <div class="flow-step"><div class="flow-label">Splash Screen</div><div class="flow-screens"><div class="flow-screen">Diapulse splash</div><div class="flow-screen">Info popup</div></div></div>
-      <div class="flow-step"><div class="flow-label">Setting Select</div><div class="flow-screens"><div class="flow-screen">Treatment settings v1</div><div class="flow-screen">Treatment settings v2</div></div></div>
-      <div class="flow-step"><div class="flow-label">Treatment Active</div><div class="flow-screens"><div class="flow-screen">Current treatment, active</div><div class="flow-screen">Current treatment, active v2</div></div></div>
-      <div class="flow-step"><div class="flow-label">Treatment Paused</div><div class="flow-screens"><div class="flow-screen">Treatment in progress</div><div class="flow-screen">Treatment paused</div></div></div>
+    <div class="flow-list" style="display:flex; flex-wrap:wrap; gap:12px;">
+      <img src="/assets/diapulse/splash-screen-diapulse.png" alt="Diapulse splash" style="width:calc(50% - 6px); height:auto; display:block; background:var(--paper-alt); border-radius:10px;">
+      <img src="/assets/diapulse/pop-up-diapulse.png" alt="Info popup" style="width:calc(50% - 6px); height:auto; display:block; background:var(--paper-alt); border-radius:10px;">
+      <img src="/assets/diapulse/treatment-setup-diapulse.png" alt="Treatment settings" style="width:calc(50% - 6px); height:auto; display:block; background:var(--paper-alt); border-radius:10px;">
+      <img src="/assets/diapulse/treatment-inprogress.png" alt="Treatment in progress, active" style="width:calc(50% - 6px); height:auto; display:block; background:var(--paper-alt); border-radius:10px;">
+      <img src="/assets/diapulse/treament-paused-diapulse.png" alt="Treatment paused" style="width:calc(50% - 6px); height:auto; display:block; background:var(--paper-alt); border-radius:10px;">
     </div>
   </div>
 </div>
@@ -395,11 +397,11 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <h2>Comprehensive. Coherent. From identity to hardware to software.</h2>
     <p>Diapulse went from a visually fragmented, outdated presence to a unified healthcare technology brand with a coherent system across identity, hardware, and software. The rebrand was fully adopted and rolled out across all materials. The updated software is live in clinical environments.</p>
     <div class="gallery-3">
-      <div class="gallery-item">[Trade show booth, Diapulse exhibit setup]</div>
-      <div class="gallery-item">[Exhibit banner, "The Future of Recovery"]</div>
-      <div class="gallery-item">[Rebranded device, final hardware]</div>
+      <div class="gallery-item" style="border:none; padding:0; background:none;"><img src="/assets/diapulse/diapulse-booth.jpg" alt="Trade show booth, Diapulse exhibit setup" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
+      <div class="gallery-item" style="border:none; padding:0; background:none;"><img src="/assets/diapulse/diapulse-exhibit.jpg" alt="Exhibit banner, The Future of Recovery" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
+      <div class="gallery-item" style="border:none; padding:0; background:none;"><img src="/assets/diapulse/diapulse-device.png" alt="Rebranded device, final hardware" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
     </div>
-    <div class="gallery-item wide" style="margin-top:16px;">[Tri-fold brochure, "The Right Choice for Smart Care," Olympic Heritage, Scientific Validation]</div>
+    <div class="gallery-item wide" style="margin-top:16px; border:none; padding:0; background:none;"><img src="/assets/diapulse/diapulse-exhibit-flyer.png" alt="Tri-fold brochure, The Right Choice for Smart Care" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
   </div>
 
   <div class="block">
@@ -419,7 +421,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   </div>
 
   <div class="block">
-    <div class="gallery-item wide">[Closing image, patients photo with pulse-bar brand overlay]</div>
+    <div class="gallery-item wide" style="border:none; padding:0; background:none;"><img src="/assets/diapulse/final-img.png" alt="Closing image, patients photo with pulse-bar brand overlay" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
   </div>
   <a href="../wave-case-study/" class="next-project">
     <div><div class="label">Next case file</div><h3>WAVE</h3></div>
