@@ -137,6 +137,30 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .flow-label{font-family:'Poppins',sans-serif; font-size:14px; font-weight:600; color:var(--teal);}
 .flow-screens{display:flex; gap:12px; flex-wrap:wrap;}
 .flow-screens img{width:50%; height:auto; display:block; background:var(--paper-alt); border-radius:10px;}
+.flow-carousel{position:relative;}
+.flow-carousel-dots{display:none; gap:8px; justify-content:center; margin-top:16px; flex-wrap:wrap;}
+.flow-carousel-dot{width:8px; height:8px; border-radius:50%; background:var(--line); transition:background .2s ease;}
+.flow-carousel-dot.active{background:var(--coral);}
+@media (max-width:900px){
+  .flow-carousel .flow-list{
+    display:flex !important;
+    flex-wrap:nowrap !important;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    gap:16px;
+    padding:0 12px 8px;
+    scrollbar-width:none;
+  }
+  .flow-carousel .flow-list::-webkit-scrollbar{display:none;}
+  .flow-carousel .flow-list img{
+    flex:0 0 78% !important;
+    width:auto !important;
+    scroll-snap-align:center;
+    scroll-snap-stop:always;
+  }
+  .flow-carousel-dots{display:flex;}
+}
 .flow-screen{flex:1; background:var(--paper-alt); border:2px dashed var(--line); border-radius:10px; height:70px; display:flex; align-items:center; justify-content:center; color:var(--graphite); font-size:11px; font-weight:600; text-align:center; padding:8px;}
 
 /* ---- reflections ---- */
@@ -267,7 +291,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       </div>
       <p class="cs-sub">MedTech · Legacy Brand Refresh · Clinical Software UI</p>
       <div class="meta-row" style="border-top:none; padding-top:0; padding-bottom:0;">
-        <div class="meta-item"><span>Role</span><b>Creative Director, UX designer</b></div>
+        <div class="meta-item"><span>Role</span><b>Creative Director, UX</b></div>
         <div class="meta-item"><span>Timeline</span><b>6 Weeks</b></div>
         <div class="meta-item"><span>Year</span><b>2025–2026</b></div>
         <div class="meta-item"><span>Status</span><b>Live · Ongoing</b></div>
@@ -352,6 +376,10 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   <div class="block">
     <div class="pull-quote"><p>Less Pain. Faster Healing. Better Life.</p></div>
     <img src="/assets/diapulse/diapulse-banner.png" alt="Marketing banner with runner silhouette and pulse-bar cutout shapes" style="width:100%; height:auto; display:block; border-radius:16px;">
+    <div class="gallery" style="margin-top:18px; border:none; padding:0; background:none;">
+      <img src="/assets/diapulse/buttons-diapulse.png" alt="Diapulse button system" style="width:100%; height:auto; display:block; border-radius:16px;">
+      <img src="/assets/diapulse/WCAG.png" alt="WCAG accessibility compliance" style="width:100%; height:auto; display:block; border-radius:16px;">
+    </div>
   </div>
 
   <div class="block">
@@ -380,13 +408,23 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
   <div class="block">
     <h3>Software flow</h3>
-    <div class="flow-list" style="display:flex; flex-wrap:wrap; gap:12px;">
+    <div class="flow-carousel">
+    <div class="flow-list" id="flowCarouselRow" style="display:flex; flex-wrap:wrap; gap:12px;">
       <img src="/assets/diapulse/splash-screen-diapulse.png" alt="Diapulse splash" style="width:calc(50% - 6px); height:auto; display:block; background:var(--paper-alt); border-radius:10px;">
       <img src="/assets/diapulse/pop-up-diapulse.png" alt="Info popup" style="width:calc(50% - 6px); height:auto; display:block; background:var(--paper-alt); border-radius:10px;">
       <img src="/assets/diapulse/treatment-setup-diapulse.png" alt="Treatment settings" style="width:calc(50% - 6px); height:auto; display:block; background:var(--paper-alt); border-radius:10px;">
       <img src="/assets/diapulse/treatment-inprogress.png" alt="Treatment in progress, active" style="width:calc(50% - 6px); height:auto; display:block; background:var(--paper-alt); border-radius:10px;">
       <img src="/assets/diapulse/treament-paused-diapulse.png" alt="Treatment paused" style="width:calc(50% - 6px); height:auto; display:block; background:var(--paper-alt); border-radius:10px;">
       <img src="/assets/diapulse/Diapulse-treatment-screen-help.png" alt="Help screen, treatment instructions" style="width:calc(50% - 6px); height:auto; display:block; background:var(--paper-alt); border-radius:10px;">
+    </div>
+    <div class="flow-carousel-dots" id="flowCarouselDots" aria-hidden="true">
+      <span class="flow-carousel-dot active"></span>
+      <span class="flow-carousel-dot"></span>
+      <span class="flow-carousel-dot"></span>
+      <span class="flow-carousel-dot"></span>
+      <span class="flow-carousel-dot"></span>
+      <span class="flow-carousel-dot"></span>
+    </div>
     </div>
   </div>
 </div>
@@ -570,6 +608,38 @@ window.addEventListener('scroll', ()=>{
   else{ backToTop.classList.remove('show'); }
 });
 backToTop.addEventListener('click', ()=>{ window.scrollTo({top:0, behavior:'smooth'}); });
+
+(function(){
+  const row = document.getElementById('flowCarouselRow');
+  const dotsWrap = document.getElementById('flowCarouselDots');
+  if(!row || !dotsWrap) return;
+  const dots = dotsWrap.querySelectorAll('.flow-carousel-dot');
+  const items = row.querySelectorAll('img');
+  const mq = window.matchMedia('(max-width:900px)');
+
+  function updateDots(){
+    if(!mq.matches) return;
+    const center = row.scrollLeft + row.clientWidth / 2;
+    let closest = 0;
+    let minDist = Infinity;
+    items.forEach((item, i)=>{
+      const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+      const dist = Math.abs(center - itemCenter);
+      if(dist < minDist){ minDist = dist; closest = i; }
+    });
+    dots.forEach((dot, i)=> dot.classList.toggle('active', i === closest));
+  }
+
+  function initFlowCarousel(){
+    if(mq.matches) updateDots();
+  }
+
+  row.addEventListener('scroll', updateDots, {passive:true});
+  mq.addEventListener('change', initFlowCarousel);
+  window.addEventListener('resize', initFlowCarousel);
+  window.addEventListener('load', initFlowCarousel);
+  initFlowCarousel();
+})();
 </script>
 
 <script src="/assets/js/relay.js"></script>
