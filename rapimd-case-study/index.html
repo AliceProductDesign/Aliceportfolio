@@ -171,6 +171,10 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .problem-card .p-label{font-size:11px; font-weight:700; text-transform:uppercase; color:var(--teal); margin-top:12px; margin-bottom:4px;}
 .problem-card .p-label:first-of-type{margin-top:0;}
 .problem-card p{font-size:13px; margin:0;}
+.problem-carousel{position:relative;}
+.problem-carousel-dots{display:none; gap:8px; justify-content:center; margin-top:16px; flex-wrap:wrap;}
+.problem-carousel-dot{width:8px; height:8px; border-radius:50%; background:var(--line); transition:background .2s ease;}
+.problem-carousel-dot.active{background:var(--coral);}
 
 /* ---- FINDINGS LIST ---- */
 .finding-list{margin-top:16px;}
@@ -249,7 +253,23 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   .meta-row{grid-template-columns:1fr 1fr;}
   .gallery, .reflect-grid{grid-template-columns:1fr;}
   .stats-band{grid-template-columns:1fr 1fr;}
-  .problem-grid{grid-template-columns:1fr;}
+  .problem-carousel .problem-grid{
+    display:flex;
+    grid-template-columns:unset;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    gap:16px;
+    padding:0 12px 8px;
+    scrollbar-width:none;
+  }
+  .problem-carousel .problem-grid::-webkit-scrollbar{display:none;}
+  .problem-carousel .problem-card{
+    flex:0 0 78%;
+    scroll-snap-align:center;
+    scroll-snap-stop:always;
+  }
+  .problem-carousel-dots{display:flex;}
   .persona-full{grid-template-columns:1fr;}
   .cs-header, .tab-panel{padding-left:24px; padding-right:24px;}
   .next-project{flex-direction:column; align-items:flex-start; gap:20px; margin:0 24px 40px;}
@@ -374,7 +394,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
   <div class="block">
     <h3>The three-sided problem</h3>
-    <div class="problem-grid">
+    <div class="problem-carousel">
+    <div class="problem-grid" id="problemCarouselRow">
       <div class="problem-card">
         <h4>Patient Access Gap</h4>
         <div class="p-label">Background</div>
@@ -403,6 +424,12 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <p>Without trust signals and clarity, users abandon bookings, reducing conversion rates and limiting platform growth.</p>
       </div>
     </div>
+    <div class="problem-carousel-dots" id="problemCarouselDots" aria-hidden="true">
+      <span class="problem-carousel-dot active"></span>
+      <span class="problem-carousel-dot"></span>
+      <span class="problem-carousel-dot"></span>
+    </div>
+    </div>
   </div>
 </div>
 
@@ -419,6 +446,11 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     </div>
     <p class="gap-statement" style="margin-top:20px;">The insight that shaped everything: these users were not avoiding care because they were unaware of their options. They were avoiding it because experience had taught them that engaging with the system cost more than they could predict.</p>
     <div class="gallery-item wide" style="margin-top:20px; border:none; padding:0; background:none;"><img data-relay src="/assets/rapidmd/affinity-mapping-board-rapimd.png" alt="Affinity mapping board" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
+  </div>
+  <div class="block">
+    <h2>Four competitors reviewed.<br>None built for urgency, dynamic pricing, or unsold inventory.</h2>
+    <p>Zocdoc, Sesame Care, Solv, and Healthgrades each solve a piece of the booking problem: insurance-based discovery, cash-pay transparency, same-day urgent care, or provider reputation. But none of them treat an open appointment slot as perishable inventory. Pricing across the board is static, urgency is an afterthought, and providers have no built-in way to recover revenue from cancellations or no-shows. That gap, unsold time with no dynamic pricing and no urgency mechanics, is exactly where RapiMD positions itself: a same-day, price-optimized marketplace that turns empty slots into booked ones.</p>
+    <div class="gallery-item wide" style="margin-top:20px; border:none; padding:0; background:none;"><img data-relay src="/assets/rapidmd/competitor-analysis-rapimd.png" alt="RapiMD competitor analysis" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
   </div>
 </div>
 
@@ -677,6 +709,38 @@ window.addEventListener('scroll', ()=>{
   else{ backToTop.classList.remove('show'); }
 });
 backToTop.addEventListener('click', ()=>{ window.scrollTo({top:0, behavior:'smooth'}); });
+
+(function(){
+  const row = document.getElementById('problemCarouselRow');
+  const dotsWrap = document.getElementById('problemCarouselDots');
+  if(!row || !dotsWrap) return;
+  const dots = dotsWrap.querySelectorAll('.problem-carousel-dot');
+  const items = row.querySelectorAll('.problem-card');
+  const mq = window.matchMedia('(max-width:900px)');
+
+  function updateDots(){
+    if(!mq.matches) return;
+    const center = row.scrollLeft + row.clientWidth / 2;
+    let closest = 0;
+    let minDist = Infinity;
+    items.forEach((item, i)=>{
+      const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+      const dist = Math.abs(center - itemCenter);
+      if(dist < minDist){ minDist = dist; closest = i; }
+    });
+    dots.forEach((dot, i)=> dot.classList.toggle('active', i === closest));
+  }
+
+  function initProblemCarousel(){
+    if(mq.matches) updateDots();
+  }
+
+  row.addEventListener('scroll', updateDots, {passive:true});
+  mq.addEventListener('change', initProblemCarousel);
+  window.addEventListener('resize', initProblemCarousel);
+  window.addEventListener('load', initProblemCarousel);
+  initProblemCarousel();
+})();
 </script>
 
 <script src="/assets/js/relay.js"></script>
