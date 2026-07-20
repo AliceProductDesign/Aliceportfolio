@@ -89,11 +89,21 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .placeholder-note{color:var(--graphite); font-size:13px; font-weight:600; text-align:center;}
 
 .section-eyebrow{font-weight:700; font-size:12.5px; color:var(--amber-dark); opacity:0.85; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px;}
-h2{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(24px,2.8vw,30px); margin-bottom:18px;}
-h3{font-family:'Poppins',sans-serif; font-weight:600; font-size:19px; margin-bottom:10px;}
+h2{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(24px,2.8vw,30px); margin-bottom:18px; max-width:740px;}
+h3{font-family:'Poppins',sans-serif; font-weight:600; font-size:19px; margin-bottom:10px; max-width:740px;}
 p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; max-width:740px;}
 .block{margin-bottom:56px;}
 .block:last-child{margin-bottom:0;}
+@media (min-width:901px){
+  .block--split{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
+  .block--split > :not(:last-child){grid-column:1;}
+  .block--split > :last-child{grid-column:2; grid-row:1 / -1; align-self:center;}
+  .block--split.reverse > :not(:last-child){grid-column:2;}
+  .block--split.reverse > :last-child{grid-column:1;}
+  .block--split h2,
+  .block--split h3,
+  .block--split p{max-width:none;}
+}
 .cs-header .header-top > div:first-child > .block + .block{padding-bottom:24px;}
 .gap-statement{font-style:italic; color:var(--teal); font-size:15px; border-top:1px solid var(--line); padding-top:18px; margin-top:6px;}
 
@@ -217,7 +227,7 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 
 .next-project{margin:0 48px 60px; padding:44px 40px; background:var(--paper-alt); border-radius:24px; display:flex; justify-content:space-between; align-items:center; max-width:904px; margin-left:auto; margin-right:auto; text-decoration:none; color:inherit;}
 .next-project .label{font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--graphite); margin-bottom:6px;}
-.next-project h3{margin:0;}
+.next-project h3{margin:0; max-width:none;}
 .next-arrow{width:50px; height:50px; border-radius:50%; background:#F2665A; border:none; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; transition:background-color .25s ease, transform .3s;}
 .next-arrow svg{width:20px; height:20px; stroke:#fff;}
 .next-project:hover .next-arrow{background:#33454A; transform:translateX(6px);}
@@ -447,7 +457,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <p class="gap-statement" style="margin-top:20px;">The insight that shaped everything: these users were not avoiding care because they were unaware of their options. They were avoiding it because experience had taught them that engaging with the system cost more than they could predict.</p>
     <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/rapidmd/affinity-mapping-board-rapimd.png" alt="Affinity mapping board" style="width:100%; height:auto; display:block; border-radius:16px"></div>
   </div>
-  <div class="block">
+  <div class="block block--split">
     <h2>Four competitors reviewed.<br>None built for urgency, dynamic pricing, or unsold inventory.</h2>
     <p>Zocdoc, Sesame Care, Solv, and Healthgrades each solve a piece of the booking problem: insurance-based discovery, cash-pay transparency, same-day urgent care, or provider reputation. But none of them treat an open appointment slot as perishable inventory. Pricing across the board is static, urgency is an afterthought, and providers have no built-in way to recover revenue from cancellations or no-shows. That gap, unsold time with no dynamic pricing and no urgency mechanics, is exactly where RapiMD positions itself: a same-day, price-optimized marketplace that turns empty slots into booked ones.</p>
     <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/rapidmd/competitor-analysis-rapimd.png" alt="RapiMD competitor analysis" style="width:100%; height:auto; display:block; border-radius:16px"></div>
@@ -481,7 +491,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     </div>
   </div>
 
-  <div class="block">
+  <div class="block block--split">
     <div class="section-eyebrow">Trust Architecture</div>
     <h2>Every screen was designed to build or maintain trust.</h2>
     <p>Trust architecture in healthcare UX means designing information hierarchy, interaction patterns, and visual language specifically to reduce patient anxiety and build confidence at each decision point. This included: transparent flat fees visible before login, provider credential display with verification signals, clear scope-of-service boundaries, and intentional friction at irreversible actions.</p>
@@ -587,7 +597,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <img data-relay src="/assets/rapidmd/rapi-md-bluebk.png" alt="rapiMD" style="width:100%; height:auto; margin:0 auto; display:block">
     <div class="tagline">Last-Minute Healthcare</div>
   </div>
-  <a href="../bergen-county-case-study/bergen-county-case-study.html" class="next-project">
+  <a href="../bergen-county-case-study/" class="next-project">
     <div><div class="label">Next case file</div><h3>Permit Portal</h3></div>
     <div class="next-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
   </a>

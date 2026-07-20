@@ -1,0 +1,31 @@
+---
+description: Case study HTML structure, styling, and performance
+globs: **/*-case-study/**/*.html,**/*-case-study.html,case-study-template.html
+alwaysApply: false
+---
+
+# Case Study HTML
+
+## File to edit
+
+Edit `{project}-case-study/{project}-case-study.html`. Ignore each folder’s redirect-only `index.html`.
+
+## Layout patterns
+
+- Mobile breakpoint: `@media (max-width:900px)`.
+- Tab panels: `.tab-panel` / `.tab-btn`; inactive panel media is deferred by `relay.js` — use folder tab structure, don’t eager-load hidden-tab videos.
+- Mobile carousels: horizontal scroll + snap + dots (see Sifted `wire-carousel`, RapiMD `problem-carousel`, Diapulse `flow-carousel`).
+- Accent colors: teal for headings/labels; coral for interactive tabs/accordions/CTAs (per-file audit comments at top of `<style>`).
+
+## Assets
+
+- Paths from case study pages: `/assets/{project}/...` (absolute).
+- RapiMD asset folder on disk: `rapidmd` (not `rapimd`).
+- Prefer MP4/WebM over GIF for large prototypes. Use `preload="metadata"` on non-hero videos; hero videos in `.hero-image` may use `preload="auto"`.
+- Below-fold `img[data-relay]`: rely on `relay.js` lazy behavior; avoid inline `margin-top` on images.
+
+## Links
+
+- Back to work: `../#work`. Home: `../`.
+- Next project: `../other-case-study/` (folder URL, not `.html` filename).
+- Do not break the redirect chain: internal links → folder URL → folder `index.html` → labeled `.html` file.

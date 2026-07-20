@@ -93,11 +93,21 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .placeholder-note{color:#B7B7D9; font-size:13px; font-weight:600; text-align:center;}
 
 .section-eyebrow{font-weight:700; font-size:12.5px; color:var(--amber-dark); opacity:0.85; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px;}
-h2{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(24px,2.8vw,30px); margin-bottom:18px;}
-h3{font-family:'Poppins',sans-serif; font-weight:600; font-size:19px; margin-bottom:10px;}
+h2{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(24px,2.8vw,30px); margin-bottom:18px; max-width:740px;}
+h3{font-family:'Poppins',sans-serif; font-weight:600; font-size:19px; margin-bottom:10px; max-width:740px;}
 p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; max-width:740px;}
 .block{margin-bottom:56px;}
 .block:last-child{margin-bottom:0;}
+@media (min-width:901px){
+  .block--split{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
+  .block--split > :not(:last-child){grid-column:1;}
+  .block--split > :last-child{grid-column:2; grid-row:1 / -1; align-self:center;}
+  .block--split.reverse > :not(:last-child){grid-column:2;}
+  .block--split.reverse > :last-child{grid-column:1;}
+  .block--split h2,
+  .block--split h3,
+  .block--split p{max-width:none;}
+}
 .cs-header .header-top > div:first-child > .block + .block{padding-bottom:24px;}
 .gap-statement{font-style:italic; color:var(--teal); font-size:15px; border-top:1px solid var(--line); padding-top:18px; margin-top:6px;}
 
@@ -206,7 +216,8 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 
 .next-project{margin:0 48px 60px; padding:44px 40px; background:var(--paper-alt); border-radius:24px; display:flex; justify-content:space-between; align-items:center; max-width:904px; margin-left:auto; margin-right:auto; text-decoration:none; color:inherit;}
 .next-project .label{font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--graphite); margin-bottom:6px;}
-.next-project h3{margin:0;}
+.next-project h3{margin:0; max-width:none;}
+.subproject h3{max-width:none;}
 .next-arrow{width:50px; height:50px; border-radius:50%; background:#F2665A; border:none; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; transition:background-color .25s ease, transform .3s;}
 .next-arrow svg{width:20px; height:20px; stroke:#fff;}
 .next-project:hover .next-arrow{background:#33454A; transform:translateX(6px);}
@@ -359,14 +370,14 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
 <!-- DESIGN & PROCESS -->
 <div class="tab-panel" data-panel="design">
-  <div class="block">
+  <div class="block block--split">
     <div class="section-eyebrow">The Strategic Decision</div>
     <h2>Preserve the equity. Modernize the system.</h2>
     <p>Diapulse's pulse-inspired visual language had real recognition value in the clinical community. Removing it entirely would have been the wrong move. I kept those foundational elements and rebuilt everything else around them: cleaner, more scalable, and more considered.</p>
     <img src="/assets/diapulse/diapulse-logo-forms.png" alt="Logo lockups and pulse mark variants" style="width:100%; height:auto; display:block; border-radius:16px">
   </div>
 
-  <div class="block">
+  <div class="block block--split reverse">
     <div class="section-eyebrow">The Brand System</div>
     <h2>Logo &amp; Wordmark</h2>
     <p>The original logo was visually overcomplicated. I redesigned it around a simplified custom wordmark paired with a modernized pulse motif, keeping the visual language HCPs associated with the brand while making it clean enough to work at any scale, across any surface, digital or physical.</p>
@@ -382,7 +393,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     </div>
   </div>
 
-  <div class="block">
+  <div class="block block--split">
     <div class="section-eyebrow">Typography &amp; Color</div>
     <h2>Precision without institutional coldness.</h2>
     <p>Updated the type hierarchy to prioritize readability in clinical contexts, environments where information needs to be processed quickly and without ambiguity. The color system was modernized within the existing palette, moving toward tones that read as professional and precise without institutional coldness.</p>
@@ -397,7 +408,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <p>One of the more unusual aspects of this project was extending the brand onto the physical device itself. I worked with the product development team on hardware color selection and strategic logo placement, ensuring the device aligned with the updated brand system.</p>
     </div>
 
-  <div class="block">
+  <div class="block block--split reverse">
     <div class="section-eyebrow">Clinical Software UI</div>
     <h2>Where brand design becomes product design.</h2>
     <p>I led the UI redesign for Diapulse's clinical device software, used by healthcare professionals in active treatment settings. The software is the primary interface between the clinician and the device: every UX decision has a direct impact on how confidently and efficiently a clinician can do their job.</p>
@@ -462,7 +473,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   <div class="block">
     <div class="gallery-item wide" style="border:none; padding:0; background:none"><img src="/assets/diapulse/final-img.png" alt="Closing image, patients photo with pulse-bar brand overlay" style="width:100%; height:auto; display:block; border-radius:16px"></div>
   </div>
-  <a href="../wave-case-study/wave-case-study.html" class="next-project">
+  <a href="../wave-case-study/" class="next-project">
     <div><div class="label">Next case file</div><h3>WAVE</h3></div>
     <div class="next-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
   </a>

@@ -90,11 +90,21 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .placeholder-note{color:var(--graphite); font-size:13px; font-weight:600; text-align:center;}
 
 .section-eyebrow{font-weight:700; font-size:12.5px; color:var(--amber-dark); opacity:0.85; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px;}
-h2{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(24px,2.8vw,30px); margin-bottom:18px;}
-h3{font-family:'Poppins',sans-serif; font-weight:600; font-size:19px; margin-bottom:10px;}
+h2{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(24px,2.8vw,30px); margin-bottom:18px; max-width:740px;}
+h3{font-family:'Poppins',sans-serif; font-weight:600; font-size:19px; margin-bottom:10px; max-width:740px;}
 p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; max-width:740px;}
 .block{margin-bottom:56px;}
 .block:last-child{margin-bottom:0;}
+@media (min-width:901px){
+  .block--split{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
+  .block--split > :not(:last-child){grid-column:1;}
+  .block--split > :last-child{grid-column:2; grid-row:1 / -1; align-self:center;}
+  .block--split.reverse > :not(:last-child){grid-column:2;}
+  .block--split.reverse > :last-child{grid-column:1;}
+  .block--split h2,
+  .block--split h3,
+  .block--split p{max-width:none;}
+}
 .cs-header .header-top > div:first-child > .block + .block{padding-bottom:24px;}
 .gap-statement{font-style:italic; color:var(--teal); font-size:15px; border-top:1px solid var(--line); padding-top:18px; margin-top:6px;}
 .gap-statement--emphasis{font-weight:700; font-size:calc(15px + 2pt);}
@@ -147,7 +157,7 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 /* ---- transfer band ---- */
 .transfer-band{background:var(--civic-navy); color:#fff; border-radius:22px; padding:40px 44px; margin-top:10px;}
 .transfer-band .section-eyebrow{color:var(--amber-dark);}
-.transfer-band h2{color:#fff;}
+.transfer-band h2{color:#fff; max-width:none;}
 .transfer-band p{color:#C7CBE8; margin-bottom:0;}
 
 .panel-next{
@@ -164,7 +174,7 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 
 .next-project{margin:0 48px 60px; padding:44px 40px; background:var(--paper-alt); border-radius:24px; display:flex; justify-content:space-between; align-items:center; max-width:904px; margin-left:auto; margin-right:auto; text-decoration:none; color:inherit;}
 .next-project .label{font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--graphite); margin-bottom:6px;}
-.next-project h3{margin:0;}
+.next-project h3{margin:0; max-width:none;}
 .next-arrow{width:50px; height:50px; border-radius:50%; background:#F2665A; border:none; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; transition:background-color .25s ease, transform .3s;}
 .next-arrow svg{width:20px; height:20px; stroke:#fff;}
 .next-project:hover .next-arrow{background:#33454A; transform:translateX(6px);}
@@ -299,7 +309,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
 <!-- RESEARCH -->
 <div class="tab-panel" data-panel="research">
-  <div class="block">
+  <div class="block block--split">
     <div class="section-eyebrow">Discovery</div>
     <h2>Where the uncertainty was concentrated</h2>
     <p>Affinity mapping surfaced recurring themes: confusion and lack of clarity around requirements, reliance on outdated manual and in-person processes, contractors doing homeowners' research for them, weak transparency into review timelines, and real emotional impact, stress and hesitation showing up well before submission.</p>
@@ -307,7 +317,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <img data-relay src="/assets/bergenportal/Affinity-mapping.png" alt="Affinity mapping board">
     </div>
   </div>
-  <div class="block">
+  <div class="block block--split reverse">
     <h3>Mapping the full journey</h3>
     <p>The permit discovery and submission journey was mapped end-to-end, including decision branches for different project types, required document paths, and the review/confirmation loop.</p>
     <div class="gallery-item wide">
@@ -328,7 +338,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     </div>
   </div>
 
-  <div class="block">
+  <div class="block block--split">
     <div class="section-eyebrow">The Review Screen</div>
     <h2>A comprehensive view of everything entered, before anything is permanent.</h2>
     <p>The review screen was deliberately designed to slow users down. Rather than a quick summary before confirmation, it presented every entry with explicit language about what submission meant and what could not be changed afterward.</p>
@@ -388,7 +398,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     </div>
   </div>
 
-  <div class="block">
+  <div class="block block--split">
     <div class="section-eyebrow">Post-Submission Reassurance</div>
     <h2>The confirmation screen had treated its job as done. But users disagreed.</h2>
     <p>An application tracking number was incorporated into both the success state and the dashboard.</p>
@@ -438,7 +448,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <img data-relay src="/assets/bergenportal/mockup-allscreens.png" alt="Final product montage">
     </div>
   </div>
-  <a href="../diapulse-case-study/diapulse-case-study.html" class="next-project">
+  <a href="../diapulse-case-study/" class="next-project">
     <div><div class="label">Next case file</div><h3>Diapulse</h3></div>
     <div class="next-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
   </a>

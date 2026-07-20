@@ -1,0 +1,17 @@
+---
+description: Alice portfolio repo-wide conventions
+alwaysApply: true
+---
+
+# Portfolio — General
+
+- Static site on GitHub Pages. Main entry: `index.html`. Assets under `/assets/`.
+- **Do not commit** unless the user explicitly asks.
+- Keep diffs minimal; only change what was requested.
+- Case study **content** lives in each folder’s labeled file (e.g. `diapulse-case-study/diapulse-case-study.html`). Do **not** rename those back to `index.html`.
+- Folder `index.html` files are **redirect stubs only** (~16 lines). Never put case study content in them.
+- Link to case studies with folder URLs: `diapulse-case-study/`, not `diapulse-case-study/diapulse-case-study.html`.
+- Root files like `diapulse-case-study.html` are redirect stubs to the folder URL.
+- `contact-form/contact-form.html` is the contact page; link as `contact-form/`.
+- Google Fonts: use `<link rel="preconnect">` + stylesheet in `<head>`, not CSS `@import`.
+- Shared image loader: `/assets/js/relay.js` (page loader + `data-relay` images).

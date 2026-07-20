@@ -88,11 +88,21 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .placeholder-note{color:var(--graphite); font-size:13px; font-weight:600; text-align:center;}
 
 .section-eyebrow{font-weight:700; font-size:12.5px; color:var(--amber-dark); opacity:0.85; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px;}
-h2{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(24px,2.8vw,30px); margin-bottom:18px;}
-h3{font-family:'Poppins',sans-serif; font-weight:600; font-size:19px; margin-bottom:10px;}
+h2{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(24px,2.8vw,30px); margin-bottom:18px; max-width:740px;}
+h3{font-family:'Poppins',sans-serif; font-weight:600; font-size:19px; margin-bottom:10px; max-width:740px;}
 p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; max-width:740px;}
 .block{margin-bottom:56px;}
 .block:last-child{margin-bottom:0;}
+@media (min-width:901px){
+  .block--split{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
+  .block--split > :not(:last-child){grid-column:1;}
+  .block--split > :last-child{grid-column:2; grid-row:1 / -1; align-self:center;}
+  .block--split.reverse > :not(:last-child){grid-column:2;}
+  .block--split.reverse > :last-child{grid-column:1;}
+  .block--split h2,
+  .block--split h3,
+  .block--split p{max-width:none;}
+}
 .cs-header .header-top > div:first-child > .block + .block{padding-bottom:24px;}
 
 /* pull quote */
@@ -226,7 +236,7 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 
 .next-project{margin:0 48px 60px; padding:44px 40px; background:var(--paper-alt); border-radius:24px; display:flex; justify-content:space-between; align-items:center; max-width:904px; margin-left:auto; margin-right:auto; text-decoration:none; color:inherit;}
 .next-project .label{font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--graphite); margin-bottom:6px;}
-.next-project h3{margin:0;}
+.next-project h3{margin:0; max-width:none;}
 .next-arrow{width:50px; height:50px; border-radius:50%; background:#F2665A; border:none; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; transition:background-color .25s ease, transform .3s;}
 .next-arrow svg{width:20px; height:20px; stroke:#fff;}
 .next-project:hover .next-arrow{background:#33454A; transform:translateX(6px);}
@@ -577,13 +587,13 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     </div>
   </div>
 
-  <div class="block">
+  <div class="block block--split">
     <div class="section-eyebrow">The Outcome</div>
     <h2>An app designed with purpose, because the problem demands it.</h2>
     <p>I encourage you to explore the interactive prototype and see how thoughtfully designed interactions can solve real nutritional challenges.</p>
     <img data-relay src="/assets/sifted/sifted-mockups-outcome.png" alt="Sifted outcome mockups" style="width:100%; height:auto; display:block; border-radius:16px">
   </div>
-  <a href="../tirivelo-case-study/tirivelo-case-study.html" class="next-project">
+  <a href="../tirivelo-case-study/" class="next-project">
     <div><div class="label">Next case file</div><h3>TiriVelo</h3></div>
     <div class="next-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
   </a>
