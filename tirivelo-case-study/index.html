@@ -116,6 +116,9 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .acc-body-inner{padding:0 4px 24px 42px;}
 .acc-body-inner p{font-size:14.5px;}
 
+/* ---- overview problem split ---- */
+.overview-problem-split{display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:start;}
+
 /* ---- STATS BAND ---- */
 .stats-band{background:var(--ink); border-radius:22px; padding:44px; display:grid; grid-template-columns:repeat(4,1fr); gap:26px; color:var(--paper); margin-bottom:10px;}
 .stat b{display:block; font-family:'Poppins',sans-serif; font-size:32px; color:var(--amber);}
@@ -217,6 +220,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   .header-top .hero-image{height:auto; min-height:220px;}
   .meta-row{grid-template-columns:1fr 1fr;}
   .gallery, .compete-grid, .ba-row, .reflect-grid{grid-template-columns:1fr;}
+  .overview-problem-split{grid-template-columns:1fr;}
   .redesign-search-row{grid-template-columns:1fr; margin-bottom:32px;}
   .stats-band{grid-template-columns:1fr 1fr;}
   .cs-header, .tab-panel{padding-left:24px; padding-right:24px;}
@@ -308,44 +312,47 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 <!-- OVERVIEW -->
 <div class="tab-panel active" data-panel="overview">
   <div class="block">
-    <div class="section-eyebrow">The Problem</div>
-    <h2>Before a pet owner books a stranger, they need to feel certain. Not mostly sure.</h2>
-    <p style="max-width:none;">TiriVelo is a pet care marketplace helping owners discover and book local pet care providers. When I joined the project, the booking experience was failing at exactly that critical moment.</p>
-    <p style="max-width:none;">Users were reaching the provider evaluation stage and losing confidence, not because the providers were inadequate, but because the product was not giving them what they needed to decide.</p>
-    <p class="gap-statement">Specific problems: users lost search context after entering results; filtering was visually present but functionally broken; provider cards had weak trust signals; key information was fragmented behind tabs.</p>
-  </div>
-
-  <div class="block">
-    <h3>Diagnostic findings from the audit</h3>
-    <div class="accordion">
-      <div class="acc-item open">
-        <button class="acc-head"><h4><span class="acc-num">1</span>Fragmented provider profiles</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-        <div class="acc-body"><div class="acc-body-inner"><p>Critical information such as pricing, reviews, and availability was hidden behind disconnected tabs and extra taps: no review count or summary, no pricing visible on the profile landing page, and no background check badge.</p></div></div>
+    <div class="overview-problem-split">
+      <div>
+        <div class="section-eyebrow">The Problem</div>
+        <h2>Before a pet owner books a stranger, they need to feel certain. Not mostly sure.</h2>
+        <p style="max-width:none;">TiriVelo is a pet care marketplace helping owners discover and book local pet care providers. When I joined the project, the booking experience was failing at exactly that critical moment.</p>
+        <p style="max-width:none;">Users were reaching the provider evaluation stage and losing confidence, not because the providers were inadequate, but because the product was not giving them what they needed to decide.</p>
+        <p class="gap-statement">Specific problems: users lost search context after entering results; filtering was visually present but functionally broken; provider cards had weak trust signals; key information was fragmented behind tabs.</p>
       </div>
-      <div class="acc-item">
-        <button class="acc-head"><h4><span class="acc-num">2</span>Non-functional filtering</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-        <div class="acc-body"><div class="acc-body-inner"><p>The filter button existed visually but opened nothing, preventing users from narrowing results.</p></div></div>
-      </div>
-      <div class="acc-item">
-        <button class="acc-head"><h4><span class="acc-num">3</span>Search flow asked too much, too soon</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-        <div class="acc-body"><div class="acc-body-inner"><p>The search flow asked for too much information before users were ready to commit.</p></div></div>
-      </div>
-      <div class="acc-item">
-        <button class="acc-head"><h4><span class="acc-num">4</span>Flat CTA hierarchy</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-        <div class="acc-body"><div class="acc-body-inner"><p>All CTAs used the same visual style, reducing action hierarchy, creating a lack of visual distinction between high-risk and low-risk actions.</p></div></div>
-      </div>
-      <div class="acc-item">
-        <button class="acc-head"><h4><span class="acc-num">5</span>Missing transparency &amp; excessive scrolling</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-        <div class="acc-body"><div class="acc-body-inner"><p>Missing home environment details reduced provider transparency, and users had to scroll excessively to view provider availability.</p></div></div>
-      </div>
-      <div class="acc-item">
-        <button class="acc-head"><h4><span class="acc-num">6</span>Provider cards lacked key information</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-        <div class="acc-body"><div class="acc-body-inner"><p>Provider cards lacked the key information needed for confident decision-making at a glance.</p></div></div>
+      <div>
+        <h3>Diagnostic findings from the audit</h3>
+        <div class="accordion">
+          <div class="acc-item open">
+            <button class="acc-head"><h4><span class="acc-num">1</span>Fragmented provider profiles</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+            <div class="acc-body"><div class="acc-body-inner"><p>Critical information such as pricing, reviews, and availability was hidden behind disconnected tabs and extra taps: no review count or summary, no pricing visible on the profile landing page, and no background check badge.</p></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head"><h4><span class="acc-num">2</span>Non-functional filtering</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+            <div class="acc-body"><div class="acc-body-inner"><p>The filter button existed visually but opened nothing, preventing users from narrowing results.</p></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head"><h4><span class="acc-num">3</span>Search flow asked too much, too soon</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+            <div class="acc-body"><div class="acc-body-inner"><p>The search flow asked for too much information before users were ready to commit.</p></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head"><h4><span class="acc-num">4</span>Flat CTA hierarchy</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+            <div class="acc-body"><div class="acc-body-inner"><p>All CTAs used the same visual style, reducing action hierarchy, creating a lack of visual distinction between high-risk and low-risk actions.</p></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head"><h4><span class="acc-num">5</span>Missing transparency &amp; excessive scrolling</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+            <div class="acc-body"><div class="acc-body-inner"><p>Missing home environment details reduced provider transparency, and users had to scroll excessively to view provider availability.</p></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head"><h4><span class="acc-num">6</span>Provider cards lacked key information</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+            <div class="acc-body"><div class="acc-body-inner"><p>Provider cards lacked the key information needed for confident decision-making at a glance.</p></div></div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="gallery" style="margin-top:20px;">
-      <div class="gallery-item wide" style="border:none; padding:0; background:none;"><img data-relay src="/assets/tirivelo/Tirivelo-problems-higlight.jpg" alt="Annotated audit, fragmented profiles and non-functional filtering" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
-      <div class="gallery-item wide" style="margin-top:18px; border:none; padding:0; background:none;"><img data-relay src="/assets/tirivelo/BEFORE-TIRIVELO2.png" alt="Before — TiriVelo annotated audit" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
+      <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/tirivelo/Tirivelo-problems-higlight.jpg" alt="Annotated audit, fragmented profiles and non-functional filtering" style="width:100%; height:auto; display:block; border-radius:16px"></div>
+      <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/tirivelo/BEFORE-TIRIVELO2.png" alt="Before — TiriVelo annotated audit" style="width:100%; height:auto; display:block; border-radius:16px"></div>
     </div>
   </div>
 </div>
@@ -361,7 +368,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="compete-card"><b>Pawshake</b><p>Browse-first discovery reduced commitment anxiety early in the funnel.</p></div>
       <div class="compete-card"><b>Care.com</b><p>Early paywalls actively weakened trust at first contact, a lesson in what not to do.</p></div>
     </div>
-    <div class="gallery-item wide" style="margin-top:20px; border:none; padding:0; background:none;"><img data-relay src="/assets/tirivelo/Tirivelo-comp-analysis.jpg" alt="Competitive teardown, 4-platform comparison" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
+    <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/tirivelo/Tirivelo-comp-analysis.jpg" alt="Competitive teardown, 4-platform comparison" style="width:100%; height:auto; display:block; border-radius:16px"></div>
   </div>
 </div>
 
@@ -383,7 +390,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       </div>
       <video src="/assets/tirivelo/providers-.mp4" autoplay muted loop playsinline style="width:100%; height:auto; display:block; border-radius:16px;"></video>
     </div>
-    <img data-relay src="/assets/tirivelo/Provider-profile-improvements.png" alt="Rebuilt filter panel" style="width:100%; height:auto; display:block; border-radius:16px;">
+    <img data-relay src="/assets/tirivelo/Provider-profile-improvements.png" alt="Rebuilt filter panel" style="width:100%; height:auto; display:block; border-radius:16px">
     <div class="block" style="padding-top:40px;">
        
     </div>
@@ -401,9 +408,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="compete-card"><b>06 Waiting is designed</b><p>The matching state animates. A blank spinner reads as broken; motion reads as working.</p></div>
     </div>
   </div>
-  <div class="gallery-item wide" style="margin-top:20px; border:none; padding:0; background:none;"><img data-relay src="/assets/tirivelo/Tirivelo-search-flow.jpg" alt="Service booking flow" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
-  <div class="gallery-item wide" style="margin-top:20px; border:none; padding:0; background:none;"><img data-relay src="/assets/tirivelo/logged-guest-flows.png" alt="Logged-in and guest booking flows" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
-  <div class="gallery-item wide" style="margin-top:20px; border:none; padding:32px 0; background:none;"><img data-relay src="/assets/tirivelo/Tirivelo-seamless-flow-search.png" alt="User flow, logged-in vs guest path" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
+  <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/tirivelo/Tirivelo-search-flow.jpg" alt="Service booking flow" style="width:100%; height:auto; display:block; border-radius:16px"></div>
+  <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/tirivelo/logged-guest-flows.png" alt="Logged-in and guest booking flows" style="width:100%; height:auto; display:block; border-radius:16px"></div>
+  <div class="gallery-item wide" style="border:none; padding:32px 0; background:none"><img data-relay src="/assets/tirivelo/Tirivelo-seamless-flow-search.png" alt="User flow, logged-in vs guest path" style="width:100%; height:auto; display:block; border-radius:16px"></div>
 
   </div>
 
@@ -422,7 +429,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <li>Availability reassurance</li>
       <li>Review credibility indicators</li>
     </ul>
-    <div class="gallery-item wide" style="margin-top:20px; border:none; padding:0; background:none;"><img data-relay src="/assets/tirivelo/banner-states-mockups-.png" alt="Provider profile, verification badges, ratings, availability calendar" style="width:100%; height:auto; display:block; border-radius:16px;"></div>
+    <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/tirivelo/banner-states-mockups-.png" alt="Provider profile, verification badges, ratings, availability calendar" style="width:100%; height:auto; display:block; border-radius:16px"></div>
     <p style="margin-top:16px; font-size:13.5px; font-style:italic;">The dynamic availability banner was designed to reduce booking uncertainty by adapting to the user's search context. If no date was selected, it encouraged exploration with "Check Availability"; date-specific searches provided immediate availability feedback to help users evaluate providers faster and with greater confidence.</p>
   </div>
 
@@ -461,7 +468,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="accordion">
         <div class="acc-item open">
           <button class="acc-head"><h4><span class="acc-num">1</span>Updated Navigation Semantics</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-          <div class="acc-body"><div class="acc-body-inner"><p>Combined service-category shapes with the magnifier to create a more specific and recognizable "browse services" interaction.</p><img data-relay src="/assets/tirivelo/1-semantics.png" alt="Updated navigation semantics" style="margin-top:14px; width:100%; height:auto; display:block; border-radius:16px;"></div></div>
+          <div class="acc-body"><div class="acc-body-inner"><p>Combined service-category shapes with the magnifier to create a more specific and recognizable "browse services" interaction.</p><img data-relay src="/assets/tirivelo/1-semantics.png" alt="Updated navigation semantics" style="width:100%; height:auto; display:block; border-radius:16px"></div></div>
         </div>
         <div class="acc-item">
           <button class="acc-head"><h4><span class="acc-num">2</span>Message → Inbox Label Update</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
@@ -469,23 +476,23 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         </div>
         <div class="acc-item">
           <button class="acc-head"><h4><span class="acc-num">3</span>Improved Active Navigation State</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-          <div class="acc-body"><div class="acc-body-inner"><p>Replaced the underline indicator with a filled background state to create a stronger, more scannable active-tab affordance.</p><img data-relay src="/assets/tirivelo/3-va-states.png" alt="Improved active navigation state" style="margin-top:14px; width:100%; height:auto; display:block; border-radius:16px;"></div></div>
+          <div class="acc-body"><div class="acc-body-inner"><p>Replaced the underline indicator with a filled background state to create a stronger, more scannable active-tab affordance.</p><img data-relay src="/assets/tirivelo/3-va-states.png" alt="Improved active navigation state" style="width:100%; height:auto; display:block; border-radius:16px"></div></div>
         </div>
         <div class="acc-item">
           <button class="acc-head"><h4><span class="acc-num">4</span>Unified &amp; Expanded Icon System</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-          <div class="acc-body"><div class="acc-body-inner"><p>Standardized icon styling and visual weight for consistency across navigation. Created filled and outline icon variants for clearer active/inactive states, improved accessibility, and native mobile interaction patterns.</p><img data-relay src="/assets/tirivelo/4-icons.png" alt="Unified and expanded icon system" style="margin-top:14px; width:100%; height:auto; display:block; border-radius:16px;"></div></div>
+          <div class="acc-body"><div class="acc-body-inner"><p>Standardized icon styling and visual weight for consistency across navigation. Created filled and outline icon variants for clearer active/inactive states, improved accessibility, and native mobile interaction patterns.</p><img data-relay src="/assets/tirivelo/4-icons.png" alt="Unified and expanded icon system" style="width:100%; height:auto; display:block; border-radius:16px"></div></div>
         </div>
         <div class="acc-item">
           <button class="acc-head"><h4><span class="acc-num">5</span>Three-Tier CTA Hierarchy</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-          <div class="acc-body"><div class="acc-body-inner"><p>Replaced the single-button system with a three-tier CTA hierarchy that visually distinguishes high-commitment booking actions from secondary and low-risk utility actions.</p><img data-relay src="/assets/tirivelo/5-ctas.png" alt="Three-tier CTA hierarchy" style="margin-top:14px; width:100%; height:auto; display:block; border-radius:16px;"></div></div>
+          <div class="acc-body"><div class="acc-body-inner"><p>Replaced the single-button system with a three-tier CTA hierarchy that visually distinguishes high-commitment booking actions from secondary and low-risk utility actions.</p><img data-relay src="/assets/tirivelo/5-ctas.png" alt="Three-tier CTA hierarchy" style="width:100%; height:auto; display:block; border-radius:16px"></div></div>
         </div>
         <div class="acc-item">
           <button class="acc-head"><h4><span class="acc-num">6</span>React Native-Ready Components</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-          <div class="acc-body"><div class="acc-body-inner"><p>Component organization built to hand off cleanly into a React Native codebase.</p><img data-relay src="/assets/tirivelo/6-components.png" alt="React Native-ready components" style="margin-top:14px; width:100%; height:auto; display:block; border-radius:16px;"></div></div>
+          <div class="acc-body"><div class="acc-body-inner"><p>Component organization built to hand off cleanly into a React Native codebase.</p><img data-relay src="/assets/tirivelo/6-components.png" alt="React Native-ready components" style="width:100%; height:auto; display:block; border-radius:16px"></div></div>
         </div>
         <div class="acc-item">
           <button class="acc-head"><h4><span class="acc-num">7</span>Accessibility Improvements</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
-          <div class="acc-body"><div class="acc-body-inner"><p>Ensured compliance with Apple HIG and WCAG touch target standards.</p><img data-relay src="/assets/tirivelo/7-accessibility.png" alt="Accessibility improvements" style="margin-top:14px; width:100%; height:auto; display:block; border-radius:16px;"></div></div>
+          <div class="acc-body"><div class="acc-body-inner"><p>Ensured compliance with Apple HIG and WCAG touch target standards.</p><img data-relay src="/assets/tirivelo/7-accessibility.png" alt="Accessibility improvements" style="width:100%; height:auto; display:block; border-radius:16px"></div></div>
         </div>
       </div>
       <div class="gallery-item" style="margin-top:0; border:none; padding:0; background:var(--paper-alt);"><video src="/assets/tirivelo/profiles-prototype.webm" autoplay muted loop playsinline aria-label="Final prototype, provider cards with trust signals" style="width:50%; height:auto; display:block; margin:0 auto;"></video></div>
@@ -508,7 +515,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
   <div class="block">
     <div class="testimonial" style="padding:0; background:none; overflow:hidden; border-radius:22px;">
-      <img data-relay src="/assets/tirivelo/michael-squote.png" alt="Testimonial from Michael Navarro, CEO of TiriVelo Inc." style="width:100%; height:auto; display:block;">
+      <img data-relay src="/assets/tirivelo/michael-squote.png" alt="Testimonial from Michael Navarro, CEO of TiriVelo Inc." style="width:100%; height:auto; display:block">
     </div>
   </div>
   <a href="../rapimd-case-study/" class="next-project">
