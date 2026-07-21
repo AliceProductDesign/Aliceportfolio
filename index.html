@@ -27,6 +27,9 @@
   --coral:#F2665A; --amber:#F5A94A; --amber-dark:#C97A1F; --yellow:#F5C518; --pink:#F2578A;
   --ink:#33454A; --ink-soft:#5B6A6D; --paper:#FBF9F4; --paper-alt:#F2EDE1; --graphite:#8B9290; --line:#33454A1a;
 }
+@property --tx{syntax:'<length>'; inherits:false; initial-value:0px;}
+@property --ty{syntax:'<length>'; inherits:false; initial-value:0px;}
+@property --tr{syntax:'<angle>'; inherits:false; initial-value:0deg;}
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif; overflow-x:hidden;}
@@ -144,7 +147,7 @@ h1 .highlight{color:var(--amber);}
   transform-origin: center center;
   will-change: transform;
   backface-visibility: hidden;
-  transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease, border-color .3s ease;
+  transition: transform .5s cubic-bezier(.2,.8,.2,1), --tx .5s cubic-bezier(.2,.8,.2,1), --ty .5s cubic-bezier(.2,.8,.2,1), --tr .5s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease, border-color .3s ease;
   box-shadow:0 20px 40px -22px #33454A33;
   display:flex; flex-direction:column;
 }
@@ -169,14 +172,9 @@ h1 .highlight{color:var(--amber);}
 
 @media (min-width:761px){
   .fan-stage.aligned{
-    display:flex;
-    align-items:stretch;
-    justify-content:flex-start;
-    height:auto;
     overflow-x:auto;
     overflow-y:hidden;
     scroll-snap-type:x mandatory;
-    gap:16px;
     padding-block:48px;
     margin-block:-48px;
     -webkit-overflow-scrolling:touch;
@@ -191,12 +189,13 @@ h1 .highlight{color:var(--amber);}
   .fan-stage.aligned.fan-stage--dragging,
   .fan-stage.aligned.fan-stage--dragging .fan-card{cursor:grabbing; user-select:none;}
   .fan-stage.aligned:focus-visible{outline:2px solid var(--coral); outline-offset:4px; border-radius:12px;}
-  .fan-stage.aligned .fan-card{
-    position:static;
-    transform:none !important;
-    scroll-snap-align:center;
-    flex-shrink:0;
-  }
+  .fan-stage.aligned .fan-card{scroll-snap-align:center;}
+  .fan-stage.aligned .c1{--tx:-615px; --ty:0px; --tr:0deg;}
+  .fan-stage.aligned .c2{--tx:-369px; --ty:0px; --tr:0deg;}
+  .fan-stage.aligned .c3{--tx:-123px; --ty:0px; --tr:0deg;}
+  .fan-stage.aligned .c4{--tx:123px; --ty:0px; --tr:0deg;}
+  .fan-stage.aligned .c5{--tx:369px; --ty:0px; --tr:0deg;}
+  .fan-stage.aligned .c6{--tx:615px; --ty:0px; --tr:0deg;}
 }
 
 .scroll-hint{position:absolute; bottom:28px; left:50%; transform:translateX(-50%); z-index:5; font-size:12px; color:var(--graphite); text-align:center; opacity:1; transition:opacity .4s ease;}
@@ -622,13 +621,15 @@ function clearAlignedState(){
   resetFanStageScroll();
 }
 
+const FAN_ALIGN_MS = 500;
+
 function centerHoveredCard(card){
   if(hasCentered || !fanStage.classList.contains('aligned') || isMobile()) return;
-  card.scrollIntoView({behavior:'instant', inline:'center', block:'nearest'});
+  card.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
   hasCentered = true;
 }
 
-function activateAligned(card){
+function activateAligned(card, options = {}){
   if(isMobile() || isDragging) return;
   const wasAligned = fanStage.classList.contains('aligned');
   alignedAnchorCard = card;
@@ -638,10 +639,10 @@ function activateAligned(card){
     fanStage.setAttribute('aria-label','Case study cards, scroll to see more');
   }
   clearTimeout(alignedBoundsTimer);
-  if(!wasAligned && !hasCentered){
-    requestAnimationFrame(()=> centerHoveredCard(card));
+  if(!wasAligned && !hasCentered && !options.skipCenter){
+    setTimeout(()=> centerHoveredCard(card), FAN_ALIGN_MS + 20);
   }
-  alignedBoundsTimer = setTimeout(cacheAlignedCardsYBounds, 50);
+  alignedBoundsTimer = setTimeout(cacheAlignedCardsYBounds, FAN_ALIGN_MS + 20);
 }
 
 const SCROLL_HINT_BY_STAGE = {
@@ -797,6 +798,12 @@ fanStage.addEventListener('keydown', (e)=>{
   }
 });
 
+function getCardScrollCenter(card){
+  const rect = card.getBoundingClientRect();
+  const stageRect = fanStage.getBoundingClientRect();
+  return rect.left + rect.width / 2 - stageRect.left + fanStage.scrollLeft;
+}
+
 let scrollTimeout;
 fanStage.addEventListener('scroll', ()=>{
   clearTimeout(scrollTimeout);
@@ -805,7 +812,7 @@ fanStage.addEventListener('scroll', ()=>{
     let closestIndex = 0;
     let closestDist = Infinity;
     cards.forEach((card, i)=>{
-      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const cardCenter = getCardScrollCenter(card);
       const dist = Math.abs(stageCenter - cardCenter);
       if(dist < closestDist){ closestDist = dist; closestIndex = i; }
     });
