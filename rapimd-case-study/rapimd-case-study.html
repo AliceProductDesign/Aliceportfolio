@@ -94,18 +94,44 @@ h3{font-family:'Poppins',sans-serif; font-weight:600; font-size:19px; margin-bot
 p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; max-width:740px;}
 .block{margin-bottom:56px;}
 .block:last-child{margin-bottom:0;}
+.block--split.reverse .block--split-copy h2{margin-bottom:12px;}
+.block--split.reverse .block--split-copy p{margin-bottom:0;}
 @media (min-width:901px){
   .block--split{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
   .block--split > :not(:last-child){grid-column:1;}
   .block--split > :last-child{grid-column:2; grid-row:1 / -1; align-self:center;}
   .block--split.reverse > :not(:last-child){grid-column:2;}
-  .block--split.reverse > :last-child{grid-column:1;}
+  .block--split.reverse > :last-child{grid-column:1; grid-row:1; align-self:center;}
+  .block--split.reverse .block--split-copy{align-self:center;}
   .block--split h2,
   .block--split h3,
   .block--split p{max-width:none;}
 }
 .cs-header .header-top > div:first-child > .block + .block{padding-bottom:24px;}
 .gap-statement{font-style:italic; color:var(--teal); font-size:15px; border-top:1px solid var(--line); padding-top:18px; margin-top:6px;}
+.gap-callout{background:#F5A94A12; border-left:4px solid var(--amber); border-radius:0 16px 16px 0; padding:22px 24px; margin-top:20px;}
+.gap-callout .gap-statement{border-top:none; padding-top:0; margin-top:0; margin-bottom:0; max-width:none;}
+.research-findings-row{display:grid; grid-template-columns:1fr; gap:32px; align-items:center; margin-bottom:48px;}
+.research-findings-copy{text-align:left;}
+.research-findings-copy h2{max-width:none;}
+.research-findings-callout{align-self:center;}
+.research-findings-callout .gap-callout{margin-top:0; padding:44px 28px;}
+.research-findings-callout .gap-callout .gap-statement + .gap-statement{margin-top:14px;}
+.gap-callout .gap-statement strong{font-weight:700; color:var(--teal);}
+.problem-row{display:grid; grid-template-columns:1fr; gap:32px; align-items:center;}
+.problem-copy{text-align:left;}
+.problem-copy h2,
+.problem-copy p{max-width:none;}
+.problem-visual{align-self:center;}
+.auth-sequence-row{display:grid; grid-template-columns:1fr; gap:32px; align-items:center; margin:24px 0;}
+.auth-sequence-copy{text-align:left;}
+.auth-sequence-copy p{max-width:none; margin-bottom:0;}
+.auth-sequence-visual{align-self:center; width:100%;}
+@media (min-width:901px){
+  .research-findings-row{grid-template-columns:1fr 1fr; gap:48px;}
+  .problem-row{grid-template-columns:1fr 1fr; gap:48px;}
+  .auth-sequence-row{grid-template-columns:1fr 1fr; gap:48px;}
+}
 
 /* ---- ACCORDION ---- */
 .accordion{border-top:1px solid var(--line); margin-top:20px;}
@@ -371,11 +397,18 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 <!-- OVERVIEW -->
 <div class="tab-panel active" data-panel="overview">
   <div class="block">
-    <div class="section-eyebrow">The Problem</div>
-    <h2>The cost of care is a barrier before a single appointment is booked.</h2>
-    <p>Uninsured Americans (roughly 26 million people) face a healthcare system designed around insurance. Searching for a provider means navigating a landscape of hidden pricing, credential ambiguity, and opaque booking flows.</p>
-    <p>RapiMD's core hypothesis: if you show uninsured patients the exact cost of a visit before they commit, and give them enough information about a provider to feel confident booking, you remove the primary barrier to care.</p>
-    <p class="gap-statement">The design challenge was making that transparency feel trustworthy, not transactional.</p>
+    <div class="problem-row">
+      <div class="problem-copy">
+        <div class="section-eyebrow">The Problem</div>
+        <h2>The cost of care is a barrier before a single appointment is booked.</h2>
+        <p>Uninsured Americans (roughly 26 million people) face a healthcare system designed around insurance. Searching for a provider means navigating a landscape of hidden pricing, credential ambiguity, and opaque booking flows.</p>
+        <p>RapiMD's core hypothesis: if you show uninsured patients the exact cost of a visit before they commit, and give them enough information about a provider to feel confident booking, you remove the primary barrier to care.</p>
+        <p class="gap-statement">The design challenge was making that transparency feel trustworthy, not transactional.</p>
+      </div>
+      <div class="problem-visual">
+        <img data-relay src="/assets/rapidmd/rapi-empathy-map.jpg" alt="RapiMD empathy map" style="width:100%; height:auto; display:block; border-radius:16px">
+      </div>
+    </div>
   </div>
 
   <div class="block">
@@ -446,21 +479,32 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 <!-- RESEARCH -->
 <div class="tab-panel" data-panel="research">
   <div class="block">
-    <div class="section-eyebrow">Research</div>
-    <h2>5 interviews. 4 actionable findings. 1 insight that shaped every product decision.</h2>
-    <div class="finding-list">
-      <div class="finding-item"><div class="finding-dot"></div><div><b>Pricing unpredictable</b><span>Costs unknown until after the appointment, sometimes weeks after.</span></div></div>
-      <div class="finding-item"><div class="finding-dot"></div><div><b>Hidden charges</b><span>Unexpected fees appeared regularly after visits, compounding distrust.</span></div></div>
-      <div class="finding-item"><div class="finding-dot"></div><div><b>Same-day availability required manual coordination</b><span>Finding same-day availability required calling multiple offices manually.</span></div></div>
-      <div class="finding-item"><div class="finding-dot"></div><div><b>Systemic trust erosion</b><span>Users were not uninformed. Experience had taught them that engaging cost more than they could predict.</span></div></div>
+    <div class="research-findings-row">
+      <div class="research-findings-copy">
+        <div class="section-eyebrow">Research</div>
+        <h2>5 interviews. 4 actionable findings. 1 insight that shaped every product decision.</h2>
+        <div class="finding-list">
+          <div class="finding-item"><div class="finding-dot"></div><div><b>Pricing unpredictable</b><span>Costs unknown until after the appointment, sometimes weeks after.</span></div></div>
+          <div class="finding-item"><div class="finding-dot"></div><div><b>Hidden charges</b><span>Unexpected fees appeared regularly after visits, compounding distrust.</span></div></div>
+          <div class="finding-item"><div class="finding-dot"></div><div><b>Same-day availability required manual coordination</b><span>Finding same-day availability required calling multiple offices manually.</span></div></div>
+          <div class="finding-item"><div class="finding-dot"></div><div><b>Systemic trust erosion</b><span>Users were not uninformed. Experience had taught them that engaging cost more than they could predict.</span></div></div>
+        </div>
+      </div>
+      <div class="research-findings-callout">
+        <div class="gap-callout">
+          <p class="gap-statement"><strong>The insight that shaped everything:</strong><br>These users were not avoiding care because they were unaware of their options.</p>
+          <p class="gap-statement">They were avoiding it because experience had taught them that engaging with the system cost more than they could predict.</p>
+        </div>
+      </div>
     </div>
-    <p class="gap-statement" style="margin-top:20px;">The insight that shaped everything: these users were not avoiding care because they were unaware of their options. They were avoiding it because experience had taught them that engaging with the system cost more than they could predict.</p>
     <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/rapidmd/affinity-mapping-board-rapimd.png" alt="Affinity mapping board" style="width:100%; height:auto; display:block; border-radius:16px"></div>
   </div>
-  <div class="block block--split">
-    <h2>Four competitors reviewed.<br>None built for urgency, dynamic pricing, or unsold inventory.</h2>
-    <p>Zocdoc, Sesame Care, Solv, and Healthgrades each solve a piece of the booking problem: insurance-based discovery, cash-pay transparency, same-day urgent care, or provider reputation. But none of them treat an open appointment slot as perishable inventory. Pricing across the board is static, urgency is an afterthought, and providers have no built-in way to recover revenue from cancellations or no-shows. That gap, unsold time with no dynamic pricing and no urgency mechanics, is exactly where RapiMD positions itself: a same-day, price-optimized marketplace that turns empty slots into booked ones.</p>
-    <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/rapidmd/competitor-analysis-rapimd.png" alt="RapiMD competitor analysis" style="width:100%; height:auto; display:block; border-radius:16px"></div>
+  <div class="block block--split reverse">
+    <div class="block--split-copy">
+      <h2>Four competitors reviewed.<br>None built for urgency, dynamic pricing, or unsold inventory.</h2>
+      <p>Zocdoc, Sesame Care, Solv, and Healthgrades each solve a piece of the booking problem: insurance-based discovery, cash-pay transparency, same-day urgent care, or provider reputation. But none of them treat an open appointment slot as perishable inventory. Pricing across the board is static, urgency is an afterthought, and providers have no built-in way to recover revenue from cancellations or no-shows. That gap, unsold time with no dynamic pricing and no urgency mechanics, is exactly where RapiMD positions itself: a same-day, price-optimized marketplace that turns empty slots into booked ones.</p>
+    </div>
+    <div class="gallery-item" style="border:none; padding:0; background:none"><img data-relay src="/assets/rapidmd/competitor-analysis-rapimd.png" alt="RapiMD competitor analysis" style="width:100%; height:auto; display:block; border-radius:16px"></div>
   </div>
 </div>
 
@@ -470,7 +514,14 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="section-eyebrow">Delayed Authentication</div>
     <h2>The most important product decision.</h2>
     <p>Standard healthcare apps put account creation before value. For uninsured patients already primed to distrust systems that take without giving, this is a trust-ending moment.</p>
-    <p>RapiMD flipped the sequence entirely. Authentication was delayed until after users had selected a provider and an appointment slot, after they'd seen the flat fee, confirmed availability, and decided they wanted to proceed.</p>
+    <div class="auth-sequence-row">
+      <div class="auth-sequence-copy">
+        <p>RapiMD flipped the sequence entirely. Authentication was delayed until after users had selected a provider and an appointment slot, after they'd seen the flat fee, confirmed availability, and decided they wanted to proceed.</p>
+      </div>
+      <div class="auth-sequence-visual">
+        <div class="gallery-item" style="min-height:280px; border-radius:16px;" aria-hidden="true"></div>
+      </div>
+    </div>
     <div class="gallery-force-2col">
       <div class="gallery-item" style="border:none; padding:0; background:none"><img data-relay src="/assets/rapidmd/account-needed-to-continue-rapimd.png" alt="Slot-hold countdown screen" style="width:68%; height:auto; display:block; margin:0 auto; border-radius:16px"></div>
       <div class="gallery-item" style="border:none; padding:0; background:none"><img data-relay src="/assets/rapidmd/account-creation-screen-rapidmd.png" alt="Account creation screen" style="width:68%; height:auto; display:block; margin:0 auto; border-radius:16px"></div>

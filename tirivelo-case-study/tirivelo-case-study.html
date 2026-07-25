@@ -178,9 +178,16 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .provider-profiles-copy p,
 .provider-profiles-copy .section-eyebrow{text-align:left;}
 .provider-profiles-visual .gallery-item{min-height:280px; border-radius:16px;}
-.outcome-grid{display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:start;}
+.outcome-grid{display:grid; grid-template-columns:1fr; gap:36px; align-items:start;}
+.outcome-intro-col-block{display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:center; margin-top:48px;}
+.outcome-intro-copy{text-align:left;}
+.outcome-intro-copy h2,
+.outcome-intro-copy p,
+.outcome-intro-copy .section-eyebrow{text-align:left;}
+.outcome-intro-visual .gallery-item{min-height:280px; border-radius:16px;}
 @media (max-width:900px){
   .outcome-grid{grid-template-columns:1fr;}
+  .outcome-intro-col-block{grid-template-columns:1fr;}
 }
 
 /* ---- KEY LIST ---- */
@@ -474,9 +481,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         </ul>
         <p style="margin-top:16px; font-weight:700; font-size:17.5px;">The underlying principle: if users know where they are, they can decide with confidence.</p>
       </div>
-      <div class="gallery-item" style="min-height:280px; border-radius:16px;" aria-hidden="true"></div>
+      <div class="gallery-item" style="border:none; padding:0; background:none;"><video src="/assets/tirivelo/tirivelo-context-banner.mp4" autoplay muted loop playsinline aria-label="Search context banner" style="width:100%; height:auto; display:block; border-radius:16px;"></video></div>
     </div>
-    <img data-relay src="/assets/tirivelo/Provider-profile-improvements.png" alt="Rebuilt filter panel" style="width:100%; height:auto; display:block; border-radius:16px">
+    <img data-relay src="/assets/tirivelo/tirivelo-profile-optimization.png" alt="Rebuilt filter panel" style="width:100%; height:auto; display:block; border-radius:16px">
     <div class="block" style="padding-top:40px;">
        
     </div>
@@ -553,9 +560,6 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   </div>
 
   <div class="block">
-    <div class="section-eyebrow">The Outcome</div>
-    <h2>A real product, with redesigned flows forming the live product foundation moving towards launch.</h2>
-    <p>To support scalability and consistency across the marketplace experience, the redesign expanded TiriVelo's design system and interaction framework with:</p>
     <div class="outcome-grid">
       <div class="accordion">
         <div class="acc-item open">
@@ -587,7 +591,16 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
           <div class="acc-body"><div class="acc-body-inner"><p>Ensured compliance with Apple HIG and WCAG touch target standards.</p><img data-relay src="/assets/tirivelo/7-accessibility.png" alt="Accessibility improvements" style="width:100%; height:auto; display:block; border-radius:16px"></div></div>
         </div>
       </div>
-      <div class="gallery-item" style="margin-top:0; border:none; padding:0; background:var(--paper-alt);"><video src="/assets/tirivelo/profiles-prototype.webm" autoplay muted loop playsinline aria-label="Final prototype, provider cards with trust signals" style="width:50%; height:auto; display:block; margin:0 auto;"></video></div>
+      <div class="outcome-intro-col-block">
+        <div class="outcome-intro-visual">
+          <video src="/assets/tirivelo/before-after-tirivelo-optimized.mp4" autoplay muted loop playsinline aria-label="TiriVelo before and after redesign" style="width:100%; height:auto; display:block; border-radius:16px;"></video>
+        </div>
+        <div class="outcome-intro-copy">
+          <div class="section-eyebrow">The Outcome</div>
+          <h2>A real product, with redesigned flows forming the live product foundation moving towards launch.</h2>
+          <p>To support scalability and consistency across the marketplace experience, the redesign expanded TiriVelo's design system and interaction framework with:</p>
+        </div>
+      </div>
     </div>
   </div>
 
