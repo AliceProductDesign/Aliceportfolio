@@ -220,9 +220,9 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .features-col-block .features-copy h3{text-align:left;}
 .features-col-block .feature-grid{margin-top:16px;}
 .features-col-block video{width:120%; height:auto; display:block; border-radius:16px;}
+.product-prove-col-block{grid-template-columns:1fr 1fr; padding:0; align-items:center;}
 @media (max-width:900px){
   .two-col-block{grid-template-columns:1fr; padding:20px 0;}
-  .mid-fi-col-block{grid-template-columns:1fr !important;}
   .brand-colors-col-block{grid-template-columns:1fr !important;}
   .product-prove-col-block{grid-template-columns:1fr !important;}
   .problem-col-block{grid-template-columns:1fr !important;}
@@ -567,7 +567,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     </div>
   </div>
 
-  <div class="block">
+  <div class="block" hidden>
     <h3>Wireframe exploration</h3>
     <p>Having defined task and user flows early, I explored different structural options at low-fidelity to test layout variations quickly and identify what best supported clarity and usability before adding visual polish.</p>
     <div class="wire-carousel">
@@ -582,15 +582,6 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <span class="wire-dot"></span>
     </div>
     </div>
-    <div class="two-col-block mid-fi-col-block" hidden style="grid-template-columns:1.3fr 0.7fr; padding:0; margin-top:80px;">
-          <div style="display:flex; gap:14px;">
-            <img data-relay src="/assets/sifted/wireframes-mid-fi.png" alt="Mid-fidelity ingredient list screen" style="width:100%; height:auto; display:block; border-radius:12px">
-          </div>
-          <div>
-            <h3 style="font-family:'Poppins',sans-serif; font-size:22px; color:var(--sifted-navy); margin-bottom:14px;">From Mid-Fidelity to Hi-Fidelity</h3>
-            <p style="font-weight:600; color:var(--ink); margin-top:0;">After selecting the most effective mid-fidelity layouts, I developed high-fidelity screens mapped directly to the core task flows, with each step kept simple, logical, and aligned with how users accomplish their goals. Mid-fidelity served as the validation stage, confirming functionality before investing in visual branding.</p>
-          </div>
-        </div>
   </div>
 
   <div class="block">
@@ -604,22 +595,12 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       </div>
       <img data-relay src="/assets/sifted/sifted-brand-colors.png" alt="Sifted color and typography system" style="width:100%; height:auto; display:block; border-radius:16px">
     </div>
+    <img data-relay src="/assets/sifted/sifted-mockups-outcome.png" alt="Sifted outcome mockups" style="width:100%; height:auto; display:block; border-radius:16px;">
   </div>
 </div>
 
 <!-- OUTCOME -->
 <div class="tab-panel" data-panel="outcome">
-  <div class="block">
-    <div class="two-col-block product-prove-col-block" style="grid-template-columns:1.2fr 0.8fr;">
-      <div>
-        <div class="section-eyebrow">What This Product Is Built to Prove</div>
-        <h2>Clarity builds trust. Trust changes behavior. Behavior improves health.</h2>
-        <p style="margin-top:0;">The people most motivated to eat well are the least supported by the tools that exist. Sifted aims to close that gap with ingredient-level transparency, judgment-free language, AI personalization, and visual design that positions the experience as supportive guidance rather than judgment.</p>
-      </div>
-      <div class="gallery-item" style="border:none; padding:0; background:none;"><video src="/assets/sifted/sifted-pantry-planning.mp4" autoplay muted loop playsinline aria-label="Full product montage" style="width:100%; height:auto; display:block; border-radius:16px;"></video></div>
-    </div>
-  </div>
-
   <div class="block">
     <div class="section-eyebrow">Usability Testing</div>
     <h2>Failures that shaped the final product</h2>
@@ -665,11 +646,15 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     </div>
   </div>
 
-  <div class="block block--split">
-    <div class="section-eyebrow">The Outcome</div>
-    <h2>An app designed with purpose, because the problem demands it.</h2>
-    <p>I encourage you to explore the interactive prototype and see how thoughtfully designed interactions can solve real nutritional challenges.</p>
-    <img data-relay src="/assets/sifted/sifted-mockups-outcome.png" alt="Sifted outcome mockups" style="width:100%; height:auto; display:block; border-radius:16px">
+  <div class="block">
+    <div class="two-col-block product-prove-col-block">
+      <div>
+        <div class="section-eyebrow">What This Product Is Built to Prove</div>
+        <h2>Clarity builds trust. Trust changes behavior. Behavior improves health.</h2>
+        <p style="margin-top:0;">The people most motivated to eat well are the least supported by the tools that exist. Sifted aims to close that gap with ingredient-level transparency, judgment-free language, AI personalization that adapts to user needs and their pantry, as well as visual design that positions the experience as supportive guidance rather than judgment.</p>
+      </div>
+      <div class="gallery-item" style="border:none; padding:0; background:none;"><video src="/assets/sifted/sifted-pantry-planning.mp4" autoplay muted loop playsinline aria-label="Full product montage" style="width:100%; height:auto; display:block; border-radius:16px;"></video></div>
+    </div>
   </div>
   <a href="../tirivelo-case-study/" class="next-project">
     <div><div class="label">Next case file</div><h3>TiriVelo</h3></div>
