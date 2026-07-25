@@ -93,6 +93,7 @@ h2{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(24px,2.8vw
 h3{font-family:'Poppins',sans-serif; font-weight:600; font-size:19px; margin-bottom:10px; max-width:740px;}
 p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; max-width:740px;}
 .block{margin-bottom:56px;}
+.block--trust-visual{margin-top:-20px; margin-bottom:32px;}
 .block:last-child{margin-bottom:0;}
 .block--split.reverse .block--split-copy h2{margin-bottom:12px;}
 .block--split.reverse .block--split-copy p{margin-bottom:0;}
@@ -108,7 +109,8 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
   .block--split p{max-width:none;}
 }
 .cs-header .header-top > div:first-child > .block + .block{padding-bottom:24px;}
-.gap-statement{font-style:italic; color:var(--teal); font-size:15px; border-top:1px solid var(--line); padding-top:18px; margin-top:6px;}
+.testing-focus-label{color:#6FA3A3;}
+h2 em{font-weight:400; font-style:italic;}
 .gap-callout{background:#F5A94A12; border-left:4px solid var(--amber); border-radius:0 16px 16px 0; padding:22px 24px; margin-top:20px;}
 .gap-callout .gap-statement{border-top:none; padding-top:0; margin-top:0; margin-bottom:0; max-width:none;}
 .research-findings-row{display:grid; grid-template-columns:1fr; gap:32px; align-items:center; margin-bottom:48px;}
@@ -125,12 +127,35 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .problem-visual{align-self:center;}
 .auth-sequence-row{display:grid; grid-template-columns:1fr; gap:32px; align-items:center; margin:24px 0;}
 .auth-sequence-copy{text-align:left;}
-.auth-sequence-copy p{max-width:none; margin-bottom:0;}
+.auth-sequence-copy h2,
+.auth-sequence-copy p{max-width:none;}
+.auth-sequence-copy p{margin-bottom:0;}
+.auth-sequence-copy p + p{margin-top:14px;}
+.auth-sequence-copy .gap-callout{margin-top:20px; margin-bottom:0;}
 .auth-sequence-visual{align-self:center; width:100%;}
+.brand-identity-row{display:grid; grid-template-columns:1fr; gap:32px; align-items:center;}
+.brand-identity-copy{text-align:left;}
+.brand-identity-copy .section-eyebrow{margin-bottom:20px;}
+.brand-identity-copy h2,
+.brand-identity-copy p{max-width:none;}
+.brand-identity-copy h2{margin-bottom:28px;}
+.brand-identity-copy p{margin-bottom:0;}
+.brand-identity-copy p + p{margin-top:0;}
+.brand-identity-copy .pull-quote{margin:28px 0 0;}
+.brand-tile-gallery{margin:48px 0;}
+.brand-identity-visual{align-self:center; width:100%;}
+.trust-architecture-row{display:grid; grid-template-columns:1fr; gap:32px; align-items:center;}
+.trust-architecture-copy{text-align:left;}
+.trust-architecture-copy h2,
+.trust-architecture-copy p{max-width:none;}
+.trust-architecture-copy p{margin-bottom:0;}
+.trust-architecture-visual{align-self:center; width:100%;}
 @media (min-width:901px){
   .research-findings-row{grid-template-columns:1fr 1fr; gap:48px;}
   .problem-row{grid-template-columns:1fr 1fr; gap:48px;}
   .auth-sequence-row{grid-template-columns:1fr 1fr; gap:48px;}
+  .brand-identity-row{grid-template-columns:1fr 1fr; gap:48px;}
+  .trust-architecture-row{grid-template-columns:1fr 1fr; gap:48px;}
 }
 
 /* ---- ACCORDION ---- */
@@ -163,10 +188,13 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 @media (max-width:600px){
   .gallery-force-2col{grid-template-columns:1fr;}
 }
-.gallery-trust-arch{display:grid; grid-template-columns:1fr; gap:24px;}
+.gallery-trust-arch{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
 @media (min-width:768px){
-  .gallery-trust-arch{grid-template-columns:1fr 1fr 1fr;}
+  .gallery-trust-arch{grid-template-columns:1fr 1fr 1fr; gap:24px;}
 }
+.gallery-trust-arch img{width:90%; height:auto; display:block; margin:0 auto; border-radius:16px;}
+.gallery-trust-arch .value-card{margin-top:12px; text-align:left;}
+.gallery-trust-arch .value-card p{max-width:none;}
 .trust-visual-grid{display:grid; grid-template-columns:1fr; gap:24px; align-items:center;}
 @media (min-width:768px){
   .trust-visual-grid{grid-template-columns:1fr 1fr; gap:36px;}
@@ -175,9 +203,9 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 @media (min-width:768px){
   .prototype-grid{grid-template-columns:1fr 1fr; gap:32px;}
 }
-.prototype-gif{width:100%; border-radius:10%; display:block; overflow:hidden;}
+.prototype-gif{width:100%; border-radius:10%; display:block; overflow:hidden; object-fit:contain;}
 @media (min-width:768px){
-  .prototype-gif{width:60%; border-radius:50px;}
+  .prototype-gif{width:120%; border-radius:50px;}
 }
 .gallery-item{border-radius:16px; background:var(--paper-alt); border:2px dashed var(--line); min-height:220px; display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--graphite); font-size:13px; font-weight:600; text-align:center; padding:16px;}
 .gallery-item.wide{grid-column:1/-1; min-height:200px;}
@@ -207,6 +235,33 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .problem-card .p-label{font-size:11px; font-weight:700; text-transform:uppercase; color:var(--teal); margin-top:12px; margin-bottom:4px;}
 .problem-card .p-label:first-of-type{margin-top:0;}
 .problem-card p{font-size:13px; margin:0;}
+
+.values-grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:20px;
+}
+.brand-identity-visual h2{max-width:none;}
+.brand-identity-visual .value-card p{max-width:none;}
+
+.value-card{
+  border-radius:16px; padding:20px 22px; border:1px solid transparent;
+}
+.value-card h4{
+  font-family:'Poppins',sans-serif; font-size:15px; margin-bottom:8px;
+}
+.value-card p{ font-size:13px; line-height:1.55; margin:0; }
+
+.value-card--teal{ background:#4783830d; border-color:#47838333; }
+.value-card--teal h4{ color:var(--teal); }
+
+.value-card--coral{ background:#F2665A0d; border-color:#F2665A33; }
+.value-card--coral h4{ color:var(--coral); }
+
+.value-card--amber-dark{ background:#C97A1F0d; border-color:#C97A1F33; }
+.value-card--amber-dark h4{ color:var(--amber-dark); }
+
+.value-card--amber{ background:#F5A94A0d; border-color:#F5A94A33; }
+.value-card--amber h4{ color:var(--amber); }
+
 .problem-carousel{position:relative;}
 .problem-carousel-dots{display:none; gap:8px; justify-content:center; margin-top:16px; flex-wrap:wrap;}
 .problem-carousel-dot{width:8px; height:8px; border-radius:50%; background:var(--line); transition:background .2s ease;}
@@ -237,7 +292,7 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .closing-mark .wordmark{font-family:'Poppins',sans-serif; font-size:34px; font-weight:600; color:var(--rapi-navy); display:inline-flex; align-items:baseline; gap:2px;}
 .closing-mark .wordmark .md{position:relative;}
 .closing-mark .wordmark .md::after{content:''; position:absolute; top:-6px; right:-4px; width:14px; height:10px; border-bottom:3px solid var(--rapi-red); border-right:3px solid var(--rapi-red); transform:rotate(35deg) scale(0.7);}
-.closing-mark .tagline{font-size:13px; color:var(--graphite); font-style:italic; margin-top:6px;}
+.closing-mark .tagline{font-size:13px; color:var(--graphite); font-style:italic; margin:24px 0 28px;}
 
 .panel-next{
   display:flex; align-items:center; justify-content:center; gap:8px;
@@ -281,6 +336,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 .back-to-top:focus-visible{outline:2px solid var(--coral); outline-offset:3px;}
 
 @media (max-width:900px){
+  .values-grid{ grid-template-columns:1fr; }
   .tab-nav{padding:16px 16px 0; justify-content:center;}
   .tab-track{gap:2px; padding:3px;}
   .tab-btn{padding:8px 12px; font-size:12px;}
@@ -374,7 +430,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       </div>
     </div>
     <div class="hero-image" style="border:none; padding:0; background:none; display:block; overflow:hidden; position:relative;">
-      <img data-relay src="/assets/rapidmd/rapimd-case-hero.gif" alt="rapiMD app hero" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; border-radius:16px">
+      <video src="/assets/rapidmd/Rapi-md-hero.mp4" autoplay muted loop playsinline aria-label="rapiMD app hero" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; border-radius:16px;"></video>
     </div>
   </div>
 </header>
@@ -511,71 +567,121 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 <!-- DESIGN & PROCESS -->
 <div class="tab-panel" data-panel="design">
   <div class="block">
-    <div class="section-eyebrow">Delayed Authentication</div>
-    <h2>The most important product decision.</h2>
-    <p>Standard healthcare apps put account creation before value. For uninsured patients already primed to distrust systems that take without giving, this is a trust-ending moment.</p>
     <div class="auth-sequence-row">
       <div class="auth-sequence-copy">
+        <div class="section-eyebrow">Delayed Authentication</div>
+        <h2>The most important product decision.</h2>
+        <p>Standard healthcare apps put account creation before value. For uninsured patients already primed to distrust systems that take without giving, this is a trust-ending moment.</p>
         <p>RapiMD flipped the sequence entirely. Authentication was delayed until after users had selected a provider and an appointment slot, after they'd seen the flat fee, confirmed availability, and decided they wanted to proceed.</p>
+        <div class="gap-callout">
+          <p class="gap-statement">To prevent slot abandonment, the app reassured users their selected appointment was being held while a streamlined account creation flow was required to confirm and lock in the booking.</p>
+        </div>
       </div>
       <div class="auth-sequence-visual">
-        <div class="gallery-item" style="min-height:280px; border-radius:16px;" aria-hidden="true"></div>
+        <img data-relay src="/assets/rapidmd/account-needed-to-continue-rapimd.png" alt="Slot-hold countdown screen" style="width:100%; height:auto; display:block; border-radius:16px">
       </div>
     </div>
-    <div class="gallery-force-2col">
-      <div class="gallery-item" style="border:none; padding:0; background:none"><img data-relay src="/assets/rapidmd/account-needed-to-continue-rapimd.png" alt="Slot-hold countdown screen" style="width:68%; height:auto; display:block; margin:0 auto; border-radius:16px"></div>
-      <div class="gallery-item" style="border:none; padding:0; background:none"><img data-relay src="/assets/rapidmd/account-creation-screen-rapidmd.png" alt="Account creation screen" style="width:68%; height:auto; display:block; margin:0 auto; border-radius:16px"></div>
-    </div>
-    <p class="gallery-caption">To prevent slot abandonment, the app reassured users their selected appointment was being held while a streamlined account creation flow was required to confirm and lock in the booking.</p>
     <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/rapidmd/rapi-md-fuser-flow-browsing.png" alt="User flow, Browsing to Booking" style="width:100%; height:auto; display:block; border-radius:16px"></div>
   </div>
 
   <div class="block">
-    <div class="section-eyebrow">Logo &amp; Brand Identity Rationale</div>
-    <h2>The rapiMD logo was designed to communicate the platform's core promise.</h2>
-    <div class="pull-quote"><p>Fast, confirmed, affordable care, in a single mark.</p></div>
-    <p>The logo uses a checkmark over the letter "D," signaling speed and medical completion: in healthcare, a checkmark means done, confirmed, safe. The lowercase "rapi" keeps the wordmark approachable and consumer-friendly, while the uppercase "MD" anchors it in clinical credibility, the same tension the product itself navigates.</p>
-    <p>Deep navy and red were chosen deliberately: navy builds institutional trust, while red appears exclusively on the checkmark accent and key CTAs, training the eye to pay attention when it matters.</p>
-    <p>The Gabarito and Inconsolata type pairing reinforces the transparency promise at a subconscious level, Inconsolata's monospace precision feels exact and receipt-like, aligned with a product whose entire value proposition is showing users exactly what they will pay.</p>
-    <div class="gallery">
+    <div class="brand-identity-row">
+      <div class="brand-identity-copy">
+        <div class="section-eyebrow">Logo &amp; Brand Identity Rationale</div>
+        <h2>The rapiMD logo was designed to communicate the platform's core promise.</h2>
+        <p>The logo uses a checkmark over the letter "D," signaling speed and medical completion: in healthcare, a checkmark means done, confirmed, safe. The lowercase "rapi" keeps the wordmark approachable and consumer-friendly, while the uppercase "MD" anchors it in clinical credibility, the same tension the product itself navigates.</p>
+        <p>Deep navy and red were chosen deliberately: navy builds institutional trust, while red appears exclusively on the checkmark accent and key CTAs, training the eye to pay attention when it matters.</p>
+        <p>The Gabarito and Inconsolata type pairing reinforces the transparency promise at a subconscious level, Inconsolata's monospace precision feels exact and receipt-like, aligned with a product whose entire value proposition is showing users exactly what they will pay.</p>
+        <div class="pull-quote"><p>Fast, confirmed, affordable care, in a single mark.</p></div>
+      </div>
+      <div class="brand-identity-visual">
+        <div class="block" style="margin-bottom:0; width:100%;">
+          <div class="section-eyebrow">Brand Values</div>
+          <h2>What RapiMD stands for.</h2>
+          <div class="values-grid">
+            <div class="value-card value-card--teal">
+              <h4>Transparency</h4>
+              <p>Healthcare pricing and availability should feel clear, not hidden or confusing.</p>
+            </div>
+            <div class="value-card value-card--coral">
+              <h4>Speed</h4>
+              <p>Patients shouldn't wait weeks for care.</p>
+            </div>
+            <div class="value-card value-card--amber-dark">
+              <h4>Trust</h4>
+              <p>Medical decisions require emotional security.</p>
+            </div>
+            <div class="value-card value-card--amber">
+              <h4>Accessibility</h4>
+              <p>Care should feel easy and inclusive.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery brand-tile-gallery">
       <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/rapidmd/RAPIMD-BRAND-TILE.png" alt="RapiMD brand tile, logo, typography, and color palette" style="width:100%; height:100%; object-fit:cover; border-radius:16px"></div>
     </div>
   </div>
 
-  <div class="block block--split">
-    <div class="section-eyebrow">Trust Architecture</div>
-    <h2>Every screen was designed to build or maintain trust.</h2>
-    <p>Trust architecture in healthcare UX means designing information hierarchy, interaction patterns, and visual language specifically to reduce patient anxiety and build confidence at each decision point. This included: transparent flat fees visible before login, provider credential display with verification signals, clear scope-of-service boundaries, and intentional friction at irreversible actions.</p>
-    <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/rapidmd/defining-the-problem 1-1.png" alt="Trust architecture overview" style="width:100%; height:auto; display:block; border-radius:16px"></div>
+  <div class="block">
+    <div class="trust-architecture-row">
+      <div class="trust-architecture-copy">
+        <div class="section-eyebrow">Trust Architecture</div>
+        <h2>Every screen was designed to build or maintain trust.</h2>
+        <p>Trust architecture in healthcare UX means designing information hierarchy, interaction patterns, and visual language specifically to reduce patient anxiety and build confidence at each decision point. This included: transparent flat fees visible before login, provider credential display with verification signals, clear scope-of-service boundaries, and intentional friction at irreversible actions.</p>
+      </div>
+      <div class="trust-architecture-visual">
+        <img data-relay src="/assets/rapidmd/defining-the-problem 1-1.png" alt="Trust architecture overview" style="width:100%; height:auto; display:block; border-radius:16px">
+      </div>
+    </div>
   </div>
 
   <div class="block">
     <div class="section-eyebrow">Designing Transparency Into Every Interaction</div>
-    <h2>Every screen. Every decision point. Every place doubt could appear.</h2>
+    <h2>Every screen. Every decision point.<br>Every place doubt could appear.</h2>
     <div class="gallery-trust-arch">
       <div class="gallery-item" style="border:none; padding:0; background:none">
-        <img data-relay src="/assets/rapidmd/trust-arch/Provider Pricing Transparency.png" alt="Provider pricing screen" style="width:100%; height:auto; display:block; border-radius:16px">
-        <div class="gallery-caption"><b>Provider Pricing Transparency:</b> Displays the usual visit cost alongside the active RapiMD flat-fee rate, making the discount immediately visible. Included services is shown upfront so users know exactly what they're paying for before committing.</div>
+        <img data-relay src="/assets/rapidmd/trust-arch/Provider Pricing Transparency.png" alt="Provider pricing screen">
+        <div class="value-card value-card--teal">
+          <h4>Provider Pricing Transparency</h4>
+          <p>Displays the usual visit cost alongside the active RapiMD flat-fee rate, making the discount immediately visible. Included services is shown upfront so users know exactly what they're paying for before committing.</p>
+        </div>
       </div>
       <div class="gallery-item" style="border:none; padding:0; background:none">
-        <img data-relay src="/assets/rapidmd/trust-arch/Price-coverage.png" alt="Price breakdown screen" style="width:100%; height:auto; display:block; border-radius:16px">
-        <div class="gallery-caption"><b>Price Breakdown &amp; Coverage:</b> A full price breakdown clarifies what the consultation covers and explicitly states what is not included, paired with a No Surprise Bill guarantee to eliminate any remaining doubt before the user proceeds.</div>
+        <img data-relay src="/assets/rapidmd/trust-arch/Price-coverage.png" alt="Price breakdown screen">
+        <div class="value-card value-card--coral">
+          <h4>Price Breakdown &amp; Coverage</h4>
+          <p>A full price breakdown clarifies what the consultation covers and explicitly states what is not included, paired with a No Surprise Bill guarantee to eliminate any remaining doubt before the user proceeds.</p>
+        </div>
       </div>
       <div class="gallery-item" style="border:none; padding:0; background:none">
-        <img data-relay src="/assets/rapidmd/trust-arch/CancellationWarning.png" alt="Same-day cancellation warning" style="width:100%; height:auto; display:block; border-radius:16px">
-        <div class="gallery-caption"><b>Same-Day Cancellation Warning:</b> Before the user confirms a same-day appointment, a clear notice informs them that same-day bookings cannot be cancelled once confirmed, giving users the information they need to commit with full awareness, not discover it after.</div>
+        <img data-relay src="/assets/rapidmd/trust-arch/CancellationWarning.png" alt="Same-day cancellation warning">
+        <div class="value-card value-card--amber-dark">
+          <h4>Same-Day Cancellation Warning</h4>
+          <p>Before the user confirms a same-day appointment, a clear notice informs them that same-day bookings cannot be cancelled once confirmed, giving users the information they need to commit with full awareness, not discover it after.</p>
+        </div>
       </div>
       <div class="gallery-item" style="border:none; padding:0; background:none">
-        <img data-relay src="/assets/rapidmd/trust-arch/Appointment-Reminders.png" alt="Appointment reminder screen" style="width:100%; height:auto; display:block; border-radius:16px">
-        <div class="gallery-caption"><b>Appointment Reminders &amp; Visit Prep Prompt:</b> RapiMD sends a reminder the day before and again 2 hours prior to the appointment. The notification also prompts users to begin preparing for their visit, reducing no-shows and last-minute anxiety.</div>
+        <img data-relay src="/assets/rapidmd/trust-arch/Appointment-Reminders.png" alt="Appointment reminder screen">
+        <div class="value-card value-card--amber">
+          <h4>Appointment Reminders &amp; Visit Prep Prompt</h4>
+          <p>RapiMD sends a reminder the day before and again 2 hours prior to the appointment. The notification also prompts users to begin preparing for their visit, reducing no-shows and last-minute anxiety.</p>
+        </div>
       </div>
       <div class="gallery-item" style="border:none; padding:0; background:none">
-        <img data-relay src="/assets/rapidmd/trust-arch/appointment-hub.png" alt="Appointments hub" style="width:100%; height:auto; display:block; border-radius:16px">
-        <div class="gallery-caption"><b>Appointments Hub:</b> The appointment screen summarizes exactly what the visit price includes, alongside helpful tips and directions to the provider, giving users everything they need in one place after booking is confirmed.</div>
+        <img data-relay src="/assets/rapidmd/trust-arch/appointment-hub.png" alt="Appointments hub">
+        <div class="value-card value-card--teal">
+          <h4>Appointments Hub</h4>
+          <p>The appointment screen summarizes exactly what the visit price includes, alongside helpful tips and directions to the provider, giving users everything they need in one place after booking is confirmed.</p>
+        </div>
       </div>
       <div class="gallery-item" style="border:none; padding:0; background:none">
-        <img data-relay src="/assets/rapidmd/trust-arch/preparefor-visit.png" alt="Prepare for your visit screen" style="width:100%; height:auto; display:block; border-radius:16px">
-        <div class="gallery-caption"><b>Prepare for Your Visit Screen:</b> A dedicated pre-visit screen lists the documents and information users should bring to their appointment, reducing uncertainty and helping users arrive prepared and confident.</div>
+        <img data-relay src="/assets/rapidmd/trust-arch/preparefor-visit.png" alt="Prepare for your visit screen">
+        <div class="value-card value-card--coral">
+          <h4>Prepare for Your Visit Screen</h4>
+          <p>A dedicated pre-visit screen lists the documents and information users should bring to their appointment, reducing uncertainty and helping users arrive prepared and confident.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -585,7 +691,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 <div class="tab-panel" data-panel="outcome">
   <div class="block">
     <div class="section-eyebrow">Usability Testing</div>
-    <h2>Testing focus: pricing comprehension, booking confidence, trust perception, data transparency. Two failures emerged.</h2>
+    <h2><span class="testing-focus-label">Testing Focus:</span><br>Pricing comprehension, booking confidence, trust perception, data transparency.<br><em>Two failures emerged.</em></h2>
     <div class="stats-band">
       <div class="stat"><b>5</b><span>Participants</span></div>
       <div class="stat"><b>9</b><span>Screens tested</span></div>
@@ -604,29 +710,22 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     </div>
   </div>
 
-  <div class="block">
+  <div class="block block--trust-visual">
     <div class="trust-visual-grid">
-      <div class="gallery-item" style="border:none; padding:0; background:none; margin-bottom:0"><img data-relay src="/assets/rapidmd/Trust-is-not-visualproperty.png" alt="Trust is not a visual property" style="width:100%; height:auto; border-radius:16px"></div>
+      <div class="gallery-item" style="border:none; padding:0; background:none; margin-bottom:0">
+        <video class="prototype-gif" src="/assets/rapidmd/rapi-md-prototype--optimized.mp4" autoplay muted loop playsinline aria-label="RapiMD prototype walkthrough"></video>
+      </div>
       <div>
-        
         <div class="section-eyebrow">What This Project Taught Me About Trust</div>
         <h2>Trust is not a visual property.</h2>
         <p>You cannot design trust with only a color palette or reassuring headlines. Trust is built through clear expectations, explicit consent, transparent system behavior, and predictable outcomes through what the product does, not how it looks.</p>
         <p>For uninsured patients who have been systemically failed by healthcare, uncertainty itself is a barrier to care. Every interaction pattern that introduced ambiguity was a product failure with real consequences for real people.</p>
+        <div style="margin-top:24px;">
+          <a href="https://www.figma.com/proto/PKTrOWVAbVlVYvqtCv7QVm/Rapid-MD-CASESTUDY-ASSETS?node-id=93-831&viewport=349%2C253%2C0.26&t=tIYofBik0P2Btdml-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=93%3A1860&show-proto-sidebar=1&page-id=93%3A830" class="outcome-cta" target="_blank" rel="noopener noreferrer">RapiMD Prototype
+            <svg width="16" height="16" viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
       </div>
-    </div>
-  </div>
-
-  <div class="block">
-    
-    <div class="prototype-grid">
-      <div>
-        <h2>RapiMD Figma Prototype </h2>
-        <a href="#" class="outcome-cta">RapiMD Prototype
-          <svg width="16" height="16" viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-      <img data-relay class="prototype-gif" src="/assets/rapidmd/rapidmd-prototype-final.gif" alt="RapiMD prototype walkthrough">
     </div>
   </div>
 
