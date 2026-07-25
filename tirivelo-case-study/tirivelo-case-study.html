@@ -105,6 +105,8 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .cs-header .header-top > div:first-child > .block + .block{padding-bottom:24px;}
 
 .gap-statement{font-style:italic; color:var(--teal); font-size:15px; border-top:1px solid var(--line); padding-top:18px; margin-top:6px;}
+.gap-callout{background:#F5A94A12; border-left:4px solid var(--amber); border-radius:0 16px 16px 0; padding:22px 24px; margin-top:18px;}
+.gap-callout .gap-statement{border-top:none; padding-top:0; margin-top:0; margin-bottom:0; max-width:none;}
 
 /* ---- ACCORDION ---- */
 .accordion{border-top:1px solid var(--line); margin-top:20px;}
@@ -138,6 +140,19 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .compete-card{background:var(--paper-alt); border-radius:16px; padding:20px 22px;}
 .compete-card b{display:block; font-family:'Poppins',sans-serif; font-size:16px; margin-bottom:8px; color:var(--teal);}
 .compete-card p{font-size:13.5px; margin:0;}
+.compete-grid--research{grid-template-columns:1fr;}
+.compete-grid--research .compete-card{padding:0; overflow:hidden;}
+.compete-grid--research .compete-card-toggle{display:flex; align-items:center; justify-content:space-between; gap:16px; width:100%; padding:20px 22px; background:none; border:none; text-align:left; cursor:pointer; font:inherit; color:inherit;}
+.compete-grid--research .compete-card-toggle:focus-visible{outline:2px solid var(--coral); outline-offset:-2px; border-radius:16px;}
+.compete-grid--research .compete-card-copy{flex:1; min-width:0;}
+.compete-grid--research .compete-card-chevron-pill{display:flex; align-items:center; justify-content:center; width:34px; height:34px; flex-shrink:0; border-radius:100px; background:rgba(242,102,90,0.1); border:1.5px solid #F2665A; color:#F2665A; transition:background-color .2s ease, color .2s ease;}
+.compete-grid--research .compete-card-toggle:hover .compete-card-chevron-pill{background:#F2665A; color:#fff;}
+.compete-grid--research .compete-chevron{width:14px; height:14px; transition:transform .2s ease;}
+.compete-grid--research .compete-card.is-open .compete-chevron{transform:rotate(180deg);}
+.compete-grid--research .compete-card-panel{max-height:0; overflow:hidden; opacity:0; transition:max-height .35s ease, opacity .35s ease;}
+.compete-grid--research .compete-card.is-open .compete-card-panel{opacity:1;}
+.compete-grid--research .compete-card-panel-inner{padding:0 22px 22px;}
+.compete-grid--research .compete-card-panel img{width:100%; height:auto; display:block; border-radius:12px;}
 
 /* ---- GALLERY ---- */
 .gallery{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
@@ -153,7 +168,16 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .ba-label.after{color:var(--ink-soft);}
 
 .edge-case-grid{display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:center;}
+.block--edge-case{background:rgba(71,131,131,0.08); border-radius:22px; padding:44px 40px;}
+.block--edge-case h2,
+.block--edge-case p{max-width:none;}
 .redesign-search-row{display:grid; grid-template-columns:0.85fr 1.15fr; gap:32px; align-items:center; margin-bottom:48px;}
+.provider-profiles-col-block{display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:center; margin-bottom:48px;}
+.provider-profiles-copy{text-align:left;}
+.provider-profiles-copy h2,
+.provider-profiles-copy p,
+.provider-profiles-copy .section-eyebrow{text-align:left;}
+.provider-profiles-visual .gallery-item{min-height:280px; border-radius:16px;}
 .outcome-grid{display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:start;}
 @media (max-width:900px){
   .outcome-grid{grid-template-columns:1fr;}
@@ -215,9 +239,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   box-shadow:0 10px 24px -8px #33454A55;
 }
 .back-to-top.show{opacity:1; pointer-events:auto; transform:translateY(0);}
-.back-to-top:hover{background:var(--ink);}
-.back-to-top svg{width:20px; height:20px; stroke:#fff; transition:stroke .25s ease;}
-.back-to-top:hover svg{stroke:#fff;}
+.back-to-top.show:hover{background:var(--ink); transform:translateY(-3px);}
+.back-to-top svg{width:20px; height:20px; color:#fff; flex-shrink:0;}
 .back-to-top:focus-visible{outline:2px solid var(--coral); outline-offset:3px;}
 
 @media (max-width:900px){
@@ -231,6 +254,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   .gallery, .compete-grid, .ba-row, .reflect-grid{grid-template-columns:1fr;}
   .overview-problem-split{grid-template-columns:1fr;}
   .redesign-search-row{grid-template-columns:1fr; margin-bottom:32px;}
+  .provider-profiles-col-block{grid-template-columns:1fr;}
+  .block--edge-case{padding:32px 24px;}
   .stats-band{grid-template-columns:1fr 1fr;}
   .cs-header, .tab-panel{padding-left:24px; padding-right:24px;}
   .next-project{flex-direction:column; align-items:flex-start; gap:20px; margin:0 24px 40px;}
@@ -327,7 +352,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <h2>Before a pet owner books a stranger, they need to feel certain. Not mostly sure.</h2>
         <p style="max-width:none;">TiriVelo is a pet care marketplace helping owners discover and book local pet care providers. When I joined the project, the booking experience was failing at exactly that critical moment.</p>
         <p style="max-width:none;">Users were reaching the provider evaluation stage and losing confidence, not because the providers were inadequate, but because the product was not giving them what they needed to decide.</p>
-        <p class="gap-statement">Specific problems: users lost search context after entering results; filtering was visually present but functionally broken; provider cards had weak trust signals; key information was fragmented behind tabs.</p>
+        <div class="gap-callout">
+          <p class="gap-statement">Specific problems: users lost search context after entering results; filtering was visually present but functionally broken; provider cards had weak trust signals; key information was fragmented behind tabs.</p>
+        </div>
       </div>
       <div>
         <h3>Diagnostic findings from the audit</h3>
@@ -361,7 +388,6 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     </div>
     <div class="gallery" style="margin-top:20px;">
       <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/tirivelo/Tirivelo-problems-higlight.jpg" alt="Annotated audit, fragmented profiles and non-functional filtering" style="width:100%; height:auto; display:block; border-radius:16px"></div>
-      <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/tirivelo/BEFORE-TIRIVELO2.png" alt="Before — TiriVelo annotated audit" style="width:100%; height:auto; display:block; border-radius:16px"></div>
     </div>
   </div>
 </div>
@@ -371,13 +397,64 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   <div class="block">
     <div class="section-eyebrow">Competitive Analysis</div>
     <h2>4 competitive platforms. One clear gap.</h2>
-    <div class="compete-grid">
-      <div class="compete-card"><b>Rover</b><p>Visible trust signals placed early reduced uncertainty before users reached a profile.</p></div>
-      <div class="compete-card"><b>Wag!</b><p>Optimized for speed, reducing decisions required to reach booking.</p></div>
-      <div class="compete-card"><b>Pawshake</b><p>Browse-first discovery reduced commitment anxiety early in the funnel.</p></div>
-      <div class="compete-card"><b>Care.com</b><p>Early paywalls actively weakened trust at first contact, a lesson in what not to do.</p></div>
+    <div class="compete-grid compete-grid--research">
+      <div class="compete-card">
+        <button class="compete-card-toggle" type="button" aria-expanded="false" aria-controls="compete-research-rover">
+          <span class="compete-card-copy">
+            <b>Rover</b>
+            <p>Visible trust signals placed early reduced uncertainty before users reached a profile.</p>
+          </span>
+          <span class="compete-card-chevron-pill" aria-hidden="true"><svg class="compete-chevron" viewBox="0 0 100 100" fill="none"><path d="M25 40 L50 65 L75 40" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="compete-card-panel" id="compete-research-rover">
+          <div class="compete-card-panel-inner">
+            <img data-relay src="/assets/tirivelo/research/rover.png" alt="Rover competitive research screenshot" style="width:100%; height:auto; display:block; border-radius:12px">
+          </div>
+        </div>
+      </div>
+      <div class="compete-card">
+        <button class="compete-card-toggle" type="button" aria-expanded="false" aria-controls="compete-research-wag">
+          <span class="compete-card-copy">
+            <b>Wag!</b>
+            <p>Optimized for speed, reducing decisions required to reach booking.</p>
+          </span>
+          <span class="compete-card-chevron-pill" aria-hidden="true"><svg class="compete-chevron" viewBox="0 0 100 100" fill="none"><path d="M25 40 L50 65 L75 40" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="compete-card-panel" id="compete-research-wag">
+          <div class="compete-card-panel-inner">
+            <img data-relay src="/assets/tirivelo/research/wag.png" alt="Wag! competitive research screenshot" style="width:100%; height:auto; display:block; border-radius:12px">
+          </div>
+        </div>
+      </div>
+      <div class="compete-card">
+        <button class="compete-card-toggle" type="button" aria-expanded="false" aria-controls="compete-research-pawshake">
+          <span class="compete-card-copy">
+            <b>Pawshake</b>
+            <p>Browse-first discovery reduced commitment anxiety early in the funnel.</p>
+          </span>
+          <span class="compete-card-chevron-pill" aria-hidden="true"><svg class="compete-chevron" viewBox="0 0 100 100" fill="none"><path d="M25 40 L50 65 L75 40" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="compete-card-panel" id="compete-research-pawshake">
+          <div class="compete-card-panel-inner">
+            <img data-relay src="/assets/tirivelo/research/pawshake.png" alt="Pawshake competitive research screenshot" style="width:100%; height:auto; display:block; border-radius:12px">
+          </div>
+        </div>
+      </div>
+      <div class="compete-card">
+        <button class="compete-card-toggle" type="button" aria-expanded="false" aria-controls="compete-research-care">
+          <span class="compete-card-copy">
+            <b>Care.com</b>
+            <p>Early paywalls actively weakened trust at first contact, a lesson in what not to do.</p>
+          </span>
+          <span class="compete-card-chevron-pill" aria-hidden="true"><svg class="compete-chevron" viewBox="0 0 100 100" fill="none"><path d="M25 40 L50 65 L75 40" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="compete-card-panel" id="compete-research-care">
+          <div class="compete-card-panel-inner">
+            <img data-relay src="/assets/tirivelo/research/care.com.png" alt="Care.com competitive research screenshot" style="width:100%; height:auto; display:block; border-radius:12px">
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/tirivelo/Tirivelo-comp-analysis.jpg" alt="Competitive teardown, 4-platform comparison" style="width:100%; height:auto; display:block; border-radius:16px"></div>
   </div>
 </div>
 
@@ -397,7 +474,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         </ul>
         <p style="margin-top:16px; font-weight:700; font-size:17.5px;">The underlying principle: if users know where they are, they can decide with confidence.</p>
       </div>
-      <video src="/assets/tirivelo/providers-.mp4" autoplay muted loop playsinline style="width:100%; height:auto; display:block; border-radius:16px;"></video>
+      <div class="gallery-item" style="min-height:280px; border-radius:16px;" aria-hidden="true"></div>
     </div>
     <img data-relay src="/assets/tirivelo/Provider-profile-improvements.png" alt="Rebuilt filter panel" style="width:100%; height:auto; display:block; border-radius:16px">
     <div class="block" style="padding-top:40px;">
@@ -418,7 +495,6 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     </div>
   </div>
   <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/tirivelo/Tirivelo-search-flow.jpg" alt="Service booking flow" style="width:100%; height:auto; display:block; border-radius:16px"></div>
-  <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/tirivelo/logged-guest-flows.png" alt="Logged-in and guest booking flows" style="width:100%; height:auto; display:block; border-radius:16px"></div>
   <div class="gallery-item wide" style="border:none; padding:32px 0; background:none"><img data-relay src="/assets/tirivelo/Tirivelo-seamless-flow-search.png" alt="User flow, logged-in vs guest path" style="width:100%; height:auto; display:block; border-radius:16px"></div>
 
   </div>
@@ -426,23 +502,30 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
 
   <div class="block">
-    <div class="section-eyebrow">Provider Profiles</div>
-    <h2>Profiles are where booking decisions are made or abandoned.</h2>
-    <p>Key additions included:</p>
-    <ul class="key-list">
-      <li>Photo-first trust building</li>
-      <li>Verification badges</li>
-      <li>Repeat-client metrics</li>
-      <li>Environment information</li>
-      <li>Persistent booking actions</li>
-      <li>Availability reassurance</li>
-      <li>Review credibility indicators</li>
-    </ul>
+    <div class="provider-profiles-col-block">
+      <div class="provider-profiles-visual">
+        <video src="/assets/tirivelo/providers-.mp4" autoplay muted loop playsinline style="width:100%; height:auto; display:block; border-radius:16px;"></video>
+      </div>
+      <div class="provider-profiles-copy">
+        <div class="section-eyebrow">Provider Profiles</div>
+        <h2>Profiles are where booking decisions are made or abandoned.</h2>
+        <p>Key additions included:</p>
+        <ul class="key-list">
+          <li>Photo-first trust building</li>
+          <li>Verification badges</li>
+          <li>Repeat-client metrics</li>
+          <li>Environment information</li>
+          <li>Persistent booking actions</li>
+          <li>Availability reassurance</li>
+          <li>Review credibility indicators</li>
+        </ul>
+      </div>
+    </div>
     <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/tirivelo/banner-states-mockups-.png" alt="Provider profile, verification badges, ratings, availability calendar" style="width:100%; height:auto; display:block; border-radius:16px"></div>
-    <p style="margin-top:16px; font-size:13.5px; font-style:italic;">The dynamic availability banner was designed to reduce booking uncertainty by adapting to the user's search context. If no date was selected, it encouraged exploration with "Check Availability"; date-specific searches provided immediate availability feedback to help users evaluate providers faster and with greater confidence.</p>
+    <p style="margin-top:16px; font-size:13.5px; font-style:italic; max-width:none; width:100%;">The dynamic availability banner was designed to reduce booking uncertainty by adapting to the user's search context. If no date was selected, it encouraged exploration with "Check Availability"; date-specific searches provided immediate availability feedback to help users evaluate providers faster and with greater confidence.</p>
   </div>
 
-  <div class="block">
+  <div class="block block--edge-case">
     <div class="edge-case-grid">
       <div>
         <div class="section-eyebrow">Solving a Critical Edge Case</div>
@@ -451,7 +534,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <p>A confirmation modal was initially attempted to solve the issue but created modal fatigue.</p>
         <p>The final solution used inline selection states, persistent original search context, and clear service-switch messaging.</p>
       </div>
-      <video src="/assets/tirivelo/warning-tirivelo.mp4" autoplay muted loop playsinline aria-label="Inline service-switch solution" style="width:65%; height:auto; display:block; margin:0 auto; border-radius:16px;"></video>
+      <video src="/assets/tirivelo/warning-tirivelo.mp4" autoplay muted loop playsinline aria-label="Inline service-switch solution" style="width:100%; height:auto; display:block; border-radius:16px;"></video>
     </div>
   </div>
 </div>
@@ -639,6 +722,38 @@ document.querySelectorAll('.acc-head').forEach(head=>{
       sib.querySelector('.acc-body').style.maxHeight = null;
     });
     if(!isOpen){ item.classList.add('open'); body.style.maxHeight = body.scrollHeight + 'px'; }
+  });
+});
+document.querySelectorAll('.compete-grid--research .compete-card-toggle').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const card = btn.closest('.compete-card');
+    const panel = card.querySelector('.compete-card-panel');
+    const grid = card.closest('.compete-grid--research');
+    const isOpen = card.classList.contains('is-open');
+
+    function closeCard(target){
+      target.classList.remove('is-open');
+      const targetBtn = target.querySelector('.compete-card-toggle');
+      const targetPanel = target.querySelector('.compete-card-panel');
+      if(targetBtn) targetBtn.setAttribute('aria-expanded', 'false');
+      if(targetPanel) targetPanel.style.maxHeight = null;
+    }
+
+    if(isOpen){
+      closeCard(card);
+    } else {
+      grid.querySelectorAll('.compete-card.is-open').forEach(openCard=>{
+        if(openCard !== card) closeCard(openCard);
+      });
+      card.classList.add('is-open');
+      btn.setAttribute('aria-expanded', 'true');
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+    }
+  });
+});
+window.addEventListener('resize', ()=>{
+  document.querySelectorAll('.compete-grid--research .compete-card.is-open .compete-card-panel').forEach(panel=>{
+    panel.style.maxHeight = panel.scrollHeight + 'px';
   });
 });
 window.addEventListener('load', ()=>{
