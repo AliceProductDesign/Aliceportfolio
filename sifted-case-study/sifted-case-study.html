@@ -204,11 +204,30 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 /* ---- GALLERY ---- */
 .gallery{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
 .two-col-block{display:grid; grid-template-columns:0.8fr 1.2fr; gap:36px; align-items:center; padding:32px 0;}
+.problem-col-block{grid-template-columns:1.1fr 0.9fr; padding:0; align-items:center;}
+.problem-col-block .problem-copy{text-align:left;}
+.problem-col-block .problem-copy h2,
+.problem-col-block .problem-copy p{text-align:left;}
+.problem-col-block img{width:100%; height:auto; display:block; border-radius:16px;}
+.ai-experience-col-block{grid-template-columns:1.1fr 0.9fr; padding:0; align-items:center;}
+.ai-experience-col-block .ai-experience-copy{text-align:left;}
+.ai-experience-col-block .ai-experience-copy h2,
+.ai-experience-col-block .ai-experience-copy p{text-align:left;}
+.ai-experience-col-block .ai-principle-list{display:flex; flex-direction:column; gap:14px; margin-top:20px;}
+.ai-experience-col-block video{width:100%; height:auto; display:block; border-radius:16px;}
+.features-col-block{grid-template-columns:0.9fr 1.1fr; padding:0; align-items:center;}
+.features-col-block .features-copy{text-align:left;}
+.features-col-block .features-copy h3{text-align:left;}
+.features-col-block .feature-grid{margin-top:16px;}
+.features-col-block video{width:120%; height:auto; display:block; border-radius:16px;}
 @media (max-width:900px){
   .two-col-block{grid-template-columns:1fr; padding:20px 0;}
   .mid-fi-col-block{grid-template-columns:1fr !important;}
   .brand-colors-col-block{grid-template-columns:1fr !important;}
   .product-prove-col-block{grid-template-columns:1fr !important;}
+  .problem-col-block{grid-template-columns:1fr !important;}
+  .ai-experience-col-block{grid-template-columns:1fr !important;}
+  .features-col-block{grid-template-columns:1fr !important;}
 }
 .gallery-item{border-radius:16px; background:var(--paper-alt); border:2px dashed var(--line); min-height:220px; display:flex; align-items:center; justify-content:center; color:var(--graphite); font-size:13px; font-weight:600; text-align:center; padding:16px;}
 .gallery-item.wide{grid-column:1/-1; min-height:220px; height:auto;}
@@ -272,7 +291,17 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   .tab-track{gap:2px; padding:3px;}
   .tab-btn{padding:8px 12px; font-size:12px;}
   .header-top{grid-template-columns:1fr;}
-  .header-top .hero-image{height:auto; min-height:220px;}
+  .header-top .hero-image{
+    display:flex !important;
+    align-items:center;
+    justify-content:center;
+    aspect-ratio:3/4;
+    width:100%;
+    max-width:100%;
+    height:auto;
+    min-height:0;
+    overflow:hidden;
+  }
   .meta-row{grid-template-columns:1fr 1fr;}
   .gallery{grid-template-columns:1fr;}
   .stats-band{grid-template-columns:1fr 1fr;}
@@ -280,6 +309,38 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   .compare-table{font-size:12px;}
   .cs-header, .tab-panel{padding-left:24px; padding-right:24px;}
   .next-project{flex-direction:column; align-items:flex-start; gap:20px; margin:0 24px 40px;}
+  .ai-experience-visual,
+  .features-visual,
+  .gallery-item:has(> video){
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+  }
+  .tab-panel video,
+  .cs-header video{
+    display:block;
+    max-width:100%;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .ai-experience-visual video{width:100% !important;}
+  .features-col-block video{width:100% !important;}
+  .header-top .hero-image video{
+    position:static !important;
+    inset:auto !important;
+    top:auto !important;
+    right:auto !important;
+    bottom:auto !important;
+    left:auto !important;
+    transform:none !important;
+    width:100% !important;
+    height:auto !important;
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+    object-position:center;
+  }
 }
 </style>
 </head>
@@ -371,13 +432,20 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   </div>
 
   <div class="block">
-    <div class="section-eyebrow">The Problem</div>
-    <h2>Health-conscious shoppers have the knowledge.<br>They lack a tool that helps them act on it.</h2>
-    <p>The average health-conscious shopper is not uninformed. They understand the risks of added sugar. What they lack is a tool that helps them act on that knowledge at the moment it matters: standing in a grocery aisle, reading a label full of chemical names they cannot interpret, or preparing a meal without advance planning.</p>
-    <p>Nutrition labels are designed to comply, not to communicate. Additives hide behind dozens of aliases. The apps that exist either oversimplify into vague letter grades or overwhelm with raw data.</p>
-    <p class="gap-statement">The gap: actionable clarity at the point of decision, personalized to each user's specific dietary restrictions.</p>
+    <div class="two-col-block problem-col-block">
+      <div class="problem-copy">
+        <div class="section-eyebrow">The Problem</div>
+        <h2>Health-conscious shoppers have the knowledge. But they lack a tool that helps them act on it.</h2>
+        <p>The average health-conscious shopper is not uninformed. They understand the risks of added sugar. What they lack is a tool that helps them act on that knowledge at the moment it matters: standing in a grocery aisle, reading a label full of chemical names they cannot interpret, or preparing a meal without advance planning.</p>
+        <p>Nutrition labels are designed to comply, not to communicate. Additives hide behind dozens of aliases. The apps that exist either oversimplify into vague letter grades or overwhelm with raw data.</p>
+        <p class="gap-statement">The gap: actionable clarity at the point of decision, personalized to each user's specific dietary restrictions.</p>
+      </div>
+      <div class="problem-visual">
+        <img data-relay src="/assets/sifted/competitors-1.png" alt="Competitive audit of existing nutrition apps" style="width:100%; height:auto; display:block; border-radius:16px">
+      </div>
+    </div>
     <div class="gallery" style="margin-top:20px;">
-      <div class="gallery-item wide" style="border:none; padding:0; background:none; display:flex; justify-content:center"><img data-relay src="/assets/sifted/problem-research-sifted.png" alt="Competitive audit" style="max-width:700px; width:100%; height:auto; display:block; border-radius:16px; margin:0 auto"></div>
+      <div class="gallery-item wide" style="border:none; padding:0; background:none; display:flex; justify-content:center"><img data-relay src="/assets/sifted/competitors-2.png" alt="Competitive audit" style="width:100%; height:auto; display:block; border-radius:16px"></div>
     </div>
   </div>
 </div>
@@ -460,32 +528,42 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   </div>
 
   <div class="block">
-    <div class="section-eyebrow">Must-Have Features</div>
-    <h3>What the research told us to prioritize</h3>
-    <div class="feature-grid" style="grid-template-columns:1fr 1fr;">
-      <div class="feature-card" style="text-align:left;"><h4>Account Creation</h4><p>Registration, sign-in, and onboarding questionnaires so users get a personalized profile with access to saved searches and recipes.</p></div>
-      <div class="feature-card" style="text-align:left;"><h4>Barcode &amp; OCR Scanner</h4><p>A quick tool to detect unwanted ingredients from barcodes, ingredient lists, menus, or images, parsing recipes from links, screenshots, or typed input.</p></div>
-      <div class="feature-card" style="text-align:left;"><h4>Recommendation System</h4><p>Learns from user behavior and profile settings to suggest smarter swaps, common triggers, and reliable meal options aligned with their profile.</p></div>
-      <div class="feature-card" style="text-align:left;"><h4>Misleading Health Claims Detector</h4><p>Flags hidden sugars, high-carbs, seed oils, and inflammatory additives, and explains why, identifying deceptive labels like "low fat" or "organic."</p></div>
+    <div class="two-col-block features-col-block">
+      <div class="features-visual">
+        <video src="/assets/sifted/food-swap.mp4" autoplay muted loop playsinline aria-label="AI chat screen, flagged ingredient detail" style="width:100%; height:auto; display:block; border-radius:16px;"></video>
+      </div>
+      <div class="features-copy">
+        <div class="section-eyebrow">Must-Have Features</div>
+        <h3>What the research told us to prioritize</h3>
+        <div class="feature-grid" style="grid-template-columns:1fr 1fr;">
+          <div class="feature-card" style="text-align:left;"><h4>Account Creation</h4><p>Registration, sign-in, and onboarding questionnaires so users get a personalized profile with access to saved searches and recipes.</p></div>
+          <div class="feature-card" style="text-align:left;"><h4>Barcode &amp; OCR Scanner</h4><p>A quick tool to detect unwanted ingredients from barcodes, ingredient lists, menus, or images, parsing recipes from links, screenshots, or typed input.</p></div>
+          <div class="feature-card" style="text-align:left;"><h4>Recommendation System</h4><p>Learns from user behavior and profile settings to suggest smarter swaps, common triggers, and reliable meal options aligned with their profile.</p></div>
+          <div class="feature-card" style="text-align:left;"><h4>Misleading Health Claims Detector</h4><p>Flags hidden sugars, high-carbs, seed oils, and inflammatory additives, and explains why, identifying deceptive labels like "low fat" or "organic."</p></div>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="block">
-    <div class="section-eyebrow">Designing the AI Experience</div>
-    <h2>Context-first. Ingredient-level. Gracefully uncertain.</h2>
-    <p>The AI feature was the most complex design challenge, and the most relevant to where consumer wellness is heading.</p>
-    <div class="principle-row">
-      <div class="principle"><b>Context-first responses</b><p>The AI leads with information relevant to the user's specific dietary profile before providing general information.</p></div>
-      <div class="principle"><b>Ingredient-level explanations</b><p>Rather than "this product scored a C," the AI explains why a specific ingredient is a flag for this specific user's context.</p></div>
-      <div class="principle"><b>Graceful uncertainty</b><p>The interface surfaces AI uncertainty explicitly rather than presenting low-confidence responses as authoritative.</p></div>
+    <div class="two-col-block ai-experience-col-block">
+      <div class="ai-experience-copy">
+        <div class="section-eyebrow">Designing the AI Experience</div>
+        <h2>Context-first. Ingredient-level. Gracefully uncertain.</h2>
+        <p>The AI feature was the most complex design challenge, and the most relevant to where consumer wellness is heading.</p>
+        <div class="ai-principle-list">
+          <div class="principle"><b>Context-first responses</b><p>The AI leads with information relevant to the user's specific dietary profile before providing general information.</p></div>
+          <div class="principle"><b>Ingredient-level explanations</b><p>Rather than "this product scored a C," the AI explains why a specific ingredient is a flag for this specific user's context.</p></div>
+          <div class="principle"><b>Graceful uncertainty</b><p>The interface surfaces AI uncertainty explicitly rather than presenting low-confidence responses as authoritative.</p></div>
+        </div>
+      </div>
+      <div class="ai-experience-visual">
+        <video src="/assets/sifted/sifted-chat-mockup.mp4" autoplay muted loop playsinline aria-label="AI chat screen, context-first response" style="width:120%; height:auto; display:block; border-radius:16px;"></video>
+      </div>
     </div>
     <div class="gallery" style="margin-top:20px;">
       <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/sifted/UX-ALICE-SIFTED-task-flow.png" alt="Sifted Chat flow diagram" style="width:100%; height:auto; display:block; border-radius:16px"></div>
       <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/sifted/USERFLOW-all.png" alt="Onboarding and Scan Tool user flow" style="width:100%; height:auto; display:block; border-radius:16px"></div>
-    </div>
-    <div class="gallery" style="margin-top:18px;">
-      <div class="gallery-item" style="border:none; padding:0; background:none; display:flex; justify-content:center;"><video src="/assets/sifted/sifted-chat-mockup.mp4" autoplay muted loop playsinline aria-label="AI chat screen, context-first response" style="width:100%; height:auto; display:block; border-radius:16px;"></video></div>
-      <div class="gallery-item" style="border:none; padding:0; background:none; display:flex; justify-content:center;"><video src="/assets/sifted/food-swap.mp4" autoplay muted loop playsinline aria-label="AI chat screen, flagged ingredient detail" style="width:100%; height:auto; display:block; border-radius:16px;"></video></div>
     </div>
   </div>
 
@@ -504,7 +582,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <span class="wire-dot"></span>
     </div>
     </div>
-    <div class="two-col-block mid-fi-col-block" style="grid-template-columns:1.3fr 0.7fr; padding:0; margin-top:80px;">
+    <div class="two-col-block mid-fi-col-block" hidden style="grid-template-columns:1.3fr 0.7fr; padding:0; margin-top:80px;">
           <div style="display:flex; gap:14px;">
             <img data-relay src="/assets/sifted/wireframes-mid-fi.png" alt="Mid-fidelity ingredient list screen" style="width:100%; height:auto; display:block; border-radius:12px">
           </div>
