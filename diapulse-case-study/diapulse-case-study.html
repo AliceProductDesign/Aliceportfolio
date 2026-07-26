@@ -107,7 +107,32 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
   .block--split h2,
   .block--split h3,
   .block--split p{max-width:none;}
+  .block--split.problem-split > .problem-copy{
+    display:flex; flex-direction:column; justify-content:center; align-self:center;
+  }
+  .block--split.problem-split .problem-copy h2,
+  .block--split.problem-split .problem-copy p{max-width:none;}
+  .block--split.problem-split .problem-visual{width:100%;}
+  .block--split.problem-split .problem-visual h3{margin-bottom:12px; max-width:none;}
+  .block--split.design-split > .split-copy{
+    display:flex; flex-direction:column; justify-content:center; align-self:center; text-align:left;
+  }
+  .block--split.design-split .split-copy h2,
+  .block--split.design-split .split-copy h3,
+  .block--split.design-split .split-copy p,
+  .block--split.design-split .split-copy .gap-statement{max-width:none;}
+  .block--split.design-split .split-visual{width:100%; align-self:center;}
 }
+.block--split.design-split.design-split--highlight{
+  background:linear-gradient(135deg, rgba(79,199,122,0.1), rgba(198,233,59,0.07));
+  border:1px solid rgba(79,199,122,0.22);
+  border-radius:22px;
+  padding:32px 28px;
+}
+@media (min-width:901px){
+  .block--split.design-split.design-split--highlight{padding:36px 40px;}
+}
+.section-divider-img{margin:40px 0;}
 .cs-header .header-top > div:first-child > .block + .block{padding-bottom:24px;}
 .gap-statement{font-style:italic; color:var(--teal); font-size:15px; border-top:1px solid var(--line); padding-top:18px; margin-top:6px;}
 
@@ -344,22 +369,22 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
 <!-- OVERVIEW -->
 <div class="tab-panel active" data-panel="overview">
-  <div class="block">
-    <div class="section-eyebrow">The Problem</div>
-    <h2>A 30-year legacy brand that did not reflect the science behind it.</h2>
-    <p>Diapulse has been a legitimate force in medical technology for decades. Their FDA-cleared pulsed electromagnetic field therapy devices have been used in hospitals and clinical environments to support healing and recovery.</p>
-    <p class="gap-statement">The science is real. The clinical track record is real. But the brand did not reflect any of it.</p>
-    <p>The logo was overly complex and did not scale. Marketing materials were inconsistent, and the device software felt disconnected from any coherent design system.</p>
-  </div>
-
-  <div class="block">
-    <h3>Before → After</h3>
-    <img src="/assets/diapulse/diapulse-logo-before-after.png" alt="Diapulse logo, before and after" style="width:100%; height:auto; display:block; border-radius:16px">
+  <div class="block block--split problem-split">
+    <div class="problem-copy">
+      <div class="section-eyebrow">The Problem</div>
+      <h2>A 30-year legacy brand that did not reflect the science behind it.</h2>
+      <p>Diapulse has been a legitimate force in medical technology for decades. Their FDA-cleared pulsed electromagnetic field therapy devices have been used in hospitals and clinical environments to support healing and recovery.</p>
+      <p class="gap-statement">The science is real. The clinical track record is real. But the brand did not reflect any of it.</p>
+      <p style="margin-bottom:0;">The logo was overly complex and did not scale. Marketing materials were inconsistent, and the device software felt disconnected from any coherent design system.</p>
+    </div>
+    <div class="problem-visual">
+      <img src="/assets/diapulse/diapulse-logo-before-after.png" alt="Diapulse logo, before and after" style="width:100%; height:auto; display:block; border-radius:16px">
+    </div>
   </div>
 
   <div class="block">
     <h3>Where the software started</h3>
-    <p>Legacy device software screens before the UI redesign, inconsistent visual language across splash, treatment, and settings screens.</p>
+    <p>Legacy device software screens before the UI redesign, inconsistent<br>visual language across splash, treatment, and settings screens.</p>
     <div class="gallery-3">
       <img src="/assets/diapulse/diapulse-before-ui.png" alt="Legacy splash screen" style="width:100%; height:auto; display:block; border-radius:16px">
       <img src="/assets/diapulse/diapulse-before-ui-2.png" alt="Legacy treatment screen" style="width:100%; height:auto; display:block; border-radius:16px">
@@ -370,22 +395,30 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
 <!-- DESIGN & PROCESS -->
 <div class="tab-panel" data-panel="design">
-  <div class="block block--split">
-    <div class="section-eyebrow">The Strategic Decision</div>
-    <h2>Preserve the equity. Modernize the system.</h2>
-    <p>Diapulse's pulse-inspired visual language had real recognition value in the clinical community. Removing it entirely would have been the wrong move. I kept those foundational elements and rebuilt everything else around them: cleaner, more scalable, and more considered.</p>
-    <img src="/assets/diapulse/diapulse-logo-forms.png" alt="Logo lockups and pulse mark variants" style="width:100%; height:auto; display:block; border-radius:16px">
+  <div class="block block--split design-split design-split--highlight">
+    <div class="split-copy">
+      <div class="section-eyebrow">The Strategic Decision</div>
+      <h2>Preserve the equity.<br>
+         Modernize the system.</h2>
+      <p style="margin-bottom:0;">Diapulse's pulse-inspired visual language had real recognition value in the clinical community. Removing it entirely would have been the wrong move. I kept those foundational elements and rebuilt everything else around them: cleaner, more scalable, and more considered.</p>
+    </div>
+    <div class="split-visual">
+      <img src="/assets/diapulse/diapulse-logo-forms.png" alt="Logo lockups and pulse mark variants" style="width:100%; height:auto; display:block; border-radius:16px">
+    </div>
   </div>
 
-  <div class="block block--split reverse">
-    <div class="section-eyebrow">The Brand System</div>
-    <h2>Logo &amp; Wordmark</h2>
-    <p>The original logo was visually overcomplicated. I redesigned it around a simplified custom wordmark paired with a modernized pulse motif, keeping the visual language HCPs associated with the brand while making it clean enough to work at any scale, across any surface, digital or physical.</p>
-    <img src="/assets/diapulse/diapulse-logo-info.png" alt="Final logo, pulse mark and Diapulse Technologies wordmark" style="width:100%; height:auto; display:block; border-radius:16px">
+  <div class="block block--split design-split">
+    <div class="split-copy">
+      <div class="section-eyebrow">The Brand System</div>
+      <h2>Logo &amp; Wordmark</h2>
+      <p style="margin-bottom:0;">The original logo was visually overcomplicated. I redesigned it around a simplified custom wordmark paired with a modernized pulse motif, keeping the visual language HCPs associated with the brand while making it clean enough to work at any scale, across any surface, digital or physical.</p>
+    </div>
+    <div class="split-visual">
+      <img src="/assets/diapulse/diapulse-logo-info.png" alt="Final logo, pulse mark and Diapulse Technologies wordmark" style="width:100%; height:auto; display:block; border-radius:16px">
+    </div>
   </div>
 
   <div class="block">
-    <div class="pull-quote"><p>Less Pain. Faster Healing. Better Life.</p></div>
     <img src="/assets/diapulse/diapulse-banner.png" alt="Marketing banner with runner silhouette and pulse-bar cutout shapes" style="width:100%; height:auto; display:block; border-radius:16px">
     <div class="gallery" style="margin-top:18px; border:none; padding:0; background:none;">
       <img src="/assets/diapulse/buttons-diapulse.png" alt="Diapulse button system" style="width:100%; height:auto; display:block; border-radius:16px">
@@ -393,28 +426,41 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     </div>
   </div>
 
-  <div class="block block--split">
-    <div class="section-eyebrow">Typography &amp; Color</div>
-    <h2>Precision without institutional coldness.</h2>
-    <p>Updated the type hierarchy to prioritize readability in clinical contexts, environments where information needs to be processed quickly and without ambiguity. The color system was modernized within the existing palette, moving toward tones that read as professional and precise without institutional coldness.</p>
-    <div class="gallery-item wide" style="border:none; padding:0; background:none;"><video src="/assets/diapulse/diapulse-screens-banner.mp4" autoplay muted loop playsinline aria-label="UI screens" style="width:100%; height:auto; display:block; border-radius:16px;"></video></div>
+  <div class="block block--split design-split">
+    <div class="split-copy">
+      <div class="section-eyebrow">Typography &amp; Color</div>
+      <h2>Precision without institutional coldness.</h2>
+      <p style="margin-bottom:0;">Updated the type hierarchy to prioritize readability in clinical contexts, environments where information needs to be processed quickly and without ambiguity. The color system was modernized within the existing palette, moving toward tones that read as professional and precise without institutional coldness.</p>
+    </div>
+    <div class="split-visual">
+      <img src="/assets/diapulse/sky-thelimit.png" alt="Typography and color system, Sky's the Limit tagline" style="width:100%; height:auto; display:block; border-radius:16px">
+    </div>
   </div>
 
-  <div class="block"><div style="padding:0 32px;"><img src="/assets/diapulse/vessel-drawing.png" alt="Updated hardware, device unit with new logo placement" style="width:100%; height:auto; display:block; border-radius:16px"></div>
-  
-  
-    <div class="section-eyebrow" style="margin-top:32px;">Hardware Integration</div>
-    <h2>Extending the brand onto the physical device.</h2>
-    <p>One of the more unusual aspects of this project was extending the brand onto the physical device itself. I worked with the product development team on hardware color selection and strategic logo placement, ensuring the device aligned with the updated brand system.</p>
-    </div>
+  <img src="/assets/diapulse/vessel-drawing.png" alt="Updated hardware, device unit with new logo placement" class="section-divider-img" style="width:100%; height:auto; display:block; border-radius:16px;">
 
-  <div class="block block--split reverse">
-    <div class="section-eyebrow">Clinical Software UI</div>
-    <h2>Where brand design becomes product design.</h2>
-    <p>I led the UI redesign for Diapulse's clinical device software, used by healthcare professionals in active treatment settings. The software is the primary interface between the clinician and the device: every UX decision has a direct impact on how confidently and efficiently a clinician can do their job.</p>
-    <p>The redesign focused on reducing cognitive load in high-pressure environments, consistency with the brand system, and scalability for future features.</p>
-    <p class="gap-statement">The software is live and in use in clinical settings today.</p>
-    <img src="/assets/diapulse/diapulse-img.jpeg" alt="Treatment Setup screen, Peak Power, Pulse Frequency, Treatment Time controls" style="width:100%; height:auto; display:block; border-radius:16px">
+  <div class="block block--split design-split reverse">
+    <div class="split-copy">
+      <div class="section-eyebrow">Hardware Integration</div>
+      <h2>Extending the brand onto the physical device.</h2>
+      <p style="margin-bottom:0;">One of the more unusual aspects of this project was extending the brand onto the physical device itself. I worked with the product development team on hardware color selection and strategic logo placement, ensuring the device aligned with the updated brand system.</p>
+    </div>
+    <div class="split-visual">
+      <img src="/assets/diapulse/vessel-diapulse.png" alt="Updated Diapulse device with new logo placement and brand colors" style="width:100%; height:auto; display:block; border-radius:16px">
+    </div>
+  </div>
+
+  <div class="block block--split design-split">
+    <div class="split-copy">
+      <div class="section-eyebrow">Clinical Software UI</div>
+      <h2>Where brand design becomes product design.</h2>
+      <p>I led the UI redesign for Diapulse's clinical device software, used by healthcare professionals in active treatment settings. The software is the primary interface between the clinician and the device: every UX decision has a direct impact on how confidently and efficiently a clinician can do their job.</p>
+      <p>The redesign focused on reducing cognitive load in high-pressure environments, consistency with the brand system, and scalability for future features.</p>
+      <p class="gap-statement" style="margin-bottom:0;">The software is live and in use in clinical settings today.</p>
+    </div>
+    <div class="split-visual">
+      <img src="/assets/diapulse/diapulse-img.jpeg" alt="Treatment Setup screen, Peak Power, Pulse Frequency, Treatment Time controls" style="width:100%; height:auto; display:block; border-radius:16px">
+    </div>
   </div>
 
   <div class="block">
@@ -452,6 +498,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="gallery-item" style="border:none; padding:0; background:none"><img src="/assets/diapulse/diapulse-device.png" alt="Rebranded device, final hardware" style="width:100%; height:auto; display:block; border-radius:16px"></div>
     </div>
     <div class="gallery-item wide" style="border:none; padding:0; background:none"><img src="/assets/diapulse/diapulse-exhibit-flyer.png" alt="Tri-fold brochure, The Right Choice for Smart Care" style="width:100%; height:auto; display:block; border-radius:16px"></div>
+    <div class="gallery-item wide" style="border:none; padding:0; background:none; margin-top:18px;"><video src="/assets/diapulse/diapulse-screens-banner-optimized.mp4" autoplay muted loop playsinline aria-label="UI screens" style="width:100%; height:auto; display:block; border-radius:16px;"></video></div>
   </div>
 
   <div class="block">
