@@ -86,7 +86,8 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 @keyframes fadeIn{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);}}
 
 .hero-image{margin-bottom:44px; border-radius:22px; background:linear-gradient(135deg,var(--civic-navy)10,var(--civic-lav)18); border:2px dashed var(--line); min-height:340px; display:flex; align-items:center; justify-content:center; padding:30px; gap:24px; flex-wrap:wrap;}
-.hero-image:has(img){border:none; background:none; min-height:0; padding:0; overflow:hidden;}
+.hero-image:has(img),
+.hero-image:has(video){border:none; background:none; min-height:0; padding:0; overflow:hidden;}
 .placeholder-note{color:var(--graphite); font-size:13px; font-weight:600; text-align:center;}
 
 .section-eyebrow{font-weight:700; font-size:12.5px; color:var(--amber-dark); opacity:0.85; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px;}
@@ -106,8 +107,51 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
   .block--split p{max-width:none;}
 }
 .cs-header .header-top > div:first-child > .block + .block{padding-bottom:24px;}
+.col-row{display:grid; grid-template-columns:1fr; gap:32px; align-items:center;}
+.col-row-copy{text-align:left;}
+.col-row-copy h2,
+.col-row-copy h3,
+.col-row-copy p,
+.col-row-copy ul{max-width:none;}
+.col-row-copy .chip-row-full{margin-top:16px;}
+.col-row-visual .chip-row-full{grid-template-columns:1fr; margin-top:0; gap:12px; width:100%;}
+.col-row-visual{align-self:center; width:100%;}
+.col-row-visual .gallery-item{min-height:280px; border-radius:16px; width:100%;}
+@media (min-width:901px){
+  .col-row{grid-template-columns:1fr 1fr; gap:48px;}
+}
 .gap-statement{font-style:italic; color:var(--teal); font-size:15px; border-top:1px solid var(--line); padding-top:18px; margin-top:6px;}
+.gap-callout{background:#F5A94A12; border-left:4px solid var(--amber); border-radius:0 16px 16px 0; padding:22px 24px; margin-top:20px;}
+.gap-callout .gap-statement{border-top:none; padding-top:0; margin-top:0; margin-bottom:0; max-width:none;}
+.col-row-copy .gap-callout{margin-top:20px; margin-bottom:0;}
 .gap-statement--emphasis{font-weight:700; font-size:calc(15px + 2pt);}
+
+.problem-list{margin-top:24px; display:flex; flex-direction:column; gap:26px;}
+.col-row-copy .problem-list{margin-top:20px;}
+.col-row-visual .problem-list{margin-top:0;}
+.col-row-visual .hmw-block{margin-top:0;}
+.problem-stmt{display:flex; gap:16px;}
+.problem-num{
+  flex-shrink:0; width:30px; height:30px; border-radius:50%;
+  background:var(--teal); color:#fff; font-family:'Poppins',sans-serif;
+  font-weight:600; font-size:13px; display:flex; align-items:center; justify-content:center;
+}
+.problem-stmt h4{
+  font-family:'Poppins',sans-serif; font-size:16px; color:var(--teal); margin-bottom:6px;
+}
+.problem-stmt p{font-size:14px; line-height:1.6; margin:0;}
+
+.hmw-block{
+  margin-top:32px; background:#F2665A0d; border:1px solid #F2665A33;
+  border-radius:16px; padding:24px 26px;
+}
+.hmw-label{
+  font-weight:700; font-size:12px; color:var(--coral); text-transform:uppercase;
+  letter-spacing:0.06em; margin-bottom:14px;
+}
+.hmw-list{margin:0; padding-left:20px; display:flex; flex-direction:column; gap:12px;}
+.hmw-list li{font-size:14px; font-weight:600; color:var(--ink); line-height:1.55;}
+.hmw-list li::marker{color:var(--coral); font-weight:700;}
 
 /* ---- GALLERY ---- */
 .gallery{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
@@ -116,9 +160,11 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
   .gallery-two-col{grid-template-columns:1fr 1fr;}
 }
 .gallery-item{border-radius:16px; background:var(--paper-alt); border:2px dashed var(--line); min-height:220px; display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--graphite); font-size:13px; font-weight:600; text-align:center; padding:16px;}
-.gallery-item:has(img){border:none; background:none; min-height:0; padding:0;}
+.gallery-item:has(img),
+.gallery-item:has(video){border:none; background:none; min-height:0; padding:0;}
 .gallery-item.wide{grid-column:1/-1; min-height:200px;}
-.gallery-item.wide:has(img){min-height:0;}
+.gallery-item.wide:has(img),
+.gallery-item.wide:has(video){min-height:0;}
 .hero-image img, .gallery-item img, .block img{max-width:100%; height:auto; display:block; border-radius:16px;}
 .gallery-caption{font-size:12px; font-style:italic; color:var(--ink-soft); margin-top:10px; text-align:center; max-width:none;}
 
@@ -129,7 +175,64 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 
 /* ---- CHIP ROW (design decision callouts) ---- */
 .chip-row-full{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:20px;}
-.chip-card{background:var(--paper-alt); border-radius:14px; padding:20px; font-size:14px; font-weight:600; color:var(--ink);}
+.chip-card{border-radius:16px; padding:20px 22px; font-size:14px; font-weight:600; line-height:1.55; color:var(--ink); border:1px solid transparent;}
+.chip-card--teal{background:#4783830d; border-color:#47838333;}
+.chip-card--coral{background:#F2665A0d; border-color:#F2665A33;}
+.chip-card--amber{background:#F5A94A0d; border-color:#F5A94A33;}
+
+.value-card{
+  border-radius:16px; padding:20px 22px; border:1px solid transparent;
+}
+.value-card h4{
+  font-family:'Poppins',sans-serif; font-size:15px; margin-bottom:8px;
+}
+.value-card p{font-size:13px; line-height:1.55; margin:0;}
+.value-card--teal{background:#4783830d; border-color:#47838333;}
+.value-card--teal h4{color:var(--teal);}
+.value-card--coral{background:#F2665A0d; border-color:#F2665A33;}
+.value-card--coral h4{color:var(--coral);}
+.value-card--amber{background:#F5A94A0d; border-color:#F5A94A33;}
+.value-card--amber h4{color:var(--amber);}
+.testing-findings-cards{display:flex; flex-direction:column; gap:14px;}
+.col-row-copy .value-card p{max-width:none;}
+
+.metrics-grid{display:grid; grid-template-columns:1fr; gap:14px; margin-top:16px;}
+@media (min-width:768px){
+  .metrics-grid{grid-template-columns:1fr 1fr;}
+}
+.metric-block{
+  display:flex; align-items:flex-start; gap:12px;
+  border-radius:16px; padding:18px 20px; border:1px solid transparent;
+  font-size:14px; font-weight:600; line-height:1.55; color:var(--ink);
+}
+.metric-block p{margin:0; max-width:none;}
+.metric-block--teal{background:#4783830d; border-color:#47838333;}
+.metric-block--coral{background:#F2665A0d; border-color:#F2665A33;}
+.metric-block--amber{background:#F5A94A0d; border-color:#F5A94A33;}
+.metric-block--amber-dark{background:#C97A1F0d; border-color:#C97A1F33;}
+.metric-check{
+  flex-shrink:0; width:24px; height:24px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:700; line-height:1;
+  opacity:0; transform:scale(0.4);
+  animation:metric-check-pop 0.55s cubic-bezier(0.34,1.56,0.64,1) forwards;
+}
+.metric-block--teal .metric-check{background:#47838322; color:var(--teal);}
+.metric-block--coral .metric-check{background:#F2665A22; color:var(--coral);}
+.metric-block--amber .metric-check{background:#F5A94A22; color:var(--amber);}
+.metric-block--amber-dark .metric-check{background:#C97A1F22; color:var(--amber-dark);}
+.metric-block:nth-child(1) .metric-check{animation-delay:0.08s;}
+.metric-block:nth-child(2) .metric-check{animation-delay:0.2s;}
+.metric-block:nth-child(3) .metric-check{animation-delay:0.32s;}
+.metric-block:nth-child(4) .metric-check{animation-delay:0.44s;}
+@keyframes metric-check-pop{
+  0%{opacity:0; transform:scale(0.4);}
+  70%{opacity:1; transform:scale(1.12);}
+  100%{opacity:1; transform:scale(1);}
+}
+@media (prefers-reduced-motion:reduce){
+  .metric-check{opacity:1; transform:none; animation:none;}
+}
 
 /* ---- PRINCIPLE GRID ---- */
 .principle-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px;}
@@ -149,6 +252,63 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .callout-box p{font-size:14.5px; margin-bottom:12px;}
 .callout-box p:last-child{margin-bottom:0;}
 
+.gallery-item.wide.gallery-item--flush-y,
+.gallery-item.wide.gallery-item--flush-y:has(img){
+  display:block;
+  padding:0;
+  margin:0;
+  min-height:0;
+  height:fit-content;
+  width:100%;
+  line-height:0;
+}
+.gallery-item--flush-y .relay-image-wrap{
+  display:block;
+  width:100%;
+  min-height:0 !important;
+  height:fit-content;
+  margin:0;
+  padding:0;
+  background:none;
+  line-height:0;
+}
+.gallery-item--flush-y .relay-image-wrap img{
+  display:block;
+  width:100%;
+  height:auto;
+  margin:0;
+  padding:0;
+  vertical-align:top;
+}
+.gallery-item--flush-y .relay-image-placeholder{padding:0;}
+.col-row--callout-visual{margin-top:12px; align-items:center; gap:24px;}
+.col-row--callout-visual .col-row-copy{display:flex; flex-direction:column; align-items:stretch; justify-content:center; gap:16px; text-align:left;}
+.col-row--callout-visual .callout-box{margin:0; width:100%; padding:20px 24px;}
+.col-row--callout-visual .callout-box p{max-width:none;}
+.col-row--callout-visual .col-row-visual .testing-findings-cards{width:100%;}
+.col-row--callout-visual + .gallery-item.wide.gallery-item--flush-y:not(.gallery-item--flow-diagram){margin-top:4px;}
+.gallery-item--flow-diagram{text-align:left;}
+.gallery-item.wide.gallery-item--flush-y.gallery-item--flow-diagram{
+  margin-top:28px;
+  margin-bottom:28px;
+}
+.gallery-item--flow-diagram img{
+  width:100%;
+  max-width:100%;
+  height:auto;
+  display:block;
+  margin:0;
+}
+.gallery-item.wide.gallery-item--flush-y.gallery-item--screen-mockups{margin-top:32px;}
+.gallery-item.wide.gallery-item--flush-y.gallery-item--personas{margin-top:32px;}
+.block--testing-session{margin-bottom:32px;}
+.block--testing-session .stats-band{margin-bottom:0;}
+.col-row--callout-visual .col-row-copy .testing-goal-block{margin:0;}
+.col-row--callout-visual .col-row-copy .testing-goal-block .gap-statement{max-width:none;}
+@media (min-width:901px){
+  .col-row--callout-visual{gap:32px;}
+}
+
 /* ---- reflections ---- */
 .reflect-grid{display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:20px;}
 .reflect-card h4{font-family:'Poppins',sans-serif; font-size:17px; margin-bottom:10px;}
@@ -156,9 +316,19 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 
 /* ---- transfer band ---- */
 .transfer-band{background:var(--civic-navy); color:#fff; border-radius:22px; padding:40px 44px; margin-top:10px;}
-.transfer-band .section-eyebrow{color:var(--amber-dark);}
-.transfer-band h2{color:#fff; max-width:none;}
-.transfer-band p{color:#C7CBE8; margin-bottom:0;}
+.transfer-band-inner{display:grid; grid-template-columns:1fr; gap:28px; align-items:center;}
+.transfer-band .section-eyebrow{color:var(--amber-dark); margin-bottom:12px;}
+.transfer-band-head h2{color:#fff; max-width:none; margin-bottom:0;}
+.transfer-band-body p{color:#C7CBE8; margin:0; max-width:none; font-size:14.5px; line-height:1.65;}
+.transfer-list{list-style:none; margin:0 0 18px; padding:0; display:flex; flex-direction:column; gap:10px;}
+.transfer-list li{
+  display:flex; gap:10px; align-items:flex-start;
+  font-size:14.5px; font-weight:600; color:#E8EAF5; line-height:1.55;
+}
+.transfer-list li::before{content:'→'; color:var(--amber); font-weight:700; flex-shrink:0;}
+@media (min-width:901px){
+  .transfer-band-inner{grid-template-columns:1fr 1fr; gap:48px;}
+}
 
 .panel-next{
   display:flex; align-items:center; justify-content:center; gap:8px;
@@ -255,7 +425,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <h1>Permit Portal</h1>
         <span class="tag">Civic Tech</span>
       </div>
-      <p class="cs-sub">Bergen County · Civic UX · High-Stakes Workflows · Trust &amp; Error Prevention · Compliance Design</p>
+      <p class="cs-sub"> Civic UX · High-Stakes Workflows · Trust &amp; Error Prevention</p>
       <div class="meta-row" style="border-top:none; padding-top:0; padding-bottom:0;">
         <div class="meta-item"><span>Role</span><b>Solo Designer</b></div>
         <div class="meta-item"><span>Scope</span><b>End-to-end</b></div>
@@ -275,8 +445,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       </div>
       <p class="meta-note" style="max-width:none;">Self-directed academic project built around a real municipal permit system. The workflow constraints, irreversible submissions, compliance requirements, and limited post-submission edits all reflect real-world civic portal behavior.</p>
     </div>
-    <div class="hero-image">
-      <img data-relay src="/assets/bergenportal/bergenhero.png" alt="Permit Portal hero, Renovation Permits screen">
+    <div class="hero-image" style="border:none; padding:0; background:none; display:block; overflow:hidden; position:relative;">
+      <video src="/assets/bergenportal/bergen-hero.mp4" autoplay muted loop playsinline preload="auto" aria-label="Permit Portal hero, Renovation Permits screen" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; border-radius:16px;"></video>
     </div>
   </div>
 </header>
@@ -299,82 +469,143 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 <!-- OVERVIEW -->
 <div class="tab-panel active" data-panel="overview">
   <div class="block">
-    <div class="section-eyebrow">The Problem</div>
-    <h2>Submitting a permit is not complicated. It feels dangerous.</h2>
-    <p>Early research revealed that users often lacked confidence when determining which permits were required for their projects. Because permit submissions can involve legal, financial, and procedural consequences, even small uncertainties created hesitation throughout the workflow.</p>
-    <img data-relay src="/assets/bergenportal/defining-the-problem-img.png" alt="Permit portal screens illustrating uncertainty around requirements">
-    <p class="gap-statement">The primary design challenge was not speed, it was trust, that they were doing the right thing. This distinction changed every single design decision that followed.</p>
+    <div class="col-row">
+      <div class="col-row-copy">
+        <div class="section-eyebrow">The Problem</div>
+        <h2>Submitting a permit is not complicated. It feels dangerous.</h2>
+        <p>Early research revealed that users often lacked confidence when determining which permits were required for their projects. Because permit submissions can involve legal, financial, and procedural consequences, even small uncertainties created hesitation throughout the workflow.</p>
+        <div class="gap-callout">
+          <p class="gap-statement">The primary design challenge was not speed, it was trust, that they were doing the right thing. This distinction changed every single design decision that followed.</p>
+        </div>
+      </div>
+      <div class="col-row-visual">
+        <img data-relay src="/assets/bergenportal/bergen-mockup.png" alt="Permit portal mockup screens" style="width:100%; height:auto; display:block; border-radius:16px">
+      </div>
+    </div>
+    <div class="gallery-item wide gallery-item--flush-y gallery-item--personas">
+      <img src="/assets/bergenportal/Personas.png" alt="User personas for homeowners and contractors" loading="lazy">
+    </div>
   </div>
 </div>
 
 <!-- RESEARCH -->
 <div class="tab-panel" data-panel="research">
-  <div class="block block--split">
-    <div class="section-eyebrow">Discovery</div>
-    <h2>Where the uncertainty was concentrated</h2>
-    <p>Affinity mapping surfaced recurring themes: confusion and lack of clarity around requirements, reliance on outdated manual and in-person processes, contractors doing homeowners' research for them, weak transparency into review timelines, and real emotional impact, stress and hesitation showing up well before submission.</p>
-    <div class="gallery-item wide">
-      <img data-relay src="/assets/bergenportal/Affinity-mapping.png" alt="Affinity mapping board">
+  <div class="block">
+    <div class="col-row">
+      <div class="col-row-copy">
+        <div class="section-eyebrow">Discovery</div>
+        <h2>Where the uncertainty was concentrated</h2>
+        <p>Affinity mapping surfaced recurring themes: confusion and lack of clarity around requirements, reliance on outdated manual and in-person processes, contractors doing homeowners' research for them, weak transparency into review timelines, and real emotional impact, stress and hesitation showing up well before submission.</p>
+      </div>
+      <div class="col-row-visual">
+        <img data-relay src="/assets/bergenportal/Affinity-mapping.png" alt="Affinity mapping board" style="width:100%; height:auto; display:block; border-radius:16px">
+      </div>
     </div>
   </div>
-  <div class="block block--split reverse">
-    <h3>Mapping the full journey</h3>
-    <p>The permit discovery and submission journey was mapped end-to-end, including decision branches for different project types, required document paths, and the review/confirmation loop.</p>
-    <div class="gallery-item wide">
-      <img data-relay src="/assets/bergenportal/permit-finder-flow.png" alt="User journey flow diagram, permit discovery through submission and confirmation">
+  <div class="block">
+    <div class="col-row">
+      <div class="col-row-copy">
+        <h3>Mapping the full journey</h3>
+        <p>The permit discovery and submission journey was mapped end-to-end, including decision branches for different project types, required document paths, and the review/confirmation loop.</p>
+        <div class="problem-list">
+          <div class="problem-stmt">
+            <div class="problem-num">1</div>
+            <div>
+              <h4>Lack of Clear Permit Guidance</h4>
+              <p>Homeowners struggle to understand which permits they need and how to begin the renovation process because permit information is scattered across outdated PDFs, inconsistent municipal websites, and unclear requirements. This leads to confusion, delays, unnecessary in-person inquiries, and an increased burden on county staff.</p>
+            </div>
+          </div>
+          <div class="problem-stmt">
+            <div class="problem-num">2</div>
+            <div>
+              <h4>Limited Transparency Throughout the Permit Journey</h4>
+              <p>Both homeowners and contractors lack transparency into permit status, required next steps, and expected timelines, causing frustration, avoidable back-and-forth communication, and processing delays that strain county resources and reduce user confidence in the permitting system.</p>
+            </div>
+          </div>
+          <div class="problem-stmt">
+            <div class="problem-num">3</div>
+            <div>
+              <h4>Inconsistent Processes Across Municipalities</h4>
+              <p>Contractors waste time navigating different permit processes across municipalities, resulting in repeated errors, missing documents, and unpredictable approval timelines. This inconsistency impacts their ability to plan work efficiently and creates operational slowdowns for both their business and the county.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-row-visual">
+        <div class="hmw-block">
+          <div class="hmw-label">HMW Questions</div>
+          <ol class="hmw-list">
+            <li>HMW help homeowners easily understand which permits they need and how to start the process?</li>
+            <li>HMW create a consistent and efficient permit submission experience for contractors across different municipalities?</li>
+            <li>HMW give users clear visibility into permit status, required next steps, and timelines throughout the entire permit journey?</li>
+          </ol>
+        </div>
+      </div>
     </div>
+    <img data-relay src="/assets/bergenportal/permit-finder-flow.png" alt="User journey flow diagram, permit discovery through submission and confirmation" style="width:100%; height:auto; display:block; border-radius:16px; margin-top:32px;">
   </div>
 </div>
 
 <!-- DESIGN & PROCESS -->
 <div class="tab-panel" data-panel="design">
   <div class="block">
-    <div class="section-eyebrow">The Most Important Design Decision</div>
-    <h2>Intentional friction: resistance introduced not as a failure of design, but as a feature of it.</h2>
-    <div class="chip-row-full">
-      <div class="chip-card">Most form design optimizes for completion speed.</div>
-      <div class="chip-card">For Bergen County, speed was the wrong goal.</div>
-      <div class="chip-card">Accuracy and confidence were the right goals.</div>
-    </div>
-  </div>
-
-  <div class="block block--split">
-    <div class="section-eyebrow">The Review Screen</div>
-    <h2>A comprehensive view of everything entered, before anything is permanent.</h2>
-    <p>The review screen was deliberately designed to slow users down. Rather than a quick summary before confirmation, it presented every entry with explicit language about what submission meant and what could not be changed afterward.</p>
-    <p class="gap-statement gap-statement--emphasis">Every element on the screen was there to answer one question: "Am I sure?"</p>
-    <div class="gallery-item wide">
-      <img data-relay src="/assets/bergenportal/bergen-img.png" alt="Review and submit screens, confirmation modal and full application summary">
+    <div class="col-row">
+      <div class="col-row-copy">
+        <div class="section-eyebrow">The Most Important Design Decision</div>
+        <h2>Intentional friction: resistance introduced not as a failure of design, but as a feature of it.</h2>
+      </div>
+      <div class="col-row-visual">
+        <div class="chip-row-full">
+          <div class="chip-card chip-card--teal">Most form design optimizes for completion speed.</div>
+          <div class="chip-card chip-card--coral">For Bergen County, speed was the wrong goal.</div>
+          <div class="chip-card chip-card--amber">Accuracy and confidence were the right goals.</div>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="block">
-    <div class="section-eyebrow">Designing Transparency Into Every Interaction</div>
-    <h2>Four principles. One goal: eliminate uncertainty before it becomes anxiety.</h2>
-    <div class="principle-grid">
-      <div class="principle-item"><b><span class="p-dot"></span>Progressive Disclosure</b><p>Information introduced in the exact sequence users needed it, never earlier, never all at once.</p></div>
-      <div class="principle-item"><b><span class="p-dot"></span>Instructional Microcopy</b><p>Plain-language guidance at every high-consequence field. Not legal language. Human language.</p></div>
-      <div class="principle-item"><b><span class="p-dot"></span>Visible Progress Indicators</b><p>Eliminated uncertainty about how long the process was. Users always knew where they stood.</p></div>
-      <div class="principle-item"><b><span class="p-dot"></span>Clear Action Language</b><p>Every button label matched exactly what users expected to happen when they pressed it.</p></div>
+    <div class="col-row">
+      <div class="col-row-visual">
+        <img data-relay src="/assets/bergenportal/bergen-img.png" alt="Review and submit screens, confirmation modal and full application summary" style="width:100%; height:auto; display:block; border-radius:16px">
+      </div>
+      <div class="col-row-copy">
+        <div class="section-eyebrow">The Review Screen</div>
+        <h2>A comprehensive view of everything entered, before anything is permanent.</h2>
+        <p>The review screen was deliberately designed to slow users down. Rather than a quick summary before confirmation, it presented every entry with explicit language about what submission meant and what could not be changed afterward.</p>
+        <p class="gap-statement gap-statement--emphasis" style="border-top:none; padding-top:0; margin-top:16px; margin-bottom:0;">Every element on the screen was there to answer one question: "Am I sure?"</p>
+      </div>
     </div>
-    <div class="gallery-item wide">
-      <img data-relay src="/assets/bergenportal/bergen-county-prototype.gif" alt="Tell us about yourself screen">
+  </div>
+
+  <div class="block">
+    <div class="col-row">
+      <div class="col-row-copy">
+        <p>The interface was designed around progressive disclosure, clear hierarchy, and strong instructional microcopy. Every screen aimed to reduce ambiguity while helping users understand both what to do and why the information mattered.</p>
+        <p>High-fidelity prototypes were created in Figma with a strong emphasis on:</p>
+        <ul class="key-list">
+          <li>Clear action language</li>
+          <li>Predictable screen progression</li>
+          <li>Visible progress indicators</li>
+          <li>Trust-building confirmation patterns</li>
+          <li>Reduced cognitive overload</li>
+        </ul>
+      </div>
+      <div class="col-row-visual">
+        <div class="gallery-item" style="border:none; padding:0; background:none;">
+          <video src="/assets/bergenportal/bergen-submiting-permit-optimized.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Permit submission flow" style="width:100%; height:auto; display:block; border-radius:16px;"></video>
+        </div>
+      </div>
     </div>
-    <p style="margin-top:16px;">The interface was designed around progressive disclosure, clear hierarchy, and strong instructional microcopy. Every screen aimed to reduce ambiguity while helping users understand both what to do and why the information mattered.</p>
-    <p>High-fidelity prototypes were created in Figma with a strong emphasis on:</p>
-    <ul class="key-list">
-      <li>Clear action language</li>
-      <li>Predictable screen progression</li>
-      <li>Visible progress indicators</li>
-      <li>Trust-building confirmation patterns</li>
-      <li>Reduced cognitive overload</li>
-    </ul>
+    <div class="gallery-item wide gallery-item--flush-y gallery-item--screen-mockups">
+      <img src="/assets/bergenportal/mockup-allscreens.png" alt="All permit portal screen mockups" loading="lazy">
+    </div>
   </div>
 </div>
 
 <!-- OUTCOME -->
 <div class="tab-panel" data-panel="outcome">
-  <div class="block">
+  <div class="block block--testing-session">
     <div class="section-eyebrow">Usability Testing</div>
     <h2>5 moderated sessions. 2 significant failures that made the product significantly better.</h2>
     <div class="stats-band">
@@ -383,39 +614,72 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="stat"><b>100%</b><span>Task Completion Rate</span></div>
       <div class="stat"><b>40–50</b><span>Minutes per session</span></div>
     </div>
-    <div class="callout-box">
-      <p>These were conducted using realistic permit submission tasks, including uploading documents, reviewing project information, completing forms, and submitting applications.</p>
-      <p>Rather than testing for visual preference alone, the sessions focused heavily on comprehension, confidence, and emotional friction.</p>
-      <p>The goal was to closely observe moments where users hesitated, misunderstood labels, or questioned whether they were completing tasks correctly. This research approach helped uncover deeper trust and expectation issues that might not appear through surface-level usability testing alone.</p>
+    <div class="col-row col-row--callout-visual">
+      <div class="col-row-copy">
+        <div class="callout-box">
+          <p>These were conducted using realistic permit submission tasks, including uploading documents, reviewing project information, completing forms, and submitting applications.</p>
+          <p>Rather than testing for visual preference alone, the sessions focused heavily on comprehension, confidence, and emotional friction.</p>
+        </div>
+        <div class="gap-callout testing-goal-block">
+          <p class="gap-statement">The goal was to closely observe moments where users hesitated, misunderstood labels, or questioned whether they were completing tasks correctly. This research approach helped uncover deeper trust and expectation issues that might not appear through surface-level usability testing alone.</p>
+        </div>
+      </div>
+      <div class="col-row-visual">
+        <div class="testing-findings-cards">
+          <div class="value-card value-card--teal">
+            <h4>What testing surfaced</h4>
+            <p>Participants expressed concern about submitting an application without the ability to make changes afterward.</p>
+          </div>
+          <div class="value-card value-card--coral">
+            <h4>Observed behavior</h4>
+            <p>Users double-checked information repeatedly. Some asked if they could edit after submission. Anxiety increased near the final submission step.</p>
+          </div>
+          <div class="value-card value-card--amber">
+            <h4>Resolution</h4>
+            <p>Users wanted a clear review and reconfirmation screen before final submission, especially when changes are restricted; any edits after final submission now require explicit confirmation to proceed.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="gallery-item wide">
-      <img data-relay src="/assets/bergenportal/defining-the-problem.png" alt="Flow improvements diagram">
-    </div>
-    <div class="callout-box">
-      <p><b>What testing surfaced:</b> Participants expressed concern about submitting an application without the ability to make changes afterward.</p>
-      <p><b>Observed behavior:</b> Users double-checked information repeatedly. Some asked if they could edit after submission. Anxiety increased near the final submission step.</p>
-      <p style="margin-bottom:0;"><b>Resolution:</b> Users wanted a clear review and reconfirmation screen before final submission, especially when changes are restricted; any edits after final submission now require explicit confirmation to proceed.</p>
+    <div class="gallery-item wide gallery-item--flush-y gallery-item--flow-diagram">
+      <img src="/assets/bergenportal/defining-the-problem.png" alt="Flow improvements diagram" loading="lazy">
     </div>
   </div>
 
-  <div class="block block--split">
-    <div class="section-eyebrow">Post-Submission Reassurance</div>
-    <h2>The confirmation screen had treated its job as done. But users disagreed.</h2>
-    <p>An application tracking number was incorporated into both the success state and the dashboard.</p>
-    <p>Post-submission messaging was rewritten to answer the four questions users most often had: what happens now, how it will be reviewed, where to find the submission, and who to contact if something is wrong.</p>
-    <div class="gallery-item wide">
-      <img data-relay src="/assets/bergenportal/Confirmation-screen.png" alt="Confirmation screen">
+  <div class="block">
+    <div class="col-row">
+      <div class="col-row-copy">
+        <div class="section-eyebrow">Post-Submission Reassurance</div>
+        <h2>The confirmation screen had treated its job as done. But users disagreed.</h2>
+        <p>An application tracking number was incorporated into both the success state and the dashboard.</p>
+        <p style="margin-bottom:0;">Post-submission messaging was rewritten to answer the four questions users most often had: what happens now, how it will be reviewed, where to find the submission, and who to contact if something is wrong.</p>
+      </div>
+      <div class="col-row-visual">
+        <img data-relay src="/assets/bergenportal/Confirmation-screen.png" alt="Post-submission confirmation screen" style="width:100%; height:auto; display:block; border-radius:16px">
+      </div>
     </div>
   </div>
 
   <div class="block">
     <h3>Success Metrics</h3>
-    <ul class="key-list">
-      <li>Reduced hesitation during permit submissions</li>
-      <li>Flows improved confidence when completing applications</li>
-      <li>Fewer misunderstandings around forms and requirements</li>
-      <li>Stronger trust signals throughout the workflow reduced dependency on customer support</li>
-    </ul>
+    <div class="metrics-grid">
+      <div class="metric-block metric-block--teal">
+        <span class="metric-check" aria-hidden="true">✓</span>
+        <p>Reduced hesitation during permit submissions</p>
+      </div>
+      <div class="metric-block metric-block--coral">
+        <span class="metric-check" aria-hidden="true">✓</span>
+        <p>Flows improved confidence when completing applications</p>
+      </div>
+      <div class="metric-block metric-block--amber">
+        <span class="metric-check" aria-hidden="true">✓</span>
+        <p>Fewer misunderstandings around forms and requirements</p>
+      </div>
+      <div class="metric-block metric-block--amber-dark">
+        <span class="metric-check" aria-hidden="true">✓</span>
+        <p>Stronger trust signals throughout the workflow reduced dependency on customer support</p>
+      </div>
+    </div>
   </div>
 
  
@@ -437,15 +701,26 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
   <div class="block">
     <div class="transfer-band">
-      <div class="section-eyebrow">Why This Transfers to Health Tech</div>
-      <h2>The trust failures in civic workflows and healthcare workflows are structurally identical.</h2>
-      <p>Irreversible actions. Unclear consequences. Processes users do not fully understand but cannot afford to get wrong. The design thinking developed here, including intentional friction, post-submission reassurance, and consequence-aware information architecture, applies directly to clinical intake forms, insurance pre-authorization flows, and telehealth onboarding.</p>
+      <div class="transfer-band-inner">
+        <div class="transfer-band-head">
+          <div class="section-eyebrow">Why This Transfers to Health Tech</div>
+          <h2>The trust failures in civic workflows and healthcare workflows are structurally identical.</h2>
+        </div>
+        <div class="transfer-band-body">
+          <ul class="transfer-list">
+            <li>Irreversible actions</li>
+            <li>Unclear consequences</li>
+            <li>Processes users do not fully understand but cannot afford to get wrong</li>
+          </ul>
+          <p>The design thinking developed here, including intentional friction, post-submission reassurance, and consequence-aware information architecture, applies directly to clinical intake forms, insurance pre-authorization flows, and telehealth onboarding.</p>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="block">
     <div class="gallery-item wide">
-      <img data-relay src="/assets/bergenportal/mockup-allscreens.png" alt="Final product montage">
+      <img data-relay src="/assets/bergenportal/defining-the-problem-img.png" alt="Defining the problem, permit portal screens">
     </div>
   </div>
   <a href="../diapulse-case-study/" class="next-project">
