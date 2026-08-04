@@ -55,7 +55,7 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .title-row h1{margin:0;}
 .cs-sub{margin-top:8px; font-size:15px; color:var(--graphite); font-weight:600;}
 
-.meta-row{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin:16px auto 0; padding:12px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+.meta-row{display:grid; grid-template-columns:repeat(5,1fr); gap:18px; margin:16px auto 0; padding:12px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
 .meta-item span{display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--graphite); margin-bottom:5px;}
 .meta-item b{font-family:'Poppins',sans-serif; font-size:16px; font-weight:600;}
 .meta-note{font-size:13px; color:var(--graphite); margin-top:14px; font-style:italic;}
@@ -81,8 +81,8 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
   .tab-btn{color:var(--coral);}
   .tab-btn:active:not(.active){background:rgba(242,102,90,0.22); color:var(--coral);}
   .tab-nav-wrap.is-sticky{position:fixed; top:65px; left:0; right:0; width:100%; z-index:150; padding:14px 16px 0; box-sizing:border-box; background:transparent;}
-  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow:visible; justify-content:center;}
-  .tab-nav-wrap.is-sticky .tab-track{width:auto; max-width:calc(100vw - 32px); display:inline-flex; justify-content:flex-start; background:#FBD4D4; border-radius:100px; box-shadow:0 8px 16px -10px #33454A33; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch;}
+  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow-x:auto; justify-content:flex-start;}
+  .tab-nav-wrap.is-sticky .tab-track{width:auto; max-width:calc(100vw - 32px); display:inline-flex; justify-content:flex-start; background:#FBD4D4; border-radius:100px; box-shadow:0 8px 16px -10px #33454A33; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; padding-right:12px; scroll-padding-inline-end:12px;}
 }
 
 .tab-panel{display:none; max-width:1240px; margin:0 auto; padding:44px 48px 90px; animation:fadeIn .35s ease;}
@@ -98,6 +98,7 @@ h3{font-family:'Poppins',sans-serif; font-weight:600; font-size:19px; margin-bot
 p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; max-width:740px;}
 .block{margin-bottom:56px;}
 .block:last-child{margin-bottom:0;}
+.block p + img{margin-top:20px;}
 @media (min-width:901px){
   .block--split{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
   .block--split > :not(:last-child){grid-column:1;}
@@ -167,6 +168,8 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 
 /* ---- flow diagram ---- */
 .flow-list{margin-top:20px;}
+.flow-carousel .flow-list{display:flex; flex-wrap:wrap; gap:12px;}
+.flow-carousel .flow-list img{width:calc(50% - 6px); height:auto; display:block; background:var(--paper-alt); border-radius:10px;}
 .flow-step{display:grid; grid-template-columns:180px 1fr; gap:20px; align-items:center; padding:18px 0; border-bottom:1px solid var(--line);}
 .flow-step:last-child{border-bottom:none;}
 .flow-label{font-family:'Poppins',sans-serif; font-size:14px; font-weight:600; color:var(--teal);}
@@ -191,6 +194,7 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
   .flow-carousel .flow-list img{
     flex:0 0 78% !important;
     width:auto !important;
+    height:auto !important;
     scroll-snap-align:center;
     scroll-snap-stop:always;
   }
@@ -270,9 +274,20 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 .back-to-top:focus-visible{outline:2px solid var(--coral); outline-offset:3px;}
 
 @media (max-width:900px){
-  .tab-nav{padding:16px 16px 0; justify-content:center;}
-  .tab-track{gap:2px; padding:3px;}
-  .tab-btn{padding:8px 12px; font-size:12px;}
+  .block--split .split-copy + .split-visual{margin-top:20px;}
+  .tab-nav-wrap{position:relative;}
+  .tab-nav-wrap::after{
+    content:''; position:absolute; top:16px; right:0; width:48px; height:44px;
+    pointer-events:none; background:linear-gradient(to right, transparent, var(--paper)); z-index:151;
+  }
+  .tab-nav{
+    padding:16px 0 0; margin:0 16px; justify-content:flex-start;
+    overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
+    scroll-padding-inline-end:16px;
+  }
+  .tab-nav::-webkit-scrollbar{display:none;}
+  .tab-track{gap:2px; padding:3px 12px 3px 3px; flex-shrink:0;}
+  .tab-btn{padding:8px 10px; font-size:11.5px;}
   .header-top{grid-template-columns:1fr;}
   .header-top .hero-image{height:auto; min-height:220px;}
   .meta-row{grid-template-columns:1fr 1fr;}
@@ -328,6 +343,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <p class="cs-sub">MedTech · Legacy Brand Refresh · Clinical Software UI</p>
       <div class="meta-row" style="border-top:none; padding-top:0; padding-bottom:0;">
         <div class="meta-item"><span>Role</span><b>Creative Director, UX</b></div>
+        <div class="meta-item"><span>Scope</span><b>Brand System + Hardware + Software UI</b></div>
         <div class="meta-item"><span>Timeline</span><b>6 Weeks</b></div>
         <div class="meta-item"><span>Year</span><b>2025–2026</b></div>
         <div class="meta-item"><span>Status</span><b>Live · Ongoing</b></div>
@@ -466,13 +482,13 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   <div class="block">
     <h3>Software flow</h3>
     <div class="flow-carousel">
-    <div class="flow-list" id="flowCarouselRow" style="display:flex; flex-wrap:wrap; gap:12px;">
-      <img src="/assets/diapulse/splash-screen-diapulse.png" alt="Diapulse splash" style="width:calc(50% - 6px); height:auto; display:block; background:var(--paper-alt); border-radius:10px">
-      <img src="/assets/diapulse/pop-up-diapulse.png" alt="Info popup" style="width:calc(50% - 6px); height:auto; display:block; background:var(--paper-alt); border-radius:10px">
-      <img src="/assets/diapulse/treatment-setup-diapulse.png" alt="Treatment settings" style="width:calc(50% - 6px); height:auto; display:block; background:var(--paper-alt); border-radius:10px">
-      <img src="/assets/diapulse/treatment-inprogress.png" alt="Treatment in progress, active" style="width:calc(50% - 6px); height:auto; display:block; background:var(--paper-alt); border-radius:10px">
-      <img src="/assets/diapulse/treament-paused-diapulse.png" alt="Treatment paused" style="width:calc(50% - 6px); height:auto; display:block; background:var(--paper-alt); border-radius:10px">
-      <img src="/assets/diapulse/Diapulse-treatment-screen-help.png" alt="Help screen, treatment instructions" style="width:calc(50% - 6px); height:auto; display:block; background:var(--paper-alt); border-radius:10px">
+    <div class="flow-list" id="flowCarouselRow">
+      <img src="/assets/diapulse/splash-screen-diapulse.png" alt="Diapulse splash">
+      <img src="/assets/diapulse/pop-up-diapulse.png" alt="Info popup">
+      <img src="/assets/diapulse/treatment-setup-diapulse.png" alt="Treatment settings">
+      <img src="/assets/diapulse/treatment-inprogress.png" alt="Treatment in progress, active">
+      <img src="/assets/diapulse/treament-paused-diapulse.png" alt="Treatment paused">
+      <img src="/assets/diapulse/Diapulse-treatment-screen-help.png" alt="Help screen, treatment instructions">
     </div>
     <div class="flow-carousel-dots" id="flowCarouselDots" aria-hidden="true">
       <span class="flow-carousel-dot active"></span>
