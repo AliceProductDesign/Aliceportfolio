@@ -45,6 +45,8 @@ nav{position:sticky; top:0; z-index:200; display:flex; justify-content:space-bet
 .header-top{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
 .header-top .hero-image{margin:0; height:auto; min-height:0; aspect-ratio:3/4;}
 .tag{display:inline-flex; align-items:center; font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; padding:4.5px 10.5px; border-radius:100px; background:#F5A94A22; border:1.5px solid #C97A1F; color:#C97A1F;}
+.tag.t1{background:#F5A94A22; border:1.5px solid #C97A1F; color:#C97A1F;}
+.tag.t2{background:#4FC77A22; border:1.5px solid #2E8F52; color:#2E8F52;}
 h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw,52px); line-height:1.05; letter-spacing:-0.01em; max-width:760px;}
 .title-row{display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
 .title-row h1{margin:0;}
@@ -103,9 +105,53 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
   .block--split h2,
   .block--split h3,
   .block--split p{max-width:none;}
+  .block--split.problem-split > .problem-copy{
+    display:flex; flex-direction:column; justify-content:center; align-self:center;
+  }
+  .block--split.problem-split .problem-copy h2,
+  .block--split.problem-split .problem-copy p,
+  .block--split.problem-split .problem-copy .gap-statement{max-width:none;}
+  .block--split.problem-split .problem-visual{width:100%; align-self:center;}
+  .block--split.design-split > .split-copy{
+    display:flex; flex-direction:column; justify-content:center; align-self:center; text-align:left;
+  }
+  .block--split.design-split .split-copy h2,
+  .block--split.design-split .split-copy h3,
+  .block--split.design-split .split-copy p,
+  .block--split.design-split .split-copy .gap-statement{max-width:none;}
+  .block--split.design-split .split-visual{width:100%; align-self:center;}
+  .block--split.audit-split > .audit-copy{
+    display:flex; flex-direction:column; justify-content:center; align-self:center;
+  }
+  .block--split.audit-split .audit-copy h3,
+  .block--split.audit-split .audit-copy p,
+  .block--split.audit-split .audit-findings{max-width:none;}
+  .block--split.audit-split .audit-visual{width:100%; align-self:center;}
+  .audit-visual .gallery{grid-template-columns:1fr; margin-top:0;}
+}
+.block--split.design-split.design-split--logo{
+  padding:40px 0;
+}
+@media (min-width:901px){
+  .block--split.design-split.design-split--logo{
+    padding:64px 0;
+    align-items:stretch;
+  }
+  .block--split.design-split.design-split--logo .split-visual{
+    display:flex; align-items:center; align-self:stretch;
+  }
+  .block--split.design-split.design-split--logo .split-visual .ba-single{
+    margin-top:0; width:100%;
+  }
 }
 .cs-header .header-top > div:first-child > .block + .block{padding-bottom:24px;}
 .gap-statement{font-style:italic; color:var(--teal); font-size:15px; border-top:1px solid var(--line); padding-top:18px; margin-top:6px;}
+.rebrand-lead{
+  font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(17px,2vw,20px);
+  line-height:1.45; color:var(--teal); background:var(--paper-alt);
+  border-left:4px solid var(--amber); border-radius:0 12px 12px 0;
+  padding:18px 20px; margin-bottom:14px;
+}
 
 /* ---- GALLERY ---- */
 .gallery{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
@@ -133,18 +179,154 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .issue-list li:last-child{border-bottom:none;}
 .issue-list li::before{content:'✕'; color:var(--graphite); font-weight:700; flex-shrink:0;}
 
-/* ---- brand rationale grid ---- */
-.rationale-block{border-left:3px solid var(--amber); padding-left:20px; margin-top:22px;}
-.rationale-block:first-child{margin-top:0;}
-.rationale-label{font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft); margin-bottom:8px;}
-.rationale-block p{font-size:14.5px; margin-bottom:0;}
+.audit-method{ color:var(--ink-soft); font-size:14px; margin-top:12px; margin-bottom:22px; }
+.audit-findings{ display:flex; flex-direction:column; gap:20px; }
+.audit-finding{ display:flex; gap:14px; }
+.audit-num{
+  flex-shrink:0; font-family:'Poppins',sans-serif; font-weight:700;
+  font-size:13px; color:var(--amber); padding-top:2px;
+}
+.audit-finding h4{ font-family:'Poppins',sans-serif; font-size:15px; font-weight:600; color:var(--teal); margin-bottom:4px; }
+.audit-finding p{ font-size:13.5px; line-height:1.6; margin:0; color:var(--ink-soft); }
+
+/* ---- brand attributes + mission ---- */
+.brand-attr-grid{
+  display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;
+  margin-top:24px;
+}
+.brand-attr-card{
+  border-radius:16px; padding:22px 20px; border:1px solid transparent;
+}
+.brand-attr-label{
+  font-family:'Poppins',sans-serif; font-weight:600; font-size:14px;
+  margin-bottom:10px;
+}
+.brand-attr-card p{ font-size:13.5px; line-height:1.6; margin:0; }
+
+.brand-attr--navy{ background:#241E4E0d; border-color:#241E4E33; }
+.brand-attr--navy .brand-attr-label{ color:#241E4E; }
+
+.brand-attr--pink{ background:#F0A8C41a; border-color:#F0A8C455; }
+.brand-attr--pink .brand-attr-label{ color:#d1729c; }
+
+.brand-attr--blue{ background:#7FA8D91a; border-color:#7FA8D955; }
+.brand-attr--blue .brand-attr-label{ color:#4d7bb0; }
+
+.mission-banner{
+  margin-top:24px; background:#241E4E; border-radius:20px;
+  padding:36px 32px;
+  display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:center;
+}
+.mission-copy{ text-align:left; }
+.mission-eyebrow{
+  font-weight:700; font-size:11px; text-transform:uppercase;
+  letter-spacing:0.08em; color:#F0A8C4; margin-bottom:14px;
+}
+.mission-quote{
+  font-family:'Poppins',sans-serif; font-weight:600;
+  font-size:clamp(24px,3.4vw,32px); color:#fff; margin-bottom:16px;
+  font-style:italic;
+}
+.mission-body{
+  font-size:14.5px; line-height:1.65; color:#ffffffcc;
+  max-width:none; margin:0;
+}
+.mission-visual img{
+  width:100%; height:auto; display:block; border-radius:16px;
+}
+.mission-visual-frame{ position:relative; width:100%; overflow:hidden; border-radius:16px; }
+.mission-slide{
+  width:100%; display:block; border-radius:16px;
+  position:absolute; inset:0; opacity:0;
+  animation:missionCrossfade 8s infinite;
+  object-fit:cover;
+}
+.mission-slide:first-child{
+  position:relative; height:auto; object-fit:initial;
+}
+.mission-slide:not(:first-child){ height:100%; }
+.mission-slide:nth-child(1){ animation-delay:0s; }
+.mission-slide:nth-child(2){ animation-delay:4s; }
+
+@keyframes missionCrossfade{
+  0%{ opacity:0; }
+  5%{ opacity:1; }
+  45%{ opacity:1; }
+  50%{ opacity:0; }
+  100%{ opacity:0; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .mission-slide{ animation:none; opacity:1; position:relative; object-fit:initial; }
+  .mission-slide:not(:first-child){ display:none; }
+}
+
+@media (max-width:760px){
+  .brand-attr-grid{ grid-template-columns:1fr; }
+  .mission-banner{ grid-template-columns:1fr; padding:28px 22px; }
+  .mission-visual{ margin-top:8px; }
+  .mission-visual-frame{
+    display:flex; overflow-x:auto; scroll-snap-type:x mandatory;
+    gap:12px; -webkit-overflow-scrolling:touch; scrollbar-width:none;
+    position:static; border-radius:0;
+  }
+  .mission-visual-frame::-webkit-scrollbar{ display:none; }
+  .mission-slide{
+    position:static; opacity:1; animation:none; object-fit:initial;
+    flex:0 0 100%; scroll-snap-align:center;
+  }
+}
+
+.exhibit-visual{ width:100%; }
+.exhibit-frame{ position:relative; width:100%; overflow:hidden; border-radius:16px; }
+.exhibit-slide{
+  width:100%; display:block; border-radius:16px;
+  position:absolute; inset:0; opacity:0;
+  animation:exhibitCrossfade 16s infinite;
+  object-fit:cover;
+}
+.exhibit-slide:first-child{
+  position:relative; height:auto; object-fit:initial;
+}
+.exhibit-slide:not(:first-child){ height:100%; }
+.exhibit-slide:nth-child(1){ animation-delay:0s; }
+.exhibit-slide:nth-child(2){ animation-delay:4s; }
+.exhibit-slide:nth-child(3){ animation-delay:8s; }
+.exhibit-slide:nth-child(4){ animation-delay:12s; }
+
+@keyframes exhibitCrossfade{
+  0%{ opacity:0; }
+  3%{ opacity:1; }
+  22%{ opacity:1; }
+  25%{ opacity:0; }
+  100%{ opacity:0; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .exhibit-slide{ animation:none; opacity:1; position:relative; object-fit:initial; }
+  .exhibit-slide:not(:first-child){ display:none; }
+}
+
+@media (max-width:760px){
+  .exhibit-frame{
+    display:flex; overflow-x:auto; scroll-snap-type:x mandatory;
+    gap:12px; -webkit-overflow-scrolling:touch; scrollbar-width:none;
+    position:static; border-radius:0;
+  }
+  .exhibit-frame::-webkit-scrollbar{ display:none; }
+  .exhibit-slide{
+    position:static; opacity:1; animation:none; object-fit:initial;
+    flex:0 0 100%; scroll-snap-align:center;
+  }
+}
 
 /* ---- pull quote ---- */
 .pull-quote{background:linear-gradient(120deg,var(--wv-pink)22,var(--wv-blue)22); border-left:4px solid var(--wv-pink); border-radius:0 16px 16px 0; padding:32px 36px; margin:20px 0 30px;}
 .pull-quote p{font-family:'Poppins',sans-serif; font-size:19px; font-weight:500; color:var(--teal); line-height:1.4; margin:0; max-width:640px;}
 
 /* ---- swatches ---- */
-.swatch-row{display:flex; gap:14px; margin-top:16px; flex-wrap:wrap;}
+.swatch-row{display:flex; gap:32px; margin-top:16px; flex-wrap:wrap; justify-content:center; align-items:flex-start;}
+.split-visual .swatch-row{ margin-top:0; width:100%; }
 .swatch{width:100px;}
 .swatch-block{height:56px; border-radius:12px; margin-bottom:8px;}
 .swatch span{font-size:11px; color:var(--graphite); font-weight:600;}
@@ -220,7 +402,10 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 .back-to-top:focus-visible{outline:2px solid var(--coral); outline-offset:3px;}
 
 @media (max-width:900px){
-  .block--split .split-copy + .split-visual{margin-top:20px;}
+  .block--split .split-copy + .split-visual,
+  .block--split .split-visual + .split-copy,
+  .block--split .problem-copy + .problem-visual,
+  .block--split .audit-copy + .audit-visual{margin-top:20px;}
   .tab-nav-wrap{position:relative;}
   .tab-nav-wrap::after{
     content:''; position:absolute; top:16px; right:0; width:48px; height:44px;
@@ -310,16 +495,10 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div>
       <div class="title-row">
         <h1>WAVE</h1>
-        <span class="tag">Brand Design &amp; Visual System</span>
+        <span class="tag t1">Branding</span>
+        <span class="tag t2">Clinical App</span>
       </div>
       <p class="cs-sub">FDA Medical Device · Women's Health · Brand &amp; Visual Systems</p>
-      <div class="meta-row" style="border-top:none; padding-top:0; padding-bottom:0;">
-        <div class="meta-item"><span>Role</span><b>Creative Director, Brand &amp; Product</b></div>
-        <div class="meta-item"><span>Scope</span><b>Brand System + Packaging + Clinical App (ePRO)</b></div>
-        <div class="meta-item"><span>Timeline</span><b>Ongoing</b></div>
-        <div class="meta-item"><span>Year</span><b>2024–Present</b></div>
-        <div class="meta-item"><span>Status</span><b>Live · Expanding</b></div>
-      </div>
 
       <div class="block" style="margin-top:16px; margin-bottom:24px;">
         <div class="section-eyebrow">The Challenge</div>
@@ -334,6 +513,13 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <p style="margin-bottom:0;">Delivered as a complete, handoff-ready brand system that became the foundation for the website and all marketing going forward.</p>
       </div>
       <p class="meta-note" style="max-width:none;">WAVE is an active client engagement. As Creative Director, I set the brand and product direction and worked alongside a second designer on production and execution. An ePRO (electronic patient-reported outcomes) app is currently in development as the next phase of the product, alongside a company website and e-commerce.</p>
+      <div class="meta-row" style="border-top:none; padding-top:0; padding-bottom:0; margin-top:32px;">
+        <div class="meta-item"><span>Role</span><b>Creative Director, Brand &amp; Product</b></div>
+        <div class="meta-item"><span>Scope</span><b>Brand System + Packaging + Clinical App (ePRO)</b></div>
+        <div class="meta-item"><span>Timeline</span><b>Ongoing</b></div>
+        <div class="meta-item"><span>Year</span><b>2024-Present</b></div>
+        <div class="meta-item"><span>Status</span><b>Live · Expanding</b></div>
+      </div>
     </div>
     <div class="hero-image has-img">
       <img data-relay src="/assets/wave/hero-wave.png" alt="WAVE device packaging, navy box with pink wave graphic">
@@ -358,95 +544,172 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
 <!-- OVERVIEW -->
 <div class="tab-panel active" data-panel="overview">
-  <div class="block">
-    <div class="section-eyebrow">The Problem</div>
-    <h2>The brand did not match the product.</h2>
-    <p>When I joined the project, WAVE had no cohesive visual identity. Packaging, marketing materials, and digital presence were all pulling in different directions, some leaning clinical and cold, others generic and unbranded.</p>
-    <p class="gap-statement">For a product targeting women managing real, ongoing pain, that inconsistency had a cost: it eroded credibility at the exact moment the brand needed to earn trust.</p>
+  <div class="block block--split problem-split">
+    <div class="problem-copy">
+      <div class="section-eyebrow">The Problem</div>
+      <h2>The brand did not match the product.</h2>
+      <p>When I joined the project, WAVE had no cohesive visual identity. Packaging, marketing materials, and digital presence were all pulling in different directions, some leaning clinical and cold, others generic and unbranded.</p>
+      <p class="gap-statement" style="margin-bottom:0;">For a product targeting women managing real, ongoing pain, that inconsistency had a cost: it eroded credibility at the exact moment the brand needed to earn trust.</p>
+    </div>
+    <div class="problem-visual">
+      <img data-relay src="/assets/wave/wave-before-after.png" alt="Previous primary logo, wave by HUSH TECH" style="width:100%; height:auto; display:block; border-radius:16px">
+    </div>
   </div>
 
-  <div class="block">
-    <h3>What the initial audit found</h3>
-    <ul class="issue-list">
-      <li>No cohesive branding or system</li>
-      <li>Disconnected packaging and collateral</li>
-      <li>Logo mark and wordmark did not feel as if they belonged together</li>
-    </ul>
-    <div class="gallery" style="margin-top:20px;">
-      <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-before-after.png" alt="Previous primary logo, wave by HUSH TECH"></div>
-      <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-before-brand.png" alt="Previous packaging and inserts, the Wave script logo"></div>
+  <div class="block block--split audit-split reverse">
+    <div class="audit-copy">
+      <h3>What the initial audit found</h3>
+      <p class="audit-method">I reviewed WAVE's full unboxing experience, including packaging, inserts, and the product itself, to see how the brand actually showed up at each touchpoint.</p>
+      <div class="audit-findings">
+        <div class="audit-finding">
+          <div class="audit-num">01</div>
+          <div>
+            <h4>No cohesive branding or system</h4>
+            <p>The outer box, the product inserts, and the device itself each told a different color story: a coral script logo on the box, a navy icon system inside, and a pink-and-blue product with no visual tie to either.</p>
+          </div>
+        </div>
+        <div class="audit-finding">
+          <div class="audit-num">02</div>
+          <div>
+            <h4>Disconnected packaging and collateral</h4>
+            <p>Some pieces in the box carried the brand, like a customer service card with the navy wave icon, while others, like the satisfaction guarantee insert, had no branding at all: just black text on a plain card, as if it belonged to a different product entirely.</p>
+          </div>
+        </div>
+        <div class="audit-finding">
+          <div class="audit-num">03</div>
+          <div>
+            <h4>Logo mark and wordmark did not feel as if they belonged together</h4>
+            <p>The box used an elegant coral cursive "The Wave," while every other touchpoint used a completely different navy geometric mark and plain sans-serif wordmark. Not a stylistic variation, but two unrelated logo systems representing the same product.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="audit-visual">
+      <div class="gallery">
+        <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-before-brand.png" alt="Previous packaging and inserts, the Wave script logo"></div>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- DESIGN & PROCESS -->
 <div class="tab-panel" data-panel="design">
-  <div class="block block--split">
-    <div class="section-eyebrow">What I Designed</div>
-    <h2>Logo &amp; Visual Identity</h2>
-    <p>Redesigned the logo to move away from generic medical iconography toward something cleaner and more ownable. The updated mark balances precision with softness, reflecting both the device's clinical efficacy and its role in everyday wellness.</p>
-    <div class="ba-single has-img">
-      <img data-relay src="/assets/wave/wave-logo-before-after.png" alt="WAVE logo before and after redesign">
+  <div class="block block--split design-split design-split--logo">
+    <div class="split-copy">
+      <div class="section-eyebrow">What I Designed</div>
+      <h2>Logo &amp; Visual Identity</h2>
+      <p style="margin-bottom:0;">Redesigned the logo to move away from generic medical iconography toward something cleaner and more ownable. The updated mark balances precision with softness, reflecting both the device's clinical efficacy and its role in everyday wellness.</p>
+    </div>
+    <div class="split-visual">
+      <div class="ba-single has-img">
+        <img data-relay src="/assets/wave/wave-logo-before-after.png" alt="WAVE logo before and after redesign">
+      </div>
+    </div>
+  </div>
+
+  <div class="block block--split design-split">
+    <div class="split-copy">
+      <p class="rebrand-lead">The rebranding of WAVE focused on evolving the identity from a clinical medical device into a warm, human-centered wellness brand.</p>
+      <p style="margin-bottom:0;">By redefining its visual system, core messaging, and user experience, the new identity brings emotional depth, trust, and clarity to a category often overlooked in women's health care.</p>
+    </div>
+    <div class="split-visual">
+      <div class="swatch-row">
+        <div class="swatch"><div class="swatch-block" style="background:#241E4E;"></div><span>Navy, Core</span></div>
+        <div class="swatch"><div class="swatch-block" style="background:#F0A8C4;"></div><span>Pink, Warmth</span></div>
+        <div class="swatch"><div class="swatch-block" style="background:#7FA8D9;"></div><span>Blue, Trust</span></div>
+      </div>
     </div>
   </div>
 
   <div class="block">
-    <div class="section-eyebrow">Brand System</div>
-    <h2>Color &amp; Typography System</h2>
-    <p>Built a palette that moved away from the stark whites and blues of medical design toward calmer, more considered tones, still clean and trustworthy, but emotionally warmer. Typography hierarchy was simplified to prioritize readability and approachability over clinical density.</p>
-    <div class="gallery color-type-grid">
-      <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-font.png" alt="Typography, Montserrat type specimen"></div>
-      <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-colors.png" alt="Color palette"></div>
+    <div class="brand-attr-grid">
+      <div class="brand-attr-card brand-attr--navy">
+        <div class="brand-attr-label">Benefits &amp; Value</div>
+        <p>WAVE provides drug-free, non-invasive relief for menstrual pain and other forms of pelvic discomfort. Its design prioritizes comfort, movement, and usability. With science-backed efficacy, WAVE offers a natural, reusable alternative to medication.</p>
+      </div>
+      <div class="brand-attr-card brand-attr--pink">
+        <div class="brand-attr-label">Brand Goals</div>
+        <p>WAVE aims to redefine how menstrual pain is managed and become a drug-free leading solution for pelvic relief. The brand is committed to making relief more accessible, inclusive, and sustainable.</p>
+      </div>
+      <div class="brand-attr-card brand-attr--blue">
+        <div class="brand-attr-label">Target Audience</div>
+        <p>Women, medical professionals, and women's health advocates. WAVE's primary users are women who experience cyclical or chronic pelvic pain, with a focus on menstruating individuals seeking alternatives to pharmaceuticals, including health practitioners who recommend WAVE as a trusted solution for pain relief.</p>
+      </div>
     </div>
-    <div class="swatch-row">
-      <div class="swatch"><div class="swatch-block" style="background:#241E4E;"></div><span>Navy, Core</span></div>
-      <div class="swatch"><div class="swatch-block" style="background:#F0A8C4;"></div><span>Pink, Warmth</span></div>
-      <div class="swatch"><div class="swatch-block" style="background:#7FA8D9;"></div><span>Blue, Trust</span></div>
+
+    <div class="mission-banner">
+      <div class="mission-copy">
+        <div class="mission-eyebrow">Brand Mission</div>
+        <p class="mission-quote">"Good Days, Every Day"</p>
+        <p class="mission-body">WAVE's mission is to empower people to have control of their wellness, every day of the month. We believe everyone deserves easy, effective relief without compromise. Through science-backed technology, intuitive design, and stigma-free storytelling, WAVE is reshaping what care can look and feel like, quietly powerful, deeply personal, and always human.</p>
+      </div>
+      <div class="mission-visual">
+        <div class="mission-visual-frame">
+          <img class="mission-slide" alt="WAVE packaging box open, product and insert materials" src="/assets/wave/wave-box-open.png" loading="lazy">
+          <img class="mission-slide" alt="WAVE advertisement featuring period care messaging" src="/assets/wave/wave-ad-periods.jpg" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block block--split design-split">
+    <div class="split-visual">
+      <img data-relay src="/assets/wave/wave-colors.png" alt="Color palette" style="width:100%; height:auto; display:block; border-radius:16px">
+    </div>
+    <div class="split-copy">
+      <div class="section-eyebrow">Brand System</div>
+      <h2>Color &amp; Typography System</h2>
+      <p style="margin-bottom:0;">Built a palette that moved away from the stark whites and blues of medical design toward calmer, more considered tones, still clean and trustworthy, but emotionally warmer. Typography hierarchy was simplified to prioritize readability and approachability over clinical density.</p>
+    </div>
+  </div>
+
+  <div class="block block--split design-split">
+    <div class="split-copy">
+      <div class="section-eyebrow">Brand System for Handoff</div>
+      <h2>A system complete enough for independent execution.</h2>
+      <p style="margin-bottom:0;">Delivered a complete brand system that a separate designer could use to build the website: meaning every decision had to be documented, scalable, and clear enough for another designer to execute without direct oversight.</p>
+    </div>
+    <div class="split-visual">
+      <img data-relay src="/assets/wave/website-.png" alt="WAVE website design" style="width:100%; height:auto; display:block; border-radius:16px">
+      <p class="meta-note" style="margin-top:12px; margin-bottom:0;">Live site design by another designer, built from the brand guidelines.</p>
     </div>
   </div>
 
   <div class="block">
-    <p>The rebranding of WAVE focused on evolving the identity from a clinical medical device into a warm, human-centered wellness brand. By redefining its visual system, core messaging, and user experience, the new identity brings emotional depth, trust, and clarity to a category often overlooked in women's health care.</p>
-    <div class="rationale-block">
-      <div class="rationale-label">Benefits &amp; Value</div>
-      <p>WAVE provides drug-free, non-invasive relief for menstrual pain and other forms of pelvic discomfort. Its design prioritizes comfort, movement, and usability. With science-backed efficacy, WAVE offers a natural, reusable alternative to medication.</p>
+    <img data-relay src="/assets/wave/Foundations-wave.png" alt="WAVE brand foundations, color, typography, and system documentation" style="width:100%; height:auto; display:block; border-radius:16px">
+  </div>
+
+  <div class="block block--split design-split">
+    <div class="split-copy">
+      <div class="section-eyebrow">Packaging</div>
+      <h2>Designed to live on a bathroom shelf, not in a hospital catalog.</h2>
+      <p style="margin-bottom:0;">Designed packaging suitable for a bathroom shelf rather than a hospital supply catalog. Every decision, material feel, information hierarchy, and label language, was made to reinforce one idea:</p>
+      <p class="gap-statement" style="margin-bottom:0;">This product respects you and the pain you're managing.</p>
     </div>
-    <div class="rationale-block">
-      <div class="rationale-label">Brand Goals</div>
-      <p>WAVE aims to redefine how menstrual pain is managed and become a drug-free leading solution for pelvic relief. The brand is committed to making relief more accessible, inclusive, and sustainable.</p>
-    </div>
-    <div class="rationale-block">
-      <div class="rationale-label">Target Audience</div>
-      <p>Women, medical professionals, and women's health advocates. WAVE's primary users are women who experience cyclical or chronic pelvic pain, with a focus on menstruating individuals seeking alternatives to pharmaceuticals, including health practitioners who recommend WAVE as a trusted solution for pain relief.</p>
-    </div>
-    <div class="rationale-block">
-      <div class="rationale-label">Brand Mission, "Good Days, Every Day"</div>
-      <p>WAVE's mission is to empower people to have control of their wellness, every day of the month. We believe everyone deserves easy, effective relief without compromise. Through science-backed technology, intuitive design, and stigma-free storytelling, WAVE is reshaping what care can look and feel like, quietly powerful, deeply personal, and always human.</p>
+    <div class="split-visual">
+      <img data-relay src="/assets/wave/wave-device-in-purse-for-on-the-go-pain-relief.png" alt="WAVE device in purse for on-the-go pain relief" style="width:100%; height:auto; display:block; border-radius:16px">
     </div>
   </div>
 
   <div class="block">
-    <div class="section-eyebrow">Packaging</div>
-    <h2>Designed to live on a bathroom shelf, not in a hospital catalog.</h2>
-    <p>Designed packaging suitable for a bathroom shelf rather than a hospital supply catalog. Every decision, material feel, information hierarchy, and label language, was made to reinforce one idea:</p>
-    <p class="gap-statement">This product respects you and the pain you're managing.</p>
     <div class="gallery">
-      <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-device.png" alt="WAVE device"></div>
       <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-newbrand.png" alt="New packaging, navy box with pink wave graphic and insert cards"></div>
+      <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-ifu.png" alt="WAVE instructions for use, packaging label detail"></div>
     </div>
   </div>
 
-  <div class="block block--split reverse">
-    <div class="section-eyebrow">Messaging &amp; Social</div>
-    <h2>Stigma-free communication.</h2>
-    <p>Developed a messaging framework built around stigma-free communication. Menstrual pain is chronically dismissed and under-discussed. The brand voice was written to name it directly, without euphemism, and without the performative positivity that makes wellness brands feel hollow.</p>
-    <div class="gallery-item wide has-img"><img data-relay src="/assets/wave/wave-socials.png" alt="Social media carousel, Feel Better, Experience WAVE"></div>
+  <div class="block block--split design-split">
+    <div class="split-copy">
+      <div class="section-eyebrow">Messaging &amp; Social</div>
+      <h2>Stigma-free communication.</h2>
+      <p style="margin-bottom:0;">Developed a messaging framework built around stigma-free communication. Menstrual pain is chronically dismissed and under-discussed. The brand voice was written to name it directly, without euphemism, and without the performative positivity that makes wellness brands feel hollow.</p>
+    </div>
+    <div class="split-visual">
+      <img data-relay src="/assets/wave/wave-socials.png" alt="Social media carousel, Feel Better, Experience WAVE" style="width:100%; height:auto; display:block; border-radius:16px">
+    </div>
   </div>
 
   <div class="block">
-    <div class="section-eyebrow">Brand System for Handoff</div>
-    <h2>A system complete enough for independent execution.</h2>
-    <p>Delivered a complete brand system that a separate designer could use to build the website: meaning every decision had to be documented, scalable, and clear enough for another designer to execute without direct oversight.</p>
     <div class="gallery-3">
       <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-biz-cards.png" alt="Stationery, business cards"></div>
       <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-marketing.png" alt="Outdoor signage / billboard"></div>
@@ -468,7 +731,14 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <p>The before/after tells the clearest story. WAVE went from a fragmented, inconsistent product presence to a unified brand with a distinct visual voice.</p>
         <p class="gap-statement">The new identity was strong enough to carry the product into the ACOG exhibit, one of the most important healthcare professional conferences in the US, and compete effectively in that environment.</p>
       </div>
-      <div class="gallery-item wide has-img"><img data-relay src="/assets/wave/exhibit-materials.png" alt="ACOG exhibit booth, banner, branded tablecloth, polo shirt"></div>
+      <div class="exhibit-visual">
+        <div class="exhibit-frame">
+          <img class="exhibit-slide" alt="ACOG exhibit backdrop, branded booth display" src="/assets/wave/backdrop-EXHIBIT.png" loading="lazy">
+          <img class="exhibit-slide" alt="WAVE branded business card" src="/assets/wave/card-wave-2%201.jpg" loading="lazy">
+          <img class="exhibit-slide" alt="Alice Curiel at the WAVE exhibit booth" src="/assets/wave/alice-at-work.jpeg" loading="lazy">
+          <img class="exhibit-slide" alt="WAVE exhibit materials and branded assets on display" src="/assets/wave/assets-1.jpeg" loading="lazy">
+        </div>
+      </div>
     </div>
   </div>
 
