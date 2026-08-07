@@ -99,6 +99,22 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .block{margin-bottom:56px;}
 .block:last-child{margin-bottom:0;}
 .block p + img{margin-top:20px;}
+.block > .stats-band,
+.block > .accordion,
+.block > .gallery:not(:first-child),
+.block > .feature-grid,
+.block > .compare-table{margin-top:20px;}
+.block > img:not(:first-child),
+.block > .gallery-item.wide:not(:first-child){margin-top:20px;}
+.block > .gallery-item.wide + .gallery-item.wide{margin-top:18px;}
+.chip-row + .gallery-item.wide,
+.chip-row + img,
+.accordion + .gallery-item.wide,
+.two-col-block + .gallery,
+.two-col-block + img,
+.two-col-block + .gallery-item.wide,
+[class*="-col-block"] + .gallery-item.wide,
+[class*="-col-block"] + img{margin-top:20px;}
 @media (min-width:901px){
   .block--split{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
   .block--split > :not(:last-child){grid-column:1;}
@@ -514,7 +530,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="gallery-item" style="border:none; padding:0; background:none"><img src="/assets/diapulse/diapulse-device.png" alt="Rebranded device, final hardware" style="width:100%; height:auto; display:block; border-radius:16px"></div>
     </div>
     <div class="gallery-item wide" style="border:none; padding:0; background:none"><img src="/assets/diapulse/diapulse-exhibit-flyer.png" alt="Tri-fold brochure, The Right Choice for Smart Care" style="width:100%; height:auto; display:block; border-radius:16px"></div>
-    <div class="gallery-item wide" style="border:none; padding:0; background:none; margin-top:18px;"><video src="/assets/diapulse/diapulse-screens-banner-optimized.mp4" autoplay muted loop playsinline aria-label="UI screens" style="width:100%; height:auto; display:block; border-radius:16px;"></video></div>
+    <div class="gallery-item wide" style="border:none; padding:0; background:none;"><video src="/assets/diapulse/diapulse-screens-banner-optimized.mp4" autoplay muted loop playsinline aria-label="UI screens" style="width:100%; height:auto; display:block; border-radius:16px;"></video></div>
   </div>
 
   <div class="block">

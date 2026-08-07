@@ -93,6 +93,22 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .block{margin-bottom:56px;}
 .block:last-child{margin-bottom:0;}
 .block p + img{margin-top:20px;}
+.block > .stats-band,
+.block > .accordion,
+.block > .gallery:not(:first-child),
+.block > .feature-grid,
+.block > .compare-table{margin-top:20px;}
+.block > img:not(:first-child),
+.block > .gallery-item.wide:not(:first-child){margin-top:20px;}
+.block > .gallery-item.wide + .gallery-item.wide{margin-top:18px;}
+.chip-row + .gallery-item.wide,
+.chip-row + img,
+.accordion + .gallery-item.wide,
+.two-col-block + .gallery,
+.two-col-block + img,
+.two-col-block + .gallery-item.wide,
+[class*="-col-block"] + .gallery-item.wide,
+[class*="-col-block"] + img{margin-top:20px;}
 @media (min-width:901px){
   .block--split{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
   .block--split > :not(:last-child){grid-column:1;}
@@ -273,7 +289,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   .gallery, .compete-grid, .ba-row, .reflect-grid{grid-template-columns:1fr;}
   .overview-problem-split{grid-template-columns:1fr;}
   .redesign-search-row{grid-template-columns:1fr; margin-bottom:32px;}
+  .redesign-search-row > * + *{margin-top:20px;}
   .provider-profiles-col-block{grid-template-columns:1fr;}
+  .provider-profiles-col-block > * + *{margin-top:20px;}
   .block--edge-case{padding:32px 24px;}
   .stats-band{grid-template-columns:1fr 1fr;}
   .cs-header, .tab-panel{padding-left:24px; padding-right:24px;}
@@ -497,10 +515,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="gallery-item" style="border:none; padding:0; background:none;"><video src="/assets/tirivelo/tirivelo-context-banner.mp4" autoplay muted loop playsinline aria-label="Search context banner" style="width:100%; height:auto; display:block; border-radius:16px;"></video></div>
     </div>
     <img data-relay src="/assets/tirivelo/tirivelo-profile-optimization.png" alt="Rebuilt filter panel" style="width:100%; height:auto; display:block; border-radius:16px">
-    <div class="block" style="padding-top:40px;">
-       
-    </div>
-    
+  </div>
 
   <div class="block">
     <div class="section-eyebrow">Designing the Booking Flow</div>
@@ -514,12 +529,11 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="compete-card"><b>06 Waiting is designed</b><p>The matching state animates. A blank spinner reads as broken; motion reads as working.</p></div>
     </div>
   </div>
-  <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/tirivelo/Tirivelo-search-flow.jpg" alt="Service booking flow" style="width:100%; height:auto; display:block; border-radius:16px"></div>
-  <div class="gallery-item wide" style="border:none; padding:32px 0; background:none"><img data-relay src="/assets/tirivelo/Tirivelo-seamless-flow-search.png" alt="User flow, logged-in vs guest path" style="width:100%; height:auto; display:block; border-radius:16px"></div>
 
+  <div class="block">
+    <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/tirivelo/Tirivelo-search-flow.jpg" alt="Service booking flow" style="width:100%; height:auto; display:block; border-radius:16px"></div>
+    <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/tirivelo/Tirivelo-seamless-flow-search.png" alt="User flow, logged-in vs guest path" style="width:100%; height:auto; display:block; border-radius:16px"></div>
   </div>
-
-
 
   <div class="block">
     <div class="provider-profiles-col-block">

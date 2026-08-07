@@ -94,6 +94,22 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .block{margin-bottom:56px;}
 .block:last-child{margin-bottom:0;}
 .block p + img{margin-top:20px;}
+.block > .stats-band,
+.block > .accordion,
+.block > .gallery:not(:first-child),
+.block > .feature-grid,
+.block > .compare-table{margin-top:20px;}
+.block > img:not(:first-child),
+.block > .gallery-item.wide:not(:first-child){margin-top:20px;}
+.block > .gallery-item.wide + .gallery-item.wide{margin-top:18px;}
+.chip-row + .gallery-item.wide,
+.chip-row + img,
+.accordion + .gallery-item.wide,
+.two-col-block + .gallery,
+.two-col-block + img,
+.two-col-block + .gallery-item.wide,
+[class*="-col-block"] + .gallery-item.wide,
+[class*="-col-block"] + img{margin-top:20px;}
 @media (min-width:901px){
   .block--split{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
   .block--split > :not(:last-child){grid-column:1;}
@@ -107,7 +123,7 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .cs-header .header-top > div:first-child > .block + .block{padding-bottom:24px;}
 
 /* pull quote */
-.pull-quote{background:#F5A94A12; border-left:4px solid var(--amber); border-radius:0 16px 16px 0; padding:32px 36px; margin:36px 0;}
+.pull-quote{background:#F5A94A12; border-left:4px solid var(--amber); border-radius:0 16px 16px 0; padding:32px 36px; margin:20px 0 48px;}
 .pull-quote p{font-family:'Poppins',sans-serif; font-size:22px; font-weight:500; color:var(--teal); line-height:1.35; margin:0; max-width:640px;}
 .gap-statement{font-style:italic; color:var(--teal); font-size:15px; border-top:1px solid var(--line); padding-top:18px; margin-top:6px;}
 
@@ -136,7 +152,7 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .stat span{font-size:12.5px; color:#B7C0C1; line-height:1.5;}
 
 /* ---- THEME CHIPS ---- */
-.chip-row{display:flex; gap:14px; flex-wrap:wrap; margin:20px 0 8px;}
+.chip-row{display:flex; gap:14px; flex-wrap:wrap; margin:20px 0 0;}
 .chip{background:var(--paper-alt); border-radius:14px; padding:16px 20px; font-size:13.5px; font-weight:600; color:var(--ink-soft); max-width:230px;}
 
 /* ---- PERSONAS ---- */
@@ -205,7 +221,7 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 /* ---- GALLERY ---- */
 .gallery{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
 .two-col-block{display:grid; grid-template-columns:0.8fr 1.2fr; gap:36px; align-items:center; padding:32px 0;}
-.problem-col-block{grid-template-columns:1.1fr 0.9fr; padding:0; align-items:center;}
+.problem-col-block{grid-template-columns:1.1fr 0.9fr; align-items:center;}
 .problem-col-block .problem-copy{text-align:left;}
 .problem-col-block .problem-copy h2,
 .problem-col-block .problem-copy p{text-align:left;}
@@ -224,6 +240,7 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .product-prove-col-block{grid-template-columns:1fr 1fr; padding:0; align-items:center;}
 @media (max-width:900px){
   .two-col-block{grid-template-columns:1fr; padding:20px 0;}
+  .two-col-block > * + *{margin-top:20px;}
   .brand-colors-col-block{grid-template-columns:1fr !important;}
   .product-prove-col-block{grid-template-columns:1fr !important;}
   .problem-col-block{grid-template-columns:1fr !important;}
@@ -456,7 +473,10 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <img data-relay src="/assets/sifted/competitors-1.png" alt="Competitive audit of existing nutrition apps" style="width:100%; height:auto; display:block; border-radius:16px">
       </div>
     </div>
-    <div class="gallery" style="margin-top:20px;">
+  </div>
+
+  <div class="block">
+    <div class="gallery">
       <div class="gallery-item wide" style="border:none; padding:0; background:none; display:flex; justify-content:center"><img data-relay src="/assets/sifted/competitors-2.png" alt="Competitive audit" style="width:100%; height:auto; display:block; border-radius:16px"></div>
     </div>
   </div>
@@ -578,7 +598,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <video src="/assets/sifted/sifted-chat-mockup.mp4" autoplay muted loop playsinline aria-label="AI chat screen, context-first response" style="width:120%; height:auto; display:block; border-radius:16px;"></video>
       </div>
     </div>
-    <div class="gallery" style="margin-top:20px;">
+    <div class="gallery">
       <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/sifted/UX-ALICE-SIFTED-task-flow.png" alt="Sifted Chat flow diagram" style="width:100%; height:auto; display:block; border-radius:16px"></div>
       <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/sifted/USERFLOW-all.png" alt="Onboarding and Scan Tool user flow" style="width:100%; height:auto; display:block; border-radius:16px"></div>
     </div>
