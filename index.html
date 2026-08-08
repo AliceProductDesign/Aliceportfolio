@@ -134,6 +134,77 @@ h1 .highlight{color:var(--amber);}
 .flip-back--test{background:#FDEDE9;}
 .flip-back--ai{background:#FCF2E4;}
 .flip-back--prototype{background:#E7EFEF;}
+
+/* Flip-back in-scene animations (hover + fine pointer only) */
+.learn-dot{ transform-box: fill-box; transform-origin: center; }
+.map-conn{ stroke-dasharray: 1; stroke-dashoffset: 1; }
+.map-arrow{ opacity: 0; }
+.build-bar{ opacity: 0; }
+.test-check{ stroke-dasharray: 1; stroke-dashoffset: 1; }
+.ai-sparkle{ transform-box: fill-box; transform-origin: center; }
+.ai-scan-line{ opacity: 0; }
+.proto-cursor{ transform-box: fill-box; transform-origin: 74px 55px; }
+.proto-btn{ transform-box: fill-box; transform-origin: 74px 86px; }
+
+@keyframes learnDotPulse{
+  0%, 100%{ transform: scale(1); }
+  50%{ transform: scale(1.5); }
+}
+@keyframes mapDraw{ to{ stroke-dashoffset: 0; } }
+@keyframes mapArrowIn{ to{ opacity: 1; } }
+@keyframes buildBarIn{
+  from{ opacity: 0; transform: translateY(-6px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+@keyframes testCheckDraw{ to{ stroke-dashoffset: 0; } }
+@keyframes aiTwinkle{
+  0%, 100%{ transform: scale(1) rotate(0deg); }
+  50%{ transform: scale(1.12) rotate(10deg); }
+}
+@keyframes aiScanSweep{
+  0%{ transform: translateY(0); opacity: 0.45; }
+  100%{ transform: translateY(48px); opacity: 0; }
+}
+@keyframes protoCursorClick{
+  0%{ transform: translate(0, 0) scale(1); }
+  63%{ transform: translate(0, 31px) scale(1); }
+  68%{ transform: translate(0, 31px) scale(0.85); }
+  100%{ transform: translate(0, 31px) scale(1); }
+}
+@keyframes protoBtnPress{
+  0%, 66%{ transform: scale(1); }
+  70%{ transform: scale(0.9); }
+  100%{ transform: scale(1); }
+}
+
+@media (hover: hover) and (pointer: fine){
+  .process-item:hover .learn-dot-1{ animation: learnDotPulse .45s ease forwards; animation-delay: .6s; }
+  .process-item:hover .learn-dot-2{ animation: learnDotPulse .45s ease forwards; animation-delay: .75s; }
+  .process-item:hover .learn-dot-3{ animation: learnDotPulse .45s ease forwards; animation-delay: .9s; }
+  .process-item:hover .learn-dot-4{ animation: learnDotPulse .45s ease forwards; animation-delay: 1.05s; }
+  .process-item:hover .learn-dot-5{ animation: learnDotPulse .45s ease forwards; animation-delay: 1.2s; }
+  .process-item:hover .map-conn-1{ animation: mapDraw .35s ease forwards; animation-delay: .6s; }
+  .process-item:hover .map-conn-2{ animation: mapDraw .35s ease forwards; animation-delay: .85s; }
+  .process-item:hover .map-arrow-1{ animation: mapArrowIn .2s ease forwards; animation-delay: .92s; }
+  .process-item:hover .map-arrow-2{ animation: mapArrowIn .2s ease forwards; animation-delay: 1.17s; }
+  .process-item:hover .build-bar-1{ animation: buildBarIn .25s ease forwards; animation-delay: .6s; }
+  .process-item:hover .build-bar-2{ animation: buildBarIn .25s ease forwards; animation-delay: .7s; }
+  .process-item:hover .build-bar-3{ animation: buildBarIn .25s ease forwards; animation-delay: .8s; }
+  .process-item:hover .test-check{ animation: testCheckDraw .55s ease forwards; animation-delay: .6s; }
+  .process-item:hover .ai-sparkle{ animation: aiTwinkle 1.8s ease-in-out infinite; animation-delay: .6s; }
+  .process-item:hover .ai-scan-line{ animation: aiScanSweep 1s ease-in-out forwards; animation-delay: .65s; }
+  .process-item:hover .proto-cursor{ animation: protoCursorClick .9s linear forwards; animation-delay: .6s; }
+  .process-item:hover .proto-btn{ animation: protoBtnPress .9s linear forwards; animation-delay: .6s; }
+}
+@media (prefers-reduced-motion: reduce){
+  .learn-dot, .map-conn, .map-arrow, .build-bar, .test-check, .ai-sparkle, .ai-scan-line, .proto-cursor, .proto-btn{
+    animation: none !important;
+    opacity: 1;
+    stroke-dashoffset: 0;
+    transform: none;
+  }
+}
+
 .process-item .picon{width:36px; height:36px; margin-bottom:14px;}
 .process-item h4{font-family:'Poppins',sans-serif; font-size:17px; font-weight:600; margin-bottom:8px;}
 .process-item p{font-size:12.5px; color:var(--ink-soft); line-height:1.55;}
@@ -281,7 +352,8 @@ h1 .highlight{color:var(--amber);}
 
 /* ---- NAV ---- */
 nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-content:space-between; align-items:center; padding:22px 48px; background:linear-gradient(var(--paper) 60%, transparent);}
-.nav-mark{font-family:'Poppins',sans-serif; font-weight:700; font-size:22px; color:var(--ink); letter-spacing:-0.01em;}
+.nav-mark{display:inline-flex; align-items:center; font-family:'Poppins',sans-serif; font-weight:700; font-size:22px; color:var(--ink); letter-spacing:-0.01em; text-decoration:none;}
+.nav-mark:hover{color:var(--ink);}
 .nav-mark span{color:var(--coral);}
 .nav-links{display:flex; align-items:center; gap:30px; list-style:none;}
 .nav-links a{font-family:'Inter',sans-serif; font-weight:600; font-size:13.5px; color:var(--ink-soft); text-decoration:none;}
@@ -380,7 +452,7 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
 <body>
 
 <nav>
-  <div class="nav-mark">
+  <a href="/" class="nav-mark" id="navHomeLogo" aria-label="Back to home">
     <svg width="120" height="26" viewBox="150 95 465 115" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="navLogoGrad" x1="0" y1="73.98" x2="0" y2="314.82" gradientUnits="userSpaceOnUse">
@@ -396,7 +468,7 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
       <path fill="url(#navLogoGrad)" d="M510.31,113.06l-6.07,20.77c-24.52-14.96-57.03-9.44-54.03,25.21,1.63,18.8,18.53,26.29,35.7,23.33,7.25-1.25,12.91-5.63,19.55-8.04l6.09,18.3c-39.73,26.4-99.84.74-84.65-52.08,10.25-35.65,53.69-44.65,83.4-27.48Z"/>
       <path fill="url(#navLogoGrad)" d="M608.56,108.06v18.4h-39.88c-2.97,3.94-3.01,14.32,0,18.4h37.43v18.4h-39.27v18.4h42.95v19.63h-65.04v-93.25h63.81Z"/>
     </svg>
-  </div>
+  </a>
 <ul class="nav-links" id="navLinks">
   <li><a href="#work">Work</a></li>
   <li><a href="#process">Process</a></li>
@@ -483,7 +555,7 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
                 <p>I lead stakeholder interviews and user research before any wireframe exists, grounding every design decision in real problems, not assumptions. This defines what success looks like for the business and the user from day one.</p>
               </div>
               <div class="flip-back flip-back--learn" aria-hidden="true">
-                <svg viewBox="0 0 160 120" fill="none" width="70%"><path d="M10 60 L45 25 L80 60 L45 95 Z" fill="none" stroke="#F2665A" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M80 60 L115 25 L150 60 L115 95 Z" fill="none" stroke="#F2665A" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="10" cy="60" r="4.5" fill="#F2665A"/><circle cx="45" cy="25" r="4.5" fill="#F2665A"/><circle cx="80" cy="60" r="4.5" fill="#F2665A"/><circle cx="115" cy="25" r="4.5" fill="#F2665A"/><circle cx="150" cy="60" r="4.5" fill="#F2665A"/></svg>
+                <svg viewBox="0 0 160 120" fill="none" width="70%"><path d="M10 60 L45 25 L80 60 L45 95 Z" fill="none" stroke="#F2665A" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M80 60 L115 25 L150 60 L115 95 Z" fill="none" stroke="#F2665A" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><circle class="learn-dot learn-dot-1" cx="10" cy="60" r="4.5" fill="#F2665A"/><circle class="learn-dot learn-dot-2" cx="45" cy="25" r="4.5" fill="#F2665A"/><circle class="learn-dot learn-dot-3" cx="80" cy="60" r="4.5" fill="#F2665A"/><circle class="learn-dot learn-dot-4" cx="115" cy="25" r="4.5" fill="#F2665A"/><circle class="learn-dot learn-dot-5" cx="150" cy="60" r="4.5" fill="#F2665A"/></svg>
               </div>
             </div>
           </div>
@@ -495,7 +567,7 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
                 <p>Information architecture and user flows come before visual design. A validated structure reduces downstream rework and keeps the interface aligned with actual user mental models.</p>
               </div>
               <div class="flip-back flip-back--map" aria-hidden="true">
-                <svg viewBox="0 0 160 120" fill="none" width="70%"><rect x="12" y="46" width="34" height="28" rx="9" fill="#fff" stroke="#F5A94A" stroke-width="4"/><rect x="63" y="46" width="34" height="28" rx="9" fill="#fff" stroke="#F5A94A" stroke-width="4"/><rect x="114" y="46" width="34" height="28" rx="9" fill="#F5A94A"/><path d="M46 60 L61 60" stroke="#F5A94A" stroke-width="3.5" stroke-linecap="round"/><path d="M56 54 L62 60 L56 66" fill="none" stroke="#F5A94A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M97 60 L112 60" stroke="#F5A94A" stroke-width="3.5" stroke-linecap="round"/><path d="M107 54 L113 60 L107 66" fill="none" stroke="#F5A94A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg viewBox="0 0 160 120" fill="none" width="70%"><rect x="12" y="46" width="34" height="28" rx="9" fill="#fff" stroke="#F5A94A" stroke-width="4"/><rect x="63" y="46" width="34" height="28" rx="9" fill="#fff" stroke="#F5A94A" stroke-width="4"/><rect x="114" y="46" width="34" height="28" rx="9" fill="#F5A94A"/><path class="map-conn map-conn-1" pathLength="1" d="M46 60 L61 60" stroke="#F5A94A" stroke-width="3.5" stroke-linecap="round"/><path class="map-arrow map-arrow-1" d="M56 54 L62 60 L56 66" fill="none" stroke="#F5A94A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path class="map-conn map-conn-2" pathLength="1" d="M97 60 L112 60" stroke="#F5A94A" stroke-width="3.5" stroke-linecap="round"/><path class="map-arrow map-arrow-2" d="M107 54 L113 60 L107 66" fill="none" stroke="#F5A94A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
             </div>
           </div>
@@ -507,7 +579,7 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
                 <p>I produce high-fidelity Figma files, dev-ready specs, and detailed handoff documentation. Close collaboration with engineering throughout the build phase keeps implementation aligned with the original design intent.</p>
               </div>
               <div class="flip-back flip-back--build" aria-hidden="true">
-                <svg viewBox="0 0 160 120" fill="none" width="55%"><rect x="20" y="10" width="120" height="100" rx="18" fill="#fff" stroke="#33454A" stroke-width="4"/><rect x="34" y="26" width="40" height="10" rx="5" fill="#33454A"/><rect x="34" y="44" width="92" height="8" rx="4" fill="#33454A" opacity="0.35"/><rect x="34" y="58" width="72" height="8" rx="4" fill="#33454A" opacity="0.35"/><rect x="34" y="76" width="30" height="20" rx="8" fill="#33454A" opacity="0.15"/><rect x="90" y="82" width="36" height="14" rx="7" fill="#33454A"/></svg>
+                <svg viewBox="0 0 160 120" fill="none" width="55%"><rect x="20" y="10" width="120" height="100" rx="18" fill="#fff" stroke="#33454A" stroke-width="4"/><rect x="34" y="26" width="40" height="10" rx="5" fill="#33454A"/><rect class="build-bar build-bar-1" x="34" y="44" width="92" height="8" rx="4" fill="#33454A" opacity="0.35"/><rect class="build-bar build-bar-2" x="34" y="58" width="72" height="8" rx="4" fill="#33454A" opacity="0.35"/><rect class="build-bar build-bar-3" x="34" y="76" width="30" height="20" rx="8" fill="#33454A" opacity="0.15"/><rect x="90" y="82" width="36" height="14" rx="7" fill="#33454A"/></svg>
               </div>
             </div>
           </div>
@@ -519,7 +591,7 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
                 <p>Usability testing and compliance review happen before every release. This is a functional gate built into the process, not a formality added at the end.</p>
               </div>
               <div class="flip-back flip-back--test" aria-hidden="true">
-                <svg viewBox="0 0 160 120" fill="none" width="70%"><rect x="26" y="14" width="88" height="76" rx="16" fill="#fff" stroke="#F2665A" stroke-width="4"/><path d="M42 36 H98 M42 52 H98 M42 68 H80" stroke="#F2665A" stroke-width="4.5" stroke-linecap="round" opacity="0.35"/><circle cx="112" cy="80" r="24" fill="#F2665A"/><path d="M100 80 L109 89 L126 70" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+                <svg viewBox="0 0 160 120" fill="none" width="70%"><rect x="26" y="14" width="88" height="76" rx="16" fill="#fff" stroke="#F2665A" stroke-width="4"/><path d="M42 36 H98 M42 52 H98 M42 68 H80" stroke="#F2665A" stroke-width="4.5" stroke-linecap="round" opacity="0.35"/><circle cx="112" cy="80" r="24" fill="#F2665A"/><path class="test-check" pathLength="1" d="M100 80 L109 89 L126 70" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
               </div>
             </div>
           </div>
@@ -531,7 +603,29 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
                 <p>I integrate AI directly into my workflow, including setting up MCP servers to connect design tools with AI agents. This automates repetitive tasks like asset export and documentation, freeing more time for strategy and craft.</p>
               </div>
               <div class="flip-back flip-back--ai" aria-hidden="true">
-                <svg viewBox="0 0 160 120" fill="none" width="70%"><path d="M18 30 V18 H30" fill="none" stroke="#F5A94A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 78 V90 H30" fill="none" stroke="#F5A94A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M92 18 H104 V30" fill="none" stroke="#F5A94A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M104 78 V90 H92" fill="none" stroke="#F5A94A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><rect x="26" y="26" width="70" height="56" rx="8" fill="#fff" stroke="#F5A94A" stroke-width="3"/><rect x="36" y="36" width="26" height="18" rx="4" fill="#F5A94A" opacity="0.25"/><path d="M36 64 H80 M36 72 H64" stroke="#F5A94A" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/><circle cx="118" cy="34" r="22" fill="#F5A94A"/><path d="M118 22 L121 30 L129 33 L121 36 L118 44 L115 36 L107 33 L115 30 Z" fill="#fff"/></svg>
+                <svg viewBox="0 0 102.53 84.68" fill="none" width="70%">
+                  <defs>
+                    <clipPath id="aiWindowClip">
+                      <rect x="11.79" y="18.54" width="62.61" height="54.13" rx="2"/>
+                    </clipPath>
+                  </defs>
+                  <path fill="#f6ac50" d="M83.94,16.3c-.58,1.33-1.04,2.67-1.38,4.09-1.97-2.42-4.27-4.84-7.4-4.84H17.75c-4.73,0-8.91,4.29-8.91,8.73v42.74c0,5.47,4.98,9.02,10.14,9.01l54.85-.04c5.37,0,9.72-4.06,9.76-9.4l.19-27.41.03-4.95c.04.08.09.17.13.25v-18.18Z"/>
+                  <path fill="#f6ac50" d="M78.05,10.91l5.89.18v-4.26l-6.56.05c-1.26,0-1.62,1.59-1.37,2.5.22.8.95,1.51,2.04,1.54Z"/>
+                  <path fill="#f6ac50" d="M80.59,65.88l-.03-40.65c0-3.77-2.94-6.7-6.75-6.7H18.51c-3.79,0-6.72,2.95-6.72,6.7v40.87c0,3.56,2.67,6.79,6.41,6.79h55.9c3.79,0,6.48-3.17,6.48-7.02Z"/>
+                  <path fill="#f5aa4c" d="M15.19,84.49l-13.17.15c-1.31.02-2.03-.81-2.02-2.08l.11-12.92c0-.94,1.16-1.26,1.76-1.3.69-.06,2.09.24,2.1,1.29l.14,10.9,10.83.09c1.04,0,1.41,1.08,1.46,1.72.05.56-.06,2.13-1.2,2.14Z"/>
+                  <path fill="#f5aa4c" d="M4.12,10.87l-.05,10.38c0,1.24-.88,1.78-1.84,1.86-.75.06-2.13-.24-2.14-1.42L0,8.78c0-1.17.87-2.01,2.03-2l12.89.09c1.2,0,1.55,1.38,1.48,2.12-.12,1.21-1.02,1.88-2.39,1.88H4.12Z"/>
+                  <path fill="#f5aa4c" d="M78.56,84.68c-1.68.01-2.53-.67-2.62-1.91-.08-1.05.45-2.19,1.89-2.2l10.43-.02.11-10.9c0-.93,1.16-1.24,1.77-1.3.65-.06,2.1.25,2.11,1.3l.09,13.39c0,.83-.74,1.55-1.54,1.55l-12.23.09Z"/>
+                  <path fill="#fffdfc" d="M80.59,65.88c0,3.85-2.69,7.02-6.48,7.02H18.21c-3.74,0-6.42-3.23-6.42-6.79V25.24c0-3.75,2.93-6.7,6.72-6.7h55.31c3.81,0,6.74,2.93,6.75,6.7l.03,40.65ZM43.17,45.77c2.66-.27,4.03-2.19,4.02-4.57l-.05-10c-.01-2.21-1.66-3.66-3.81-3.88l-18.82.02c-2.39,0-3.98,2.08-3.99,4.35v9.51c-.01,2.59,1.81,4.56,4.45,4.56h18.2ZM66.41,57.16c.74,0,.64-1.92.2-2.01-.31-.06-.65-.38-1.36-.38H21.04c-.91-.01-1.33.27-1.62.65-.34.44-.12,1.78.58,1.78l46.41-.04ZM49.73,65.42c.73,0,.9-1.18.76-1.59-.18-.53-.65-.95-1.58-.95h-27.92c-1.1,0-1.77.42-1.69,1.45.06.78.61,1.16,1.71,1.16l28.73-.08Z"/>
+                  <path fill="#f9e8d4" d="M43.17,45.77h-18.2c-2.64,0-4.46-1.98-4.46-4.57v-9.51c.01-2.27,1.61-4.35,3.99-4.35l18.82-.02c2.15.22,3.8,1.67,3.81,3.88l.05,10c.01,2.37-1.35,4.3-4.02,4.57Z"/>
+                  <path fill="#f9debe" d="M66.41,57.16l-46.41.04c-.71,0-.92-1.34-.58-1.78.29-.38.71-.66,1.62-.66h44.21c.71.01,1.05.34,1.36.39.45.08.54,2-.2,2.01Z"/>
+                  <path fill="#f9debe" d="M49.73,65.42l-28.73.08c-1.1,0-1.65-.38-1.71-1.16-.08-1.03.59-1.46,1.69-1.46h27.92c.93,0,1.4.42,1.58.95.14.41-.02,1.59-.76,1.59Z"/>
+                  <g clip-path="url(#aiWindowClip)">
+                    <rect class="ai-scan-line" x="11.79" y="18.54" width="62.61" height="3.5" fill="#f6ac50" opacity="0.4"/>
+                  </g>
+                  <line stroke="#f6ac50" stroke-width="2" x1="82.22" y1="13.69" x2="84.69" y2="45.33"/>
+                  <circle fill="#f6ac50" cx="83.58" cy="18.95" r="18.95"/>
+                  <polygon class="ai-sparkle" fill="#fffdfc" points="84.32 29.89 81.15 22.2 73.26 18.92 81.11 15.63 84.3 7.89 87.73 15.59 95.33 18.98 87.51 21.95 84.32 29.89"/>
+                </svg>
               </div>
             </div>
           </div>
@@ -543,7 +637,7 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
                 <p>I use AI-assisted coding tools to build functional prototypes and validate real interaction behavior early. This confirms direction in the browser before any development resources are committed.</p>
               </div>
               <div class="flip-back flip-back--prototype" aria-hidden="true">
-                <svg viewBox="0 0 160 120" fill="none" width="70%"><rect x="15" y="10" width="130" height="100" rx="16" fill="#fff" stroke="#478383" stroke-width="4"/><path d="M15 26 a16 16 0 0 1 16 -16 h98 a16 16 0 0 1 16 16 v0 h-130 Z" fill="#478383"/><circle cx="29" cy="18" r="2.5" fill="#fff"/><circle cx="38" cy="18" r="2.5" fill="#fff"/><circle cx="47" cy="18" r="2.5" fill="#fff"/><circle cx="80" cy="66" r="22" fill="none" stroke="#478383" stroke-width="2.5" opacity="0.3"/><circle cx="80" cy="66" r="14" fill="none" stroke="#478383" stroke-width="2.5" opacity="0.45"/><path d="M74 55 L74 78 L79 72 L84 80 L88 78 L83 70 L90 70 Z" fill="#478383"/></svg>
+                <svg viewBox="0 0 160 120" fill="none" width="70%"><rect x="15" y="10" width="130" height="100" rx="16" fill="#fff" stroke="#478383" stroke-width="4"/><path d="M15 26 a16 16 0 0 1 16 -16 h98 a16 16 0 0 1 16 16 v0 h-130 Z" fill="#478383"/><circle cx="29" cy="18" r="2.5" fill="#fff"/><circle cx="38" cy="18" r="2.5" fill="#fff"/><circle cx="47" cy="18" r="2.5" fill="#fff"/><circle cx="80" cy="66" r="22" fill="none" stroke="#478383" stroke-width="2.5" opacity="0.3"/><circle cx="80" cy="66" r="14" fill="none" stroke="#478383" stroke-width="2.5" opacity="0.45"/><rect class="proto-btn" x="52" y="78" width="44" height="16" rx="8" fill="#6AA3A3"/><g class="proto-cursor"><path d="M74 55 L74 78 L79 72 L84 80 L88 78 L83 70 L90 70 Z" fill="#478383"/></g></svg>
               </div>
             </div>
           </div>
@@ -655,8 +749,8 @@ function getScrollHintText(stage){
 
 function isMobile(){ return window.innerWidth <= 760; }
 
-function setStage(stage){
-  if(!heroEl || stage === currentStage) return;
+function setStage(stage, force){
+  if(!heroEl || (!force && stage === currentStage)) return;
   currentStage = stage;
   heroEl.classList.remove('stage-0','stage-1','stage-2','stage-3','stage-4');
   heroEl.classList.add('stage-' + stage);
@@ -676,7 +770,33 @@ fanReveal = document.getElementById('work');
 scrollHintEl = document.querySelector('.scroll-hint');
 cards = document.querySelectorAll('.fan-card');
 
-if(heroEl) setStage(0);
+if(heroEl) setStage(0, true);
+
+if('scrollRestoration' in history){
+  history.scrollRestoration = 'manual';
+}
+
+function goToHomeStart(e){
+  if(e) e.preventDefault();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  setStage(0, true);
+  hideFooterState();
+  if(window.location.hash){
+    history.replaceState(null, '', window.location.pathname);
+  }
+}
+
+const navHomeLogo = document.getElementById('navHomeLogo');
+if(navHomeLogo){
+  navHomeLogo.addEventListener('click', goToHomeStart);
+}
+
+window.addEventListener('load', ()=>{
+  if(!window.location.hash){
+    window.scrollTo(0, 0);
+    setStage(0, true);
+  }
+});
 
 function getStageFromScroll(y){
   const vh = window.innerHeight;
