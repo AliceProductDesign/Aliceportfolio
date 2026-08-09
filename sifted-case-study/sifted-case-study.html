@@ -39,6 +39,10 @@ nav{position:sticky; top:0; z-index:200; display:flex; justify-content:space-bet
 .back-link{display:inline-flex; align-items:center; gap:6px; font-weight:600; font-size:14px;}
 .back-link svg{width:16px; height:16px; flex-shrink:0;}
 .nav-mark svg{display:block;}
+@media (max-width:1024px){
+  nav .nav-mark{order:1;}
+  nav .back-link{order:2;}
+}
 
 .cs-header{padding:48px 48px 30px; max-width:1240px; margin:0 auto;}
 .header-top{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
@@ -49,7 +53,7 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .title-row h1{margin:0;}
 .cs-sub{margin-top:8px; font-size:15px; color:var(--graphite); font-weight:600;}
 
-.meta-row{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin:16px auto 0; padding:12px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+.meta-row{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin:26px auto 0; padding:22px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
 .meta-item span{display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--graphite); margin-bottom:5px;}
 .meta-item b{font-family:'Poppins',sans-serif; font-size:16px; font-weight:600;}
 .meta-note{font-size:13px; color:var(--graphite); margin-top:14px; font-style:italic;}
@@ -76,7 +80,7 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
   .tab-btn:active:not(.active){background:rgba(242,102,90,0.22); color:var(--coral);}
   .tab-btn.progress-tab:active{color:#fff !important; background:var(--coral);}
   .tab-nav-wrap.is-sticky{position:fixed; top:65px; left:0; right:0; width:100%; z-index:150; padding:14px 16px 0; box-sizing:border-box; background:transparent;}
-  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow-x:auto; justify-content:flex-start;}
+  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow:visible; justify-content:center;}
   .tab-nav-wrap.is-sticky .tab-track{width:auto; max-width:calc(100vw - 32px); display:inline-flex; justify-content:flex-start; background:#FBD4D4; border-radius:100px; box-shadow:0 8px 16px -10px #33454A33; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; padding-right:12px; scroll-padding-inline-end:12px;}
 }
 
@@ -121,6 +125,16 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
   .block--split p{max-width:none;}
 }
 .cs-header .header-top > div:first-child > .block + .block{padding-bottom:24px;}
+.col-row{display:grid; grid-template-columns:1fr; gap:32px; align-items:center;}
+.col-row-copy{text-align:left;}
+.col-row-copy h2,
+.col-row-copy h3,
+.col-row-copy p{max-width:none;}
+.col-row-visual{align-self:center; width:100%;}
+.col-row-visual .stats-band{margin:0; grid-template-columns:1fr;}
+@media (min-width:901px){
+  .col-row{grid-template-columns:1fr 1fr; gap:48px;}
+}
 
 /* pull quote */
 .pull-quote{background:#F5A94A12; border-left:4px solid var(--amber); border-radius:0 16px 16px 0; padding:32px 36px; margin:20px 0 48px;}
@@ -246,6 +260,7 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
   .problem-col-block{grid-template-columns:1fr !important;}
   .ai-experience-col-block{grid-template-columns:1fr !important;}
   .features-col-block{grid-template-columns:1fr !important;}
+  .features-col-block .features-copy .feature-grid{grid-template-columns:1fr !important;}
 }
 .gallery-item{border-radius:16px; background:var(--paper-alt); border:2px dashed var(--line); min-height:220px; display:flex; align-items:center; justify-content:center; color:var(--graphite); font-size:13px; font-weight:600; text-align:center; padding:16px;}
 .gallery-item.wide{grid-column:1/-1; min-height:220px; height:auto;}
@@ -311,6 +326,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     content:''; position:absolute; top:16px; right:0; width:48px; height:44px;
     pointer-events:none; background:linear-gradient(to right, transparent, var(--paper)); z-index:151;
   }
+  .tab-nav-wrap.is-sticky::after{display:none;}
   .tab-nav{
     padding:16px 0 0; margin:0 16px; justify-content:flex-start;
     overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
@@ -426,7 +442,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <p style="margin-bottom:0;">Built with a custom illustration system, an AI nutrition assistant, pantry and recipe integration, and a judgment-free design language built from the ground up.</p>
       </div>
       <p class="meta-note">Self-directed academic project, currently in active development. The design work documented here forms the product foundation.</p>
-      <div class="meta-row" style="border-top:none; padding-top:0; padding-bottom:3px; margin-top:32px;">
+      <div class="meta-row" style="border-top:none; padding-top:0; padding-bottom:13px; margin-top:42px;">
         <div class="meta-item"><span>Role</span><b>Solo Designer</b></div>
         <div class="meta-item"><span>Scope</span><b>End-to-end</b></div>
         <div class="meta-item"><span>Timeline</span><b>6 Weeks</b></div>
@@ -485,18 +501,21 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 <!-- RESEARCH -->
 <div class="tab-panel" data-panel="research">
   <div class="block">
-    <div class="section-eyebrow">Research</div>
-    <h2>5 qualitative interviews. 3 actionable findings.</h2>
-    <div class="stats-band">
-      <div class="stat"><b>100%</b><span>of participants unaware of hidden sugar aliases, maltodextrin, tapioca starch, none recognized as sugar.</span></div>
-      <div class="stat"><b>4 of 5</b><span>felt actively misled by food packaging. "Organic," "natural," "low fat" claims obscured high sugar or inflammatory content.</span></div>
-      <div class="stat"><b>3+ tools</b><span>Every participant was using multiple tools simultaneously, none connected. The fragmentation was the problem.</span></div>
+    <div class="col-row">
+      <div class="col-row-copy">
+        <div class="section-eyebrow">Research</div>
+        <h2>5 qualitative interviews. 3 actionable findings.</h2>
+        <h3>Research also included</h3>
+        <p>AI-assisted research supplemented the interviews: competitor scans, evidence-based nutrition and ingredient research to ground the sugar-alias and additive callouts in accurate science, and a look at how other consumer apps use AI to personalize recommendations, informing how Sifted's own AI nutrition assistant tailors guidance to each user's dietary profile.</p>
+      </div>
+      <div class="col-row-visual">
+        <div class="stats-band">
+          <div class="stat"><b>100%</b><span>of participants unaware of hidden sugar aliases, maltodextrin, tapioca starch, none recognized as sugar.</span></div>
+          <div class="stat"><b>4 of 5</b><span>felt actively misled by food packaging. "Organic," "natural," "low fat" claims obscured high sugar or inflammatory content.</span></div>
+          <div class="stat"><b>3+ tools</b><span>Every participant was using multiple tools simultaneously, none connected. The fragmentation was the problem.</span></div>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <div class="block">
-    <h3>Research also included</h3>
-    <p>AI-assisted research supplemented the interviews: competitor scans, evidence-based nutrition and ingredient research to ground the sugar-alias and additive callouts in accurate science, and a look at how other consumer apps use AI to personalize recommendations, informing how Sifted's own AI nutrition assistant tailors guidance to each user's dietary profile.</p>
   </div>
 
   <div class="block">
@@ -515,11 +534,6 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <img data-relay src="/assets/sifted/persona-sifted-1.png" alt="Michael, Overwhelmed Gym-Goer persona" style="width:100%; height:auto; display:block; border-radius:16px">
       <img data-relay src="/assets/sifted/persona-sifted-2.png" alt="Maya, Overworked Professional persona" style="width:100%; height:auto; display:block; border-radius:16px">
     </div>
-  </div>
-
-  <div class="block">
-    <h3>Approach</h3>
-    <p style="font-family:'Poppins',sans-serif; font-size:20px; color:var(--ink); font-weight:600;">Define → Test → Refine</p>
   </div>
 </div>
 

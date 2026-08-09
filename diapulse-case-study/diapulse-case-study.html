@@ -41,6 +41,10 @@ nav{position:sticky; top:0; z-index:200; display:flex; justify-content:space-bet
 .back-link{display:inline-flex; align-items:center; gap:6px; font-weight:600; font-size:14px;}
 .back-link svg{width:16px; height:16px; flex-shrink:0;}
 .nav-mark svg{display:block;}
+@media (max-width:1024px){
+  nav .nav-mark{order:1;}
+  nav .back-link{order:2;}
+}
 
 .cs-header{padding:48px 48px 30px; max-width:1240px; margin:0 auto;}
 .header-top{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
@@ -55,7 +59,7 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .title-row h1{margin:0;}
 .cs-sub{margin-top:8px; font-size:15px; color:var(--graphite); font-weight:600;}
 
-.meta-row{display:grid; grid-template-columns:repeat(5,1fr); gap:18px; margin:16px auto 0; padding:12px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+.meta-row{display:grid; grid-template-columns:repeat(5,1fr); gap:18px; margin:26px auto 0; padding:22px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
 .meta-item span{display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--graphite); margin-bottom:5px;}
 .meta-item b{font-family:'Poppins',sans-serif; font-size:16px; font-weight:600;}
 .meta-note{font-size:13px; color:var(--graphite); margin-top:14px; font-style:italic;}
@@ -81,7 +85,7 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
   .tab-btn{color:var(--coral);}
   .tab-btn:active:not(.active){background:rgba(242,102,90,0.22); color:var(--coral);}
   .tab-nav-wrap.is-sticky{position:fixed; top:65px; left:0; right:0; width:100%; z-index:150; padding:14px 16px 0; box-sizing:border-box; background:transparent;}
-  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow-x:auto; justify-content:flex-start;}
+  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow:visible; justify-content:center;}
   .tab-nav-wrap.is-sticky .tab-track{width:auto; max-width:calc(100vw - 32px); display:inline-flex; justify-content:flex-start; background:#FBD4D4; border-radius:100px; box-shadow:0 8px 16px -10px #33454A33; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; padding-right:12px; scroll-padding-inline-end:12px;}
 }
 
@@ -102,6 +106,7 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .block > .stats-band,
 .block > .accordion,
 .block > .gallery:not(:first-child),
+.block > .gallery-3,
 .block > .feature-grid,
 .block > .compare-table{margin-top:20px;}
 .block > img:not(:first-child),
@@ -158,7 +163,7 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .gallery-item{border-radius:16px; background:var(--paper-alt); border:2px dashed var(--line); min-height:220px; display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--graphite); font-size:13px; font-weight:600; text-align:center; padding:16px;}
 .gallery-item.wide{grid-column:1/-1; min-height:200px;}
 .gallery-item.tri{grid-column:span 1;}
-.gallery-3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;}
+.gallery-3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px;}
 .gallery-caption{font-size:12px; font-style:italic; color:var(--ink-soft); margin-top:10px; text-align:center; max-width:none;}
 
 /* ---- before/after ---- */
@@ -185,7 +190,8 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 /* ---- flow diagram ---- */
 .flow-list{margin-top:20px;}
 .flow-carousel .flow-list{display:flex; flex-wrap:wrap; gap:12px;}
-.flow-carousel .flow-list img{width:calc(50% - 6px); height:auto; display:block; background:var(--paper-alt); border-radius:10px;}
+.flow-carousel .flow-item{width:calc(50% - 6px);}
+.flow-carousel .flow-item img{width:100%; height:auto; display:block; background:var(--paper-alt); border-radius:10px;}
 .flow-step{display:grid; grid-template-columns:180px 1fr; gap:20px; align-items:center; padding:18px 0; border-bottom:1px solid var(--line);}
 .flow-step:last-child{border-bottom:none;}
 .flow-label{font-family:'Poppins',sans-serif; font-size:14px; font-weight:600; color:var(--teal);}
@@ -205,14 +211,19 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
     gap:16px;
     padding:0 12px 8px;
     scrollbar-width:none;
+    align-items:flex-start;
   }
   .flow-carousel .flow-list::-webkit-scrollbar{display:none;}
-  .flow-carousel .flow-list img{
-    flex:0 0 78% !important;
-    width:auto !important;
-    height:auto !important;
+  .flow-carousel .flow-item{
+    flex:0 0 78%;
+    min-width:0;
     scroll-snap-align:center;
     scroll-snap-stop:always;
+  }
+  .flow-carousel .flow-item img{
+    width:100%;
+    height:auto;
+    object-fit:contain;
   }
   .flow-carousel-dots{display:flex;}
 }
@@ -232,6 +243,16 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 /* ---- subproject split ---- */
 .subproject{border:1px solid var(--line); border-radius:18px; padding:28px 30px; margin-top:20px;}
 .subproject-tag{display:inline-block; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; padding:4px 10px; border-radius:100px; background:var(--paper-alt); color:var(--ink-soft); margin-bottom:14px;}
+.col-row{display:grid; grid-template-columns:1fr; gap:32px; align-items:start;}
+.col-row-copy{text-align:left;}
+.col-row-copy h3,
+.col-row-copy p{max-width:none;}
+.col-row-visual{width:100%;}
+.col-row-visual h3{max-width:none; margin-top:0;}
+.col-row-visual .key-list{margin-top:16px;}
+@media (min-width:901px){
+  .col-row{grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
+}
 
 /* ---- current progress ---- */
 .progress-banner{background:#5B8C5A14; border:1px solid #5B8C5A33; border-radius:16px; padding:20px 24px; display:flex; align-items:center; gap:14px; margin-bottom:36px;}
@@ -296,6 +317,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     content:''; position:absolute; top:16px; right:0; width:48px; height:44px;
     pointer-events:none; background:linear-gradient(to right, transparent, var(--paper)); z-index:151;
   }
+  .tab-nav-wrap.is-sticky::after{display:none;}
   .tab-nav{
     padding:16px 0 0; margin:0 16px; justify-content:flex-start;
     overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
@@ -370,7 +392,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <p>A comprehensive brand refresh built on one strategic decision: preserve the equity, modernize everything else. New logo, wordmark, typography, color system, brand guidelines, marketing and exhibit materials, all while keeping the pulse motif and core palette HCPs recognized.</p>
         <p style="margin-bottom:0;">Diapulse was rebuilt to be scalable, and credible across every touchpoint. Extended into hardware color and logo placement on the physical device, and UI redesign for the clinical device software now live in use.</p>
       </div>
-      <div class="meta-row" style="border-top:none; padding-top:0; padding-bottom:0; margin-top:32px;">
+      <div class="meta-row" style="border-top:none; padding-top:0; padding-bottom:10px; margin-top:42px;">
         <div class="meta-item"><span>Role</span><b>Creative Director, UX</b></div>
         <div class="meta-item"><span>Scope</span><b>Brand System + Hardware + Software UI</b></div>
         <div class="meta-item"><span>Timeline</span><b>6 Weeks</b></div>
@@ -416,7 +438,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
   <div class="block">
     <h3>Where the software started</h3>
-    <p>Legacy device software screens before the UI redesign, inconsistent<br>visual language across splash, treatment, and settings screens.</p>
+    <p>Legacy device software screens before the UI redesign, inconsistent visual language across splash, treatment, and settings screens.</p>
     <div class="gallery-3">
       <img src="/assets/diapulse/diapulse-before-ui.png" alt="Legacy splash screen" style="width:100%; height:auto; display:block; border-radius:16px">
       <img src="/assets/diapulse/diapulse-before-ui-2.png" alt="Legacy treatment screen" style="width:100%; height:auto; display:block; border-radius:16px">
@@ -499,12 +521,12 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <h3>Software flow</h3>
     <div class="flow-carousel">
     <div class="flow-list" id="flowCarouselRow">
-      <img src="/assets/diapulse/splash-screen-diapulse.png" alt="Diapulse splash">
-      <img src="/assets/diapulse/pop-up-diapulse.png" alt="Info popup">
-      <img src="/assets/diapulse/treatment-setup-diapulse.png" alt="Treatment settings">
-      <img src="/assets/diapulse/treatment-inprogress.png" alt="Treatment in progress, active">
-      <img src="/assets/diapulse/treament-paused-diapulse.png" alt="Treatment paused">
-      <img src="/assets/diapulse/Diapulse-treatment-screen-help.png" alt="Help screen, treatment instructions">
+      <div class="flow-item"><img src="/assets/diapulse/splash-screen-diapulse.png" alt="Diapulse splash"></div>
+      <div class="flow-item"><img src="/assets/diapulse/pop-up-diapulse.png" alt="Info popup"></div>
+      <div class="flow-item"><img src="/assets/diapulse/treatment-setup-diapulse.png" alt="Treatment settings"></div>
+      <div class="flow-item"><img src="/assets/diapulse/treatment-inprogress.png" alt="Treatment in progress, active"></div>
+      <div class="flow-item"><img src="/assets/diapulse/treament-paused-diapulse.png" alt="Treatment paused"></div>
+      <div class="flow-item"><img src="/assets/diapulse/Diapulse-treatment-screen-help.png" alt="Help screen, treatment instructions"></div>
     </div>
     <div class="flow-carousel-dots" id="flowCarouselDots" aria-hidden="true">
       <span class="flow-carousel-dot active"></span>
@@ -569,17 +591,25 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="section-eyebrow">Website Redesign</div>
     <div class="subproject">
       <span class="subproject-tag">Corporate Website</span>
-      <h3>A site built around two very different audiences</h3>
-      <p>Clinicians evaluating the device for their practice and patients researching a treatment option come to the site with very different questions. The dual-audience split is built directly into the hero section as two clear calls to action, rather than a navigation fork.</p>
-      <h3 style="margin-top:20px;">Problems currently in progress</h3>
-      <ul class="key-list">
-        <li>Translating the brand refresh into a full site information architecture</li>
-        <li>Making the company's own clinical research scannable for two different audiences at once</li>
-        <li>Sourcing licensed hero photography that matches the "Less Pain. Faster Healing." brand direction</li>
-      </ul>
+      <div class="col-row">
+        <div class="col-row-copy">
+          <h3>Turning 1,000+ Clinical Studies into Something People Want to Explore</h3>
+          <p>Clinicians evaluating the device for their practice and patients researching a treatment option arrive with fundamentally different questions, one is assessing clinical efficacy, the other is deciding whether this is right for them. Rather than solving this with separate sites or a navigation fork that pulls the two audiences apart, the goal is a single experience that brings them together: one built on real research depth, but designed to be discovered, not just read. The site needs to be engaging enough that a first-time visitor wants to keep exploring, not just find an answer and leave.</p>
+        </div>
+        <div class="col-row-visual">
+          <h3>Problems currently in progress</h3>
+          <ul class="key-list">
+            <li>Designing a searchable clinical research library to digitize Diapulse's 1,000+ existing clinical studies, with filtering so a physician can narrow to what's relevant to their specialty instead of scrolling a wall of PDFs</li>
+            <li>Building a summary-card layer on top of that library, so a patient (or a time-pressed clinician) can grasp a study's finding at a glance without reading the full paper, depth for those who want it, clarity for those who don't</li>
+            <li>Prototyping a 360° device visualizer, letting clinicians explore the physical product interactively before ever seeing it in person</li>
+            <li>Architecting all of this to serve discovery and SEO, not just credibility, the research library and visualizer are content-rich enough to become entry points into the site on their own, not just supporting material buried a few clicks deep</li>
+            <li>Distilling three decades of clinical history and brand equity into something a first-time visitor can actually absorb, without flattening the credibility that history represents</li>
+          </ul>
+        </div>
+      </div>
       <div class="gallery" style="margin-top:20px;">
-        <div class="gallery-item">[Homepage wireframe, dual-audience hero]</div>
-        <div class="gallery-item">[Clinical Evidence page wireframe]</div>
+        <div class="gallery-item" style="border:none; padding:0; background:none;"><video src="/assets/diapulse/website-wireframes-optimized.mp4" autoplay muted loop playsinline aria-label="Homepage wireframe, dual-audience hero" style="width:100%; height:auto; display:block; border-radius:16px;"></video></div>
+        <div class="gallery-item" style="border:none; padding:0; background:none;"><video src="/assets/diapulse/website-preview.mp4" autoplay muted loop playsinline aria-label="Clinical Evidence page preview" style="width:100%; height:auto; display:block; border-radius:16px;"></video></div>
       </div>
     </div>
   </div>
@@ -591,8 +621,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <li><span class="progress-status shipped">Shipped</span> Hardware integration, device color &amp; logo placement</li>
       <li><span class="progress-status shipped">Shipped</span> Clinical software UI, live in clinical use</li>
       <li><span class="progress-status approved">Approved</span> Website sitemap &amp; information architecture</li>
-      <li><span class="progress-status wip">In Progress</span> Clinical Evidence page wireframes</li>
-      <li><span class="progress-status wip">In Progress</span> Homepage hero (pending licensed photography)</li>
+      <li><span class="progress-status wip">In Progress</span> New Website Design</li>
+      <li><span class="progress-status wip">In Progress</span> UI software transfer from outdated platform to Python</li>
     </ul>
   </div>
 </div>
@@ -704,7 +734,7 @@ backToTop.addEventListener('click', ()=>{ window.scrollTo({top:0, behavior:'smoo
   const dotsWrap = document.getElementById('flowCarouselDots');
   if(!row || !dotsWrap) return;
   const dots = dotsWrap.querySelectorAll('.flow-carousel-dot');
-  const items = row.querySelectorAll('img');
+  const items = row.querySelectorAll('.flow-item');
   const mq = window.matchMedia('(max-width:900px)');
 
   function updateDots(){

@@ -40,6 +40,10 @@ nav{position:sticky; top:0; z-index:200; display:flex; justify-content:space-bet
 .back-link{display:inline-flex; align-items:center; gap:6px; font-weight:600; font-size:14px;}
 .back-link svg{width:16px; height:16px; flex-shrink:0;}
 .nav-mark svg{display:block;}
+@media (max-width:1024px){
+  nav .nav-mark{order:1;}
+  nav .back-link{order:2;}
+}
 
 .cs-header{padding:48px 48px 30px; max-width:1240px; margin:0 auto;}
 .header-top{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
@@ -50,7 +54,7 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .title-row h1{margin:0;}
 .cs-sub{margin-top:8px; font-size:15px; color:var(--graphite); font-weight:600;}
 
-.meta-row{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin:16px auto 0; padding:12px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+.meta-row{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin:26px auto 0; padding:22px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
 .meta-item span{display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--graphite); margin-bottom:5px;}
 .meta-item b{font-family:'Poppins',sans-serif; font-size:16px; font-weight:600;}
 .meta-note{font-size:13px; color:var(--graphite); margin-top:14px; font-style:italic;}
@@ -77,7 +81,7 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
   .tab-btn:active:not(.active){background:rgba(242,102,90,0.22); color:var(--coral);}
   .tab-btn.progress-tab:active{color:#fff !important; background:var(--coral);}
   .tab-nav-wrap.is-sticky{position:fixed; top:65px; left:0; right:0; width:100%; z-index:150; padding:14px 16px 0; box-sizing:border-box; background:transparent;}
-  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow-x:auto; justify-content:flex-start;}
+  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow:visible; justify-content:center;}
   .tab-nav-wrap.is-sticky .tab-track{width:auto; max-width:calc(100vw - 32px); display:inline-flex; justify-content:flex-start; background:#FBD4D4; border-radius:100px; box-shadow:0 8px 16px -10px #33454A33; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; padding-right:12px; scroll-padding-inline-end:12px;}
 }
 
@@ -113,17 +117,38 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .two-col-block + .gallery-item.wide,
 [class*="-col-block"] + .gallery-item.wide,
 [class*="-col-block"] + img{margin-top:20px;}
+.block--split{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:32px;
+  align-items:center;
+}
+.block--split .split-copy{text-align:left;}
+.block--split .split-copy h2,
+.block--split .split-copy p{max-width:none;}
+.block--split .split-copy p{margin-bottom:0;}
+.block--split .split-visual{width:100%; align-self:center;}
+.block > .col-row + .gallery-item.wide,
+.block > .col-row + .relay-image-wrap,
+.block > .col-row + img{margin-top:32px;}
+.cs-header .block{margin-bottom:0;}
+.cs-header .header-copy-block{margin-top:16px; margin-bottom:24px;}
+.cs-header .header-copy-block--last{margin-bottom:0;}
+.cs-header .meta-note{margin-top:14px; max-width:none;}
+.cs-header .meta-row{margin-top:42px; border-top:none; padding-top:0; padding-bottom:10px;}
 @media (min-width:901px){
-  .block--split{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
+  .block--split{grid-template-columns:1fr 1fr; gap:48px;}
   .block--split > :not(:last-child){grid-column:1;}
   .block--split > :last-child{grid-column:2; grid-row:1 / -1; align-self:center;}
   .block--split.reverse > :not(:last-child){grid-column:2;}
   .block--split.reverse > :last-child{grid-column:1;}
+  .block--split > .split-copy{
+    display:flex; flex-direction:column; justify-content:center; align-self:center;
+  }
   .block--split h2,
   .block--split h3,
   .block--split p{max-width:none;}
 }
-.cs-header .header-top > div:first-child > .block + .block{padding-bottom:24px;}
 .col-row{display:grid; grid-template-columns:1fr; gap:32px; align-items:center;}
 .col-row-copy{text-align:left;}
 .col-row-copy h2,
@@ -133,7 +158,11 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .col-row-copy .chip-row-full{margin-top:16px;}
 .col-row-visual .chip-row-full{grid-template-columns:1fr; margin-top:0; gap:12px; width:100%;}
 .col-row-visual{align-self:center; width:100%;}
-.col-row-visual .gallery-item{min-height:280px; border-radius:16px; width:100%;}
+.col-row-visual .gallery-item:has(img),
+.col-row-visual .gallery-item:has(video){
+  min-height:0; padding:0; border:none; background:none; display:block;
+}
+.col-row-visual .gallery-item:not(:has(img)):not(:has(video)){min-height:280px; border-radius:16px; width:100%;}
 @media (min-width:901px){
   .col-row{grid-template-columns:1fr 1fr; gap:48px;}
 }
@@ -213,7 +242,7 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .testing-findings-cards{display:flex; flex-direction:column; gap:14px;}
 .col-row-copy .value-card p{max-width:none;}
 
-.metrics-grid{display:grid; grid-template-columns:1fr; gap:14px; margin-top:16px;}
+.metrics-grid{display:grid; grid-template-columns:1fr; gap:14px; margin-top:20px;}
 @media (min-width:768px){
   .metrics-grid{grid-template-columns:1fr 1fr;}
 }
@@ -273,7 +302,8 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .gallery-item.wide.gallery-item--flush-y:has(img){
   display:block;
   padding:0;
-  margin:0;
+  margin-inline:0;
+  margin-bottom:0;
   min-height:0;
   height:fit-content;
   width:100%;
@@ -298,17 +328,13 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
   vertical-align:top;
 }
 .gallery-item--flush-y .relay-image-placeholder{padding:0;}
-.col-row--callout-visual{margin-top:12px; align-items:center; gap:24px;}
+.col-row--callout-visual{margin-top:32px; align-items:center; gap:24px;}
 .col-row--callout-visual .col-row-copy{display:flex; flex-direction:column; align-items:stretch; justify-content:center; gap:16px; text-align:left;}
 .col-row--callout-visual .callout-box{margin:0; width:100%; padding:20px 24px;}
 .col-row--callout-visual .callout-box p{max-width:none;}
 .col-row--callout-visual .col-row-visual .testing-findings-cards{width:100%;}
-.col-row--callout-visual + .gallery-item.wide.gallery-item--flush-y:not(.gallery-item--flow-diagram){margin-top:4px;}
+.col-row--callout-visual + .gallery-item.wide.gallery-item--flush-y{margin-top:32px;}
 .gallery-item--flow-diagram{text-align:left;}
-.gallery-item.wide.gallery-item--flush-y.gallery-item--flow-diagram{
-  margin-top:28px;
-  margin-bottom:28px;
-}
 .gallery-item--flow-diagram img{
   width:100%;
   max-width:100%;
@@ -316,10 +342,8 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
   display:block;
   margin:0;
 }
-.gallery-item.wide.gallery-item--flush-y.gallery-item--screen-mockups{margin-top:32px;}
-.gallery-item.wide.gallery-item--flush-y.gallery-item--personas{margin-top:32px;}
-.block--testing-session{margin-bottom:32px;}
 .block--testing-session .stats-band{margin-bottom:0;}
+.block--testing-session{margin-bottom:56px;}
 .col-row--callout-visual .col-row-copy .testing-goal-block{margin:0;}
 .col-row--callout-visual .col-row-copy .testing-goal-block .gap-statement{max-width:none;}
 @media (min-width:901px){
@@ -389,12 +413,12 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 .back-to-top:focus-visible{outline:2px solid var(--coral); outline-offset:3px;}
 
 @media (max-width:900px){
-  .block--split .split-copy + .split-visual{margin-top:20px;}
   .tab-nav-wrap{position:relative;}
   .tab-nav-wrap::after{
     content:''; position:absolute; top:16px; right:0; width:48px; height:44px;
     pointer-events:none; background:linear-gradient(to right, transparent, var(--paper)); z-index:151;
   }
+  .tab-nav-wrap.is-sticky::after{display:none;}
   .tab-nav{
     padding:16px 0 0; margin:0 16px; justify-content:flex-start;
     overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
@@ -455,18 +479,18 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       </div>
       <p class="cs-sub"> Civic UX · High-Stakes Workflows · Trust &amp; Error Prevention</p>
 
-      <div class="block" style="margin-top:16px; margin-bottom:24px;">
+      <div class="block header-copy-block">
         <div class="section-eyebrow">The Challenge</div>
         <p>Bergen County's permit process was fragmented, confusing, and heavily reliant on outdated manual workflows, creating uncertainty, delays, and frustration for both homeowners and contractors.</p>
       </div>
 
-      <div class="block" style="margin-bottom:0;">
+      <div class="block header-copy-block header-copy-block--last">
         <div class="section-eyebrow">The Solution</div>
         <p>A high-fidelity permit portal designed to help homeowners and contractors identify the right permits for their projects and submit them with confidence.</p>
         <p style="margin-bottom:0;">Built around consequence-aware UX, intentional friction at the review screen to slow users down before irreversible submission, progressive disclosure to reduce cognitive overload, plain-language instructional microcopy throughout, and a post-submission experience redesigned to answer the questions users most often had after confirming. Validated through usability testing.</p>
       </div>
-      <p class="meta-note" style="max-width:none;">Self-directed academic project built around a real municipal permit system. The workflow constraints, irreversible submissions, compliance requirements, and limited post-submission edits all reflect real-world civic portal behavior.</p>
-      <div class="meta-row" style="border-top:none; padding-top:0; padding-bottom:0; margin-top:32px;">
+      <p class="meta-note">Self-directed academic project built around a real municipal permit system. The workflow constraints, irreversible submissions, compliance requirements, and limited post-submission edits all reflect real-world civic portal behavior.</p>
+      <div class="meta-row">
         <div class="meta-item"><span>Role</span><b>Solo Designer</b></div>
         <div class="meta-item"><span>Scope</span><b>End-to-end</b></div>
         <div class="meta-item"><span>Timeline</span><b>3 Weeks</b></div>
@@ -533,7 +557,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   <div class="block">
     <div class="col-row">
       <div class="col-row-copy">
-        <h3>Mapping the full journey</h3>
+        <h2>Mapping the full journey</h2>
         <p>The permit discovery and submission journey was mapped end-to-end, including decision branches for different project types, required document paths, and the review/confirmation loop.</p>
         <div class="problem-list">
           <div class="problem-stmt">
@@ -570,7 +594,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         </div>
       </div>
     </div>
-    <img data-relay src="/assets/bergenportal/permit-finder-flow.png" alt="User journey flow diagram, permit discovery through submission and confirmation" style="width:100%; height:auto; display:block; border-radius:16px; margin-top:32px;">
+    <div class="gallery-item wide gallery-item--flush-y gallery-item--flow-diagram">
+      <img data-relay src="/assets/bergenportal/permit-finder-flow.png" alt="User journey flow diagram, permit discovery through submission and confirmation" loading="lazy">
+    </div>
   </div>
 </div>
 
@@ -620,9 +646,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         </ul>
       </div>
       <div class="col-row-visual">
-        <div class="gallery-item" style="border:none; padding:0; background:none;">
-          <video src="/assets/bergenportal/bergen-submiting-permit-optimized.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Permit submission flow" style="width:100%; height:auto; display:block; border-radius:16px;"></video>
-        </div>
+        <video src="/assets/bergenportal/bergen-submiting-permit-optimized.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Permit submission flow" style="width:100%; height:auto; display:block; border-radius:16px;"></video>
       </div>
     </div>
     <div class="gallery-item wide gallery-item--flush-y gallery-item--screen-mockups">
@@ -747,7 +771,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   </div>
 
   <div class="block">
-    <div class="gallery-item wide">
+    <div class="gallery-item wide gallery-item--flush-y">
       <img data-relay src="/assets/bergenportal/defining-the-problem-img.png" alt="Defining the problem, permit portal screens">
     </div>
   </div>

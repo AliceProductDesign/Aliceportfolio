@@ -128,7 +128,6 @@ h1 .highlight{color:var(--amber);}
 .process-eyebrow{font-weight:700; font-size:12.5px; color:var(--amber-dark); opacity:0.85; text-transform:uppercase; letter-spacing:0.06em; text-align:center; margin-bottom:8px;}
 .process-title{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(24px,3vw,32px); text-align:center; margin-bottom:36px;}
 .process-row{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
-@media (max-width:700px){.process-row{grid-template-columns:1fr;}}
 .process-item{
   perspective: 1000px;
   border-radius: 18px;
@@ -243,9 +242,15 @@ h1 .highlight{color:var(--amber);}
 .process-item p{font-size:12.5px; color:var(--ink-soft); line-height:1.55;}
 
 .fan-stage{position:relative; height:100%; display:flex; align-items:center; justify-content:center; width:100%;}
+.fan-stage-sizer{
+  position:absolute; top:0; height:1px;
+  width:var(--fan-sizer-width, 0);
+  left:var(--fan-sizer-left, 0);
+  pointer-events:none; visibility:hidden;
+}
 
 .fan-card{
-  position:absolute; width:216px; height:500px; border-radius:20px; background:#fff;
+  position:absolute; width:280px; height:580px; border-radius:20px; background:#fff;
   border:2px solid transparent; overflow:hidden; cursor:pointer;
   transform: translate(var(--tx), var(--ty)) rotate(var(--tr)) scale(var(--ts, 1));
   transform-origin: center center;
@@ -257,28 +262,60 @@ h1 .highlight{color:var(--amber);}
 }
 .fan-card:hover{--ts:1.06; z-index:30; border-color:var(--yellow); box-shadow:0 26px 46px -18px #33454A44, 0 0 0 3px #F5C51833;}
 
-.card-preview{height:310px; background:linear-gradient(135deg,var(--paper-alt),#fff); border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--graphite); font-size:11px; font-weight:600; flex-shrink:0;}
-.card-body{padding:18px 20px; display:flex; flex-direction:column; flex-grow:1; justify-content:space-between;}
+.card-preview{height:275px; background:linear-gradient(135deg,var(--paper-alt),#fff); border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--graphite); font-size:11px; font-weight:600; flex-shrink:0;}
+.card-body{padding:18px 20px; display:flex; flex-direction:column; flex-grow:1; justify-content:space-between; min-height:0;}
+.card-body > div:first-child{flex:1 1 auto; min-height:0; overflow:hidden;}
 .fan-card .tag{display:inline-flex; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.03em; padding:2.5px 7.5px; border-radius:100px; width:fit-content; background:#F5A94A22; border:1.5px solid #C97A1F; color:#C97A1F;}
 .fan-card h3{font-family:'Poppins',sans-serif; font-size:19px; font-weight:600; margin-top:10px;}
 .fan-card p{font-size:11.5px; color:var(--ink-soft); line-height:1.5; margin-top:6px;}
-.fan-card .goto{font-size:12px; font-weight:600; color:var(--ink); display:flex; align-items:center; gap:5px; margin-top:12px; transition:color .3s ease;}
+@keyframes pulseDot{0%,100%{opacity:1;} 50%{opacity:.4;}}
+.card-status{display:flex; align-items:center; gap:7px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.03em; margin:16px 0 12px;}
+.card-status .dot{width:8px; height:8px; border-radius:50%; flex-shrink:0;}
+.card-status.active .dot{background:#3F7A3E; animation:pulseDot 2s ease-in-out infinite;}
+.card-status.active{color:#3F7A3E;}
+.card-status.development .dot{background:#B87519; animation:pulseDot 2s ease-in-out infinite;}
+.card-status.development{color:#B87519;}
+.card-status.expanding{color:#3F7A3E;}
+.card-status.expanding .dot{background:#3F7A3E; animation:pulseDot 2s ease-in-out infinite;}
+.card-status:empty{min-height:14px;}
+.card-tags{display:flex; flex-wrap:wrap; gap:6px; margin:0 0 16px;}
+.card-tag{font-size:10.5px; font-weight:600; color:var(--ink); background:color-mix(in srgb, var(--paper-alt) 35%, #fff); padding:4px 9px; border-radius:100px;}
+.fan-card .goto{font-size:12px; font-weight:600; color:var(--ink); display:flex; align-items:center; gap:5px; margin-top:12px; flex-shrink:0; transition:color .3s ease;}
 .fan-card .goto svg{width:12px; height:12px; transition:transform .3s;}
 .fan-card:hover .goto{color:var(--pink);}
 .fan-card:hover .goto svg{transform:translateX(3px); stroke:var(--pink);}
 
-.c1{--tx:-260px; --ty:12px; --tr:-16deg; z-index:1;}
-.c2{--tx:-150px; --ty:-6px; --tr:-9deg; z-index:2;}
-.c3{--tx:-40px; --ty:-16px; --tr:-3deg; z-index:3;}
-.c4{--tx:70px; --ty:-6px; --tr:4deg; z-index:2;}
-.c5{--tx:180px; --ty:12px; --tr:11deg; z-index:1;}
-.c6{--tx:290px; --ty:30px; --tr:18deg; z-index:0;}
+.c1{--tx:-337px; --ty:12px; --tr:-16deg; z-index:1;}
+.c2{--tx:-194px; --ty:-6px; --tr:-9deg; z-index:2;}
+.c3{--tx:-52px; --ty:-16px; --tr:-3deg; z-index:3;}
+.c4{--tx:91px; --ty:-6px; --tr:4deg; z-index:2;}
+.c5{--tx:233px; --ty:12px; --tr:11deg; z-index:1;}
+.c6{--tx:376px; --ty:30px; --tr:18deg; z-index:0;}
+
+@media (max-width:760px){
+  .fan-stage{
+    display:flex; align-items:stretch; justify-content:flex-start; height:auto;
+    overflow-x:auto; scroll-snap-type:x mandatory; gap:16px;
+    padding-block:48px; margin-block:-48px;
+    -webkit-overflow-scrolling:touch; scrollbar-width:none; width:100%;
+  }
+  .fan-stage::-webkit-scrollbar{display:none;}
+  .fan-card{
+    position:static !important; width:78vw; max-width:280px; height:78vh; max-height:600px;
+    transform:none !important; scroll-snap-align:center; flex-shrink:0;
+  }
+  .card-preview{height:44%;}
+  .fan-card:hover, .fan-card:active{border-color:var(--yellow); box-shadow:0 20px 40px -22px #33454A33, 0 0 0 3px #F5C51833;}
+  .fan-card:hover .goto, .fan-card:active .goto{color:var(--pink);}
+  .dots{display:flex;}
+}
 
 @media (min-width:761px){
+  .dots{display:none;}
   .fan-stage.aligned{
     overflow-x:auto;
     overflow-y:hidden;
-    scroll-snap-type:x mandatory;
+    scroll-snap-type:none;
     padding-block:48px;
     margin-block:-48px;
     -webkit-overflow-scrolling:touch;
@@ -293,16 +330,73 @@ h1 .highlight{color:var(--amber);}
   .fan-stage.aligned.fan-stage--dragging,
   .fan-stage.aligned.fan-stage--dragging .fan-card{cursor:grabbing; user-select:none;}
   .fan-stage.aligned:focus-visible{outline:2px solid var(--coral); outline-offset:4px; border-radius:12px;}
-  .fan-stage.aligned .fan-card{scroll-snap-align:center;}
-  .fan-stage.aligned .c1{--tx:-615px; --ty:0px; --tr:0deg;}
-  .fan-stage.aligned .c2{--tx:-369px; --ty:0px; --tr:0deg;}
-  .fan-stage.aligned .c3{--tx:-123px; --ty:0px; --tr:0deg;}
-  .fan-stage.aligned .c4{--tx:123px; --ty:0px; --tr:0deg;}
-  .fan-stage.aligned .c5{--tx:369px; --ty:0px; --tr:0deg;}
-  .fan-stage.aligned .c6{--tx:615px; --ty:0px; --tr:0deg;}
+  .fan-stage.aligned .c1{--tx:calc(-797px + var(--fan-align-shift, 0px)); --ty:0px; --tr:0deg;}
+  .fan-stage.aligned .c2{--tx:calc(-478px + var(--fan-align-shift, 0px)); --ty:0px; --tr:0deg;}
+  .fan-stage.aligned .c3{--tx:calc(-159px + var(--fan-align-shift, 0px)); --ty:0px; --tr:0deg;}
+  .fan-stage.aligned .c4{--tx:calc(159px + var(--fan-align-shift, 0px)); --ty:0px; --tr:0deg;}
+  .fan-stage.aligned .c5{--tx:calc(478px + var(--fan-align-shift, 0px)); --ty:0px; --tr:0deg;}
+  .fan-stage.aligned .c6{--tx:calc(797px + var(--fan-align-shift, 0px)); --ty:0px; --tr:0deg;}
+  .fan-stage.aligned .card-preview{height:255px;}
+  .fan-stage .fan-card .goto{
+    transition:opacity .35s ease, visibility .35s ease, color .3s ease;
+  }
+  .fan-stage:not(.aligned) .fan-card .goto{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+  }
+  .fan-stage.aligned .fan-card .goto{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+  }
 }
 
-.scroll-hint{position:absolute; bottom:28px; left:50%; transform:translateX(-50%); z-index:5; font-size:12px; color:var(--graphite); text-align:center; opacity:1; transition:opacity .4s ease;}
+@keyframes scrollBounce{
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+.scroll-cue{
+  position:absolute;
+  bottom:28px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:6;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  opacity:1;
+  pointer-events:none;
+  transition:opacity .3s ease;
+}
+.scroll-cue.is-hidden{opacity:0; pointer-events:none;}
+.scroll-cue-label{
+  display:block;
+  font-weight:600;
+  font-size:11.5px;
+  line-height:1.4;
+  letter-spacing:0.03em;
+  color:var(--ink);
+  text-align:center;
+  max-width:min(320px, calc(100vw - 48px));
+}
+.scroll-cue.is-footer .scroll-cue-label{
+  letter-spacing:0.02em;
+  font-size:11px;
+  color:var(--ink-soft);
+  max-width:min(420px, calc(100vw - 48px));
+}
+.scroll-cue-icon{
+  width:18px;
+  height:18px;
+  color:var(--coral);
+  animation:scrollBounce 1.6s ease-in-out infinite;
+}
+.scroll-cue.is-footer .scroll-cue-icon{display:none;}
+@media (prefers-reduced-motion: reduce){
+  .scroll-cue-icon{animation:none;}
+}
 .floating-back-to-top{
   position:fixed; bottom:28px; right:28px; width:48px; height:48px; border-radius:50%;
   background:var(--coral); border:none; cursor:pointer; z-index:250;
@@ -335,7 +429,28 @@ h1 .highlight{color:var(--amber);}
   .about-stats{justify-content:center; align-items:center;}
   .about-stats div{text-align:center;}
   .about-photo{width:160px; height:160px;}
-  .process-row{grid-template-columns:1fr 1fr; gap:14px;}
+  .process-row{
+    display:flex;
+    align-items:stretch;
+    justify-content:flex-start;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    gap:16px;
+    padding-bottom:12px;
+    margin-left:-24px;
+    margin-right:-24px;
+    padding-left:24px;
+    padding-right:24px;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .process-row::-webkit-scrollbar{display:none;}
+  .process-item{
+    flex:0 0 78vw;
+    max-width:280px;
+    scroll-snap-align:center;
+    scroll-snap-stop:always;
+  }
   .process-item .flip-front{display:flex; flex-direction:column; align-items:center; text-align:center;}
   .process-item .picon{display:block; margin-inline:auto;}
   .process-item .flip-front p{text-align:left; align-self:stretch;}
@@ -344,43 +459,20 @@ h1 .highlight{color:var(--amber);}
   .footer-links{gap:20px;}
   .icon-field{height:100vh; bottom:auto;}
   .icon-field .icon-chip svg{opacity:.3; transform:scale(.7);}
-  .fan-stage{
-    display:flex; align-items:stretch; justify-content:flex-start; height:auto;
-    overflow-x:auto; scroll-snap-type:x mandatory; gap:16px;
-    padding-block:48px; margin-block:-48px;
-    -webkit-overflow-scrolling:touch;
-  }
-  .fan-card{
-    position:static; width:78vw; max-width:280px; height:78vh; max-height:600px;
-    transform:none !important; scroll-snap-align:center; flex-shrink:0;
-  }
-  .card-preview{height:58%;}
-  .fan-card:hover, .fan-card:active{border-color:var(--yellow); box-shadow:0 20px 40px -22px #33454A33, 0 0 0 3px #F5C51833;}
-  .fan-card:hover .goto, .fan-card:active .goto{color:var(--pink);}
-  .scroll-hint{
+  .scroll-cue:not(.is-footer){
     opacity:0;
-    position:static;
-    left:auto;
-    transform:none;
-    margin-top:32px;
-    padding:24px 28px 72px;
-    width:100%;
-    box-sizing:border-box;
+    pointer-events:none;
+  }
+  .scroll-cue.is-footer{
+    position:fixed;
+    bottom:28px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:6;
+    opacity:1;
+    pointer-events:none;
   }
   .spacer{height:0;}
-  .dots{display:flex;}
-}
-@media (min-width:761px){
-  .dots{display:none;}
-  .fan-reveal:has(.fan-stage.aligned){
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-  }
-  .fan-stage.aligned ~ .dots{
-    display:flex;
-    width:100%;
-  }
 }
 
 /* ---- NAV ---- */
@@ -394,6 +486,7 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
 .nav-links a:focus-visible{outline:2px solid var(--coral); outline-offset:3px; border-radius:4px;}
 .nav-cta{background:var(--ink); color:var(--paper)!important; padding:11px 20px; border-radius:100px; font-weight:600!important;}
 .nav-cta:hover{background:var(--coral)!important;}
+.nav-mobile-only{display:none;}
 
 .hamburger-btn{display:none; background:none; border:none; cursor:pointer; padding:8px; z-index:310; position:relative;}
 .hamburger-btn svg{width:24px; height:24px;}
@@ -418,8 +511,9 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
 }
 .nav-links.open{transform:translateX(0);}
 .nav-links li{width:100%;}
-.nav-links a{font-size:16px;}
-.nav-links .nav-cta{width:100%; text-align:center; display:block;}
+  .nav-links a{font-size:16px;}
+  .nav-links .nav-mobile-only{display:list-item;}
+  .nav-links .nav-cta{width:100%; text-align:center; display:block;}
 .hamburger-btn{display:block;}
 }
 
@@ -441,15 +535,19 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
 .hero-fallback-stack .icon-field .icon-chip svg{opacity:.3; transform:scale(.7);}
 .hero-fallback-stack .fan-stage{display:flex; align-items:stretch; justify-content:flex-start; height:auto; overflow-x:auto; scroll-snap-type:x mandatory; gap:16px; padding-bottom:12px; -webkit-overflow-scrolling:touch; width:100%;}
 .hero-fallback-stack .fan-card{position:static!important; width:78vw; max-width:280px; height:78vh; max-height:600px; transform:none!important; scroll-snap-align:center; flex-shrink:0;}
-.hero-fallback-stack .card-preview{height:58%;}
-.hero-fallback-stack .scroll-hint{opacity:1; position:static; left:auto; transform:none; margin-top:32px; padding:24px 28px 72px; width:100%; box-sizing:border-box;}
+.hero-fallback-stack .card-preview{height:44%;}
+.hero-fallback-stack .scroll-cue{position:fixed; bottom:28px; left:50%; transform:translateX(-50%); opacity:1; z-index:6;}
 .hero-fallback-stack + .spacer{height:0!important;}
 @media (max-width:760px){
   .hero-fallback-stack .fan-reveal{padding:100px 20px 60px;}
-  .hero-fallback-stack .process-row{grid-template-columns:1fr 1fr; gap:14px;}
-}
-@media (max-width:700px){
-  .hero-fallback-stack .process-row{grid-template-columns:1fr;}
+  .hero-fallback-stack .process-row{
+    display:flex; align-items:stretch; justify-content:flex-start; overflow-x:auto;
+    scroll-snap-type:x mandatory; gap:16px; padding-bottom:12px;
+    margin-left:-24px; margin-right:-24px; padding-left:24px; padding-right:24px;
+    -webkit-overflow-scrolling:touch; scrollbar-width:none;
+  }
+  .hero-fallback-stack .process-row::-webkit-scrollbar{display:none;}
+  .hero-fallback-stack .process-item{flex:0 0 78vw; max-width:280px; scroll-snap-align:center; scroll-snap-stop:always;}
 }
 </style>
 <noscript>
@@ -469,15 +567,20 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
 #hero .icon-field .icon-chip svg{opacity:.3;transform:scale(.7);}
 #hero .fan-stage{display:flex;align-items:stretch;justify-content:flex-start;height:auto;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;padding-bottom:12px;-webkit-overflow-scrolling:touch;width:100%;}
 #hero .fan-card{position:static!important;width:78vw;max-width:280px;height:78vh;max-height:600px;transform:none!important;scroll-snap-align:center;flex-shrink:0;}
-#hero .card-preview{height:58%;}
-#hero .scroll-hint{opacity:1;position:static;left:auto;transform:none;margin-top:32px;padding:24px 28px 72px;width:100%;box-sizing:border-box;}
+#hero .card-preview{height:44%;}
+#hero .scroll-cue{position:fixed; bottom:28px; left:50%; transform:translateX(-50%); opacity:1; z-index:6;}
 #hero + .spacer{height:0!important;}
 @media (max-width:760px){
   #hero .fan-reveal{padding:100px 20px 60px;}
-  #hero .process-row{grid-template-columns:1fr 1fr;gap:14px;}
-}
-@media (max-width:700px){
-  #hero .process-row{grid-template-columns:1fr;}
+  #hero .process-row{
+    display:flex;align-items:stretch;justify-content:flex-start;overflow-x:auto;
+    scroll-snap-type:x mandatory;gap:16px;padding-bottom:12px;
+    margin-left:-24px;margin-right:-24px;padding-left:24px;padding-right:24px;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;
+  }
+  #hero .process-row::-webkit-scrollbar{display:none;}
+  #hero .process-item{flex:0 0 78vw;max-width:280px;scroll-snap-align:center;scroll-snap-stop:always;}
+  #hero .process-row{grid-template-columns:unset;}
 }
 </style>
 </noscript>
@@ -506,6 +609,7 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
   <li><a href="#work">Work</a></li>
   <li><a href="#process">Process</a></li>
   <li><a href="#about">About</a></li>
+  <li class="nav-mobile-only"><a href="resume/resume.html">Resume</a></li>
   <li><a href="contact-form/" class="nav-cta">Let's talk</a></li>
 </ul>
   <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle menu">
@@ -572,12 +676,13 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
 
     <div class="fan-reveal" id="work">
       <div class="fan-stage" id="fanStage">
-        <a href="sifted-case-study/" class="fan-card c1" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-sifted.png" alt="Sifted preview" loading="lazy" style="width:100%; height:100%; object-fit:cover"></div><div class="card-body"><div><span class="tag">AI Product</span><h3>Sifted</h3><p>AI-powered nutrition app for health conscious eaters.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
-        <a href="tirivelo-case-study/" class="fan-card c2" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-tirivelo.png" alt="TiriVelo preview" style="width:100%; height:100%; object-fit:cover" loading="lazy"></div><div class="card-body"><div><span class="tag">Marketplace</span><h3>TiriVelo</h3><p>Pet-care booking marketplace redesign of search flows & provider profiles.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
-        <a href="diapulse-case-study/" class="fan-card c3" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-diapulse.png" alt="Diapulse preview" style="width:100%; height:100%; object-fit:cover" loading="lazy"></div><div class="card-body"><div><span class="tag">Medical Device</span><h3>Diapulse</h3><p>Product Rebranding & software UI redesign.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
-        <a href="rapimd-case-study/" class="fan-card c4" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-rapidmd.png" alt="RapiMD preview" style="width:100%; height:100%; object-fit:cover" loading="lazy"></div><div class="card-body"><div><span class="tag">Healthcare Booking</span><h3>RapiMD</h3><p>Healthcare provider search and booking architecture.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
-        <a href="wave-case-study/" class="fan-card c5" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-wave.png" alt="WAVE preview" style="width:100%; height:100%; object-fit:cover" loading="lazy"></div><div class="card-body"><div><span class="tag">Medical Device</span><h3>WAVE</h3><p>Branding & ePRO app for FDA clinical trial.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
-        <a href="bergen-county-case-study/" class="fan-card c6" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-bergencountyportal.png" alt="Bergen County preview" style="width:100%; height:100%; object-fit:cover" loading="lazy"></div><div class="card-body"><div><span class="tag">Civic Tech</span><h3>Bergen County</h3><p>Building permit info & submission portal for contractors and homeowners.</p></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
+        <div class="fan-stage-sizer" aria-hidden="true"></div>
+        <a href="sifted-case-study/" class="fan-card c1" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-sifted.png" alt="Sifted preview" loading="lazy" style="width:100%; height:100%; object-fit:cover"></div><div class="card-body"><div><span class="tag">AI Product</span><h3>Sifted</h3><p>An AI-powered nutrition scanner that helps health-conscious shoppers make confident food choices through clear, ingredient-level insight.</p><div class="card-status development"><span class="dot"></span>In Development</div><div class="card-tags"><span class="card-tag">0-to-1 Product Design</span><span class="card-tag">UX Research</span><span class="card-tag">AI-Assisted UX</span><span class="card-tag">Product Strategy</span></div></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
+        <a href="tirivelo-case-study/" class="fan-card c2" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-tirivelo.png" alt="TiriVelo preview" style="width:100%; height:100%; object-fit:cover" loading="lazy"></div><div class="card-body"><div><span class="tag">Marketplace</span><h3>TiriVelo</h3><p>A pet-care marketplace that simplifies provider discovery while building trust through redesigned search and profile flows.</p><div class="card-status development"><span class="dot"></span>In Development</div><div class="card-tags"><span class="card-tag">UX Research</span><span class="card-tag">Usability Testing</span><span class="card-tag">Information Architecture</span><span class="card-tag">Accessibility (WCAG/ADA)</span></div></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
+        <a href="diapulse-case-study/" class="fan-card c3" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-diapulse.png" alt="Diapulse preview" style="width:100%; height:100%; object-fit:cover" loading="lazy"></div><div class="card-body"><div><span class="tag">Medical Device</span><h3>Diapulse</h3><p>A brand and clinical software redesign that modernizes a 30-year legacy medical device for today's clinicians and patients.</p><div class="card-status expanding"><span class="dot"></span>Active &amp; Expanding</div><div class="card-tags"><span class="card-tag">Visual &amp; Brand Systems</span><span class="card-tag">Information Architecture</span><span class="card-tag">Cross-functional Collaboration</span></div></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
+        <a href="rapimd-case-study/" class="fan-card c4" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-rapidmd.png" alt="RapiMD preview" style="width:100%; height:100%; object-fit:cover" loading="lazy"></div><div class="card-body"><div><span class="tag">Healthcare Booking</span><h3>RapiMD</h3><p>A healthcare booking platform that simplifies provider search while increasing pricing transparency and patient trust.</p><div class="card-status"></div><div class="card-tags"><span class="card-tag">Wireframing &amp; Prototyping</span><span class="card-tag">Interaction Design</span><span class="card-tag">Design Systems</span><span class="card-tag">Healthtech UX</span></div></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
+        <a href="wave-case-study/" class="fan-card c5" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-wave.png" alt="WAVE preview" style="width:100%; height:100%; object-fit:cover" loading="lazy"></div><div class="card-body"><div><span class="tag">Medical Device</span><h3>WAVE</h3><p>An FDA clinical trial app and brand system that transforms a clinical device into a warm, human-centered wellness experience.</p><div class="card-status development"><span class="dot"></span>In Development</div><div class="card-tags"><span class="card-tag">Regulated Product UX</span><span class="card-tag">Design Systems</span><span class="card-tag">Design Leadership &amp; Mentorship</span></div></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
+        <a href="bergen-county-case-study/" class="fan-card c6" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-bergencountyportal.png" alt="Bergen County preview" style="width:100%; height:100%; object-fit:cover" loading="lazy"></div><div class="card-body"><div><span class="tag">Civic Tech</span><h3>Bergen County</h3><p>A civic tech permit portal that simplifies compliance and reduces costly errors for contractors and homeowners.</p><div class="card-status"></div><div class="card-tags"><span class="card-tag">UX Research</span><span class="card-tag">Usability Testing</span><span class="card-tag">Civic UX</span><span class="card-tag">Compliance &amp; Error Prevention</span></div></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
       </div>
       <div class="dots" id="dots">
         <div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
@@ -716,7 +821,10 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
     </div>
   </div>
 
-  <div class="scroll-hint">Scroll down, or click "See work" </div>
+  <div class="scroll-cue" id="scrollCue" aria-live="polite">
+    <span class="scroll-cue-label">Scroll down, or click "See work"</span>
+    <svg class="scroll-cue-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
 </section>
 
 <div class="spacer"></div>
@@ -738,27 +846,31 @@ let heroEl;
 let btn;
 let fanStage;
 let fanReveal;
-let scrollHintEl;
+let scrollCueEl;
+let scrollCueLabel;
 let cards;
 let currentStage = -1;
 let alignedCardsTop = null;
 let alignedCardsBottom = null;
 let alignedBoundsTimer = null;
-let alignedAnchorCard = null;
-let hasCentered = false;
+let alignedScrollReady = false;
 let isDragging = false;
 let suppressCardClick = false;
 const fanDrag = {active:false, moved:false, dragging:false, startX:0, startScroll:0, pointerId:null};
 
 function resetFanStageScroll(){
   if(!fanStage) return;
-  fanStage.classList.remove('fan-stage--dragging');
+  cancelAnimationFrame(alignedClampRaf);
+  alignedClampRaf = null;
+  fanStage.classList.remove('fan-stage--dragging','fan-stage--scrollable');
+  fanStage.style.removeProperty('--fan-sizer-width');
+  fanStage.style.removeProperty('--fan-sizer-left');
+  fanStage.style.removeProperty('--fan-align-shift');
   fanStage.removeAttribute('tabindex');
   fanStage.removeAttribute('aria-label');
   fanStage.style.scrollSnapType = '';
   fanStage.scrollLeft = 0;
-  alignedAnchorCard = null;
-  hasCentered = false;
+  alignedScrollReady = false;
   isDragging = false;
   fanDrag.active = false;
   fanDrag.moved = false;
@@ -776,38 +888,128 @@ function clearAlignedState(){
 }
 
 const FAN_ALIGN_MS = 500;
+const ALIGNED_EDGE_PAD = 24;
+const ALIGNED_ROW_HALF = 797;
+let alignedClampRaf = null;
 
-function centerHoveredCard(card){
-  if(hasCentered || !fanStage.classList.contains('aligned') || isMobile()) return;
-  card.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
-  hasCentered = true;
+function computeAlignedShift(){
+  if(!fanStage || !cards.length) return 0;
+  const cardW = cards[0].offsetWidth || 280;
+  const rowHalf = ALIGNED_ROW_HALF + cardW / 2;
+  const localMin = fanStage.clientWidth / 2 - rowHalf;
+  return Math.max(0, ALIGNED_EDGE_PAD - localMin);
 }
 
-function activateAligned(card, options = {}){
-  if(isMobile() || isDragging) return;
-  const wasAligned = fanStage.classList.contains('aligned');
-  alignedAnchorCard = card;
-  fanStage.classList.add('aligned');
-  if(!isMobile()){
+function presetAlignedScrollSizer(shiftX){
+  if(!fanStage || !cards.length) return;
+  const cardW = cards[0].offsetWidth || 280;
+  const rowHalf = ALIGNED_ROW_HALF + cardW / 2;
+  const spread = rowHalf * 2 + ALIGNED_EDGE_PAD * 2;
+  const stageW = fanStage.clientWidth;
+  const localMin = stageW / 2 - rowHalf + shiftX;
+  const sizerLeft = Math.max(0, localMin - ALIGNED_EDGE_PAD);
+  fanStage.style.setProperty('--fan-sizer-left', sizerLeft + 'px');
+  fanStage.style.setProperty('--fan-sizer-width', spread + 'px');
+}
+
+function updateAlignedScrollSizer(){
+  if(!fanStage || !fanStage.classList.contains('aligned') || isFanCarousel()) return;
+
+  const stageRect = fanStage.getBoundingClientRect();
+  const scrollLeft = fanStage.scrollLeft;
+  const rects = Array.from(cards).map(card => card.getBoundingClientRect());
+  if(!rects.length) return;
+
+  const minLeft = Math.min(...rects.map(r => r.left));
+  const maxRight = Math.max(...rects.map(r => r.right));
+  const localMin = minLeft - stageRect.left + scrollLeft;
+  const localMax = maxRight - stageRect.left + scrollLeft;
+  const spread = (localMax - localMin) + ALIGNED_EDGE_PAD * 2;
+  const sizerLeft = Math.max(0, localMin - ALIGNED_EDGE_PAD);
+
+  fanStage.style.setProperty('--fan-sizer-left', sizerLeft + 'px');
+  fanStage.style.setProperty('--fan-sizer-width', spread + 'px');
+
+  const needsScroll = spread > stageRect.width + 1;
+  fanStage.classList.toggle('fan-stage--scrollable', needsScroll);
+  if(needsScroll){
     fanStage.setAttribute('tabindex','0');
     fanStage.setAttribute('aria-label','Case study cards, scroll to see more');
   }
+
+  void fanStage.scrollWidth;
+  fanStage.scrollLeft = scrollLeft;
+  clampAlignedScroll();
+}
+
+function clampAlignedScroll(){
+  if(!fanStage || !fanStage.classList.contains('aligned') || isFanCarousel()) return;
+  const max = Math.max(0, fanStage.scrollWidth - fanStage.clientWidth);
+  fanStage.scrollLeft = Math.max(0, Math.min(max, fanStage.scrollLeft));
+}
+
+function scheduleClampAlignedScroll(){
+  if(!fanStage || !fanStage.classList.contains('aligned') || isFanCarousel()) return;
+  cancelAnimationFrame(alignedClampRaf);
+  alignedClampRaf = requestAnimationFrame(()=>{
+    clampAlignedScroll();
+    alignedClampRaf = null;
+  });
+}
+
+function activateAligned(card){
+  if(isFanCarousel() || isDragging) return;
+  if(fanStage.classList.contains('aligned')) return;
+
+  const shiftX = computeAlignedShift();
+  fanStage.style.setProperty('--fan-align-shift', shiftX + 'px');
+  fanStage.classList.add('aligned');
+  presetAlignedScrollSizer(shiftX);
+
   clearTimeout(alignedBoundsTimer);
-  if(!wasAligned && !hasCentered && !options.skipCenter){
-    setTimeout(()=> centerHoveredCard(card), FAN_ALIGN_MS + 20);
-  }
-  alignedBoundsTimer = setTimeout(cacheAlignedCardsYBounds, FAN_ALIGN_MS + 20);
+  alignedBoundsTimer = setTimeout(()=>{
+    cacheAlignedCardsYBounds();
+    updateAlignedScrollSizer();
+    alignedScrollReady = true;
+  }, FAN_ALIGN_MS + 20);
 }
 
 const SCROLL_HINT_BY_STAGE = {
   0: 'Scroll down, or click "See work"', 1: 'Scroll down for About', 2: 'Scroll down for How I Work', 3: 'Scroll down for Contact',
 };
+const SCROLL_CUE_DISMISS_THRESHOLD = 80;
+
+function updateScrollCueVisibility(){
+  if(!scrollCueEl) return;
+  if(scrollCueEl.classList.contains('is-footer')){
+    scrollCueEl.classList.remove('is-hidden');
+    return;
+  }
+  if(isMobile()){
+    scrollCueEl.classList.add('is-hidden');
+    return;
+  }
+  if(currentStage < 0 || currentStage >= 4){
+    scrollCueEl.classList.add('is-hidden');
+    return;
+  }
+  if(currentStage === 0){
+    scrollCueEl.classList.toggle('is-hidden', window.scrollY > SCROLL_CUE_DISMISS_THRESHOLD);
+    return;
+  }
+  scrollCueEl.classList.remove('is-hidden');
+}
+
+function setScrollCueText(text){
+  if(scrollCueLabel) scrollCueLabel.textContent = text;
+}
 
 function getScrollHintText(stage){
   return SCROLL_HINT_BY_STAGE[stage] ?? SCROLL_HINT_BY_STAGE[0];
 }
 
 function isMobile(){ return window.innerWidth <= 760; }
+function isFanCarousel(){ return isMobile(); }
 
 function setStage(stage, force){
   if(!heroEl || (!force && stage === currentStage)) return;
@@ -817,9 +1019,10 @@ function setStage(stage, force){
   if(stage !== 1){
     clearAlignedState();
   }
-  if(!isMobile() && stage < 4 && scrollHintEl){
-    scrollHintEl.textContent = getScrollHintText(stage);
+  if(!isMobile() && stage < 4){
+    setScrollCueText(getScrollHintText(stage));
   }
+  updateScrollCueVisibility();
 }
 
 try{
@@ -827,10 +1030,12 @@ heroEl = document.getElementById('hero');
 btn = document.getElementById('seeWorkBtn');
 fanStage = document.getElementById('fanStage');
 fanReveal = document.getElementById('work');
-scrollHintEl = document.querySelector('.scroll-hint');
+scrollCueEl = document.getElementById('scrollCue');
+scrollCueLabel = document.querySelector('.scroll-cue-label');
 cards = document.querySelectorAll('.fan-card');
 
 if(heroEl) setStage(0, true);
+updateScrollCueVisibility();
 
 if('scrollRestoration' in history){
   history.scrollRestoration = 'manual';
@@ -877,7 +1082,11 @@ btn.addEventListener('click', ()=>{
   }
 });
 }
-window.addEventListener('scroll', ()=>{ if(!isMobile()) setStage(getStageFromScroll(window.scrollY)); });
+function onHeroScroll(){
+  if(!isMobile()) setStage(getStageFromScroll(window.scrollY));
+  updateScrollCueVisibility();
+}
+window.addEventListener('scroll', onHeroScroll, {passive:true});
 
 const dots = document.querySelectorAll('#dots .dot');
 
@@ -903,8 +1112,10 @@ cards.forEach(card=>{
   });
 });
 
+if(isFanCarousel()){ clearAlignedState(); }
+
 fanReveal.addEventListener('mousemove', (e)=>{
-  if(isMobile() || currentStage !== 1 || !fanStage.classList.contains('aligned')) return;
+  if(isFanCarousel() || currentStage !== 1 || !fanStage.classList.contains('aligned')) return;
   if(alignedCardsTop === null || alignedCardsBottom === null) return;
   if(e.clientY < alignedCardsTop || e.clientY > alignedCardsBottom){
     clearAlignedState();
@@ -912,13 +1123,17 @@ fanReveal.addEventListener('mousemove', (e)=>{
 });
 
 window.addEventListener('resize', ()=>{
-  if(!isMobile() && fanStage.classList.contains('aligned')){
+  if(isFanCarousel()){
+    clearAlignedState();
+  } else if(fanStage.classList.contains('aligned') && alignedScrollReady){
+    fanStage.style.setProperty('--fan-align-shift', computeAlignedShift() + 'px');
     cacheAlignedCardsYBounds();
+    updateAlignedScrollSizer();
   }
 });
 
 fanStage.addEventListener('pointerdown', (e)=>{
-  if(isMobile() || !fanStage.classList.contains('aligned') || e.button !== 0) return;
+  if(isFanCarousel() || !fanStage.classList.contains('aligned') || e.button !== 0) return;
   fanDrag.active = true;
   fanDrag.moved = false;
   fanDrag.dragging = false;
@@ -940,6 +1155,7 @@ fanStage.addEventListener('pointermove', (e)=>{
   }
   if(fanDrag.moved){
     fanStage.scrollLeft = fanDrag.startScroll - dx;
+    clampAlignedScroll();
     e.preventDefault();
   }
 }, {passive:false});
@@ -952,6 +1168,7 @@ function endFanDrag(e){
     fanStage.classList.remove('fan-stage--dragging');
     if(fanStage.classList.contains('aligned')){
       fanStage.style.scrollSnapType = '';
+      clampAlignedScroll();
     }
     if(e.pointerId !== undefined){
       try{ fanStage.releasePointerCapture(e.pointerId); }catch(_){}
@@ -967,13 +1184,15 @@ fanStage.addEventListener('pointerup', endFanDrag);
 fanStage.addEventListener('pointercancel', endFanDrag);
 
 fanStage.addEventListener('keydown', (e)=>{
-  if(isMobile() || !fanStage.classList.contains('aligned')) return;
+  if(isFanCarousel() || !fanStage.classList.contains('aligned')) return;
   const step = 80;
   if(e.key === 'ArrowLeft'){
     fanStage.scrollLeft -= step;
+    clampAlignedScroll();
     e.preventDefault();
   } else if(e.key === 'ArrowRight'){
     fanStage.scrollLeft += step;
+    clampAlignedScroll();
     e.preventDefault();
   }
 });
@@ -986,6 +1205,9 @@ function getCardScrollCenter(card){
 
 let scrollTimeout;
 fanStage.addEventListener('scroll', ()=>{
+  if(fanStage.classList.contains('aligned') && !isFanCarousel()){
+    scheduleClampAlignedScroll();
+  }
   clearTimeout(scrollTimeout);
   scrollTimeout = setTimeout(()=>{
     const stageCenter = fanStage.scrollLeft + fanStage.clientWidth / 2;
@@ -1009,13 +1231,17 @@ const footerRevealEl = document.querySelector('.footer-reveal');
 const copyrightText = '© 2026 Aliceportfolio.com · UX & Product Designer · All rights reserved';
 
 function showFooterState(){
-  scrollHintEl.textContent = copyrightText;
-  scrollHintEl.style.opacity = '1';
+  if(!scrollCueEl) return;
+  scrollCueEl.classList.add('is-footer');
+  setScrollCueText(copyrightText);
+  scrollCueEl.classList.remove('is-hidden');
   backToTopBtn.classList.add('show');
 }
 function hideFooterState(){
-  scrollHintEl.textContent = isMobile() ? getScrollHintText(0) : getScrollHintText(currentStage);
-  scrollHintEl.style.opacity = '';
+  if(!scrollCueEl) return;
+  scrollCueEl.classList.remove('is-footer');
+  setScrollCueText(isMobile() ? getScrollHintText(0) : getScrollHintText(currentStage));
+  updateScrollCueVisibility();
   backToTopBtn.classList.remove('show');
 }
 

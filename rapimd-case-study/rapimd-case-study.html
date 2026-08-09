@@ -40,6 +40,10 @@ nav{position:sticky; top:0; z-index:200; display:flex; justify-content:space-bet
 .back-link{display:inline-flex; align-items:center; gap:6px; font-weight:600; font-size:14px;}
 .back-link svg{width:16px; height:16px; flex-shrink:0;}
 .nav-mark svg{display:block;}
+@media (max-width:1024px){
+  nav .nav-mark{order:1;}
+  nav .back-link{order:2;}
+}
 
 .cs-header{padding:48px 48px 30px; max-width:1240px; margin:0 auto;}
 .header-top{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
@@ -50,7 +54,7 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .title-row h1{margin:0;}
 .cs-sub{margin-top:8px; font-size:15px; color:var(--graphite); font-weight:600;}
 
-.meta-row{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin:16px auto 0; padding:12px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+.meta-row{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin:26px auto 0; padding:22px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
 .meta-item span{display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--graphite); margin-bottom:5px;}
 .meta-item b{font-family:'Poppins',sans-serif; font-size:16px; font-weight:600;}
 .meta-note{font-size:13px; color:var(--graphite); margin-top:14px; font-style:italic;}
@@ -77,7 +81,7 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
   .tab-btn:active:not(.active){background:rgba(242,102,90,0.22); color:var(--coral);}
   .tab-btn.progress-tab:active{color:#fff !important; background:var(--coral);}
   .tab-nav-wrap.is-sticky{position:fixed; top:65px; left:0; right:0; width:100%; z-index:150; padding:14px 16px 0; box-sizing:border-box; background:transparent;}
-  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow-x:auto; justify-content:flex-start;}
+  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow:visible; justify-content:center;}
   .tab-nav-wrap.is-sticky .tab-track{width:auto; max-width:calc(100vw - 32px); display:inline-flex; justify-content:flex-start; background:#FBD4D4; border-radius:100px; box-shadow:0 8px 16px -10px #33454A33; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; padding-right:12px; scroll-padding-inline-end:12px;}
 }
 
@@ -112,15 +116,26 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .two-col-block + .gallery-item.wide,
 [class*="-col-block"] + .gallery-item.wide,
 [class*="-col-block"] + img{margin-top:20px;}
-.block--split.reverse .block--split-copy h2{margin-bottom:12px;}
-.block--split.reverse .block--split-copy p{margin-bottom:0;}
+.block--split{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:32px;
+  align-items:center;
+}
+.block--split .split-copy{text-align:left;}
+.block--split .split-copy h2,
+.block--split .split-copy p{max-width:none;}
+.block--split .split-copy p{margin-bottom:0;}
+.block--split .split-visual{width:100%; align-self:center;}
 @media (min-width:901px){
-  .block--split{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
+  .block--split{grid-template-columns:1fr 1fr; gap:48px;}
   .block--split > :not(:last-child){grid-column:1;}
   .block--split > :last-child{grid-column:2; grid-row:1 / -1; align-self:center;}
   .block--split.reverse > :not(:last-child){grid-column:2;}
   .block--split.reverse > :last-child{grid-column:1; grid-row:1; align-self:center;}
-  .block--split.reverse .block--split-copy{align-self:center;}
+  .block--split > .split-copy{
+    display:flex; flex-direction:column; justify-content:center; align-self:center;
+  }
   .block--split h2,
   .block--split h3,
   .block--split p{max-width:none;}
@@ -212,6 +227,24 @@ h2 em{font-weight:400; font-style:italic;}
 .gallery-trust-arch img{width:90%; height:auto; display:block; margin:0 auto; border-radius:16px;}
 .gallery-trust-arch .value-card{margin-top:12px; text-align:left;}
 .gallery-trust-arch .value-card p{max-width:none;}
+@media (max-width:767px){
+  .gallery-trust-arch{align-items:start;}
+  .gallery-trust-arch .gallery-item{
+    justify-content:flex-start;
+    align-items:stretch;
+    min-height:0;
+  }
+  .gallery-trust-arch .relay-image-wrap{
+    width:100%;
+    min-height:0 !important;
+    align-self:flex-start;
+  }
+  .gallery-trust-arch img{
+    width:100%;
+    margin:0;
+    vertical-align:top;
+  }
+}
 .trust-visual-grid{display:grid; grid-template-columns:1fr; gap:24px; align-items:center;}
 @media (min-width:768px){
   .trust-visual-grid{grid-template-columns:1fr 1fr; gap:36px;}
@@ -353,12 +386,12 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 .back-to-top:focus-visible{outline:2px solid var(--coral); outline-offset:3px;}
 
 @media (max-width:900px){
-  .block--split .split-copy + .split-visual{margin-top:20px;}
   .tab-nav-wrap{position:relative;}
   .tab-nav-wrap::after{
     content:''; position:absolute; top:16px; right:0; width:48px; height:44px;
     pointer-events:none; background:linear-gradient(to right, transparent, var(--paper)); z-index:151;
   }
+  .tab-nav-wrap.is-sticky::after{display:none;}
   .tab-nav{
     padding:16px 0 0; margin:0 16px; justify-content:flex-start;
     overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
@@ -450,7 +483,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <p>Delayed authentication until after users have seen pricing and availability.</p>
         <p style="margin-bottom:0;">Flat-fee pricing on provider cards, billing accuracy sub-ratings, "What's Not Included" disclosures, and persistent No Surprise Bill messaging throughout the flow. Validated through moderated usability testing.</p>
       </div>
-      <div class="meta-row" style="border-top:none; padding-top:0; padding-bottom:0; margin-top:32px;">
+      <div class="meta-row" style="border-top:none; padding-top:0; padding-bottom:10px; margin-top:42px;">
         <div class="meta-item"><span>Role</span><b>Solo Designer</b></div>
         <div class="meta-item"><span>Scope</span><b>End-to-end</b></div>
         <div class="meta-item"><span>Timeline</span><b>4 Weeks</b></div>
@@ -584,11 +617,13 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/rapidmd/affinity-mapping-board-rapimd.png" alt="Affinity mapping board" style="width:100%; height:auto; display:block; border-radius:16px"></div>
   </div>
   <div class="block block--split reverse">
-    <div class="block--split-copy">
+    <div class="split-copy">
       <h2>Four competitors reviewed.<br>None built for urgency, dynamic pricing, or unsold inventory.</h2>
       <p>Zocdoc, Sesame Care, Solv, and Healthgrades each solve a piece of the booking problem: insurance-based discovery, cash-pay transparency, same-day urgent care, or provider reputation. But none of them treat an open appointment slot as perishable inventory. Pricing across the board is static, urgency is an afterthought, and providers have no built-in way to recover revenue from cancellations or no-shows. That gap, unsold time with no dynamic pricing and no urgency mechanics, is exactly where RapiMD positions itself: a same-day, price-optimized marketplace that turns empty slots into booked ones.</p>
     </div>
-    <div class="gallery-item" style="border:none; padding:0; background:none"><img data-relay src="/assets/rapidmd/competitor-analysis-rapimd.png" alt="RapiMD competitor analysis" style="width:100%; height:auto; display:block; border-radius:16px"></div>
+    <div class="split-visual">
+      <img data-relay src="/assets/rapidmd/competitor-analysis-rapimd.png" alt="RapiMD competitor analysis" style="width:100%; height:auto; display:block; border-radius:16px">
+    </div>
   </div>
 </div>
 

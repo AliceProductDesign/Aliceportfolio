@@ -24,6 +24,10 @@ nav{position:sticky; top:0; z-index:200; display:flex; justify-content:space-bet
 .back-link{display:inline-flex; align-items:center; gap:6px; font-weight:600; font-size:14px;}
 .back-link svg{width:16px; height:16px; flex-shrink:0;}
 .nav-mark svg{display:block;}
+@media (max-width:1024px){
+  nav .nav-mark{order:1;}
+  nav .back-link{order:2;}
+}
 
 main{flex:1; display:flex; align-items:center; justify-content:center; padding:40px 24px 80px;}
 .form-wrap{max-width:560px; width:100%;}
