@@ -6,11 +6,812 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/Favicon-32px.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16px.png">
 <link rel="apple-touch-icon" href="/assets/Favicon-64PX.png">
-<meta http-equiv="refresh" content="0; url=tirivelo-case-study.html">
-<script>location.replace("tirivelo-case-study.html"+location.search+location.hash);</script>
-<title>Redirecting…</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+<title>TiriVelo, Case Study, Alice Curiel</title>
+<style>
+:root{
+  --coral:#F2665A; --amber:#F5A94A; --amber-dark:#C97A1F; --ink:#33454A; --teal:#478383; --ink-soft:#5B6A6D;
+  --paper:#FBF9F4; --paper-alt:#F2EDE1; --graphite:#8B9290; --line:#33454A1a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif;}
+/* ── TEAL ACCENT AUDIT (tirivelo-case-study) ────────────────────
+   CHANGED → var(--teal): h1–h4, .section-eyebrow, .gap-statement, .testimonial p, .key-list li::before, .compete-card b
+   LEFT:    .stat b (amber), .meta-note (graphite), .ba-label (ink-soft), inline italic body p (ink-soft), coral nav/back-to-top SVGs
+   ─────────────────────────────────────────────────────────────── */
+
+/* ── CORAL INTERACTIVE AUDIT (tirivelo-case-study) ───────────────
+   CHANGED → var(--coral): .acc-head labels, .acc-head h4, .acc-head .acc-num, .acc-icon plus/minus (currentColor); hover → var(--ink)
+   LEFT:    .tab-btn, .back-link, .outcome-cta, .next-project/.next-arrow, .back-to-top (already coral)
+   ─────────────────────────────────────────────────────────────── */
+
+h1,h2,h3,h4{color:var(--teal);}
+
+a{color:#F2665A; text-decoration:none; transition:color .2s ease;}
+a:hover{color:#33454A;}
+
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
+
+nav{position:sticky; top:0; z-index:200; display:flex; justify-content:space-between; align-items:center; padding:20px 48px; background:#FBF9F4ee; backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+.back-link{display:inline-flex; align-items:center; gap:6px; font-weight:600; font-size:14px;}
+.back-link svg{width:16px; height:16px; flex-shrink:0;}
+.nav-mark svg{display:block;}
+@media (max-width:1024px){
+  nav .nav-mark{order:1;}
+  nav .back-link{order:2;}
+}
+
+.cs-header{padding:48px 48px 30px; max-width:1240px; margin:0 auto;}
+.header-top{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
+.header-top .hero-image{margin:0; height:auto; min-height:0; aspect-ratio:3/4;}
+.tag{display:inline-flex; align-items:center; font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; padding:4.5px 10.5px; border-radius:100px; background:#F5A94A22; border:1.5px solid #C97A1F; color:#C97A1F;}
+h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw,52px); line-height:1.05; letter-spacing:-0.01em; max-width:760px;}
+.title-row{display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
+.title-row h1{margin:0;}
+.cs-sub{margin-top:8px; font-size:15px; color:var(--graphite); font-weight:600;}
+
+.meta-row{display:grid; grid-template-columns:0.9fr 1.5fr 1fr 0.85fr; gap:18px; margin:26px auto 0; padding:22px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+.meta-item span{display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--graphite); margin-bottom:5px;}
+.meta-item b{font-family:'Poppins',sans-serif; font-size:16px; font-weight:600;}
+.meta-note{font-size:13px; color:var(--graphite); margin-top:14px; font-style:italic;}
+
+/* ---- TABS ---- */
+.tab-nav-anchor{position:relative;}
+.tab-nav-wrap{position:relative;}
+.tab-nav-sentinel{height:1px;width:100%;pointer-events:none;visibility:hidden;}
+.tab-nav-spacer{height:0;flex-shrink:0;transition:height .25s ease;}
+.tab-nav{position:relative; z-index:150; display:flex; justify-content:flex-start; max-width:1240px; margin:0 auto; padding:16px 48px 0; background:transparent; overflow-x:auto; transition:background .25s ease, padding .25s ease, border-color .25s ease, box-shadow .25s ease, max-width .25s ease;}
+.tab-track{display:inline-flex; gap:4px; padding:5px; background:rgba(242,102,90,0.1); border:1.5px solid #F2665A; border-radius:100px; flex-shrink:0; transition:background .25s ease, border .25s ease, border-radius .25s ease, padding .25s ease, box-shadow .25s ease;}
+.tab-btn{font-family:'Inter',sans-serif; font-weight:600; font-size:13.5px; color:#F2665A; background:transparent; border:none; padding:10px 18px; border-radius:100px; cursor:pointer; transition:background-color .2s ease, color .2s ease; white-space:nowrap;}
+.tab-btn.active{color:#fff; background:#F2665A; box-shadow:0 4px 10px -3px #F2665A66;}
+.tab-btn:hover:not(.active){background:rgba(242,102,90,0.22); color:#F2665A;}
+.tab-btn:focus-visible{outline:2px solid var(--coral); outline-offset:2px;}
+@media (min-width:768px){
+  .tab-nav-wrap.is-sticky{position:fixed; top:65px; left:0; right:0; width:100%; z-index:150; padding:14px 48px 0; box-sizing:border-box;}
+  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow-x:visible; justify-content:flex-start;}
+  .tab-nav-wrap.is-sticky .tab-track{width:auto; max-width:50%; display:inline-flex; justify-content:flex-start; gap:8px; box-sizing:border-box; background:#FBD4D4; box-shadow:0 8px 20px -10px #33454A33; transition:width .3s ease, background .25s ease, border .25s ease, border-radius .25s ease, padding .25s ease, box-shadow .25s ease;}
+}
+@media (max-width:767px){
+  /* Mobile sticky, JS is-sticky + fixed bar; pill width unchanged */
+  .tab-btn{color:var(--coral);}
+  .tab-btn:active:not(.active){background:rgba(242,102,90,0.22); color:var(--coral);}
+  .tab-btn.progress-tab:active{color:#fff !important; background:var(--coral);}
+  .tab-nav-wrap.is-sticky{position:fixed; top:65px; left:0; right:0; width:100%; z-index:150; padding:14px 16px 0; box-sizing:border-box; background:transparent;}
+  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow:visible; justify-content:center;}
+  .tab-nav-wrap.is-sticky .tab-track{width:auto; max-width:calc(100vw - 32px); display:inline-flex; justify-content:flex-start; background:#FBD4D4; border-radius:100px; box-shadow:0 8px 16px -10px #33454A33; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; padding-right:12px; scroll-padding-inline-end:12px;}
+}
+
+.tab-panel{display:none; max-width:1240px; margin:0 auto; padding:44px 48px 90px; animation:fadeIn .35s ease;}
+.tab-panel.active{display:block;}
+@keyframes fadeIn{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);}}
+
+.hero-image{margin-bottom:44px; border-radius:22px; background:linear-gradient(135deg,#F5A94A18,#F5A94A14); border:2px dashed var(--line); min-height:340px; display:flex; align-items:center; justify-content:center; padding:30px; gap:24px; flex-wrap:wrap;}
+.placeholder-note{color:var(--graphite); font-size:13px; font-weight:600; text-align:center;}
+
+.section-eyebrow{font-weight:700; font-size:12.5px; color:var(--amber-dark); opacity:0.85; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px;}
+h2{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(24px,2.8vw,30px); margin-bottom:18px; max-width:740px;}
+h3{font-family:'Poppins',sans-serif; font-weight:600; font-size:19px; margin-bottom:10px; max-width:740px;}
+p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; max-width:740px;}
+.block{margin-bottom:56px;}
+.block:last-child{margin-bottom:0;}
+.block p + img{margin-top:20px;}
+.block > .stats-band,
+.block > .accordion,
+.block > .gallery:not(:first-child),
+.block > .feature-grid,
+.block > .compare-table{margin-top:20px;}
+.block > img:not(:first-child),
+.block > .gallery-item.wide:not(:first-child){margin-top:20px;}
+.block > .gallery-item.wide + .gallery-item.wide{margin-top:18px;}
+.chip-row + .gallery-item.wide,
+.chip-row + img,
+.accordion + .gallery-item.wide,
+.two-col-block + .gallery,
+.two-col-block + img,
+.two-col-block + .gallery-item.wide,
+[class*="-col-block"] + .gallery-item.wide,
+[class*="-col-block"] + img{margin-top:20px;}
+@media (min-width:901px){
+  .block--split{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
+  .block--split > :not(:last-child){grid-column:1;}
+  .block--split > :last-child{grid-column:2; grid-row:1 / -1; align-self:center;}
+  .block--split.reverse > :not(:last-child){grid-column:2;}
+  .block--split.reverse > :last-child{grid-column:1;}
+  .block--split h2,
+  .block--split h3,
+  .block--split p{max-width:none;}
+}
+.cs-header .header-top > div:first-child > .block + .block{padding-bottom:24px;}
+
+.gap-statement{font-style:italic; color:var(--teal); font-size:15px; border-top:1px solid var(--line); padding-top:18px; margin-top:6px;}
+.gap-callout{background:#F5A94A12; border-left:4px solid var(--amber); border-radius:0 16px 16px 0; padding:22px 24px; margin-top:18px;}
+.gap-callout .gap-statement{border-top:none; padding-top:0; margin-top:0; margin-bottom:0; max-width:none;}
+
+/* ---- ACCORDION ---- */
+.accordion{border-top:1px solid var(--line); margin-top:20px;}
+.acc-item{border-bottom:1px solid var(--line);}
+.acc-head{display:flex; justify-content:space-between; align-items:center; padding:22px 4px; cursor:pointer; background:none; border:none; width:100%; text-align:left;}
+.acc-head h4{font-family:'Poppins',sans-serif; font-size:17px; font-weight:600; display:flex; align-items:center; gap:12px;}
+
+/* CORAL: accordion expand toggles (clickable, overrides teal on h4/acc-num/icon) */
+.acc-head{color:var(--coral); transition:color .2s ease;}
+.acc-head:hover{color:var(--ink);}
+.acc-head h4{color:inherit;}
+.acc-head .acc-num{color:inherit;}
+.acc-head .acc-icon path{stroke:currentColor;}
+.acc-num{font-family:'Inter',sans-serif; font-size:12px; font-weight:700; color:inherit; background:#F5A94A14; width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+.acc-icon{width:20px; height:20px; flex-shrink:0; transition:transform .3s;}
+.acc-item.open .acc-icon{transform:rotate(45deg);}
+.acc-body{max-height:0; overflow:hidden; transition:max-height .35s ease;}
+.acc-body-inner{padding:0 4px 24px 42px;}
+.acc-body-inner p{font-size:14.5px;}
+
+/* ---- overview problem split ---- */
+.overview-problem-split{display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:start;}
+
+/* ---- STATS BAND ---- */
+.stats-band{background:var(--ink); border-radius:22px; padding:44px; display:grid; grid-template-columns:repeat(4,1fr); gap:26px; color:var(--paper); margin-bottom:10px;}
+.stat b{display:block; font-family:'Poppins',sans-serif; font-size:32px; color:var(--amber);}
+.stat span{font-size:12.5px; color:#B7C0C1; line-height:1.5;}
+
+/* ---- COMPETITIVE CARDS ---- */
+.compete-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px;}
+.compete-card{background:var(--paper-alt); border-radius:16px; padding:20px 22px;}
+.compete-card b{display:block; font-family:'Poppins',sans-serif; font-size:16px; margin-bottom:8px; color:var(--teal);}
+.compete-card p{font-size:13.5px; margin:0;}
+.compete-grid--research{grid-template-columns:1fr;}
+.compete-grid--research .compete-card{padding:0; overflow:hidden;}
+.compete-grid--research .compete-card-toggle{display:flex; align-items:center; justify-content:space-between; gap:16px; width:100%; padding:20px 22px; background:none; border:none; text-align:left; cursor:pointer; font:inherit; color:inherit;}
+.compete-grid--research .compete-card-toggle:focus-visible{outline:2px solid var(--coral); outline-offset:-2px; border-radius:16px;}
+.compete-grid--research .compete-card-copy{flex:1; min-width:0;}
+.compete-grid--research .compete-card-chevron-pill{display:flex; align-items:center; justify-content:center; width:34px; height:34px; flex-shrink:0; border-radius:100px; background:rgba(242,102,90,0.1); border:1.5px solid #F2665A; color:#F2665A; transition:background-color .2s ease, color .2s ease;}
+.compete-grid--research .compete-card-toggle:hover .compete-card-chevron-pill{background:#F2665A; color:#fff;}
+.compete-grid--research .compete-chevron{width:14px; height:14px; transition:transform .2s ease;}
+.compete-grid--research .compete-card.is-open .compete-chevron{transform:rotate(180deg);}
+.compete-grid--research .compete-card-panel{max-height:0; overflow:hidden; opacity:0; transition:max-height .35s ease, opacity .35s ease;}
+.compete-grid--research .compete-card.is-open .compete-card-panel{opacity:1;}
+.compete-grid--research .compete-card-panel-inner{padding:0 22px 22px;}
+.compete-grid--research .compete-card-panel img{width:100%; height:auto; display:block; border-radius:12px;}
+
+/* ---- GALLERY ---- */
+.gallery{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+.gallery-item{border-radius:16px; background:var(--paper-alt); border:2px dashed var(--line); min-height:220px; display:flex; align-items:center; justify-content:center; color:var(--graphite); font-size:13px; font-weight:600; text-align:center; padding:16px;}
+.gallery-item.wide{grid-column:1/-1; height:auto; min-height:220px;}
+
+/* ---- BEFORE/AFTER ---- */
+.ba-row{display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:20px;}
+.ba-item{text-align:center;}
+.ba-frame{aspect-ratio:9/17; background:var(--paper-alt); border:2px dashed var(--line); border-radius:18px; display:flex; align-items:center; justify-content:center; color:var(--graphite); font-size:12px; font-weight:600; margin-bottom:10px;}
+.ba-frame.after{border-color:var(--amber); border-style:solid; background:#F5A94A0d;}
+.ba-label{font-size:12.5px; font-weight:700; color:var(--ink-soft);}
+.ba-label.after{color:var(--ink-soft);}
+
+.edge-case-grid{display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:center;}
+.block--edge-case{background:rgba(71,131,131,0.08); border-radius:22px; padding:44px 40px;}
+.block--edge-case h2,
+.block--edge-case p{max-width:none;}
+.redesign-search-row{display:grid; grid-template-columns:0.85fr 1.15fr; gap:32px; align-items:center; margin-bottom:48px;}
+.provider-profiles-col-block{display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:center; margin-bottom:48px;}
+.provider-profiles-copy{text-align:left;}
+.provider-profiles-copy h2,
+.provider-profiles-copy p,
+.provider-profiles-copy .section-eyebrow{text-align:left;}
+.provider-profiles-visual .gallery-item{min-height:280px; border-radius:16px;}
+.outcome-grid{display:grid; grid-template-columns:1fr; gap:36px; align-items:start;}
+.outcome-intro-col-block{display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:center; margin-top:48px;}
+.outcome-intro-copy{text-align:left;}
+.outcome-intro-copy h2,
+.outcome-intro-copy p,
+.outcome-intro-copy .section-eyebrow{text-align:left;}
+.outcome-intro-visual .gallery-item{min-height:280px; border-radius:16px;}
+@media (max-width:900px){
+  .outcome-grid{grid-template-columns:1fr;}
+  .outcome-intro-col-block{grid-template-columns:1fr;}
+}
+
+/* ---- KEY LIST ---- */
+.key-list{list-style:none; margin-top:16px;}
+.key-list li{display:flex; gap:10px; padding:10px 0; font-size:14.5px; color:var(--ink-soft); border-bottom:1px solid var(--line);}
+.key-list li:last-child{border-bottom:none;}
+.key-list li::before{content:'✓'; color:var(--teal); font-weight:700; flex-shrink:0;}
+
+/* ---- REFLECTIONS ---- */
+.reflect-grid{display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:20px;}
+.reflect-card h4{font-family:'Poppins',sans-serif; font-size:17px; margin-bottom:10px;}
+.reflect-card p{font-size:14.5px;}
+
+/* ---- TESTIMONIAL ---- */
+.testimonial{background:#BEE9EE; border-radius:22px; padding:44px; margin-top:16px;}
+.testimonial p{font-style:italic; color:var(--teal); font-size:14.5px; margin-bottom:14px;}
+.testimonial .name{font-family:'Poppins',sans-serif; font-weight:600; font-size:16px; color:var(--ink); margin-top:8px;}
+.testimonial .role{font-size:13px; color:var(--ink-soft);}
+
+.outcome-cta{display:inline-flex; align-items:center; gap:8px; background:var(--coral); color:#fff; font-weight:600; font-size:14px; padding:14px 26px; border-radius:100px; text-decoration:none; margin-top:10px;}
+.outcome-cta:hover{background:var(--ink);}
+
+.panel-next{
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  margin:40px auto 0; padding:12px 22px;
+  background:rgba(242,102,90,0.1); border:1.5px solid #F2665A;
+  border-radius:100px; color:#F2665A; font-weight:600; font-size:14px;
+  cursor:pointer; transition:background-color .2s ease, color .2s ease;
+  width:fit-content;
+}
+.panel-next:hover{ background:#F2665A; color:#fff; }
+.panel-next svg{ width:14px; height:14px; transition:transform .2s ease; }
+.panel-next:hover svg{ transform:translateX(3px); }
+
+.next-project{margin:0 48px 60px; padding:44px 40px; background:var(--paper-alt); border-radius:24px; display:flex; justify-content:space-between; align-items:center; max-width:904px; margin-left:auto; margin-right:auto; text-decoration:none; color:inherit;}
+.next-project .label{font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--graphite); margin-bottom:6px;}
+.next-project h3{margin:0; max-width:none;}
+.next-arrow{width:50px; height:50px; border-radius:50%; background:#F2665A; border:none; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; transition:background-color .25s ease, transform .3s;}
+.next-arrow svg{width:20px; height:20px; stroke:#fff;}
+.next-project:hover .next-arrow{background:#33454A; transform:translateX(6px);}
+.next-project:active .next-arrow{background:#33454A;}
+
+footer{padding:0 48px 40px; text-align:center; color:var(--graphite); font-size:13.5px;}
+footer .foot-row{display:flex; align-items:center; justify-content:center; gap:14px;}
+footer .foot-row a.social{width:32px; height:32px; border-radius:50%; background:var(--paper-alt); display:flex; align-items:center; justify-content:center; transition:all .25s;}
+footer .foot-row a.social:hover{background:var(--ink);}
+footer .foot-row a.social svg{width:16px; height:16px; fill:var(--ink); transition:fill .25s;}
+footer .foot-row a.social:hover svg{fill:var(--paper);}
+
+.back-to-top{
+  position:fixed; bottom:28px; right:28px; width:48px; height:48px; border-radius:50%;
+  background:var(--coral); border:none; cursor:pointer; z-index:250;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transform:translateY(10px);
+  transition:opacity .3s ease, transform .3s ease, background .25s ease;
+  box-shadow:0 10px 24px -8px #33454A55;
+}
+.back-to-top.show{opacity:1; pointer-events:auto; transform:translateY(0);}
+.back-to-top.show:hover{background:var(--ink); transform:translateY(-3px);}
+.back-to-top svg{width:20px; height:20px; color:#fff; flex-shrink:0;}
+.back-to-top:focus-visible{outline:2px solid var(--coral); outline-offset:3px;}
+
+@media (max-width:900px){
+  .block--split .split-copy + .split-visual{margin-top:20px;}
+  .tab-nav-wrap{position:relative;}
+  .tab-nav-wrap::after{
+    content:''; position:absolute; top:16px; right:0; width:48px; height:44px;
+    pointer-events:none; background:linear-gradient(to right, transparent, var(--paper)); z-index:151;
+  }
+  .tab-nav-wrap.is-sticky::after{display:none;}
+  .tab-nav{
+    padding:16px 0 0; margin:0 16px; justify-content:flex-start;
+    overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
+    scroll-padding-inline-end:16px;
+  }
+  .tab-nav::-webkit-scrollbar{display:none;}
+  .tab-track{gap:2px; padding:3px 12px 3px 3px; flex-shrink:0;}
+  .tab-btn{padding:8px 10px; font-size:11.5px;}
+  .header-top{grid-template-columns:1fr;}
+  .edge-case-grid{grid-template-columns:1fr;}
+  .header-top .hero-image{height:auto; min-height:220px;}
+  .meta-row{grid-template-columns:1fr 1fr;}
+  .gallery, .compete-grid, .ba-row, .reflect-grid{grid-template-columns:1fr;}
+  .overview-problem-split{grid-template-columns:1fr;}
+  .redesign-search-row{grid-template-columns:1fr; margin-bottom:32px;}
+  .redesign-search-row > * + *{margin-top:20px;}
+  .provider-profiles-col-block{grid-template-columns:1fr;}
+  .provider-profiles-col-block > * + *{margin-top:20px;}
+  .block--edge-case{padding:32px 24px;}
+  .stats-band{grid-template-columns:1fr 1fr;}
+  .cs-header, .tab-panel{padding-left:24px; padding-right:24px;}
+  .next-project{flex-direction:column; align-items:flex-start; gap:20px; margin:0 24px 40px;}
+}
+</style>
 </head>
 <body>
-<p>Redirecting…</p>
+
+<div id="relay-loader" class="relay-loader">
+  <div id="relay-badge" class="relay-badge">
+    <div id="relay-stage" class="relay-stage"></div>
+  </div>
+  <div class="relay-label">
+    <span id="relay-label-text">Loading</span><span id="relay-dots" class="relay-dots"></span>
+  </div>
+</div>
+
+<nav>
+  <a href="../#work" class="back-link">
+    <svg viewBox="0 0 100 100" fill="none"><path d="M75 50 H30 M50 25 L25 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    All work
+  </a>
+  <a href="/" class="nav-mark" aria-label="Back to home">
+    <svg width="105" height="23" viewBox="150 95 465 115" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="navLogoGradTV" x1="0" y1="73.98" x2="0" y2="314.82" gradientUnits="userSpaceOnUse">
+          <stop offset=".04" stop-color="#254444"/><stop offset=".34" stop-color="#2a4748"/><stop offset=".69" stop-color="#385354"/><stop offset="1" stop-color="#4b6264"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#navLogoGradTV)" d="M156.97,201.31l33.3-93.09,25.04-.25,36.15,93.34h-23.93l-7.85-18.87-33.12-.61-6.28,19.48h-23.32ZM213.42,163.28l-10.43-31.91-9.2,31.91h19.63Z"/>
+      <polygon fill="url(#navLogoGradTV)" points="303 108.06 303 181.68 338.59 181.68 338.59 201.31 279.69 201.31 279.69 108.06 303 108.06"/>
+      <polygon fill="url(#navLogoGradTV)" points="391.36 108.06 391.36 201.31 371.11 201.31 369.27 199.47 369.27 108.06 391.36 108.06"/>
+      <path fill="url(#navLogoGradTV)" d="M510.31,113.06l-6.07,20.77c-24.52-14.96-57.03-9.44-54.03,25.21,1.63,18.8,18.53,26.29,35.7,23.33,7.25-1.25,12.91-5.63,19.55-8.04l6.09,18.3c-39.73,26.4-99.84.74-84.65-52.08,10.25-35.65,53.69-44.65,83.4-27.48Z"/>
+      <path fill="url(#navLogoGradTV)" d="M608.56,108.06v18.4h-39.88c-2.97,3.94-3.01,14.32,0,18.4h37.43v18.4h-39.27v18.4h42.95v19.63h-65.04v-93.25h63.81Z"/>
+    </svg>
+  </a>
+</nav>
+
+<header class="cs-header">
+  <div class="header-top">
+    <div>
+      <div class="title-row">
+        <h1>TiriVelo</h1>
+        <span class="tag">Mobile App</span>
+      </div>
+      <p class="cs-sub">Consumer Marketplace · Trust Architecture · Design System Assets</p>
+
+      <div class="block" style="margin-top:16px; margin-bottom:24px;">
+        <div class="section-eyebrow">The Challenge</div>
+        <p>TiriVelo's pet care marketplace was losing users at the most critical moment: provider evaluation.</p>
+        <p>Search context disappeared mid-browse, filters looked functional but were not. Provider profiles lacked the trust signals users needed to commit, and a silent edge case allowed wrong-service bookings with no warning.</p>
+        <p>Users were reaching the decision point and losing confidence, not because providers were inadequate, but because the product was not giving them what they needed to decide.</p>
+      </div>
+
+      <div class="block" style="margin-bottom:0;">
+        <div class="section-eyebrow">The Solution</div>
+        <p>End-to-end redesign of the Search, Discovery, and Provider Profile flows for a real product in active development.</p>
+        <p style="margin-bottom:0;">Persistent search context banners, a rebuilt filter system with grouped mental models, trust-signal-rich provider profiles, a three-tier CTA hierarchy, and an inline solution to the booking edge case, validated through moderated usability testing.</p>
+      </div>
+      <p class="meta-note" style="max-width:none;">Team capstone project with cross-functional collaborators; this case study reflects my individual ownership of the Search, Discovery, and Provider Profile flows.</p>
+      <div class="meta-row" style="border-top:none; padding-top:0; padding-bottom:10px; margin-top:42px;">
+        <div class="meta-item"><span>Role</span><b>UX Designer</b></div>
+        <div class="meta-item"><span>Scope</span><b>Search, Discovery &amp; Profile</b></div>
+        <div class="meta-item"><span>Timeline</span><b>4 Weeks</b></div>
+        <div class="meta-item"><span>Year</span><b>2026</b></div>
+      </div>
+    </div>
+    <div class="hero-image" style="border:none; padding:0; background:none; display:block; overflow:hidden; position:relative;">
+      <video src="/assets/tirivelo/tirivelo-hero-prototype-1.mp4" autoplay muted loop playsinline aria-label="TiriVelo app hero prototype" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; border-radius:16px;"></video>
+    </div>
+  </div>
+</header>
+
+<div class="tab-nav-anchor" id="tabNavAnchor">
+  <div class="tab-nav-sentinel" id="tabNavSentinel" aria-hidden="true"></div>
+  <div class="tab-nav-spacer" id="tabNavSpacer" aria-hidden="true"></div>
+  <div class="tab-nav-wrap" id="tabNavWrap">
+  <div class="tab-nav" id="tabNav">
+  <div class="tab-track">
+    <button class="tab-btn active" data-tab="overview">Overview</button>
+    <button class="tab-btn" data-tab="research">Research</button>
+    <button class="tab-btn" data-tab="design">Design &amp; Process</button>
+    <button class="tab-btn" data-tab="outcome">Outcome</button>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="tab-panel active" data-panel="overview">
+  <div class="block">
+    <div class="overview-problem-split">
+      <div>
+        <div class="section-eyebrow">The Problem</div>
+        <h2>Before a pet owner books a stranger, they need to feel certain. Not mostly sure.</h2>
+        <p style="max-width:none;">TiriVelo is a pet care marketplace helping owners discover and book local pet care providers. When I joined the project, the booking experience was failing at exactly that critical moment.</p>
+        <p style="max-width:none;">Users were reaching the provider evaluation stage and losing confidence, not because the providers were inadequate, but because the product was not giving them what they needed to decide.</p>
+        <div class="gap-callout">
+          <p class="gap-statement">Specific problems: users lost search context after entering results; filtering was visually present but functionally broken; provider cards had weak trust signals; key information was fragmented behind tabs.</p>
+        </div>
+      </div>
+      <div>
+        <h3>Diagnostic findings from the audit</h3>
+        <div class="accordion">
+          <div class="acc-item open">
+            <button class="acc-head"><h4><span class="acc-num">1</span>Fragmented provider profiles</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+            <div class="acc-body"><div class="acc-body-inner"><p>Critical information such as pricing, reviews, and availability was hidden behind disconnected tabs and extra taps: no review count or summary, no pricing visible on the profile landing page, and no background check badge.</p></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head"><h4><span class="acc-num">2</span>Non-functional filtering</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+            <div class="acc-body"><div class="acc-body-inner"><p>The filter button existed visually but opened nothing, preventing users from narrowing results.</p></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head"><h4><span class="acc-num">3</span>Search flow asked too much, too soon</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+            <div class="acc-body"><div class="acc-body-inner"><p>The search flow asked for too much information before users were ready to commit.</p></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head"><h4><span class="acc-num">4</span>Flat CTA hierarchy</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+            <div class="acc-body"><div class="acc-body-inner"><p>All CTAs used the same visual style, reducing action hierarchy, creating a lack of visual distinction between high-risk and low-risk actions.</p></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head"><h4><span class="acc-num">5</span>Missing transparency &amp; excessive scrolling</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+            <div class="acc-body"><div class="acc-body-inner"><p>Missing home environment details reduced provider transparency, and users had to scroll excessively to view provider availability.</p></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head"><h4><span class="acc-num">6</span>Provider cards lacked key information</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+            <div class="acc-body"><div class="acc-body-inner"><p>Provider cards lacked the key information needed for confident decision-making at a glance.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery" style="margin-top:20px;">
+      <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/tirivelo/Tirivelo-problems-higlight.jpg" alt="Annotated audit, fragmented profiles and non-functional filtering" style="width:100%; height:auto; display:block; border-radius:16px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- RESEARCH -->
+<div class="tab-panel" data-panel="research">
+  <div class="block">
+    <div class="section-eyebrow">Competitive Analysis</div>
+    <h2>4 competitive platforms. One clear gap.</h2>
+    <div class="compete-grid compete-grid--research">
+      <div class="compete-card">
+        <button class="compete-card-toggle" type="button" aria-expanded="false" aria-controls="compete-research-rover">
+          <span class="compete-card-copy">
+            <b>Rover</b>
+            <p>Visible trust signals placed early reduced uncertainty before users reached a profile.</p>
+          </span>
+          <span class="compete-card-chevron-pill" aria-hidden="true"><svg class="compete-chevron" viewBox="0 0 100 100" fill="none"><path d="M25 40 L50 65 L75 40" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="compete-card-panel" id="compete-research-rover">
+          <div class="compete-card-panel-inner">
+            <img data-relay src="/assets/tirivelo/research/rover.png" alt="Rover competitive research screenshot" style="width:100%; height:auto; display:block; border-radius:12px">
+          </div>
+        </div>
+      </div>
+      <div class="compete-card">
+        <button class="compete-card-toggle" type="button" aria-expanded="false" aria-controls="compete-research-wag">
+          <span class="compete-card-copy">
+            <b>Wag!</b>
+            <p>Optimized for speed, reducing decisions required to reach booking.</p>
+          </span>
+          <span class="compete-card-chevron-pill" aria-hidden="true"><svg class="compete-chevron" viewBox="0 0 100 100" fill="none"><path d="M25 40 L50 65 L75 40" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="compete-card-panel" id="compete-research-wag">
+          <div class="compete-card-panel-inner">
+            <img data-relay src="/assets/tirivelo/research/wag.png" alt="Wag! competitive research screenshot" style="width:100%; height:auto; display:block; border-radius:12px">
+          </div>
+        </div>
+      </div>
+      <div class="compete-card">
+        <button class="compete-card-toggle" type="button" aria-expanded="false" aria-controls="compete-research-pawshake">
+          <span class="compete-card-copy">
+            <b>Pawshake</b>
+            <p>Browse-first discovery reduced commitment anxiety early in the funnel.</p>
+          </span>
+          <span class="compete-card-chevron-pill" aria-hidden="true"><svg class="compete-chevron" viewBox="0 0 100 100" fill="none"><path d="M25 40 L50 65 L75 40" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="compete-card-panel" id="compete-research-pawshake">
+          <div class="compete-card-panel-inner">
+            <img data-relay src="/assets/tirivelo/research/pawshake.png" alt="Pawshake competitive research screenshot" style="width:100%; height:auto; display:block; border-radius:12px">
+          </div>
+        </div>
+      </div>
+      <div class="compete-card">
+        <button class="compete-card-toggle" type="button" aria-expanded="false" aria-controls="compete-research-care">
+          <span class="compete-card-copy">
+            <b>Care.com</b>
+            <p>Early paywalls actively weakened trust at first contact, a lesson in what not to do.</p>
+          </span>
+          <span class="compete-card-chevron-pill" aria-hidden="true"><svg class="compete-chevron" viewBox="0 0 100 100" fill="none"><path d="M25 40 L50 65 L75 40" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="compete-card-panel" id="compete-research-care">
+          <div class="compete-card-panel-inner">
+            <img data-relay src="/assets/tirivelo/research/care.com.png" alt="Care.com competitive research screenshot" style="width:100%; height:auto; display:block; border-radius:12px">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DESIGN & PROCESS -->
+<div class="tab-panel" data-panel="design">
+  <div class="block">
+    <div class="redesign-search-row">
+      <div>
+        <div class="section-eyebrow">Redesigning Search</div>
+        <h2>Orientation is a trust signal. When users lose context, they lose confidence.</h2>
+        <p>The redesign introduced:</p>
+        <ul class="key-list">
+          <li>A persistent search context banner</li>
+          <li>Provider status indicators ("Active Now," "Trusted by TiriVelo")</li>
+          <li>Visible sort-state labels</li>
+          <li>Complete rebuild of filters using mental models.</li>
+        </ul>
+        <p style="margin-top:16px; font-weight:700; font-size:17.5px;">The underlying principle: if users know where they are, they can decide with confidence.</p>
+      </div>
+      <div class="gallery-item" style="border:none; padding:0; background:none;"><video src="/assets/tirivelo/tirivelo-context-banner.mp4" autoplay muted loop playsinline aria-label="Search context banner" style="width:100%; height:auto; display:block; border-radius:16px;"></video></div>
+    </div>
+    <img data-relay src="/assets/tirivelo/tirivelo-profile-optimization.png" alt="Rebuilt filter panel" style="width:100%; height:auto; display:block; border-radius:16px">
+  </div>
+
+  <div class="block">
+    <div class="section-eyebrow">Designing the Booking Flow</div>
+    <h2>What the flow is built on.</h2>
+    <div class="compete-grid">
+      <div class="compete-card"><b>01 One decision per screen</b><p>Each screen asks for exactly one thing. Cognitive load stays flat no matter how long the flow gets.</p></div>
+      <div class="compete-card"><b>02 Sheets over pages</b><p>Date and pet selection surface as overlays. The booking context never disappears behind a navigation push.</p></div>
+      <div class="compete-card"><b>03 Guest-first</b><p>The flow runs to completion without an account. Registration is a consequence of booking, not a gate before it.</p></div>
+      <div class="compete-card"><b>04 Disabled means unfinished</b><p>The primary CTA stays inert until it can succeed. A button that fails is worse than a button that waits.</p></div>
+      <div class="compete-card"><b>05 Faces beat dropdowns</b><p>Pets are chosen by photo. Recognition is a faster operation than reading a list.</p></div>
+      <div class="compete-card"><b>06 Waiting is designed</b><p>The matching state animates. A blank spinner reads as broken; motion reads as working.</p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/tirivelo/Tirivelo-search-flow.jpg" alt="Service booking flow" style="width:100%; height:auto; display:block; border-radius:16px"></div>
+    <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/tirivelo/Tirivelo-seamless-flow-search.png" alt="User flow, logged-in vs guest path" style="width:100%; height:auto; display:block; border-radius:16px"></div>
+  </div>
+
+  <div class="block">
+    <div class="provider-profiles-col-block">
+      <div class="provider-profiles-visual">
+        <video src="/assets/tirivelo/providers-.mp4" autoplay muted loop playsinline style="width:100%; height:auto; display:block; border-radius:16px;"></video>
+      </div>
+      <div class="provider-profiles-copy">
+        <div class="section-eyebrow">Provider Profiles</div>
+        <h2>Profiles are where booking decisions are made or abandoned.</h2>
+        <p>Key additions included:</p>
+        <ul class="key-list">
+          <li>Photo-first trust building</li>
+          <li>Verification badges</li>
+          <li>Repeat-client metrics</li>
+          <li>Environment information</li>
+          <li>Persistent booking actions</li>
+          <li>Availability reassurance</li>
+          <li>Review credibility indicators</li>
+        </ul>
+      </div>
+    </div>
+    <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/tirivelo/banner-states-mockups-.png" alt="Provider profile, verification badges, ratings, availability calendar" style="width:100%; height:auto; display:block; border-radius:16px"></div>
+    <p style="margin-top:16px; font-size:13.5px; font-style:italic; max-width:none; width:100%;">The dynamic availability banner was designed to reduce booking uncertainty by adapting to the user's search context. If no date was selected, it encouraged exploration with "Check Availability"; date-specific searches provided immediate availability feedback to help users evaluate providers faster and with greater confidence.</p>
+  </div>
+
+  <div class="block block--edge-case">
+    <div class="edge-case-grid">
+      <div>
+        <div class="section-eyebrow">Solving a Critical Edge Case</div>
+        <h2>Wrong service selected silently → modal fatigue → inline solution.</h2>
+        <p>During our first round of user testing, users could accidentally book a different service than the one they originally searched for.</p>
+        <p>A confirmation modal was initially attempted to solve the issue but created modal fatigue.</p>
+        <p>The final solution used inline selection states, persistent original search context, and clear service-switch messaging.</p>
+      </div>
+      <video src="/assets/tirivelo/warning-tirivelo.mp4" autoplay muted loop playsinline aria-label="Inline service-switch solution" style="width:100%; height:auto; display:block; border-radius:16px;"></video>
+    </div>
+  </div>
+</div>
+
+<!-- OUTCOME -->
+<div class="tab-panel" data-panel="outcome">
+  <div class="block">
+    <div class="section-eyebrow">Usability Testing</div>
+    <h2>Moderated testing with 5 participants across 9 screens in 45-60 minute sessions.</h2>
+    <div class="stats-band">
+      <div class="stat"><b>5</b><span>Participants</span></div>
+      <div class="stat"><b>9</b><span>Screens tested</span></div>
+      <div class="stat"><b>100%</b><span>Task Completion Rate</span></div>
+      <div class="stat"><b>45-60</b><span>Minutes per session</span></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="outcome-grid">
+      <div class="accordion">
+        <div class="acc-item open">
+          <button class="acc-head"><h4><span class="acc-num">1</span>Updated Navigation Semantics</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+          <div class="acc-body"><div class="acc-body-inner"><p>Combined service-category shapes with the magnifier to create a more specific and recognizable "browse services" interaction.</p><img data-relay src="/assets/tirivelo/1-semantics.png" alt="Updated navigation semantics" style="width:100%; height:auto; display:block; border-radius:16px"></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head"><h4><span class="acc-num">2</span>Message → Inbox Label Update</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+          <div class="acc-body"><div class="acc-body-inner"><p>Renamed "Message" to "Inbox" to create clearer expectations around provider communication and booking updates.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head"><h4><span class="acc-num">3</span>Improved Active Navigation State</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+          <div class="acc-body"><div class="acc-body-inner"><p>Replaced the underline indicator with a filled background state to create a stronger, more scannable active-tab affordance.</p><img data-relay src="/assets/tirivelo/3-va-states.png" alt="Improved active navigation state" style="width:100%; height:auto; display:block; border-radius:16px"></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head"><h4><span class="acc-num">4</span>Unified &amp; Expanded Icon System</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+          <div class="acc-body"><div class="acc-body-inner"><p>Standardized icon styling and visual weight for consistency across navigation. Created filled and outline icon variants for clearer active/inactive states, improved accessibility, and native mobile interaction patterns.</p><img data-relay src="/assets/tirivelo/4-icons.png" alt="Unified and expanded icon system" style="width:100%; height:auto; display:block; border-radius:16px"></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head"><h4><span class="acc-num">5</span>Three-Tier CTA Hierarchy</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+          <div class="acc-body"><div class="acc-body-inner"><p>Replaced the single-button system with a three-tier CTA hierarchy that visually distinguishes high-commitment booking actions from secondary and low-risk utility actions.</p><img data-relay src="/assets/tirivelo/5-ctas.png" alt="Three-tier CTA hierarchy" style="width:100%; height:auto; display:block; border-radius:16px"></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head"><h4><span class="acc-num">6</span>React Native-Ready Components</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+          <div class="acc-body"><div class="acc-body-inner"><p>Component organization built to hand off cleanly into a React Native codebase.</p><img data-relay src="/assets/tirivelo/6-components.png" alt="React Native-ready components" style="width:100%; height:auto; display:block; border-radius:16px"></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head"><h4><span class="acc-num">7</span>Accessibility Improvements</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+          <div class="acc-body"><div class="acc-body-inner"><p>Ensured compliance with Apple HIG and WCAG touch target standards.</p><img data-relay src="/assets/tirivelo/7-accessibility.png" alt="Accessibility improvements" style="width:100%; height:auto; display:block; border-radius:16px"></div></div>
+        </div>
+      </div>
+      <div class="outcome-intro-col-block">
+        <div class="outcome-intro-visual">
+          <video src="/assets/tirivelo/before-after-tirivelo-optimized.mp4" autoplay muted loop playsinline aria-label="TiriVelo before and after redesign" style="width:100%; height:auto; display:block; border-radius:16px;"></video>
+        </div>
+        <div class="outcome-intro-copy">
+          <div class="section-eyebrow">The Outcome</div>
+          <h2>A real product, with redesigned flows forming the live product foundation moving towards launch.</h2>
+          <p>To support scalability and consistency across the marketplace experience, the redesign expanded TiriVelo's design system and interaction framework with a standardized typography scale, refined teal color palette, and accessibility-driven component sizing, ensuring the product could grow and evolve consistently well beyond the initial redesign.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="section-eyebrow">Reflections</div>
+    <div class="reflect-grid">
+      <div class="reflect-card">
+        <h4>What the Testing Taught Me</h4>
+        <p>The original services tab was designed to be non-interactive, display only. Every single participant attempted to tap service rows. The final iteration made them interactive, redesigning around what users naturally expected rather than what the design intended. User expectations consistently outweigh designer assumptions.</p>
+      </div>
+      <div class="reflect-card">
+        <h4>What I Would Do Differently</h4>
+        <p>With more time, I would have run a second round of testing specifically on the edge case solution, and pushed further into the provider onboarding experience to understand trust from both sides of the marketplace.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="testimonial" style="padding:0; background:none; overflow:hidden; border-radius:22px;">
+      <img data-relay src="/assets/tirivelo/michael-squote.png" alt="Testimonial from Michael Navarro, CEO of TiriVelo Inc." style="width:100%; height:auto; display:block">
+    </div>
+  </div>
+  <a href="../rapimd-case-study/" class="next-project">
+    <div><div class="label">Next case file</div><h3>RapiMD</h3></div>
+    <div class="next-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </a>
+</div>
+
+<footer>
+  <div class="foot-row">
+    <span>© Alice Curiel, hello@aliceportfolio.com</span>
+    <a href="https://www.linkedin.com/in/alice-curiel-800817146/" target="_blank" rel="noopener" class="social" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V9.75H5.67v8.59h2.67zM7 8.63a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.34 9.71v-4.71c0-2.52-1.35-3.69-3.15-3.69a2.72 2.72 0 0 0-2.46 1.35v-1.16H10.06c.04.75 0 8.21 0 8.21h2.67v-4.59c0-.25.02-.49.09-.67.2-.49.65-1 1.4-1 1 0 1.4.75 1.4 1.86v4.4h2.72z"/></svg>
+    </a>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 100 100" fill="none"><path d="M50 75 V25 M25 50 L50 25 L75 50" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script>
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    const activePanel = document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`);
+    activePanel.classList.add('active');
+    // Target the panel itself (not sticky, so its position is always reliable), // offset by the height of the fixed nav + tab bar (~130px combined).
+    const panelTop = activePanel.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({top: panelTop - 130, behavior:'smooth'});
+  });
+});
+(function(){
+  const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
+  if(!tabButtons.length) return;
+
+  tabButtons.forEach((btn, index)=>{
+    const panel = document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`);
+    if(!panel) return;
+    const isLast = index === tabButtons.length - 1;
+
+    if(!isLast){
+      const nextBtn = tabButtons[index + 1];
+      const continueBtn = document.createElement('button');
+      continueBtn.className = 'panel-next';
+      continueBtn.innerHTML = `Continue
+        <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      continueBtn.addEventListener('click', ()=> nextBtn.click());
+      panel.appendChild(continueBtn);
+    } else {
+      const nextProjectEl = document.querySelector('.next-project');
+      if(nextProjectEl){
+        nextProjectEl.remove();
+        panel.appendChild(nextProjectEl);
+      }
+    }
+  });
+})();
+(function(){
+  const tabWrap = document.getElementById('tabNavWrap');
+  const sentinel = document.getElementById('tabNavSentinel');
+  const spacer = document.getElementById('tabNavSpacer');
+  if(!tabWrap || !sentinel || !spacer) return;
+  const stickTop = 65;
+  let isStuck = false;
+  let cachedHeight = 0;
+
+  function setSticky(stuck){
+    if(stuck === isStuck) return;
+
+    if(stuck){
+      cachedHeight = tabWrap.offsetHeight;
+      spacer.style.height = cachedHeight + 'px';
+      tabWrap.classList.add('is-sticky');
+      isStuck = true;
+    } else {
+      tabWrap.classList.remove('is-sticky');
+      spacer.style.height = '0px';
+      cachedHeight = 0;
+      isStuck = false;
+    }
+  }
+
+  function updateSticky(){
+    setSticky(sentinel.getBoundingClientRect().top < stickTop);
+  }
+
+  const observer = new IntersectionObserver(()=>{
+    updateSticky();
+  }, { root:null, threshold:[0] });
+  observer.observe(sentinel);
+  window.addEventListener('scroll', updateSticky, {passive:true});
+
+  window.addEventListener('resize', ()=>{
+    if(isStuck){
+      cachedHeight = tabWrap.offsetHeight;
+      spacer.style.height = cachedHeight + 'px';
+    }
+    updateSticky();
+  });
+  updateSticky();
+})();
+document.querySelectorAll('.acc-head').forEach(head=>{
+  head.addEventListener('click', ()=>{
+    const item = head.parentElement;
+    const body = item.querySelector('.acc-body');
+    const isOpen = item.classList.contains('open');
+    item.parentElement.querySelectorAll('.acc-item').forEach(sib=>{
+      sib.classList.remove('open');
+      sib.querySelector('.acc-body').style.maxHeight = null;
+    });
+    if(!isOpen){ item.classList.add('open'); body.style.maxHeight = body.scrollHeight + 'px'; }
+  });
+});
+document.querySelectorAll('.compete-grid--research .compete-card-toggle').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const card = btn.closest('.compete-card');
+    const panel = card.querySelector('.compete-card-panel');
+    const grid = card.closest('.compete-grid--research');
+    const isOpen = card.classList.contains('is-open');
+
+    function closeCard(target){
+      target.classList.remove('is-open');
+      const targetBtn = target.querySelector('.compete-card-toggle');
+      const targetPanel = target.querySelector('.compete-card-panel');
+      if(targetBtn) targetBtn.setAttribute('aria-expanded', 'false');
+      if(targetPanel) targetPanel.style.maxHeight = null;
+    }
+
+    if(isOpen){
+      closeCard(card);
+    } else {
+      grid.querySelectorAll('.compete-card.is-open').forEach(openCard=>{
+        if(openCard !== card) closeCard(openCard);
+      });
+      card.classList.add('is-open');
+      btn.setAttribute('aria-expanded', 'true');
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+    }
+  });
+});
+window.addEventListener('resize', ()=>{
+  document.querySelectorAll('.compete-grid--research .compete-card.is-open .compete-card-panel').forEach(panel=>{
+    panel.style.maxHeight = panel.scrollHeight + 'px';
+  });
+});
+window.addEventListener('load', ()=>{
+  document.querySelectorAll('.acc-item.open .acc-body').forEach(b=>{ b.style.maxHeight = b.scrollHeight + 'px'; });
+});
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', ()=>{
+  if(window.scrollY > 500){ backToTop.classList.add('show'); }
+  else{ backToTop.classList.remove('show'); }
+});
+backToTop.addEventListener('click', ()=>{ window.scrollTo({top:0, behavior:'smooth'}); });
+</script>
+
+<script src="/assets/js/relay.js"></script>
 </body>
 </html>

@@ -6,11 +6,873 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/Favicon-32px.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16px.png">
 <link rel="apple-touch-icon" href="/assets/Favicon-64PX.png">
-<meta http-equiv="refresh" content="0; url=sifted-case-study.html">
-<script>location.replace("sifted-case-study.html"+location.search+location.hash);</script>
-<title>Redirecting…</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+<title>Sifted, Case Study, Alice Curiel</title>
+<style>
+:root{
+  --coral:#F2665A; --amber:#F5A94A; --amber-dark:#C97A1F; --ink:#33454A; --teal:#478383; --ink-soft:#5B6A6D;
+  --paper:#FBF9F4; --paper-alt:#F2EDE1; --graphite:#8B9290; --line:#33454A1a;
+  --sifted-mint:#8FC0A9; --sifted-navy:#1F3A4D;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif;}
+/* ── TEAL ACCENT AUDIT (sifted-case-study) ───────────────────────
+   CHANGED → var(--teal): h1–h4, .section-eyebrow, .gap-statement, .pull-quote p, .persona-quote, .principle b, .feature-icon svg (static labels, not accordion toggles)
+   LEFT:    .stat b (amber), inline h3 var(--sifted-navy), .meta-note (graphite), .priority-tag pills (amber-tinted), inline body p styles (ink), coral nav/CTA/back-to-top SVGs
+   ─────────────────────────────────────────────────────────────── */
+
+/* ── CORAL INTERACTIVE AUDIT (sifted-case-study) ─────────────────
+   CHANGED → var(--coral): .acc-head labels, .acc-head h4, .acc-head .acc-num, .acc-icon plus/minus (currentColor); hover → var(--ink)
+   LEFT:    .tab-btn, .back-link, .outcome-cta, .next-project/.next-arrow, .back-to-top (already coral); .priority-tag pills inside acc heads
+   ─────────────────────────────────────────────────────────────── */
+
+h1,h2,h3,h4{color:var(--teal);}
+
+a{color:#F2665A; text-decoration:none; transition:color .2s ease;}
+a:hover{color:#33454A;}
+
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
+
+nav{position:sticky; top:0; z-index:200; display:flex; justify-content:space-between; align-items:center; padding:20px 48px; background:#FBF9F4ee; backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+.back-link{display:inline-flex; align-items:center; gap:6px; font-weight:600; font-size:14px;}
+.back-link svg{width:16px; height:16px; flex-shrink:0;}
+.nav-mark svg{display:block;}
+@media (max-width:1024px){
+  nav .nav-mark{order:1;}
+  nav .back-link{order:2;}
+}
+
+.cs-header{padding:48px 48px 30px; max-width:1240px; margin:0 auto;}
+.header-top{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
+.header-top .hero-image{margin:0; height:auto; min-height:0; aspect-ratio:3/4;}
+.tag{display:inline-flex; align-items:center; font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; padding:4.5px 10.5px; border-radius:100px; background:#F5A94A22; border:1.5px solid #C97A1F; color:#C97A1F;}
+h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw,52px); line-height:1.05; letter-spacing:-0.01em; max-width:760px;}
+.title-row{display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
+.title-row h1{margin:0;}
+.cs-sub{margin-top:8px; font-size:15px; color:var(--graphite); font-weight:600;}
+
+.meta-row{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin:26px auto 0; padding:22px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+.meta-item span{display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--graphite); margin-bottom:5px;}
+.meta-item b{font-family:'Poppins',sans-serif; font-size:16px; font-weight:600;}
+.meta-note{font-size:13px; color:var(--graphite); margin-top:14px; font-style:italic;}
+
+/* ---- TABS ---- */
+.tab-nav-anchor{position:relative;}
+.tab-nav-wrap{position:relative;}
+.tab-nav-sentinel{height:1px;width:100%;pointer-events:none;visibility:hidden;}
+.tab-nav-spacer{height:0;flex-shrink:0;transition:height .25s ease;}
+.tab-nav{position:relative; z-index:150; display:flex; justify-content:flex-start; max-width:1240px; margin:0 auto; padding:16px 48px 0; background:transparent; overflow-x:auto; transition:background .25s ease, padding .25s ease, border-color .25s ease, box-shadow .25s ease, max-width .25s ease;}
+.tab-track{display:inline-flex; gap:4px; padding:5px; background:rgba(242,102,90,0.1); border:1.5px solid #F2665A; border-radius:100px; flex-shrink:0; transition:background .25s ease, border .25s ease, border-radius .25s ease, padding .25s ease, box-shadow .25s ease;}
+.tab-btn{font-family:'Inter',sans-serif; font-weight:600; font-size:13.5px; color:#F2665A; background:transparent; border:none; padding:10px 18px; border-radius:100px; cursor:pointer; transition:background-color .2s ease, color .2s ease; white-space:nowrap;}
+.tab-btn.active{color:#fff; background:#F2665A; box-shadow:0 4px 10px -3px #F2665A66;}
+.tab-btn:hover:not(.active){background:rgba(242,102,90,0.22); color:#F2665A;}
+.tab-btn:focus-visible{outline:2px solid var(--coral); outline-offset:2px;}
+@media (min-width:768px){
+  .tab-nav-wrap.is-sticky{position:fixed; top:65px; left:0; right:0; width:100%; z-index:150; padding:14px 48px 0; box-sizing:border-box;}
+  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow-x:visible; justify-content:flex-start;}
+  .tab-nav-wrap.is-sticky .tab-track{width:auto; max-width:50%; display:inline-flex; justify-content:flex-start; gap:8px; box-sizing:border-box; background:#FBD4D4; box-shadow:0 8px 20px -10px #33454A33; transition:width .3s ease, background .25s ease, border .25s ease, border-radius .25s ease, padding .25s ease, box-shadow .25s ease;}
+}
+@media (max-width:767px){
+  /* Mobile sticky, JS is-sticky + fixed bar; pill width unchanged */
+  .tab-btn{color:var(--coral);}
+  .tab-btn:active:not(.active){background:rgba(242,102,90,0.22); color:var(--coral);}
+  .tab-btn.progress-tab:active{color:#fff !important; background:var(--coral);}
+  .tab-nav-wrap.is-sticky{position:fixed; top:65px; left:0; right:0; width:100%; z-index:150; padding:14px 16px 0; box-sizing:border-box; background:transparent;}
+  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow:visible; justify-content:center;}
+  .tab-nav-wrap.is-sticky .tab-track{width:auto; max-width:calc(100vw - 32px); display:inline-flex; justify-content:flex-start; background:#FBD4D4; border-radius:100px; box-shadow:0 8px 16px -10px #33454A33; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; padding-right:12px; scroll-padding-inline-end:12px;}
+}
+
+.tab-panel{display:none; max-width:1240px; margin:0 auto; padding:44px 48px 90px; animation:fadeIn .35s ease;}
+.tab-panel.active{display:block;}
+@keyframes fadeIn{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);}}
+
+.hero-image{margin-bottom:44px; border-radius:22px; background:linear-gradient(135deg,var(--sifted-mint)22,var(--sifted-navy)11); border:2px dashed var(--line); min-height:340px; display:flex; align-items:center; justify-content:center; padding:30px; gap:24px; flex-wrap:wrap;}
+.placeholder-note{color:var(--graphite); font-size:13px; font-weight:600; text-align:center;}
+
+.section-eyebrow{font-weight:700; font-size:12.5px; color:var(--amber-dark); opacity:0.85; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px;}
+h2{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(24px,2.8vw,30px); margin-bottom:18px; max-width:740px;}
+h3{font-family:'Poppins',sans-serif; font-weight:600; font-size:19px; margin-bottom:10px; max-width:740px;}
+p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; max-width:740px;}
+.block{margin-bottom:56px;}
+.block:last-child{margin-bottom:0;}
+.block p + img{margin-top:20px;}
+.block > .stats-band,
+.block > .accordion,
+.block > .gallery:not(:first-child),
+.block > .feature-grid,
+.block > .compare-table{margin-top:20px;}
+.block > img:not(:first-child),
+.block > .gallery-item.wide:not(:first-child){margin-top:20px;}
+.block > .gallery-item.wide + .gallery-item.wide{margin-top:18px;}
+.chip-row + .gallery-item.wide,
+.chip-row + img,
+.accordion + .gallery-item.wide,
+.two-col-block + .gallery,
+.two-col-block + img,
+.two-col-block + .gallery-item.wide,
+[class*="-col-block"] + .gallery-item.wide,
+[class*="-col-block"] + img{margin-top:20px;}
+@media (min-width:901px){
+  .block--split{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
+  .block--split > :not(:last-child){grid-column:1;}
+  .block--split > :last-child{grid-column:2; grid-row:1 / -1; align-self:center;}
+  .block--split.reverse > :not(:last-child){grid-column:2;}
+  .block--split.reverse > :last-child{grid-column:1;}
+  .block--split h2,
+  .block--split h3,
+  .block--split p{max-width:none;}
+}
+.cs-header .header-top > div:first-child > .block + .block{padding-bottom:24px;}
+.col-row{display:grid; grid-template-columns:1fr; gap:32px; align-items:center;}
+.col-row-copy{text-align:left;}
+.col-row-copy h2,
+.col-row-copy h3,
+.col-row-copy p{max-width:none;}
+.col-row-visual{align-self:center; width:100%;}
+.col-row-visual .stats-band{margin:0; grid-template-columns:1fr;}
+@media (min-width:901px){
+  .col-row{grid-template-columns:1fr 1fr; gap:48px;}
+}
+
+/* pull quote */
+.pull-quote{background:#F5A94A12; border-left:4px solid var(--amber); border-radius:0 16px 16px 0; padding:32px 36px; margin:20px 0 48px;}
+.pull-quote p{font-family:'Poppins',sans-serif; font-size:22px; font-weight:500; color:var(--teal); line-height:1.35; margin:0; max-width:640px;}
+.gap-statement{font-style:italic; color:var(--teal); font-size:15px; border-top:1px solid var(--line); padding-top:18px; margin-top:6px;}
+
+/* ---- ACCORDION ---- */
+.accordion{border-top:1px solid var(--line); margin-top:20px;}
+.acc-item{border-bottom:1px solid var(--line);}
+.acc-head{display:flex; justify-content:space-between; align-items:center; padding:22px 4px; cursor:pointer; background:none; border:none; width:100%; text-align:left;}
+.acc-head h4{font-family:'Poppins',sans-serif; font-size:17px; font-weight:600; display:flex; align-items:center; gap:12px;}
+
+/* CORAL: accordion expand toggles (clickable, overrides teal on h4/acc-num/icon) */
+.acc-head{color:var(--coral); transition:color .2s ease;}
+.acc-head:hover{color:var(--ink);}
+.acc-head h4{color:inherit;}
+.acc-head .acc-num{color:inherit;}
+.acc-head .acc-icon path{stroke:currentColor;}
+.acc-num{font-family:'Inter',sans-serif; font-size:12px; font-weight:700; color:inherit; background:#F5A94A14; width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+.acc-icon{width:20px; height:20px; flex-shrink:0; transition:transform .3s;}
+.acc-item.open .acc-icon{transform:rotate(45deg);}
+.acc-body{max-height:0; overflow:hidden; transition:max-height .35s ease;}
+.acc-body-inner{padding:0 4px 24px 42px;}
+.acc-body-inner p{font-size:14.5px;}
+
+/* ---- STATS BAND ---- */
+.stats-band{background:var(--ink); border-radius:22px; padding:44px; display:grid; grid-template-columns:repeat(3,1fr); gap:26px; color:var(--paper); margin-bottom:10px;}
+.stat b{display:block; font-family:'Poppins',sans-serif; font-size:32px; color:var(--amber);}
+.stat span{font-size:12.5px; color:#B7C0C1; line-height:1.5;}
+
+/* ---- THEME CHIPS ---- */
+.chip-row{display:flex; gap:14px; flex-wrap:wrap; margin:20px 0 0;}
+.chip{background:var(--paper-alt); border-radius:14px; padding:16px 20px; font-size:13.5px; font-weight:600; color:var(--ink-soft); max-width:230px;}
+
+/* ---- PERSONAS ---- */
+.persona-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:20px;}
+.persona-card{background:#fff; border:1px solid var(--line); border-radius:18px; padding:24px;}
+.persona-quote{background:var(--paper-alt); border-radius:12px; padding:14px 16px; font-style:italic; font-size:14px; color:var(--teal); margin-bottom:16px;}
+.persona-name{font-family:'Poppins',sans-serif; font-size:17px; font-weight:600;}
+.persona-role{font-size:12.5px; color:var(--ink-soft); font-weight:700; text-transform:uppercase; letter-spacing:0.03em; margin-bottom:12px;}
+.persona-meta{font-size:12.5px; color:var(--graphite); line-height:1.7;}
+
+/* ---- COMPARISON TABLE ---- */
+.compare-table{width:100%; border-collapse:collapse; margin-top:16px; border-radius:14px; overflow:hidden; border:1px solid var(--line);}
+.compare-table th{background:var(--ink); color:var(--paper); text-align:left; padding:14px 20px; font-size:12px; text-transform:uppercase; letter-spacing:0.04em; font-weight:700;}
+.compare-table td{padding:16px 20px; font-size:14px; border-top:1px solid var(--line);}
+.compare-table td:first-child{color:var(--ink-soft);}
+.compare-table td:last-child{color:var(--ink); font-weight:600;}
+.compare-table tr:nth-child(even){background:var(--paper-alt);}
+
+/* ---- FEATURE GRID ---- */
+.feature-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:16px;}
+.feature-card{background:#fff; border:1px solid var(--line); border-radius:16px; padding:22px; text-align:center;}
+.feature-icon{width:52px; height:52px; border-radius:50%; background:var(--paper-alt); margin:0 auto 14px; display:flex; align-items:center; justify-content:center;}
+.feature-icon svg{width:26px; height:26px; stroke:var(--teal);}
+.feature-card h4{font-family:'Poppins',sans-serif; font-size:15.5px; font-weight:600; margin-bottom:6px;}
+.feature-card p{font-size:12.5px; margin:0; max-width:none;}
+
+/* ---- AI PRINCIPLE ROW ---- */
+.principle-row{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:20px;}
+.principle{background:var(--paper-alt); border-radius:16px; padding:22px;}
+.principle b{display:block; font-family:'Poppins',sans-serif; font-size:15px; margin-bottom:8px; color:var(--teal);}
+.principle p{font-size:13px; margin:0;}
+
+/* ---- WIREFRAME ROW ---- */
+.wire-row{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:16px;}
+.wire-item{text-align:center;}
+.wire-frame{aspect-ratio:9/17; background:var(--paper-alt); border:2px dashed var(--line); border-radius:18px; display:flex; align-items:center; justify-content:center; color:var(--graphite); font-size:12px; font-weight:600; margin-bottom:10px;}
+.wire-frame.selected{border-color:var(--amber); border-style:solid; background:#F5A94A0d;}
+.wire-label{font-size:12.5px; font-weight:700; color:var(--ink-soft);}
+.wire-label.selected{color:var(--ink);}
+.wire-carousel{position:relative;}
+.wire-dots{display:none; gap:8px; justify-content:center; margin-top:16px;}
+.wire-dot{width:8px; height:8px; border-radius:50%; background:var(--line); transition:background .2s ease;}
+.wire-dot.active{background:var(--coral);}
+@media (max-width:900px){
+  .wire-carousel .wire-row{
+    display:flex;
+    grid-template-columns:unset;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    gap:16px;
+    padding:0 12px 8px;
+    scrollbar-width:none;
+  }
+  .wire-carousel .wire-row::-webkit-scrollbar{display:none;}
+  .wire-carousel .wire-item{flex:0 0 78%; scroll-snap-align:center; scroll-snap-stop:always;}
+  .wire-dots{display:flex;}
+}
+
+/* ---- COLOR SWATCHES ---- */
+.swatch-row{display:flex; gap:14px; margin-top:16px; flex-wrap:wrap;}
+.swatch{width:72px;}
+.swatch-block{height:56px; border-radius:12px; margin-bottom:8px;}
+.swatch span{font-size:11px; color:var(--graphite); font-weight:600;}
+
+/* ---- GALLERY ---- */
+.gallery{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+.two-col-block{display:grid; grid-template-columns:0.8fr 1.2fr; gap:36px; align-items:center; padding:32px 0;}
+.problem-col-block{grid-template-columns:1.1fr 0.9fr; align-items:center;}
+.problem-col-block .problem-copy{text-align:left;}
+.problem-col-block .problem-copy h2,
+.problem-col-block .problem-copy p{text-align:left;}
+.problem-col-block img{width:100%; height:auto; display:block; border-radius:16px;}
+.ai-experience-col-block{grid-template-columns:1.1fr 0.9fr; padding:0; align-items:center;}
+.ai-experience-col-block .ai-experience-copy{text-align:left;}
+.ai-experience-col-block .ai-experience-copy h2,
+.ai-experience-col-block .ai-experience-copy p{text-align:left;}
+.ai-experience-col-block .ai-principle-list{display:flex; flex-direction:column; gap:14px; margin-top:20px;}
+.ai-experience-col-block video{width:100%; height:auto; display:block; border-radius:16px;}
+.features-col-block{grid-template-columns:0.9fr 1.1fr; padding:0; align-items:center;}
+.features-col-block .features-copy{text-align:left;}
+.features-col-block .features-copy h3{text-align:left;}
+.features-col-block .feature-grid{margin-top:16px;}
+.features-col-block video{width:120%; height:auto; display:block; border-radius:16px;}
+.product-prove-col-block{grid-template-columns:1fr 1fr; padding:0; align-items:center;}
+@media (max-width:900px){
+  .two-col-block{grid-template-columns:1fr; padding:20px 0;}
+  .two-col-block > * + *{margin-top:20px;}
+  .brand-colors-col-block{grid-template-columns:1fr !important;}
+  .product-prove-col-block{grid-template-columns:1fr !important;}
+  .problem-col-block{grid-template-columns:1fr !important;}
+  .ai-experience-col-block{grid-template-columns:1fr !important;}
+  .features-col-block{grid-template-columns:1fr !important;}
+  .features-col-block .features-copy .feature-grid{grid-template-columns:1fr !important;}
+}
+.gallery-item{border-radius:16px; background:var(--paper-alt); border:2px dashed var(--line); min-height:220px; display:flex; align-items:center; justify-content:center; color:var(--graphite); font-size:13px; font-weight:600; text-align:center; padding:16px;}
+.gallery-item.wide{grid-column:1/-1; min-height:220px; height:auto;}
+
+/* ---- FAILURE CARDS ---- */
+.priority-tag{display:inline-block; font-size:10.5px; font-weight:700; text-transform:uppercase; padding:4px 10px; border-radius:100px; margin-bottom:8px;}
+.priority-tag.high{background:#F5A94A1a; color:var(--ink);}
+.priority-tag.medium{background:#F5A94A24; color:#B87519;}
+.priority-tag.low{background:#33454A14; color:var(--ink-soft);}
+
+.outcome-cta{display:inline-flex; align-items:center; gap:8px; background:var(--coral); color:#fff; font-weight:600; font-size:14px; padding:14px 26px; border-radius:100px; text-decoration:none; margin-top:10px;}
+.outcome-cta:hover{background:var(--ink);}
+
+.panel-next{
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  margin:40px auto 0; padding:12px 22px;
+  background:rgba(242,102,90,0.1); border:1.5px solid #F2665A;
+  border-radius:100px; color:#F2665A; font-weight:600; font-size:14px;
+  cursor:pointer; transition:background-color .2s ease, color .2s ease;
+  width:fit-content;
+}
+.panel-next:hover{ background:#F2665A; color:#fff; }
+.panel-next svg{ width:14px; height:14px; transition:transform .2s ease; }
+.panel-next:hover svg{ transform:translateX(3px); }
+
+.next-project{margin:0 48px 60px; padding:44px 40px; background:var(--paper-alt); border-radius:24px; display:flex; justify-content:space-between; align-items:center; max-width:904px; margin-left:auto; margin-right:auto; text-decoration:none; color:inherit;}
+.next-project .label{font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--graphite); margin-bottom:6px;}
+.next-project h3{margin:0; max-width:none;}
+.next-arrow{width:50px; height:50px; border-radius:50%; background:#F2665A; border:none; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; transition:background-color .25s ease, transform .3s;}
+.next-arrow svg{width:20px; height:20px; stroke:#fff;}
+.next-project:hover .next-arrow{background:#33454A; transform:translateX(6px);}
+.next-project:active .next-arrow{background:#33454A;}
+
+footer{padding:0 48px 40px; text-align:center; color:var(--graphite); font-size:13.5px;}
+footer .foot-row{display:flex; align-items:center; justify-content:center; gap:14px;}
+footer .foot-row a.social{width:32px; height:32px; border-radius:50%; background:var(--paper-alt); display:flex; align-items:center; justify-content:center; transition:all .25s;}
+footer .foot-row a.social:hover{background:var(--ink);}
+footer .foot-row a.social svg{width:16px; height:16px; fill:var(--ink); transition:fill .25s;}
+footer .foot-row a.social:hover svg{fill:var(--paper);}
+
+/* ---- BACK TO TOP ---- */
+.back-to-top{
+  position:fixed; bottom:28px; right:28px; width:48px; height:48px; border-radius:50%;
+  background:var(--coral); border:none; cursor:pointer; z-index:250;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transform:translateY(10px);
+  transition:opacity .3s ease, transform .3s ease, background .25s ease;
+  box-shadow:0 10px 24px -8px #33454A55;
+}
+.back-to-top.show{opacity:1; pointer-events:auto; transform:translateY(0);}
+.back-to-top:hover{background:var(--ink);}
+.back-to-top svg{width:20px; height:20px; stroke:#fff; transition:stroke .25s ease;}
+.back-to-top:hover svg{stroke:#fff;}
+.back-to-top:focus-visible{outline:2px solid var(--coral); outline-offset:3px;}
+
+.img-placeholder{border-radius:16px; background:var(--paper-alt); border:2px dashed var(--line); display:flex; align-items:center; justify-content:center; color:var(--graphite); font-size:12.5px; font-weight:600; text-align:center; padding:16px;}
+.avatar-placeholder{width:56px; height:56px; border-radius:50%; background:var(--paper-alt); border:2px dashed var(--line); display:flex; align-items:center; justify-content:center; color:var(--graphite); font-size:9px; font-weight:700; text-align:center; margin-bottom:12px;}
+
+@media (max-width:900px){
+  .block--split .split-copy + .split-visual{margin-top:20px;}
+  .tab-nav-wrap{position:relative;}
+  .tab-nav-wrap::after{
+    content:''; position:absolute; top:16px; right:0; width:48px; height:44px;
+    pointer-events:none; background:linear-gradient(to right, transparent, var(--paper)); z-index:151;
+  }
+  .tab-nav-wrap.is-sticky::after{display:none;}
+  .tab-nav{
+    padding:16px 0 0; margin:0 16px; justify-content:flex-start;
+    overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
+    scroll-padding-inline-end:16px;
+  }
+  .tab-nav::-webkit-scrollbar{display:none;}
+  .tab-track{gap:2px; padding:3px 12px 3px 3px; flex-shrink:0;}
+  .tab-btn{padding:8px 10px; font-size:11.5px;}
+  .header-top{grid-template-columns:1fr;}
+  .header-top .hero-image{
+    display:flex !important;
+    align-items:center;
+    justify-content:center;
+    aspect-ratio:3/4;
+    width:100%;
+    max-width:100%;
+    height:auto;
+    min-height:0;
+    overflow:hidden;
+  }
+  .meta-row{grid-template-columns:1fr 1fr;}
+  .gallery{grid-template-columns:1fr;}
+  .stats-band{grid-template-columns:1fr 1fr;}
+  .persona-grid, .feature-grid, .principle-row{grid-template-columns:1fr;}
+  .compare-table{font-size:12px;}
+  .cs-header, .tab-panel{padding-left:24px; padding-right:24px;}
+  .next-project{flex-direction:column; align-items:flex-start; gap:20px; margin:0 24px 40px;}
+  .ai-experience-visual,
+  .features-visual,
+  .gallery-item:has(> video){
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+  }
+  .tab-panel video,
+  .cs-header video{
+    display:block;
+    max-width:100%;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .ai-experience-visual video{width:100% !important;}
+  .features-col-block video{width:100% !important;}
+  .header-top .hero-image video{
+    position:static !important;
+    inset:auto !important;
+    top:auto !important;
+    right:auto !important;
+    bottom:auto !important;
+    left:auto !important;
+    transform:none !important;
+    width:100% !important;
+    height:auto !important;
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+    object-position:center;
+  }
+}
+</style>
 </head>
 <body>
-<p>Redirecting…</p>
+
+<div id="relay-loader" class="relay-loader">
+  <div id="relay-badge" class="relay-badge">
+    <div id="relay-stage" class="relay-stage"></div>
+  </div>
+  <div class="relay-label">
+    <span id="relay-label-text">Loading</span><span id="relay-dots" class="relay-dots"></span>
+  </div>
+</div>
+
+<nav>
+  <a href="../#work" class="back-link">
+    <svg viewBox="0 0 100 100" fill="none"><path d="M75 50 H30 M50 25 L25 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    All work
+  </a>
+  <a href="/" class="nav-mark" aria-label="Back to home">
+    <svg width="105" height="23" viewBox="150 95 465 115" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="navLogoGradSifted" x1="0" y1="73.98" x2="0" y2="314.82" gradientUnits="userSpaceOnUse">
+          <stop offset=".04" stop-color="#254444"/><stop offset=".34" stop-color="#2a4748"/><stop offset=".69" stop-color="#385354"/><stop offset="1" stop-color="#4b6264"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#navLogoGradSifted)" d="M156.97,201.31l33.3-93.09,25.04-.25,36.15,93.34h-23.93l-7.85-18.87-33.12-.61-6.28,19.48h-23.32ZM213.42,163.28l-10.43-31.91-9.2,31.91h19.63Z"/>
+      <polygon fill="url(#navLogoGradSifted)" points="303 108.06 303 181.68 338.59 181.68 338.59 201.31 279.69 201.31 279.69 108.06 303 108.06"/>
+      <polygon fill="url(#navLogoGradSifted)" points="391.36 108.06 391.36 201.31 371.11 201.31 369.27 199.47 369.27 108.06 391.36 108.06"/>
+      <path fill="url(#navLogoGradSifted)" d="M510.31,113.06l-6.07,20.77c-24.52-14.96-57.03-9.44-54.03,25.21,1.63,18.8,18.53,26.29,35.7,23.33,7.25-1.25,12.91-5.63,19.55-8.04l6.09,18.3c-39.73,26.4-99.84.74-84.65-52.08,10.25-35.65,53.69-44.65,83.4-27.48Z"/>
+      <path fill="url(#navLogoGradSifted)" d="M608.56,108.06v18.4h-39.88c-2.97,3.94-3.01,14.32,0,18.4h37.43v18.4h-39.27v18.4h42.95v19.63h-65.04v-93.25h63.81Z"/>
+    </svg>
+  </a>
+</nav>
+
+<header class="cs-header">
+  <div class="header-top">
+    <div>
+      <div class="title-row">
+        <h1>Sifted</h1>
+        <span class="tag">Mobile App</span>
+      </div>
+      <p class="cs-sub">Consumer Wellness · AI-Assisted Nutrition · Brand + Product</p>
+
+      <div class="block" style="margin-top:16px; margin-bottom:24px;">
+        <div class="section-eyebrow">The Challenge</div>
+        <p>Health-conscious shoppers, people managing keto, paleo, anti-inflammatory, diabetic, or PCOS diets, are highly motivated but profoundly underserved. Nutrition labels are designed to comply, not communicate. Additive names are deliberately obscure.</p>
+        <p>Existing scanner apps either oversimplify into vague grades or overwhelm with raw data. Every tool on the market treats all users the same, ignoring that products safe for one dietary profile can be inflammatory for another.</p>
+      </div>
+
+      <div class="block" style="margin-bottom:0;">
+        <div class="section-eyebrow">The Solution</div>
+        <p>An AI-powered mobile app that scans any food product and instantly flags hidden sugars, inflammatory ingredients, and misleading health claims, then explains why, in plain language, personalized to the user's specific dietary profile.</p>
+        <p style="margin-bottom:0;">Built with a custom illustration system, an AI nutrition assistant, pantry and recipe integration, and a judgment-free design language built from the ground up.</p>
+      </div>
+      <p class="meta-note">Self-directed academic project, currently in active development. The design work documented here forms the product foundation.</p>
+      <div class="meta-row" style="border-top:none; padding-top:0; padding-bottom:13px; margin-top:42px;">
+        <div class="meta-item"><span>Role</span><b>Solo Designer</b></div>
+        <div class="meta-item"><span>Scope</span><b>End-to-end</b></div>
+        <div class="meta-item"><span>Timeline</span><b>6 Weeks</b></div>
+        <div class="meta-item"><span>Year</span><b>2025</b></div>
+      </div>
+    </div>
+    <div class="hero-image" style="border:none; padding:0; background:none; display:block; overflow:hidden; position:relative;">
+      <video src="/assets/sifted/sifted-scan-hero.mp4" autoplay muted loop playsinline preload="auto" aria-label="Sifted app hero" style="position:absolute; inset:0; width:110%; height:100%; object-fit:contain; object-position:center; border-radius:16px;"></video>
+    </div>
+  </div>
+</header>
+
+<div class="tab-nav-anchor" id="tabNavAnchor">
+  <div class="tab-nav-sentinel" id="tabNavSentinel" aria-hidden="true"></div>
+  <div class="tab-nav-spacer" id="tabNavSpacer" aria-hidden="true"></div>
+  <div class="tab-nav-wrap" id="tabNavWrap">
+  <div class="tab-nav" id="tabNav">
+  <div class="tab-track">
+    <button class="tab-btn active" data-tab="overview">Overview</button>
+    <button class="tab-btn" data-tab="research">Research</button>
+    <button class="tab-btn" data-tab="design">Design &amp; Process</button>
+    <button class="tab-btn" data-tab="outcome">Outcome</button>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="tab-panel active" data-panel="overview">
+  <div class="pull-quote">
+    <p>Confusing food labels and lack of personalized dietary guidance make healthy eating unnecessarily difficult.</p>
+  </div>
+
+  <div class="block">
+    <div class="two-col-block problem-col-block">
+      <div class="problem-copy">
+        <div class="section-eyebrow">The Problem</div>
+        <h2>Health-conscious shoppers have the knowledge. But they lack a tool that helps them act on it.</h2>
+        <p>The average health-conscious shopper is not uninformed. They understand the risks of added sugar. What they lack is a tool that helps them act on that knowledge at the moment it matters: standing in a grocery aisle, reading a label full of chemical names they cannot interpret, or preparing a meal without advance planning.</p>
+        <p>Nutrition labels are designed to comply, not to communicate. Additives hide behind dozens of aliases. The apps that exist either oversimplify into vague letter grades or overwhelm with raw data.</p>
+        <p class="gap-statement">The gap: actionable clarity at the point of decision, personalized to each user's specific dietary restrictions.</p>
+      </div>
+      <div class="problem-visual">
+        <img data-relay src="/assets/sifted/competitors-1.png" alt="Competitive audit of existing nutrition apps" style="width:100%; height:auto; display:block; border-radius:16px">
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="gallery">
+      <div class="gallery-item wide" style="border:none; padding:0; background:none; display:flex; justify-content:center"><img data-relay src="/assets/sifted/competitors-2.png" alt="Competitive audit" style="width:100%; height:auto; display:block; border-radius:16px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- RESEARCH -->
+<div class="tab-panel" data-panel="research">
+  <div class="block">
+    <div class="col-row">
+      <div class="col-row-copy">
+        <div class="section-eyebrow">Research</div>
+        <h2>5 qualitative interviews. 3 actionable findings.</h2>
+        <h3>Research also included</h3>
+        <p>AI-assisted research supplemented the interviews: competitor scans, evidence-based nutrition and ingredient research to ground the sugar-alias and additive callouts in accurate science, and a look at how other consumer apps use AI to personalize recommendations, informing how Sifted's own AI nutrition assistant tailors guidance to each user's dietary profile.</p>
+      </div>
+      <div class="col-row-visual">
+        <div class="stats-band">
+          <div class="stat"><b>100%</b><span>of participants unaware of hidden sugar aliases, maltodextrin, tapioca starch, none recognized as sugar.</span></div>
+          <div class="stat"><b>4 of 5</b><span>felt actively misled by food packaging. "Organic," "natural," "low fat" claims obscured high sugar or inflammatory content.</span></div>
+          <div class="stat"><b>3+ tools</b><span>Every participant was using multiple tools simultaneously, none connected. The fragmentation was the problem.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Themes that emerged</h3>
+    <div class="chip-row">
+      <div class="chip">Social situations and lack of planning.</div>
+      <div class="chip">Time and fatigue lead to choosing unhealthy convenience foods.</div>
+      <div class="chip">Cooking fatigue and hunger, living with family members who do not share the same dietary goals.</div>
+    </div>
+    <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/sifted/research-interviews-sifted.png" alt="Affinity mapping and themes board" style="width:100%; height:auto; display:block; border-radius:16px"></div>
+  </div>
+
+  <div class="block">
+    <h3>Who I designed for</h3>
+    <div class="persona-grid">
+      <img data-relay src="/assets/sifted/persona-sifted-1.png" alt="Michael, Overwhelmed Gym-Goer persona" style="width:100%; height:auto; display:block; border-radius:16px">
+      <img data-relay src="/assets/sifted/persona-sifted-2.png" alt="Maya, Overworked Professional persona" style="width:100%; height:auto; display:block; border-radius:16px">
+    </div>
+  </div>
+</div>
+
+<!-- DESIGN & PROCESS -->
+<div class="tab-panel" data-panel="design">
+  <div class="block">
+    <div class="section-eyebrow">Strategic Framework</div>
+    <h2>Challenging industry defaults.</h2>
+    <table class="compare-table">
+      <tr><th>Industry Default</th><th>Sifted's Approach</th></tr>
+      <tr><td>Hide sugar complexity behind scores</td><td>Surface hidden sugar aliases automatically</td></tr>
+      <tr><td>Paywall ingredient details</td><td>Free and instant access to all ingredient information</td></tr>
+      <tr><td>Grade food generically</td><td>Personalize feedback to each user's dietary profile</td></tr>
+      <tr><td>Let "healthy" claims stand</td><td>Flag misleading labels explicitly</td></tr>
+    </table>
+  </div>
+
+  <div class="block">
+    <h3>How each milestone was validated</h3>
+    <div class="accordion">
+      <div class="acc-item open">
+        <button class="acc-head"><h4><span class="acc-num">1</span>Frame How Might We questions</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+        <div class="acc-body"><div class="acc-body-inner"><p>Ensured goals remained in tune with both user needs and business goals before scoping features.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head"><h4><span class="acc-num">2</span>Shape feature sets from user needs</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+        <div class="acc-body"><div class="acc-body-inner"><p>Translated research findings directly into a prioritized feature list rather than an unfocused feature backlog.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head"><h4><span class="acc-num">3</span>Validate structure through card sorting</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+        <div class="acc-body"><div class="acc-body-inner"><p>Confirmed the information architecture matched how users grouped nutrition concepts in practice.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head"><h4><span class="acc-num">4</span>Map user flows to key tasks</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+        <div class="acc-body"><div class="acc-body-inner"><p>Scan → decode → decide became the core loop every other flow was built around.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head"><h4><span class="acc-num">5</span>Build and refine prototypes</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+        <div class="acc-body"><div class="acc-body-inner"><p>Iterated from low- to high-fidelity, testing each layer before adding visual polish.</p></div></div>
+      </div>
+    </div>
+    <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/sifted/biz-diagram-sifted.png" alt="Feature prioritization board" style="width:100%; height:auto; display:block; border-radius:16px"></div>
+  </div>
+
+  <div class="block">
+    <div class="two-col-block features-col-block">
+      <div class="features-visual">
+        <video src="/assets/sifted/food-swap.mp4" autoplay muted loop playsinline aria-label="AI chat screen, flagged ingredient detail" style="width:100%; height:auto; display:block; border-radius:16px;"></video>
+      </div>
+      <div class="features-copy">
+        <div class="section-eyebrow">Must-Have Features</div>
+        <h3>What the research told us to prioritize</h3>
+        <div class="feature-grid" style="grid-template-columns:1fr 1fr;">
+          <div class="feature-card" style="text-align:left;"><h4>Account Creation</h4><p>Registration, sign-in, and onboarding questionnaires so users get a personalized profile with access to saved searches and recipes.</p></div>
+          <div class="feature-card" style="text-align:left;"><h4>Barcode &amp; OCR Scanner</h4><p>A quick tool to detect unwanted ingredients from barcodes, ingredient lists, menus, or images, parsing recipes from links, screenshots, or typed input.</p></div>
+          <div class="feature-card" style="text-align:left;"><h4>Recommendation System</h4><p>Learns from user behavior and profile settings to suggest smarter swaps, common triggers, and reliable meal options aligned with their profile.</p></div>
+          <div class="feature-card" style="text-align:left;"><h4>Misleading Health Claims Detector</h4><p>Flags hidden sugars, high-carbs, seed oils, and inflammatory additives, and explains why, identifying deceptive labels like "low fat" or "organic."</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="two-col-block ai-experience-col-block">
+      <div class="ai-experience-copy">
+        <div class="section-eyebrow">Designing the AI Experience</div>
+        <h2>Context-first. Ingredient-level. Gracefully uncertain.</h2>
+        <p>The AI feature was the most complex design challenge, and the most relevant to where consumer wellness is heading.</p>
+        <div class="ai-principle-list">
+          <div class="principle"><b>Context-first responses</b><p>The AI leads with information relevant to the user's specific dietary profile before providing general information.</p></div>
+          <div class="principle"><b>Ingredient-level explanations</b><p>Rather than "this product scored a C," the AI explains why a specific ingredient is a flag for this specific user's context.</p></div>
+          <div class="principle"><b>Graceful uncertainty</b><p>The interface surfaces AI uncertainty explicitly rather than presenting low-confidence responses as authoritative.</p></div>
+        </div>
+      </div>
+      <div class="ai-experience-visual">
+        <video src="/assets/sifted/sifted-chat-mockup.mp4" autoplay muted loop playsinline aria-label="AI chat screen, context-first response" style="width:120%; height:auto; display:block; border-radius:16px;"></video>
+      </div>
+    </div>
+    <div class="gallery">
+      <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/sifted/UX-ALICE-SIFTED-task-flow.png" alt="Sifted Chat flow diagram" style="width:100%; height:auto; display:block; border-radius:16px"></div>
+      <div class="gallery-item wide" style="border:none; padding:0; background:none"><img data-relay src="/assets/sifted/USERFLOW-all.png" alt="Onboarding and Scan Tool user flow" style="width:100%; height:auto; display:block; border-radius:16px"></div>
+    </div>
+  </div>
+
+  <div class="block" hidden>
+    <h3>Wireframe exploration</h3>
+    <p>Having defined task and user flows early, I explored different structural options at low-fidelity to test layout variations quickly and identify what best supported clarity and usability before adding visual polish.</p>
+    <div class="wire-carousel">
+    <div class="wire-row" id="wireRow">
+      <div class="wire-item"><div class="wire-frame" style="border:none; overflow:hidden; padding:0;"><img data-relay src="/assets/sifted/v-1-prototyping.png" alt="Ingredient Decoding V.1" style="width:100%; height:100%; object-fit:contain; object-position:center; border-radius:16px"></div><div class="wire-label">Ingredient Decoding, V.1</div></div>
+      <div class="wire-item"><div class="wire-frame" style="border:none; overflow:hidden; padding:0;"><img data-relay src="/assets/sifted/v2-wireframe.png" alt="Ingredient Decoding V.2" style="width:100%; height:100%; object-fit:contain; object-position:center; border-radius:16px"></div><div class="wire-label">Ingredient Decoding, V.2</div></div>
+      <div class="wire-item"><div class="wire-frame selected" style="overflow:hidden; padding:0;"><img data-relay src="/assets/sifted/v3-wireframe.png" alt="Ingredient Decoding V.3 selected" style="width:100%; height:100%; object-fit:contain; object-position:center; border-radius:16px"></div><div class="wire-label selected">Ingredient Decoding, V.3 (selected)</div></div>
+    </div>
+    <div class="wire-dots" id="wireDots" aria-hidden="true">
+      <span class="wire-dot"></span>
+      <span class="wire-dot active"></span>
+      <span class="wire-dot"></span>
+    </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="section-eyebrow">Visual Design &amp; Brand</div>
+    <h2>Building a Brand That Reflects the Mission</h2>
+    <div class="two-col-block brand-colors-col-block" style="grid-template-columns:0.7fr 1.3fr;">
+      <div>
+        <p>Primary mint green for freshness without sterility. Deep navy for authority. Accent warning colors used exclusively for trust signals and critical flags, a consistent visual language that trains users to pay attention when it appears.</p>
+        <p>The bowl with a sifted powder cloud subtly suggests the act of sifting ingredients, mirroring the app's core function of scanning and clarifying foods.</p>
+        <p style="margin-top:20px; font-weight:700; font-size:20.5px; color:var(--ink);">Mission statement: "Our goal is to bring clarity to food and make wellness a sustainable, daily habit."</p>
+      </div>
+      <img data-relay src="/assets/sifted/sifted-brand-colors.png" alt="Sifted color and typography system" style="width:100%; height:auto; display:block; border-radius:16px">
+    </div>
+    <img data-relay src="/assets/sifted/sifted-mockups-outcome.png" alt="Sifted outcome mockups" style="width:100%; height:auto; display:block; border-radius:16px;">
+  </div>
+</div>
+
+<!-- OUTCOME -->
+<div class="tab-panel" data-panel="outcome">
+  <div class="block">
+    <div class="section-eyebrow">Usability Testing</div>
+    <h2>Failures that shaped the final product</h2>
+    <p>Testing surfaced five issues. Two were critical enough to redesign immediately.</p>
+    <div class="stats-band">
+      <div class="stat"><b>5</b><span>Participants</span></div>
+      <div class="stat"><b>5</b><span>Issues Found</span></div>
+      <div class="stat"><b>100%</b><span>Task Completion Rate</span></div>
+    </div>
+    <div class="accordion">
+      <div class="acc-item open">
+        <button class="acc-head"><h4><span class="priority-tag high" style="margin:0;">High</span>&nbsp;Alert visibility</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+        <div class="acc-body"><div class="acc-body-inner"><p>The ingredient alert blended into the page; users missed it entirely, and those who noticed did not realize it was clickable. <b>Resolution:</b> increased visual weight, larger size, and a "Learn why" button that makes the alert explicitly actionable.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head"><h4><span class="priority-tag high" style="margin:0;">High</span>&nbsp;Ingredients clarity</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+        <div class="acc-body"><div class="acc-body-inner"><p>Displaying the full ingredient list upfront overwhelmed users and buried the information they needed most. <b>Resolution:</b> progressive disclosure, flagged ingredients surface first by default, with a "View All" option for full transparency.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head"><h4><span class="priority-tag medium" style="margin:0;">Medium</span>&nbsp;Scan discoverability</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+        <div class="acc-body"><div class="acc-body-inner"><p>Users could only initiate a scan from the home screen, and the navigation icon was not intuitive at first glance. <b>Resolution:</b> added a "Scan Another Item" CTA on results, and made the navigation scan button more visually prominent.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head"><h4><span class="priority-tag medium" style="margin:0;">Medium</span>&nbsp;Onboarding wording</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+        <div class="acc-body"><div class="acc-body-inner"><p>Onboarding copy was heavy and some users skipped it; a "None / Others" option was missing, leaving edge cases unaccounted for. <b>Resolution:</b> simplified language and added the missing option, reducing first-use drop-off.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head"><h4><span class="priority-tag low" style="margin:0;">Low</span>&nbsp;Other enhancements</h4><svg class="acc-icon" viewBox="0 0 100 100" fill="none"><path d="M50 20 V80 M20 50 H80" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg></button>
+        <div class="acc-body"><div class="acc-body-inner"><p>Enhancements such as clickable information icons were documented for future iteration and deferred intentionally, since they had minimal impact on core tasks relative to the effort required.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Core features, shipped</h3>
+    <div class="feature-grid">
+      <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" stroke-width="2"/><path d="M4 9h16M9 4v16" stroke-width="2"/></svg></div><h4>Scan</h4><p>Instantly scan labels or barcodes to uncover hidden sugars or inflammatory ingredients before you buy or eat.</p></div>
+      <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h10" stroke-width="2" stroke-linecap="round"/></svg></div><h4>Meal Plan</h4><p>Personalized, anti-inflammatory meal plans crafted around dietary goals, pantry items, and lifestyle.</p></div>
+      <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 3z" stroke-width="2" stroke-linejoin="round"/></svg></div><h4>AI Nutrition</h4><p>Chat with Sifted AI for smart ingredient swaps, meal suggestions, and tailored nutrition insights.</p></div>
+      <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke-width="2"/><path d="M12 8v4l3 3" stroke-width="2" stroke-linecap="round"/></svg></div><h4>Tailored Insights</h4><p>Customize dietary needs, sensitivities, and goals for personalized food feedback and recommendations.</p></div>
+      <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>Track</h4><p>Monitor daily sugar, carb, and food intake, and how it impacts health and mood over time.</p></div>
+      <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z" stroke-width="2"/></svg></div><h4>Learn</h4><p>Bite-sized, science-backed articles that help you understand food and make better choices.</p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="two-col-block product-prove-col-block">
+      <div>
+        <div class="section-eyebrow">What This Product Is Built to Prove</div>
+        <h2>Clarity builds trust. Trust changes behavior. Behavior improves health.</h2>
+        <p style="margin-top:0;">The people most motivated to eat well are the least supported by the tools that exist. Sifted aims to close that gap with ingredient-level transparency, judgment-free language, AI personalization that adapts to user needs and their pantry, as well as visual design that positions the experience as supportive guidance rather than judgment.</p>
+      </div>
+      <div class="gallery-item" style="border:none; padding:0; background:none;"><video src="/assets/sifted/sifted-pantry-planning.mp4" autoplay muted loop playsinline aria-label="Full product montage" style="width:100%; height:auto; display:block; border-radius:16px;"></video></div>
+    </div>
+  </div>
+  <a href="../tirivelo-case-study/" class="next-project">
+    <div><div class="label">Next case file</div><h3>TiriVelo</h3></div>
+    <div class="next-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </a>
+</div>
+
+<footer>
+  <div class="foot-row">
+    <span>© Alice Curiel, hello@aliceportfolio.com</span>
+    <a href="https://www.linkedin.com/in/alice-curiel-800817146/" target="_blank" rel="noopener" class="social" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V9.75H5.67v8.59h2.67zM7 8.63a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.34 9.71v-4.71c0-2.52-1.35-3.69-3.15-3.69a2.72 2.72 0 0 0-2.46 1.35v-1.16H10.06c.04.75 0 8.21 0 8.21h2.67v-4.59c0-.25.02-.49.09-.67.2-.49.65-1 1.4-1 1 0 1.4.75 1.4 1.86v4.4h2.72z"/></svg>
+    </a>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 100 100" fill="none"><path d="M50 75 V25 M25 50 L50 25 L75 50" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script>
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    const activePanel = document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`);
+    activePanel.classList.add('active');
+    // Target the panel itself (not sticky, so its position is always reliable), // offset by the height of the fixed nav + tab bar (~130px combined).
+    const panelTop = activePanel.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({top: panelTop - 130, behavior:'smooth'});
+  });
+});
+(function(){
+  const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
+  if(!tabButtons.length) return;
+
+  tabButtons.forEach((btn, index)=>{
+    const panel = document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`);
+    if(!panel) return;
+    const isLast = index === tabButtons.length - 1;
+
+    if(!isLast){
+      const nextBtn = tabButtons[index + 1];
+      const continueBtn = document.createElement('button');
+      continueBtn.className = 'panel-next';
+      continueBtn.innerHTML = `Continue
+        <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      continueBtn.addEventListener('click', ()=> nextBtn.click());
+      panel.appendChild(continueBtn);
+    } else {
+      const nextProjectEl = document.querySelector('.next-project');
+      if(nextProjectEl){
+        nextProjectEl.remove();
+        panel.appendChild(nextProjectEl);
+      }
+    }
+  });
+})();
+(function(){
+  const tabWrap = document.getElementById('tabNavWrap');
+  const sentinel = document.getElementById('tabNavSentinel');
+  const spacer = document.getElementById('tabNavSpacer');
+  if(!tabWrap || !sentinel || !spacer) return;
+  const stickTop = 65;
+  let isStuck = false;
+  let cachedHeight = 0;
+
+  function setSticky(stuck){
+    if(stuck === isStuck) return;
+
+    if(stuck){
+      cachedHeight = tabWrap.offsetHeight;
+      spacer.style.height = cachedHeight + 'px';
+      tabWrap.classList.add('is-sticky');
+      isStuck = true;
+    } else {
+      tabWrap.classList.remove('is-sticky');
+      spacer.style.height = '0px';
+      cachedHeight = 0;
+      isStuck = false;
+    }
+  }
+
+  function updateSticky(){
+    setSticky(sentinel.getBoundingClientRect().top < stickTop);
+  }
+
+  const observer = new IntersectionObserver(()=>{
+    updateSticky();
+  }, { root:null, threshold:[0] });
+  observer.observe(sentinel);
+  window.addEventListener('scroll', updateSticky, {passive:true});
+
+  window.addEventListener('resize', ()=>{
+    if(isStuck){
+      cachedHeight = tabWrap.offsetHeight;
+      spacer.style.height = cachedHeight + 'px';
+    }
+    updateSticky();
+  });
+  updateSticky();
+})();
+document.querySelectorAll('.acc-head').forEach(head=>{
+  head.addEventListener('click', ()=>{
+    const item = head.parentElement;
+    const body = item.querySelector('.acc-body');
+    const isOpen = item.classList.contains('open');
+    item.parentElement.querySelectorAll('.acc-item').forEach(sib=>{
+      sib.classList.remove('open');
+      sib.querySelector('.acc-body').style.maxHeight = null;
+    });
+    if(!isOpen){ item.classList.add('open'); body.style.maxHeight = body.scrollHeight + 'px'; }
+  });
+});
+window.addEventListener('load', ()=>{
+  document.querySelectorAll('.acc-item.open .acc-body').forEach(b=>{ b.style.maxHeight = b.scrollHeight + 'px'; });
+});
+
+// Floating back-to-top button
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', ()=>{
+  if(window.scrollY > 500){ backToTop.classList.add('show'); }
+  else{ backToTop.classList.remove('show'); }
+});
+backToTop.addEventListener('click', ()=>{ window.scrollTo({top:0, behavior:'smooth'}); });
+
+(function(){
+  const row = document.getElementById('wireRow');
+  const dotsWrap = document.getElementById('wireDots');
+  if(!row || !dotsWrap) return;
+  const dots = dotsWrap.querySelectorAll('.wire-dot');
+  const items = row.querySelectorAll('.wire-item');
+  const mq = window.matchMedia('(max-width:900px)');
+
+  function centerItem(index){
+    const item = items[index];
+    if(!item) return;
+    row.scrollLeft = item.offsetLeft - (row.clientWidth - item.offsetWidth) / 2;
+  }
+
+  function updateDots(){
+    if(!mq.matches) return;
+    const center = row.scrollLeft + row.clientWidth / 2;
+    let closest = 0;
+    let minDist = Infinity;
+    items.forEach((item, i)=>{
+      const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+      const dist = Math.abs(center - itemCenter);
+      if(dist < minDist){ minDist = dist; closest = i; }
+    });
+    dots.forEach((dot, i)=> dot.classList.toggle('active', i === closest));
+  }
+
+  function initWireCarousel(){
+    if(mq.matches) centerItem(1);
+    updateDots();
+  }
+
+  row.addEventListener('scroll', updateDots, {passive:true});
+  mq.addEventListener('change', initWireCarousel);
+  window.addEventListener('resize', initWireCarousel);
+  window.addEventListener('load', initWireCarousel);
+  initWireCarousel();
+})();
+</script>
+
+<script src="/assets/js/relay.js"></script>
 </body>
 </html>

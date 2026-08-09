@@ -6,11 +6,884 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/Favicon-32px.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16px.png">
 <link rel="apple-touch-icon" href="/assets/Favicon-64PX.png">
-<meta http-equiv="refresh" content="0; url=bergen-county-case-study.html">
-<script>location.replace("bergen-county-case-study.html"+location.search+location.hash);</script>
-<title>Redirecting…</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+<title>Permit Portal, Case Study, Alice Curiel</title>
+<style>
+:root{
+  --coral:#F2665A; --amber:#F5A94A; --amber-dark:#C97A1F; --ink:#33454A; --teal:#478383; --ink-soft:#5B6A6D;
+  --paper:#FBF9F4; --paper-alt:#F2EDE1; --graphite:#8B9290; --line:#33454A1a;
+  --civic-navy:#1E2A5A; --civic-lav:#8B8FD9;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif;}
+/* ── TEAL ACCENT AUDIT (bergen-county-case-study) ─────────────────
+   CHANGED → var(--teal): h1–h4, .section-eyebrow, .gap-statement, .principle-item b, .key-list li::before (✓ icons)
+   LEFT:    .stat b (amber), .meta-note/.gallery-caption (graphite/ink-soft), .transfer-band h2 (white), .transfer-band .section-eyebrow (amber), .chip-card (body card copy), coral nav/CTA/back-to-top SVGs
+   ─────────────────────────────────────────────────────────────── */
+
+/* ── CORAL INTERACTIVE AUDIT (bergen-county-case-study) ──────────
+   CHANGED → (none), no accordion/expand toggles on this page
+   LEFT:    .tab-btn, .back-link, .next-project/.next-arrow, .back-to-top
+            (already coral)
+   ─────────────────────────────────────────────────────────────── */
+
+h1,h2,h3,h4{color:var(--teal);}
+
+a{color:#F2665A; text-decoration:none; transition:color .2s ease;}
+a:hover{color:#33454A;}
+
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
+
+nav{position:sticky; top:0; z-index:200; display:flex; justify-content:space-between; align-items:center; padding:20px 48px; background:#FBF9F4ee; backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+.back-link{display:inline-flex; align-items:center; gap:6px; font-weight:600; font-size:14px;}
+.back-link svg{width:16px; height:16px; flex-shrink:0;}
+.nav-mark svg{display:block;}
+@media (max-width:1024px){
+  nav .nav-mark{order:1;}
+  nav .back-link{order:2;}
+}
+
+.cs-header{padding:48px 48px 30px; max-width:1240px; margin:0 auto;}
+.header-top{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
+.header-top .hero-image{margin:0; height:auto; min-height:0; aspect-ratio:3/4;}
+.tag{display:inline-flex; align-items:center; font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; padding:4.5px 10.5px; border-radius:100px; background:#F5A94A22; border:1.5px solid #C97A1F; color:#C97A1F;}
+h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw,52px); line-height:1.05; letter-spacing:-0.01em; max-width:760px;}
+.title-row{display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
+.title-row h1{margin:0;}
+.cs-sub{margin-top:8px; font-size:15px; color:var(--graphite); font-weight:600;}
+
+.meta-row{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin:26px auto 0; padding:22px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+.meta-item span{display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--graphite); margin-bottom:5px;}
+.meta-item b{font-family:'Poppins',sans-serif; font-size:16px; font-weight:600;}
+.meta-note{font-size:13px; color:var(--graphite); margin-top:14px; font-style:italic;}
+
+/* ---- TABS ---- */
+.tab-nav-anchor{position:relative;}
+.tab-nav-wrap{position:relative;}
+.tab-nav-sentinel{height:1px;width:100%;pointer-events:none;visibility:hidden;}
+.tab-nav-spacer{height:0;flex-shrink:0;transition:height .25s ease;}
+.tab-nav{position:relative; z-index:150; display:flex; justify-content:flex-start; max-width:1240px; margin:0 auto; padding:16px 48px 0; background:transparent; overflow-x:auto; transition:background .25s ease, padding .25s ease, border-color .25s ease, box-shadow .25s ease, max-width .25s ease;}
+.tab-track{display:inline-flex; gap:4px; padding:5px; background:rgba(242,102,90,0.1); border:1.5px solid #F2665A; border-radius:100px; flex-shrink:0; transition:background .25s ease, border .25s ease, border-radius .25s ease, padding .25s ease, box-shadow .25s ease;}
+.tab-btn{font-family:'Inter',sans-serif; font-weight:600; font-size:13.5px; color:#F2665A; background:transparent; border:none; padding:10px 18px; border-radius:100px; cursor:pointer; transition:background-color .2s ease, color .2s ease; white-space:nowrap;}
+.tab-btn.active{color:#fff; background:#F2665A; box-shadow:0 4px 10px -3px #F2665A66;}
+.tab-btn:hover:not(.active){background:rgba(242,102,90,0.22); color:#F2665A;}
+.tab-btn:focus-visible{outline:2px solid var(--coral); outline-offset:2px;}
+@media (min-width:768px){
+  .tab-nav-wrap.is-sticky{position:fixed; top:65px; left:0; right:0; width:100%; z-index:150; padding:14px 48px 0; box-sizing:border-box;}
+  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow-x:visible; justify-content:flex-start;}
+  .tab-nav-wrap.is-sticky .tab-track{width:auto; max-width:50%; display:inline-flex; justify-content:flex-start; gap:8px; box-sizing:border-box; background:#FBD4D4; box-shadow:0 8px 20px -10px #33454A33; transition:width .3s ease, background .25s ease, border .25s ease, border-radius .25s ease, padding .25s ease, box-shadow .25s ease;}
+}
+@media (max-width:767px){
+  /* Mobile sticky, JS is-sticky + fixed bar; pill width unchanged */
+  .tab-btn{color:var(--coral);}
+  .tab-btn:active:not(.active){background:rgba(242,102,90,0.22); color:var(--coral);}
+  .tab-btn.progress-tab:active{color:#fff !important; background:var(--coral);}
+  .tab-nav-wrap.is-sticky{position:fixed; top:65px; left:0; right:0; width:100%; z-index:150; padding:14px 16px 0; box-sizing:border-box; background:transparent;}
+  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow:visible; justify-content:center;}
+  .tab-nav-wrap.is-sticky .tab-track{width:auto; max-width:calc(100vw - 32px); display:inline-flex; justify-content:flex-start; background:#FBD4D4; border-radius:100px; box-shadow:0 8px 16px -10px #33454A33; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; padding-right:12px; scroll-padding-inline-end:12px;}
+}
+
+.tab-panel{display:none; max-width:1240px; margin:0 auto; padding:44px 48px 90px; animation:fadeIn .35s ease;}
+.tab-panel.active{display:block;}
+@keyframes fadeIn{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);}}
+
+.hero-image{margin-bottom:44px; border-radius:22px; background:linear-gradient(135deg,var(--civic-navy)10,var(--civic-lav)18); border:2px dashed var(--line); min-height:340px; display:flex; align-items:center; justify-content:center; padding:30px; gap:24px; flex-wrap:wrap;}
+.hero-image:has(img),
+.hero-image:has(video){border:none; background:none; min-height:0; padding:0; overflow:hidden;}
+.placeholder-note{color:var(--graphite); font-size:13px; font-weight:600; text-align:center;}
+
+.section-eyebrow{font-weight:700; font-size:12.5px; color:var(--amber-dark); opacity:0.85; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px;}
+h2{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(24px,2.8vw,30px); margin-bottom:18px; max-width:740px;}
+h3{font-family:'Poppins',sans-serif; font-weight:600; font-size:19px; margin-bottom:10px; max-width:740px;}
+p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; max-width:740px;}
+.block{margin-bottom:56px;}
+.block:last-child{margin-bottom:0;}
+.block p + img{margin-top:20px;}
+.block > .stats-band,
+.block > .accordion,
+.block > .gallery:not(:first-child),
+.block > .feature-grid,
+.block > .compare-table{margin-top:20px;}
+.block > img:not(:first-child),
+.block > .gallery-item.wide:not(:first-child){margin-top:20px;}
+.block > .gallery-item.wide + .gallery-item.wide{margin-top:18px;}
+.chip-row + .gallery-item.wide,
+.chip-row + img,
+.accordion + .gallery-item.wide,
+.two-col-block + .gallery,
+.two-col-block + img,
+.two-col-block + .gallery-item.wide,
+[class*="-col-block"] + .gallery-item.wide,
+[class*="-col-block"] + img{margin-top:20px;}
+.block--split{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:32px;
+  align-items:center;
+}
+.block--split .split-copy{text-align:left;}
+.block--split .split-copy h2,
+.block--split .split-copy p{max-width:none;}
+.block--split .split-copy p{margin-bottom:0;}
+.block--split .split-visual{width:100%; align-self:center;}
+.block > .col-row + .gallery-item.wide,
+.block > .col-row + .relay-image-wrap,
+.block > .col-row + img{margin-top:32px;}
+.cs-header .block{margin-bottom:0;}
+.cs-header .header-copy-block{margin-top:16px; margin-bottom:24px;}
+.cs-header .header-copy-block--last{margin-bottom:0;}
+.cs-header .meta-note{margin-top:14px; max-width:none;}
+.cs-header .meta-row{margin-top:42px; border-top:none; padding-top:0; padding-bottom:10px;}
+@media (min-width:901px){
+  .block--split{grid-template-columns:1fr 1fr; gap:48px;}
+  .block--split > :not(:last-child){grid-column:1;}
+  .block--split > :last-child{grid-column:2; grid-row:1 / -1; align-self:center;}
+  .block--split.reverse > :not(:last-child){grid-column:2;}
+  .block--split.reverse > :last-child{grid-column:1;}
+  .block--split > .split-copy{
+    display:flex; flex-direction:column; justify-content:center; align-self:center;
+  }
+  .block--split h2,
+  .block--split h3,
+  .block--split p{max-width:none;}
+}
+.col-row{display:grid; grid-template-columns:1fr; gap:32px; align-items:center;}
+.col-row-copy{text-align:left;}
+.col-row-copy h2,
+.col-row-copy h3,
+.col-row-copy p,
+.col-row-copy ul{max-width:none;}
+.col-row-copy .chip-row-full{margin-top:16px;}
+.col-row-visual .chip-row-full{grid-template-columns:1fr; margin-top:0; gap:12px; width:100%;}
+.col-row-visual{align-self:center; width:100%;}
+.col-row-visual .gallery-item:has(img),
+.col-row-visual .gallery-item:has(video){
+  min-height:0; padding:0; border:none; background:none; display:block;
+}
+.col-row-visual .gallery-item:not(:has(img)):not(:has(video)){min-height:280px; border-radius:16px; width:100%;}
+@media (min-width:901px){
+  .col-row{grid-template-columns:1fr 1fr; gap:48px;}
+}
+.gap-statement{font-style:italic; color:var(--teal); font-size:15px; border-top:1px solid var(--line); padding-top:18px; margin-top:6px;}
+.gap-callout{background:#F5A94A12; border-left:4px solid var(--amber); border-radius:0 16px 16px 0; padding:22px 24px; margin-top:20px;}
+.gap-callout .gap-statement{border-top:none; padding-top:0; margin-top:0; margin-bottom:0; max-width:none;}
+.col-row-copy .gap-callout{margin-top:20px; margin-bottom:0;}
+.gap-statement--emphasis{font-weight:700; font-size:calc(15px + 2pt);}
+
+.problem-list{margin-top:24px; display:flex; flex-direction:column; gap:26px;}
+.col-row-copy .problem-list{margin-top:20px;}
+.col-row-visual .problem-list{margin-top:0;}
+.col-row-visual .hmw-block{margin-top:0;}
+.problem-stmt{display:flex; gap:16px;}
+.problem-num{
+  flex-shrink:0; width:30px; height:30px; border-radius:50%;
+  background:var(--teal); color:#fff; font-family:'Poppins',sans-serif;
+  font-weight:600; font-size:13px; display:flex; align-items:center; justify-content:center;
+}
+.problem-stmt h4{
+  font-family:'Poppins',sans-serif; font-size:16px; color:var(--teal); margin-bottom:6px;
+}
+.problem-stmt p{font-size:14px; line-height:1.6; margin:0;}
+
+.hmw-block{
+  margin-top:32px; background:#F2665A0d; border:1px solid #F2665A33;
+  border-radius:16px; padding:24px 26px;
+}
+.hmw-label{
+  font-weight:700; font-size:12px; color:var(--coral); text-transform:uppercase;
+  letter-spacing:0.06em; margin-bottom:14px;
+}
+.hmw-list{margin:0; padding-left:20px; display:flex; flex-direction:column; gap:12px;}
+.hmw-list li{font-size:14px; font-weight:600; color:var(--ink); line-height:1.55;}
+.hmw-list li::marker{color:var(--coral); font-weight:700;}
+
+/* ---- GALLERY ---- */
+.gallery{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+.gallery-two-col{display:grid; grid-template-columns:1fr; gap:18px;}
+@media (min-width:768px){
+  .gallery-two-col{grid-template-columns:1fr 1fr;}
+}
+.gallery-item{border-radius:16px; background:var(--paper-alt); border:2px dashed var(--line); min-height:220px; display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--graphite); font-size:13px; font-weight:600; text-align:center; padding:16px;}
+.gallery-item:has(img),
+.gallery-item:has(video){border:none; background:none; min-height:0; padding:0;}
+.gallery-item.wide{grid-column:1/-1; min-height:200px;}
+.gallery-item.wide:has(img),
+.gallery-item.wide:has(video){min-height:0;}
+.hero-image img, .gallery-item img, .block img{max-width:100%; height:auto; display:block; border-radius:16px;}
+.gallery-caption{font-size:12px; font-style:italic; color:var(--ink-soft); margin-top:10px; text-align:center; max-width:none;}
+
+/* ---- STATS BAND ---- */
+.stats-band{background:var(--ink); border-radius:22px; padding:44px; display:grid; grid-template-columns:repeat(4,1fr); gap:26px; color:var(--paper); margin-bottom:10px;}
+.stat b{display:block; font-family:'Poppins',sans-serif; font-size:32px; color:var(--amber);}
+.stat span{font-size:12.5px; color:#B7C0C1; line-height:1.5;}
+
+/* ---- CHIP ROW (design decision callouts) ---- */
+.chip-row-full{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:20px;}
+.chip-card{border-radius:16px; padding:20px 22px; font-size:14px; font-weight:600; line-height:1.55; color:var(--ink); border:1px solid transparent;}
+.chip-card--teal{background:#4783830d; border-color:#47838333;}
+.chip-card--coral{background:#F2665A0d; border-color:#F2665A33;}
+.chip-card--amber{background:#F5A94A0d; border-color:#F5A94A33;}
+
+.value-card{
+  border-radius:16px; padding:20px 22px; border:1px solid transparent;
+}
+.value-card h4{
+  font-family:'Poppins',sans-serif; font-size:15px; margin-bottom:8px;
+}
+.value-card p{font-size:13px; line-height:1.55; margin:0;}
+.value-card--teal{background:#4783830d; border-color:#47838333;}
+.value-card--teal h4{color:var(--teal);}
+.value-card--coral{background:#F2665A0d; border-color:#F2665A33;}
+.value-card--coral h4{color:var(--coral);}
+.value-card--amber{background:#F5A94A0d; border-color:#F5A94A33;}
+.value-card--amber h4{color:var(--amber);}
+.testing-findings-cards{display:flex; flex-direction:column; gap:14px;}
+.col-row-copy .value-card p{max-width:none;}
+
+.metrics-grid{display:grid; grid-template-columns:1fr; gap:14px; margin-top:20px;}
+@media (min-width:768px){
+  .metrics-grid{grid-template-columns:1fr 1fr;}
+}
+.metric-block{
+  display:flex; align-items:flex-start; gap:12px;
+  border-radius:16px; padding:18px 20px; border:1px solid transparent;
+  font-size:14px; font-weight:600; line-height:1.55; color:var(--ink);
+}
+.metric-block p{margin:0; max-width:none;}
+.metric-block--teal{background:#4783830d; border-color:#47838333;}
+.metric-block--coral{background:#F2665A0d; border-color:#F2665A33;}
+.metric-block--amber{background:#F5A94A0d; border-color:#F5A94A33;}
+.metric-block--amber-dark{background:#C97A1F0d; border-color:#C97A1F33;}
+.metric-check{
+  flex-shrink:0; width:24px; height:24px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:700; line-height:1;
+  opacity:0; transform:scale(0.4);
+  animation:metric-check-pop 0.55s cubic-bezier(0.34,1.56,0.64,1) forwards;
+}
+.metric-block--teal .metric-check{background:#47838322; color:var(--teal);}
+.metric-block--coral .metric-check{background:#F2665A22; color:var(--coral);}
+.metric-block--amber .metric-check{background:#F5A94A22; color:var(--amber);}
+.metric-block--amber-dark .metric-check{background:#C97A1F22; color:var(--amber-dark);}
+.metric-block:nth-child(1) .metric-check{animation-delay:0.08s;}
+.metric-block:nth-child(2) .metric-check{animation-delay:0.2s;}
+.metric-block:nth-child(3) .metric-check{animation-delay:0.32s;}
+.metric-block:nth-child(4) .metric-check{animation-delay:0.44s;}
+@keyframes metric-check-pop{
+  0%{opacity:0; transform:scale(0.4);}
+  70%{opacity:1; transform:scale(1.12);}
+  100%{opacity:1; transform:scale(1);}
+}
+@media (prefers-reduced-motion:reduce){
+  .metric-check{opacity:1; transform:none; animation:none;}
+}
+
+/* ---- PRINCIPLE GRID ---- */
+.principle-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px;}
+.principle-item{background:#F5A94A14; border-radius:14px; padding:20px 22px;}
+.principle-item .p-dot{display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--amber); margin-right:8px;}
+.principle-item b{font-family:'Poppins',sans-serif; font-size:15px; color:var(--teal);}
+.principle-item p{font-size:13.5px; margin:8px 0 0;}
+
+/* ---- key list ---- */
+.key-list{list-style:none; margin-top:16px;}
+.key-list li{display:flex; gap:10px; padding:10px 0; font-size:14.5px; color:var(--ink-soft); border-bottom:1px solid var(--line);}
+.key-list li:last-child{border-bottom:none;}
+.key-list li::before{content:'✓'; color:var(--teal); font-weight:700; flex-shrink:0;}
+
+/* ---- callout box ---- */
+.callout-box{background:var(--paper-alt); border-radius:16px; padding:26px 28px; margin-top:20px;}
+.callout-box p{font-size:14.5px; margin-bottom:12px;}
+.callout-box p:last-child{margin-bottom:0;}
+
+.gallery-item.wide.gallery-item--flush-y,
+.gallery-item.wide.gallery-item--flush-y:has(img){
+  display:block;
+  padding:0;
+  margin-inline:0;
+  margin-bottom:0;
+  min-height:0;
+  height:fit-content;
+  width:100%;
+  line-height:0;
+}
+.gallery-item--flush-y .relay-image-wrap{
+  display:block;
+  width:100%;
+  min-height:0 !important;
+  height:fit-content;
+  margin:0;
+  padding:0;
+  background:none;
+  line-height:0;
+}
+.gallery-item--flush-y .relay-image-wrap img{
+  display:block;
+  width:100%;
+  height:auto;
+  margin:0;
+  padding:0;
+  vertical-align:top;
+}
+.gallery-item--flush-y .relay-image-placeholder{padding:0;}
+.col-row--callout-visual{margin-top:32px; align-items:center; gap:24px;}
+.col-row--callout-visual .col-row-copy{display:flex; flex-direction:column; align-items:stretch; justify-content:center; gap:16px; text-align:left;}
+.col-row--callout-visual .callout-box{margin:0; width:100%; padding:20px 24px;}
+.col-row--callout-visual .callout-box p{max-width:none;}
+.col-row--callout-visual .col-row-visual .testing-findings-cards{width:100%;}
+.col-row--callout-visual + .gallery-item.wide.gallery-item--flush-y{margin-top:32px;}
+.gallery-item--flow-diagram{text-align:left;}
+.gallery-item--flow-diagram img{
+  width:100%;
+  max-width:100%;
+  height:auto;
+  display:block;
+  margin:0;
+}
+.block--testing-session .stats-band{margin-bottom:0;}
+.block--testing-session{margin-bottom:56px;}
+.col-row--callout-visual .col-row-copy .testing-goal-block{margin:0;}
+.col-row--callout-visual .col-row-copy .testing-goal-block .gap-statement{max-width:none;}
+@media (min-width:901px){
+  .col-row--callout-visual{gap:32px;}
+}
+
+/* ---- reflections ---- */
+.reflect-grid{display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:20px;}
+.reflect-card h4{font-family:'Poppins',sans-serif; font-size:17px; margin-bottom:10px;}
+.reflect-card p{font-size:14.5px;}
+
+/* ---- transfer band ---- */
+.transfer-band{background:var(--civic-navy); color:#fff; border-radius:22px; padding:40px 44px; margin-top:10px;}
+.transfer-band-inner{display:grid; grid-template-columns:1fr; gap:28px; align-items:center;}
+.transfer-band .section-eyebrow{color:var(--amber-dark); margin-bottom:12px;}
+.transfer-band-head h2{color:#fff; max-width:none; margin-bottom:0;}
+.transfer-band-body p{color:#C7CBE8; margin:0; max-width:none; font-size:14.5px; line-height:1.65;}
+.transfer-list{list-style:none; margin:0 0 18px; padding:0; display:flex; flex-direction:column; gap:10px;}
+.transfer-list li{
+  display:flex; gap:10px; align-items:flex-start;
+  font-size:14.5px; font-weight:600; color:#E8EAF5; line-height:1.55;
+}
+.transfer-list li::before{content:'→'; color:var(--amber); font-weight:700; flex-shrink:0;}
+@media (min-width:901px){
+  .transfer-band-inner{grid-template-columns:1fr 1fr; gap:48px;}
+}
+
+.panel-next{
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  margin:40px auto 0; padding:12px 22px;
+  background:rgba(242,102,90,0.1); border:1.5px solid #F2665A;
+  border-radius:100px; color:#F2665A; font-weight:600; font-size:14px;
+  cursor:pointer; transition:background-color .2s ease, color .2s ease;
+  width:fit-content;
+}
+.panel-next:hover{ background:#F2665A; color:#fff; }
+.panel-next svg{ width:14px; height:14px; transition:transform .2s ease; }
+.panel-next:hover svg{ transform:translateX(3px); }
+
+.next-project{margin:0 48px 60px; padding:44px 40px; background:var(--paper-alt); border-radius:24px; display:flex; justify-content:space-between; align-items:center; max-width:904px; margin-left:auto; margin-right:auto; text-decoration:none; color:inherit;}
+.next-project .label{font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--graphite); margin-bottom:6px;}
+.next-project h3{margin:0; max-width:none;}
+.next-arrow{width:50px; height:50px; border-radius:50%; background:#F2665A; border:none; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; transition:background-color .25s ease, transform .3s;}
+.next-arrow svg{width:20px; height:20px; stroke:#fff;}
+.next-project:hover .next-arrow{background:#33454A; transform:translateX(6px);}
+.next-project:active .next-arrow{background:#33454A;}
+
+footer{padding:0 48px 40px; text-align:center; color:var(--graphite); font-size:13.5px;}
+footer .foot-row{display:flex; align-items:center; justify-content:center; gap:14px;}
+footer .foot-row a.social{width:32px; height:32px; border-radius:50%; background:var(--paper-alt); display:flex; align-items:center; justify-content:center; transition:all .25s;}
+footer .foot-row a.social:hover{background:var(--ink);}
+footer .foot-row a.social svg{width:16px; height:16px; fill:var(--ink); transition:fill .25s;}
+footer .foot-row a.social:hover svg{fill:var(--paper);}
+
+.back-to-top{
+  position:fixed; bottom:28px; right:28px; width:48px; height:48px; border-radius:50%;
+  background:var(--coral); border:none; cursor:pointer; z-index:250;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transform:translateY(10px);
+  transition:opacity .3s ease, transform .3s ease, background .25s ease;
+  box-shadow:0 10px 24px -8px #33454A55;
+}
+.back-to-top.show{opacity:1; pointer-events:auto; transform:translateY(0);}
+.back-to-top:hover{background:var(--ink);}
+.back-to-top svg{width:20px; height:20px; stroke:#fff; transition:stroke .25s ease;}
+.back-to-top:hover svg{stroke:#fff;}
+.back-to-top:focus-visible{outline:2px solid var(--coral); outline-offset:3px;}
+
+@media (max-width:900px){
+  .tab-nav-wrap{position:relative;}
+  .tab-nav-wrap::after{
+    content:''; position:absolute; top:16px; right:0; width:48px; height:44px;
+    pointer-events:none; background:linear-gradient(to right, transparent, var(--paper)); z-index:151;
+  }
+  .tab-nav-wrap.is-sticky::after{display:none;}
+  .tab-nav{
+    padding:16px 0 0; margin:0 16px; justify-content:flex-start;
+    overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
+    scroll-padding-inline-end:16px;
+  }
+  .tab-nav::-webkit-scrollbar{display:none;}
+  .tab-track{gap:2px; padding:3px 12px 3px 3px; flex-shrink:0;}
+  .tab-btn{padding:8px 10px; font-size:11.5px;}
+  .header-top{grid-template-columns:1fr;}
+  .header-top .hero-image{height:auto; min-height:220px;}
+  .meta-row{grid-template-columns:1fr 1fr;}
+  .gallery, .reflect-grid, .principle-grid{grid-template-columns:1fr;}
+  .stats-band{grid-template-columns:1fr 1fr;}
+  .chip-row-full{grid-template-columns:1fr;}
+  .cs-header, .tab-panel{padding-left:24px; padding-right:24px;}
+  .next-project{flex-direction:column; align-items:flex-start; gap:20px; margin:0 24px 40px;}
+}
+</style>
 </head>
 <body>
-<p>Redirecting…</p>
+
+<div id="relay-loader" class="relay-loader">
+  <div id="relay-badge" class="relay-badge">
+    <div id="relay-stage" class="relay-stage"></div>
+  </div>
+  <div class="relay-label">
+    <span id="relay-label-text">Loading</span><span id="relay-dots" class="relay-dots"></span>
+  </div>
+</div>
+
+<nav>
+  <a href="../#work" class="back-link">
+    <svg viewBox="0 0 100 100" fill="none"><path d="M75 50 H30 M50 25 L25 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    All work
+  </a>
+  <a href="/" class="nav-mark" aria-label="Back to home">
+    <svg width="105" height="23" viewBox="150 95 465 115" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="navLogoGradBC" x1="0" y1="73.98" x2="0" y2="314.82" gradientUnits="userSpaceOnUse">
+          <stop offset=".04" stop-color="#254444"/><stop offset=".34" stop-color="#2a4748"/><stop offset=".69" stop-color="#385354"/><stop offset="1" stop-color="#4b6264"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#navLogoGradBC)" d="M156.97,201.31l33.3-93.09,25.04-.25,36.15,93.34h-23.93l-7.85-18.87-33.12-.61-6.28,19.48h-23.32ZM213.42,163.28l-10.43-31.91-9.2,31.91h19.63Z"/>
+      <polygon fill="url(#navLogoGradBC)" points="303 108.06 303 181.68 338.59 181.68 338.59 201.31 279.69 201.31 279.69 108.06 303 108.06"/>
+      <polygon fill="url(#navLogoGradBC)" points="391.36 108.06 391.36 201.31 371.11 201.31 369.27 199.47 369.27 108.06 391.36 108.06"/>
+      <path fill="url(#navLogoGradBC)" d="M510.31,113.06l-6.07,20.77c-24.52-14.96-57.03-9.44-54.03,25.21,1.63,18.8,18.53,26.29,35.7,23.33,7.25-1.25,12.91-5.63,19.55-8.04l6.09,18.3c-39.73,26.4-99.84.74-84.65-52.08,10.25-35.65,53.69-44.65,83.4-27.48Z"/>
+      <path fill="url(#navLogoGradBC)" d="M608.56,108.06v18.4h-39.88c-2.97,3.94-3.01,14.32,0,18.4h37.43v18.4h-39.27v18.4h42.95v19.63h-65.04v-93.25h63.81Z"/>
+    </svg>
+  </a>
+</nav>
+
+<header class="cs-header">
+  <div class="header-top">
+    <div>
+      <div class="title-row">
+        <h1>Permit Portal</h1>
+        <span class="tag">Civic Tech</span>
+      </div>
+      <p class="cs-sub"> Civic UX · High-Stakes Workflows · Trust &amp; Error Prevention</p>
+
+      <div class="block header-copy-block">
+        <div class="section-eyebrow">The Challenge</div>
+        <p>Bergen County's permit process was fragmented, confusing, and heavily reliant on outdated manual workflows, creating uncertainty, delays, and frustration for both homeowners and contractors.</p>
+      </div>
+
+      <div class="block header-copy-block header-copy-block--last">
+        <div class="section-eyebrow">The Solution</div>
+        <p>A high-fidelity permit portal designed to help homeowners and contractors identify the right permits for their projects and submit them with confidence.</p>
+        <p style="margin-bottom:0;">Built around consequence-aware UX, intentional friction at the review screen to slow users down before irreversible submission, progressive disclosure to reduce cognitive overload, plain-language instructional microcopy throughout, and a post-submission experience redesigned to answer the questions users most often had after confirming. Validated through usability testing.</p>
+      </div>
+      <p class="meta-note">Self-directed academic project built around a real municipal permit system. The workflow constraints, irreversible submissions, compliance requirements, and limited post-submission edits all reflect real-world civic portal behavior.</p>
+      <div class="meta-row">
+        <div class="meta-item"><span>Role</span><b>Solo Designer</b></div>
+        <div class="meta-item"><span>Scope</span><b>End-to-end</b></div>
+        <div class="meta-item"><span>Timeline</span><b>3 Weeks</b></div>
+        <div class="meta-item"><span>Year</span><b>2026</b></div>
+      </div>
+    </div>
+    <div class="hero-image" style="border:none; padding:0; background:none; display:block; overflow:hidden; position:relative;">
+      <video src="/assets/bergenportal/bergen-hero.mp4" autoplay muted loop playsinline preload="auto" aria-label="Permit Portal hero, Renovation Permits screen" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; border-radius:16px;"></video>
+    </div>
+  </div>
+</header>
+
+<div class="tab-nav-anchor" id="tabNavAnchor">
+  <div class="tab-nav-sentinel" id="tabNavSentinel" aria-hidden="true"></div>
+  <div class="tab-nav-spacer" id="tabNavSpacer" aria-hidden="true"></div>
+  <div class="tab-nav-wrap" id="tabNavWrap">
+  <div class="tab-nav" id="tabNav">
+  <div class="tab-track">
+    <button class="tab-btn active" data-tab="overview">Overview</button>
+    <button class="tab-btn" data-tab="research">Research</button>
+    <button class="tab-btn" data-tab="design">Design &amp; Process</button>
+    <button class="tab-btn" data-tab="outcome">Outcome</button>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="tab-panel active" data-panel="overview">
+  <div class="block">
+    <div class="col-row">
+      <div class="col-row-copy">
+        <div class="section-eyebrow">The Problem</div>
+        <h2>Submitting a permit is not complicated. It feels dangerous.</h2>
+        <p>Early research revealed that users often lacked confidence when determining which permits were required for their projects. Because permit submissions can involve legal, financial, and procedural consequences, even small uncertainties created hesitation throughout the workflow.</p>
+        <div class="gap-callout">
+          <p class="gap-statement">The primary design challenge was not speed, it was trust, that they were doing the right thing. This distinction changed every single design decision that followed.</p>
+        </div>
+      </div>
+      <div class="col-row-visual">
+        <img data-relay src="/assets/bergenportal/bergen-mockup.png" alt="Permit portal mockup screens" style="width:100%; height:auto; display:block; border-radius:16px">
+      </div>
+    </div>
+    <div class="gallery-item wide gallery-item--flush-y gallery-item--personas">
+      <img src="/assets/bergenportal/Personas.png" alt="User personas for homeowners and contractors" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- RESEARCH -->
+<div class="tab-panel" data-panel="research">
+  <div class="block">
+    <div class="col-row">
+      <div class="col-row-copy">
+        <div class="section-eyebrow">Discovery</div>
+        <h2>Where the uncertainty was concentrated</h2>
+        <p>Affinity mapping surfaced recurring themes: confusion and lack of clarity around requirements, reliance on outdated manual and in-person processes, contractors doing homeowners' research for them, weak transparency into review timelines, and real emotional impact, stress and hesitation showing up well before submission.</p>
+      </div>
+      <div class="col-row-visual">
+        <img data-relay src="/assets/bergenportal/Affinity-mapping.png" alt="Affinity mapping board" style="width:100%; height:auto; display:block; border-radius:16px">
+      </div>
+    </div>
+  </div>
+  <div class="block">
+    <div class="col-row">
+      <div class="col-row-copy">
+        <h2>Mapping the full journey</h2>
+        <p>The permit discovery and submission journey was mapped end-to-end, including decision branches for different project types, required document paths, and the review/confirmation loop.</p>
+        <div class="problem-list">
+          <div class="problem-stmt">
+            <div class="problem-num">1</div>
+            <div>
+              <h4>Lack of Clear Permit Guidance</h4>
+              <p>Homeowners struggle to understand which permits they need and how to begin the renovation process because permit information is scattered across outdated PDFs, inconsistent municipal websites, and unclear requirements. This leads to confusion, delays, unnecessary in-person inquiries, and an increased burden on county staff.</p>
+            </div>
+          </div>
+          <div class="problem-stmt">
+            <div class="problem-num">2</div>
+            <div>
+              <h4>Limited Transparency Throughout the Permit Journey</h4>
+              <p>Both homeowners and contractors lack transparency into permit status, required next steps, and expected timelines, causing frustration, avoidable back-and-forth communication, and processing delays that strain county resources and reduce user confidence in the permitting system.</p>
+            </div>
+          </div>
+          <div class="problem-stmt">
+            <div class="problem-num">3</div>
+            <div>
+              <h4>Inconsistent Processes Across Municipalities</h4>
+              <p>Contractors waste time navigating different permit processes across municipalities, resulting in repeated errors, missing documents, and unpredictable approval timelines. This inconsistency impacts their ability to plan work efficiently and creates operational slowdowns for both their business and the county.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-row-visual">
+        <div class="hmw-block">
+          <div class="hmw-label">HMW Questions</div>
+          <ol class="hmw-list">
+            <li>HMW help homeowners easily understand which permits they need and how to start the process?</li>
+            <li>HMW create a consistent and efficient permit submission experience for contractors across different municipalities?</li>
+            <li>HMW give users clear visibility into permit status, required next steps, and timelines throughout the entire permit journey?</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item wide gallery-item--flush-y gallery-item--flow-diagram">
+      <img data-relay src="/assets/bergenportal/permit-finder-flow.png" alt="User journey flow diagram, permit discovery through submission and confirmation" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- DESIGN & PROCESS -->
+<div class="tab-panel" data-panel="design">
+  <div class="block">
+    <div class="col-row">
+      <div class="col-row-copy">
+        <div class="section-eyebrow">The Most Important Design Decision</div>
+        <h2>Intentional friction: resistance introduced not as a failure of design, but as a feature of it.</h2>
+      </div>
+      <div class="col-row-visual">
+        <div class="chip-row-full">
+          <div class="chip-card chip-card--teal">Most form design optimizes for completion speed.</div>
+          <div class="chip-card chip-card--coral">For Bergen County, speed was the wrong goal.</div>
+          <div class="chip-card chip-card--amber">Accuracy and confidence were the right goals.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="col-row">
+      <div class="col-row-visual">
+        <img data-relay src="/assets/bergenportal/bergen-img.png" alt="Review and submit screens, confirmation modal and full application summary" style="width:100%; height:auto; display:block; border-radius:16px">
+      </div>
+      <div class="col-row-copy">
+        <div class="section-eyebrow">The Review Screen</div>
+        <h2>A comprehensive view of everything entered, before anything is permanent.</h2>
+        <p>The review screen was deliberately designed to slow users down. Rather than a quick summary before confirmation, it presented every entry with explicit language about what submission meant and what could not be changed afterward.</p>
+        <p class="gap-statement gap-statement--emphasis" style="border-top:none; padding-top:0; margin-top:16px; margin-bottom:0;">Every element on the screen was there to answer one question: "Am I sure?"</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="col-row">
+      <div class="col-row-copy">
+        <p>The interface was designed around progressive disclosure, clear hierarchy, and strong instructional microcopy. Every screen aimed to reduce ambiguity while helping users understand both what to do and why the information mattered.</p>
+        <p>High-fidelity prototypes were created in Figma with a strong emphasis on:</p>
+        <ul class="key-list">
+          <li>Clear action language</li>
+          <li>Predictable screen progression</li>
+          <li>Visible progress indicators</li>
+          <li>Trust-building confirmation patterns</li>
+          <li>Reduced cognitive overload</li>
+        </ul>
+      </div>
+      <div class="col-row-visual">
+        <video src="/assets/bergenportal/bergen-submiting-permit-optimized.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Permit submission flow" style="width:100%; height:auto; display:block; border-radius:16px;"></video>
+      </div>
+    </div>
+    <div class="gallery-item wide gallery-item--flush-y gallery-item--screen-mockups">
+      <img src="/assets/bergenportal/mockup-allscreens.png" alt="All permit portal screen mockups" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- OUTCOME -->
+<div class="tab-panel" data-panel="outcome">
+  <div class="block block--testing-session">
+    <div class="section-eyebrow">Usability Testing</div>
+    <h2>5 moderated sessions. 2 significant failures that made the product significantly better.</h2>
+    <div class="stats-band">
+      <div class="stat"><b>5</b><span>Participants</span></div>
+      <div class="stat"><b>1</b><span>Critical issue found &amp; fixed</span></div>
+      <div class="stat"><b>100%</b><span>Task Completion Rate</span></div>
+      <div class="stat"><b>40-50</b><span>Minutes per session</span></div>
+    </div>
+    <div class="col-row col-row--callout-visual">
+      <div class="col-row-copy">
+        <div class="callout-box">
+          <p>These were conducted using realistic permit submission tasks, including uploading documents, reviewing project information, completing forms, and submitting applications.</p>
+          <p>Rather than testing for visual preference alone, the sessions focused heavily on comprehension, confidence, and emotional friction.</p>
+        </div>
+        <div class="gap-callout testing-goal-block">
+          <p class="gap-statement">The goal was to closely observe moments where users hesitated, misunderstood labels, or questioned whether they were completing tasks correctly. This research approach helped uncover deeper trust and expectation issues that might not appear through surface-level usability testing alone.</p>
+        </div>
+      </div>
+      <div class="col-row-visual">
+        <div class="testing-findings-cards">
+          <div class="value-card value-card--teal">
+            <h4>What testing surfaced</h4>
+            <p>Participants expressed concern about submitting an application without the ability to make changes afterward.</p>
+          </div>
+          <div class="value-card value-card--coral">
+            <h4>Observed behavior</h4>
+            <p>Users double-checked information repeatedly. Some asked if they could edit after submission. Anxiety increased near the final submission step.</p>
+          </div>
+          <div class="value-card value-card--amber">
+            <h4>Resolution</h4>
+            <p>Users wanted a clear review and reconfirmation screen before final submission, especially when changes are restricted; any edits after final submission now require explicit confirmation to proceed.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item wide gallery-item--flush-y gallery-item--flow-diagram">
+      <img src="/assets/bergenportal/defining-the-problem.png" alt="Flow improvements diagram" loading="lazy">
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="col-row">
+      <div class="col-row-copy">
+        <div class="section-eyebrow">Post-Submission Reassurance</div>
+        <h2>The confirmation screen had treated its job as done. But users disagreed.</h2>
+        <p>An application tracking number was incorporated into both the success state and the dashboard.</p>
+        <p style="margin-bottom:0;">Post-submission messaging was rewritten to answer the four questions users most often had: what happens now, how it will be reviewed, where to find the submission, and who to contact if something is wrong.</p>
+      </div>
+      <div class="col-row-visual">
+        <img data-relay src="/assets/bergenportal/Confirmation-screen.png" alt="Post-submission confirmation screen" style="width:100%; height:auto; display:block; border-radius:16px">
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Success Metrics</h3>
+    <div class="metrics-grid">
+      <div class="metric-block metric-block--teal">
+        <span class="metric-check" aria-hidden="true">✓</span>
+        <p>Reduced hesitation during permit submissions</p>
+      </div>
+      <div class="metric-block metric-block--coral">
+        <span class="metric-check" aria-hidden="true">✓</span>
+        <p>Flows improved confidence when completing applications</p>
+      </div>
+      <div class="metric-block metric-block--amber">
+        <span class="metric-check" aria-hidden="true">✓</span>
+        <p>Fewer misunderstandings around forms and requirements</p>
+      </div>
+      <div class="metric-block metric-block--amber-dark">
+        <span class="metric-check" aria-hidden="true">✓</span>
+        <p>Stronger trust signals throughout the workflow reduced dependency on customer support</p>
+      </div>
+    </div>
+  </div>
+
+ 
+
+  <div class="block">
+    <div class="section-eyebrow">Reflections</div>
+    <div class="reflect-grid">
+      <div class="reflect-card">
+        <h4>What I Would Do Differently</h4>
+        <p>With more time, I would have tested the intentional friction pattern specifically, running a version with and without the deliberate review screen to measure whether it improved submission accuracy or only increased time-on-task. I would also have pushed further into the permit discovery flow, where the earliest and most consequential uncertainty lived.</p>
+      </div>
+      <div class="reflect-card">
+        <h4>What This Project Proved</h4>
+        <p>This project strengthened my ability to design within real-world operational and compliance constraints while still prioritizing usability and trust. More importantly, it reinforced how deeply emotional factors like fear, uncertainty, and confidence influence user behavior in high-stakes workflows.</p>
+        <p style="margin-bottom:0;">The final experience focused not only on helping users complete tasks, but on helping them feel confident throughout the process.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="transfer-band">
+      <div class="transfer-band-inner">
+        <div class="transfer-band-head">
+          <div class="section-eyebrow">Why This Transfers to Health Tech</div>
+          <h2>The trust failures in civic workflows and healthcare workflows are structurally identical.</h2>
+        </div>
+        <div class="transfer-band-body">
+          <ul class="transfer-list">
+            <li>Irreversible actions</li>
+            <li>Unclear consequences</li>
+            <li>Processes users do not fully understand but cannot afford to get wrong</li>
+          </ul>
+          <p>The design thinking developed here, including intentional friction, post-submission reassurance, and consequence-aware information architecture, applies directly to clinical intake forms, insurance pre-authorization flows, and telehealth onboarding.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="gallery-item wide gallery-item--flush-y">
+      <img data-relay src="/assets/bergenportal/defining-the-problem-img.png" alt="Defining the problem, permit portal screens">
+    </div>
+  </div>
+  <a href="../diapulse-case-study/" class="next-project">
+    <div><div class="label">Next case file</div><h3>Diapulse</h3></div>
+    <div class="next-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </a>
+</div>
+
+<footer>
+  <div class="foot-row">
+    <span>© Alice Curiel, hello@aliceportfolio.com</span>
+    <a href="https://www.linkedin.com/in/alice-curiel-800817146/" target="_blank" rel="noopener" class="social" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V9.75H5.67v8.59h2.67zM7 8.63a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.34 9.71v-4.71c0-2.52-1.35-3.69-3.15-3.69a2.72 2.72 0 0 0-2.46 1.35v-1.16H10.06c.04.75 0 8.21 0 8.21h2.67v-4.59c0-.25.02-.49.09-.67.2-.49.65-1 1.4-1 1 0 1.4.75 1.4 1.86v4.4h2.72z"/></svg>
+    </a>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 100 100" fill="none"><path d="M50 75 V25 M25 50 L50 25 L75 50" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script>
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    const activePanel = document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`);
+    activePanel.classList.add('active');
+    const panelTop = activePanel.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({top: panelTop - 130, behavior:'smooth'});
+  });
+});
+(function(){
+  const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
+  if(!tabButtons.length) return;
+
+  tabButtons.forEach((btn, index)=>{
+    const panel = document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`);
+    if(!panel) return;
+    const isLast = index === tabButtons.length - 1;
+
+    if(!isLast){
+      const nextBtn = tabButtons[index + 1];
+      const continueBtn = document.createElement('button');
+      continueBtn.className = 'panel-next';
+      continueBtn.innerHTML = `Continue
+        <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      continueBtn.addEventListener('click', ()=> nextBtn.click());
+      panel.appendChild(continueBtn);
+    } else {
+      const nextProjectEl = document.querySelector('.next-project');
+      if(nextProjectEl){
+        nextProjectEl.remove();
+        panel.appendChild(nextProjectEl);
+      }
+    }
+  });
+})();
+(function(){
+  const tabWrap = document.getElementById('tabNavWrap');
+  const sentinel = document.getElementById('tabNavSentinel');
+  const spacer = document.getElementById('tabNavSpacer');
+  if(!tabWrap || !sentinel || !spacer) return;
+  const stickTop = 65;
+  let isStuck = false;
+  let cachedHeight = 0;
+
+  function setSticky(stuck){
+    if(stuck === isStuck) return;
+
+    if(stuck){
+      cachedHeight = tabWrap.offsetHeight;
+      spacer.style.height = cachedHeight + 'px';
+      tabWrap.classList.add('is-sticky');
+      isStuck = true;
+    } else {
+      tabWrap.classList.remove('is-sticky');
+      spacer.style.height = '0px';
+      cachedHeight = 0;
+      isStuck = false;
+    }
+  }
+
+  function updateSticky(){
+    setSticky(sentinel.getBoundingClientRect().top < stickTop);
+  }
+
+  const observer = new IntersectionObserver(()=>{
+    updateSticky();
+  }, { root:null, threshold:[0] });
+  observer.observe(sentinel);
+  window.addEventListener('scroll', updateSticky, {passive:true});
+
+  window.addEventListener('resize', ()=>{
+    if(isStuck){
+      cachedHeight = tabWrap.offsetHeight;
+      spacer.style.height = cachedHeight + 'px';
+    }
+    updateSticky();
+  });
+  updateSticky();
+})();
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', ()=>{
+  if(window.scrollY > 500){ backToTop.classList.add('show'); }
+  else{ backToTop.classList.remove('show'); }
+});
+backToTop.addEventListener('click', ()=>{ window.scrollTo({top:0, behavior:'smooth'}); });
+</script>
+
+<script src="/assets/js/relay.js"></script>
 </body>
 </html>
