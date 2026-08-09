@@ -113,9 +113,23 @@ h1 .highlight{color:var(--amber);}
 .about-photo{width:220px; height:220px; border-radius:50%; background:var(--paper-alt); border:2px dashed var(--line); flex-shrink:0; display:flex; align-items:center; justify-content:center; color:var(--graphite); font-size:12px; font-weight:600; text-align:center;}
 .about-content h2{font-family:'Poppins',sans-serif; font-size:26px; font-weight:600; margin-bottom:14px;}
 .about-content p{font-size:14.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:12px;}
-.about-stats{display:flex; gap:28px; margin-top:20px; flex-wrap:wrap;}
-.about-stats div b{display:block; font-family:'Poppins',sans-serif; font-size:26px; color:var(--amber);}
-.about-stats div span{font-size:11px; color:var(--graphite); text-transform:uppercase; letter-spacing:0.04em;}
+.about-stat-pill{
+  display:inline-flex; align-items:center; gap:10px;
+  background:var(--paper-alt); border-radius:100px;
+  padding:10px 20px 10px 18px; position:relative; overflow:hidden;
+  margin-top:6px;
+}
+.about-stat-pill::before{
+  content:''; position:absolute; left:0; top:0; bottom:0; width:5px;
+  background:var(--coral);
+}
+.about-stat-number{
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:26px;
+  color:var(--ink);
+}
+.about-stat-label{
+  font-size:12px; font-weight:600; color:var(--ink-soft);
+}
 
 .footer-card{display:flex; justify-content:space-between; align-items:center; max-width:920px; width:100%; gap:40px;}
 .footer-headline{font-family:'Poppins',sans-serif; font-size:clamp(24px,3vw,34px); font-weight:600; max-width:420px; line-height:1.25;}
@@ -426,8 +440,6 @@ h1 .highlight{color:var(--amber);}
   .about-reveal, .process-reveal, .footer-reveal{position:relative; opacity:1; pointer-events:auto; padding:60px 24px; display:block;}
   .about-card{flex-direction:column; text-align:center; padding:36px 28px; gap:28px;}
   .about-content p{text-align:left;}
-  .about-stats{justify-content:center; align-items:center;}
-  .about-stats div{text-align:center;}
   .about-photo{width:160px; height:160px;}
   .process-row{
     display:flex;
@@ -664,7 +676,7 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
       <div class="hero-textwrap">
         <div class="eyebrow">Product &amp; Visual Design, Healthtech / Civic Tech</div>
         <h1>Design that earns <span class="highlight">trust</span>, not just clicks.</h1>
-        <p class="hero-sub">I'm Alice Curiel, a Product Designer focused on health tech, trust-driven experiences, and human-centered digital products.</p>
+        <p class="hero-sub">I'm Alice Curiel, a Product Designer focused on health tech and trust-driven experiences, designing the decisions behind the screen, not just the screen itself.</p>
         <div class="hero-cta">
           <button class="btn filled" id="seeWorkBtn"><span class="btn-label-full">See work</span><span class="btn-label-short">Work</span>
             <svg width="16" height="16" viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -698,10 +710,9 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
           <p>From redesigning clinical software used in hospitals to building an AI-powered nutrition app from the ground up, the common thread in my work is trust. I specialize in designing trust into experiences for users who don't give it easily.</p>
           <p>My approach is rooted in my foundation as a graphic designer (BFA, magna cum laude, The City College of New York), which taught me that a product's visual system and its strategic goals must work seamlessly together.</p>
           <p>I want to work with teams building things that matter. If you are developing a product where earning the user's trust is step one, we should talk.</p>
-          <div class="about-stats">
-            <div><b>7</b><span>Years designing</span></div>
-            <div><b>2</b><span>Active clients</span></div>
-            <div><b>6</b><span>Case files</span></div>
+          <div class="about-stat-pill">
+            <span class="about-stat-number" data-count="7">0</span>
+            <span class="about-stat-label">years of experience</span>
           </div>
         </div>
       </div>
@@ -1011,6 +1022,66 @@ function getScrollHintText(stage){
 function isMobile(){ return window.innerWidth <= 760; }
 function isFanCarousel(){ return isMobile(); }
 
+let tryAboutStatCount = null;
+
+function initAboutStatCount(){
+  const pill = document.querySelector('.about-stat-pill');
+  const numEl = pill?.querySelector('.about-stat-number');
+  if(!pill || !numEl) return;
+
+  const target = parseInt(numEl.dataset.count, 10) || 7;
+  let done = false;
+
+  function showFinal(){
+    numEl.textContent = target + '+';
+  }
+
+  function runCountUp(){
+    if(done) return;
+    done = true;
+
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      showFinal();
+      return;
+    }
+
+    const duration = 900;
+    const start = performance.now();
+    function easeOut(t){ return 1 - Math.pow(1 - t, 3); }
+    function tick(now){
+      const progress = Math.min((now - start) / duration, 1);
+      numEl.textContent = String(Math.round(easeOut(progress) * target));
+      if(progress < 1){
+        requestAnimationFrame(tick);
+      } else {
+        showFinal();
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function isAboutVisible(){
+    if(isMobile()){
+      const rect = pill.getBoundingClientRect();
+      return rect.top < window.innerHeight * 0.85 && rect.bottom > window.innerHeight * 0.15;
+    }
+    return currentStage === 2;
+  }
+
+  function tryStart(){
+    if(done || !isAboutVisible()) return;
+    runCountUp();
+  }
+
+  const observer = new IntersectionObserver((entries)=>{
+    if(entries.some(entry => entry.isIntersecting)) tryStart();
+  }, { threshold: 0.25 });
+  observer.observe(pill);
+  window.addEventListener('scroll', tryStart, {passive:true});
+  tryAboutStatCount = tryStart;
+  tryStart();
+}
+
 function setStage(stage, force){
   if(!heroEl || (!force && stage === currentStage)) return;
   currentStage = stage;
@@ -1023,6 +1094,7 @@ function setStage(stage, force){
     setScrollCueText(getScrollHintText(stage));
   }
   updateScrollCueVisibility();
+  if(stage === 2) tryAboutStatCount?.();
 }
 
 try{
@@ -1036,6 +1108,7 @@ cards = document.querySelectorAll('.fan-card');
 
 if(heroEl) setStage(0, true);
 updateScrollCueVisibility();
+initAboutStatCount();
 
 if('scrollRestoration' in history){
   history.scrollRestoration = 'manual';
