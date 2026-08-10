@@ -113,23 +113,21 @@ h1 .highlight{color:var(--amber);}
 .about-photo{width:220px; height:220px; border-radius:50%; background:var(--paper-alt); border:2px dashed var(--line); flex-shrink:0; display:flex; align-items:center; justify-content:center; color:var(--graphite); font-size:12px; font-weight:600; text-align:center;}
 .about-content h2{font-family:'Poppins',sans-serif; font-size:26px; font-weight:600; margin-bottom:14px;}
 .about-content p{font-size:14.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:12px;}
-.about-stat-pill{
-  display:inline-flex; align-items:center; gap:10px;
-  background:var(--paper-alt); border-radius:100px;
-  padding:10px 20px 10px 18px; position:relative; overflow:hidden;
-  margin-top:6px;
-}
-.about-stat-pill::before{
-  content:''; position:absolute; left:0; top:0; bottom:0; width:5px;
-  background:var(--coral);
+.about-stat{
+  display:flex; align-items:center; gap:12.8px; margin-top:4.8px;
 }
 .about-stat-number{
-  font-family:'Poppins',sans-serif; font-weight:700; font-size:26px;
-  color:var(--ink);
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:38.4px;
+  color:var(--amber); line-height:1;
+}
+.about-stat-divider{
+  width:1px; height:28.8px; background:#33454A33;
 }
 .about-stat-label{
-  font-size:12px; font-weight:600; color:var(--ink-soft);
+  font-size:10px; font-weight:600; color:var(--ink-soft);
+  line-height:1.3; max-width:56px;
 }
+.about-stats-row{ display:flex; gap:25.6px; margin-top:4.8px; }
 
 .footer-card{display:flex; justify-content:space-between; align-items:center; max-width:920px; width:100%; gap:40px;}
 .footer-headline{font-family:'Poppins',sans-serif; font-size:clamp(24px,3vw,34px); font-weight:600; max-width:420px; line-height:1.25;}
@@ -440,6 +438,7 @@ h1 .highlight{color:var(--amber);}
   .about-reveal, .process-reveal, .footer-reveal{position:relative; opacity:1; pointer-events:auto; padding:60px 24px; display:block;}
   .about-card{flex-direction:column; text-align:center; padding:36px 28px; gap:28px;}
   .about-content p{text-align:left;}
+  .about-stats-row{flex-direction:column; gap:16px; align-items:flex-start;}
   .about-photo{width:160px; height:160px;}
   .process-row{
     display:flex;
@@ -710,9 +709,17 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
           <p>From redesigning clinical software used in hospitals to building an AI-powered nutrition app from the ground up, the common thread in my work is trust. I specialize in designing trust into experiences for users who don't give it easily.</p>
           <p>My approach is rooted in my foundation as a graphic designer (BFA, magna cum laude, The City College of New York), which taught me that a product's visual system and its strategic goals must work seamlessly together.</p>
           <p>I want to work with teams building things that matter. If you are developing a product where earning the user's trust is step one, we should talk.</p>
-          <div class="about-stat-pill">
-            <span class="about-stat-number" data-count="7">0</span>
-            <span class="about-stat-label">years of experience</span>
+          <div class="about-stats-row">
+            <div class="about-stat">
+              <span class="about-stat-number" data-count="7">0</span>
+              <div class="about-stat-divider"></div>
+              <span class="about-stat-label">Years<br>designing</span>
+            </div>
+            <div class="about-stat">
+              <span class="about-stat-number" data-count="30">0</span>
+              <div class="about-stat-divider"></div>
+              <span class="about-stat-label">Clients</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1025,26 +1032,24 @@ function isFanCarousel(){ return isMobile(); }
 let tryAboutStatCount = null;
 
 function initAboutStatCount(){
-  const pill = document.querySelector('.about-stat-pill');
-  const numEl = pill?.querySelector('.about-stat-number');
-  if(!pill || !numEl) return;
+  const row = document.querySelector('.about-stats-row');
+  const numEls = document.querySelectorAll('.about-stat-number');
+  if(!row || !numEls.length) return;
 
-  const target = parseInt(numEl.dataset.count, 10) || 7;
   let done = false;
 
-  function showFinal(){
+  function showFinal(numEl){
+    const target = parseInt(numEl.dataset.count, 10) || 0;
     numEl.textContent = target + '+';
   }
 
-  function runCountUp(){
-    if(done) return;
-    done = true;
-
+  function runCountUpFor(numEl){
     if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-      showFinal();
+      showFinal(numEl);
       return;
     }
 
+    const target = parseInt(numEl.dataset.count, 10) || 0;
     const duration = 900;
     const start = performance.now();
     function easeOut(t){ return 1 - Math.pow(1 - t, 3); }
@@ -1054,15 +1059,21 @@ function initAboutStatCount(){
       if(progress < 1){
         requestAnimationFrame(tick);
       } else {
-        showFinal();
+        showFinal(numEl);
       }
     }
     requestAnimationFrame(tick);
   }
 
+  function runCountUp(){
+    if(done) return;
+    done = true;
+    numEls.forEach(runCountUpFor);
+  }
+
   function isAboutVisible(){
     if(isMobile()){
-      const rect = pill.getBoundingClientRect();
+      const rect = row.getBoundingClientRect();
       return rect.top < window.innerHeight * 0.85 && rect.bottom > window.innerHeight * 0.15;
     }
     return currentStage === 2;
@@ -1076,7 +1087,7 @@ function initAboutStatCount(){
   const observer = new IntersectionObserver((entries)=>{
     if(entries.some(entry => entry.isIntersecting)) tryStart();
   }, { threshold: 0.25 });
-  observer.observe(pill);
+  observer.observe(row);
   window.addEventListener('scroll', tryStart, {passive:true});
   tryAboutStatCount = tryStart;
   tryStart();
