@@ -37,48 +37,39 @@ nav{position:sticky; top:0; z-index:200; display:flex; justify-content:space-bet
 .btn.filled:hover{background:var(--ink); transform:translateY(-2px);}
 .btn svg{width:14px; height:14px;}
 
-main{max-width:940px; margin:0 auto; padding:56px 32px 0;}
+main{max-width:820px; margin:0 auto; padding:56px 32px 0;}
 
 .resume-actions{display:flex; justify-content:center; margin-top:32px;}
 
-.resume-card{background:#fff; border-radius:24px; box-shadow:0 30px 70px -30px #33454A40; overflow:hidden; display:flex; align-items:stretch;}
+.resume-card{background:#fff; border-radius:24px; box-shadow:0 30px 70px -30px #33454A40; overflow:hidden;}
 
-/* ---- sidebar ---- */
-.r-sidebar{width:270px; flex-shrink:0; background:var(--rose-pale); padding:44px 32px;}
-.r-logo{width:172px; height:auto; margin:0 auto 24px; display:block;}
-.r-sidebar-location{font-size:12px; color:var(--graphite); margin-bottom:34px;}
+/* ---- header: floating brand icons behind name/title/contact, no logo mark ---- */
+.r-header-wrap{position:relative; overflow:hidden; background:var(--rose-pale); padding:44px 56px 34px;}
+.r-header-icons{position:absolute; inset:0; pointer-events:none; opacity:0.16;}
+.r-header-icons svg{position:absolute;}
+.r-header-inner{position:relative; z-index:1;}
+.r-header-inner h1{font-family:'Poppins',sans-serif; font-weight:700; font-size:30px; letter-spacing:-0.01em; flex-shrink:0; white-space:nowrap;}
+.r-name-row{display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:14px;}
+.r-title-pill{display:inline-block; background:var(--coral); color:#fff; font-weight:600; font-size:12px; padding:5px 14px; border-radius:100px; white-space:nowrap;}
+.r-meta-row{display:flex; flex-wrap:wrap; gap:6px 16px; font-size:12.5px; color:var(--ink-soft);}
+.r-meta-row a{color:var(--coral); font-weight:600;}
+.r-meta-row a:hover{color:var(--ink);}
 
-.r-side-block{margin-bottom:28px;}
-.r-side-block:last-child{margin-bottom:0;}
-.r-side-label{font-weight:700; font-size:10.5px; text-transform:uppercase; letter-spacing:0.09em; color:var(--amber-dark); margin-bottom:12px;}
-.r-side-block div, .r-side-block a, .r-side-block p{font-size:12.5px; line-height:1.7; color:var(--ink-soft); display:block;}
-.r-side-block a{color:var(--coral); font-weight:500;}
-.r-side-block a:hover{color:var(--ink);}
+.r-body{padding:40px 56px 48px;}
 
-.r-skill-list{list-style:none;}
-.r-skill-list li{font-size:12.5px; line-height:1.9; color:var(--ink); padding-left:14px; position:relative;}
-.r-skill-list li::before{content:''; position:absolute; left:0; top:9px; width:4px; height:4px; border-radius:50%; background:var(--coral);}
+/* ---- pull-quote positioning statement ---- */
+.r-pullquote{position:relative; margin:0 0 36px; padding-left:22px;}
+.r-pullquote::before{content:''; position:absolute; left:0; top:2px; bottom:2px; width:3px; border-radius:2px; background:var(--coral);}
+.r-pullquote p{font-family:'Poppins',sans-serif; font-weight:500; font-style:italic; font-size:17px; line-height:1.5; color:var(--ink);}
 
-.r-edu-side b{display:block; color:var(--ink); font-weight:600; font-size:12.5px; margin-bottom:2px;}
-.r-edu-side{margin-bottom:14px; font-size:12px; color:var(--ink-soft); line-height:1.5;}
-.r-edu-side:last-child{margin-bottom:0;}
+/* ---- single-column rows: narrow label + wide content, stacked ---- */
+.r-row{display:flex; align-items:flex-start; gap:14px; margin-bottom:28px;}
+.r-row:last-child{margin-bottom:0;}
+.r-row-label-wrap{flex:0 0 150px; width:150px;}
+.r-row > div:last-child, .r-row > .r-toolkit-line{flex:1; min-width:0;}
+.r-row-label{display:inline-block; font-weight:700; font-size:10.5px; text-transform:uppercase; letter-spacing:0.09em; color:var(--amber-dark); background:var(--paper-alt); padding:6px 12px; border-radius:6px;}
 
-/* ---- main column ---- */
-.r-main{flex:1; padding:48px 52px 52px; min-width:0;}
-.r-main h1{font-family:'Poppins',sans-serif; font-weight:700; font-size:36px; letter-spacing:-0.01em; margin-bottom:6px;}
-.r-title{color:var(--coral); font-weight:600; font-size:15px; margin-bottom:28px;}
-
-.r-methods{background:var(--pale); border-left:3px solid var(--coral); border-radius:6px 16px 16px 6px; padding:22px 26px; margin-bottom:34px;}
-.r-methods-label{font-weight:700; font-size:10.5px; text-transform:uppercase; letter-spacing:0.09em; color:var(--amber-dark); margin-bottom:10px;}
-.r-methods p{font-size:14.5px; line-height:1.65; color:var(--ink);}
-
-.r-section{margin-bottom:30px;}
-.r-section:last-child{margin-bottom:0;}
-.r-section-label{display:flex; align-items:center; gap:9px; font-weight:700; font-size:11.5px; text-transform:uppercase; letter-spacing:0.09em; color:var(--amber-dark); margin-bottom:18px;}
-.r-section-label::before{content:''; width:16px; height:2.5px; border-radius:2px; background:var(--coral); flex-shrink:0;}
-.r-section-label::after{content:''; flex:1; height:1px; background:var(--line);}
-
-.r-entry{margin-bottom:32px;}
+.r-entry{margin-bottom:24px;}
 .r-entry:last-child{margin-bottom:0;}
 .r-entry-top{margin-bottom:6px;}
 .r-entry-role-row{display:flex; justify-content:space-between; align-items:baseline; gap:16px; line-height:1.2;}
@@ -88,6 +79,31 @@ main{max-width:940px; margin:0 auto; padding:56px 32px 0;}
 .r-entry-summary{font-size:13px; line-height:1.6; color:var(--ink-soft); margin-top:6px;}
 .r-todo{background:#F2665A22; color:var(--coral); font-weight:700; padding:1px 6px; border-radius:4px; font-size:11.5px;}
 
+/* ---- skills: grouped, stacked in one column ---- */
+.r-skills-group{margin-bottom:16px;}
+.r-skills-group:last-child{margin-bottom:0;}
+.r-skills-group-label{font-weight:700; font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--graphite); margin-bottom:9px;}
+.r-skills-chips{display:flex; flex-wrap:wrap; align-items:center;}
+.r-skill-chip{font-size:12.5px; font-weight:600; color:var(--ink); white-space:nowrap; position:relative; padding-right:16px; margin-right:4px;}
+.r-skill-chip::after{content:'\2022'; position:absolute; right:2px; top:0; color:var(--coral); font-weight:700;}
+.r-skill-chip:last-child{padding-right:0; margin-right:0;}
+.r-skill-chip:last-child::after{content:none;}
+
+/* ---- education / toolkit rows ---- */
+.r-edu-side b{display:block; color:var(--ink); font-weight:600; font-size:13px;}
+.r-edu-side{margin-bottom:12px; font-size:12px; color:var(--ink-soft); line-height:1.5;}
+.r-edu-detail{display:block; margin-top:4px; font-size:11px; line-height:1.5; color:var(--graphite);}
+.r-edu-side:last-child{margin-bottom:0;}
+.r-edu-side span.school{display:block;}
+.r-toolkit-line{font-size:12.5px; color:var(--ink-soft); line-height:1.7;}
+
+@media (max-width:640px){
+  .r-header-wrap{padding:32px 28px 24px;}
+  .r-body{padding:32px 28px 40px;}
+  .r-row{flex-direction:column; gap:10px;}
+  .r-row-label-wrap{flex:none; width:auto;}
+}
+
 footer{padding:48px 32px 40px; text-align:center; color:var(--graphite); font-size:13.5px;}
 footer .foot-row{display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap;}
 footer .foot-row a.social{width:32px; height:32px; border-radius:50%; background:var(--pale); display:flex; align-items:center; justify-content:center; transition:all .25s;}
@@ -95,34 +111,34 @@ footer .foot-row a.social:hover{background:var(--ink);}
 footer .foot-row a.social svg{width:16px; height:16px; fill:var(--ink); transition:fill .25s;}
 footer .foot-row a.social:hover svg{fill:var(--paper);}
 
-@media (max-width:760px){
-  .resume-card{flex-direction:column;}
-  .r-sidebar{width:100%;}
-}
 
 @media print{
-  @page{ size:letter; margin:0.35in; }
+  @page{ size:letter; margin:0.5in; }
   nav{ display:none; }
-  body{ background:#fff; font-size:11.5px; }
+  body{ background:#fff; font-size:12.5px; }
   main{ max-width:none; padding:0; margin:0; }
   .resume-actions{ display:none; }
   footer{ display:none; }
   .resume-card{ box-shadow:none; border-radius:0; }
-  .r-logo{ width:130px; margin-bottom:14px; }
-  .r-sidebar{ padding:24px 20px; width:220px; }
-  .r-side-block{ margin-bottom:12px; }
-  .r-side-label{ margin-bottom:6px; }
-  .r-skill-list li{ font-size:10.5px; line-height:1.55; }
-  .r-side-block div, .r-side-block a, .r-side-block p, .r-edu-side{ font-size:10.5px; line-height:1.4; }
-  .r-main{ padding:28px 32px 32px; }
-  .r-main h1{ font-size:27px; }
-  .r-title{ margin-bottom:15px; }
-  .r-methods{ padding:12px 16px; margin-bottom:15px; }
-  .r-methods p{ font-size:11px; line-height:1.4; }
-  .r-section{ margin-bottom:15px; }
-  .r-section-label{ margin-bottom:9px; }
-  .r-entry{ margin-bottom:18px; }
-  .r-entry-summary{ margin-top:2px; font-size:10px; line-height:1.4; orphans:3; widows:3; }
+  .r-header-wrap{ padding:0 0 16px; background:none; page-break-inside:avoid; }
+  .r-header-icons{ display:none; }
+  .r-header-inner h1{ font-size:22px; }
+  .r-title-pill{ font-size:10.5px; padding:4px 12px; }
+  .r-name-row{ flex-wrap:nowrap; }
+  .r-meta-row{ font-size:10.5px; }
+  .r-body{ padding:16px 0 0; }
+  .r-pullquote{ margin-bottom:20px; }
+  .r-pullquote p{ font-size:14px; }
+  .r-row{ display:block; gap:0; margin-bottom:18px; }
+  .r-row-label-wrap{ flex:none; width:auto; margin-bottom:7px; }
+  .r-row-label{ font-size:9.5px; padding:5px 10px; }
+  .r-entry{ margin-bottom:14px; page-break-inside:avoid; }
+  .r-entry-top{ margin-bottom:3px; }
+  .r-entry-summary{ margin-top:3px; font-size:11px; line-height:1.42; orphans:3; widows:3; }
+  .r-skills-group{ margin-bottom:10px; page-break-inside:avoid; }
+  .r-skill-chip{ font-size:10.5px; padding-right:14px; }
+  .r-edu-side{ font-size:10.5px; }
+  .r-edu-detail{ font-size:9.5px; }
 }
 </style>
 </head>
@@ -152,211 +168,160 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 <main>
   <div class="resume-card">
 
-    <aside class="r-sidebar">
-      <svg class="r-logo" viewBox="0 0 249.71 252.6" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <style>
-            .st0{fill:url(#linear-gradient2);} .st1{fill:url(#linear-gradient1);} .st2{fill:url(#linear-gradient9);}
-            .st3{fill:url(#linear-gradient3);} .st4{fill:url(#linear-gradient6);} .st5{fill:url(#linear-gradient8);}
-            .st6{fill:url(#linear-gradient7);} .st7{fill:url(#linear-gradient5);} .st8{fill:url(#linear-gradient4);}
-            .st9{fill:url(#linear-gradient18);} .st10{fill:url(#linear-gradient13);} .st11{fill:url(#linear-gradient12);}
-            .st12{fill:url(#linear-gradient15);} .st13{fill:url(#linear-gradient16);} .st14{fill:url(#linear-gradient11);}
-            .st15{fill:url(#linear-gradient10);} .st16{fill:url(#linear-gradient17);} .st17{fill:url(#linear-gradient14);}
-            .st18{fill:url(#linear-gradient19);} .st19{fill:url(#linear-gradient21);} .st20{fill:url(#linear-gradient20);}
-            .st21{fill:url(#linear-gradient);} .st22{fill:#fff;}
-          </style>
-          <linearGradient id="linear-gradient" x1="28.1" y1="176.64" x2="267.62" y2="27.24" gradientUnits="userSpaceOnUse">
-            <stop offset=".04" stop-color="#f05455"/><stop offset="1" stop-color="#f17a7e"/>
-          </linearGradient>
-          <linearGradient id="linear-gradient1" x1="15.76" y1="156.86" x2="255.28" y2="7.46" xlink:href="#linear-gradient"/>
-          <linearGradient id="linear-gradient2" x1="22.78" y1="168.11" x2="262.29" y2="18.7" xlink:href="#linear-gradient"/>
-          <linearGradient id="linear-gradient3" x1="17.58" y1="159.77" x2="257.09" y2="10.37" xlink:href="#linear-gradient"/>
-          <linearGradient id="linear-gradient4" x1="42.32" y1="199.43" x2="281.83" y2="50.03" gradientUnits="userSpaceOnUse">
-            <stop offset=".04" stop-color="#febe40"/><stop offset="1" stop-color="#ffc94b"/>
-          </linearGradient>
-          <linearGradient id="linear-gradient5" x1="47.43" y1="207.63" x2="286.95" y2="58.23" xlink:href="#linear-gradient4"/>
-          <linearGradient id="linear-gradient6" x1="41.04" y1="197.38" x2="280.55" y2="47.98" xlink:href="#linear-gradient4"/>
-          <linearGradient id="linear-gradient7" x1="49.77" y1="211.38" x2="289.28" y2="61.98" xlink:href="#linear-gradient4"/>
-          <linearGradient id="linear-gradient8" x1="-2.62" y1="127.38" x2="236.89" y2="-22.02" gradientUnits="userSpaceOnUse">
-            <stop offset=".04" stop-color="#f68d47"/><stop offset="1" stop-color="#ffc94b"/>
-          </linearGradient>
-          <linearGradient id="linear-gradient9" x1="59.86" y1="227.56" x2="299.38" y2="78.16" xlink:href="#linear-gradient"/>
-          <linearGradient id="linear-gradient10" x1="4.68" y1="139.09" x2="244.2" y2="-10.31" xlink:href="#linear-gradient8"/>
-          <linearGradient id="linear-gradient11" x1="13.39" y1="153.05" x2="252.9" y2="3.65" xlink:href="#linear-gradient"/>
-          <linearGradient id="linear-gradient12" x1="35" y1="187.7" x2="274.51" y2="38.3" xlink:href="#linear-gradient8"/>
-          <linearGradient id="linear-gradient13" x1="51.07" y1="306.74" x2="52.28" y2="161.68" gradientUnits="userSpaceOnUse">
-            <stop offset=".04" stop-color="#254444"/><stop offset=".33" stop-color="#2a4848"/><stop offset=".7" stop-color="#395455"/><stop offset="1" stop-color="#4b6264"/>
-          </linearGradient>
-          <linearGradient id="linear-gradient14" x1="196" y1="307.95" x2="197.21" y2="162.88" gradientUnits="userSpaceOnUse">
-            <stop offset=".04" stop-color="#254444"/><stop offset=".34" stop-color="#294747"/><stop offset=".67" stop-color="#355152"/><stop offset="1" stop-color="#4b6264"/>
-          </linearGradient>
-          <linearGradient id="linear-gradient15" x1="153.58" y1="307.6" x2="154.79" y2="162.53" gradientUnits="userSpaceOnUse">
-            <stop offset=".04" stop-color="#254444"/><stop offset=".33" stop-color="#2a4848"/><stop offset=".7" stop-color="#385354"/><stop offset="1" stop-color="#4b6264"/>
-          </linearGradient>
-          <linearGradient id="linear-gradient16" x1="91.72" y1="307.08" x2="92.93" y2="162.01" gradientUnits="userSpaceOnUse">
-            <stop offset=".04" stop-color="#254444"/><stop offset=".34" stop-color="#2a4748"/><stop offset=".69" stop-color="#385354"/><stop offset="1" stop-color="#4b6264"/>
-          </linearGradient>
-          <linearGradient id="linear-gradient17" x1="119.4" y1="307.31" x2="120.61" y2="162.25" gradientUnits="userSpaceOnUse">
-            <stop offset=".04" stop-color="#254444"/><stop offset=".36" stop-color="#284647"/><stop offset=".66" stop-color="#344f50"/><stop offset=".95" stop-color="#465e60"/><stop offset="1" stop-color="#4b6264"/>
-          </linearGradient>
-          <linearGradient id="linear-gradient18" x1="-25.76" y1="90.3" x2="213.76" y2="-59.1" xlink:href="#linear-gradient"/>
-          <linearGradient id="linear-gradient19" x1="-12.4" y1="111.71" x2="227.12" y2="-37.69" xlink:href="#linear-gradient"/>
-          <linearGradient id="linear-gradient20" x1="24.11" y1="170.24" x2="263.63" y2="20.84" xlink:href="#linear-gradient"/>
-          <linearGradient id="linear-gradient21" x1="21.98" y1="166.83" x2="261.5" y2="17.43" xlink:href="#linear-gradient"/>
-        </defs>
-        <g>
-          <path class="st21" d="M84.8,152.73c3.32,3.45,2.87,4.1-.46,7.5-12.28,12.51-34.23,12.45-46.75.4-4.8-4.62-3.74-5.63.92-9.67,13.02-11.27,34.23-10.76,46.29,1.78ZM59.09,149.92c-7.44,1.38-5.77,13.29,1.66,13.06,8.92-.28,8.52-14.95-1.66-13.06ZM49.09,160.84c-.59-1.39-.93-2.84-.95-4.36-.03-2.01.73-3.44.73-5.29-.94,1.07-7.01,3.88-6.67,5.27l6.9,4.38ZM72.55,160.85l6.89-4.83-6.89-4.37c.58,3.02.79,6.21,0,9.19Z"/>
-          <path class="st1" d="M51.75,140.05c-3.38,3.35-10.47-3.99-6.83-7.06,3.51-2.96,9.58,4.33,6.83,7.06Z"/>
-          <path class="st0" d="M69.45,140.04c-2.71-2.86,4.42-10.28,7.45-6.77s-4.43,9.96-7.45,6.77Z"/>
-          <path class="st3" d="M60.01,128.29c4.83-1,6.09,8.47,1.23,9.1s-5.07-8.31-1.23-9.1Z"/>
-        </g>
-        <g>
-          <path class="st8" d="M109.87,133.77c1.14-.33,5.4-.61,5.43,1.1l.02,41.36-.7,1.71c-2.22.71-5.68,1.34-6.08-1.71-1.58-12.23,1.25-27.83,0-40.42,0-.91.4-1.78,1.32-2.04Z"/>
-          <path class="st7" d="M128.12,133.77c1.14-.33,5.4-.61,5.43,1.1l.02,41.36-.7,1.71c-2.22.71-5.68,1.34-6.08-1.71-1.58-12.23,1.25-27.83,0-40.42,0-.91.4-1.78,1.32-2.04Z"/>
-          <path class="st4" d="M144.28,144.61c.33,1.14.61,5.4-1.1,5.43l-41.36.02-1.71-.7c-.71-2.22-1.34-5.68,1.71-6.08,12.23-1.58,27.83,1.25,40.42,0,.91,0,1.78.4,2.04,1.32Z"/>
-          <path class="st6" d="M144.28,164.05c.33,1.14.61,5.4-1.1,5.43l-41.36.02-1.71-.7c-.71-2.22-1.34-5.68,1.71-6.08,12.23-1.58,27.83,1.25,40.42,0,.91,0,1.78.4,2.04,1.32Z"/>
-        </g>
-        <path class="st5" d="M122.28,45.53c2.37-3.08,3.99-6.6,6.48-9.62,5-6.07,14.77-13.15,23.07-11.97,1.83.26,2,.84,2.19,2.59,1.08,10.12-4.34,22.81-13.46,27.67l.3.99c2.96,1.38,4.22,5.32,4.49,8.38.24,2.64.38,13.87-.74,15.59-2.22,3.43-10.46-.97-13.07-2.75-4.26-2.9-6.56-6.23-9.03-10.69-2.07,4.86-5.13,8.73-9.71,11.45-3.23,1.91-11.93,6.14-12.66-.13-.45-3.84-.42-15.75,1.35-18.87.89-1.56,2.56-2.45,3.47-3.98-8.74-4.39-15.08-17.61-13.96-27.19.5-4.26,4.12-3.57,7.34-2.98,11.06,2.02,19.98,11.37,23.95,21.51ZM117.95,51.77c-3.16-9.54-10.17-19.44-20.68-21.15,1.41,10.85,9.16,20.86,20.68,21.15ZM147.77,30.62c-9.96,2.73-17.7,11.92-20.68,21.64,11.68-1.14,19.65-10.19,20.68-21.64ZM118.43,58.99h-7.94c-1.26,0-4.09,2.34-4.09,3.61v10.34c6.45-1.78,10.24-7.89,12.03-13.95ZM138.63,72.94v-11.3c0-.45-2.93-2.65-3.61-2.65h-7.94c1.21,6.05,5.77,11.76,11.54,13.95Z"/>
-        <path class="st2" d="M170.19,145.53v14.98h31.96v-31.46h-23.22c-.14,0-1.17-.51-1.27-.84v-5.82c.12-.53,1.31-.72,1.8-.78,8.31-1.02,18.39.62,26.89-.02,1.8.28,2.34,1.11,2.66,2.83-.63,12.47,1.26,26.56.14,38.84-.12,1.34-.28,2.72-1.22,3.77h-44.04c-.77-.61-.65-1.42-.73-2.26-.49-5.24-.66-18.99,0-24.02.22-1.63.59-2.03,2.25-2.25,1.99-.26,14.95-.3,16.4.12,2.36.69,1.49,6.89.1,6.89h-11.73Z"/>
-        <path class="st15" d="M83.76,117.23c1.25-1.1-6.63-6.17-7.64-6.59-4.43-1.84-7.07-.77-11.06-1.42s-2.4-3.55-2.78-6.21c-1.13-7.98-8.53-15.4-16.35-17.1-5.16-1.12-10.6,1.29-8.15-6.78,1.33-2.11,10.41.03,12.66.78,9.78,3.25,17.29,12.12,18.88,22.31,10.08.04,20.23,7.08,23.51,16.68.64,1.86,1.38,3.31-.3,4.87l-53.45.45-1.51-.98c-.6-1.41-.5-5.99,1.5-5.99h44.69Z"/>
-        <path class="st14" d="M194.39,26.83c9.71-1.08,16.44,8.72,15.28,17.59-1.17,8.89-12.68,21.16-20.07,25.81-1.82,1.14-2.4,2.06-4.84,1.69-4.93-.74-17.04-14.46-19.43-19.12-4.35-8.47-4.77-21.84,6.23-24.97,6.18-1.76,10.12-.1,14.68,3.95,2.17-2.26,4.89-4.59,8.16-4.95ZM174.54,34.77c-1.79.4-4.05,2.91-4.34,4.73-1.32,8.15,6.3,16.91,12.16,21.76,4.07,3.37,4.36,1.92,8.21-1.39,5.12-4.4,16.79-17.46,9.03-23.77-7.2-5.86-9.03,6.8-13.81,6.49-4.23-.28-4.89-9.22-11.24-7.81Z"/>
-        <path class="st11" d="M192.38,91.92l-26.46,26.2c-2.89,2.26-7.45-1.28-5.52-4.51l26.49-26.18h-13.23c-1.49-1.76-.72-4.9-.25-6.99h24.72c.77,0,1.66,2.4,1.76,3.23.4,3.4.52,18.39-.12,21.37-.73,3.35-7.38,1.84-7.38.61v-13.73Z"/>
-        <g>
-          <path class="st10" d="M33.39,223.46l12.95-36.2,9.74-.1,14.06,36.3h-9.31l-3.05-7.34-12.88-.24-2.44,7.58h-9.07ZM55.34,208.66l-4.06-12.41-3.58,12.41h7.64Z"/>
-          <path class="st17" d="M209.03,187.19v7.16h-15.51c-1.15,1.53-1.17,5.57,0,7.16h14.56v7.16h-15.27v7.16h16.71v7.64h-25.3v-36.27h24.82Z"/>
-          <path class="st12" d="M170.82,189.13l-2.36,8.08c-9.54-5.82-22.18-3.67-21.01,9.8.63,7.31,7.21,10.22,13.89,9.07,2.82-.49,5.02-2.19,7.6-3.13l2.37,7.12c-15.45,10.27-38.83.29-32.92-20.26,3.99-13.87,20.88-17.37,32.44-10.69Z"/>
-          <polygon class="st13" points="90.18 187.19 90.18 215.82 104.03 215.82 104.03 223.46 81.12 223.46 81.12 187.19 90.18 187.19"/>
-          <polygon class="st16" points="124.55 187.19 124.55 223.46 116.67 223.46 115.96 222.74 115.96 187.19 124.55 187.19"/>
-        </g>
-        <g>
-          <path class="st9" d="M68.84,25.65c4.85-.24,3.71,2.32,3.35,6.36-1.76,1.67-4.31.72-6.46,1.03-8.27,1.21-16.56,9.18-18.91,17.04-.82,2.73-.13,6.51-3.08,6.9-6,.79-4.65-5.05-3.62-9.12,3.19-12.59,16.03-21.58,28.72-22.22Z"/>
-          <path class="st18" d="M36.11,65.08c.45-.39,2.38-.58,3.1-.64,12.06-.93,25.29.74,37.48,0,3.81-.42,4.37,6.47,1.49,7l-41.99-.45c-1.13-.91-.92-5.19-.08-5.92Z"/>
-        </g>
-        <g>
-          <path class="st20" d="M139.54,88.69l7.25,18.63-17.23,6.7-7.25-18.63,17.23-6.7M139.54,82.69c-.72,0-1.46.13-2.17.41l-17.23,6.7c-1.48.58-2.68,1.72-3.32,3.18-.64,1.46-.68,3.11-.1,4.59l7.25,18.63c.92,2.37,3.19,3.83,5.59,3.83.72,0,1.46-.13,2.17-.41l17.23-6.7c1.48-.58,2.68-1.72,3.32-3.18.64-1.46.68-3.11.1-4.59l-7.25-18.63c-.92-2.37-3.19-3.83-5.59-3.83h0Z"/>
-          <path class="st19" d="M117.26,97.71c.82,2.12,1.64,4.22,2.05,5.13.38.87,1.25,2.81,2.91,4.2-.03.1-.05.21-.08.31-.26,1.16-.17,2.37.27,3.48l2.12,5.44-15.81,6.15-7.22-18.57,15.77-6.14M120.72,89.93l-26.99,10.5,11.57,29.75,26.99-10.5-4.29-11.03s.33-1.46,2.29-1.46c.64,0,1.45.15,2.49.56.47.18.91.27,1.34.27,3.41,0,5.3-5.48,3.07-8.6-1.25-1.74-3.12-2.7-4.87-2.7s-3.43,1-4.15,3.22c-.63,1.94-1.2,2.63-1.71,2.63-.65,0-1.2-1.1-1.67-2.17-.85-1.91-4.07-10.47-4.07-10.47h0Z"/>
-        </g>
-      </svg>
+    <div class="r-header-wrap">
+      <div class="r-header-icons" aria-hidden="true">
+        <svg style="top:10px; left:20px; width:34px; transform:rotate(-8deg);" viewBox="175 175 70 70"><path fill="#F5A94A" d="M195.18,185.29c1.3-.38,6.17-.7,6.21,1.26l.02,47.27-.8,1.95c-2.54.81-6.5,1.53-6.95-1.95-1.81-13.97,1.42-31.8,0-46.19,0-1.04.46-2.03,1.51-2.34Z"/><path fill="#F5A94A" d="M216.05,185.29c1.3-.38,6.17-.7,6.21,1.26l.02,47.27-.8,1.95c-2.54.81-6.5,1.53-6.95-1.95-1.81-13.97,1.42-31.8,0-46.19,0-1.04.46-2.03,1.51-2.34Z"/><path fill="#F5A94A" d="M234.51,197.68c.38,1.3.7,6.17-1.26,6.21l-47.27.02-1.95-.8c-.81-2.54-1.53-6.5,1.95-6.95,13.97-1.81,31.8,1.42,46.19,0,1.04,0,2.03.46,2.34,1.51Z"/><path fill="#F5A94A" d="M234.51,219.9c.38,1.3.7,6.17-1.26,6.21l-47.27.02-1.95-.8c-.81-2.54-1.53-6.5,1.95-6.95,13.97-1.81,31.8,1.42,46.19,0,1.04,0,2.03.46,2.34,1.51Z"/></svg>
+        <svg style="top:60px; left:170px; width:26px; transform:rotate(10deg);" viewBox="55 55 80 85"><path fill="#F2665A" d="M105.37,72.95c11.1-1.23,18.79,9.97,17.46,20.11-1.34,10.16-14.49,24.19-22.93,29.5-2.08,1.31-2.74,2.35-5.53,1.94-5.64-.84-19.47-16.52-22.21-21.85-4.97-9.68-5.46-24.96,7.12-28.54,7.06-2.01,11.57-.11,16.77,4.52,2.48-2.58,5.59-5.25,9.33-5.66Z"/></svg>
+        <svg style="top:20px; right:80px; width:30px; transform:rotate(-14deg);" viewBox="680 70 75 65"><path fill="#EC7E23" d="M725.96,92.35l-30.24,29.94c-3.3,2.58-8.52-1.46-6.31-5.15l30.28-29.93h-15.12c-1.7-2.01-.82-5.6-.29-7.99h28.25c.89,0,1.9,2.75,2.01,3.7.46,3.89.6,21.02-.14,24.42-.83,3.83-8.43,2.1-8.43.7v-15.69Z"/></svg>
+        <svg style="bottom:10px; right:30px; width:38px; transform:rotate(6deg);" viewBox="295 55 90 70"><path fill="#F2665A" d="M371.86,95.71c4.79,4.98,4.14,5.92-.66,10.81-17.71,18.04-49.35,17.96-67.41.57-6.92-6.67-5.4-8.12,1.33-13.94,18.77-16.25,49.36-15.51,66.75,2.56ZM334.78,91.66c-10.73,1.99-8.32,19.17,2.39,18.84,12.86-.4,12.29-21.56-2.39-18.84Z"/><path fill="#F2665A" d="M324.19,77.42c-4.87,4.83-15.1-5.75-9.85-10.18,5.06-4.27,13.82,6.24,9.85,10.18Z"/><path fill="#F2665A" d="M349.72,77.41c-3.9-4.13,6.37-14.82,10.74-9.75s-6.39,14.36-10.74,9.75Z"/></svg>
+        <svg style="bottom:26px; left:280px; width:24px; transform:rotate(-4deg);" viewBox="535 65 110 70"><path fill="#F5A94A" d="M614.8,116.13c1.43-1.26-7.58-7.06-8.73-7.54-5.07-2.1-8.08-.88-12.64-1.63-4.51-.74-2.75-4.05-3.18-7.09-1.29-9.12-9.75-17.6-18.69-19.55-5.89-1.28-12.12,1.47-9.32-7.75,1.52-2.41,11.9.03,14.47.89,11.17,3.72,19.76,13.85,21.58,25.5,11.52.05,23.12,8.1,26.87,19.07.73,2.13,1.58,3.78-.34,5.57l-61.09.51-1.73-1.12c-.69-1.61-.57-6.85,1.71-6.85h51.08Z"/></svg>
+      </div>
+      <div class="r-header-inner">
+        <div class="r-name-row">
+          <h1>Alice Curiel</h1>
+          <span class="r-title-pill">Product Designer</span>
+        </div>
+        <div class="r-meta-row">
+          <a href="mailto:hello@aliceportfolio.com">hello@aliceportfolio.com</a>
+          <a href="https://aliceportfolio.com" target="_blank" rel="noopener">aliceportfolio.com</a>
+          <a href="https://www.linkedin.com/in/alice-curiel-800817146/" target="_blank" rel="noopener">LinkedIn</a>
+          <span>New York / New Jersey</span>
+        </div>
+      </div>
+    </div>
 
-      <div class="r-side-block">
-        <div class="r-side-label">Contact</div>
-        <a href="mailto:hello@aliceportfolio.com">hello@aliceportfolio.com</a>
+    <div class="r-body">
+
+    <div class="r-pullquote">
+      <p>I build clean, human-centered experiences that move people, pairing rigorous research with systems-level design, and leading cross-functionally from discovery through developer handoff.</p>
+    </div>
+
+    <div class="r-row">
+      <div class="r-row-label-wrap"><div class="r-row-label">Skills</div></div>
+      <div>
+        <div class="r-skills-group">
+          <div class="r-skills-group-label">Domain Expertise</div>
+          <div class="r-skills-chips">
+            <span class="r-skill-chip">High-Stakes Product UX</span>
+            <span class="r-skill-chip">Healthtech &amp; Civic UX</span>
+            <span class="r-skill-chip">B2C &amp; B2B Product Design</span>
+            <span class="r-skill-chip">0-to-1 Product Design</span>
+          </div>
+        </div>
+        <div class="r-skills-group">
+          <div class="r-skills-group-label">Research &amp; Strategy</div>
+          <div class="r-skills-chips">
+            <span class="r-skill-chip">UX Research</span>
+            <span class="r-skill-chip">Usability Testing</span>
+            <span class="r-skill-chip">Data-Informed Design</span>
+            <span class="r-skill-chip">Design Strategy</span>
+            <span class="r-skill-chip">Information Architecture</span>
+            <span class="r-skill-chip">Accessibility (WCAG/ADA)</span>
+          </div>
+        </div>
+        <div class="r-skills-group">
+          <div class="r-skills-group-label">Craft &amp; Leadership</div>
+          <div class="r-skills-chips">
+            <span class="r-skill-chip">Visual &amp; Brand Systems</span>
+            <span class="r-skill-chip">Design Systems</span>
+            <span class="r-skill-chip">Interaction &amp; Motion Design</span>
+            <span class="r-skill-chip">Wireframing &amp; Prototyping</span>
+            <span class="r-skill-chip">Developer Handoff</span>
+            <span class="r-skill-chip">Front-End Development</span>
+            <span class="r-skill-chip">Design Leadership</span>
+            <span class="r-skill-chip">Cross-functional Collaboration</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="r-row">
+      <div class="r-row-label-wrap"><div class="r-row-label">Experience</div></div>
+      <div>
+
+      <div class="r-entry">
+        <div class="r-entry-top">
+          <div class="r-entry-role-row">
+            <span class="r-entry-role">Freelance Creative &amp; Product Director</span>
+            <span class="r-entry-date">2024 – Present</span>
+          </div>
+          <span class="r-entry-org">Diapulse Technologies Corporation</span>
+        </div>
+        <p class="r-entry-summary">Directed the comprehensive rebrand of Diapulse, a 30-year legacy medical device, as the sole designer leading the visual identity system, information architecture, and full website overhaul. Partnered with an industrial designer on the physical product's form and color, and rebuilt the software interface using detailed wireframes. The new brand was fully adopted across all physical and digital touchpoints, with the updated clinical software now live in active use.</p>
       </div>
 
-      <div class="r-side-block">
-        <div class="r-side-label">Links</div>
-        <a href="https://aliceportfolio.com" target="_blank" rel="noopener">aliceportfolio.com</a>
-        <a href="https://www.linkedin.com/in/alice-curiel-800817146/" target="_blank" rel="noopener">LinkedIn</a>
+      <div class="r-entry">
+        <div class="r-entry-top">
+          <div class="r-entry-role-row">
+            <span class="r-entry-role">Creative Lead &amp; Designer</span>
+            <span class="r-entry-date">2024 – 2026</span>
+          </div>
+          <span class="r-entry-org">Hush Tech LLC</span>
+        </div>
+        <p class="r-entry-summary">Led end-to-end brand and product design for the WAVE medical device. Established the foundational visual identity and design system, including the UI/UX for an ePRO app designed for protocol-compliant clinical trial data capture. Executed the complete design of large-scale trade show booth and marketing materials slated for the brand's debut at the ACOG healthcare conference.</p>
       </div>
 
-      <div class="r-side-block">
-        <div class="r-side-label">Skills</div>
-        <ul class="r-skill-list">
-          <li>High-Stakes Product UX</li>
-          <li>Healthtech &amp; Civic UX</li>
-          <li>B2C &amp; B2B Product Design</li>
-          <li>Accessibility (WCAG/ADA)</li>
-          <li>UX Research</li>
-          <li>Usability Testing</li>
-          <li>Data-Informed Design</li>
-          <li>Interaction &amp; Motion Design</li>
-          <li>Design Strategy</li>
-          <li>0-to-1 Product Design</li>
-          <li>Design Leadership &amp; Mentorship</li>
-          <li>Information Architecture</li>
-          <li>Visual &amp; Brand Systems</li>
-          <li>Design Systems</li>
-          <li>Wireframing &amp; Prototyping</li>
-          <li>Developer Handoff &amp; Documentation</li>
-          <li>Front-End Development</li>
-          <li>Cross-functional Collaboration</li>
-        </ul>
+      <div class="r-entry">
+        <div class="r-entry-top">
+          <div class="r-entry-role-row">
+            <span class="r-entry-role">Creative Director</span>
+            <span class="r-entry-date">2019 – 2023</span>
+          </div>
+          <span class="r-entry-org">Quest Technologies LLC</span>
+        </div>
+        <p class="r-entry-summary">Served as Creative Director for a small team of two developers and a junior designer, personally driving all design decisions and contributing front-end development. Led brand identity and web product design for a roster of 20+ business clients, including healthcare organizations, hand-coding cohesive visual systems spanning websites, marketing materials, and digital touchpoints. Built reservation- and appointment-enabled websites that let clients' customers self-schedule directly online, eliminating phone-dependent booking and streamlining business-to-client communication. Delivered projects on an average three-week turnaround depending on scope, sustaining strong client retention through ongoing updates and platform upgrades.</p>
       </div>
 
-      <div class="r-side-block">
-        <div class="r-side-label">Toolkit</div>
-        <ul class="r-skill-list">
-          <li>Figma</li>
-          <li>Adobe Creative Suite</li>
-          <li>HTML / CSS / JS</li>
-          <li>AI-Assisted Design Tools</li>
-        </ul>
+      <div class="r-entry">
+        <div class="r-entry-top">
+          <div class="r-entry-role-row">
+            <span class="r-entry-role">Web Communications Coordinator</span>
+            <span class="r-entry-date">2017 – 2019</span>
+          </div>
+          <span class="r-entry-org">Hostos Community College</span>
+        </div>
+        <p class="r-entry-summary">Managed large-scale digital communications reaching audiences of up to 20,000, and led a New York citywide MTA advertising campaign for the college's 50th anniversary. Also designed for major campus events, including full-wall wrapping installations across all campus lobbies and window designs for the Campus Registrar's Office.</p>
       </div>
 
-      <div class="r-side-block">
-        <div class="r-side-label">Education</div>
+      <div class="r-entry">
+        <div class="r-entry-top">
+          <div class="r-entry-role-row">
+            <span class="r-entry-role">Freelance Web Designer</span>
+            <span class="r-entry-date">2015 – 2019</span>
+          </div>
+          <span class="r-entry-org">Hostos Art Center</span>
+        </div>
+        <p class="r-entry-summary">Designed promotional campaigns across print and digital for the center's concert and theater productions, driving ticket sales, and maintained the center's website through ongoing HTML and CSS updates.</p>
+      </div>
+      </div>
+    </div>
+
+    <div class="r-row">
+      <div class="r-row-label-wrap"><div class="r-row-label">Education</div></div>
+      <div>
         <div class="r-edu-side">
           <b>BFA, Electronic Design &amp; Multimedia</b>
-          The City College of New York<br>Magna Cum Laude
+          <span class="school">The City College of New York, Magna Cum Laude</span>
+          <span class="r-edu-detail">Foundation in visual systems, typography, and spatial hierarchy, the graphic design rigor underlying my product work today.</span>
         </div>
         <div class="r-edu-side">
           <b>Product Design Certificate</b>
-          Designlab UX Academy
+          <span class="school">Designlab UX Academy</span>
+          <span class="r-edu-detail">End-to-end UX methodology: research, usability testing, and product design from concept through handoff.</span>
         </div>
       </div>
+    </div>
 
-      <div class="r-side-block">
-        <div class="r-side-label">Location</div>
-        <div>New York / New Jersey</div>
-      </div>
-    </aside>
+    <div class="r-row">
+      <div class="r-row-label-wrap"><div class="r-row-label">Toolkit</div></div>
+      <div class="r-toolkit-line">Figma, Adobe Creative Suite, HTML/CSS/JS, AI-Assisted Design Tools</div>
+    </div>
 
-    <div class="r-main">
-      <h1>Alice Curiel</h1>
-      <div class="r-title">Product Designer, Healthtech &amp; Civic Tech</div>
+    <div class="r-row">
+      <div class="r-row-label-wrap"><div class="r-row-label">Languages</div></div>
+      <div class="r-toolkit-line">English, Spanish</div>
+    </div>
 
-      <div class="r-methods">
-        <div class="r-methods-label">Methods</div>
-        <p>I build clean, human-centered experiences that move people, working at the intersection of visual excellence and rigorous product thinking. My process pairs qualitative research and usability testing with systems-level design, turning ambiguous problems into scalable design systems and interfaces that hold up in production. I lead cross-functionally from early discovery through developer handoff, treating stakeholder alignment and clear documentation as part of the craft, not an afterthought.</p>
-      </div>
-
-      <div class="r-section">
-        <div class="r-section-label">Work Experience</div>
-
-        <div class="r-entry">
-          <div class="r-entry-top">
-            <div class="r-entry-role-row">
-              <span class="r-entry-role">Freelance Creative &amp; Product Director</span>
-              <span class="r-entry-date">2024 – Present</span>
-            </div>
-            <span class="r-entry-org">Diapulse Technologies Corporation</span>
-          </div>
-          <p class="r-entry-summary">Directed the comprehensive rebrand of Diapulse, a 30-year legacy medical device, as the sole designer leading the visual identity system, information architecture, and full website overhaul. Partnered with an industrial designer on the physical product's form and color, and rebuilt the software interface using detailed wireframes. The new brand was fully adopted across all physical and digital touchpoints, with the updated clinical software now live in active use.</p>
-        </div>
-
-        <div class="r-entry">
-          <div class="r-entry-top">
-            <div class="r-entry-role-row">
-              <span class="r-entry-role">Creative Lead &amp; Designer</span>
-              <span class="r-entry-date">2024 – 2026</span>
-            </div>
-            <span class="r-entry-org">Hush Tech LLC</span>
-          </div>
-          <p class="r-entry-summary">Led end-to-end brand and product design for the WAVE medical device. Established the foundational visual identity and design system, including the UI/UX for an ePRO app designed for protocol-compliant clinical trial data capture. Executed the complete design of large-scale trade show booth and marketing materials slated for the brand's debut at the ACOG healthcare conference.</p>
-        </div>
-
-        <div class="r-entry">
-          <div class="r-entry-top">
-            <div class="r-entry-role-row">
-              <span class="r-entry-role">Creative Director</span>
-              <span class="r-entry-date">2019 – 2023</span>
-            </div>
-            <span class="r-entry-org">Quest Technologies LLC</span>
-          </div>
-          <p class="r-entry-summary">Served as Creative Director for a small team of two developers and a junior designer, personally driving all design decisions and contributing front-end development. Led brand identity and web product design for a roster of 30+ business clients, including healthcare organizations, hand-coding cohesive visual systems spanning websites, marketing materials, and digital touchpoints. Built reservation- and appointment-enabled websites that let clients' customers self-schedule directly online, eliminating phone-dependent booking and streamlining business-to-client communication. Delivered projects on an average three-week turnaround depending on scope, sustaining strong client retention through ongoing updates and platform upgrades.</p>
-        </div>
-
-        <div class="r-entry">
-          <div class="r-entry-top">
-            <div class="r-entry-role-row">
-              <span class="r-entry-role">Web Communications Coordinator</span>
-              <span class="r-entry-date">2017 – 2019</span>
-            </div>
-            <span class="r-entry-org">Hostos Community College</span>
-          </div>
-          <p class="r-entry-summary">Managed large-scale digital communications reaching audiences of up to 20,000, and led a New York citywide MTA advertising campaign for the college's 50th anniversary. Also designed for major campus events, including full-wall wrapping installations across all campus lobbies and window designs for the Campus Registrar's Office.</p>
-        </div>
-      </div>
     </div>
 
   </div>
