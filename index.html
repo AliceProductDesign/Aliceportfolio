@@ -368,6 +368,14 @@ h1 .highlight{color:var(--amber);}
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(6px); }
 }
+@keyframes scrollCuePeekabooLabel{
+  0%, 70%, 100%{opacity:0; max-width:0; max-height:0;}
+  10%, 50%{opacity:1; max-width:320px; max-height:2em;}
+}
+@keyframes scrollCuePeekabooGap{
+  0%, 70%, 100%{gap:0;}
+  10%, 50%{gap:8px;}
+}
 .scroll-cue{
   position:absolute;
   bottom:28px;
@@ -400,14 +408,49 @@ h1 .highlight{color:var(--amber);}
   max-width:min(420px, calc(100vw - 48px));
 }
 .scroll-cue-icon{
-  width:18px;
-  height:18px;
+  width:28px;
+  height:28px;
   color:var(--coral);
   animation:scrollBounce 1.6s ease-in-out infinite;
 }
 .scroll-cue.is-footer .scroll-cue-icon{display:none;}
+@media (hover: hover) and (pointer: fine){
+  .scroll-cue:not(.is-hidden):not(.is-footer){
+    pointer-events:auto;
+    cursor:default;
+  }
+  .scroll-cue:not(.is-footer){
+    gap:0;
+    transition:opacity .3s ease, gap .25s ease;
+  }
+  .scroll-cue:not(.is-footer):hover{gap:8px; animation:none;}
+  .scroll-cue:not(.is-footer).is-peekaboo{
+    animation:scrollCuePeekabooGap 5s ease forwards;
+  }
+  .scroll-cue:not(.is-footer).is-peekaboo .scroll-cue-label{
+    animation:scrollCuePeekabooLabel 5s ease forwards;
+  }
+  .scroll-cue:not(.is-footer) .scroll-cue-label{
+    opacity:0;
+    max-width:0;
+    max-height:0;
+    overflow:hidden;
+    white-space:nowrap;
+    transition:opacity .25s ease, max-width .25s ease, max-height .25s ease;
+  }
+  .scroll-cue:not(.is-footer):hover .scroll-cue-label{
+    animation:none;
+    opacity:1;
+    max-width:320px;
+    max-height:2em;
+  }
+}
 @media (prefers-reduced-motion: reduce){
   .scroll-cue-icon{animation:none;}
+  .scroll-cue:not(.is-footer).is-peekaboo,
+  .scroll-cue:not(.is-footer).is-peekaboo .scroll-cue-label{
+    animation:none;
+  }
 }
 .floating-back-to-top{
   position:fixed; bottom:28px; right:28px; width:48px; height:48px; border-radius:50%;
@@ -706,7 +749,7 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
         <div class="about-content">
           <h2>A little about me</h2>
           <p>My name is Alice Curiel and I'm a product designer specializing in health tech, wellness, consumer apps, and AI products. My professional focus extends across healthcare, medical devices, marketplaces, and consumer wellness.</p>
-          <p>From redesigning clinical software used in hospitals to building an AI-powered nutrition app from the ground up, the common thread in my work is trust. I specialize in designing trust into experiences for users who don't give it easily.</p>
+          <p>From redesigning a clinical software to building an AI-powered nutrition app from the ground up, the common thread in my work is trust. I specialize in designing trust into experiences for users who don't give it easily.</p>
           <p>My approach is rooted in my foundation as a graphic designer (BFA, magna cum laude, The City College of New York), which taught me that a product's visual system and its strategic goals must work seamlessly together.</p>
           <p>I want to work with teams building things that matter. If you are developing a product where earning the user's trust is step one, we should talk.</p>
           <div class="about-stats-row">
@@ -714,11 +757,6 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
               <span class="about-stat-number" data-count="7">0</span>
               <div class="about-stat-divider"></div>
               <span class="about-stat-label">Years<br>designing</span>
-            </div>
-            <div class="about-stat">
-              <span class="about-stat-number" data-count="30">0</span>
-              <div class="about-stat-divider"></div>
-              <span class="about-stat-label">Clients</span>
             </div>
           </div>
         </div>
@@ -996,6 +1034,32 @@ const SCROLL_HINT_BY_STAGE = {
   0: 'Scroll down, or click "See work"', 1: 'Scroll down for About', 2: 'Scroll down for How I Work', 3: 'Scroll down for Contact',
 };
 const SCROLL_CUE_DISMISS_THRESHOLD = 80;
+const SCROLL_CUE_PEEKABOO_MS = 5000;
+let scrollCuePeekabooTimer;
+let scrollCuePeekabooPlayedStage = -1;
+
+function canPlayScrollCuePeekaboo(){
+  if(!scrollCueEl || isMobile()) return false;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
+  if(!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return false;
+  if(scrollCueEl.classList.contains('is-footer') || scrollCueEl.classList.contains('is-hidden')) return false;
+  return currentStage === 0;
+}
+
+function playScrollCuePeekaboo(){
+  if(!canPlayScrollCuePeekaboo()) return;
+  if(scrollCuePeekabooPlayedStage === 0) return;
+
+  scrollCuePeekabooPlayedStage = 0;
+  scrollCueEl.classList.remove('is-peekaboo');
+  void scrollCueEl.offsetWidth;
+  scrollCueEl.classList.add('is-peekaboo');
+
+  clearTimeout(scrollCuePeekabooTimer);
+  scrollCuePeekabooTimer = setTimeout(()=>{
+    scrollCueEl.classList.remove('is-peekaboo');
+  }, SCROLL_CUE_PEEKABOO_MS);
+}
 
 function updateScrollCueVisibility(){
   if(!scrollCueEl) return;
@@ -1105,6 +1169,12 @@ function setStage(stage, force){
     setScrollCueText(getScrollHintText(stage));
   }
   updateScrollCueVisibility();
+  if(stage === 0){
+    playScrollCuePeekaboo();
+  } else {
+    scrollCueEl?.classList.remove('is-peekaboo');
+    scrollCuePeekabooPlayedStage = -1;
+  }
   if(stage === 2) tryAboutStatCount?.();
 }
 
