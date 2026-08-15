@@ -50,7 +50,7 @@ main{max-width:820px; margin:0 auto; padding:56px 32px 0;}
 .r-header-inner{position:relative; z-index:1;}
 .r-header-inner h1{font-family:'Poppins',sans-serif; font-weight:700; font-size:30px; letter-spacing:-0.01em; flex-shrink:0; white-space:nowrap;}
 .r-name-row{display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:14px;}
-.r-title-pill{display:inline-block; background:var(--coral); color:#fff; font-weight:600; font-size:12px; padding:5px 14px; border-radius:100px; white-space:nowrap;}
+.r-title-pill{display:inline-block; color:var(--coral); font-weight:600; font-size:15px;}
 .r-meta-row{display:flex; flex-wrap:wrap; gap:6px 16px; font-size:12.5px; color:var(--ink-soft);}
 .r-meta-row a{color:var(--coral); font-weight:600;}
 .r-meta-row a:hover{color:var(--ink);}
@@ -80,12 +80,11 @@ main{max-width:820px; margin:0 auto; padding:56px 32px 0;}
 .r-todo{background:#F2665A22; color:var(--coral); font-weight:700; padding:1px 6px; border-radius:4px; font-size:11.5px;}
 
 /* ---- skills: grouped, stacked in one column ---- */
-.r-skills-group{margin-bottom:16px;}
+.r-skills-group{margin-bottom:24px;}
 .r-skills-group:last-child{margin-bottom:0;}
-.r-skills-group-label{font-weight:700; font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--graphite); margin-bottom:9px;}
-.r-skills-chips{display:flex; flex-wrap:wrap; align-items:center;}
-.r-skill-chip{font-size:12.5px; font-weight:600; color:var(--ink); white-space:nowrap; position:relative; padding-right:16px; margin-right:4px;}
-.r-skill-chip::after{content:'\2022'; position:absolute; right:2px; top:0; color:var(--coral); font-weight:700;}
+.r-skills-group-label{font-weight:700; font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--graphite); margin-bottom:12px;}
+.r-skills-chips{font-size:12.5px; font-weight:600; color:var(--ink); line-height:2.1;}
+.r-skill-dot{color:var(--coral); font-weight:700; margin:0 8px;}
 .r-skill-chip:last-child{padding-right:0; margin-right:0;}
 .r-skill-chip:last-child::after{content:none;}
 
@@ -120,25 +119,30 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   .resume-actions{ display:none; }
   footer{ display:none; }
   .resume-card{ box-shadow:none; border-radius:0; }
-  .r-header-wrap{ padding:0 0 16px; background:none; page-break-inside:avoid; }
-  .r-header-icons{ display:none; }
+  .r-header-wrap{ padding:32px 40px 34px; background:var(--rose-pale); page-break-inside:avoid; }
+  .r-header-icons{ opacity:0.14; }
   .r-header-inner h1{ font-size:22px; }
-  .r-title-pill{ font-size:10.5px; padding:4px 12px; }
+  .r-title-pill{ font-size:13px; }
   .r-name-row{ flex-wrap:nowrap; }
-  .r-meta-row{ font-size:10.5px; }
-  .r-body{ padding:16px 0 0; }
-  .r-pullquote{ margin-bottom:20px; }
-  .r-pullquote p{ font-size:14px; }
-  .r-row{ display:block; gap:0; margin-bottom:18px; }
-  .r-row-label-wrap{ flex:none; width:auto; margin-bottom:7px; }
+  .r-meta-row{ font-size:10.5px; margin-top:8px; }
+  .r-body{ padding:36px 0 0; }
+  .r-pullquote{ margin-bottom:32px; margin-left:130px; max-width:430px; padding-left:18px; }
+  .r-pullquote p{ font-size:14px; line-height:1.6; }
+  .r-row{ display:block; margin-bottom:30px; }
+  .r-experience-row{ page-break-before:always; }
+  .r-row::after{ content:''; display:table; clear:both; }
+  .r-row-label-wrap{ float:left; width:110px; }
+  .r-row > div:last-child, .r-row > .r-toolkit-line{ margin-left:130px; }
   .r-row-label{ font-size:9.5px; padding:5px 10px; }
-  .r-entry{ margin-bottom:14px; page-break-inside:avoid; }
-  .r-entry-top{ margin-bottom:3px; }
-  .r-entry-summary{ margin-top:3px; font-size:11px; line-height:1.42; orphans:3; widows:3; }
-  .r-skills-group{ margin-bottom:10px; page-break-inside:avoid; }
-  .r-skill-chip{ font-size:10.5px; padding-right:14px; }
-  .r-edu-side{ font-size:10.5px; }
-  .r-edu-detail{ font-size:9.5px; }
+  .r-entry{ margin-bottom:22px; page-break-inside:avoid; }
+  .r-entry-top{ margin-bottom:5px; }
+  .r-entry-summary{ margin-top:5px; font-size:11px; line-height:1.5; orphans:3; widows:3; }
+  .r-skills-group{ margin-bottom:18px; page-break-inside:avoid; }
+  .r-skills-group-label{ margin-bottom:11px; }
+  .r-skills-chips{ font-size:12px; line-height:1.9; }
+  .r-skill-dot{ margin:0 5px; }
+  .r-edu-side{ font-size:12px; margin-bottom:18px; }
+  .r-edu-detail{ font-size:12px; margin-top:6px; line-height:1.5; }
 }
 </style>
 </head>
@@ -178,7 +182,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       </div>
       <div class="r-header-inner">
         <div class="r-name-row">
-          <h1>Alice Curiel</h1>
+          <h1>Alice <span class="r-lastname">Curiel</span></h1>
           <span class="r-title-pill">Product Designer</span>
         </div>
         <div class="r-meta-row">
@@ -201,41 +205,46 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div>
         <div class="r-skills-group">
           <div class="r-skills-group-label">Domain Expertise</div>
-          <div class="r-skills-chips">
-            <span class="r-skill-chip">High-Stakes Product UX</span>
-            <span class="r-skill-chip">Healthtech &amp; Civic UX</span>
-            <span class="r-skill-chip">B2C &amp; B2B Product Design</span>
-            <span class="r-skill-chip">0-to-1 Product Design</span>
-          </div>
+          <div class="r-skills-chips">High‑Stakes&nbsp;Product&nbsp;UX <span class="r-skill-dot">•</span> Healthtech&nbsp;&amp;&nbsp;Civic&nbsp;UX <span class="r-skill-dot">•</span> B2C&nbsp;&amp;&nbsp;B2B&nbsp;Product&nbsp;Design <span class="r-skill-dot">•</span> 0‑to‑1&nbsp;Product&nbsp;Design</div>
         </div>
         <div class="r-skills-group">
           <div class="r-skills-group-label">Research &amp; Strategy</div>
-          <div class="r-skills-chips">
-            <span class="r-skill-chip">UX Research</span>
-            <span class="r-skill-chip">Usability Testing</span>
-            <span class="r-skill-chip">Data-Informed Design</span>
-            <span class="r-skill-chip">Design Strategy</span>
-            <span class="r-skill-chip">Information Architecture</span>
-            <span class="r-skill-chip">Accessibility (WCAG/ADA)</span>
-          </div>
+          <div class="r-skills-chips">UX&nbsp;Research <span class="r-skill-dot">•</span> Usability&nbsp;Testing <span class="r-skill-dot">•</span> Data‑Informed&nbsp;Design <span class="r-skill-dot">•</span> Design&nbsp;Strategy <span class="r-skill-dot">•</span> Information&nbsp;Architecture <span class="r-skill-dot">•</span> Accessibility&nbsp;(WCAG/ADA)</div>
         </div>
         <div class="r-skills-group">
           <div class="r-skills-group-label">Craft &amp; Leadership</div>
-          <div class="r-skills-chips">
-            <span class="r-skill-chip">Visual &amp; Brand Systems</span>
-            <span class="r-skill-chip">Design Systems</span>
-            <span class="r-skill-chip">Interaction &amp; Motion Design</span>
-            <span class="r-skill-chip">Wireframing &amp; Prototyping</span>
-            <span class="r-skill-chip">Developer Handoff</span>
-            <span class="r-skill-chip">Front-End Development</span>
-            <span class="r-skill-chip">Design Leadership</span>
-            <span class="r-skill-chip">Cross-functional Collaboration</span>
-          </div>
+          <div class="r-skills-chips">Visual&nbsp;&amp;&nbsp;Brand&nbsp;Systems <span class="r-skill-dot">•</span> Design&nbsp;Systems <span class="r-skill-dot">•</span> Interaction&nbsp;&amp;&nbsp;Motion&nbsp;Design <span class="r-skill-dot">•</span> Wireframing&nbsp;&amp;&nbsp;Prototyping <span class="r-skill-dot">•</span> Developer&nbsp;Handoff <span class="r-skill-dot">•</span> Front‑End&nbsp;Development <span class="r-skill-dot">•</span> Design&nbsp;Leadership <span class="r-skill-dot">•</span> Cross‑functional&nbsp;Collaboration</div>
         </div>
       </div>
     </div>
 
     <div class="r-row">
+      <div class="r-row-label-wrap"><div class="r-row-label">Education</div></div>
+      <div>
+        <div class="r-edu-side">
+          <b>BFA, Electronic Design &amp; Multimedia</b>
+          <span class="school">The City College of New York, Magna Cum Laude</span>
+          <span class="r-edu-detail">Foundation in visual systems, typography, and spatial hierarchy, the graphic design rigor underlying my product work today.</span>
+        </div>
+        <div class="r-edu-side">
+          <b>Product Design Certificate</b>
+          <span class="school">Designlab UX Academy</span>
+          <span class="r-edu-detail">End-to-end UX methodology: research, usability testing, and product design from concept through handoff.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="r-row">
+      <div class="r-row-label-wrap"><div class="r-row-label">Toolkit</div></div>
+      <div class="r-toolkit-line">Figma, Adobe Creative Suite, Cursor, HTML/CSS/JS, AI-Assisted Design Tools</div>
+    </div>
+
+    <div class="r-row">
+      <div class="r-row-label-wrap"><div class="r-row-label">Languages</div></div>
+      <div class="r-toolkit-line">English, Spanish</div>
+    </div>
+
+    <div class="r-row r-experience-row">
       <div class="r-row-label-wrap"><div class="r-row-label">Experience</div></div>
       <div>
 
@@ -243,7 +252,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <div class="r-entry-top">
           <div class="r-entry-role-row">
             <span class="r-entry-role">Freelance Creative &amp; Product Director</span>
-            <span class="r-entry-date">2024 – Present</span>
+            <span class="r-entry-date">2025 – Present</span>
           </div>
           <span class="r-entry-org">Diapulse Technologies Corporation</span>
         </div>
@@ -294,32 +303,6 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <p class="r-entry-summary">Designed promotional campaigns across print and digital for the center's concert and theater productions, driving ticket sales, and maintained the center's website through ongoing HTML and CSS updates.</p>
       </div>
       </div>
-    </div>
-
-    <div class="r-row">
-      <div class="r-row-label-wrap"><div class="r-row-label">Education</div></div>
-      <div>
-        <div class="r-edu-side">
-          <b>BFA, Electronic Design &amp; Multimedia</b>
-          <span class="school">The City College of New York, Magna Cum Laude</span>
-          <span class="r-edu-detail">Foundation in visual systems, typography, and spatial hierarchy, the graphic design rigor underlying my product work today.</span>
-        </div>
-        <div class="r-edu-side">
-          <b>Product Design Certificate</b>
-          <span class="school">Designlab UX Academy</span>
-          <span class="r-edu-detail">End-to-end UX methodology: research, usability testing, and product design from concept through handoff.</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="r-row">
-      <div class="r-row-label-wrap"><div class="r-row-label">Toolkit</div></div>
-      <div class="r-toolkit-line">Figma, Adobe Creative Suite, HTML/CSS/JS, AI-Assisted Design Tools</div>
-    </div>
-
-    <div class="r-row">
-      <div class="r-row-label-wrap"><div class="r-row-label">Languages</div></div>
-      <div class="r-toolkit-line">English, Spanish</div>
     </div>
 
     </div>
