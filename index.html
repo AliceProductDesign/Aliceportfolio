@@ -389,6 +389,21 @@ h1 .highlight{color:var(--amber);}
   opacity:1;
   pointer-events:none;
   transition:opacity .3s ease;
+  border:none;
+  background:transparent;
+  padding:0;
+  font:inherit;
+  color:inherit;
+}
+.scroll-cue:not(.is-hidden):not(.is-footer){
+  pointer-events:auto;
+  cursor:pointer;
+}
+.scroll-cue:focus{outline:none;}
+.scroll-cue:focus-visible{
+  outline:2px solid var(--coral);
+  outline-offset:4px;
+  border-radius:8px;
 }
 .scroll-cue.is-hidden{opacity:0; pointer-events:none;}
 .scroll-cue-label{
@@ -415,10 +430,6 @@ h1 .highlight{color:var(--amber);}
 }
 .scroll-cue.is-footer .scroll-cue-icon{display:none;}
 @media (hover: hover) and (pointer: fine){
-  .scroll-cue:not(.is-hidden):not(.is-footer){
-    pointer-events:auto;
-    cursor:default;
-  }
   .scroll-cue:not(.is-footer){
     gap:0;
     transition:opacity .3s ease, gap .25s ease;
@@ -638,6 +649,13 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
 }
 </style>
 </noscript>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "y3jwe4l4bo");
+</script>
 </head>
 <body>
 
@@ -877,10 +895,10 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
     </div>
   </div>
 
-  <div class="scroll-cue" id="scrollCue" aria-live="polite">
+  <button type="button" class="scroll-cue" id="scrollCue" aria-label="Go to next section" aria-live="polite">
     <span class="scroll-cue-label">Scroll down, or click "See work"</span>
     <svg class="scroll-cue-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </div>
+  </button>
 </section>
 
 <div class="spacer"></div>
@@ -1033,6 +1051,10 @@ function activateAligned(card){
 const SCROLL_HINT_BY_STAGE = {
   0: 'Scroll down, or click "See work"', 1: 'Scroll down for About', 2: 'Scroll down for How I Work', 3: 'Scroll down for Contact',
 };
+const SCROLL_CUE_ARIA_BY_STAGE = {
+  0: 'Go to work section', 1: 'Go to about section', 2: 'Go to how I work section', 3: 'Go to contact section',
+};
+const STAGE_SECTION_HASH = {1:'#work', 2:'#about', 3:'#process', 4:'#contact'};
 const SCROLL_CUE_DISMISS_THRESHOLD = 80;
 const SCROLL_CUE_PEEKABOO_MS = 5000;
 let scrollCuePeekabooTimer;
@@ -1084,6 +1106,29 @@ function updateScrollCueVisibility(){
 
 function setScrollCueText(text){
   if(scrollCueLabel) scrollCueLabel.textContent = text;
+}
+
+function setScrollCueAria(stage){
+  if(!scrollCueEl || scrollCueEl.classList.contains('is-footer')) return;
+  scrollCueEl.setAttribute('aria-label', SCROLL_CUE_ARIA_BY_STAGE[stage] ?? SCROLL_CUE_ARIA_BY_STAGE[0]);
+}
+
+function scrollToStage(stage){
+  if(stage < 1 || stage > 4) return;
+  if(isMobile()){
+    const targetEl = document.querySelector(STAGE_SECTION_HASH[stage]);
+    if(targetEl) targetEl.scrollIntoView({behavior:'smooth', block:'start'});
+  } else {
+    const vh = window.innerHeight;
+    const targetY = (stage - 1) * vh + vh * 0.6;
+    window.scrollTo({top: targetY, behavior:'smooth'});
+  }
+}
+
+function handleScrollCueClick(){
+  if(!scrollCueEl || scrollCueEl.classList.contains('is-hidden') || scrollCueEl.classList.contains('is-footer')) return;
+  if(currentStage < 0 || currentStage >= 4) return;
+  scrollToStage(currentStage + 1);
 }
 
 function getScrollHintText(stage){
@@ -1167,6 +1212,7 @@ function setStage(stage, force){
   }
   if(!isMobile() && stage < 4){
     setScrollCueText(getScrollHintText(stage));
+    setScrollCueAria(stage);
   }
   updateScrollCueVisibility();
   if(stage === 0){
@@ -1185,6 +1231,9 @@ fanStage = document.getElementById('fanStage');
 fanReveal = document.getElementById('work');
 scrollCueEl = document.getElementById('scrollCue');
 scrollCueLabel = document.querySelector('.scroll-cue-label');
+if(scrollCueEl){
+  scrollCueEl.addEventListener('click', handleScrollCueClick);
+}
 cards = document.querySelectorAll('.fan-card');
 
 if(heroEl) setStage(0, true);
@@ -1228,12 +1277,7 @@ function getStageFromScroll(y){
 
 if(btn){
 btn.addEventListener('click', ()=>{
-  if(isMobile()){
-    const workEl = document.getElementById('work');
-    if(workEl){ workEl.scrollIntoView({behavior:'smooth', block:'start'}); }
-  } else {
-    setStage(1);
-  }
+  scrollToStage(1);
 });
 }
 function onHeroScroll(){
@@ -1434,16 +1478,7 @@ const navTargetStage = { '#work': 1, '#about': 2, '#process': 3, '#contact': 4 }
 document.querySelectorAll('a[href="#work"], a[href="#about"], a[href="#process"], a[href="#contact"]').forEach(link=>{
   link.addEventListener('click', (e)=>{
     e.preventDefault();
-    const hash = link.getAttribute('href');
-    if(isMobile()){
-      const targetEl = document.querySelector(hash);
-      if(targetEl){ targetEl.scrollIntoView({behavior:'smooth', block:'start'}); }
-    } else {
-      const stage = navTargetStage[hash];
-      const vh = window.innerHeight;
-      const targetY = (stage - 1) * vh + vh * 0.6;
-      window.scrollTo({top: targetY, behavior:'smooth'});
-    }
+    scrollToStage(navTargetStage[link.getAttribute('href')]);
   });
 });
 
