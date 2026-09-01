@@ -39,7 +39,10 @@ nav{position:sticky; top:0; z-index:200; display:flex; justify-content:space-bet
 
 main{max-width:820px; margin:0 auto; padding:56px 32px 0;}
 
-.resume-actions{display:flex; justify-content:center; margin-top:32px;}
+.resume-actions{display:flex; flex-direction:column; align-items:center; gap:14px; margin-top:32px;}
+.r-ats-note{font-size:13px; color:var(--ink-soft); text-align:center; max-width:420px; line-height:1.5;}
+.r-ats-note a{color:var(--coral); font-weight:600;}
+.r-ats-note a:hover{color:var(--ink);}
 
 .resume-card{background:#fff; border-radius:24px; box-shadow:0 30px 70px -30px #33454A40; overflow:hidden;}
 
@@ -48,12 +51,14 @@ main{max-width:820px; margin:0 auto; padding:56px 32px 0;}
 .r-header-icons{position:absolute; inset:0; pointer-events:none; opacity:0.16;}
 .r-header-icons svg{position:absolute;}
 .r-header-inner{position:relative; z-index:1;}
-.r-header-inner h1{font-family:'Poppins',sans-serif; font-weight:700; font-size:30px; letter-spacing:-0.01em; flex-shrink:0; white-space:nowrap;}
-.r-name-row{display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:14px;}
-.r-title-pill{display:inline-block; color:var(--coral); font-weight:600; font-size:15px;}
-.r-meta-row{display:flex; flex-wrap:wrap; gap:6px 16px; font-size:12.5px; color:var(--ink-soft);}
-.r-meta-row a{color:var(--coral); font-weight:600;}
-.r-meta-row a:hover{color:var(--ink);}
+.r-header-inner h1{font-family:'Poppins',sans-serif; font-weight:700; font-size:28px; letter-spacing:-0.01em; flex-shrink:0; white-space:nowrap; margin-bottom:1px;}
+.r-header-cols{display:flex; flex-wrap:wrap; align-items:center; gap:36px;}
+.r-header-col{display:flex; flex-direction:column; gap:7px; font-size:12.5px; color:var(--ink-soft);}
+.r-header-col:first-child{gap:2px;}
+.r-header-col a, .r-header-col span{white-space:nowrap;}
+.r-title-pill{display:inline-block; color:var(--coral); font-weight:600; font-size:15px; white-space:nowrap;}
+.r-header-col a{color:var(--coral); font-weight:600;}
+.r-header-col a:hover{color:var(--ink);}
 
 .r-body{padding:40px 56px 48px;}
 
@@ -66,7 +71,7 @@ main{max-width:820px; margin:0 auto; padding:56px 32px 0;}
 .r-row{display:flex; align-items:flex-start; gap:14px; margin-bottom:28px;}
 .r-row:last-child{margin-bottom:0;}
 .r-row-label-wrap{flex:0 0 150px; width:150px;}
-.r-row > div:last-child, .r-row > .r-toolkit-line{flex:1; min-width:0;}
+.r-row > div:last-child, .r-row > .r-toolkit-line, .r-row > .r-toolkit-list{flex:1; min-width:0;}
 .r-row-label{display:inline-block; font-weight:700; font-size:10.5px; text-transform:uppercase; letter-spacing:0.09em; color:var(--amber-dark); background:var(--paper-alt); padding:6px 12px; border-radius:6px;}
 
 .r-entry{margin-bottom:24px;}
@@ -83,24 +88,71 @@ main{max-width:820px; margin:0 auto; padding:56px 32px 0;}
 .r-skills-group{margin-bottom:24px;}
 .r-skills-group:last-child{margin-bottom:0;}
 .r-skills-group-label{font-weight:700; font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--graphite); margin-bottom:12px;}
-.r-skills-chips{font-size:12.5px; font-weight:600; color:var(--ink); line-height:2.1;}
-.r-skill-dot{color:var(--coral); font-weight:700; margin:0 8px;}
+.r-skills-chips{display:grid; grid-template-columns:1fr 1fr; column-gap:24px; row-gap:8px; list-style:none;}
+.r-skills-chips li{font-size:12.5px; font-weight:600; color:var(--ink); line-height:1.4; padding-left:14px; position:relative;}
+.r-skills-chips li::before{content:''; position:absolute; left:0; top:6px; width:5px; height:5px; border-radius:50%; background:var(--coral);}
 .r-skill-chip:last-child{padding-right:0; margin-right:0;}
 .r-skill-chip:last-child::after{content:none;}
 
 /* ---- education / toolkit rows ---- */
 .r-edu-side b{display:block; color:var(--ink); font-weight:600; font-size:13px;}
-.r-edu-side{margin-bottom:12px; font-size:12px; color:var(--ink-soft); line-height:1.5;}
-.r-edu-detail{display:block; margin-top:4px; font-size:11px; line-height:1.5; color:var(--graphite);}
-.r-edu-side:last-child{margin-bottom:0;}
+.r-edu-grid{display:grid; grid-template-columns:1fr 1fr; column-gap:24px; row-gap:16px; margin-bottom:16px;}
+.r-edu-side{font-size:12px; color:var(--ink-soft); line-height:1.5;}
 .r-edu-side span.school{display:block;}
+.r-cert-block{margin-top:18px;}
+.r-cert-label{font-weight:700; font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--graphite); margin-bottom:12px;}
+.r-cert-row{display:flex; flex-wrap:wrap; gap:20px;}
+.r-cert-badge{display:flex; flex-direction:column; align-items:flex-start; gap:8px; width:150px;}
+.r-cert-name{font-size:11.5px; font-weight:600; color:var(--ink); line-height:1.4; text-decoration:none; cursor:pointer;}
+.r-cert-name:hover{color:var(--coral); text-decoration:underline;}
+.r-cert-org{font-size:10.5px; font-weight:600; color:var(--coral); margin-top:-4px;}
+.r-edu-detail{display:block; margin-top:4px; font-size:11px; line-height:1.5; color:var(--graphite);}
 .r-toolkit-line{font-size:12.5px; color:var(--ink-soft); line-height:1.7;}
+.r-toolkit-list{list-style:none; display:grid; grid-template-columns:repeat(3, auto); column-gap:24px; row-gap:8px;}
+.r-toolkit-list li{font-size:12.5px; font-weight:600; color:var(--ink); line-height:1.4; padding-left:14px; position:relative; white-space:nowrap;}
+.r-toolkit-list li::before{content:''; position:absolute; left:0; top:6px; width:5px; height:5px; border-radius:50%; background:var(--coral);}
 
 @media (max-width:640px){
   .r-header-wrap{padding:32px 28px 24px;}
   .r-body{padding:32px 28px 40px;}
   .r-row{flex-direction:column; gap:10px;}
   .r-row-label-wrap{flex:none; width:auto;}
+  .r-toolkit-list{
+    grid-template-columns:1fr;
+    row-gap:8px;
+  }
+  .r-toolkit-list li{white-space:normal;}
+  .r-edu-grid{
+    grid-template-columns:1fr;
+    row-gap:20px;
+  }
+  .r-cert-row{
+    flex-direction:column;
+    gap:16px;
+  }
+  .r-cert-badge{width:auto;}
+  .r-entry-role-row{
+    flex-direction:column-reverse;
+    align-items:flex-start;
+    gap:4px;
+  }
+  .r-entry-date{white-space:normal;}
+  .r-skills-chips{align-items:start;}
+  .r-skills-group:nth-of-type(2) .r-skills-chips li:nth-child(3){order:1;}
+  .r-skills-group:nth-of-type(2) .r-skills-chips li:nth-child(2){order:2;}
+  .r-skills-group:nth-of-type(2) .r-skills-chips li:nth-child(5){order:3;}
+  .r-skills-group:nth-of-type(2) .r-skills-chips li:nth-child(4){order:4;}
+  .r-skills-group:nth-of-type(2) .r-skill-mobile-col1-last{order:5; align-self:end;}
+  .r-skills-group:nth-of-type(2) .r-skills-chips li:nth-child(6){order:6;}
+  .r-skills-group:nth-of-type(3) .r-skills-chips li:nth-child(1){order:1;}
+  .r-skills-group:nth-of-type(3) .r-skills-chips li:nth-child(2){order:2;}
+  .r-skills-group:nth-of-type(3) .r-skills-chips li:nth-child(3){order:3;}
+  .r-skills-group:nth-of-type(3) .r-skills-chips li:nth-child(4){order:4;}
+  .r-skills-group:nth-of-type(3) .r-skills-chips li:nth-child(9){order:5;}
+  .r-skills-group:nth-of-type(3) .r-skills-chips li:nth-child(5){order:6;}
+  .r-skills-group:nth-of-type(3) .r-skills-chips li:nth-child(6){order:7;}
+  .r-skills-group:nth-of-type(3) .r-skill-mobile-col2-last{order:8; align-self:end;}
+  .r-skills-group:nth-of-type(3) .r-skills-chips li:nth-child(7){order:9;}
 }
 
 footer{padding:48px 32px 40px; text-align:center; color:var(--graphite); font-size:13.5px;}
@@ -123,25 +175,32 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   .r-header-icons{ opacity:0.14; }
   .r-header-inner h1{ font-size:22px; }
   .r-title-pill{ font-size:13px; }
-  .r-name-row{ flex-wrap:nowrap; }
-  .r-meta-row{ font-size:10.5px; margin-top:8px; }
-  .r-body{ padding:36px 0 0; }
-  .r-pullquote{ margin-bottom:32px; margin-left:130px; max-width:430px; padding-left:18px; }
+  .r-header-cols{ flex-wrap:nowrap; align-items:center; gap:28px; }
+  .r-header-col{ font-size:10.5px; gap:5px; }
+  .r-body{ padding:26px 0 0; }
+  .r-pullquote{ margin-bottom:24px; margin-left:130px; max-width:430px; padding-left:18px; }
   .r-pullquote p{ font-size:14px; line-height:1.6; }
-  .r-row{ display:block; margin-bottom:30px; }
+  .r-row{ display:block; margin-bottom:20px; }
   .r-experience-row{ page-break-before:always; }
   .r-row::after{ content:''; display:table; clear:both; }
   .r-row-label-wrap{ float:left; width:110px; }
-  .r-row > div:last-child, .r-row > .r-toolkit-line{ margin-left:130px; }
+  .r-row > div:last-child, .r-row > .r-toolkit-line, .r-row > .r-toolkit-list{ margin-left:130px; }
   .r-row-label{ font-size:9.5px; padding:5px 10px; }
   .r-entry{ margin-bottom:22px; page-break-inside:avoid; }
   .r-entry-top{ margin-bottom:5px; }
   .r-entry-summary{ margin-top:5px; font-size:11px; line-height:1.5; orphans:3; widows:3; }
-  .r-skills-group{ margin-bottom:18px; page-break-inside:avoid; }
+  .r-skills-group{ margin-bottom:13px; page-break-inside:avoid; }
   .r-skills-group-label{ margin-bottom:11px; }
-  .r-skills-chips{ font-size:12px; line-height:1.9; }
-  .r-skill-dot{ margin:0 5px; }
-  .r-edu-side{ font-size:12px; margin-bottom:18px; }
+  .r-skills-chips{ font-size:11px; row-gap:5px; column-gap:16px; }
+  .r-skills-chips li{ font-size:11px; }
+  .r-edu-side{ font-size:12px; }
+  .r-edu-grid{ row-gap:10px; margin-bottom:10px; }
+  .r-cert-block{ margin-top:8px; }
+  .r-cert-row{ gap:14px; }
+  .r-cert-badge > div[data-share-badge-id]{ display:none; }
+  .r-cert-badge{ width:auto; }
+  .r-cert-name{ font-size:10.5px; }
+  .r-cert-org{ font-size:9.5px; }
   .r-edu-detail{ font-size:12px; margin-top:6px; line-height:1.5; }
 }
 </style>
@@ -188,15 +247,19 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <svg style="bottom:26px; left:280px; width:24px; transform:rotate(-4deg);" viewBox="535 65 110 70"><path fill="#F5A94A" d="M614.8,116.13c1.43-1.26-7.58-7.06-8.73-7.54-5.07-2.1-8.08-.88-12.64-1.63-4.51-.74-2.75-4.05-3.18-7.09-1.29-9.12-9.75-17.6-18.69-19.55-5.89-1.28-12.12,1.47-9.32-7.75,1.52-2.41,11.9.03,14.47.89,11.17,3.72,19.76,13.85,21.58,25.5,11.52.05,23.12,8.1,26.87,19.07.73,2.13,1.58,3.78-.34,5.57l-61.09.51-1.73-1.12c-.69-1.61-.57-6.85,1.71-6.85h51.08Z"/></svg>
       </div>
       <div class="r-header-inner">
-        <div class="r-name-row">
-          <h1>Alice <span class="r-lastname">Curiel</span></h1>
-          <span class="r-title-pill">Product Designer</span>
-        </div>
-        <div class="r-meta-row">
-          <a href="mailto:hello@aliceportfolio.com">hello@aliceportfolio.com</a>
-          <a href="https://aliceportfolio.com" target="_blank" rel="noopener">aliceportfolio.com</a>
-          <a href="https://www.linkedin.com/in/alice-curiel-800817146/" target="_blank" rel="noopener">LinkedIn</a>
-          <span>New York / New Jersey</span>
+        <div class="r-header-cols">
+          <div class="r-header-col">
+            <h1>Alice <span class="r-lastname">Curiel</span></h1>
+            <span class="r-title-pill">Product Designer</span>
+          </div>
+          <div class="r-header-col">
+            <a href="mailto:hello@aliceportfolio.com">hello@aliceportfolio.com</a>
+            <a href="https://www.linkedin.com/in/alice-curiel-800817146/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+          <div class="r-header-col">
+            <a href="https://aliceportfolio.com" target="_blank" rel="noopener">aliceportfolio.com</a>
+            <span>New York / New Jersey</span>
+          </div>
         </div>
       </div>
     </div>
@@ -204,7 +267,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="r-body">
 
     <div class="r-pullquote">
-      <p>I build clean, human-centered experiences that move people, pairing rigorous research with systems-level design, and leading cross-functionally from discovery through developer handoff.</p>
+      <p>Product Designer with hands-on experience across research, interaction design, and design systems, primarily within health tech. Skilled at translating complex, high-stakes requirements, including clinical and regulatory constraints, into interfaces people can use with confidence.</p>
     </div>
 
     <div class="r-row">
@@ -212,15 +275,39 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div>
         <div class="r-skills-group">
           <div class="r-skills-group-label">Domain Expertise</div>
-          <div class="r-skills-chips">High‑Stakes&nbsp;Product&nbsp;UX <span class="r-skill-dot">•</span> Healthtech&nbsp;&amp;&nbsp;Civic&nbsp;UX <span class="r-skill-dot">•</span> B2C&nbsp;&amp;&nbsp;B2B&nbsp;Product&nbsp;Design <span class="r-skill-dot">•</span> 0‑to‑1&nbsp;Product&nbsp;Design</div>
+          <ul class="r-skills-chips">
+            <li>High-Stakes Product UX</li>
+            <li>Healthtech &amp; Civic UX</li>
+            <li>B2C &amp; B2B Product Design</li>
+            <li>0-to-1 Product Design</li>
+            <li>Design Thinking</li>
+            <li>AI Product Design</li>
+          </ul>
         </div>
         <div class="r-skills-group">
           <div class="r-skills-group-label">Research &amp; Strategy</div>
-          <div class="r-skills-chips">UX&nbsp;Research <span class="r-skill-dot">•</span> Usability&nbsp;Testing <span class="r-skill-dot">•</span> Data‑Informed&nbsp;Design <span class="r-skill-dot">•</span> Design&nbsp;Strategy <span class="r-skill-dot">•</span> Information&nbsp;Architecture <span class="r-skill-dot">•</span> Accessibility&nbsp;(WCAG/ADA)</div>
+          <ul class="r-skills-chips">
+            <li class="r-skill-mobile-col1-last">UX Research</li>
+            <li>Usability Testing</li>
+            <li>Data-Informed Design</li>
+            <li>Design Strategy</li>
+            <li>Information Architecture</li>
+            <li>Accessibility (WCAG/ADA)</li>
+          </ul>
         </div>
         <div class="r-skills-group">
           <div class="r-skills-group-label">Craft &amp; Leadership</div>
-          <div class="r-skills-chips">Visual&nbsp;&amp;&nbsp;Brand&nbsp;Systems <span class="r-skill-dot">•</span> Design&nbsp;Systems <span class="r-skill-dot">•</span> Interaction&nbsp;&amp;&nbsp;Motion&nbsp;Design <span class="r-skill-dot">•</span> Wireframing&nbsp;&amp;&nbsp;Prototyping <span class="r-skill-dot">•</span> Developer&nbsp;Handoff <span class="r-skill-dot">•</span> Front‑End&nbsp;Development <span class="r-skill-dot">•</span> Design&nbsp;Leadership <span class="r-skill-dot">•</span> Cross‑functional&nbsp;Collaboration</div>
+          <ul class="r-skills-chips">
+            <li>Visual &amp; Brand Systems</li>
+            <li>Design Systems</li>
+            <li>Interaction &amp; Motion Design</li>
+            <li>Wireframing &amp; Prototyping</li>
+            <li>Developer Handoff</li>
+            <li>Front-End Development</li>
+            <li>Design Leadership</li>
+            <li class="r-skill-mobile-col2-last">Cross-functional Collaboration</li>
+            <li>Agile &amp; Scrum Methodology</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -228,27 +315,56 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="r-row">
       <div class="r-row-label-wrap"><div class="r-row-label">Education</div></div>
       <div>
-        <div class="r-edu-side">
-          <b>BFA, Electronic Design &amp; Multimedia</b>
-          <span class="school">The City College of New York, Magna Cum Laude</span>
-          <span class="r-edu-detail">Foundation in visual systems, typography, and spatial hierarchy, the graphic design rigor underlying my product work today.</span>
+        <div class="r-edu-grid">
+          <div class="r-edu-side">
+            <b>BFA, Electronic Design &amp; Multimedia</b>
+            <span class="school">The City College of New York, Magna Cum Laude</span>
+            <span class="r-edu-detail">Foundation in visual systems, typography, and spatial hierarchy, the graphic design rigor underlying my product work today.</span>
+          </div>
+          <div class="r-edu-side">
+            <b>Product Design Certificate</b>
+            <span class="school">Designlab UX Academy</span>
+            <span class="r-edu-detail">End-to-end UX methodology: research, usability testing, and product design from concept through handoff.</span>
+          </div>
         </div>
-        <div class="r-edu-side">
-          <b>Product Design Certificate</b>
-          <span class="school">Designlab UX Academy</span>
-          <span class="r-edu-detail">End-to-end UX methodology: research, usability testing, and product design from concept through handoff.</span>
+
+        <div class="r-cert-block">
+          <div class="r-cert-label">Certificates</div>
+          <div class="r-cert-row">
+            <div class="r-cert-badge">
+              <a class="r-cert-name" href="https://www.credly.com/badges/090712c0-4dae-4140-81bd-8ad108b55043/public_url" target="_blank" rel="noopener">Enterprise Design Thinking Practitioner</a>
+              <span class="r-cert-org">IBM</span>
+            </div>
+            <div class="r-cert-badge">
+              <a class="r-cert-name" href="https://www.credly.com/badges/de818315-2cc5-4a77-a837-d8fb532dd5c3/public_url" target="_blank" rel="noopener">Team Essentials for Designing AI Solutions</a>
+              <span class="r-cert-org">IBM</span>
+            </div>
+            <div class="r-cert-badge">
+              <a class="r-cert-name" href="https://www.credly.com/badges/652c3b87-2c31-48d9-9f87-c43eb2796747/public_url" target="_blank" rel="noopener">Professional Scrum Master&trade; I (PSM I)</a>
+              <span class="r-cert-org">Scrum.org</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="r-row">
       <div class="r-row-label-wrap"><div class="r-row-label">Toolkit</div></div>
-      <div class="r-toolkit-line">Figma, Adobe Creative Suite, Cursor, HTML/CSS, AI-Assisted Design Tools</div>
+      <ul class="r-toolkit-list">
+        <li>Figma</li>
+        <li>Adobe Creative Suite</li>
+        <li>Cursor</li>
+        <li>HTML/CSS</li>
+        <li>AI-Assisted Design Tools</li>
+      </ul>
     </div>
 
     <div class="r-row">
       <div class="r-row-label-wrap"><div class="r-row-label">Languages</div></div>
-      <div class="r-toolkit-line">English, Spanish</div>
+      <ul class="r-toolkit-list">
+        <li>English</li>
+        <li>Spanish</li>
+      </ul>
     </div>
 
     <div class="r-row r-experience-row">
@@ -317,10 +433,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   </div>
 
   <div class="resume-actions">
-    <button class="btn filled" onclick="window.print()">
-      Download PDF
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-    </button>
+    <div class="r-ats-note">
+      Also available: <a href="/assets/alice-curiel-resume-ATS.docx">an ATS-friendly, plain-text version</a> of this resume.
+    </div>
   </div>
 </main>
 
