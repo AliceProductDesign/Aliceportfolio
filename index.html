@@ -127,7 +127,8 @@ h1 .highlight{color:var(--amber);}
   font-size:10px; font-weight:600; color:var(--ink-soft);
   line-height:1.3; max-width:56px;
 }
-.about-stats-row{ display:flex; gap:25.6px; margin-top:4.8px; }
+.about-stats-row{ display:flex; align-items:center; gap:25.6px; margin-top:4.8px; flex-wrap:wrap; }
+.about-stats-row .btn{flex-shrink:0;}
 
 .footer-card{display:flex; justify-content:space-between; align-items:center; max-width:920px; width:100%; gap:40px;}
 .footer-headline{font-family:'Poppins',sans-serif; font-size:clamp(24px,3vw,34px); font-weight:600; max-width:420px; line-height:1.25;}
@@ -470,11 +471,13 @@ h1 .highlight{color:var(--amber);}
   opacity:0; pointer-events:none; transform:translateY(10px);
   transition:opacity .3s ease, transform .3s ease, background .25s ease;
   box-shadow:0 10px 24px -8px #33454A55;
+  color:#fff;
 }
 .floating-back-to-top.show{opacity:1; pointer-events:auto; transform:translateY(0);}
 .floating-back-to-top:hover{background:var(--ink);}
-.floating-back-to-top svg{width:20px; height:20px; stroke:#fff; transition:stroke .25s ease;}
-.floating-back-to-top:hover svg{stroke:#fff;}
+.floating-back-to-top svg{width:20px; height:20px; stroke:#fff; fill:none; transition:stroke .25s ease;}
+.floating-back-to-top svg path{stroke:#fff; fill:none;}
+.floating-back-to-top:hover svg,.floating-back-to-top:hover svg path{stroke:#fff;}
 .spacer{height:400vh;}
 
 .dots{display:none; gap:8px; justify-content:center; margin-top:20px;}
@@ -492,7 +495,7 @@ h1 .highlight{color:var(--amber);}
   .about-reveal, .process-reveal, .footer-reveal{position:relative; opacity:1; pointer-events:auto; padding:60px 24px; display:block;}
   .about-card{flex-direction:column; text-align:center; padding:36px 28px; gap:28px;}
   .about-content p{text-align:left;}
-  .about-stats-row{flex-direction:column; gap:16px; align-items:flex-start;}
+  .about-stats-row{flex-direction:row; flex-wrap:wrap; gap:16px; align-items:center; justify-content:center; width:100%;}
   .about-photo{width:160px; height:160px;}
   .process-row{
     display:flex;
@@ -519,9 +522,10 @@ h1 .highlight{color:var(--amber);}
   .process-item .flip-front{display:flex; flex-direction:column; align-items:center; text-align:center;}
   .process-item .picon{display:block; margin-inline:auto;}
   .process-item .flip-front p{text-align:left; align-self:stretch;}
-  .footer-reveal{padding:88px 28px 36px;}
+  .footer-reveal{padding:88px 28px calc(120px + env(safe-area-inset-bottom, 0px));}
   .footer-card{flex-direction:column; text-align:center; gap:40px;}
-  .footer-links{gap:20px;}
+  .footer-links{gap:20px; width:100%;}
+  .footer-links a{width:fit-content; max-width:100%; margin-inline:auto;}
   .icon-field{height:100vh; bottom:auto;}
   .icon-field .icon-chip svg{opacity:.3; transform:scale(.7);}
   .scroll-cue:not(.is-footer){
@@ -530,12 +534,22 @@ h1 .highlight{color:var(--amber);}
   }
   .scroll-cue.is-footer{
     position:fixed;
-    bottom:28px;
-    left:50%;
-    transform:translateX(-50%);
+    bottom:calc(12px + env(safe-area-inset-bottom, 0px));
+    left:0;
+    right:72px;
+    width:auto;
+    transform:none;
     z-index:6;
     opacity:1;
     pointer-events:none;
+    padding-left:24px;
+  }
+  .scroll-cue.is-footer .scroll-cue-label{
+    max-width:none;
+    width:100%;
+  }
+  .floating-back-to-top.show{
+    bottom:calc(12px + env(safe-area-inset-bottom, 0px));
   }
   .spacer{height:0;}
 }
@@ -593,7 +607,7 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
 .hero-fallback-stack .about-card{flex-direction:column; text-align:center; padding:36px 28px; gap:28px;}
 .hero-fallback-stack .about-photo{width:160px; height:160px;}
 .hero-fallback-stack .process-row{grid-template-columns:repeat(3,1fr); gap:20px;}
-.hero-fallback-stack .footer-reveal{padding:88px 28px 36px;}
+.hero-fallback-stack .footer-reveal{padding:88px 28px calc(120px + env(safe-area-inset-bottom, 0px));}
 .hero-fallback-stack .footer-card{flex-direction:column; text-align:center; gap:40px;}
 .hero-fallback-stack .footer-links{gap:20px;}
 .hero-fallback-stack .icon-field{height:100vh; bottom:auto;}
@@ -625,7 +639,7 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
 #hero .about-card{flex-direction:column;text-align:center;padding:36px 28px;gap:28px;}
 #hero .about-photo{width:160px;height:160px;}
 #hero .process-row{grid-template-columns:repeat(3,1fr);gap:20px;}
-#hero .footer-reveal{padding:88px 28px 36px;}
+#hero .footer-reveal{padding:88px 28px calc(120px + env(safe-area-inset-bottom, 0px));}
 #hero .footer-card{flex-direction:column;text-align:center;gap:40px;}
 #hero .footer-links{gap:20px;}
 #hero .icon-field{height:100vh;bottom:auto;}
@@ -741,7 +755,6 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
           <button class="btn filled" id="seeWorkBtn"><span class="btn-label-full">See work</span><span class="btn-label-short">Work</span>
             <svg width="16" height="16" viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <a href="resume/" class="btn outline"><span class="btn-label-full">Get resume</span><span class="btn-label-short">Resume</span></a>
         </div>
       </div>
     </div>
@@ -771,6 +784,7 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
           <p>My approach is rooted in my foundation as a graphic designer (BFA, magna cum laude, The City College of New York), which taught me that a product's visual system and its strategic goals must work seamlessly together.</p>
           <p>I want to work with teams building things that matter. If you are developing a product where earning the user's trust is step one, we should talk.</p>
           <div class="about-stats-row">
+            <a href="resume/" class="btn outline"><span class="btn-label-full">Get resume</span><span class="btn-label-short">Resume</span></a>
             <div class="about-stat">
               <span class="about-stat-number" data-count="7">0</span>
               <div class="about-stat-divider"></div>
@@ -904,7 +918,7 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
 <div class="spacer"></div>
 
 <button class="floating-back-to-top" id="backToTopBtn" aria-label="Back to top">
-  <svg viewBox="0 0 100 100" fill="none"><path d="M50 75 V25 M25 50 L50 25 L75 50" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M50 75 V25 M25 50 L50 25 L75 50" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
 
 <script>
