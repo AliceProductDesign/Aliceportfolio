@@ -31,9 +31,8 @@ nav{position:sticky; top:0; z-index:200; display:flex; justify-content:space-bet
 
 main{flex:1; display:flex; align-items:center; justify-content:center; padding:40px 24px 80px;}
 .form-wrap{max-width:560px; width:100%;}
-.eyebrow{font-weight:700; font-size:12.5px; color:var(--coral); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px;}
-h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(30px,4vw,42px); line-height:1.15; margin-bottom:14px;}
-.subtext{font-size:15.5px; color:var(--ink-soft); line-height:1.65; margin-bottom:40px; max-width:460px;}
+#contactIntro h2{font-weight:700; font-size:12.5px; color:var(--coral); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px;}
+#contactIntro p{font-size:15.5px; color:var(--ink-soft); line-height:1.65; margin-bottom:40px; max-width:460px;}
 
 .field{margin-bottom:22px;}
 .field label{display:block; font-size:13px; font-weight:600; color:var(--ink); margin-bottom:8px;}
@@ -59,16 +58,35 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(30px,4vw,4
 .form-error{display:none; margin-top:12px; font-size:13.5px; color:var(--coral);}
 .form-error.show{display:block;}
 
-.alt-contact{margin-top:36px; padding-top:28px; border-top:1px solid var(--line); font-size:13.5px; color:var(--graphite);}
-.alt-contact a{color:var(--ink); font-weight:600; text-decoration:none;}
-.alt-contact a:hover{color:var(--coral);}
+#emailFallback{margin-top:36px; padding-top:28px; border-top:1px solid var(--line);}
+#emailFallback p{font-size:13.5px; color:var(--graphite); margin:0;}
+#emailFallback a{color:var(--ink); font-weight:600; text-decoration:none;}
+#emailFallback a:hover{color:var(--coral);}
 
-.confirm-msg{display:none; text-align:center; padding:60px 20px;}
-.confirm-msg.show{display:block;}
-.confirm-msg .icon{width:56px; height:56px; border-radius:50%; background:#4FC77A22; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;}
-.confirm-msg h2{font-family:'Poppins',sans-serif; font-size:24px; margin-bottom:10px;}
-.confirm-msg p{color:var(--ink-soft); font-size:14.5px;}
 
+#relayLoader{display:none;}
+.plane-fly{animation:bob 2s ease-in-out infinite;}
+.plane-trail{animation:trailFlow 1.2s linear infinite;}
+.plane-sparkle{animation:twinkle 1.6s ease-in-out infinite;}
+.plane-heart{animation:twinkle 1.6s ease-in-out infinite .3s;}
+.plane-cloud{animation:twinkle 1.6s ease-in-out infinite .6s;}
+.plane-loop{animation:twinkle 1.6s ease-in-out infinite .9s;}
+@keyframes bob{0%,100%{transform:translate(420px,120px) rotate(-18deg) translateY(0);}50%{transform:translate(420px,120px) rotate(-18deg) translateY(-5px);}}
+@keyframes trailFlow{to{stroke-dashoffset:-24;}}
+@keyframes twinkle{0%,100%{opacity:.3;}50%{opacity:.75;}}
+#successCheck{animation:checkPop .5s cubic-bezier(.34,1.56,.64,1) both; filter:drop-shadow(0 8px 20px rgba(60,179,113,.3)); transform-origin:340px 130px;}
+@keyframes checkPop{0%{opacity:0;transform:scale(.5);}100%{opacity:1;transform:scale(1);}}
+.check-path{stroke-dasharray:114;stroke-dashoffset:114;animation:drawCheck .4s ease-out .3s forwards;}
+@keyframes drawCheck{to{stroke-dashoffset:0;}}
+.check-ring{opacity:.6;transform-origin:340px 130px;animation:ringPulse .8s ease-out .5s forwards;}
+@keyframes ringPulse{0%{opacity:.6;transform:scale(1);}100%{opacity:0;transform:scale(1.35);}}
+#sendAnotherBtn:hover{background:#d94f3f;}
+@media (prefers-reduced-motion: reduce){
+  .plane-fly,.plane-trail,.plane-sparkle,.plane-heart,.plane-cloud,.plane-loop{animation:none;}
+  #successCheck{animation:none; opacity:1; transform:none; filter:none;}
+  .check-path{animation:none; stroke-dashoffset:0;}
+  .check-ring{animation:none; opacity:0;}
+}
 @media (max-width:600px){
   nav{padding:20px 24px;}
   main{padding:20px 20px 60px;}
@@ -87,7 +105,7 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(30px,4vw,4
 <nav>
   <a href="../#work" class="back-link">
     <svg viewBox="0 0 100 100" fill="none"><path d="M75 50 H30 M50 25 L25 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    All work
+    Back
   </a>
   <a href="/" class="nav-mark" aria-label="Back to home">
     <svg width="105" height="23" viewBox="150 95 465 115" xmlns="http://www.w3.org/2000/svg">
@@ -111,9 +129,10 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(30px,4vw,4
 <main>
   <div class="form-wrap">
     <div id="formView">
-      <div class="eyebrow">Get in touch</div>
-      <h1>Let's talk about what you're building.</h1>
-      <p class="subtext">Whether it's a project that needs to earn people's trust, a role you think I'd be right for, or just a question, send a note and I'll get back to you.</p>
+      <div id="contactIntro">
+        <h2>Get in touch</h2>
+        <p>Let's talk about what you're building. Whether it's a project that needs to earn people's trust, a role you think I'd be right for, or just a question, send a note and I'll get back to you.</p>
+      </div>
 
       <form id="contactForm" action="https://formspree.io/f/mdaqnjbz" method="POST">
         <input type="hidden" name="_subject" value="New message from portfolio site">
@@ -140,45 +159,97 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(30px,4vw,4
         <p class="form-error" id="formError" role="alert">Something went wrong. Please try again or email hello@aliceportfolio.com directly.</p>
       </form>
 
-      <div class="alt-contact">
-        Prefer email directly? Reach me at <a href="mailto:hello@aliceportfolio.com">hello@aliceportfolio.com</a>
+      <div id="emailFallback">
+        <p>Prefer email directly? Reach me at <a href="mailto:hello@aliceportfolio.com">hello@aliceportfolio.com</a></p>
       </div>
     </div>
 
-    <div class="confirm-msg" id="confirmView">
-      <div class="icon">
-        <svg width="24" height="24" viewBox="0 0 100 100" fill="none"><path d="M25 52 L42 68 L75 30" stroke="#2E8F52" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <h2>Message sent</h2>
-      <p>Thanks for reaching out, I'll get back to you soon.</p>
-    </div>
+    <div id="relayLoader" style="display:none; flex-direction:column; align-items:center; justify-content:center; padding:56px 24px; max-width:380px; margin:0 auto;">
+  <svg id="loaderArt" width="100%" viewBox="0 0 680 260" style="max-width:374px;">
+    <path class="plane-trail" d="M330,150 Q220,175 140,190 Q100,197 65,205" fill="none" stroke="#33454A" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="6 6" opacity=".3"/>
+    <g class="plane-cloud" transform="translate(270,138) scale(0.2) translate(-52,-103)">
+      <path d="M83.76,117.23c1.25-1.1-6.63-6.17-7.64-6.59-4.43-1.84-7.07-.77-11.06-1.42s-2.4-3.55-2.78-6.21c-1.13-7.98-8.53-15.4-16.35-17.1-5.16-1.12-10.6,1.29-8.15-6.78,1.33-2.11,10.41.03,12.66.78,9.78,3.25,17.29,12.12,18.88,22.31,10.08.04,20.23,7.08,23.51,16.68.64,1.86,1.38,3.31-.3,4.87l-53.45.45-1.51-.98c-.6-1.41-.5-5.99,1.5-5.99h44.69Z" fill="#F5A94A" opacity=".85"/>
+    </g>
+    <g class="plane-sparkle" transform="translate(230,178) scale(0.22) translate(-57,-36)">
+      <path d="M68.84,25.65c4.85-.24,3.71,2.32,3.35,6.36-1.76,1.67-4.31.72-6.46,1.03-8.27,1.21-16.56,9.18-18.91,17.04-.82,2.73-.13,6.51-3.08,6.9-6,.79-4.65-5.05-3.62-9.12,3.19-12.59,16.03-21.58,28.72-22.22Z" fill="#F5A94A"/>
+      <path d="M36.11,65.08c.45-.39,2.38-.58,3.1-.64,12.06-.93,25.29.74,37.48,0,3.81-.42,4.37,6.47,1.49,7l-41.99-.45c-1.13-.91-.92-5.19-.08-5.92Z" fill="#F2665A"/>
+    </g>
+    <g class="plane-loop" transform="translate(95,172) scale(0.2) translate(-124,-48)">
+      <path d="M122.28,45.53c2.37-3.08,3.99-6.6,6.48-9.62,5-6.07,14.77-13.15,23.07-11.97,1.83.26,2,.84,2.19,2.59,1.08,10.12-4.34,22.81-13.46,27.67l.3.99c2.96,1.38,4.22,5.32,4.49,8.38.24,2.64.38,13.87-.74,15.59-2.22,3.43-10.46-.97-13.07-2.75-4.26-2.9-6.56-6.23-9.03-10.69-2.07,4.86-5.13,8.73-9.71,11.45-3.23,1.91-11.93,6.14-12.66-.13-.45-3.84-.42-15.75,1.35-18.87.89-1.56,2.56-2.45,3.47-3.98-8.74-4.39-15.08-17.61-13.96-27.19.5-4.26,4.12-3.57,7.34-2.98,11.06,2.02,19.98,11.37,23.95,21.51ZM117.95,51.77c-3.16-9.54-10.17-19.44-20.68-21.15,1.41,10.85,9.16,20.86,20.68,21.15ZM147.77,30.62c-9.96,2.73-17.7,11.92-20.68,21.64,11.68-1.14,19.65-10.19,20.68-21.64ZM118.43,58.99h-7.94c-1.26,0-4.09,2.34-4.09,3.61v10.34c6.45-1.78,10.24-7.89,12.03-13.95ZM138.63,72.94v-11.3c0-.45-2.93-2.65-3.61-2.65h-7.94c1.21,6.05,5.77,11.76,11.54,13.95Z" fill="#F2665A" opacity=".8"/>
+    </g>
+    <g class="plane-heart" transform="translate(148,196) scale(0.22) translate(-185,-45)">
+      <path d="M194.39,26.83c9.71-1.08,16.44,8.72,15.28,17.59-1.17,8.89-12.68,21.16-20.07,25.81-1.82,1.14-2.4,2.06-4.84,1.69-4.93-.74-17.04-14.46-19.43-19.12-4.35-8.47-4.77-21.84,6.23-24.97,6.18-1.76,10.12-.1,14.68,3.95,2.17-2.26,4.89-4.59,8.16-4.95ZM174.54,34.77c-1.79.4-4.05,2.91-4.34,4.73-1.32,8.15,6.3,16.91,12.16,21.76,4.07,3.37,4.36,1.92,8.21-1.39,5.12-4.4,16.79-17.46,9.03-23.77-7.2-5.86-9.03,6.8-13.81,6.49-4.23-.28-4.89-9.22-11.24-7.81Z" fill="#F2665A" opacity=".85"/>
+    </g>
+    <g class="plane-fly" style="transform:translate(420px,120px) rotate(-18deg);">
+      <path d="M80,0 C50,-28 -20,-36 -80,-16 C-40,-6 -15,-2 -10,0 C20,-2 55,-2 80,0 Z" fill="#F2665A"/>
+      <path d="M80,0 C50,28 -20,36 -80,16 C-40,6 -15,2 -10,0 C20,2 55,2 80,0 Z" fill="#F5A94A"/>
+      <path d="M-70,-10 C-78,-4 -78,4 -70,10 C-74,4 -74,-4 -70,-10 Z" fill="#33454A" opacity=".15"/>
+      <circle cx="55" cy="-6" r="2" fill="#33454A" opacity=".25"/>
+      <circle cx="55" cy="6" r="2" fill="#33454A" opacity=".25"/>
+    </g>
+    <g id="successCheck" style="display:none;">
+      <circle class="check-ring" cx="340" cy="130" r="78" fill="none" stroke="#3CB371" stroke-width="3"/>
+      <circle cx="340" cy="130" r="78" fill="#3CB371" fill-opacity=".55"/>
+      <path class="check-path" d="M302,135 L329,156 L380,104" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </svg>
+  <p id="loaderMessage" style="font-family:'Inter',sans-serif; color:#5B6A6D; font-size:15.5px; text-align:center; margin:4px 0 0;">One moment, delivering your message...</p>
+  <button type="button" id="sendAnotherBtn" style="display:none; background:#F2665A; color:#fff; border:none; padding:11px 24px; border-radius:100px; font-weight:600; font-size:14px; cursor:pointer; margin:32px 0 0;">Send another message</button>
+</div>
   </div>
 </main>
 
 <script>
-document.getElementById('contactForm').addEventListener('submit', async function(e){
-  e.preventDefault();
-  const form = e.target;
-  const submitBtn = form.querySelector('.submit-btn');
-  const formError = document.getElementById('formError');
-  const formData = new FormData(form);
+const contactForm = document.getElementById('contactForm');
+const contactIntro = document.getElementById('contactIntro');
+const emailFallback = document.getElementById('emailFallback');
+const relayLoader = document.getElementById('relayLoader');
+const loaderMessage = document.getElementById('loaderMessage');
+const successCheck = document.getElementById('successCheck');
+const sendAnotherBtn = document.getElementById('sendAnotherBtn');
+const flightPieces = document.querySelectorAll('.plane-fly, .plane-trail, .plane-sparkle, .plane-heart, .plane-cloud, .plane-loop');
 
-  submitBtn.disabled = true;
-  formError.classList.remove('show');
+if (contactForm) {
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const formData = new FormData(contactForm);
 
-  try {
-    const response = await fetch(form.action, {
-      method: 'POST', headers: { 'Accept': 'application/json' }, body: formData
+    fetch(contactForm.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        contactForm.style.display = 'none';
+        if (emailFallback) emailFallback.style.display = 'none';
+        if (contactIntro) contactIntro.style.display = 'none';
+        relayLoader.style.display = 'flex';
+
+        setTimeout(() => {
+          flightPieces.forEach(el => el.style.display = 'none');
+          successCheck.style.display = 'block';
+          loaderMessage.textContent = "Your message was sent, I'll get back to you as soon as possible";
+          sendAnotherBtn.style.display = 'inline-block';
+        }, 1900);
+      } else {
+        alert('Something went wrong, please try emailing hello@aliceportfolio.com directly.');
+      }
+    }).catch(() => {
+      alert('Something went wrong, please try emailing hello@aliceportfolio.com directly.');
     });
+  });
+}
 
-    if(!response.ok){ throw new Error('Submission failed'); }
-
-    document.getElementById('formView').style.display = 'none';
-    document.getElementById('confirmView').classList.add('show');
-  } catch (error) {
-    formError.classList.add('show');
-    submitBtn.disabled = false;
-  }
+sendAnotherBtn.addEventListener('click', function () {
+  successCheck.style.display = 'none';
+  sendAnotherBtn.style.display = 'none';
+  relayLoader.style.display = 'none';
+  flightPieces.forEach(el => el.style.display = '');
+  loaderMessage.textContent = 'One moment, delivering your message...';
+  contactForm.reset();
+  contactForm.style.display = 'block';
+  if (emailFallback) emailFallback.style.display = 'block';
+  if (contactIntro) contactIntro.style.display = 'block';
 });
 </script>
 

@@ -456,6 +456,17 @@ h1 .highlight{color:var(--amber);}
     max-width:320px;
     max-height:2em;
   }
+  #hero.stage-0 .scroll-cue:not(.is-footer){
+    gap:8px;
+    animation:none;
+  }
+  #hero.stage-0 .scroll-cue:not(.is-footer) .scroll-cue-label,
+  #hero.stage-0 .scroll-cue:not(.is-footer).is-peekaboo .scroll-cue-label{
+    opacity:1;
+    max-width:320px;
+    max-height:2em;
+    animation:none;
+  }
 }
 @media (prefers-reduced-motion: reduce){
   .scroll-cue-icon{animation:none;}
@@ -1075,11 +1086,7 @@ let scrollCuePeekabooTimer;
 let scrollCuePeekabooPlayedStage = -1;
 
 function canPlayScrollCuePeekaboo(){
-  if(!scrollCueEl || isMobile()) return false;
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
-  if(!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return false;
-  if(scrollCueEl.classList.contains('is-footer') || scrollCueEl.classList.contains('is-hidden')) return false;
-  return currentStage === 0;
+  return false;
 }
 
 function playScrollCuePeekaboo(){
