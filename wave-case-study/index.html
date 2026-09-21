@@ -477,6 +477,33 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 @media (max-width:900px){
   .outcome-split{ grid-template-columns:1fr; gap:28px; }
 }
+
+.ws2-layout{
+  display:grid; grid-template-columns:1fr 1fr; column-gap:48px; row-gap:8px; align-items:start; margin-top:4px;
+}
+.ws2-heading{ margin:0 0 4px; }
+.ws2-heading--left{ grid-column:1; grid-row:1; }
+.ws2-heading--right{ grid-column:2; grid-row:1; }
+.ws2-copy{ grid-column:1; grid-row:2; }
+.ws2-challenges{ grid-column:2; grid-row:2; }
+.ws2-img--left{ grid-column:1; grid-row:3; }
+.ws2-img--right{ grid-column:2; grid-row:3; }
+.ws2-img .gallery-item{ width:100%; }
+.ws2-cap{ margin:0; text-align:center; font-size:12px; font-style:italic; color:var(--graphite); }
+.ws2-cap--left{ grid-column:1; grid-row:4; }
+.ws2-cap--right{ grid-column:2; grid-row:4; }
+@media (max-width:900px){
+  .ws2-layout{ grid-template-columns:1fr; row-gap:28px; }
+  .ws2-heading--left,
+  .ws2-heading--right,
+  .ws2-copy,
+  .ws2-challenges,
+  .ws2-img--left,
+  .ws2-img--right,
+  .ws2-cap--left,
+  .ws2-cap--right{ grid-column:1; grid-row:auto; }
+  .ws2-heading--right{ margin-top:20px; }
+}
 </style>
 <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -832,11 +859,28 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="section-eyebrow">Workstream 2</div>
     <div class="subproject">
       <span class="subproject-tag">Website &amp; E-Commerce</span>
-      <h3>Bringing the brand system to the site</h3>
-      <p>Now that the brand system is complete and documented, the next phase is building the website and e-commerce experience on top of it, the first real test of whether the handoff-ready system translates effectively for another designer.</p>
-      <div class="gallery" style="margin-top:16px;">
-        <div class="gallery-item">[Website wireframe, page name]</div>
-        <div class="gallery-item">[Website wireframe, page name]</div>
+      <div class="ws2-layout">
+        <h3 class="ws2-heading ws2-heading--left">Bringing the brand system to the site</h3>
+        <h3 class="ws2-heading ws2-heading--right">Challenges</h3>
+        <div class="ws2-copy">
+          <p style="margin-bottom:0;">With the brand system complete and documented, this phase puts it into practice: building the website and e-commerce experience translates the design system into a complete, functioning shopping journey. The architecture follows industry-standard direct-to-consumer commerce patterns, adapted for a regulated medical device, with a guest-first checkout that reduces friction for individual buyers, a dedicated Hush Tech LLC resource hub that builds credibility with clinical audiences, and a backend built around serial and lot-level inventory tracking, since traceability, not just stock counts, is what a device like WAVE actually requires.</p>
+        </div>
+        <div class="ws2-challenges">
+          <ul class="key-list">
+            <li>Scoping a clinician-facing hub with real credibility without duplicating a full B2B commerce system, after an initial pass over-built it into a full bulk-order-to-invoice flow for what is ultimately a single-SKU product</li>
+            <li>Designing inventory around serial and lot-level traceability rather than basic stock counts, a heavier data model than a typical single-SKU storefront needs</li>
+            <li>Starting with a happy-path-only flow and building out error and edge-case handling, declined payments, invalid addresses, an out-of-stock notification signup, only after stepping back to ask whether the flow covered more than the ideal case</li>
+            <li>Recognizing the backend data model was being defined ahead of the screens that should have driven it, and resetting the sequence accordingly</li>
+          </ul>
+        </div>
+        <div class="ws2-img ws2-img--left">
+          <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-ecommerce-sitemap.jpg" alt="WAVE e-commerce site architecture"></div>
+        </div>
+        <div class="ws2-img ws2-img--right">
+          <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-ecommerce-shopping-flow.jpg" alt="WAVE shopping flow with happy and error paths"></div>
+        </div>
+        <p class="ba-label ws2-cap ws2-cap--left">Site Architecture</p>
+        <p class="ba-label ws2-cap ws2-cap--right">Shopping Flow, Happy &amp; Error Paths</p>
       </div>
     </div>
   </div>

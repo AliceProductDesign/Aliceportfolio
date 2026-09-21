@@ -18,7 +18,7 @@
     if (document.getElementById('relay-styles')) return;
     var style = document.createElement('style');
     style.id = 'relay-styles';
-    style.textContent = '.relay-loader{position:fixed;inset:0;z-index:9999;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .5s ease,visibility .5s ease;}.relay-loader.is-hidden{opacity:0;visibility:hidden;pointer-events:none;}.relay-badge{border-radius:50%;background:var(--paper-alt);display:flex;align-items:center;justify-content:center;position:relative;transition:background .4s ease,transform .4s ease;}.relay-stage{position:relative;}.relay-stage svg{position:absolute;top:0;left:0;opacity:0;transform:scale(.85);transform-origin:center;transition:opacity .35s ease,transform .35s ease;}.relay-stage svg.is-active{opacity:1;transform:scale(1);}.relay-label{font-family:"Poppins",sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.04em;color:var(--ink-soft);text-transform:uppercase;display:flex;text-align:center;}.relay-dots span{animation:relay-blink 1.4s infinite;opacity:0;}.relay-dots span:nth-child(2){animation-delay:.2s;}.relay-dots span:nth-child(3){animation-delay:.4s;}@keyframes relay-blink{0%,80%,100%{opacity:0;}40%{opacity:1;}}.relay-image-wrap{position:relative;overflow:hidden;border-radius:16px;background:var(--paper-alt);min-height:160px;}.relay-image-wrap img{position:relative;z-index:1;opacity:0;transition:opacity .4s ease;}.relay-image-wrap img.is-loaded{opacity:1;}.relay-image-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;z-index:2;transition:opacity .5s ease;padding:16px;}.relay-image-placeholder.is-hidden{opacity:0;pointer-events:none;}';
+    style.textContent = '.relay-loader{position:fixed;inset:0;z-index:9999;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .5s ease,visibility .5s ease;}.relay-loader.is-hidden{opacity:0;visibility:hidden;pointer-events:none;}.relay-badge{border-radius:50%;background:var(--paper-alt);display:flex;align-items:center;justify-content:center;position:relative;transition:background .4s ease,transform .4s ease;}.relay-stage{position:relative;}.relay-stage svg{position:absolute;top:0;left:0;opacity:0;transform:scale(.85);transform-origin:center;transition:opacity .35s ease,transform .35s ease;}.relay-stage svg.is-active{opacity:1;transform:scale(1);}.relay-label{font-family:"Poppins",sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.04em;color:var(--ink-soft);text-transform:uppercase;display:flex;text-align:center;}.relay-dots span{animation:relay-blink 1.4s infinite;opacity:0;}.relay-dots span:nth-child(2){animation-delay:.2s;}.relay-dots span:nth-child(3){animation-delay:.4s;}@keyframes relay-blink{0%,80%,100%{opacity:0;}40%{opacity:1;}}.relay-image-wrap{position:relative;overflow:hidden;border-radius:16px;background:var(--paper-alt);min-height:160px;}.relay-image-wrap img{position:relative;z-index:1;opacity:0;transition:opacity .4s ease;}.relay-image-wrap img.is-loaded{opacity:1;}.relay-image-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;z-index:2;transition:opacity .5s ease;padding:16px;}.relay-image-placeholder.is-hidden{opacity:0;pointer-events:none;}.gallery-item img.is-lightboxable{cursor:pointer;transition:opacity .25s ease,transform .25s ease;}.gallery-item img.is-lightboxable:hover{opacity:.92;transform:scale(1.02);}.cs-lightbox{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box;background:rgba(0,0,0,.85);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s ease,visibility .3s ease;}.cs-lightbox.is-open{opacity:1;visibility:visible;pointer-events:auto;}.cs-lightbox__figure{margin:0;display:flex;align-items:center;justify-content:center;max-width:100%;max-height:100%;pointer-events:none;}.cs-lightbox__img{max-width:90vw;max-height:90vh;width:auto;height:auto;object-fit:contain;display:block;border-radius:8px;box-shadow:0 20px 50px rgba(0,0,0,.45);pointer-events:auto;}.cs-lightbox__close{position:absolute;top:20px;right:20px;width:44px;height:44px;border:none;border-radius:50%;background:var(--paper,#FBF9F4);color:var(--ink,#33454A);cursor:pointer;padding:0;display:grid;place-items:center;transition:background .25s ease,color .25s ease,transform .3s ease;}.cs-lightbox__close-icon{display:block;font-family:"Inter",sans-serif;font-size:24px;font-weight:400;line-height:1;transform:translateY(-1px);}.cs-lightbox__close:hover{background:var(--coral,#F2665A);color:#fff;}.cs-lightbox__close:focus-visible{outline:2px solid var(--coral,#F2665A);outline-offset:3px;}body.is-lightbox-open{overflow:hidden;}';
     document.head.appendChild(style);
   }
 
@@ -134,6 +134,7 @@
     });
     markLazyImages(panel);
     initImagesIn(panel);
+    if (lightboxApi) lightboxApi.markLightboxImages(panel);
   }
 
   function deferInactiveTabMedia(){
@@ -261,6 +262,7 @@
           wrap.style.minHeight = '0';
           placeholder.classList.add('is-hidden');
           setTimeout(function(){ placeholder.remove(); }, 500);
+          if (img.closest('.gallery-item')) img.classList.add('is-lightboxable');
         } else {
           labelText.textContent = 'Image unavailable';
           dotsEl.style.display = 'none';
@@ -285,8 +287,86 @@
     });
   }
 
+  var lightboxApi;
+
+  function initLightbox(){
+    injectStyles();
+    if (document.body.dataset.lightboxInit === '1') return lightboxApi;
+    document.body.dataset.lightboxInit = '1';
+
+    var overlay = document.createElement('div');
+    overlay.className = 'cs-lightbox';
+    overlay.id = 'cs-lightbox';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-label', 'Enlarged image');
+    overlay.innerHTML =
+      '<button type="button" class="cs-lightbox__close" aria-label="Close"><span class="cs-lightbox__close-icon" aria-hidden="true">&times;</span></button>' +
+      '<figure class="cs-lightbox__figure"><img class="cs-lightbox__img" alt=""></figure>';
+    document.body.appendChild(overlay);
+
+    var lightboxImg = overlay.querySelector('.cs-lightbox__img');
+    var closeBtn = overlay.querySelector('.cs-lightbox__close');
+
+    function imageSrc(img){
+      if (!img) return '';
+      if (img.currentSrc) return img.currentSrc;
+      if (img.getAttribute('src')) return img.getAttribute('src');
+      return img.dataset.lazySrc || '';
+    }
+
+    function markLightboxImages(root){
+      (root || document).querySelectorAll('.gallery-item img').forEach(function(img){
+        if (imageSrc(img)) img.classList.add('is-lightboxable');
+      });
+    }
+
+    function openLightbox(src, alt){
+      if (!src) return;
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || '';
+      overlay.classList.add('is-open');
+      document.body.classList.add('is-lightbox-open');
+      closeBtn.focus();
+    }
+
+    function closeLightbox(){
+      overlay.classList.remove('is-open');
+      document.body.classList.remove('is-lightbox-open');
+      lightboxImg.removeAttribute('src');
+      lightboxImg.alt = '';
+    }
+
+    document.addEventListener('click', function(e){
+      var img = e.target.closest('.gallery-item img');
+      if (img){
+        var src = imageSrc(img);
+        if (src){
+          e.preventDefault();
+          openLightbox(src, img.alt);
+        }
+        return;
+      }
+      if (e.target === overlay) closeLightbox();
+    });
+
+    closeBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      closeLightbox();
+    });
+
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeLightbox();
+    });
+
+    markLightboxImages(document);
+    lightboxApi = { markLightboxImages: markLightboxImages };
+    return lightboxApi;
+  }
+
   function boot(){
     Relay.pageLoader();
+    lightboxApi = initLightbox();
     if(document.querySelector('.tab-panel')){
       Relay.deferInactiveTabMedia();
       Relay.initTabHooks();
@@ -295,6 +375,7 @@
       Relay.markLazyImages(document.querySelector('.tab-panel.active'));
       Relay.initImagesIn(document.querySelector('.cs-header'));
       Relay.initImagesIn(document.querySelector('.tab-panel.active'));
+      if (lightboxApi) lightboxApi.markLightboxImages(document.querySelector('.tab-panel.active'));
       return;
     }
     Relay.initImages();
