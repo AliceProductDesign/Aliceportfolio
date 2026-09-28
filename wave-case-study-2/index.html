@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
-<title>WAVE, Case Study, Alice Curiel</title>
+<title>WAVE, Case Study (draft hub), Alice Curiel</title>
 <style>
 :root{
   --coral:#F2665A; --amber:#F5A94A; --amber-dark:#C97A1F; --ink:#33454A; --teal:#478383; --ink-soft:#5B6A6D;
@@ -504,6 +504,28 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   .ws2-cap--right{ grid-column:1; grid-row:auto; }
   .ws2-heading--right{ margin-top:20px; }
 }
+
+/* --- WAVE interactive hub --- */
+.wave-hub{max-width:1240px;margin:0 auto;padding:48px 48px 0;}
+.wave-hero-wide{width:100%;aspect-ratio:16/6;border-radius:22px;overflow:hidden;margin-top:24px;background:linear-gradient(160deg,var(--wv-navy),#3A2E6E);}
+.wave-hero-wide img{width:100%;height:100%;object-fit:cover;display:block;}
+.wave-card-row{display:flex;gap:12px;margin:32px 0 0;padding:0;align-items:stretch;}
+.wave-card{flex:1 1 0;min-width:0;display:flex;flex-direction:column;height:220px;border:2px solid transparent;border-radius:20px;overflow:hidden;cursor:pointer;background:#fff;text-align:left;font-family:inherit;padding:0;box-sizing:border-box;box-shadow:0 20px 40px -22px #33454A33;}
+.wave-card.is-selected{border-color:#F5C518;box-shadow:0 26px 46px -18px #33454A44, 0 0 0 3px #F5C51833;}
+.wave-card:focus-visible{outline:2px solid var(--coral);outline-offset:3px;}
+.wave-card-thumb{flex:1 1 auto;min-height:0;overflow:hidden;background:var(--wv-navy);}
+.wave-card-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.wave-card-label{flex:0 0 auto;padding:10px 12px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink);background:var(--paper);}
+.wave-detail{display:none;}
+.wave-detail.is-visible{display:block;}
+.wave-detail .tab-nav-anchor{margin-top:8px;}
+.hub-placeholder{font-size:14px;color:var(--graphite);font-style:italic;}
+@media (max-width:900px){
+  .wave-hub{padding:32px 24px 0;}
+  .wave-card-row{flex-direction:column;}
+  .wave-card{flex:1 1 auto;width:100%;height:220px;}
+}
+
 </style>
 <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -545,60 +567,66 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   </a>
 </nav>
 
-<header class="cs-header">
-  <div class="header-top">
-    <div>
-      <div class="title-row">
-        <h1>WAVE</h1>
-        <span class="tag t1">Branding</span>
-        <span class="tag t2">Clinical App</span>
-      </div>
-      <p class="cs-sub">FDA Medical Device · Women's Health · Brand &amp; Visual Systems</p>
 
-      <div class="block" style="margin-top:16px; margin-bottom:24px;">
-        <div class="section-eyebrow">The Challenge</div>
-        <p>WAVE is a medical device designed to relieve menstrual pain, with a clinical study currently being planned to secure FDA clearance. WAVE is a device with real clinical credibility, but its brand undermined it.</p>
-        <p>Packaging, marketing, and digital presence were inconsistent, eroding trust at the exact moment the product needed to earn it.</p>
-        <p>The deeper challenge: repositioning a medical device to present as human and empowering as the best consumer wellness brands, without sacrificing clinical authority.</p>
-      </div>
-
-      <div class="block" style="margin-bottom:0;">
-        <div class="section-eyebrow">The Solution</div>
-        <p>A full brand system redesign built around "warm authority", the strategic middle ground between clinical coldness and wellness softness. New logo, visual identity, color and typography system, packaging, messaging framework, and social media direction.</p>
-        <p style="margin-bottom:0;">Delivered as a complete, handoff-ready brand system that became the foundation for the website and all marketing going forward.</p>
-      </div>
-      <p class="meta-note" style="max-width:none;">WAVE is an active client engagement for a company I co-founded. Serving as Creative Director, I established the brand and product vision while leading design execution alongside a second designer. We are currently building an ePRO (electronic patient-reported outcomes) app as our next product phase, alongside the company's website and e-commerce experience.</p>
-      <div class="meta-row" style="border-top:none; padding-top:0; padding-bottom:10px; margin-top:42px;">
-        <div class="meta-item"><span>Role</span><b>Creative Director, Brand &amp; Product</b></div>
-        <div class="meta-item"><span>Scope</span><b>Brand System + Packaging + Clinical App (ePRO)</b></div>
-        <div class="meta-item"><span>Timeline</span><b>Ongoing</b></div>
-        <div class="meta-item"><span>Year</span><b>2024-Present</b></div>
-        <div class="meta-item"><span>Status</span><b>Live · Expanding</b></div>
-      </div>
+<main class="wave-hub" id="waveHub">
+  <header class="wave-hub-header">
+    <div class="title-row">
+      <h1>WAVE</h1>
+      <span class="tag t1">Branding</span>
+      <span class="tag">E-Commerce</span>
+      <span class="tag t2">ePRO App</span>
     </div>
-    <div class="hero-image has-img">
+    <p class="cs-sub">FDA Medical Device · Women's Health · Brand, Product &amp; Commerce Systems</p>
+    <div class="wave-hero-wide has-img">
       <img data-relay src="/assets/wave/hero-wave.png" alt="WAVE device packaging, navy box with pink wave graphic">
     </div>
-  </div>
-</header>
+  </header>
 
-<div class="tab-nav-anchor" id="tabNavAnchor">
-  <div class="tab-nav-sentinel" id="tabNavSentinel" aria-hidden="true"></div>
-  <div class="tab-nav-spacer" id="tabNavSpacer" aria-hidden="true"></div>
-  <div class="tab-nav-wrap" id="tabNavWrap">
-  <div class="tab-nav" id="tabNav">
-  <div class="tab-track">
-    <button class="tab-btn active" data-tab="overview">Overview</button>
-    <button class="tab-btn" data-tab="design">Design &amp; Process</button>
-    <button class="tab-btn" data-tab="outcome">Outcome</button>
-    <button class="tab-btn" data-tab="progress">Upcoming</button>
+  <div class="wave-card-row" id="waveCardRow" role="group" aria-label="WAVE sub-projects">
+    <button type="button" class="wave-card is-selected" data-project="branding" aria-pressed="true">
+      <div class="wave-card-thumb"><img src="/assets/wave/Design-wave.png" alt="" loading="lazy"></div>
+      <div class="wave-card-label">Product Branding</div>
+    </button>
+    <button type="button" class="wave-card" data-project="commerce" aria-pressed="false">
+      <div class="wave-card-thumb"><img src="/assets/wave/wave-ecommerce-sitemap.jpg" alt="" loading="lazy"></div>
+      <div class="wave-card-label">E-Commerce Site</div>
+    </button>
+    <button type="button" class="wave-card" data-project="epro" aria-pressed="false">
+      <div class="wave-card-thumb"><img src="/assets/wave/Rescue-Logic-protocol.png" alt="" loading="lazy"></div>
+      <div class="wave-card-label">ePRO App</div>
+    </button>
   </div>
-</div>
-</div>
-</div>
 
+  <div class="wave-detail is-visible" id="waveDetail">
+    <div class="tab-nav-anchor" id="tabNavAnchor">
+      <div class="tab-nav-sentinel" id="tabNavSentinel" aria-hidden="true"></div>
+      <div class="tab-nav-spacer" id="tabNavSpacer" aria-hidden="true"></div>
+      <div class="tab-nav-wrap" id="tabNavWrap">
+        <div class="tab-nav" id="tabNav">
+          <div class="tab-track">
+            <button type="button" class="tab-btn active" data-tab="overview">Overview</button>
+            <button type="button" class="tab-btn" data-tab="design">Design &amp; Process</button>
+            <button type="button" class="tab-btn" data-tab="outcome">Outcome</button>
+            <button type="button" class="tab-btn" data-tab="progress">Upcoming</button>
+          </div>
+        </div>
+      </div>
+    </div>
 <!-- OVERVIEW -->
-<div class="tab-panel active" data-panel="overview">
+<div class="tab-panel active" data-project="branding" data-panel="overview">
+  <div class="block hub-overview-lead">
+    <div class="section-eyebrow">Challenge</div>
+    <p>WAVE is a medical device designed to relieve menstrual pain, with a clinical study currently being planned to secure FDA clearance. WAVE is a device with real clinical credibility, but its brand undermined it. Packaging, marketing, and digital presence were inconsistent, eroding trust at the exact moment the product needed to earn it. The deeper challenge: repositioning a medical device to present as human and empowering as the best consumer wellness brands, without sacrificing clinical authority.</p>
+    <div class="section-eyebrow" style="margin-top:20px;">Solution</div>
+    <p style="margin-bottom:0;">A full brand system redesign built around 'warm authority,' the strategic middle ground between clinical coldness and wellness softness. New logo, visual identity, color and typography system, packaging, messaging framework, and social media direction. Delivered as a complete, handoff-ready brand system that became the foundation for the website and all marketing going forward.</p>
+  </div>
+  <div class="meta-row" style="border-top:1px solid var(--line); padding-top:22px; margin-bottom:32px;">
+    <div class="meta-item"><span>Role</span><b>Creative Director, Brand &amp; Product</b></div>
+    <div class="meta-item"><span>Scope</span><b>Brand System + Packaging + Clinical App (ePRO)</b></div>
+    <div class="meta-item"><span>Timeline</span><b>Ongoing</b></div>
+    <div class="meta-item"><span>Year</span><b>2024-Present</b></div>
+    <div class="meta-item"><span>Status</span><b>Live · Expanding</b></div>
+  </div>
   <div class="block block--split problem-split">
     <div class="problem-copy">
       <div class="section-eyebrow">The Problem</div>
@@ -648,7 +676,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 </div>
 
 <!-- DESIGN & PROCESS -->
-<div class="tab-panel" data-panel="design">
+<div class="tab-panel" data-project="branding" data-panel="design">
   <div class="block block--split design-split design-split--logo">
     <div class="split-copy">
       <div class="section-eyebrow">What I Designed</div>
@@ -777,7 +805,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 </div>
 
 <!-- OUTCOME -->
-<div class="tab-panel" data-panel="outcome">
+<div class="tab-panel" data-project="branding" data-panel="outcome">
+  <div class="block"><p class="hub-placeholder">[Outcome metrics not yet added]</p></div>
   <div class="block">
     <div class="outcome-split">
       <div class="outcome-copy">
@@ -820,13 +849,32 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   </a>
 </div>
 
-<!-- CURRENT PROGRESS -->
-<div class="tab-panel" data-panel="progress">
-  <div class="progress-banner">
-    <div class="dot"></div>
-    <p>The brand system is shipped and live. Two workstreams are currently active.</p>
+<!-- UPCOMING branding -->
+<div class="tab-panel" data-panel="progress" data-project="branding">
+  <div class="block">
+    <p>WAVE is an active client engagement. As Creative Director, I set the brand and product direction and work alongside a second designer on production and execution.</p>
   </div>
+  <div class="block">
+    <h3>Build status</h3>
+    <ul class="progress-list">
+      <li><span class="progress-status shipped">Shipped</span> Brand identity, packaging, messaging framework, presented at ACOG</li>
+      <li><span class="progress-status wip">In Progress</span> Website &amp; e-commerce</li>
+      <li><span class="progress-status wip">In Progress</span> ePRO clinical trial app, UX &amp; design system</li>
+      <li><span class="progress-status upcoming">Upcoming</span> [Placeholder, next milestone]</li>
+    </ul>
+  </div>
+</div>
 
+<!-- COMMERCE -->
+<div class="tab-panel" data-panel="overview" data-project="commerce">
+  <div class="block hub-overview-lead">
+    <div class="section-eyebrow">Challenge</div>
+    <p>WAVE needed a direct-to-consumer sales channel of its own, one that could reflect the brand and handle its specific order and shipping needs, rather than relying on an off-the-shelf platform.</p>
+    <div class="section-eyebrow" style="margin-top:20px;">Approach</div>
+    <p style="margin-bottom:0;">Building a custom storefront and admin backend, covering the full customer purchase flow alongside order, buyer, and shipping management.</p>
+  </div>
+</div>
+<div class="tab-panel" data-panel="design" data-project="commerce">
   <div class="block">
     <div class="section-eyebrow">Workstream 1</div>
     <div class="subproject">
@@ -856,7 +904,24 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       </div>
     </div>
   </div>
+</div>
+<div class="tab-panel" data-panel="outcome" data-project="commerce">
+  <div class="block"><p class="hub-placeholder">[Placeholder, real content not yet added]</p></div>
+</div>
+<div class="tab-panel" data-panel="progress" data-project="commerce">
+  <div class="block"><p class="hub-placeholder">[Placeholder, real content not yet added]</p></div>
+</div>
 
+<!-- EPRO -->
+<div class="tab-panel" data-panel="overview" data-project="epro">
+  <div class="block hub-overview-lead">
+    <div class="section-eyebrow">Challenge</div>
+    <p>As WAVE moves toward FDA clearance, the ePRO app needs to make patient-reported outcomes effortless and trustworthy, since a $2M pivotal clinical trial's data integrity depends on honest, low-friction reporting from an estimated 250+ participants.</p>
+    <div class="section-eyebrow" style="margin-top:20px;">Approach</div>
+    <p style="margin-bottom:0;">UX and design system development for the app where trial participants report outcomes directly, currently in progress.</p>
+  </div>
+</div>
+<div class="tab-panel" data-panel="design" data-project="epro">
   <div class="block">
     <div class="section-eyebrow">Workstream 2</div>
     <div class="subproject">
@@ -884,17 +949,16 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       </div>
     </div>
   </div>
-
-  <div class="block">
-    <h3>Build status</h3>
-    <ul class="progress-list">
-      <li><span class="progress-status shipped">Shipped</span> Brand identity, packaging, messaging framework, presented at ACOG</li>
-      <li><span class="progress-status wip">In Progress</span> Website &amp; e-commerce</li>
-      <li><span class="progress-status wip">In Progress</span> ePRO clinical trial app, UX &amp; design system</li>
-      <li><span class="progress-status upcoming">Upcoming</span> [Placeholder, next milestone]</li>
-    </ul>
-  </div>
 </div>
+<div class="tab-panel" data-panel="outcome" data-project="epro">
+  <div class="block"><p class="hub-placeholder">[Placeholder, real content not yet added]</p></div>
+</div>
+<div class="tab-panel" data-panel="progress" data-project="epro">
+  <div class="block"><p class="hub-placeholder">[Placeholder, real content not yet added]</p></div>
+</div>
+
+  </div>
+</main>
 
 <footer>
   <div class="foot-row">
@@ -910,42 +974,145 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 </button>
 
 <script>
-document.querySelectorAll('.tab-btn').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+(function(){
+  const detail = document.getElementById('waveDetail');
+  const cards = Array.from(document.querySelectorAll('.wave-card'));
+  let activeProject = 'branding';
+
+  function setTab(project, tab){
+    document.querySelectorAll('.tab-btn').forEach(b=>{
+      b.classList.toggle('active', b.dataset.tab === tab);
+    });
+    document.querySelectorAll('.tab-panel').forEach(p=>{
+      p.classList.toggle('active', p.dataset.project === project && p.dataset.panel === tab);
+    });
+    if(window.Relay && typeof Relay.activatePanel === 'function'){
+      const panel = document.querySelector('.tab-panel.active[data-project="'+project+'"]');
+      if(panel) Relay.activatePanel(panel);
+    }
+  }
+
+  function deselect(){
+    activeProject = null;
+    cards.forEach(c=>{
+      c.classList.remove('is-selected');
+      c.setAttribute('aria-pressed','false');
+    });
+    detail.classList.remove('is-visible');
     document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-    btn.classList.add('active');
-    const activePanel = document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`);
-    activePanel.classList.add('active');
-    const panelTop = activePanel.getBoundingClientRect().top + window.scrollY;
-    window.scrollTo({top: panelTop - 130, behavior:'smooth'});
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  }
+
+  function applySelection(project){
+    activeProject = project;
+    cards.forEach(c=>{
+      const on = c.dataset.project === project;
+      c.classList.toggle('is-selected', on);
+      c.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    detail.classList.add('is-visible');
+    setTab(project, 'overview');
+    document.dispatchEvent(new CustomEvent('wavehub-expanded'));
+  }
+
+  function scrollTabTrackIntoViewMobile(){
+    if(!window.matchMedia('(max-width: 760px)').matches) return;
+    const anchor = document.getElementById('tabNavAnchor');
+    if(anchor) anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function selectProject(project){
+    if(activeProject === project){
+      deselect();
+      return;
+    }
+    applySelection(project);
+    scrollTabTrackIntoViewMobile();
+  }
+
+  cards.forEach(card=>{
+    card.addEventListener('click', e=>{
+      e.stopPropagation();
+      selectProject(card.dataset.project);
+    });
   });
-});
+
+  document.getElementById('waveHub').addEventListener('click', e=>{
+    if(!activeProject) return;
+    if(e.target.closest('#waveCardRow')) return;
+    if(e.target.closest('#waveDetail')) return;
+    deselect();
+  });
+
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      e.stopPropagation();
+      if(!activeProject) return;
+      const tab = btn.dataset.tab;
+      setTab(activeProject, tab);
+      const panel = document.querySelector('.tab-panel.active[data-project="'+activeProject+'"]');
+      if(panel){
+        const panelTop = panel.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({top: panelTop - 130, behavior:'smooth'});
+      }
+    });
+  });
+
+  window.waveHub = { deselect, selectProject, applySelection, get activeProject(){ return activeProject; } };
+
+  applySelection('branding');
+})();
+
 (function(){
   const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
   if(!tabButtons.length) return;
 
   tabButtons.forEach((btn, index)=>{
-    const panel = document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`);
-    if(!panel) return;
     const isLast = index === tabButtons.length - 1;
-
-    if(!isLast){
-      const nextBtn = tabButtons[index + 1];
-      const continueBtn = document.createElement('button');
-      continueBtn.className = 'panel-next';
-      continueBtn.innerHTML = `Continue
-        <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-      continueBtn.addEventListener('click', ()=> nextBtn.click());
-      panel.appendChild(continueBtn);
-    } else {
+    if(isLast){
       const nextProjectEl = document.querySelector('.next-project');
       if(nextProjectEl){
-        nextProjectEl.remove();
-        panel.appendChild(nextProjectEl);
+        const brandingOutcome = document.querySelector('.tab-panel[data-project="branding"][data-panel="outcome"]');
+        if(brandingOutcome && !brandingOutcome.contains(nextProjectEl)){
+          nextProjectEl.remove();
+          brandingOutcome.appendChild(nextProjectEl);
+        }
       }
     }
   });
+
+  function wireContinueButtons(){
+    document.querySelectorAll('.panel-next').forEach(n=>n.remove());
+    const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
+    const project = window.waveHub && window.waveHub.activeProject;
+    if(!project) return;
+    const tabs = ['overview','design','outcome','progress'];
+    tabs.forEach((tab, index)=>{
+      const panel = document.querySelector('.tab-panel[data-project="'+project+'"][data-panel="'+tab+'"]');
+      if(!panel) return;
+      const isLast = index === tabs.length - 1;
+      if(!isLast){
+        const nextTab = tabs[index+1];
+        const continueBtn = document.createElement('button');
+        continueBtn.type = 'button';
+        continueBtn.className = 'panel-next';
+        continueBtn.innerHTML = `Continue
+          <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+        continueBtn.addEventListener('click', ()=>{
+          document.querySelector('.tab-btn[data-tab="'+nextTab+'"]').click();
+        });
+        panel.appendChild(continueBtn);
+      }
+    });
+  }
+
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=> setTimeout(wireContinueButtons, 0));
+  });
+  document.addEventListener('wavehub-expanded', ()=> setTimeout(wireContinueButtons, 0));
+  if(window.waveHub && window.waveHub.activeProject){
+    setTimeout(wireContinueButtons, 0);
+  }
 })();
 (function(){
   const tabWrap = document.getElementById('tabNavWrap');
