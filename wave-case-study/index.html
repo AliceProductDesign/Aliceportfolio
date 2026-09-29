@@ -60,6 +60,14 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .meta-item span{display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--graphite); margin-bottom:5px;}
 .meta-item b{font-family:'Poppins',sans-serif; font-size:16px; font-weight:600;}
 .meta-note{font-size:13px; color:var(--graphite); margin-top:14px; font-style:italic;}
+.team-credits .team-credit-row{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--line); font-size:15.5px; line-height:1.55; color:var(--ink-soft); max-width:740px;}
+.team-credits .team-credit-row:last-child{border-bottom:none; padding-bottom:0;}
+.team-credits .team-credit-row b{font-family:'Poppins',sans-serif; font-weight:600; font-size:15px; color:var(--ink); flex:0 1 auto; min-width:0;}
+.team-credits .team-credit-row span{flex:1 1 55%; text-align:right; min-width:0;}
+@media (max-width:414px){
+  .team-credits .team-credit-row{flex-direction:column; gap:4px;}
+  .team-credits .team-credit-row span{text-align:left; flex:1 1 auto;}
+}
 
 /* ---- TABS ---- */
 .tab-nav-anchor{position:relative;}
@@ -570,10 +578,11 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <p class="meta-note" style="max-width:none;">WAVE is an active client engagement for a company I co-founded. Serving as Creative Director, I established the brand and product vision while leading design execution alongside a second designer. We are currently building an ePRO (electronic patient-reported outcomes) app as our next product phase, alongside the company's website and e-commerce experience.</p>
       <div class="meta-row" style="border-top:none; padding-top:0; padding-bottom:10px; margin-top:42px;">
         <div class="meta-item"><span>Role</span><b>Creative Director, Brand &amp; Product</b></div>
-        <div class="meta-item"><span>Scope</span><b>Brand System + Packaging + Clinical App (ePRO)</b></div>
+        <div class="meta-item"><span>Scope</span><b>Brand System + Packaging + E-commerce site + Clinical App (ePRO)</b></div>
         <div class="meta-item"><span>Timeline</span><b>Ongoing</b></div>
         <div class="meta-item"><span>Year</span><b>2024-Present</b></div>
         <div class="meta-item"><span>Status</span><b>Live · Expanding</b></div>
+        <div class="meta-item"><span>Team</span><b>With 3 Teammates</b></div>
       </div>
     </div>
     <div class="hero-image has-img">
@@ -794,6 +803,26 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
           <img class="exhibit-slide" alt="WAVE exhibit materials and branded assets on display" src="/assets/wave/assets-1.jpeg" loading="lazy">
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="block team-credits">
+    <div class="section-eyebrow">Team &amp; My Contribution</div>
+    <div class="team-credit-row">
+      <b>Kayla<!-- last name, LinkedIn --></b>
+      <span>Designer</span>
+    </div>
+    <div class="team-credit-row">
+      <b>David<!-- last name, LinkedIn --></b>
+      <span>Product Engineer</span>
+    </div>
+    <div class="team-credit-row">
+      <b>Azeem<!-- last name, LinkedIn --></b>
+      <span>Developer</span>
+    </div>
+    <div class="team-credit-row">
+      <b>Me, Creative Director<!-- last name, LinkedIn --></b>
+      <span>brand and product vision, design direction, brand system, packaging, ePRO UX</span>
     </div>
   </div>
 

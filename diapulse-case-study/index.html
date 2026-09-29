@@ -63,6 +63,14 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .meta-item span{display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--graphite); margin-bottom:5px;}
 .meta-item b{font-family:'Poppins',sans-serif; font-size:16px; font-weight:600;}
 .meta-note{font-size:13px; color:var(--graphite); margin-top:14px; font-style:italic;}
+.team-credits .team-credit-row{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--line); font-size:15.5px; line-height:1.55; color:var(--ink-soft); max-width:740px;}
+.team-credits .team-credit-row:last-child{border-bottom:none; padding-bottom:0;}
+.team-credits .team-credit-row b{font-family:'Poppins',sans-serif; font-weight:600; font-size:15px; color:var(--ink); flex:0 1 auto; min-width:0;}
+.team-credits .team-credit-row span{flex:1 1 55%; text-align:right; min-width:0;}
+@media (max-width:414px){
+  .team-credits .team-credit-row{flex-direction:column; gap:4px;}
+  .team-credits .team-credit-row span{text-align:left; flex:1 1 auto;}
+}
 
 /* ---- TABS ---- */
 .tab-nav-anchor{position:relative;}
@@ -405,6 +413,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <div class="meta-item"><span>Timeline</span><b>6 Weeks</b></div>
         <div class="meta-item"><span>Year</span><b>2025-2026</b></div>
         <div class="meta-item"><span>Status</span><b>Live · Ongoing</b></div>
+        <div class="meta-item"><span>Team</span><b>With 3 Engineers</b></div>
       </div>
     </div>
     <div class="hero-image" style="border:none; padding:0; background:none; display:block; overflow:hidden; position:relative;">
@@ -560,6 +569,26 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     </div>
     <div class="gallery-item wide" style="border:none; padding:0; background:none"><img src="/assets/diapulse/diapulse-exhibit-flyer.png" alt="Tri-fold brochure, The Right Choice for Smart Care" style="width:100%; height:auto; display:block; border-radius:16px"></div>
     <div class="gallery-item wide" style="border:none; padding:0; background:none;"><video src="/assets/diapulse/diapulse-screens-banner-optimized.mp4" autoplay muted loop playsinline aria-label="UI screens" style="width:100%; height:auto; display:block; border-radius:16px;"></video></div>
+  </div>
+
+  <div class="block team-credits">
+    <div class="section-eyebrow">Team &amp; My Contribution</div>
+    <div class="team-credit-row">
+      <b>Rick<!-- last name, LinkedIn --></b>
+      <span>Developer</span>
+    </div>
+    <div class="team-credit-row">
+      <b>David<!-- last name, LinkedIn --></b>
+      <span>Product Engineer</span>
+    </div>
+    <div class="team-credit-row">
+      <b>Michael<!-- last name, LinkedIn --></b>
+      <span>Engineer</span>
+    </div>
+    <div class="team-credit-row">
+      <b>Me, Creative Director, UX<!-- last name, LinkedIn --></b>
+      <span>brand system, hardware integration, software UI</span>
+    </div>
   </div>
 
   <div class="block">
