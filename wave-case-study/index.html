@@ -951,70 +951,202 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 </div><div class="tab-content-set" data-project="1">
 <div class="tab-panel" data-panel="overview">
 
-  <div class="block">
-    <div class="section-eyebrow">The Challenge</div>
-    <p>WAVE needed a direct-to-consumer sales channel of its own, one that could reflect the brand and handle its specific order and shipping needs, rather than relying on an off-the-shelf platform.</p>
-    <div class="section-eyebrow" style="margin-top:20px;">The Approach</div>
-    <p style="margin-bottom:0;">Building a custom storefront and admin backend, covering the full customer purchase flow alongside order, buyer, and shipping management, ready to launch once trials allow a sale.</p>
+  <div class="block block--split problem-split">
+    <div class="problem-copy">
+      <div class="section-eyebrow">The Challenge</div>
+      <h2>A new category of device, with nothing to sell yet.</h2>
+      <p>WAVE is an investigational menstrual pain relief device from Hush Tech LLC, built to give women a drug-free option for their monthly pain. It cannot be sold yet, pending clinical trials in Nigeria and the United States.</p>
+      <p>The company is a small founding team with very limited resources and no budget for an agency or developer build, yet it needed a credible web presence. The site had to build trust, explain a new category of device, and capture early interest without implying a purchase.</p>
+      <p class="gap-statement" style="margin-bottom:0;">It also had to serve two audiences, consumers and clinicians, who cannot be shown the same claims for a regulated device.</p>
+    </div>
+    <div class="problem-visual">
+      <div class="gallery-item wide">[IMG: storefront home page, desktop]</div>
+    </div>
   </div>
-  <div class="block">
-    <div class="gallery-item wide">[IMG: storefront home page, desktop]</div>
+
+  <div class="block block--split audit-split reverse">
+    <div class="audit-copy">
+      <div class="section-eyebrow">The Approach</div>
+      <h3>One codebase, two experiences.</h3>
+      <p class="audit-method">As part of the founding team, I took on the entire build myself, from design through launch. I designed and built a custom site with two experiences on one codebase, plus an admin backend.</p>
+      <div class="audit-findings">
+        <div class="audit-finding">
+          <div class="audit-num">01</div>
+          <div>
+            <h4>Consumer storefront (light)</h4>
+            <p>Brand-level wellness messaging, a pre-launch "Notify Me" flow, and a purchase flow designed and ready for launch.</p>
+          </div>
+        </div>
+        <div class="audit-finding">
+          <div class="audit-num">02</div>
+          <div>
+            <h4>Clinician site (dark, password-gated)</h4>
+            <p>Clinical evidence, safety, mechanism of action, a research library, and case studies.</p>
+          </div>
+        </div>
+        <div class="audit-finding">
+          <div class="audit-num">03</div>
+          <div>
+            <h4>Admin backend</h4>
+            <p>Orders, buyers, inventory, and pricing in one place.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="audit-visual">
+      <div class="gallery">
+        <div class="gallery-item">[IMG: side-by-side consumer light theme vs clinician dark theme]</div>
+      </div>
+    </div>
   </div>
 
 </div>
 <div class="tab-panel" data-panel="design">
 
   <div class="block">
-    <div class="subproject">
-      <span class="subproject-tag">Website &amp; E-Commerce</span>
-      <div class="ws2-layout">
-        <h3 class="ws2-heading ws2-heading--left">Bringing the brand system to the site</h3>
-        <h3 class="ws2-heading ws2-heading--right">Challenges</h3>
-        <div class="ws2-copy">
-          <p style="margin-bottom:0;">With the brand system complete and documented, this phase puts it into practice: building the website and e-commerce experience translates the design system into a complete, functioning shopping journey. The architecture follows industry-standard direct-to-consumer commerce patterns, adapted for a regulated medical device, with a guest-first checkout that reduces friction for individual buyers, a dedicated Hush Tech LLC resource hub that builds credibility with clinical audiences, and a backend built around serial and lot-level inventory tracking, since traceability, not just stock counts, is what a device like WAVE actually requires.</p>
+    <div class="section-eyebrow">My Role</div>
+    <h2>Sole designer and builder, first wireframe to launch.</h2>
+    <p>I am a member of the founding team and not a developer by training. I used Cursor with the Figma MCP to turn my designs into working code. The product decisions, architecture choices, and data model were mine, and Cursor did the hands-on coding under that direction.</p>
+    <p class="gap-statement">The WAVE brand system and the original WAVE site were separate engagements with a dev team.</p>
+  </div>
+
+  <div class="block">
+    <div class="section-eyebrow">Process</div>
+    <h2>Architecture first, then screens, then checkout, then backend.</h2>
+    <p>I started with site architecture, then core screens, then the cart and checkout flow, and finished with the backend. I mapped the UX in FigJam with a flowchart key covering happy, alternate, and error paths.</p>
+    <div class="gallery-item wide">[IMG: FigJam flow diagram]</div>
+  </div>
+
+  <div class="block">
+    <div class="section-eyebrow">Decisions &amp; Tradeoffs</div>
+    <h2>Five calls that shaped the build.</h2>
+    <div class="audit-findings">
+      <div class="audit-finding">
+        <div class="audit-num">01</div>
+        <div>
+          <h4>Custom build instead of Shopify</h4>
+          <p>Full ownership and control, no platform fees, and a data model shaped to the business. The cost was far more build effort.</p>
         </div>
-        <div class="ws2-challenges">
-          <ul class="key-list">
-            <li>Scoping a clinician-facing hub with real credibility without duplicating a full B2B commerce system, after an initial pass over-built it into a full bulk-order-to-invoice flow for what is ultimately a single-SKU product</li>
-            <li>Designing inventory around serial and lot-level traceability rather than basic stock counts, a heavier data model than a typical single-SKU storefront needs</li>
-            <li>Starting with a happy-path-only flow and building out error and edge-case handling, declined payments, invalid addresses, an out-of-stock notification signup, only after stepping back to ask whether the flow covered more than the ideal case</li>
-            <li>Recognizing the backend data model was being defined ahead of the screens that should have driven it, and resetting the sequence accordingly</li>
-          </ul>
+      </div>
+      <div class="audit-finding">
+        <div class="audit-num">02</div>
+        <div>
+          <h4>Backend migrated from Payload CMS to Supabase</h4>
+          <p>I moved to Supabase for real-time data sync, database-level security, and relational scalability. The cost: I gave up a unified, code-first TypeScript architecture and a ready-made, client-friendly Admin UI. Security logic moved into database-level SQL, and I took on a heavy manual burden to rebuild the content management workflows.</p>
         </div>
-        <div class="ws2-img ws2-img--left">
-          <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-ecommerce-sitemap.jpg" alt="WAVE e-commerce site architecture"></div>
+      </div>
+      <div class="audit-finding">
+        <div class="audit-num">03</div>
+        <div>
+          <h4>One site, two experiences, split by regulatory risk</h4>
+          <p>A gated dark clinician site carries the clinical claims, and the consumer site stays at brand level only.</p>
         </div>
-        <div class="ws2-img ws2-img--right">
-          <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-ecommerce-shopping-flow.jpg" alt="WAVE shopping flow with happy and error paths"></div>
+      </div>
+      <div class="audit-finding">
+        <div class="audit-num">04</div>
+        <div>
+          <h4>Single SKU and guest-first checkout</h4>
+          <p>Fewer decisions between interest and purchase.</p>
         </div>
-        <p class="ba-label ws2-cap ws2-cap--left">Site Architecture</p>
-        <p class="ba-label ws2-cap ws2-cap--right">Shopping Flow, Happy &amp; Error Paths</p>
-      
+      </div>
+      <div class="audit-finding">
+        <div class="audit-num">05</div>
+        <div>
+          <h4>Clinicians sit outside the storefront</h4>
+          <p>They reach WAVE through an email or PO inquiry and a gated, manually provisioned Bulk WAVE Portal.</p>
+        </div>
       </div>
     </div>
   </div>
+
   <div class="block">
+    <div class="section-eyebrow">Regulatory Constraint</div>
+    <h2>No purchase language for a device that cannot be sold.</h2>
+    <p>Every purchase-implying CTA became an email-capture "Notify Me" flow with a WAVE news opt-in, and payment methods were removed from the footer.</p>
+    <p class="rebrand-lead">WAVE is an investigational device under research. Not FDA cleared or approved. Not yet available for commercial use.</p>
+    <div class="gallery-item wide">[IMG: Notify Me flow and regulatory banner]</div>
+  </div>
+
+  <div class="block">
+    <div class="section-eyebrow">Systems Thinking</div>
+    <h2>The data model was part of the UX.</h2>
+    <p>I designed the data model alongside the screens, so what the business needs to know shaped what the interface could do.</p>
+    <ul class="key-list">
+      <li>Product, with sale and discount fields</li>
+      <li>Order, with unitPriceAtPurchase stored per line item</li>
+      <li>Buyer</li>
+      <li>Shipment</li>
+      <li>Reviews, tied to a real order and limited to verified purchasers</li>
+      <li>RestockNotification</li>
+      <li>Serial and lot-level unit tracking</li>
+    </ul>
+    <div class="gallery-item wide">[IMG: ERD from FigJam]</div>
+  </div>
+
+  <div class="block">
+    <div class="section-eyebrow">Design System</div>
+    <h2>Light and dark from one set of variables.</h2>
+    <p>Built in Figma with light and dark variables, 13 text styles, and components including button variants, email field, badges, cards, the regulatory banner, and the cart button. The palette is navy and pink on Montserrat. The primary CTA moved to raspberry (#C23A7B in light, #EC5BA0 in dark) with white labels.</p>
     <div class="gallery">
-      <div class="gallery-item">[IMG: clinician resource hub landing page]</div>
-      <div class="gallery-item">[IMG: guest checkout flow, key step]</div>
+      <div class="gallery-item">[IMG: design system]</div>
+      <div class="gallery-item">[IMG: WaveLoader animation frames]</div>
     </div>
   </div>
+
   <div class="block">
-    <div class="gallery-item wide">[PLACEHOLDER: admin order and serial/lot inventory views]</div>
+    <div class="section-eyebrow">Build &amp; Tooling</div>
+    <h2>Designed by me, coded with Cursor.</h2>
+    <p>The site runs on Next.js (App Router), TypeScript, Tailwind, Supabase, and Vercel. Stripe, Resend, and EasyPost are selected and planned, and are not integrated yet.</p>
+    <div class="gallery-item wide">[PLACEHOLDER: code screenshot or repo structure]</div>
+  </div>
+
+  <div class="block">
+    <div class="reflect-grid">
+      <div class="reflect-card">
+        <h4>Accessibility</h4>
+        <p class="gap-statement">[PLACEHOLDER: WCAG work still to be done]</p>
+      </div>
+      <div class="reflect-card">
+        <h4>Collaboration</h4>
+        <p>A solo build as part of the founding team. The team shapes the product vision and the claims we can make, and I owned design, development, and delivery.</p>
+      </div>
+    </div>
   </div>
 
 </div>
 <div class="tab-panel" data-panel="outcome">
 
   <div class="block">
-    <div class="gallery-item wide">[PLACEHOLDER: launch readiness and fulfillment workflow outcomes]</div>
+    <div class="section-eyebrow">The Outcome</div>
+    <h2>Pre-launch, so no metrics yet.</h2>
+    <p>The site is built to launch the moment trials allow a sale. Until then, its job is to build trust and collect early interest.</p>
+    <div class="gallery-item wide">[PLACEHOLDER: confirm which pages are live on the Vercel preview]</div>
+  </div>
+  <div class="block">
+    <div class="section-eyebrow">What I Will Measure</div>
+    <ul class="key-list">
+      <li>Notify Me sign-up rate</li>
+      <li>Checkout completion rate</li>
+      <li>Page load time</li>
+      <li>Clinician inquiry volume</li>
+    </ul>
   </div>
 
 </div>
 <div class="tab-panel" data-panel="progress">
 
+  <div class="progress-banner">
+    <div class="dot"></div>
+    <p>The site is built and in pre-launch. These are the next steps.</p>
+  </div>
   <div class="block">
-    <p style="margin-bottom:0;">[PLACEHOLDER: go-live timeline once pivotal trial sales clearance allows public checkout]</p>
+    <ul class="key-list">
+      <li>Accessibility audit and fixes</li>
+      <li>Connect Stripe, Resend, and EasyPost</li>
+      <li>Launch the purchase flow once trials allow a sale</li>
+      <li>Connect the final domain (WAVEbyHush.com still hosts the old site)</li>
+      <li>Build out the Bulk WAVE Portal for clinicians</li>
+    </ul>
   </div>
 
 </div>
