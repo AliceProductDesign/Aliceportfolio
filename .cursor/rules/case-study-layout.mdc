@@ -8,3 +8,4 @@ alwaysApply: false
 - Full-width visuals, stats bands, and banners are the only full-width elements.
 - Reuse the existing .block--split patterns. Do not add new colors or fonts.
 - No em dashes in copy.
+- The Challenge and the Solution (or Approach) always sit in a two-column row (.cs-duo), stacked on screens 900px wide and under. Challenge on the left, Solution or Approach on the right.

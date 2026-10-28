@@ -17,7 +17,7 @@
   --wv-navy:#241E4E; --wv-pink:#F0A8C4; --wv-blue:#7FA8D9;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif;}
+body{background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif; overflow-x:hidden;}
 /* ── TEAL ACCENT AUDIT (wave-case-study) ─────────────────────────
    CHANGED → var(--teal): h1–h4, .section-eyebrow, .gap-statement, .pull-quote p, .key-list li::before (✓ icons)
    LEFT:    .stat b (amber), .meta-note/.ba-label (graphite), .issue-list li::before (graphite ✕), coral nav/back-to-top SVGs
@@ -114,6 +114,9 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 
 .tab-panel{display:none; max-width:1240px; margin:0 auto; padding:28px 48px 90px; animation:fadeIn .35s ease;}
 .tab-panel.active{display:block;}
+.tab-panel img{max-width:100%; height:auto;}
+.tab-panel .exhibit-slide:not(:first-child),
+.tab-panel .mission-slide:not(:first-child){height:100%;}
 @keyframes fadeIn{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);}}
 
 .hero-image{margin-bottom:44px; border-radius:22px; background:linear-gradient(160deg,var(--wv-navy),#3A2E6E); border:2px dashed #ffffff33; min-height:340px; display:flex; align-items:center; justify-content:center; padding:30px; gap:24px; flex-wrap:wrap;}
@@ -124,6 +127,7 @@ h2{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(24px,2.8vw
 h3{font-family:'Poppins',sans-serif; font-weight:600; font-size:19px; margin-bottom:10px; max-width:740px;}
 p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; max-width:740px;}
 .block{margin-bottom:56px;}
+.block--split > *{min-width:0;}
 .block:last-child{margin-bottom:0;}
 .block p + img{margin-top:20px;}
 .block > .stats-band,
@@ -143,63 +147,117 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 [class*="-col-block"] + .gallery-item.wide,
 [class*="-col-block"] + img{margin-top:20px;}
 @media (min-width:901px){
-  .block--split{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
+  .block--split{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;}
+  .block--split > *{min-width:0;}
   .block--split > :not(:last-child){grid-column:1;}
-  .block--split > :last-child{grid-column:2; grid-row:1 / -1; align-self:center;}
+  .block--split > :last-child{grid-column:2; grid-row:1 / -1; align-self:start;}
   .block--split.reverse > :not(:last-child){grid-column:2;}
   .block--split.reverse > :last-child{grid-column:1;}
   .block--split h2,
   .block--split h3,
   .block--split p{max-width:none;}
   .block--split.problem-split > .problem-copy{
-    display:flex; flex-direction:column; justify-content:center; align-self:center;
+    display:flex; flex-direction:column; justify-content:flex-start; align-self:start;
   }
   .block--split.problem-split .problem-copy h2,
   .block--split.problem-split .problem-copy p,
   .block--split.problem-split .problem-copy .gap-statement{max-width:none;}
-  .block--split.problem-split .problem-visual{width:100%; align-self:center;}
+  .block--split.problem-split .problem-visual{width:100%; align-self:stretch; min-height:0; max-height:640px;}
+  .block--split.problem-split--small{align-items:center;}
+  .block--split.problem-split--small > *{align-self:center;}
   .block--split.design-split > .split-copy{
-    display:flex; flex-direction:column; justify-content:center; align-self:center; text-align:left;
+    display:flex; flex-direction:column; justify-content:flex-start; align-self:start; text-align:left;
   }
   .block--split.design-split .split-copy h2,
   .block--split.design-split .split-copy h3,
   .block--split.design-split .split-copy p,
   .block--split.design-split .split-copy .gap-statement{max-width:none;}
-  .block--split.design-split .split-visual{width:100%; align-self:center;}
+  .block--split.design-split .split-visual{width:100%; align-self:start; min-width:0;}
   .block--split.audit-split > .audit-copy{
-    display:flex; flex-direction:column; justify-content:center; align-self:center;
+    display:flex; flex-direction:column; justify-content:flex-start; align-self:start;
   }
   .block--split.audit-split .audit-copy h2,
   .block--split.audit-split .audit-copy h3,
   .block--split.audit-split .audit-copy p,
   .block--split.audit-split .audit-findings{max-width:none;}
   .block--split .reflect-grid{grid-template-columns:1fr; margin-top:0;}
-  .block--split.audit-split .audit-visual{width:100%; align-self:center;}
+  .block--split.audit-split .audit-visual{width:100%; align-self:start; min-width:0;}
   .audit-visual .gallery{grid-template-columns:1fr; margin-top:0;}
   .split-visual .gallery{grid-template-columns:1fr; margin-top:0;}
+  .block--split.design-split--logo,
+  .block--split.design-split:has(.swatch-row){
+    align-items:center;
+  }
+  .block--split.design-split--logo > *,
+  .block--split.design-split:has(.swatch-row) > *{
+    align-self:center;
+  }
 }
 .problem-visual{
+  position:relative;
+  align-self:stretch; min-height:0; min-width:0; width:100%; max-width:100%;
+  max-height:640px; aspect-ratio:4/5;
   border-radius:16px; overflow:hidden;
 }
-.problem-visual > img{
-  width:100%; height:auto; display:block;
+.problem-visual .relay-image-wrap,
+.problem-visual > div{
+  position:absolute; inset:0;
+  height:100%; width:100%; min-height:0; min-width:0;
+}
+.problem-visual .relay-image-wrap{min-height:0; background:transparent;}
+.tab-panel .problem-visual img{
+  position:absolute; inset:0;
+  width:100%; max-width:100%; height:100%;
+  object-fit:cover; object-position:center top;
+  border-radius:16px; display:block;
+}
+.block--split .split-visual,
+.block--split .audit-visual,
+.block--split .relay-image-wrap,
+.block--split img{min-width:0; max-width:100%;}
+.block--split .split-visual,
+.block--split .audit-visual{overflow:hidden;}
+.block--split .split-visual > img,
+.block--split .split-visual .ba-single,
+.block--split .split-visual .gallery-item.has-img,
+.block--split .audit-visual .gallery-item.has-img{
+  max-width:100%; max-height:640px; overflow:hidden;
+}
+.block--split .split-visual > img,
+.block--split .split-visual .ba-single img,
+.block--split .split-visual .gallery-item.has-img img,
+.block--split .audit-visual img{
+  width:100%; max-width:100%; height:auto; max-height:640px;
+  object-fit:contain; object-position:center top; display:block;
 }
 .block--split.design-split.design-split--logo{
   padding:40px 0;
 }
 @media (min-width:901px){
   .block--split.design-split.design-split--logo{
-    padding:64px 0;
-    align-items:stretch;
+    padding:40px 0;
+    align-items:center;
   }
   .block--split.design-split.design-split--logo .split-visual{
-    display:flex; align-items:center; align-self:stretch;
+    display:flex; align-items:center; align-self:center;
   }
   .block--split.design-split.design-split--logo .split-visual .ba-single{
     margin-top:0; width:100%;
   }
 }
 .cs-header .header-top > div:first-child > .block + .block{padding-bottom:24px;}
+.cs-duo{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; margin-bottom:32px;}
+.block.cs-duo{margin-bottom:32px;}
+.cs-duo + .block{margin-top:0;}
+.cs-duo__col p,
+.cs-duo__col h2,
+.cs-duo__col h3{max-width:none;}
+.cs-duo__col .section-eyebrow{margin-bottom:12px;}
+.cs-duo__col + .cs-duo__col{border-left:1px solid var(--line); padding-left:24px;}
+@media (max-width:900px){
+  .cs-duo{grid-template-columns:1fr; gap:28px;}
+  .cs-duo__col + .cs-duo__col{border-left:none; padding-left:0;}
+}
 .gap-statement{font-style:italic; color:var(--teal); font-size:15px; border-top:1px solid var(--line); padding-top:18px; margin-top:6px;}
 .rebrand-lead{
   font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(17px,2vw,20px);
@@ -457,9 +515,17 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 .back-to-top:focus-visible{outline:2px solid var(--coral); outline-offset:3px;}
 
 @media (max-width:900px){
+  .block--split{display:flex; flex-direction:column;}
+  .block--split .split-copy,
+  .block--split .problem-copy,
+  .block--split .audit-copy{order:1;}
+  .block--split .split-visual,
+  .block--split .problem-visual,
+  .block--split .audit-visual{order:2; width:100%; max-width:100%;}
   .block--split .split-copy + .split-visual,
   .block--split .split-visual + .split-copy,
   .block--split .problem-copy + .problem-visual,
+  .block--split .problem-copy + .split-visual,
   .block--split .audit-copy + .audit-visual{margin-top:20px;}
   .tab-nav-wrap{position:relative;}
   .tab-nav-wrap::after{
@@ -724,30 +790,41 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 <div class="tab-content-set active" data-project="0">
 <div class="tab-panel active" data-panel="overview">
 
-  <div class="block block--split problem-split">
-    <div class="problem-copy">
-      <p class="meta-note" style="max-width:none; margin-top:0; margin-bottom:20px;">WAVE is an active client engagement for a company I co-founded. Serving as Creative Director, I established the brand and product vision while leading design execution alongside a second designer. We are currently building an ePRO (electronic patient-reported outcomes) app as our next product phase, alongside the company's website and e-commerce experience.</p>
+  <div class="block cs-duo">
+    <div class="cs-duo__col">
       <div class="section-eyebrow">The Challenge</div>
       <p>WAVE is a medical device designed to relieve menstrual pain, with a clinical study currently being planned to secure FDA clearance. WAVE is a device with real clinical credibility, but its brand undermined it.</p>
       <p>Packaging, marketing, and digital presence were inconsistent, eroding trust at the exact moment the product needed to earn it.</p>
-      <p>The deeper challenge: repositioning a medical device to present as human and empowering as the best consumer wellness brands, without sacrificing clinical authority.</p>
-      <div class="section-eyebrow" style="margin-top:20px;">The Solution</div>
+      <p style="margin-bottom:0;">The deeper challenge: repositioning a medical device to present as human and empowering as the best consumer wellness brands, without sacrificing clinical authority.</p>
+    </div>
+    <div class="cs-duo__col">
+      <div class="section-eyebrow">The Solution</div>
       <p>A full brand system redesign built around "warm authority", the strategic middle ground between clinical coldness and wellness softness. New logo, visual identity, color and typography system, packaging, messaging framework, and social media direction.</p>
       <p style="margin-bottom:0;">Delivered as a complete, handoff-ready brand system that became the foundation for the website and all marketing going forward.</p>
     </div>
+  </div>
+
+  <div class="block block--split problem-split reverse">
+    <div class="problem-copy">
+      <p class="meta-note" style="max-width:none; margin-top:0; margin-bottom:0;">WAVE is an active client engagement for a company I co-founded. Serving as Creative Director, I established the brand and product vision while leading design execution alongside a second designer. We are currently building an ePRO (electronic patient-reported outcomes) app as our next product phase, alongside the company's website and e-commerce experience.</p>
+    </div>
     <div class="problem-visual">
-      <img data-relay src="/assets/wave/hero-wave.png" alt="WAVE device packaging, navy box with pink wave graphic">
+      <div>
+        <img data-relay src="/assets/wave/hero-wave.png" alt="WAVE device packaging, navy box with pink wave graphic">
+      </div>
     </div>
   </div>
-<div class="block block--split problem-split">
+<div class="block block--split problem-split problem-split--small">
     <div class="problem-copy">
       <div class="section-eyebrow">The Problem</div>
       <h2>The brand did not match the product.</h2>
       <p>When I joined the project, WAVE had no cohesive visual identity. Packaging, marketing materials, and digital presence were all pulling in different directions, some leaning clinical and cold, others generic and unbranded.</p>
       <p class="gap-statement" style="margin-bottom:0;">For a product targeting women managing real, ongoing pain, that inconsistency had a cost: it eroded credibility at the exact moment the brand needed to earn trust.</p>
     </div>
-    <div class="problem-visual">
-      <img data-relay src="/assets/wave/wave-before-after.png" alt="Previous primary logo, wave by HUSH TECH" style="width:100%; height:auto; display:block">
+    <div class="split-visual">
+      <div class="ba-single has-img">
+        <img data-relay src="/assets/wave/wave-before-after.png" alt="Previous primary logo, wave by HUSH TECH">
+      </div>
     </div>
   </div>
 
@@ -993,24 +1070,27 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 </div><div class="tab-content-set" data-project="1">
 <div class="tab-panel" data-panel="overview">
 
-  <div class="block block--split problem-split">
-    <div class="problem-copy">
+  <div class="block cs-duo">
+    <div class="cs-duo__col">
       <div class="section-eyebrow">The Challenge</div>
       <h2>A new category of device, with nothing to sell yet.</h2>
       <p>WAVE is an investigational menstrual pain relief device from Hush Tech LLC, built to give women a drug-free option for their monthly pain. It cannot be sold yet, pending clinical trials in Nigeria and the United States.</p>
       <p>The company is a small founding team with very limited resources and no budget for an agency or developer build, yet it needed a credible web presence. The site had to build trust, explain a new category of device, and capture early interest without implying a purchase.</p>
       <p class="gap-statement" style="margin-bottom:0;">It also had to serve two audiences, consumers and clinicians, who cannot be shown the same claims for a regulated device.</p>
     </div>
-    <div class="problem-visual">
-      <div class="gallery-item wide">[IMG: storefront home page, desktop]</div>
+    <div class="cs-duo__col">
+      <div class="section-eyebrow">The Approach</div>
+      <h3>One codebase, two experiences.</h3>
+      <p class="audit-method" style="margin-bottom:0;">As part of the founding team, I took on the entire build myself, from design through launch. I designed and built a custom site with two experiences on one codebase, plus an admin backend.</p>
     </div>
+  </div>
+
+  <div class="block">
+    <div class="gallery-item wide">[IMG: storefront home page, desktop]</div>
   </div>
 
   <div class="block block--split audit-split reverse">
     <div class="audit-copy">
-      <div class="section-eyebrow">The Approach</div>
-      <h3>One codebase, two experiences.</h3>
-      <p class="audit-method">As part of the founding team, I took on the entire build myself, from design through launch. I designed and built a custom site with two experiences on one codebase, plus an admin backend.</p>
       <div class="audit-findings">
         <div class="audit-finding">
           <div class="audit-num">01</div>
@@ -1244,16 +1324,19 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 </div><div class="tab-content-set" data-project="2">
 <div class="tab-panel" data-panel="overview">
 
-  <div class="block block--split problem-split">
-    <div class="problem-copy">
+  <div class="block cs-duo">
+    <div class="cs-duo__col">
       <div class="section-eyebrow">Challenge</div>
-      <p>As WAVE moves toward FDA clearance, the ePRO app needs to make patient-reported outcomes effortless and trustworthy, since a $2M pivotal clinical trial's data integrity depends on honest, low-friction reporting from an estimated 250+ participants.</p>
-      <div class="section-eyebrow" style="margin-top:20px;">Approach</div>
+      <p style="margin-bottom:0;">As WAVE moves toward FDA clearance, the ePRO app needs to make patient-reported outcomes effortless and trustworthy, since a $2M pivotal clinical trial's data integrity depends on honest, low-friction reporting from an estimated 250+ participants.</p>
+    </div>
+    <div class="cs-duo__col">
+      <div class="section-eyebrow">Approach</div>
       <p style="margin-bottom:0;">UX and design system development for the app where trial participants report outcomes directly, currently in progress.</p>
     </div>
-    <div class="problem-visual">
-      <div class="gallery-item">[IMG: ePRO app screens]</div>
-    </div>
+  </div>
+
+  <div class="block">
+    <div class="gallery-item wide">[IMG: ePRO app screens]</div>
   </div>
   <div class="block">
     <div class="stats-band">
