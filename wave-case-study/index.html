@@ -50,13 +50,13 @@ nav{position:sticky; top:0; z-index:200; display:flex; justify-content:space-bet
 }
 
 .cs-header{padding:var(--space-3) var(--space-6) 0; max-width:1240px; margin:0 auto;}
-.header-top{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
+.header-top{display:grid; grid-template-columns:1fr 1fr; gap:var(--space-6); align-items:center;}
 .header-top .hero-image{margin:0; height:auto; min-height:0; aspect-ratio:3/4;}
 .tag{display:inline-flex; align-items:center; font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; padding:4.5px 10.5px; border-radius:100px; background:#F5A94A22; border:1.5px solid #C97A1F; color:#C97A1F;}
 .tag.t1{background:#F5A94A22; border:1.5px solid #C97A1F; color:#C97A1F;}
 .tag.t2{background:#4FC77A22; border:1.5px solid #2E8F52; color:#2E8F52;}
 h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw,52px); line-height:1.05; letter-spacing:-0.01em; max-width:760px;}
-.title-row{display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
+.title-row{display:flex; align-items:center; gap:var(--space-2); flex-wrap:wrap;}
 .title-row h1{margin:0;}
 .cs-sub{margin-top:var(--space-1); font-size:15px; color:var(--graphite); font-weight:600;}
 
@@ -102,7 +102,7 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .tab-nav-wrap{position:relative; z-index:150; width:100%; background:var(--paper); border-bottom:1px solid var(--line); padding:var(--space-2) 0; box-sizing:border-box;}
 .tab-nav-sentinel{height:1px;width:100%;pointer-events:none;visibility:hidden;}
 .tab-nav-spacer{height:0;flex-shrink:0;transition:height .25s ease;}
-.tab-nav{position:relative; z-index:151; display:flex; justify-content:flex-start; max-width:1240px; margin:0 auto; padding:0 48px; background:transparent; overflow-x:auto;}
+.tab-nav{position:relative; z-index:151; display:flex; justify-content:flex-start; max-width:1240px; margin:0 auto; padding:0 var(--space-6); background:transparent; overflow-x:auto;}
 .tab-track{display:inline-flex; gap:4px; padding:5px; background:rgba(242,102,90,0.1); border:1.5px solid #F2665A; border-radius:100px; flex-shrink:0; transition:background .25s ease, border .25s ease, border-radius .25s ease, padding .25s ease, box-shadow .25s ease;}
 .tab-btn{font-family:'Inter',sans-serif; font-weight:600; font-size:13.5px; color:#F2665A; background:transparent; border:none; padding:10px 18px; border-radius:100px; cursor:pointer; transition:background-color .2s ease, color .2s ease; white-space:nowrap;}
 .tab-btn.active{color:#fff; background:#F2665A; box-shadow:0 4px 10px -3px #F2665A66;}
@@ -110,18 +110,18 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .tab-btn:focus-visible{outline:2px solid var(--coral); outline-offset:2px;}
 @media (min-width:768px){
   .tab-nav-wrap.is-sticky{position:fixed; top:var(--nav-h); left:0; right:0; width:100%; z-index:150; padding:var(--space-2) 0; background:var(--paper); border-bottom:1px solid var(--line);}
-  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0 48px; background:transparent; overflow-x:visible; justify-content:flex-start;}
+  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0 var(--space-6); background:transparent; overflow-x:visible; justify-content:flex-start;}
   .tab-nav-wrap.is-sticky .tab-track{width:auto; max-width:50%; display:inline-flex; justify-content:flex-start; gap:8px; box-sizing:border-box; background:#FBD4D4; box-shadow:0 8px 20px -10px #33454A33; transition:width .3s ease, background .25s ease, border .25s ease, border-radius .25s ease, padding .25s ease, box-shadow .25s ease;}
 }
 @media (max-width:767px){
   .tab-btn{color:var(--coral);}
   .tab-btn:active:not(.active){background:rgba(242,102,90,0.22); color:var(--coral);}
   .tab-nav-wrap.is-sticky{position:fixed; top:var(--nav-h); left:0; right:0; width:100%; z-index:150; padding:var(--space-2) 0; background:var(--paper); border-bottom:1px solid var(--line);}
-  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0 24px; background:transparent; overflow:visible; justify-content:flex-start;}
+  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0 var(--space-3); background:transparent; overflow:visible; justify-content:flex-start;}
   .tab-nav-wrap.is-sticky .tab-track{width:auto; max-width:calc(100vw - 48px); display:inline-flex; justify-content:flex-start; background:#FBD4D4; border-radius:100px; box-shadow:0 8px 16px -10px #33454A33; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; padding-right:12px; scroll-padding-inline-end:12px;}
 }
 
-.tab-panel{display:none; max-width:1240px; margin:0 auto; padding:var(--space-5) var(--space-6) var(--space-7); animation:fadeIn .35s ease;}
+.tab-panel{display:none; max-width:1240px; margin:0 auto; padding:var(--space-5) var(--space-6) var(--space-6); animation:fadeIn .35s ease;}
 .tab-panel.active{display:block;}
 .tab-panel img{max-width:100%; height:auto;}
 .tab-panel .exhibit-slide:not(:first-child),
@@ -139,12 +139,27 @@ h2{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(24px,2.8vw
 h3{font-family:'Poppins',sans-serif; font-weight:600; font-size:19px; margin-bottom:12px; max-width:740px;}
 p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; max-width:740px;}
 .block{margin-bottom:var(--space-7);}
-.engagement-lead{
-  font-family:'Inter',sans-serif; font-size:18px; line-height:1.6; font-weight:400;
-  font-style:normal; color:var(--ink); margin:0; max-width:none;
+.cs-note{
+  background:var(--paper-alt);
+  border-left:4px solid var(--amber);
+  border-radius:0 12px 12px 0;
+  padding:var(--space-3, 24px);
+  height:fit-content;
+  align-self:start;
+}
+.cs-note .section-eyebrow{margin-bottom:var(--space-1, 8px);}
+.cs-note p{
+  font-family:'Inter',sans-serif;
+  font-size:15.5px;
+  line-height:1.7;
+  font-style:normal;
+  font-weight:400;
+  color:var(--ink-soft);
+  max-width:none;
+  margin:0;
 }
 .block--split > *{min-width:0;}
-.block:last-child{margin-bottom:0;}
+.tab-panel > :last-child{margin-bottom:0;}
 .block p + img{margin-top:20px;}
 .block > .stats-band,
 .block > .accordion,
@@ -163,7 +178,7 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 [class*="-col-block"] + .gallery-item.wide,
 [class*="-col-block"] + img{margin-top:20px;}
 @media (min-width:901px){
-  .block--split{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;}
+  .block--split{display:grid; grid-template-columns:1fr 1fr; gap:var(--space-6); align-items:start;}
   .block--split > *{min-width:0;}
   .block--split > :not(:last-child){grid-column:1;}
   .block--split > :last-child{grid-column:2; grid-row:1 / -1; align-self:start;}
@@ -256,7 +271,7 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
     margin-top:0; width:100%;
   }
 }
-.cs-header .header-top > div:first-child > .block + .block{padding-bottom:24px;}
+.cs-header .header-top > div:first-child > .block + .block{padding-bottom:var(--space-3);}
 .cs-duo{display:grid; grid-template-columns:1fr 1fr; gap:var(--space-6); align-items:start;}
 .block.cs-duo{margin-bottom:var(--space-5);}
 .cs-duo + .block{margin-top:0;}
@@ -554,7 +569,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   .block--split{display:flex; flex-direction:column;}
   .block--split .split-copy,
   .block--split .problem-copy,
-  .block--split .audit-copy{order:1;}
+  .block--split .audit-copy,
+  .block--split .cs-note{order:1; width:100%;}
   .block--split .split-visual,
   .block--split .problem-visual,
   .block--split .audit-visual{order:2; width:100%; max-width:100%;}
@@ -562,17 +578,18 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   .block--split .split-visual + .split-copy,
   .block--split .problem-copy + .problem-visual,
   .block--split .problem-copy + .split-visual,
+  .block--split .cs-note + .problem-visual,
   .block--split .audit-copy + .audit-visual{margin-top:20px;}
   .tab-nav-wrap{position:relative;}
   .tab-nav-wrap::after{
-    content:''; position:absolute; top:10px; right:0; width:48px; height:44px;
+    content:''; position:absolute; top:var(--space-2); right:0; width:48px; height:44px;
     pointer-events:none; background:linear-gradient(to right, transparent, var(--paper)); z-index:151;
   }
   .tab-nav-wrap.is-sticky::after{display:none;}
   .tab-nav{
-    padding:0 24px; margin:0; justify-content:flex-start;
+    padding:0 var(--space-3); margin:0; justify-content:flex-start;
     overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
-    scroll-padding-inline-end:16px;
+    scroll-padding-inline-end:var(--space-2);
   }
   .tab-panel{padding-top:var(--space-5); padding-bottom:var(--space-6);}
   .tab-panel > .block{margin-bottom:var(--space-6);}
@@ -580,6 +597,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   .block.cs-duo{margin-bottom:var(--space-5);}
   .next-project{margin-bottom:var(--space-6);}
   .tab-cta{margin-top:var(--space-6);}
+  .tab-panel > .panel-next + .tab-cta{margin-top:var(--space-6);}
   .tab-nav::-webkit-scrollbar{display:none;}
   .tab-track{gap:2px; padding:3px 12px 3px 3px; flex-shrink:0;}
   .tab-btn{padding:8px 10px; font-size:11.5px;}
@@ -591,7 +609,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   .ba-divider{width:80px; height:1px; margin:0 auto;}
   .stats-band{grid-template-columns:1fr;}
   .cs-header, .tab-panel{padding-left:var(--space-3); padding-right:var(--space-3);}
-  .next-project{flex-direction:column; align-items:flex-start; gap:var(--space-3); margin-left:var(--space-3); margin-right:var(--space-3);}
+  .next-project{flex-direction:column; align-items:flex-start; gap:var(--space-3); margin-left:0; margin-right:0;}
 }
 
 /* --- image swap-ins --- */
@@ -723,14 +741,28 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 .tab-content-set.active{display:block;}
 #tabSection{scroll-margin-top:var(--nav-h); min-height:60vh;}
 #tabSection .tab-nav-anchor{margin-top:0;}
-.tab-cta{margin-top:var(--space-7); text-align:left;}
+.tab-cta{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:var(--space-3, 24px);
+  max-width:none;
+  margin:var(--space-7, 72px) auto 0;
+  padding:0 var(--space-3, 24px);
+}
 .tab-panel > .block + .tab-cta,
 .tab-panel > .next-project + .tab-cta{margin-top:0;}
 .tab-panel > .panel-next + .tab-cta{margin-top:var(--space-7);}
+@media (max-width:900px){
+  .tab-panel > .panel-next + .tab-cta{margin-top:var(--space-6);}
+}
+.tab-cta p, .tab-cta h2, .tab-cta h3{max-width:560px; margin:0 auto; text-wrap:balance;}
 .tab-cta p{
   font-family:'Inter',sans-serif; font-size:18px; line-height:1.5; font-weight:500;
-  color:var(--ink); margin:0 0 16px; max-width:none;
+  color:var(--ink);
 }
+.tab-cta .cs-btn, .tab-cta a{align-self:center;}
 .tab-cta-btn{
   display:inline-flex; align-items:center; justify-content:center;
   background:var(--coral); color:#fff; font-family:'Inter',sans-serif;
@@ -754,6 +786,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   .cs-btn{width:100%; max-width:360px;}
 }
 @media (max-width:600px){
+  nav{padding:20px var(--space-3);}
+  footer{padding:0 var(--space-3) var(--space-5);}
   .cs-header, .tab-panel{padding-left:var(--space-3); padding-right:var(--space-3);}
   .tab-nav{padding:0 var(--space-3);}
   .tab-nav-wrap.is-sticky{padding:var(--space-2) 0;}
@@ -897,10 +931,10 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   <div class="cs-banner is-placeholder">[IMG: WAVE branding banner, 2000 x 750]</div>
 
   <div class="block block--split problem-split">
-    <div class="problem-copy">
+    <aside class="cs-note">
       <div class="section-eyebrow">About the engagement</div>
-      <p class="engagement-lead">WAVE is an active client engagement for a company I co-founded. Serving as Creative Director, I established the brand and product vision while leading design execution alongside a second designer. We are currently building an ePRO (electronic patient-reported outcomes) app as our next product phase, alongside the company's website and e-commerce experience.</p>
-    </div>
+      <p>WAVE is an active client engagement for a company I co-founded. Serving as Creative Director, I established the brand and product vision while leading design execution alongside a second designer. We are currently building an ePRO (electronic patient-reported outcomes) app as our next product phase, alongside the company's website and e-commerce experience.</p>
+    </aside>
     <div class="problem-visual">
       <div class="gallery-item">[IMG: WAVE device packaging]</div>
     </div>
@@ -1600,7 +1634,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     document.querySelectorAll('.tab-content-set .tab-panel').forEach(panel=>{
       const cta = document.createElement('div');
       cta.className = 'tab-cta';
-      cta.innerHTML = '<p>Want to talk about WAVE or a project like it?</p><a class="tab-cta-btn" href="/#contact">Get in touch</a>';
+      cta.innerHTML = '<p>Want to talk about WAVE or a project like it?</p><a class="tab-cta-btn" href="/contact-form/">Get in touch</a>';
       panel.appendChild(cta);
     });
   }
