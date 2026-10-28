@@ -1,0 +1,10 @@
+---
+description: Case study body layout rules for portfolio case study pages
+globs: "*-case-study/index.html"
+alwaysApply: false
+---
+- Body text in a case study never fills the full content width. Text sits in a column no wider than 50% on desktop, with an image or [IMG: ...] placeholder in the other column, alternating sides.
+- Columns stack on screens 900px wide and under, image below the text.
+- Full-width visuals, stats bands, and banners are the only full-width elements.
+- Reuse the existing .block--split patterns. Do not add new colors or fonts.
+- No em dashes in copy.
