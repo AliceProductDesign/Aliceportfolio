@@ -724,6 +724,20 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   transition:background-color .2s ease, color .2s ease;
 }
 .tab-cta-btn:hover{background:var(--ink); color:#fff;}
+.cs-try{margin-top:24px; display:flex; flex-direction:column; align-items:flex-start; gap:10px;}
+.cs-btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  background:var(--coral); color:#fff; font-family:'Inter',sans-serif;
+  font-weight:600; font-size:14.5px; line-height:1; padding:14px 26px;
+  border-radius:100px; text-decoration:none;
+  transition:background-color .2s ease, color .2s ease;
+}
+.cs-btn:hover{background:var(--ink); color:#fff;}
+.cs-btn:focus-visible{outline:2px solid var(--coral); outline-offset:2px;}
+.cs-try__note{font-family:'Inter',sans-serif; font-size:13px; color:var(--graphite); max-width:440px; margin:0;}
+@media (max-width:900px){
+  .cs-btn{width:100%; max-width:360px;}
+}
 @media (max-width:600px){
   .cs-header, .tab-panel{padding-left:24px; padding-right:24px;}
   .tab-nav{padding:0 24px;}
@@ -1162,8 +1176,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <div class="audit-finding">
           <div class="audit-num">02</div>
           <div>
-            <h4>Clinician site (dark, password-gated)</h4>
-            <p>Clinical evidence, safety, mechanism of action, a research library, and case studies.</p>
+            <h4>Clinician site (dark, gated at launch)</h4>
+            <p>Clinical evidence, safety, mechanism of action, a research library, and case studies. It is built to sit behind a password gate once the site moves to its final domain.</p>
           </div>
         </div>
         <div class="audit-finding">
@@ -1231,7 +1245,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
           <div class="audit-num">03</div>
           <div>
             <h4>One site, two experiences, split by regulatory risk</h4>
-            <p>A gated dark clinician site carries the clinical claims, and the consumer site stays at brand level only.</p>
+            <p>One site, two experiences, split by regulatory risk. A dark clinician site, gated at launch, carries the clinical claims, and the consumer site stays at brand level only.</p>
           </div>
         </div>
         <div class="audit-finding">
@@ -1338,9 +1352,17 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="section-eyebrow">The Outcome</div>
       <h2>Pre-launch, so no metrics yet.</h2>
       <p style="margin-bottom:0;">The site is built to launch the moment trials allow a sale. Until then, its job is to build trust and collect early interest.</p>
+      <div class="cs-try">
+        <!-- swap to final domain at launch -->
+        <a class="cs-btn" id="tryItLink" href="https://wave-ecommerce-theta.vercel.app/" target="_blank" rel="noopener noreferrer">
+          Try it yourself
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </a>
+        <p class="cs-try__note">Opens the live preview in a new tab. The site is pre-launch, so purchase buttons lead to a Notify Me sign-up.</p>
+      </div>
     </div>
     <div class="split-visual">
-      <div class="gallery-item">[PLACEHOLDER: confirm which pages are live on the Vercel preview]</div>
+      <div class="gallery-item">The consumer storefront, clinician site, cart, checkout, and legal pages are built and running on a Vercel preview. The clinician site is not gated yet, because it is on a preview URL. The gate switches on when the site moves to its final domain.</div>
     </div>
   </div>
   <div class="block block--split design-split reverse">
@@ -1368,10 +1390,11 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   <div class="block block--split design-split">
     <div class="split-copy">
       <ul class="key-list">
-        <li>Accessibility audit and fixes</li>
+        <li>Accessibility audit and fixes, plus the accessibility statement page</li>
+        <li>Finish the clinician Resources pages (Guides, Research, Reports)</li>
         <li>Connect Stripe, Resend, and EasyPost</li>
+        <li>Move the site to its final domain (WAVEbyHush.com still hosts the old site) and switch on the clinician password gate</li>
         <li>Launch the purchase flow once trials allow a sale</li>
-        <li>Connect the final domain (WAVEbyHush.com still hosts the old site)</li>
         <li>Build out the Bulk WAVE Portal for clinicians</li>
       </ul>
     </div>
