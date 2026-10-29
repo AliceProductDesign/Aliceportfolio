@@ -282,13 +282,19 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .cs-duo__col .section-eyebrow{margin-bottom:var(--space-1);}
 .cs-duo__col + .cs-duo__col{border-left:1px solid var(--line); padding-left:var(--space-3);}
 .cs-banner{
+  position:relative;
   width:100%;
   aspect-ratio:16/6;
   margin:0 0 var(--space-7);
   border-radius:16px;
   overflow:hidden;
 }
+.cs-banner .relay-image-wrap{
+  position:absolute; inset:0; width:100%; height:100%; min-height:0;
+  border-radius:inherit; background:var(--paper-alt);
+}
 .cs-banner img{width:100%; height:100%; object-fit:cover; object-position:center; display:block;}
+.cs-banner .relay-image-wrap img{position:absolute; inset:0;}
 .cs-banner.is-placeholder{
   display:grid; place-items:center; text-align:center;
   background:var(--paper-alt); border:2px dashed var(--line);
@@ -928,7 +934,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     </div>
   </div>
 
-  <div class="cs-banner is-placeholder">[IMG: WAVE branding banner, 2000 x 750]</div>
+  <div class="cs-banner">
+    <img data-relay src="/assets/wave/hero-wave.png" alt="WAVE branding banner">
+  </div>
 
   <div class="block block--split problem-split">
     <aside class="cs-note">
@@ -1574,9 +1582,11 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     }
   };
   const metaKeys = ['role', 'scope', 'timeline', 'year', 'team'];
-  const metaFadeMs = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 150;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const metaFadeMs = reducedMotion ? 0 : 150;
   let metaFadeTimer = null;
   let activeProject = '0';
+  let continuesWired = false;
 
   function applyMeta(project){
     const data = metaByProject[project];
@@ -1605,24 +1615,37 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     return document.querySelector('.tab-content-set.active');
   }
 
+  function navHeight(){
+    const nav = document.querySelector('nav');
+    return (nav && nav.offsetHeight) || parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 65;
+  }
+
+  function tabBarHeight(){
+    const wrap = document.getElementById('tabNavWrap');
+    return (wrap && wrap.offsetHeight) || parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--tabbar-h')) || 82;
+  }
+
   function wireContinueButtons(){
-    document.querySelectorAll('.panel-next').forEach(n=>n.remove());
-    const set = activeSet();
-    if(!set) return;
+    if(continuesWired) return;
     const tabs = ['overview','design','outcome','progress'];
-    tabs.forEach((tab, index)=>{
-      const panel = set.querySelector('.tab-panel[data-panel="'+tab+'"]');
-      if(!panel) return;
-      if(index < tabs.length - 1){
-        const nextTab = tabs[index + 1];
-        const continueBtn = document.createElement('button');
-        continueBtn.type = 'button';
-        continueBtn.className = 'panel-next';
-        continueBtn.innerHTML = `Continue
-          <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-        continueBtn.addEventListener('click', ()=> setTab(nextTab));
-        panel.appendChild(continueBtn);
-      }
+    sets.forEach(set=>{
+      tabs.forEach((tab, index)=>{
+        const panel = set.querySelector('.tab-panel[data-panel="'+tab+'"]');
+        if(!panel) return;
+        if(index < tabs.length - 1 && !panel.querySelector(':scope > .panel-next')){
+          const nextTab = tabs[index + 1];
+          const continueBtn = document.createElement('button');
+          continueBtn.type = 'button';
+          continueBtn.className = 'panel-next';
+          continueBtn.innerHTML = `Continue
+            <svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+          continueBtn.addEventListener('click', e=>{
+            e.stopPropagation();
+            goToTab(nextTab);
+          });
+          panel.appendChild(continueBtn);
+        }
+      });
     });
     const nextProjectEl = document.querySelector('.next-project');
     const brandingOutcome = document.querySelector('.tab-content-set[data-project="0"] .tab-panel[data-panel="outcome"]');
@@ -1630,13 +1653,14 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       nextProjectEl.remove();
       brandingOutcome.appendChild(nextProjectEl);
     }
-    document.querySelectorAll('.tab-cta').forEach(n=>n.remove());
     document.querySelectorAll('.tab-content-set .tab-panel').forEach(panel=>{
+      if(panel.querySelector(':scope > .tab-cta')) return;
       const cta = document.createElement('div');
       cta.className = 'tab-cta';
       cta.innerHTML = '<p>Want to talk about WAVE or a project like it?</p><a class="tab-cta-btn" href="/contact-form/">Get in touch</a>';
       panel.appendChild(cta);
     });
+    continuesWired = true;
   }
 
   function setTab(tab){
@@ -1650,13 +1674,25 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       const panel = set.querySelector('.tab-panel.active');
       if(panel) Relay.activatePanel(panel);
     }
-    wireContinueButtons();
+  }
+
+  function goToTab(tab){
+    setTab(tab);
+    const set = activeSet();
+    const panel = set && set.querySelector('.tab-panel.active');
+    if(!panel) return;
+    const top = panel.getBoundingClientRect().top + window.scrollY - (navHeight() + tabBarHeight() + 16);
+    window.scrollTo({top: Math.max(0, top), behavior: reducedMotion ? 'auto' : 'smooth'});
+    const heading = panel.querySelector('h2, h3, h4');
+    if(heading){
+      heading.setAttribute('tabindex', '-1');
+      heading.focus({preventScroll: true});
+    }
   }
 
   function scrollToTabs(){
     if(!tabSection) return;
-    const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
-    tabSection.scrollIntoView({behavior:behavior, block:'start'});
+    tabSection.scrollIntoView({behavior: reducedMotion ? 'auto' : 'smooth', block:'start'});
   }
 
   function selectProject(project, opts){
@@ -1683,23 +1719,19 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   });
 
   document.addEventListener('click', e=>{
+    if(!e.target.isConnected) return;
     if(e.target.closest('#cardsRow') || e.target.closest('#tabSection')) return;
-    if(activeProject !== '0') selectProject('0', {scroll: false});
+    if(activeProject !== '0') selectProject('0', {scroll:false});
   });
 
   tabBtns.forEach(btn=>{
     btn.addEventListener('click', e=>{
       e.stopPropagation();
-      setTab(btn.dataset.tab);
-      const set = activeSet();
-      const panel = set && set.querySelector('.tab-panel.active');
-      if(panel){
-        const panelTop = panel.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({top: panelTop - 151, behavior:'smooth'});
-      }
+      goToTab(btn.dataset.tab);
     });
   });
 
+  wireContinueButtons();
   selectProject('0', {scroll: false});
 })();
 (function(){
