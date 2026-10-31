@@ -717,6 +717,11 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   box-shadow:0 12px 28px -16px #33454A55;
 }
 .hub-card:focus-visible{outline:2px solid var(--coral); outline-offset:3px;}
+.hub-card:disabled,
+.hub-card[aria-disabled="true"]{
+  cursor:default; opacity:1; filter:none; color:inherit; pointer-events:none;
+  box-shadow:0 12px 28px -18px #33454A44;
+}
 .hub-card-thumb{
   aspect-ratio:16/9; display:flex; align-items:center; justify-content:center;
   border-bottom:1px solid var(--line); padding:0; position:relative;
@@ -920,7 +925,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <p class="hub-card-desc">A custom storefront and clinician site, built solo, ready to launch once trials allow a sale.</p>
       </div>
     </button>
-    <button type="button" class="hub-card" data-project="2" aria-pressed="false">
+    <button type="button" class="hub-card" data-project="2" disabled aria-disabled="true">
       <div class="hub-card-thumb hub-card-thumb--epro"><span class="hub-badge">Upcoming</span><span class="placeholder-note">[IMG: ePRO app screens]</span></div>
       <div class="hub-card-body">
         <div class="hub-card-head"><h3>ePRO App</h3><span class="hub-card-selected">Selected</span></div>
@@ -1725,11 +1730,21 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     tabSection.scrollIntoView({behavior: reducedMotion ? 'auto' : 'smooth', block:'start'});
   }
 
+  function cardLocked(card){
+    return !!(card && (card.disabled || card.getAttribute('aria-disabled') === 'true'));
+  }
+
   function selectProject(project, opts){
+    const target = cards.find(c => c.dataset.project === project);
+    if(cardLocked(target)) return;
     const shouldScroll = opts && opts.scroll;
     const same = activeProject === project;
     activeProject = project;
     cards.forEach(c=>{
+      if(cardLocked(c)){
+        c.removeAttribute('aria-pressed');
+        return;
+      }
       const on = c.dataset.project === project;
       c.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
@@ -1742,6 +1757,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   }
 
   cards.forEach(card=>{
+    if(cardLocked(card)) return;
     card.addEventListener('click', e=>{
       e.stopPropagation();
       selectProject(card.dataset.project, {scroll: true});
