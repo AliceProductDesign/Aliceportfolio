@@ -88,18 +88,22 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
   .meta-item b{white-space:normal; overflow:visible; text-overflow:unset; font-size:14px;}
 }
 .meta-note{font-size:13px; color:var(--graphite); margin-top:14px; font-style:italic;}
-.team-credits .team-credit-grid{
-  display:grid; grid-template-columns:1fr 1fr; gap:var(--space-3);
-  margin-top:var(--space-2);
-}
-.team-credits .reflect-card{min-width:0;}
-.team-credits .reflect-card p{margin-bottom:0; max-width:none;}
-.team-credits .team-credit--me{grid-column:1 / -1;}
+.team-credits .section-eyebrow{margin-bottom:0;}
+.team-lead{background:var(--paper-alt); border-left:4px solid var(--coral); border-radius:0 12px 12px 0; padding:var(--space-3); margin:var(--space-2) 0 var(--space-3);}
+.team-lead__name{font:600 19px 'Poppins',sans-serif; color:var(--teal); margin:0 0 var(--space-2);}
+.team-tags{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:var(--space-1);}
+.team-tags li{font:600 12.5px 'Inter',sans-serif; color:var(--ink); background:var(--surface, #fff); border:1px solid var(--line); border-radius:100px; padding:6px 14px; white-space:nowrap;}
+.team-grid{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--space-2);}
+.team-member{display:flex; flex-direction:column; gap:4px; padding-top:var(--space-2); border-top:1px solid var(--line);}
+.team-name{order:1; font:600 16px 'Poppins',sans-serif; color:var(--teal);}
+.team-role{order:2; font:400 14px/1.4 'Inter',sans-serif; color:var(--ink-soft);}
 @media (min-width:901px){
-  .block--split .team-credits .team-credit-grid{grid-template-columns:1fr 1fr; margin-top:var(--space-2);}
+  .block--split.design-split:has(.team-credits){align-items:center;}
+  .block--split.design-split:has(.team-credits) > *{align-self:center;}
 }
 @media (max-width:600px){
-  .team-credits .team-credit-grid{grid-template-columns:1fr;}
+  .team-grid{grid-template-columns:1fr; gap:0;}
+  .team-member{flex-direction:row; justify-content:space-between; align-items:baseline; padding:12px 0;}
 }
 
 /* ---- TABS ---- */
@@ -902,7 +906,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   <div class="hub-cards" id="cardsRow">
     <button type="button" class="hub-card" data-project="0" aria-pressed="true">
       <div class="hub-card-thumb hub-card-thumb--brand">
-        <img data-relay src="/assets/wave/hub-card-branding-wave.jpg" alt="WAVE branding, business cards and device">
+        <img data-relay src="/assets/wave/wave-brand-card-img.jpg" alt="WAVE branding, device, box, and business cards">
       </div>
       <div class="hub-card-body">
         <div class="hub-card-head"><h3>Product Branding</h3><span class="hub-card-selected">Selected</span></div>
@@ -1169,27 +1173,26 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   <div class="block block--split design-split reverse">
     <div class="split-copy team-credits">
       <div class="section-eyebrow">Team &amp; My Contribution</div>
-      <div class="team-credit-grid">
-        <div class="reflect-card">
-          <h4>Kayla<!-- last name, LinkedIn --></h4>
-          <p>Designer</p>
+      <div class="team-lead">
+        <div class="team-lead__head">
+          <h3 class="team-lead__name">Me, Creative Director</h3>
         </div>
-        <div class="reflect-card">
-          <h4>David<!-- last name, LinkedIn --></h4>
-          <p>Product Engineer</p>
-        </div>
-        <div class="reflect-card">
-          <h4>Azeem<!-- last name, LinkedIn --></h4>
-          <p>Developer</p>
-        </div>
-        <div class="reflect-card team-credit--me">
-          <h4>Me, Creative Director<!-- last name, LinkedIn --></h4>
-          <p>brand and product vision, design direction, brand system, packaging, ePRO UX</p>
-        </div>
+        <ul class="team-tags">
+          <li>Brand and product vision</li>
+          <li>Design direction</li>
+          <li>Brand system</li>
+          <li>Packaging</li>
+          <li>ePRO UX</li>
+        </ul>
       </div>
+      <ul class="team-grid">
+        <li class="team-member"><span class="team-role">Designer</span><b class="team-name">Kayla</b></li>
+        <li class="team-member"><span class="team-role">Product Engineer</span><b class="team-name">David</b></li>
+        <li class="team-member"><span class="team-role">Developer</span><b class="team-name">Azeem</b></li>
+      </ul>
     </div>
     <div class="split-visual">
-      <div class="gallery-item has-img"><img data-relay src="/assets/wave/alice-wave-video-making.jpeg" alt="Alice Curiel filming WAVE video with a teammate"></div>
+      <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-unified.png" alt="WAVE packaged product, open navy box with device and inserts"></div>
     </div>
   </div>
 
