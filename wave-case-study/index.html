@@ -108,6 +108,7 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .tab-btn.active{color:#fff; background:#F2665A; box-shadow:0 4px 10px -3px #F2665A66;}
 .tab-btn:hover:not(.active){background:rgba(242,102,90,0.22); color:#F2665A;}
 .tab-btn:focus-visible{outline:2px solid var(--coral); outline-offset:2px;}
+.tab-btn[hidden]{display:none;}
 @media (min-width:768px){
   .tab-nav-wrap.is-sticky{position:fixed; top:var(--nav-h); left:0; right:0; width:100%; z-index:150; padding:var(--space-2) 0; background:var(--paper); border-bottom:1px solid var(--line);}
   .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0 var(--space-6); background:transparent; overflow-x:visible; justify-content:flex-start;}
@@ -139,25 +140,6 @@ h2{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(24px,2.8vw
 h3{font-family:'Poppins',sans-serif; font-weight:600; font-size:19px; margin-bottom:12px; max-width:740px;}
 p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; max-width:740px;}
 .block{margin-bottom:var(--space-7);}
-.cs-note{
-  background:var(--paper-alt);
-  border-left:4px solid var(--amber);
-  border-radius:0 12px 12px 0;
-  padding:var(--space-3, 24px);
-  height:fit-content;
-  align-self:start;
-}
-.cs-note .section-eyebrow{margin-bottom:var(--space-1, 8px);}
-.cs-note p{
-  font-family:'Inter',sans-serif;
-  font-size:15.5px;
-  line-height:1.7;
-  font-style:normal;
-  font-weight:400;
-  color:var(--ink-soft);
-  max-width:none;
-  margin:0;
-}
 .block--split > *{min-width:0;}
 .tab-panel > :last-child{margin-bottom:0;}
 .block p + img{margin-top:20px;}
@@ -575,8 +557,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   .block--split{display:flex; flex-direction:column;}
   .block--split .split-copy,
   .block--split .problem-copy,
-  .block--split .audit-copy,
-  .block--split .cs-note{order:1; width:100%;}
+  .block--split .audit-copy{order:1; width:100%;}
   .block--split .split-visual,
   .block--split .problem-visual,
   .block--split .audit-visual{order:2; width:100%; max-width:100%;}
@@ -584,7 +565,6 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   .block--split .split-visual + .split-copy,
   .block--split .problem-copy + .problem-visual,
   .block--split .problem-copy + .split-visual,
-  .block--split .cs-note + .problem-visual,
   .block--split .audit-copy + .audit-visual{margin-top:20px;}
   .tab-nav-wrap{position:relative;}
   .tab-nav-wrap::after{
@@ -717,6 +697,14 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   #metaRow{transition:none;}
 }
 .hub-card-thumb .placeholder-note{padding:0 8px;}
+.hub-card-thumb img{
+  width:100%; height:100%; object-fit:cover; object-position:center; display:block;
+}
+.hub-card-thumb .relay-image-wrap{
+  position:absolute; inset:0; width:100%; height:100%; min-height:0;
+  border-radius:0; background:transparent;
+}
+.hub-card-thumb .relay-image-wrap img{position:absolute; inset:0;}
 .hub-card-thumb--brand{background:linear-gradient(160deg,#241E4E,#5B4B9A);}
 .hub-card-thumb--brand .placeholder-note{color:#C7C0E8;}
 .hub-card-thumb--commerce{background:linear-gradient(135deg,#F0A8C4,#7FA8D9);}
@@ -871,7 +859,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
   <div class="hub-cards" id="cardsRow">
     <button type="button" class="hub-card" data-project="0" aria-pressed="true">
-      <div class="hub-card-thumb hub-card-thumb--brand"><span class="placeholder-note">[IMG: logo before / after]</span></div>
+      <div class="hub-card-thumb hub-card-thumb--brand">
+        <img data-relay src="/assets/wave/hub-card-branding-wave.jpg" alt="WAVE branding, business cards and device">
+      </div>
       <div class="hub-card-body">
         <div class="hub-card-head"><h3>Product Branding</h3><span class="hub-card-selected">Selected</span></div>
         <p class="hub-card-desc">Evolving a clinical medical device into a warm, human-centered wellness brand.</p>
@@ -938,15 +928,6 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <img data-relay src="/assets/wave/hero-wave.png" alt="WAVE branding banner">
   </div>
 
-  <div class="block block--split problem-split">
-    <aside class="cs-note">
-      <div class="section-eyebrow">About the engagement</div>
-      <p>WAVE is an active client engagement for a company I co-founded. Serving as Creative Director, I established the brand and product vision while leading design execution alongside a second designer. We are currently building an ePRO (electronic patient-reported outcomes) app as our next product phase, alongside the company's website and e-commerce experience.</p>
-    </aside>
-    <div class="problem-visual">
-      <div class="gallery-item">[IMG: WAVE device packaging]</div>
-    </div>
-  </div>
 <div class="block block--split problem-split problem-split--small">
     <div class="problem-copy">
       <div class="section-eyebrow">The Problem</div>
@@ -1189,16 +1170,6 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div><div class="label">Next case file</div><h3>More coming soon</h3></div>
     <div class="next-arrow"><svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
   </a>
-</div>
-<div class="tab-panel" data-panel="progress">
-<div class="block block--split design-split">
-  <div class="split-copy">
-    <p style="margin-bottom:0;">WAVE is an active client engagement. As Creative Director, I continue to shape the brand across new products and touchpoints.</p>
-  </div>
-  <div class="split-visual">
-    <div class="gallery-item">[IMG: brand across new products and touchpoints]</div>
-  </div>
-</div>
 </div>
 </div><div class="tab-content-set" data-project="1">
 <div class="tab-panel" data-panel="overview">
@@ -1625,26 +1596,36 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     return (wrap && wrap.offsetHeight) || parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--tabbar-h')) || 82;
   }
 
+  function tabsInSet(set){
+    return Array.from(set.querySelectorAll('.tab-panel')).map(p=>p.dataset.panel);
+  }
+
+  function updateTabBar(){
+    const set = activeSet();
+    tabBtns.forEach(btn=>{
+      const has = !!(set && set.querySelector('.tab-panel[data-panel="'+btn.dataset.tab+'"]'));
+      btn.hidden = !has;
+    });
+  }
+
   function wireContinueButtons(){
     if(continuesWired) return;
-    const tabs = ['overview','design','outcome','progress'];
     sets.forEach(set=>{
+      const tabs = tabsInSet(set);
       tabs.forEach((tab, index)=>{
         const panel = set.querySelector('.tab-panel[data-panel="'+tab+'"]');
-        if(!panel) return;
-        if(index < tabs.length - 1 && !panel.querySelector(':scope > .panel-next')){
-          const nextTab = tabs[index + 1];
-          const continueBtn = document.createElement('button');
-          continueBtn.type = 'button';
-          continueBtn.className = 'panel-next';
-          continueBtn.innerHTML = `Continue
+        const nextTab = tabs[index + 1];
+        if(!panel || !nextTab || panel.querySelector(':scope > .panel-next')) return;
+        const continueBtn = document.createElement('button');
+        continueBtn.type = 'button';
+        continueBtn.className = 'panel-next';
+        continueBtn.innerHTML = `Continue
             <svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-          continueBtn.addEventListener('click', e=>{
-            e.stopPropagation();
-            goToTab(nextTab);
-          });
-          panel.appendChild(continueBtn);
-        }
+        continueBtn.addEventListener('click', e=>{
+          e.stopPropagation();
+          goToTab(nextTab);
+        });
+        panel.appendChild(continueBtn);
       });
     });
     const nextProjectEl = document.querySelector('.next-project');
@@ -1666,10 +1647,12 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   function setTab(tab){
     const set = activeSet();
     if(!set) return;
+    if(!set.querySelector('.tab-panel[data-panel="'+tab+'"]')) tab = 'overview';
     tabBtns.forEach(b=> b.classList.toggle('active', b.dataset.tab === tab));
     set.querySelectorAll('.tab-panel').forEach(p=>{
       p.classList.toggle('active', p.dataset.panel === tab);
     });
+    updateTabBar();
     if(window.Relay && typeof Relay.activatePanel === 'function'){
       const panel = set.querySelector('.tab-panel.active');
       if(panel) Relay.activatePanel(panel);
