@@ -925,15 +925,32 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   min-height:0;
   margin:0;
 }
+.tab-content-set[data-project="1"] .gallery-item:has(img){
+  border:none;
+  padding:0;
+  background:transparent;
+  min-height:0;
+}
 .tab-content-set[data-project="1"] .block--split .split-visual img,
 .tab-content-set[data-project="1"] .block--split .audit-visual img,
 .tab-content-set[data-project="1"] .block--split .problem-visual img{
   width:100%;
-  height:100%;
+  height:auto;
   max-height:none;
-  object-fit:cover;
-  object-position:center;
   display:block;
+  border-radius:16px;
+}
+.tab-content-set[data-project="1"] .block--split .split-visual:has(.gallery .gallery-item:nth-child(2)){
+  aspect-ratio:auto;
+  overflow:visible;
+  height:auto;
+}
+.tab-content-set[data-project="1"] .block--split .split-visual .gallery{
+  height:auto;
+  gap:18px;
+}
+.tab-content-set[data-project="1"] .block--split .split-visual .gallery .gallery-item{
+  height:auto;
 }
 @media (max-width:900px){ .problem-visual img{width:100%; height:auto; max-height:480px; object-fit:cover; object-position:center top; border-radius:16px;} }
 
@@ -1393,7 +1410,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <p style="margin-bottom:0;">This build is separate from my WAVE brand work (see Branding) and from the original WAVE site, which a previous designer built with an outside development team.</p>
     </div>
     <div class="split-visual">
-      <div class="gallery-item">[IMG: sole designer and builder]</div>
+      <div class="gallery-item"><img src="/assets/wave/wave-ecommerce-role.png" alt="Workflow from Figma designs through the Figma MCP and Cursor to the working site, showing which parts were my decisions and which were Cursor's hands-on coding" width="2400" height="1800" loading="lazy" decoding="async"></div>
     </div>
   </div>
 
@@ -1406,7 +1423,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <p style="margin-bottom:0;">The gap is direct user research. Before launch, I plan to test the consumer messaging with women who manage menstrual pain.</p>
     </div>
     <div class="split-visual">
-      <div class="gallery-item">[IMG: Research]</div>
+      <div class="gallery-item"><img src="/assets/wave/wave-ecommerce-research-question.png" alt="Research question: how does a consumer buying a medical device online build enough trust to complete checkout?" width="2400" height="1800" loading="lazy" decoding="async"></div>
     </div>
   </div>
 
@@ -1497,7 +1514,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       </ul>
     </div>
     <div class="split-visual">
-      <div class="gallery-item">[IMG: ERD from FigJam]</div>
+      <div class="gallery-item"><img src="/assets/wave/wave-ecommerce-erd.png" alt="Entity relationship diagram with five tables: Buyer, Order, Product, Shipment and Restock Notification" width="2400" height="1800" loading="lazy" decoding="async"></div>
     </div>
   </div>
 
@@ -1509,10 +1526,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <p style="margin-bottom:0;">Built in Figma with light and dark variables, 13 text styles, and components including button variants, email field, badges, cards, the regulatory banner, and the cart button. The palette is navy, pink, and logo blue on Montserrat, with raspberry (#C23A7B) as the primary CTA on both themes.</p>
     </div>
     <div class="split-visual">
-      <div class="gallery">
-        <div class="gallery-item">[IMG: design system]</div>
-        <div class="gallery-item">[IMG: WaveLoader animation frames]</div>
-      </div>
+      <div class="gallery-item"><img src="/assets/wave/wave-ecommerce-design-system.png" alt="WAVE design system in light and dark themes: colors, Montserrat type, buttons, badge, link, card and regulatory banner" width="2400" height="1800" loading="lazy" decoding="async"></div>
     </div>
   </div>
 
@@ -1523,7 +1537,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <p style="margin-bottom:0;">The site runs on Next.js (App Router), TypeScript, Tailwind, Supabase, and Vercel. Stripe is the next integration, followed by Resend and EasyPost. None of the three is integrated yet.</p>
     </div>
     <div class="split-visual">
-      <div class="gallery-item">[PLACEHOLDER: code screenshot or repo structure]</div>
+      <div class="gallery-item"><img src="/assets/wave/wave-ecommerce-repo-structure.png" alt="Project structure of the WAVE site: storefront, clinician site, components, content, lib, Supabase migrations, docs and workflows" width="2400" height="1800" loading="lazy" decoding="async"></div>
     </div>
   </div>
 
@@ -1545,7 +1559,10 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       </div>
     </div>
     <div class="split-visual">
-      <div class="gallery-item">[IMG: accessibility and collaboration]</div>
+      <div class="gallery">
+        <div class="gallery-item"><img src="/assets/wave/wave-ecommerce-accessibility.png" alt="Four primary button color options with contrast ratios: navy on pink 7.07 to 1, white on pink 2.02 to 1, white on bright pink 3.20 to 1, and white on raspberry 5.02 to 1, which was chosen" width="2400" height="1800" loading="lazy" decoding="async"></div>
+        <div class="gallery-item"><img src="/assets/wave/wave-loading.gif" alt="WAVE loader animation, wave mark and the word Loading" width="720" height="240" loading="lazy" decoding="async"></div>
+      </div>
     </div>
   </div>
 
@@ -1600,7 +1617,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       </ul>
     </div>
     <div class="split-visual">
-      <div class="gallery-item">[IMG: pre-launch next steps]</div>
+      <div class="gallery-item"><img src="/assets/wave/wave-ecommerce-prelaunch-next-steps.png" alt="Seven pre-launch steps: accessibility audit, Stripe next, Resend and EasyPost, clinician password gate, final domain, launch the purchase flow, Bulk WAVE Portal" width="2400" height="1800" loading="lazy" decoding="async"></div>
     </div>
   </div>
 
