@@ -1362,7 +1362,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <div class="audit-finding">
           <div class="audit-num">02</div>
           <div>
-            <h4>Clinician site (dark, gated at launch)</h4>
+            <h4>Clinician site (dark theme, password gate planned for launch)</h4>
             <p>Clinical evidence, safety, mechanism of action, a research library, and case studies, plus paths to partner with or invest in WAVE. It sits behind its own password gate once the site moves to its final domain.</p>
           </div>
         </div>
@@ -1484,7 +1484,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="split-copy">
       <div class="section-eyebrow">Systems Thinking</div>
       <h2>The data model was part of the UX.</h2>
-      <p>I designed the data model alongside the screens, so what the business needs to know shaped what the interface could do.</p>
+      <p>I designed the data model alongside the screens, so what the business needs to know shaped what the interface could do. The model below is the design for the full commerce flow. The tables built so far cover email sign-ups, clinician inquiries, support tickets, and shop settings. The rest comes with the purchase flow.</p>
+      <div class="section-eyebrow">Designed data model</div>
       <ul class="key-list">
         <li>Product, with sale and discount fields</li>
         <li>Order, with the price saved at the moment of purchase</li>
@@ -1519,7 +1520,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="split-copy">
       <div class="section-eyebrow">Build &amp; Tooling</div>
       <h2>Designed by me, coded with Cursor.</h2>
-      <p style="margin-bottom:0;">The site runs on Next.js (App Router), TypeScript, Tailwind, Supabase, and Vercel. Stripe, Resend, and EasyPost are selected and planned, but not integrated yet.</p>
+      <p style="margin-bottom:0;">The site runs on Next.js (App Router), TypeScript, Tailwind, Supabase, and Vercel. Stripe is the next integration, followed by Resend and EasyPost. None of the three is integrated yet.</p>
     </div>
     <div class="split-visual">
       <div class="gallery-item">[PLACEHOLDER: code screenshot or repo structure]</div>
@@ -1589,11 +1590,12 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   <div class="block block--split design-split">
     <div class="split-copy">
       <ul class="key-list">
-        <li>Accessibility audit and fixes, plus the accessibility statement page</li>
-        <li>Finish the clinician Resources pages (Guides, Research, Reports)</li>
-        <li>Connect Stripe, Resend, and EasyPost</li>
-        <li>Move the site to its final domain (WAVEbyHush.com still hosts the old site) and switch on the clinician password gate</li>
-        <li>Launch the purchase flow once FDA clearance allows a sale</li>
+        <li>Accessibility audit and fixes</li>
+        <li>Connect Stripe for payments (next)</li>
+        <li>Connect Resend and EasyPost</li>
+        <li>Switch on the clinician password gate</li>
+        <li>Connect the final domain (WAVEbyHush.com still hosts the old site)</li>
+        <li>Launch the purchase flow once trials allow a sale</li>
         <li>Build out the Bulk WAVE Portal for clinicians</li>
       </ul>
     </div>
