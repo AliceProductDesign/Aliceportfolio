@@ -12,7 +12,7 @@
 <title>Alice Curiel, Product Designer</title>
 <meta name="description" content="Alice Curiel, Product Designer focused on health tech, trust-driven experiences, and human-centered digital products.">
 <meta property="og:title" content="Alice Curiel, Product Designer">
-<meta property="og:description" content="Product & Visual Design for health tech and civic tech. Design that earns trust, not just clicks.">
+<meta property="og:description" content="Product & Visual Design for health tech. Design that earns trust, not just clicks.">
 <meta property="og:image" content="https://aliceportfolio.com/assets/socials-banner.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -20,7 +20,7 @@
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Alice Curiel, Product Designer">
-<meta name="twitter:description" content="Product & Visual Design for health tech and civic tech. Design that earns trust, not just clicks.">
+<meta name="twitter:description" content="Product & Visual Design for health tech. Design that earns trust, not just clicks.">
 <meta name="twitter:image" content="https://aliceportfolio.com/assets/socials-banner.png">
 <style>
 :root{
@@ -298,12 +298,12 @@ h1 .highlight{color:var(--amber);}
 .fan-card:hover .goto{color:var(--pink);}
 .fan-card:hover .goto svg{transform:translateX(3px); stroke:var(--pink);}
 
-.c1{--tx:-337px; --ty:12px; --tr:-16deg; z-index:1;}
-.c2{--tx:-194px; --ty:-6px; --tr:-9deg; z-index:2;}
-.c3{--tx:-52px; --ty:-16px; --tr:-3deg; z-index:3;}
-.c4{--tx:91px; --ty:-6px; --tr:4deg; z-index:2;}
-.c5{--tx:233px; --ty:12px; --tr:11deg; z-index:1;}
-.c6{--tx:376px; --ty:30px; --tr:18deg; z-index:0;}
+/* 5 work cards: stacked fan, centered and even */
+.c1{--tx:-280px; --ty:14px; --tr:-14deg; z-index:1;}
+.c2{--tx:-140px; --ty:-4px; --tr:-7deg; z-index:2;}
+.c3{--tx:0px; --ty:-16px; --tr:0deg; z-index:3;}
+.c4{--tx:140px; --ty:-4px; --tr:7deg; z-index:2;}
+.c5{--tx:280px; --ty:14px; --tr:14deg; z-index:1;}
 
 @media (max-width:760px){
   .fan-stage{
@@ -343,12 +343,12 @@ h1 .highlight{color:var(--amber);}
   .fan-stage.aligned.fan-stage--dragging,
   .fan-stage.aligned.fan-stage--dragging .fan-card{cursor:grabbing; user-select:none;}
   .fan-stage.aligned:focus-visible{outline:2px solid var(--coral); outline-offset:4px; border-radius:12px;}
-  .fan-stage.aligned .c1{--tx:calc(-797px + var(--fan-align-shift, 0px)); --ty:0px; --tr:0deg;}
-  .fan-stage.aligned .c2{--tx:calc(-478px + var(--fan-align-shift, 0px)); --ty:0px; --tr:0deg;}
-  .fan-stage.aligned .c3{--tx:calc(-159px + var(--fan-align-shift, 0px)); --ty:0px; --tr:0deg;}
-  .fan-stage.aligned .c4{--tx:calc(159px + var(--fan-align-shift, 0px)); --ty:0px; --tr:0deg;}
-  .fan-stage.aligned .c5{--tx:calc(478px + var(--fan-align-shift, 0px)); --ty:0px; --tr:0deg;}
-  .fan-stage.aligned .c6{--tx:calc(797px + var(--fan-align-shift, 0px)); --ty:0px; --tr:0deg;}
+  /* 5 cards, 288px pitch, centered. Outermost offset 576px. */
+  .fan-stage.aligned .c1{--tx:calc(-576px + var(--fan-align-shift, 0px)); --ty:0px; --tr:0deg;}
+  .fan-stage.aligned .c2{--tx:calc(-288px + var(--fan-align-shift, 0px)); --ty:0px; --tr:0deg;}
+  .fan-stage.aligned .c3{--tx:calc(0px + var(--fan-align-shift, 0px)); --ty:0px; --tr:0deg;}
+  .fan-stage.aligned .c4{--tx:calc(288px + var(--fan-align-shift, 0px)); --ty:0px; --tr:0deg;}
+  .fan-stage.aligned .c5{--tx:calc(576px + var(--fan-align-shift, 0px)); --ty:0px; --tr:0deg;}
   .fan-stage.aligned .card-preview{height:255px;}
   .fan-stage .fan-card .goto{
     transition:opacity .35s ease, visibility .35s ease, color .3s ease;
@@ -759,7 +759,7 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
   <div class="stage-inner">
     <div class="hero-text">
       <div class="hero-textwrap">
-        <div class="eyebrow">Product &amp; Visual Design, Healthtech / Civic Tech</div>
+        <div class="eyebrow">Product &amp; Visual Design, Healthtech</div>
         <h1>Design that earns <span class="highlight">trust</span>, not just clicks.</h1>
         <p class="hero-sub">I'm Alice Curiel, a Product Designer focused on health tech and trust-driven experiences, designing the decisions behind the screen, not just the screen itself.</p>
         <div class="hero-cta">
@@ -778,10 +778,9 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; display:flex; justify-c
         <a href="diapulse-case-study/" class="fan-card c3" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-diapulse.png" alt="Diapulse preview" style="width:100%; height:100%; object-fit:cover" loading="lazy"></div><div class="card-body"><div><span class="tag">Medical Device</span><h3>Diapulse</h3><p>A brand, website, and clinical software redesign that modernizes a 30-year legacy medical device, rebuilding trust and clarity for today's clinicians and patients.</p><div class="card-status expanding"><span class="dot"></span>Client Project</div><div class="card-tags"><span class="card-tag">Information Architecture</span><span class="card-tag">Cross-functional Collaboration</span><span class="card-tag">Healthtech UX</span></div></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
         <a href="rapimd-case-study/" class="fan-card c4" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-rapidmd.png" alt="RapiMD preview" style="width:100%; height:100%; object-fit:cover" loading="lazy"></div><div class="card-body"><div><span class="tag">Healthcare Booking</span><h3>RapiMD</h3><p>A healthcare booking platform that helps uninsured and self-pay patients find affordable care, while giving providers a way to fill last-minute openings.</p><div class="card-status expanding"><span class="dot"></span>Academic Project</div><div class="card-tags"><span class="card-tag">Wireframing</span><span class="card-tag">Interaction Design</span><span class="card-tag">Design Systems</span><span class="card-tag">Healthtech UX</span></div></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
         <a href="/wave-case-study/" class="fan-card c5" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-wave.png" alt="WAVE preview" style="width:100%; height:100%; object-fit:cover" loading="lazy"></div><div class="card-body"><div><span class="tag">Medical Device</span><h3>WAVE</h3><p>An FDA clinical trial app, brand system, and e-commerce experience that turns a clinical device into a market-ready brand, built to earn trust.</p><div class="card-status expanding"><span class="dot"></span>Co-founder &amp; Client Project</div><div class="card-tags"><span class="card-tag">Regulated Product UX</span><span class="card-tag">Design Systems</span><span class="card-tag">Design Leadership</span><span class="card-tag">Clinical UX</span></div></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
-        <a href="bergen-county-case-study/" class="fan-card c6" style="text-decoration:none; color:inherit;"><div class="card-preview"><img src="assets/Previews/case-study-preview-bergencountyportal.png" alt="Bergen County preview" style="width:100%; height:100%; object-fit:cover" loading="lazy"></div><div class="card-body"><div><span class="tag">Civic Tech</span><h3>Bergen County</h3><p>A civic tech permit portal that simplifies compliance with permits and regulations, reducing costly errors for contractors and homeowners.</p><div class="card-status expanding"><span class="dot"></span>Academic Project</div><div class="card-tags"><span class="card-tag">UX Research</span><span class="card-tag">Usability Testing</span><span class="card-tag">Civic UX</span><span class="card-tag">Compliance UX</span></div></div><div class="goto">View case study <svg viewBox="0 0 100 100" fill="none"><path d="M25 50 H70 M50 25 L75 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></a>
       </div>
       <div class="dots" id="dots">
-        <div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
       </div>
     </div>
 
@@ -983,7 +982,7 @@ function clearAlignedState(){
 
 const FAN_ALIGN_MS = 500;
 const ALIGNED_EDGE_PAD = 24;
-const ALIGNED_ROW_HALF = 797;
+const ALIGNED_ROW_HALF = 576; /* outermost .c1/.c5 offset for 5 cards */
 let alignedClampRaf = null;
 
 function computeAlignedShift(){
@@ -1279,6 +1278,12 @@ window.addEventListener('load', ()=>{
   if(!window.location.hash){
     window.scrollTo(0, 0);
     setStage(0, true);
+    return;
+  }
+  const hashStage = navTargetStage[window.location.hash];
+  if(hashStage){
+    setStage(hashStage, true);
+    scrollToStage(hashStage);
   }
 });
 

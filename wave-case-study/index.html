@@ -220,13 +220,13 @@ p{font-family:'Inter',sans-serif; font-size:15.5px; line-height:1.7; font-weight
   .block--split h2,
   .block--split h3,
   .block--split p{max-width:none;}
-  .block--split.problem-split > .problem-copy{
+  .tab-content-set[data-project="0"] .block--split.problem-split > .problem-copy{
     display:flex; flex-direction:column; justify-content:flex-start; align-self:start;
   }
   .block--split.problem-split .problem-copy h2,
   .block--split.problem-split .problem-copy p,
   .block--split.problem-split .problem-copy .gap-statement{max-width:none;}
-  .block--split.problem-split .problem-visual{width:100%; align-self:start; min-height:0; max-height:640px;}
+  .tab-content-set[data-project="0"] .block--split.problem-split .problem-visual{width:100%; align-self:start; min-height:0; max-height:640px;}
   .block--split.problem-split--small{align-items:center;}
   .block--split.problem-split--small > *{align-self:center;}
   .block--split.design-split > .split-copy{
@@ -262,9 +262,10 @@ p{font-family:'Inter',sans-serif; font-size:15.5px; line-height:1.7; font-weight
   }
 }
 .problem-visual{
-  align-self:start; min-height:0; min-width:0; width:100%; max-width:100%;
+  min-height:0; min-width:0; width:100%; max-width:100%;
   max-height:640px; overflow:hidden; border-radius:16px;
 }
+.tab-content-set[data-project="0"] .problem-visual{align-self:start;}
 .problem-visual .relay-image-wrap,
 .problem-visual > div{
   height:auto; min-height:0; min-width:0; width:100%;
@@ -851,10 +852,88 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 }
 
 @media (min-width:901px){
-  .block--split.problem-split{align-items:start;}
-  .block--split.problem-split .problem-visual{align-self:start; width:100%;}
+  .tab-content-set[data-project="0"] .block--split.problem-split{align-items:start;}
+  .tab-content-set[data-project="0"] .block--split.problem-split .problem-visual{align-self:start; width:100%;}
   .block--split.problem-split .problem-visual .relay-image-wrap{min-height:0 !important; height:auto !important;}
   .block--split.problem-split .problem-visual img{display:block; width:100%; height:auto; max-height:640px; object-fit:cover; object-position:center top; border-radius:16px;}
+  .tab-content-set[data-project="0"] .block--split{
+    align-items:center;
+  }
+  .tab-content-set[data-project="0"] .block--split > *,
+  .tab-content-set[data-project="0"] .block--split > :last-child,
+  .tab-content-set[data-project="0"] .block--split.design-split > .split-copy,
+  .tab-content-set[data-project="0"] .block--split.design-split .split-visual,
+  .tab-content-set[data-project="0"] .block--split.audit-split > .audit-copy,
+  .tab-content-set[data-project="0"] .block--split.audit-split .audit-visual,
+  .tab-content-set[data-project="0"] .block--split.problem-split > .problem-copy,
+  .tab-content-set[data-project="0"] .block--split.problem-split .problem-visual,
+  .tab-content-set[data-project="0"] .block--split.problem-split .split-visual{
+    align-self:center;
+  }
+  .tab-content-set[data-project="0"] .block--split.design-split > .split-copy,
+  .tab-content-set[data-project="0"] .block--split.audit-split > .audit-copy,
+  .tab-content-set[data-project="0"] .block--split.problem-split > .problem-copy{
+    justify-content:center;
+  }
+  .tab-content-set[data-project="0"] .block--split.design-split:has(.swatch-row),
+  .tab-content-set[data-project="0"] .block--split.design-split:has(.swatch-row) > *{
+    align-items:center;
+    align-self:center;
+  }
+  .tab-content-set[data-project="1"] .block--split{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:48px;
+    align-items:center;
+  }
+  .tab-content-set[data-project="1"] .block--split > *{
+    align-self:center;
+    margin-top:0;
+    margin-bottom:0;
+  }
+  .tab-content-set[data-project="1"] .block--split .split-copy,
+  .tab-content-set[data-project="1"] .block--split .problem-copy,
+  .tab-content-set[data-project="1"] .block--split .audit-copy{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .tab-content-set[data-project="1"] .block--split h2,
+  .tab-content-set[data-project="1"] .block--split h3,
+  .tab-content-set[data-project="1"] .block--split p{max-width:none;}
+  .tab-content-set[data-project="1"] .block--split p:last-child{margin-bottom:0;}
+}
+.tab-content-set[data-project="1"] .block--split .split-visual,
+.tab-content-set[data-project="1"] .block--split .audit-visual,
+.tab-content-set[data-project="1"] .block--split .problem-visual{
+  aspect-ratio:4 / 3;
+  overflow:hidden;
+  border-radius:16px;
+  min-height:0;
+  width:100%;
+}
+.tab-content-set[data-project="1"] .block--split .split-visual .gallery,
+.tab-content-set[data-project="1"] .block--split .audit-visual .gallery{
+  height:100%;
+  margin:0;
+  grid-template-columns:1fr;
+  grid-template-rows:repeat(auto-fit, minmax(0,1fr));
+}
+.tab-content-set[data-project="1"] .block--split .split-visual .gallery-item,
+.tab-content-set[data-project="1"] .block--split .audit-visual .gallery-item{
+  height:100%;
+  min-height:0;
+  margin:0;
+}
+.tab-content-set[data-project="1"] .block--split .split-visual img,
+.tab-content-set[data-project="1"] .block--split .audit-visual img,
+.tab-content-set[data-project="1"] .block--split .problem-visual img{
+  width:100%;
+  height:100%;
+  max-height:none;
+  object-fit:cover;
+  object-position:center;
+  display:block;
 }
 @media (max-width:900px){ .problem-visual img{width:100%; height:auto; max-height:480px; object-fit:cover; object-position:center top; border-radius:16px;} }
 
@@ -922,7 +1001,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="hub-card-thumb hub-card-thumb--commerce"><span class="placeholder-note">[IMG: storefront home page, desktop]</span></div>
       <div class="hub-card-body">
         <div class="hub-card-head"><h3>E-Commerce Site</h3><span class="hub-card-selected">Selected</span></div>
-        <p class="hub-card-desc">A custom storefront and clinician site, built solo, ready to launch once trials allow a sale.</p>
+        <p class="hub-card-desc">A pre-launch storefront and gated clinician site, built solo, that turns a device no one can buy yet into a waiting list.</p>
       </div>
     </button>
     <button type="button" class="hub-card" data-project="2" disabled aria-disabled="true">
@@ -964,7 +1043,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   <div class="block cs-duo">
     <div class="cs-duo__col">
       <div class="section-eyebrow">The Challenge</div>
-      <p>WAVE is a medical device designed to relieve menstrual pain, with a clinical study currently being planned to secure FDA clearance. WAVE is a device with real clinical credibility, but its brand undermined it.</p>
+      <p>WAVE is an investigational medical device being studied for menstrual pain, with a clinical study being planned to seek FDA clearance. The device had serious clinical work behind it, but its brand undermined it.</p>
       <p>Packaging, marketing, and digital presence were inconsistent, eroding trust at the exact moment the product needed to earn it.</p>
       <p style="margin-bottom:0;">The deeper challenge: repositioning a medical device to present as human and empowering as the best consumer wellness brands, without sacrificing clinical authority.</p>
     </div>
@@ -1122,7 +1201,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <p class="gap-statement" style="margin-bottom:0;">This product respects you and the pain you're managing.</p>
     </div>
     <div class="split-visual">
-      <img data-relay src="/assets/wave/wave-inroom.jpg" alt="WAVE device and box on a bedside table" style="width:100%; height:auto; display:block; border-radius:16px">
+      <div class="gallery-item has-img"><img data-relay src="/assets/wave/wave-inroom.jpg" alt="WAVE device and box on a bedside table"></div>
     </div>
   </div>
 
@@ -1226,18 +1305,43 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 </div><div class="tab-content-set" data-project="1">
 <div class="tab-panel" data-panel="overview">
 
-  <div class="block cs-duo">
-    <div class="cs-duo__col">
+  <div class="block block--split design-split">
+    <div class="split-copy">
       <div class="section-eyebrow">The Challenge</div>
-      <h2>A new category of device, with nothing to sell yet.</h2>
-      <p>WAVE is an investigational menstrual pain relief device from Hush Tech LLC, built to give women a drug-free option for their monthly pain. It cannot be sold yet, pending clinical trials in Nigeria and the United States.</p>
-      <p>The company is a small founding team with very limited resources and no budget for an agency or developer build, yet it needed a credible web presence. The site had to build trust, explain a new category of device, and capture early interest without implying a purchase.</p>
-      <p class="gap-statement" style="margin-bottom:0;">It also had to serve two audiences, consumers and clinicians, who cannot be shown the same claims for a regulated device.</p>
+      <h2>Build demand for a device that can't be sold yet.</h2>
+      <p>WAVE is an investigational, drug-free device from Hush Tech LLC, being studied for menstrual pain. It can't be sold until clinical trials in Nigeria and the United States lead to FDA clearance, but the company still needed visibility to build interest and support funding for those trials.</p>
+      <p>The site had three audiences with very different needs: women looking for options for menstrual pain, the clinicians who would recommend the device, and investors. For a regulated device, consumers and clinicians can't be shown the same claims.</p>
+      <p style="margin-bottom:0;">And it had to be built by a small founding team, with no budget for an agency or a development team.</p>
     </div>
-    <div class="cs-duo__col">
+    <div class="split-visual">
+      <div class="gallery-item">[IMG: The Challenge]</div>
+    </div>
+  </div>
+
+  <div class="block block--split design-split reverse">
+    <div class="split-copy">
+      <div class="section-eyebrow">The Reframe</div>
+      <h2>This wasn't an e-commerce problem yet.</h2>
+      <p style="margin-bottom:0;">It was a trust and lead-generation problem. How might we build interest in a product people can't buy yet, without making claims we're not allowed to make? That question shaped every decision that followed.</p>
+    </div>
+    <div class="split-visual">
+      <div class="gallery-item">[IMG: The Reframe]</div>
+    </div>
+  </div>
+
+  <div class="block block--split design-split">
+    <div class="split-copy">
       <div class="section-eyebrow">The Approach</div>
-      <h2>One codebase, two experiences.</h2>
-      <p style="margin-bottom:0;">As part of the founding team, I took on the entire build myself, from design through launch. I designed and built a custom site with two experiences on one codebase, plus an admin backend.</p>
+      <h2>Separate the audiences, replace the sale, build for launch day.</h2>
+      <p>As part of the founding team, I took on the full build, from first wireframe to a working site. Three principles guided it:</p>
+      <ul class="key-list">
+        <li><strong>Separate audiences by regulatory risk.</strong> Consumers get brand-level messaging. Clinical claims live in a gated clinician site.</li>
+        <li><strong>Turn every "buy" moment into "Notify Me."</strong> Interest becomes a waiting list instead of a dead end.</li>
+        <li><strong>Build the full store now.</strong> When clearance comes, launch is a switch, not a redesign.</li>
+      </ul>
+    </div>
+    <div class="split-visual">
+      <div class="gallery-item">[IMG: The Approach]</div>
     </div>
   </div>
 
@@ -1245,26 +1349,28 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
   <div class="block block--split audit-split reverse">
     <div class="audit-copy">
+      <div class="section-eyebrow">The Solution</div>
+      <h2>One codebase, two experiences, plus an admin backend.</h2>
       <div class="audit-findings">
         <div class="audit-finding">
           <div class="audit-num">01</div>
           <div>
             <h4>Consumer storefront (light)</h4>
-            <p>Brand-level wellness messaging, a pre-launch "Notify Me" flow, and a purchase flow designed and ready for launch.</p>
+            <p>Warm, plain-language messaging that explains the device and is upfront that WAVE is investigational. Every purchase moment becomes a "Notify Me" sign-up with a WAVE news opt-in, and the purchase flow is designed and ready for launch.</p>
           </div>
         </div>
         <div class="audit-finding">
           <div class="audit-num">02</div>
           <div>
             <h4>Clinician site (dark, gated at launch)</h4>
-            <p>Clinical evidence, safety, mechanism of action, a research library, and case studies. It is built to sit behind a password gate once the site moves to its final domain.</p>
+            <p>Clinical evidence, safety, mechanism of action, a research library, and case studies, plus paths to partner with or invest in WAVE. It sits behind its own password gate once the site moves to its final domain.</p>
           </div>
         </div>
         <div class="audit-finding">
           <div class="audit-num">03</div>
           <div>
             <h4>Admin backend</h4>
-            <p>Orders, buyers, inventory, and pricing in one place.</p>
+            <p>Orders, buyers, inventory with serial and lot tracking, and pricing in one place, so the team can update prices and run sales without touching code.</p>
           </div>
         </div>
       </div>
@@ -1282,9 +1388,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   <div class="block block--split design-split">
     <div class="split-copy">
       <div class="section-eyebrow">My Role</div>
-      <h2>Sole designer and builder, first wireframe to launch.</h2>
-      <p>I am a member of the founding team and not a developer by training. I used Cursor with the Figma MCP to turn my designs into working code. The product decisions, architecture choices, and data model were mine, and Cursor did the hands-on coding under that direction.</p>
-      <p class="gap-statement" style="margin-bottom:0;">The WAVE brand system and the original WAVE site were separate engagements with a dev team.</p>
+      <h2>Sole designer and builder, first wireframe to working site.</h2>
+      <p>I'm part of the founding team and not a developer by training. I used Cursor with the Figma MCP to turn my designs into working code. The product decisions, architecture, and data model were mine, and Cursor did the hands-on coding under my direction.</p>
+      <p style="margin-bottom:0;">This build is separate from my WAVE brand work (see Branding) and from the original WAVE site, which a previous designer built with an outside development team.</p>
     </div>
     <div class="split-visual">
       <div class="gallery-item">[IMG: sole designer and builder]</div>
@@ -1292,6 +1398,19 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   </div>
 
   <div class="block block--split design-split reverse">
+    <div class="split-copy">
+      <div class="section-eyebrow">Research</div>
+      <h2>Learning from a brand that solved the same split.</h2>
+      <p>Because WAVE is pre-launch and regulated, my research was competitive and regulatory. Oura was my main reference: a health wearable with a consumer site and a separate site for organizations. That model became the split between the WAVE storefront and the clinician site.</p>
+      <p>I also worked through the regulatory limits with the founding team, defining which claims each audience could see before designing any screens.</p>
+      <p style="margin-bottom:0;">The gap is direct user research. Before launch, I plan to test the consumer messaging with women who manage menstrual pain.</p>
+    </div>
+    <div class="split-visual">
+      <div class="gallery-item">[IMG: Research]</div>
+    </div>
+  </div>
+
+  <div class="block block--split design-split">
     <div class="split-copy">
       <div class="section-eyebrow">Process</div>
       <h2>Architecture first, then screens, then checkout, then backend.</h2>
@@ -1302,7 +1421,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     </div>
   </div>
 
-  <div class="block block--split audit-split">
+  <div class="block block--split audit-split reverse">
     <div class="audit-copy">
       <div class="section-eyebrow">Decisions &amp; Tradeoffs</div>
       <h2>Five calls that shaped the build.</h2>
@@ -1310,22 +1429,22 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <div class="audit-finding">
           <div class="audit-num">01</div>
           <div>
-            <h4>Custom build instead of Shopify</h4>
-            <p>Full ownership and control, no platform fees, and a data model shaped to the business. The cost was far more build effort.</p>
+            <h4>One site, two experiences, split by regulatory risk</h4>
+            <p>I considered one site with everything, one site with heavy disclaimers, or two experiences on one codebase. One site risked showing clinical claims to consumers, and heavy disclaimers would undercut trust. So a dark clinician site, gated at launch, carries the clinical claims, and the consumer site stays at brand level.</p>
           </div>
         </div>
         <div class="audit-finding">
           <div class="audit-num">02</div>
           <div>
-            <h4>Backend migrated from Payload CMS to Supabase</h4>
-            <p>I moved to Supabase for real-time data sync, database-level security, and relational scalability. The cost: I gave up a unified, code-first TypeScript architecture and a ready-made, client-friendly Admin UI. Security logic moved into database-level SQL, and I took on a heavy manual burden to rebuild the content management workflows.</p>
+            <h4>Custom build instead of Shopify</h4>
+            <p>Full ownership, no platform fees, and a data model shaped to the business. The cost was far more build effort.</p>
           </div>
         </div>
         <div class="audit-finding">
           <div class="audit-num">03</div>
           <div>
-            <h4>One site, two experiences, split by regulatory risk</h4>
-            <p>One site, two experiences, split by regulatory risk. A dark clinician site, gated at launch, carries the clinical claims, and the consumer site stays at brand level only.</p>
+            <h4>Backend moved from Payload CMS to Supabase</h4>
+            <p>I moved to Supabase for real-time data and database-level security. The tradeoff was losing a ready-made admin interface, so I rebuilt the content workflows myself.</p>
           </div>
         </div>
         <div class="audit-finding">
@@ -1339,7 +1458,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
           <div class="audit-num">05</div>
           <div>
             <h4>Clinicians sit outside the storefront</h4>
-            <p>They reach WAVE through an email or PO inquiry and a gated, manually provisioned Bulk WAVE Portal.</p>
+            <p>They reach WAVE through an email or PO inquiry and a gated, manually set up Bulk WAVE Portal.</p>
           </div>
         </div>
       </div>
@@ -1349,30 +1468,30 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     </div>
   </div>
 
-  <div class="block block--split design-split reverse">
+  <div class="block block--split design-split">
     <div class="split-copy">
       <div class="section-eyebrow">Regulatory Constraint</div>
-      <h2>No purchase language for a device that cannot be sold.</h2>
-      <p>Every purchase-implying CTA became an email-capture "Notify Me" flow with a WAVE news opt-in, and payment methods were removed from the footer.</p>
-      <p style="margin-bottom:0;">WAVE is an investigational device under research. Not FDA cleared or approved. Not yet available for commercial use.</p>
+      <h2>Trust through transparency, not claims.</h2>
+      <p>Since we can't promise results, the site earns trust by being honest about where WAVE stands. Every purchase-implying CTA across the site became a "Notify Me" email capture with a WAVE news opt-in, and payment methods came off the footer. A banner on every page states the device's status plainly:</p>
+      <p class="gap-statement" style="margin-bottom:0;">WAVE is an investigational device under research. Not FDA cleared or approved. Not yet available for commercial use.</p>
     </div>
     <div class="split-visual">
       <div class="gallery-item">[IMG: Notify Me flow and regulatory banner]</div>
     </div>
   </div>
 
-  <div class="block block--split design-split">
+  <div class="block block--split design-split reverse">
     <div class="split-copy">
       <div class="section-eyebrow">Systems Thinking</div>
       <h2>The data model was part of the UX.</h2>
       <p>I designed the data model alongside the screens, so what the business needs to know shaped what the interface could do.</p>
       <ul class="key-list">
         <li>Product, with sale and discount fields</li>
-        <li>Order, with unitPriceAtPurchase stored per line item</li>
+        <li>Order, with the price saved at the moment of purchase</li>
         <li>Buyer</li>
         <li>Shipment</li>
         <li>Reviews, tied to a real order and limited to verified purchasers</li>
-        <li>RestockNotification</li>
+        <li>Restock notifications</li>
         <li>Serial and lot-level unit tracking</li>
       </ul>
     </div>
@@ -1381,11 +1500,12 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     </div>
   </div>
 
-  <div class="block block--split design-split reverse">
+  <div class="block block--split design-split">
     <div class="split-copy">
       <div class="section-eyebrow">Design System</div>
       <h2>Light and dark from one set of variables.</h2>
-      <p style="margin-bottom:0;">Built in Figma with light and dark variables, 13 text styles, and components including button variants, email field, badges, cards, the regulatory banner, and the cart button. The palette is navy and pink on Montserrat. The primary CTA moved to raspberry (#C23A7B in light, #EC5BA0 in dark) with white labels.</p>
+      <p>The two experiences share one system but shift tone on purpose. The consumer site is light and warm, because someone in pain should know within seconds whether WAVE is worth exploring. The clinician site is dark and evidence-led, so it reads as a professional space.</p>
+      <p style="margin-bottom:0;">Built in Figma with light and dark variables, 13 text styles, and components including button variants, email field, badges, cards, the regulatory banner, and the cart button. The palette is navy, pink, and logo blue on Montserrat, with raspberry (#C23A7B) as the primary CTA on both themes.</p>
     </div>
     <div class="split-visual">
       <div class="gallery">
@@ -1395,27 +1515,31 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     </div>
   </div>
 
-  <div class="block block--split design-split">
+  <div class="block block--split design-split reverse">
     <div class="split-copy">
       <div class="section-eyebrow">Build &amp; Tooling</div>
       <h2>Designed by me, coded with Cursor.</h2>
-      <p style="margin-bottom:0;">The site runs on Next.js (App Router), TypeScript, Tailwind, Supabase, and Vercel. Stripe, Resend, and EasyPost are selected and planned, and are not integrated yet.</p>
+      <p style="margin-bottom:0;">The site runs on Next.js (App Router), TypeScript, Tailwind, Supabase, and Vercel. Stripe, Resend, and EasyPost are selected and planned, but not integrated yet.</p>
     </div>
     <div class="split-visual">
       <div class="gallery-item">[PLACEHOLDER: code screenshot or repo structure]</div>
     </div>
   </div>
 
-  <div class="block block--split design-split reverse">
+  <div class="block block--split design-split">
     <div class="split-copy">
       <div class="reflect-grid">
         <div class="reflect-card">
           <h4>Accessibility</h4>
-          <p class="gap-statement">[PLACEHOLDER: WCAG work still to be done]</p>
+          <p>Many consumers will visit while in pain, so clarity and calm come first: plain language, one clear next step, and strong contrast.</p>
+          <p>The brand pink (#f59dba) failed contrast with white text, so it couldn't carry buttons. I moved every primary CTA to raspberry (#C23A7B) with white labels on both themes, at 5.0:1. Hover darkens to #A83068 (6.9:1) and active to #8E2A59.</p>
+          <p>Pink highlights like eyebrows, links, and accent borders moved to blue: #2B67A5 on the light site (5.9:1). On the dark clinician site, the first accent passed contrast at about 10:1 but blended into the body text, so I switched to the logo blue #84B7E3 (8.5:1) and made eyebrows bold with a short accent bar, so they don't rely on color alone.</p>
+          <p>I removed the decorative hover ring from dark CTAs but kept a visible focus outline for keyboard users. Brand pink now appears only in artwork, the logo, and soft background tints.</p>
+          <p>Next: keyboard and screen reader testing across the checkout and Notify Me flows before launch.</p>
         </div>
         <div class="reflect-card">
           <h4>Collaboration</h4>
-          <p>A solo build as part of the founding team. The team shapes the product vision and the claims we can make, and I owned design, development, and delivery.</p>
+          <p>A solo build as part of the founding team. The team set the product vision and the claims we could make, and I turned those limits into the site's structure. I owned design, development, and delivery.</p>
         </div>
       </div>
     </div>
@@ -1431,18 +1555,11 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="split-copy">
       <div class="section-eyebrow">The Outcome</div>
       <h2>Pre-launch, so no metrics yet.</h2>
-      <p style="margin-bottom:0;">The site is built to launch the moment trials allow a sale. Until then, its job is to build trust and collect early interest.</p>
-      <div class="cs-try">
-        <!-- swap to final domain at launch -->
-        <a class="cs-btn" id="tryItLink" href="https://wave-ecommerce-theta.vercel.app/" target="_blank" rel="noopener noreferrer">
-          Try it yourself
-          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
-        </a>
-        <p class="cs-try__note">Opens the live preview in a new tab. The site is pre-launch, so purchase buttons lead to a Notify Me sign-up.</p>
-      </div>
+      <p>The site is built to launch the moment FDA clearance allows a sale. Until then, its job is to build trust and collect early interest from consumers, clinicians, and investors.</p>
+      <p style="margin-bottom:0;">The consumer storefront, clinician site, cart, checkout, and legal pages are built and running on a private preview. I'm not linking it here until the clinician site is gated, since it carries clinical content for an investigational device.</p>
     </div>
     <div class="split-visual">
-      <div class="gallery-item">The consumer storefront, clinician site, cart, checkout, and legal pages are built and running on a Vercel preview. The clinician site is not gated yet, because it is on a preview URL. The gate switches on when the site moves to its final domain.</div>
+      <div class="gallery-item">[IMG: The Outcome]</div>
     </div>
   </div>
   <div class="block block--split design-split reverse">
@@ -1450,10 +1567,12 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="section-eyebrow">What I Will Measure</div>
       <ul class="key-list">
         <li>Notify Me sign-up rate</li>
-        <li>Checkout completion rate</li>
-        <li>Page load time</li>
         <li>Clinician inquiry volume</li>
+        <li>Trial participation and investor inquiries</li>
+        <li>Checkout completion rate, after launch</li>
+        <li>Page load time</li>
       </ul>
+      <p style="margin-bottom:0;">The original WAVE site gives us a baseline to compare against. If Notify Me sign-ups come in low, the first thing I'll test is the hero message and CTA placement.</p>
     </div>
     <div class="split-visual">
       <div class="gallery-item">[IMG: what I will measure]</div>
@@ -1474,7 +1593,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <li>Finish the clinician Resources pages (Guides, Research, Reports)</li>
         <li>Connect Stripe, Resend, and EasyPost</li>
         <li>Move the site to its final domain (WAVEbyHush.com still hosts the old site) and switch on the clinician password gate</li>
-        <li>Launch the purchase flow once trials allow a sale</li>
+        <li>Launch the purchase flow once FDA clearance allows a sale</li>
         <li>Build out the Bulk WAVE Portal for clinicians</li>
       </ul>
     </div>

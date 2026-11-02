@@ -1,0 +1,31 @@
+---
+description: Homepage work-section fan card layout
+globs: index.html
+alwaysApply: false
+---
+
+# Work section cards
+
+The `#work` fan has **five** cards (`.c1` through `.c5`). There is no `.c6`.
+
+## Stacked (fan) offsets
+
+Cards are centered and even:
+
+- `.c1` `--tx:-280px` `--ty:14px` `--tr:-14deg`
+- `.c2` `--tx:-140px` `--ty:-4px` `--tr:-7deg`
+- `.c3` `--tx:0px` `--ty:-16px` `--tr:0deg`
+- `.c4` `--tx:140px` `--ty:-4px` `--tr:7deg`
+- `.c5` `--tx:280px` `--ty:14px` `--tr:14deg`
+
+## Aligned (hover) spread
+
+288px pitch. Outermost offset is 576px. JS `ALIGNED_ROW_HALF` must stay `576`.
+
+- `.c1` `-576px`
+- `.c2` `-288px`
+- `.c3` `0`
+- `.c4` `288px`
+- `.c5` `576px`
+
+Keep card size 280x590. Mobile (`max-width:760px`) stays a scroll-snap row.
