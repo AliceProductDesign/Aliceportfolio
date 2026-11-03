@@ -698,9 +698,59 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   .ws2-heading--right{ margin-top:20px; }
 }
 
+.visually-hidden{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+  clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}
+#hubBanner{
+  border-radius:22px; background:rgba(242,102,90,0.1); border:1px solid var(--line);
+  padding:var(--space-5) var(--space-6); margin-bottom:var(--space-4);
+  display:grid; grid-template-rows:1fr; transition:grid-template-rows 350ms ease, opacity 350ms ease, margin 350ms ease, padding 350ms ease;
+}
+#hubBanner .hub-banner-inner{overflow:hidden; min-height:0;}
+#waveHub[data-hub="project"] #hubBanner{
+  grid-template-rows:0fr; opacity:0; margin-bottom:0; padding-top:0; padding-bottom:0; border-color:transparent;
+  pointer-events:none;
+}
+.hub-lead{
+  margin:var(--space-2) 0 0; font-size:15.5px; line-height:1.55; color:var(--ink-soft); max-width:640px;
+}
+.hub-cards-row{
+  display:flex; align-items:stretch; gap:var(--space-2); max-width:1240px; margin-top:var(--space-4);
+}
+.hub-all-projects{
+  display:none; flex-shrink:0; align-self:center;
+  font-family:'Inter',sans-serif; font-weight:600; font-size:13px; color:var(--coral);
+  background:transparent; border:1.5px solid var(--coral); border-radius:100px;
+  padding:10px 16px; cursor:pointer; white-space:nowrap;
+}
+.hub-all-projects:hover{background:rgba(242,102,90,0.12);}
+.hub-all-projects:focus-visible{outline:2px solid var(--coral); outline-offset:3px;}
+#waveHub[data-hub="project"] .hub-all-projects{display:inline-flex;}
 .hub-cards{
-  display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-3); margin-top:var(--space-4);
-  max-width:1240px; align-items:stretch;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:20px; flex:1 1 auto; min-width:0;
+  align-items:stretch;
+}
+#waveHub[data-hub="project"] .hub-card:not([aria-pressed="true"]){opacity:.55;}
+#waveHub[data-hub="project"] .hub-card-thumb{
+  height:0; opacity:0; aspect-ratio:auto; border-bottom-width:0; padding:0;
+  transition:height 350ms ease, opacity 350ms ease, border-width 350ms ease;
+}
+#waveHub[data-hub="project"] .hub-card-desc{display:none;}
+#waveHub[data-hub="project"] .hub-card-body{
+  height:56px; min-height:56px; padding:0 14px; justify-content:center;
+}
+#waveHub[data-hub="project"] .hub-card-head{align-items:center;}
+#waveHub[data-hub="project"] .hub-card-head h3{font-size:15px;}
+#tabSection[hidden]{display:none !important;}
+@media (prefers-reduced-motion: reduce){
+  #hubBanner, #waveHub[data-hub="project"] .hub-card-thumb{transition:none;}
+}
+@media (max-width:860px){
+  .hub-cards{grid-template-columns:1fr;}
+  .hub-card-thumb{aspect-ratio:16/8;}
+  #waveHub[data-hub="project"] .hub-cards-row{flex-direction:column; align-items:stretch;}
+  #waveHub[data-hub="project"] .hub-all-projects{align-self:flex-start;}
 }
 .hub-card{
   display:flex; flex-direction:column; align-items:stretch; text-align:left;
@@ -724,7 +774,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   box-shadow:0 12px 28px -18px #33454A44;
 }
 .hub-card-thumb{
-  aspect-ratio:16/9; display:flex; align-items:center; justify-content:center;
+  aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;
+  transition:height 350ms ease, opacity 350ms ease, border-width 350ms ease;
   border-bottom:1px solid var(--line); padding:0; position:relative;
   width:100%; margin:0;
 }
@@ -764,8 +815,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 .hub-card-thumb--epro{background:linear-gradient(160deg,#478383,#241E4E);}
 .hub-card-thumb--epro .placeholder-note{color:#C7C0E8;}
 .hub-card-body{
-  height:128px; box-sizing:border-box; padding:16px 18px 18px;
+  box-sizing:border-box; padding:16px 18px 18px;
   display:flex; flex-direction:column; gap:8px;
+  transition:height 350ms ease, padding 350ms ease;
 }
 .hub-card-head{
   display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
@@ -838,17 +890,6 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   .tab-nav{padding:0 var(--space-3);}
   .tab-nav-wrap.is-sticky{padding:var(--space-2) 0;}
   .tab-nav-wrap.is-sticky .tab-nav{padding:0 var(--space-3);}
-  .hub-cards{
-    display:flex; overflow-x:auto; scroll-snap-type:x mandatory;
-    gap:var(--space-2); margin-top:var(--space-4);
-    scrollbar-width:none; -webkit-overflow-scrolling:touch;
-  }
-  .hub-cards::-webkit-scrollbar{display:none;}
-  .hub-card{
-    flex:0 0 78vw; width:78vw; height:auto; scroll-snap-align:start;
-  }
-  .hub-card-thumb{aspect-ratio:16/9;}
-  .hub-card-body{height:auto; min-height:0;}
 }
 
 @media (min-width:901px){
@@ -1060,42 +1101,52 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   </a>
 </nav>
 
+<div id="waveHub" data-hub="idle">
+<div class="visually-hidden" aria-live="polite" id="hubStatus"></div>
 <header class="cs-header">
-  <div class="title-row">
-    <h1>WAVE</h1>
-    <span class="tag t1">Branding</span>
-    <span class="tag">E-Commerce</span>
-    <span class="tag t2">Clinical App</span>
-  </div>
-  <p class="cs-sub">FDA Medical Device · Women's Health · Brand, Product &amp; Commerce Systems</p>
+  <section id="hubBanner">
+    <div class="hub-banner-inner">
+      <div class="title-row">
+        <h1>WAVE</h1>
+        <span class="tag t1">Branding</span>
+        <span class="tag">E-Commerce</span>
+        <span class="tag t2">Clinical App</span>
+      </div>
+      <p class="cs-sub">FDA Medical Device · Women's Health · Brand, Product &amp; Commerce Systems</p>
+      <p class="hub-lead">Three bodies of work on one medical device.</p>
+    </div>
+  </section>
 
-  <div class="hub-cards" id="cardsRow">
-    <button type="button" class="hub-card" data-project="0" aria-pressed="true">
+  <div class="hub-cards-row">
+    <button type="button" class="hub-all-projects" id="hubAllProjects" hidden>All projects</button>
+    <div class="hub-cards" id="cardsRow">
+    <button type="button" class="hub-card" data-project="0" aria-pressed="false">
       <div class="hub-card-thumb hub-card-thumb--brand">
         <img data-relay src="/assets/wave/wave-brand-card-img.jpg" alt="WAVE branding, device, box, and business cards">
       </div>
       <div class="hub-card-body">
         <div class="hub-card-head"><h3>Product Branding</h3><span class="hub-card-selected">Selected</span></div>
-        <p class="hub-card-desc">Evolving a clinical medical device into a warm, human-centered wellness brand.</p>
+        <p class="hub-card-desc">Evolving a clinical medical device into a warm, human-centered wellness brand. Outcome: A unified brand carried WAVE into the ACOG exhibit.</p>
       </div>
     </button>
     <button type="button" class="hub-card" data-project="1" aria-pressed="false">
       <div class="hub-card-thumb hub-card-thumb--commerce"><span class="placeholder-note">[IMG: storefront home page, desktop]</span></div>
       <div class="hub-card-body">
         <div class="hub-card-head"><h3>E-Commerce Site</h3><span class="hub-card-selected">Selected</span></div>
-        <p class="hub-card-desc">A pre-launch storefront and gated clinician site, built solo, that turns a device no one can buy yet into a waiting list.</p>
+        <p class="hub-card-desc">A pre-launch storefront and gated clinician site, built solo, that turns a device no one can buy yet into a waiting list. Outcome: Built to launch the moment FDA clearance allows a sale.</p>
       </div>
     </button>
-    <button type="button" class="hub-card" data-project="2" disabled aria-disabled="true">
+    <button type="button" class="hub-card" data-project="2" aria-pressed="false">
       <div class="hub-card-thumb hub-card-thumb--epro"><span class="hub-badge">Upcoming</span><span class="placeholder-note">[IMG: ePRO app screens]</span></div>
       <div class="hub-card-body">
         <div class="hub-card-head"><h3>ePRO App</h3><span class="hub-card-selected">Selected</span></div>
-        <p class="hub-card-desc">Patient-reported outcomes for a $2M pivotal trial with 250+ participants.</p>
+        <p class="hub-card-desc">Patient-reported outcomes for a $2M pivotal trial with 250+ participants. Outcome: UX and design system in progress for trial reporting.</p>
       </div>
     </button>
+    </div>
   </div>
 
-  <div class="meta-row" id="metaRow">
+  <div class="meta-row" id="metaRow" hidden>
     <div class="meta-item"><span>Role</span><b>Creative Director, Brand &amp; Product</b></div>
     <div class="meta-item"><span>Scope</span><b>Logo, Visual Identity + Packaging</b></div>
     <div class="meta-item"><span>Timeline</span><b>4 months</b></div>
@@ -1104,14 +1155,15 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   </div>
 </header>
 
-<div id="tabSection">
+<div id="tabSection" hidden aria-hidden="true">
+<h2 class="visually-hidden" id="tabSectionHeading" tabindex="-1">Project details</h2>
 <div class="tab-nav-anchor" id="tabNavAnchor">
   <div class="tab-nav-sentinel" id="tabNavSentinel" aria-hidden="true"></div>
   <div class="tab-nav-spacer" id="tabNavSpacer" aria-hidden="true"></div>
   <div class="tab-nav-wrap" id="tabNavWrap">
   <div class="tab-nav" id="tabNav">
   <div class="tab-track">
-    <button type="button" class="tab-btn active" data-tab="overview">Overview</button>
+    <button type="button" class="tab-btn" data-tab="overview">Overview</button>
     <button type="button" class="tab-btn" data-tab="design">Design &amp; Process</button>
     <button type="button" class="tab-btn" data-tab="outcome">Outcome</button>
     <button type="button" class="tab-btn" data-tab="progress">Upcoming</button>
@@ -1119,8 +1171,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 </div>
 </div>
 </div>
-<div class="tab-content-set active" data-project="0">
-<div class="tab-panel active" data-panel="overview">
+<div class="tab-content-set" data-project="0">
+<div class="tab-panel" data-panel="overview">
 
   <div class="block cs-duo">
     <div class="cs-duo__col">
@@ -1713,7 +1765,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="stats-band">
       <div class="stat"><b>$2M</b><span>Pivotal clinical trial</span></div>
       <div class="stat"><b>250+</b><span>Estimated participants</span></div>
-      <div class="stat"><b>—</b><span>[Placeholder, current phase]</span></div>
+      <div class="stat"><b>-</b><span>[Placeholder, current phase]</span></div>
     </div>
   </div>
 
@@ -1738,9 +1790,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="gallery">
         <div class="gallery-item">
           <!-- TODO: Replace with Figma export — <div class="gallery-item has-img"><img data-relay src="/assets/wave/epro-time-zero-gate.png" alt="Time Zero Gate — eligibility check + pain scale"></div> -->
-          Time Zero Gate — eligibility check + pain scale
+          Time Zero Gate, eligibility check + pain scale
         </div>
-        <div class="gallery-item has-img"><img data-relay src="/assets/wave/Rescue-Logic-protocol.png" alt="Rescue Logic — arm-aware protocol branching"></div>
+        <div class="gallery-item has-img"><img data-relay src="/assets/wave/Rescue-Logic-protocol.png" alt="Rescue Logic, arm-aware protocol branching"></div>
       </div>
     </div>
   </div>
@@ -1767,6 +1819,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 </div>
 </div>
 </div>
+</div>
 
 <footer>
   <div class="foot-row">
@@ -1783,12 +1836,18 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
 <script>
 (function(){
+  const waveHub = document.getElementById('waveHub');
+  const hubBanner = document.getElementById('hubBanner');
+  const hubAllProjects = document.getElementById('hubAllProjects');
+  const hubStatus = document.getElementById('hubStatus');
+  const tabSectionHeading = document.getElementById('tabSectionHeading');
   const cards = Array.from(document.querySelectorAll('.hub-card'));
   const sets = Array.from(document.querySelectorAll('.tab-content-set'));
   const tabBtns = Array.from(document.querySelectorAll('.tab-btn'));
   const tabSection = document.getElementById('tabSection');
   const metaRow = document.getElementById('metaRow');
   const metaValues = metaRow ? Array.from(metaRow.querySelectorAll('.meta-item b')) : [];
+  const announceNames = {'0':'Branding', '1':'E-Commerce', '2':'ePRO App'};
   const metaByProject = {
     '0': {
       role: 'Creative Director, Brand & Product',
@@ -1816,7 +1875,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const metaFadeMs = reducedMotion ? 0 : 150;
   let metaFadeTimer = null;
-  let activeProject = '0';
+  let activeProject = null;
   let continuesWired = false;
 
   function applyMeta(project){
@@ -1934,25 +1993,53 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   }
 
   function scrollToTabs(){
-    if(!tabSection) return;
+    if(!tabSection || tabSection.hidden) return;
     tabSection.scrollIntoView({behavior: reducedMotion ? 'auto' : 'smooth', block:'start'});
   }
 
-  function cardLocked(card){
-    return !!(card && (card.disabled || card.getAttribute('aria-disabled') === 'true'));
+  function focusTabSection(){
+    const firstTab = tabBtns.find(b => !b.hidden);
+    if(firstTab){
+      firstTab.focus({preventScroll: true});
+      return;
+    }
+    if(tabSectionHeading){
+      tabSectionHeading.focus({preventScroll: true});
+    }
   }
 
-  function selectProject(project, opts){
-    const target = cards.find(c => c.dataset.project === project);
-    if(cardLocked(target)) return;
-    const shouldScroll = opts && opts.scroll;
-    const same = activeProject === project;
+  function setBannerInert(inert){
+    if(!hubBanner) return;
+    if(inert){
+      hubBanner.setAttribute('aria-hidden', 'true');
+      hubBanner.setAttribute('inert', '');
+    } else {
+      hubBanner.removeAttribute('aria-hidden');
+      hubBanner.removeAttribute('inert');
+    }
+  }
+
+  function setIdleState(){
+    if(waveHub) waveHub.dataset.hub = 'idle';
+    activeProject = null;
+    cards.forEach(c=> c.setAttribute('aria-pressed', 'false'));
+    sets.forEach(s=> s.classList.remove('active'));
+    sets.forEach(s=> s.querySelectorAll('.tab-panel').forEach(p=> p.classList.remove('active')));
+    tabBtns.forEach(b=> b.classList.remove('active'));
+    if(tabSection){
+      tabSection.hidden = true;
+      tabSection.setAttribute('aria-hidden', 'true');
+    }
+    if(metaRow) metaRow.hidden = true;
+    if(hubAllProjects) hubAllProjects.hidden = true;
+    setBannerInert(false);
+    if(hubStatus) hubStatus.textContent = 'All projects';
+  }
+
+  function setProjectState(project){
+    if(waveHub) waveHub.dataset.hub = 'project';
     activeProject = project;
     cards.forEach(c=>{
-      if(cardLocked(c)){
-        c.removeAttribute('aria-pressed');
-        return;
-      }
       const on = c.dataset.project === project;
       c.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
@@ -1960,33 +2047,70 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       s.classList.toggle('active', s.dataset.project === project);
     });
     setTab('overview');
-    if(!same) updateMeta(project);
-    if(shouldScroll) scrollToTabs();
+    updateMeta(project);
+    if(tabSection){
+      tabSection.hidden = false;
+      tabSection.removeAttribute('aria-hidden');
+    }
+    if(metaRow) metaRow.hidden = false;
+    if(hubAllProjects) hubAllProjects.hidden = false;
+    setBannerInert(true);
+    if(hubStatus && announceNames[project]){
+      hubStatus.textContent = announceNames[project] + ' selected. Overview showing.';
+    }
+  }
+
+  function selectProject(project){
+    const switching = activeProject !== null && activeProject !== project;
+    setProjectState(project);
+    scrollToTabs();
+    focusTabSection();
+    if(switching && hubStatus && announceNames[project]){
+      hubStatus.textContent = announceNames[project] + ' selected. Overview showing.';
+    }
+  }
+
+  function resetToIdle(){
+    setIdleState();
+    if(waveHub){
+      waveHub.scrollIntoView({behavior: reducedMotion ? 'auto' : 'smooth', block:'start'});
+    }
   }
 
   cards.forEach(card=>{
-    if(cardLocked(card)) return;
     card.addEventListener('click', e=>{
       e.stopPropagation();
-      selectProject(card.dataset.project, {scroll: true});
+      selectProject(card.dataset.project);
     });
   });
 
-  document.addEventListener('click', e=>{
-    if(!e.target.isConnected) return;
-    if(e.target.closest('#cardsRow') || e.target.closest('#tabSection')) return;
-    if(activeProject !== '0') selectProject('0', {scroll:false});
-  });
+  if(hubAllProjects){
+    hubAllProjects.addEventListener('click', e=>{
+      e.stopPropagation();
+      resetToIdle();
+    });
+  }
+
+  if(waveHub){
+    waveHub.addEventListener('keydown', e=>{
+      if(e.key !== 'Escape') return;
+      if(waveHub.dataset.hub !== 'project') return;
+      if(!waveHub.contains(document.activeElement)) return;
+      e.preventDefault();
+      resetToIdle();
+    });
+  }
 
   tabBtns.forEach(btn=>{
     btn.addEventListener('click', e=>{
       e.stopPropagation();
+      if(waveHub && waveHub.dataset.hub !== 'project') return;
       goToTab(btn.dataset.tab);
     });
   });
 
   wireContinueButtons();
-  selectProject('0', {scroll: false});
+  setIdleState();
 })();
 (function(){
   const tabWrap = document.getElementById('tabNavWrap');
