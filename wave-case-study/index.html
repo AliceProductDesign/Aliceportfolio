@@ -952,6 +952,47 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 .tab-content-set[data-project="1"] .block--split .split-visual .gallery .gallery-item{
   height:auto;
 }
+.tab-content-set[data-project="1"] .story{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}
+.tab-content-set[data-project="1"] .story__card{border-radius:24px;padding:36px 38px}
+.tab-content-set[data-project="1"] .story__card--challenge{background:#fff;border:1.5px solid #ece7dc}
+.tab-content-set[data-project="1"] .story__card--reframe{background:#CFE3E1;border:1.5px solid transparent}
+.tab-content-set[data-project="1"] .story__card h2,
+.tab-content-set[data-project="1"] .story__card p{max-width:none}
+.tab-content-set[data-project="1"] .story__card p{line-height:1.7}
+.tab-content-set[data-project="1"] .principles{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px}
+.tab-content-set[data-project="1"] .principle{background:#fff;border:1.5px solid #ece7dc;border-radius:20px;padding:26px 26px 28px}
+.tab-content-set[data-project="1"] .principle__num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;font-size:14px;font-weight:700;color:var(--ink,#33454A);margin-bottom:16px}
+.tab-content-set[data-project="1"] .principle:nth-child(1) .principle__num{background:#F9D9D3}
+.tab-content-set[data-project="1"] .principle:nth-child(2) .principle__num{background:#FBE3BC}
+.tab-content-set[data-project="1"] .principle:nth-child(3) .principle__num{background:#CFE3E1}
+.tab-content-set[data-project="1"] .principle h3{font-size:18px;line-height:1.3;font-weight:700;color:var(--teal,#478383);margin:0 0 10px;max-width:none}
+.tab-content-set[data-project="1"] .principle p{font-size:15px;line-height:1.65;color:var(--ink,#33454A);margin:0;max-width:none}
+@media (max-width:900px){
+  .tab-content-set[data-project="1"] .principles{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  .tab-content-set[data-project="1"] .story{grid-template-columns:1fr}
+  .tab-content-set[data-project="1"] .story__card{padding:28px 26px}
+}
+.tab-content-set[data-project="1"] .calls{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:32px}
+.tab-content-set[data-project="1"] .call{position:relative;background:#fff;border:1.5px solid #ece7dc;border-radius:20px;padding:26px 28px 28px}
+.tab-content-set[data-project="1"] .call__num{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;font-size:14px;font-weight:700;margin-bottom:16px;color:var(--ink,#33454A)}
+.tab-content-set[data-project="1"] .call h3{font-size:19px;line-height:1.3;font-weight:700;color:var(--teal,#478383);margin:0 0 10px;max-width:none}
+.tab-content-set[data-project="1"] .call p{font-size:15px;line-height:1.65;color:var(--ink,#33454A);margin:0;max-width:none}
+.tab-content-set[data-project="1"] .call:nth-child(1) .call__num{background:#F9D9D3}
+.tab-content-set[data-project="1"] .call:nth-child(2) .call__num{background:#FBE3BC}
+.tab-content-set[data-project="1"] .call:nth-child(3) .call__num{background:#CFE3E1}
+.tab-content-set[data-project="1"] .call:nth-child(4) .call__num{background:#F9D9D3}
+.tab-content-set[data-project="1"] .call:nth-child(5) .call__num{background:#FBE3BC}
+.tab-content-set[data-project="1"] .call--lead{grid-column:1 / -1;display:flex;gap:24px;align-items:flex-start;background:#F9D9D3;border-color:transparent;padding:32px 36px}
+.tab-content-set[data-project="1"] .call--lead .call__num{background:#fff;flex:none;margin:0}
+.tab-content-set[data-project="1"] .call--lead h3{font-size:24px}
+.tab-content-set[data-project="1"] .call--lead p{font-size:16px;max-width:70ch}
+@media (max-width:720px){
+  .tab-content-set[data-project="1"] .calls{grid-template-columns:1fr}
+  .tab-content-set[data-project="1"] .call--lead{flex-direction:column;gap:0;padding:26px 24px}
+  .tab-content-set[data-project="1"] .call--lead .call__num{margin-bottom:16px}
+}
 @media (max-width:900px){ .problem-visual img{width:100%; height:auto; max-height:480px; object-fit:cover; object-position:center top; border-radius:16px;} }
 
 </style>
@@ -1322,43 +1363,43 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 </div><div class="tab-content-set" data-project="1">
 <div class="tab-panel" data-panel="overview">
 
-  <div class="block block--split design-split">
-    <div class="split-copy">
-      <div class="section-eyebrow">The Challenge</div>
-      <h2>Build demand for a device that can't be sold yet.</h2>
-      <p>WAVE is an investigational, drug-free device from Hush Tech LLC, being studied for menstrual pain. It can't be sold until clinical trials in Nigeria and the United States lead to FDA clearance, but the company still needed visibility to build interest and support funding for those trials.</p>
-      <p>The site had three audiences with very different needs: women looking for options for menstrual pain, the clinicians who would recommend the device, and investors. For a regulated device, consumers and clinicians can't be shown the same claims.</p>
-      <p style="margin-bottom:0;">And it had to be built by a small founding team, with no budget for an agency or a development team.</p>
-    </div>
-    <div class="split-visual">
-      <div class="gallery-item">[IMG: The Challenge]</div>
-    </div>
-  </div>
-
-  <div class="block block--split design-split reverse">
-    <div class="split-copy">
-      <div class="section-eyebrow">The Reframe</div>
-      <h2>This wasn't an e-commerce problem yet.</h2>
-      <p style="margin-bottom:0;">It was a trust and lead-generation problem. How might we build interest in a product people can't buy yet, without making claims we're not allowed to make? That question shaped every decision that followed.</p>
-    </div>
-    <div class="split-visual">
-      <div class="gallery-item">[IMG: The Reframe]</div>
+  <div class="block">
+    <div class="story">
+      <article class="story__card story__card--challenge">
+        <div class="section-eyebrow">The Challenge</div>
+        <h2>Build demand for a device that can't be sold yet.</h2>
+        <p>WAVE is an investigational, drug-free device from Hush Tech LLC, being studied for menstrual pain. It can't be sold until clinical trials in Nigeria and the United States lead to FDA clearance, but the company still needed visibility to build interest and support funding for those trials.</p>
+        <p>The site had three audiences with very different needs: women looking for options for menstrual pain, the clinicians who would recommend the device, and investors. For a regulated device, consumers and clinicians can't be shown the same claims.</p>
+        <p style="margin-bottom:0;">And it had to be built by a small founding team, with no budget for an agency or a development team.</p>
+      </article>
+      <article class="story__card story__card--reframe">
+        <div class="section-eyebrow">The Reframe</div>
+        <h2>This wasn't an e-commerce problem yet.</h2>
+        <p style="margin-bottom:0;">It was a trust and lead-generation problem. How might we build interest in a product people can't buy yet, without making claims we're not allowed to make? That question shaped every decision that followed.</p>
+      </article>
     </div>
   </div>
 
-  <div class="block block--split design-split">
-    <div class="split-copy">
-      <div class="section-eyebrow">The Approach</div>
-      <h2>Separate the audiences, replace the sale, build for launch day.</h2>
-      <p>As part of the founding team, I took on the full build, from first wireframe to a working site. Three principles guided it:</p>
-      <ul class="key-list">
-        <li><strong>Separate audiences by regulatory risk.</strong> Consumers get brand-level messaging. Clinical claims live in a gated clinician site.</li>
-        <li><strong>Turn every "buy" moment into "Notify Me."</strong> Interest becomes a waiting list instead of a dead end.</li>
-        <li><strong>Build the full store now.</strong> When clearance comes, launch is a switch, not a redesign.</li>
-      </ul>
-    </div>
-    <div class="split-visual">
-      <div class="gallery-item">[IMG: The Approach]</div>
+  <div class="block">
+    <div class="section-eyebrow">The Approach</div>
+    <h2>Separate the audiences, replace the sale, build for launch day.</h2>
+    <p>As part of the founding team, I took on the full build, from first wireframe to a working site. Three principles guided it:</p>
+    <div class="principles">
+      <article class="principle">
+        <span class="principle__num">1</span>
+        <h3>Separate audiences by regulatory risk.</h3>
+        <p>Consumers get brand-level messaging. Clinical claims live in a gated clinician site.</p>
+      </article>
+      <article class="principle">
+        <span class="principle__num">2</span>
+        <h3>Turn every "buy" moment into "Notify Me."</h3>
+        <p>Interest becomes a waiting list instead of a dead end.</p>
+      </article>
+      <article class="principle">
+        <span class="principle__num">3</span>
+        <h3>Build the full store now.</h3>
+        <p>When clearance comes, launch is a switch, not a redesign.</p>
+      </article>
     </div>
   </div>
 
@@ -1434,54 +1475,41 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <p style="margin-bottom:0;">I started with site architecture, then core screens, then the cart and checkout flow, and finished with the backend. I mapped the UX in FigJam with a flowchart key covering happy, alternate, and error paths.</p>
     </div>
     <div class="split-visual">
-      <div class="gallery-item">[IMG: FigJam flow diagram]</div>
+      <div class="gallery-item"><img src="/assets/wave/wave-ecommerce-sitemap.png" alt="WAVE site map grouped into For Clinicians, Support, Legal and compliance, Why WAVE and the shop flow" width="2400" height="1800" loading="lazy" decoding="async"></div>
     </div>
   </div>
 
-  <div class="block block--split audit-split reverse">
-    <div class="audit-copy">
-      <div class="section-eyebrow">Decisions &amp; Tradeoffs</div>
-      <h2>Five calls that shaped the build.</h2>
-      <div class="audit-findings">
-        <div class="audit-finding">
-          <div class="audit-num">01</div>
-          <div>
-            <h4>One site, two experiences, split by regulatory risk</h4>
-            <p>I considered one site with everything, one site with heavy disclaimers, or two experiences on one codebase. One site risked showing clinical claims to consumers, and heavy disclaimers would undercut trust. So a dark clinician site, gated at launch, carries the clinical claims, and the consumer site stays at brand level.</p>
-          </div>
+  <div class="block">
+    <div class="section-eyebrow">Decisions &amp; Tradeoffs</div>
+    <h2>Five calls that shaped the build.</h2>
+    <div class="calls">
+      <article class="call call--lead">
+        <span class="call__num">01</span>
+        <div class="call__body">
+          <h3>One site, two experiences, split by regulatory risk</h3>
+          <p>I considered one site with everything, one site with heavy disclaimers, or two experiences on one codebase. One site risked showing clinical claims to consumers, and heavy disclaimers would undercut trust. So a dark clinician site, gated at launch, carries the clinical claims, and the consumer site stays at brand level.</p>
         </div>
-        <div class="audit-finding">
-          <div class="audit-num">02</div>
-          <div>
-            <h4>Custom build instead of Shopify</h4>
-            <p>Full ownership, no platform fees, and a data model shaped to the business. The cost was far more build effort.</p>
-          </div>
-        </div>
-        <div class="audit-finding">
-          <div class="audit-num">03</div>
-          <div>
-            <h4>Backend moved from Payload CMS to Supabase</h4>
-            <p>I moved to Supabase for real-time data and database-level security. The tradeoff was losing a ready-made admin interface, so I rebuilt the content workflows myself.</p>
-          </div>
-        </div>
-        <div class="audit-finding">
-          <div class="audit-num">04</div>
-          <div>
-            <h4>Single SKU and guest-first checkout</h4>
-            <p>Fewer decisions between interest and purchase.</p>
-          </div>
-        </div>
-        <div class="audit-finding">
-          <div class="audit-num">05</div>
-          <div>
-            <h4>Clinicians sit outside the storefront</h4>
-            <p>They reach WAVE through an email or PO inquiry and a gated, manually set up Bulk WAVE Portal.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="audit-visual">
-      <div class="gallery-item">[IMG: five calls that shaped the build]</div>
+      </article>
+      <article class="call">
+        <span class="call__num">02</span>
+        <h3>Custom build instead of Shopify</h3>
+        <p>Full ownership, no platform fees, and a data model shaped to the business. The cost was far more build effort.</p>
+      </article>
+      <article class="call">
+        <span class="call__num">03</span>
+        <h3>Backend moved from Payload CMS to Supabase</h3>
+        <p>I moved to Supabase for real-time data and database-level security. The tradeoff was losing a ready-made admin interface, so I rebuilt the content workflows myself.</p>
+      </article>
+      <article class="call">
+        <span class="call__num">04</span>
+        <h3>Single SKU and guest-first checkout</h3>
+        <p>Fewer decisions between interest and purchase.</p>
+      </article>
+      <article class="call">
+        <span class="call__num">05</span>
+        <h3>Clinicians sit outside the storefront</h3>
+        <p>They reach WAVE through an email or PO inquiry and a gated, manually set up Bulk WAVE Portal.</p>
+      </article>
     </div>
   </div>
 
