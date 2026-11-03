@@ -925,11 +925,20 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   min-height:0;
   margin:0;
 }
-.tab-content-set[data-project="1"] .gallery-item:has(img){
+.tab-content-set[data-project="1"] .gallery-item:has(img),
+.tab-content-set[data-project="1"] .gallery-item:has(.gallery-video){
   border:none;
   padding:0;
   background:transparent;
   min-height:0;
+}
+.tab-content-set[data-project="1"] .gallery-video{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:4/3;
+  border-radius:inherit;
+  background:var(--paper,#FBF9F4);
 }
 .tab-content-set[data-project="1"] .block--split .split-visual img,
 .tab-content-set[data-project="1"] .block--split .audit-visual img,
@@ -984,7 +993,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 .tab-content-set[data-project="1"] .call:nth-child(3) .call__num{background:#CFE3E1}
 .tab-content-set[data-project="1"] .call:nth-child(4) .call__num{background:#F9D9D3}
 .tab-content-set[data-project="1"] .call:nth-child(5) .call__num{background:#FBE3BC}
-.tab-content-set[data-project="1"] .call--lead{grid-column:1 / -1;display:flex;gap:24px;align-items:flex-start;background:#F9D9D3;border-color:transparent;padding:32px 36px}
+.tab-content-set[data-project="1"] .call--lead{grid-column:1 / -1;display:flex;gap:24px;align-items:flex-start;background:#CFE3E1;border-color:transparent;padding:32px 36px}
 .tab-content-set[data-project="1"] .call--lead .call__num{background:#fff;flex:none;margin:0}
 .tab-content-set[data-project="1"] .call--lead h3{font-size:24px}
 .tab-content-set[data-project="1"] .call--lead p{font-size:16px;max-width:70ch}
@@ -992,6 +1001,21 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   .tab-content-set[data-project="1"] .calls{grid-template-columns:1fr}
   .tab-content-set[data-project="1"] .call--lead{flex-direction:column;gap:0;padding:26px 24px}
   .tab-content-set[data-project="1"] .call--lead .call__num{margin-bottom:16px}
+}
+.tab-content-set[data-project="1"] .block--split .split-visual:has(.rq-card){
+  aspect-ratio:auto;
+  overflow:visible;
+  height:auto;
+}
+.tab-content-set[data-project="1"] .rq-card{background:#fff;border:1.5px solid #ece7dc;border-radius:28px;overflow:hidden;padding:28px 32px}
+.tab-content-set[data-project="1"] .rq-card__title{margin:0 0 18px;font-size:16px;font-weight:700;color:var(--teal,#478383);max-width:none}
+.tab-content-set[data-project="1"] .rq-card__list{margin:0;padding:0;list-style:none;counter-reset:q;display:flex;flex-direction:column;gap:14px}
+.tab-content-set[data-project="1"] .rq-card__list li{counter-increment:q;position:relative;padding-left:38px}
+.tab-content-set[data-project="1"] .rq-card__list li::before{content:counter(q);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:#CFE3E1;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--ink,#33454A)}
+.tab-content-set[data-project="1"] .rq-card__list li strong{display:block;font-size:14.5px;line-height:1.45;font-weight:600;color:var(--ink,#33454A)}
+.tab-content-set[data-project="1"] .rq-card__list li span{display:block;margin-top:4px;font-size:13px;line-height:1.4;color:var(--ink-soft,#5B6A6D)}
+@media (max-width:720px){
+  .tab-content-set[data-project="1"] .rq-card{padding:22px}
 }
 @media (max-width:900px){ .problem-visual img{width:100%; height:auto; max-height:480px; object-fit:cover; object-position:center top; border-radius:16px;} }
 
@@ -1403,7 +1427,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     </div>
   </div>
 
-  <div class="cs-banner is-placeholder">[IMG: E-Commerce banner, 2000 x 750]</div>
+  <div class="cs-banner">
+    <img src="/assets/wave/wave-ecommerce-banner.png" alt="WAVE e-commerce banner" width="1200" height="569" loading="lazy" decoding="async">
+  </div>
 
   <div class="block block--split audit-split reverse">
     <div class="audit-copy">
@@ -1435,7 +1461,14 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     </div>
     <div class="audit-visual">
       <div class="gallery">
-        <div class="gallery-item">[IMG: side-by-side consumer light theme vs clinician dark theme]</div>
+        <div class="gallery-item">
+          <video class="gallery-video" muted loop playsinline preload="metadata"
+            poster="/assets/wave/wave-ecommerce-two-experiences.png"
+            aria-label="The WAVE consumer storefront in a light theme beside the clinician site in a dark theme, both scrolling slowly from top to bottom"
+            width="1200" height="900">
+            <source src="/assets/wave/wave-ecommerce-two-experiences.mp4" type="video/mp4">
+          </video>
+        </div>
       </div>
     </div>
   </div>
@@ -1457,14 +1490,24 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
   <div class="block block--split design-split reverse">
     <div class="split-copy">
-      <div class="section-eyebrow">Research</div>
+      <div class="section-eyebrow">Competitive research</div>
       <h2>Learning from a brand that solved the same split.</h2>
-      <p>Because WAVE is pre-launch and regulated, my research was competitive and regulatory. Oura was my main reference: a health wearable with a consumer site and a separate site for organizations. That model became the split between the WAVE storefront and the clinician site.</p>
+      <p>Because WAVE is pre-launch and regulated, my research started with competitive and regulatory analysis. I looked for sites that had solved a similar problem: a health product that has to speak to consumers and to professionals without making the same claims to both.</p>
+      <p>Oura was my main reference: a health wearable with a consumer site and a separate site for organizations. That model became the split between the WAVE storefront and the clinician site.</p>
       <p>I also worked through the regulatory limits with the founding team, defining which claims each audience could see before designing any screens.</p>
-      <p style="margin-bottom:0;">The gap is direct user research. Before launch, I plan to test the consumer messaging with women who manage menstrual pain.</p>
+      <p style="margin-bottom:0;">Competitive research shows what other brands do, but not how a consumer decides to trust one. The questions on the left are the ones we asked to get at that.</p>
     </div>
     <div class="split-visual">
-      <div class="gallery-item"><img src="/assets/wave/wave-ecommerce-research-question.png" alt="Research question: how does a consumer buying a medical device online build enough trust to complete checkout?" width="2400" height="1800" loading="lazy" decoding="async"></div>
+      <aside class="rq-card">
+        <h3 class="rq-card__title">Questions we asked</h3>
+        <ol class="rq-card__list">
+          <li><strong>What would you need to see on this page before you'd leave your email for a product you can't buy yet?</strong><span>What earns the sign-up</span></li>
+          <li><strong>When you read that WAVE is an investigational device, what does that tell you about the product?</strong><span>How the status banner lands</span></li>
+          <li><strong>Which parts of this page feel like claims, and which feel like honest information?</strong><span>Where trust is built or lost</span></li>
+          <li><strong>After you tap Notify Me, what do you expect to happen next?</strong><span>Expectations after sign-up</span></li>
+          <li><strong>What makes you trust a medical device you find online?</strong><span>The research question, asked directly</span></li>
+        </ol>
+      </aside>
     </div>
   </div>
 
@@ -1518,10 +1561,11 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="section-eyebrow">Regulatory Constraint</div>
       <h2>Trust through transparency, not claims.</h2>
       <p>Since we can't promise results, the site earns trust by being honest about where WAVE stands. Every purchase-implying CTA across the site became a "Notify Me" email capture with a WAVE news opt-in, and payment methods came off the footer. A banner on every page states the device's status plainly:</p>
-      <p class="gap-statement" style="margin-bottom:0;">WAVE is an investigational device under research. Not FDA cleared or approved. Not yet available for commercial use.</p>
+      <p class="gap-statement">WAVE is an investigational device under research. Not FDA cleared or approved. Not for commercial use.</p>
+      <p style="margin-bottom:0;">A dedicated Clinical Evidence page goes one step further. It shows where the research stands today, including the planned studies and the approvals still pending, and it says plainly that it reports study status only and makes no claim that WAVE is safe or effective. Visitors can email the team to follow progress and ask about taking part in the studies, and clinicians can go straight to the clinician site to learn more or reach out about partnering as a trial site.</p>
     </div>
     <div class="split-visual">
-      <div class="gallery-item">[IMG: Notify Me flow and regulatory banner]</div>
+      <div class="gallery-item"><img src="/assets/wave/wave-ecommerce-notify-me.png" alt="The WAVE product page with a Notify Me flow: an email address field, an optional opt-in for other WAVE news and updates, and a Notify Me button that replaces the buy button until launch" width="2400" height="1800" loading="lazy" decoding="async"></div>
     </div>
   </div>
 
@@ -1580,10 +1624,6 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
           <p>I removed the decorative hover ring from dark CTAs but kept a visible focus outline for keyboard users. Brand pink now appears only in artwork, the logo, and soft background tints.</p>
           <p>Next: keyboard and screen reader testing across the checkout and Notify Me flows before launch.</p>
         </div>
-        <div class="reflect-card">
-          <h4>Collaboration</h4>
-          <p>A solo build as part of the founding team. The team set the product vision and the claims we could make, and I turned those limits into the site's structure. I owned design, development, and delivery.</p>
-        </div>
       </div>
     </div>
     <div class="split-visual">
@@ -1602,7 +1642,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="section-eyebrow">The Outcome</div>
       <h2>Pre-launch, so no metrics yet.</h2>
       <p>The site is built to launch the moment FDA clearance allows a sale. Until then, its job is to build trust and collect early interest from consumers, clinicians, and investors.</p>
-      <p style="margin-bottom:0;">The consumer storefront, clinician site, cart, checkout, and legal pages are built and running on a private preview. I'm not linking it here until the clinician site is gated, since it carries clinical content for an investigational device.</p>
+      <p>The consumer storefront, clinician site, cart, checkout, and legal pages are built and running on a private preview. I'm not linking it here until the clinician site is gated, since it carries clinical content for an investigational device.</p>
+      <h4>Collaboration</h4>
+      <p style="margin-bottom:0;">A solo build as part of the founding team. The team set the product vision and the claims we could make, and I turned those limits into the site's structure. I owned design, development, and delivery.</p>
     </div>
     <div class="split-visual">
       <div class="gallery-item">[IMG: The Outcome]</div>
@@ -1996,6 +2038,24 @@ window.addEventListener('scroll', ()=>{
   else{ backToTop.classList.remove('show'); }
 });
 backToTop.addEventListener('click', ()=>{ window.scrollTo({top:0, behavior:'smooth'}); });
+
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const videos = document.querySelectorAll('video.gallery-video');
+  if(!videos.length) return;
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach((entry)=>{
+      const video = entry.target;
+      if(entry.isIntersecting){
+        const play = video.play();
+        if(play && typeof play.catch === 'function') play.catch(function(){});
+      } else {
+        video.pause();
+      }
+    });
+  }, { threshold: 0.4 });
+  videos.forEach((video)=> observer.observe(video));
+})();
 </script>
 
 <script src="/assets/js/relay.js"></script>
