@@ -12,7 +12,7 @@
 <title>WAVE, Case Study, Alice Curiel</title>
 <style>
 :root{
-  --coral:#F2665A; --amber:#F5A94A; --amber-dark:#C97A1F; --ink:#33454A; --teal:#478383; --ink-soft:#5B6A6D;
+  --coral:#F2665A; --amber:#F5A94A; --amber-dark:#C97A1F; --yellow:#F5C518; --ink:#33454A; --teal:#478383; --ink-soft:#5B6A6D;
   --paper:#FBF9F4; --paper-alt:#F2EDE1; --graphite:#8B9290; --line:#33454A1a;
   --wv-navy:#241E4E; --wv-pink:#F0A8C4; --wv-blue:#7FA8D9;
   --eyebrow:#9A5416;
@@ -49,45 +49,60 @@ nav{position:sticky; top:0; z-index:200; display:flex; justify-content:space-bet
   nav .back-link{order:2;}
 }
 
-.cs-header{padding:var(--space-3) var(--space-6) 0; max-width:1240px; margin:0 auto;}
-.header-top{display:grid; grid-template-columns:1fr 1fr; gap:var(--space-6); align-items:center;}
+.cs-header{padding:48px 48px 30px; max-width:1240px; margin:0 auto;}
+.header-top{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
 .header-top .hero-image{margin:0; height:auto; min-height:0; aspect-ratio:3/4;}
+.title-row{display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
+.title-row h1{margin:0;}
+.cs-sub{margin-top:8px; font-size:15px; color:var(--graphite); font-weight:600;}
 .tag{display:inline-flex; align-items:center; font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; padding:4.5px 10.5px; border-radius:100px; background:#F5A94A22; border:1.5px solid #C97A1F; color:#C97A1F;}
 .tag.t1{background:#F5A94A22; border:1.5px solid #C97A1F; color:#C97A1F;}
 .tag.t2{background:#4FC77A22; border:1.5px solid #2E8F52; color:#2E8F52;}
 h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw,52px); line-height:1.05; letter-spacing:-0.01em; max-width:760px;}
-.title-row{display:flex; align-items:center; gap:var(--space-2); flex-wrap:wrap;}
-.title-row h1{margin:0;}
-.cs-sub{margin-top:var(--space-1); font-size:15px; color:var(--graphite); font-weight:600;}
 
-.meta-item span{display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--graphite); margin-bottom:var(--space-1);}
-.meta-item b{font-family:'Poppins',sans-serif; font-size:14px; font-weight:600; line-height:1.35;}
-.meta-row,
-.cs-header > .meta-row{
-  margin:var(--space-4) 0 var(--space-4); padding:var(--space-2) 0;
-  border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-}
+.meta-item span{display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--graphite); margin-bottom:5px;}
+.meta-item b{font-family:'Poppins',sans-serif; font-size:16px; font-weight:600;}
+.cs-header > .meta-row{margin:36px 0 0; padding:20px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
 @media (min-width:901px){
-  .meta-row,
-  .cs-header > .meta-row{
-    display:grid;
-    grid-template-columns:minmax(0,1.6fr) minmax(0,1.6fr) minmax(0,.9fr) minmax(0,.6fr) minmax(0,1fr);
-    gap:var(--space-3); align-items:start;
-  }
-  .meta-item{min-width:0;}
-  .meta-item b{font-size:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .cs-header > .meta-row{display:flex; flex-wrap:nowrap; justify-content:space-between; align-items:flex-start; gap:24px;}
+  .cs-header > .meta-row .meta-item{flex:0 1 auto; min-width:0;}
+  .cs-header > .meta-row .meta-item span{font-size:10.5px; letter-spacing:0.05em; white-space:nowrap;}
+  .cs-header > .meta-row .meta-item b{font-size:14.5px; line-height:1.35; white-space:nowrap;}
 }
 @media (min-width:601px) and (max-width:900px){
-  .meta-row,
-  .cs-header > .meta-row{display:grid; grid-template-columns:1fr 1fr; gap:var(--space-2) var(--space-3);}
-  .meta-item b{white-space:normal;}
+  .cs-header > .meta-row{display:grid; grid-template-columns:repeat(2,auto); justify-content:space-between; gap:18px 24px;}
+  .cs-header > .meta-row .meta-item b{white-space:normal;}
 }
 @media (max-width:600px){
-  .meta-row,
-  .cs-header > .meta-row{display:grid; grid-template-columns:1fr 1fr; gap:var(--space-2) var(--space-3);}
-  .meta-item b{white-space:normal; overflow:visible; text-overflow:unset; font-size:14px;}
+  .cs-header > .meta-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .cs-header > .meta-row .meta-item b{white-space:normal; font-size:14px;}
 }
 .meta-note{font-size:13px; color:var(--graphite); margin-top:14px; font-style:italic;}
+#tabSection{display:flex; flex-direction:column; scroll-margin-top:var(--nav-h); min-height:60vh;}
+#tabSection > .tab-content-set > .meta-row{
+  order:2; box-sizing:border-box; width:100%; max-width:1240px; margin:0 auto;
+  padding:20px var(--space-6); border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+}
+#hubProjectBanner{order:1; box-sizing:border-box; width:100%; max-width:1240px; margin:0 auto var(--space-3); padding:0 var(--space-6);}
+#tabSection > #tabNavAnchor{order:3;}
+#tabSection > .tab-content-set.active > .tab-panel{order:4;}
+@media (min-width:901px){
+  #tabSection > .tab-content-set > .meta-row{display:flex; flex-wrap:nowrap; justify-content:space-between; align-items:flex-start; gap:24px;}
+  #tabSection > .tab-content-set > .meta-row .meta-item{flex:0 1 auto; min-width:0;}
+  #tabSection > .tab-content-set > .meta-row .meta-item span{font-size:10.5px; letter-spacing:0.05em; white-space:nowrap;}
+  #tabSection > .tab-content-set > .meta-row .meta-item b{font-size:14.5px; line-height:1.35; white-space:nowrap;}
+}
+@media (min-width:601px) and (max-width:900px){
+  #tabSection > .tab-content-set > .meta-row{display:grid; grid-template-columns:repeat(2,auto); justify-content:space-between; gap:18px 24px;}
+  #tabSection > .tab-content-set > .meta-row .meta-item b{white-space:normal;}
+}
+@media (max-width:600px){
+  #tabSection > .tab-content-set > .meta-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  #tabSection > .tab-content-set > .meta-row .meta-item b{white-space:normal; font-size:14px;}
+}
+@media (max-width:860px){
+  #tabSection > .tab-content-set > .meta-row{padding-left:var(--space-3); padding-right:var(--space-3);}
+}
 .team-credits .section-eyebrow{margin-bottom:0;}
 .team-lead{background:var(--paper-alt); border-left:4px solid var(--coral); border-radius:0 12px 12px 0; padding:var(--space-3); margin:var(--space-2) 0 var(--space-3);}
 .team-lead__name{font:600 19px 'Poppins',sans-serif; color:var(--teal); margin:0 0 var(--space-2);}
@@ -108,10 +123,10 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 
 /* ---- TABS ---- */
 .tab-nav-anchor{position:relative;}
-.tab-nav-wrap{position:relative; z-index:150; width:100%; background:var(--paper); border-bottom:1px solid var(--line); padding:var(--space-2) 0; box-sizing:border-box;}
+.tab-nav-wrap{position:relative;}
 .tab-nav-sentinel{height:1px;width:100%;pointer-events:none;visibility:hidden;}
 .tab-nav-spacer{height:0;flex-shrink:0;transition:height .25s ease;}
-.tab-nav{position:relative; z-index:151; display:flex; justify-content:flex-start; max-width:1240px; margin:0 auto; padding:0 var(--space-6); background:transparent; overflow-x:auto;}
+.tab-nav{position:relative; z-index:150; display:flex; justify-content:flex-start; max-width:1240px; margin:0 auto; padding:16px 48px 0; background:transparent; overflow-x:auto; transition:background .25s ease, padding .25s ease, border-color .25s ease, box-shadow .25s ease, max-width .25s ease;}
 .tab-track{display:inline-flex; gap:4px; padding:5px; background:rgba(242,102,90,0.1); border:1.5px solid #F2665A; border-radius:100px; flex-shrink:0; transition:background .25s ease, border .25s ease, border-radius .25s ease, padding .25s ease, box-shadow .25s ease;}
 .tab-btn{font-family:'Inter',sans-serif; font-weight:600; font-size:13.5px; color:#F2665A; background:transparent; border:none; padding:10px 18px; border-radius:100px; cursor:pointer; transition:background-color .2s ease, color .2s ease; white-space:nowrap;}
 .tab-btn.active{color:#fff; background:#F2665A; box-shadow:0 4px 10px -3px #F2665A66;}
@@ -119,16 +134,16 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .tab-btn:focus-visible{outline:2px solid var(--coral); outline-offset:2px;}
 .tab-btn[hidden]{display:none;}
 @media (min-width:768px){
-  .tab-nav-wrap.is-sticky{position:fixed; top:var(--nav-h); left:0; right:0; width:100%; z-index:150; padding:var(--space-2) 0; background:var(--paper); border-bottom:1px solid var(--line);}
-  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0 var(--space-6); background:transparent; overflow-x:visible; justify-content:flex-start;}
-  .tab-nav-wrap.is-sticky .tab-track{width:auto; max-width:50%; display:inline-flex; justify-content:flex-start; gap:8px; box-sizing:border-box; background:#FBD4D4; box-shadow:0 8px 20px -10px #33454A33; transition:width .3s ease, background .25s ease, border .25s ease, border-radius .25s ease, padding .25s ease, box-shadow .25s ease;}
+  .tab-nav-wrap.is-sticky{position:fixed; top:var(--nav-h); left:0; right:0; width:100%; z-index:150; padding:14px 48px 0; box-sizing:border-box;}
+  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow-x:visible; justify-content:flex-start;}
+  .tab-nav-wrap.is-sticky .tab-track{width:auto; max-width:50%; display:inline-flex; justify-content:flex-start; gap:8px; box-sizing:border-box; box-shadow:0 8px 20px -10px #33454A33; transition:width .3s ease, background .25s ease, border .25s ease, border-radius .25s ease, padding .25s ease, box-shadow .25s ease;}
 }
 @media (max-width:767px){
   .tab-btn{color:var(--coral);}
   .tab-btn:active:not(.active){background:rgba(242,102,90,0.22); color:var(--coral);}
-  .tab-nav-wrap.is-sticky{position:fixed; top:var(--nav-h); left:0; right:0; width:100%; z-index:150; padding:var(--space-2) 0; background:var(--paper); border-bottom:1px solid var(--line);}
-  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0 var(--space-3); background:transparent; overflow:visible; justify-content:flex-start;}
-  .tab-nav-wrap.is-sticky .tab-track{width:auto; max-width:calc(100vw - 48px); display:inline-flex; justify-content:flex-start; background:#FBD4D4; border-radius:100px; box-shadow:0 8px 16px -10px #33454A33; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; padding-right:12px; scroll-padding-inline-end:12px;}
+  .tab-nav-wrap.is-sticky{position:fixed; top:var(--nav-h); left:0; right:0; width:100%; z-index:150; padding:14px 16px 0; box-sizing:border-box; background:transparent;}
+  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow:visible; justify-content:center;}
+  .tab-nav-wrap.is-sticky .tab-track{width:auto; max-width:calc(100vw - 32px); display:inline-flex; justify-content:flex-start; border-radius:100px; box-shadow:0 8px 16px -10px #33454A33; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; padding-right:12px; scroll-padding-inline-end:12px;}
 }
 
 .tab-panel{display:none; max-width:1240px; margin:0 auto; padding:var(--space-5) var(--space-6) var(--space-6); animation:fadeIn .35s ease;}
@@ -186,9 +201,6 @@ p{font-family:'Inter',sans-serif; font-size:15.5px; line-height:1.7; font-weight
 }
 .tab-panel .mission-body{
   font-size:14.5px; line-height:1.65; color:#ffffffcc; margin:0;
-}
-.tab-panel .cs-try__note{
-  font-size:13px; line-height:1.5; color:var(--graphite); margin:0;
 }
 .block{margin-bottom:var(--space-7);}
 .block--split > *{min-width:0;}
@@ -702,82 +714,164 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
   clip:rect(0,0,0,0); white-space:nowrap; border:0;
 }
-#hubBanner{
-  border-radius:22px; background:rgba(242,102,90,0.1); border:1px solid var(--line);
-  padding:var(--space-5) var(--space-6); margin-bottom:var(--space-4);
-  display:grid; grid-template-rows:1fr; transition:grid-template-rows 350ms ease, opacity 350ms ease, margin 350ms ease, padding 350ms ease;
+.hub-copy-body{transition:opacity 200ms ease;}
+.header-top .hub-hero-cards{
+  margin:0; height:auto; min-height:0; aspect-ratio:3/4;
+  display:flex; flex-direction:column; gap:16px; overflow:hidden;
 }
-#hubBanner .hub-banner-inner{overflow:hidden; min-height:0;}
-#waveHub[data-hub="project"] #hubBanner{
-  grid-template-rows:0fr; opacity:0; margin-bottom:0; padding-top:0; padding-bottom:0; border-color:transparent;
+.hub-cards-wrap{display:flex; flex-direction:column; gap:16px; flex:1 1 auto; min-height:0; width:100%;}
+.hub-cards{display:flex; flex-direction:column; gap:16px; flex:1 1 auto; min-height:0;}
+.hub-idle-reveal{
+  display:grid; grid-template-rows:1fr;
+  transition:grid-template-rows 350ms ease, opacity 350ms ease, margin 350ms ease;
+}
+.hub-idle-reveal > .hub-idle-reveal-inner{overflow:hidden; min-height:0;}
+#waveHub[data-hub="project"] .hub-header-copy.hub-idle-reveal{
+  grid-template-rows:0fr; opacity:0; margin:0; pointer-events:none;
+}
+#waveHub[data-hub="project"] .hub-hero-cards{display:none;}
+#waveHub[data-hub="project"] .header-top{height:auto; max-height:none; min-height:0;}
+#waveHub[data-hub="project"] .cs-header{display:none;}
+.hub-project-banner{
+  position:relative; width:100%; aspect-ratio:8/3; border-radius:16px; overflow:hidden;
+}
+.hub-project-banner__media{position:absolute; inset:0;}
+.hub-project-banner__media img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:none;
+}
+.hub-project-banner__media img.is-active{display:block;}
+.hub-project-banner__media .relay-image-wrap{position:absolute; inset:0; width:100%; height:100%; min-height:0; border-radius:inherit; background:transparent;}
+.hub-project-banner__media .relay-image-wrap img{position:absolute; inset:0;}
+.hub-project-banner__shade{
+  position:absolute; left:0; right:0; bottom:0; height:45%; z-index:1;
+  background:linear-gradient(to top, rgba(51,69,74,0.75), transparent);
   pointer-events:none;
 }
-.hub-lead{
-  margin:var(--space-2) 0 0; font-size:15.5px; line-height:1.55; color:var(--ink-soft); max-width:640px;
+.hub-banner-switch{
+  display:flex; align-items:center; gap:8px; flex-wrap:wrap; justify-content:flex-end; margin-left:auto;
 }
-.hub-cards-row{
-  display:flex; align-items:stretch; gap:var(--space-2); max-width:1240px; margin-top:var(--space-4);
+.hub-switch-hint{
+  font-size:13px; font-weight:600; color:var(--paper);
 }
-.hub-all-projects{
-  display:none; flex-shrink:0; align-self:center;
-  font-family:'Inter',sans-serif; font-weight:600; font-size:13px; color:var(--coral);
-  background:transparent; border:1.5px solid var(--coral); border-radius:100px;
-  padding:10px 16px; cursor:pointer; white-space:nowrap;
+.hub-switch-link{
+  border:none; background:transparent; padding:0; cursor:pointer;
+  font:inherit; font-weight:600; font-size:14px; color:var(--paper);
+  text-decoration:underline; text-underline-offset:3px;
 }
-.hub-all-projects:hover{background:rgba(242,102,90,0.12);}
-.hub-all-projects:focus-visible{outline:2px solid var(--coral); outline-offset:3px;}
-#waveHub[data-hub="project"] .hub-all-projects{display:inline-flex;}
-.hub-cards{
-  display:grid; grid-template-columns:repeat(3,1fr); gap:20px; flex:1 1 auto; min-width:0;
-  align-items:stretch;
+.hub-switch-link:hover{opacity:.88;}
+.hub-switch-link:focus-visible{outline:2px solid var(--coral); outline-offset:2px;}
+.hub-project-banner__foot{
+  position:absolute; left:0; right:0; bottom:0; z-index:2;
+  display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  padding:16px 20px;
 }
-#waveHub[data-hub="project"] .hub-card:not([aria-pressed="true"]){opacity:.55;}
-#waveHub[data-hub="project"] .hub-card-thumb{
-  height:0; opacity:0; aspect-ratio:auto; border-bottom-width:0; padding:0;
-  transition:height 350ms ease, opacity 350ms ease, border-width 350ms ease;
+.hub-project-banner__labels{display:flex; align-items:center; flex-wrap:wrap; gap:10px;}
+.hub-project-banner__foot .hub-card-title-pill{position:static; max-width:none;}
+@media (max-width:860px){
+  #hubProjectBanner{margin-bottom:var(--space-2); padding-left:var(--space-3); padding-right:var(--space-3);}
 }
-#waveHub[data-hub="project"] .hub-card-desc{display:none;}
-#waveHub[data-hub="project"] .hub-card-body{
-  height:56px; min-height:56px; padding:0 14px; justify-content:center;
+@media (min-width:1100px){
+  #waveHub[data-hub="idle"] .header-top{height:731px; max-height:731px;}
+  #waveHub[data-hub="idle"] .hub-hero-cards .hub-card{flex:1 1 0; min-height:0;}
+  #waveHub[data-hub="idle"] .hub-card-thumb{height:100%; flex:1 1 auto; aspect-ratio:unset; border-bottom:none;}
 }
-#waveHub[data-hub="project"] .hub-card-head{align-items:center;}
-#waveHub[data-hub="project"] .hub-card-head h3{font-size:15px;}
+#waveHub[data-hub="idle"] .hub-card{
+  display:flex; flex-direction:column; flex:1 1 0; min-height:0;
+}
+#waveHub[data-hub="idle"] .hub-card-body{display:none;}
 #tabSection[hidden]{display:none !important;}
 @media (prefers-reduced-motion: reduce){
-  #hubBanner, #waveHub[data-hub="project"] .hub-card-thumb{transition:none;}
+  .hub-idle-reveal, .hub-copy-body, .hub-card__open-face{transition:none;}
 }
 @media (max-width:860px){
-  .hub-cards{grid-template-columns:1fr;}
-  .hub-card-thumb{aspect-ratio:16/8;}
-  #waveHub[data-hub="project"] .hub-cards-row{flex-direction:column; align-items:stretch;}
-  #waveHub[data-hub="project"] .hub-all-projects{align-self:flex-start;}
+  #waveHub[data-hub="idle"] .header-top{grid-template-columns:1fr; height:auto; max-height:none;}
+  #waveHub[data-hub="idle"] .hub-hero-cards{aspect-ratio:auto;}
+  #waveHub[data-hub="idle"] .hub-card{min-height:200px;}
 }
 .hub-card{
   display:flex; flex-direction:column; align-items:stretch; text-align:left;
   border:2px solid var(--line); border-radius:22px; background:var(--paper);
-  padding:0; cursor:pointer; font-family:inherit; color:inherit;
+  padding:0; font-family:inherit; color:inherit;
   min-height:0; height:100%; overflow:hidden;
   transform:none;
   transition:border-color .25s ease, box-shadow .25s ease;
   box-shadow:0 12px 28px -18px #33454A44;
+  position:relative;
 }
-.hub-card:hover{transform:none;}
-.hub-card[aria-pressed="true"]{
-  border:2px solid var(--coral);
-  transform:none;
-  box-shadow:0 12px 28px -16px #33454A55;
+.hub-card:not([data-inactive="true"]):hover,
+.hub-card:not([data-inactive="true"]):focus-within,
+.hub-card:not([data-inactive="true"]):active{
+  border-color:var(--yellow);
+  box-shadow:0 26px 46px -18px #33454A44, 0 0 0 3px #F5C51833;
 }
-.hub-card:focus-visible{outline:2px solid var(--coral); outline-offset:3px;}
-.hub-card:disabled,
-.hub-card[aria-disabled="true"]{
-  cursor:default; opacity:1; filter:none; color:inherit; pointer-events:none;
+.hub-card[data-selected="true"]{
+  border-color:var(--yellow);
+  box-shadow:0 26px 46px -18px #33454A44, 0 0 0 3px #F5C51833;
+}
+.hub-card[data-inactive="true"]{
+  cursor:not-allowed; filter:grayscale(1); opacity:.65;
   box-shadow:0 12px 28px -18px #33454A44;
 }
 .hub-card-thumb{
-  aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;
+  display:flex; align-items:center; justify-content:center;
   transition:height 350ms ease, opacity 350ms ease, border-width 350ms ease;
   border-bottom:1px solid var(--line); padding:0; position:relative;
-  width:100%; margin:0;
+  width:100%; margin:0; min-height:0;
+}
+.hub-card__select{
+  position:absolute; inset:0; z-index:1; width:100%; height:100%;
+  margin:0; padding:0; border:none; border-radius:0; background:transparent;
+  cursor:pointer; font:inherit; color:inherit;
+  display:flex; align-items:center; justify-content:center;
+}
+.hub-card__select:focus-visible{outline:2px solid var(--coral); outline-offset:-2px;}
+.hub-card[data-inactive="true"] .hub-card__select{cursor:not-allowed;}
+.hub-card__open{
+  position:absolute; bottom:12px; left:12px; z-index:3;
+  margin:0; padding:0; border:0; background:none; cursor:pointer;
+  font:inherit; max-width:calc(100% - 24px);
+  display:inline-grid; width:max-content; height:auto;
+}
+.hub-card__open:focus-visible{outline:2px solid var(--coral); outline-offset:2px;}
+.hub-card__open-face{
+  position:static; grid-area:1/1; justify-self:start; align-self:start;
+  width:max-content; white-space:nowrap;
+  transition:opacity 150ms ease, visibility 150ms ease;
+}
+.hub-card__open-face--title{
+  overflow:hidden; text-overflow:ellipsis; max-width:100%;
+}
+.hub-card__open-face--cta{
+  opacity:0; visibility:hidden; pointer-events:none;
+}
+.hub-card__open-face--cta svg{width:14px; height:14px; flex-shrink:0;}
+.hub-card:not([data-inactive="true"]):hover .hub-card__open-face--title,
+.hub-card:not([data-inactive="true"]):focus-within .hub-card__open-face--title{
+  opacity:0; visibility:hidden; pointer-events:none;
+}
+.hub-card:not([data-inactive="true"]):hover .hub-card__open-face--cta,
+.hub-card:not([data-inactive="true"]):focus-within .hub-card__open-face--cta{
+  opacity:1; visibility:visible; pointer-events:auto;
+}
+@media (hover: none){
+  .hub-card:not([data-inactive="true"])[data-selected="true"] .hub-card__open-face--title{
+    opacity:0; visibility:hidden; pointer-events:none;
+  }
+  .hub-card:not([data-inactive="true"])[data-selected="true"] .hub-card__open-face--cta{
+    opacity:1; visibility:visible; pointer-events:auto;
+  }
+}
+.hub-card-title-pill{
+  display:inline-flex; align-items:center;
+  font-family:'Poppins',sans-serif; font-size:13px; font-weight:600; line-height:1.2;
+  padding:8px 14px; border-radius:100px;
+  background:rgba(255,255,255,0.94); color:var(--teal);
+  white-space:nowrap; max-width:calc(100% - 24px);
+  box-sizing:border-box;
+}
+.hub-card-thumb > .hub-card-title-pill{
+  position:absolute; bottom:12px; left:12px; z-index:2;
+  pointer-events:none;
 }
 .hub-badge{
   position:absolute; top:12px; left:12px; z-index:1;
@@ -787,21 +881,12 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   background:rgba(255,255,255,0.92); color:var(--ink);
   pointer-events:none;
 }
-#metaRow{
-  transition:opacity .15s ease;
-}
-#metaRow .meta-item b{
-  display:block;
-}
-@media (max-width:900px){
-  #metaRow .meta-item b{min-height:0;}
-}
-@media (prefers-reduced-motion: reduce){
-  #metaRow{transition:none;}
-}
 .hub-card-thumb .placeholder-note{padding:0 8px;}
 .hub-card-thumb img{
   width:100%; height:100%; object-fit:cover; object-position:center; display:block;
+}
+.hub-card__select img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center;
 }
 .hub-card-thumb .relay-image-wrap{
   position:absolute; inset:0; width:100%; height:100%; min-height:0;
@@ -830,14 +915,13 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   font-size:11px; font-weight:700; color:var(--coral); text-transform:uppercase;
   letter-spacing:0.04em; flex-shrink:0; visibility:hidden; line-height:1.4;
 }
-.hub-card[aria-pressed="true"] .hub-card-selected{visibility:visible;}
+.hub-card[data-selected="true"] .hub-card-selected{visibility:visible;}
 .hub-card-desc{
   font-size:14px; line-height:1.5; color:var(--ink-soft); margin:0; max-width:none;
   display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
 }
 .tab-content-set{display:none;}
-.tab-content-set.active{display:block;}
-#tabSection{scroll-margin-top:var(--nav-h); min-height:60vh;}
+.tab-content-set.active{display:contents;}
 #tabSection .tab-nav-anchor{margin-top:0;}
 .tab-cta{
   display:flex;
@@ -869,7 +953,6 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   transition:background-color .2s ease, color .2s ease;
 }
 .tab-cta-btn:hover{background:var(--ink); color:#fff;}
-.cs-try{margin-top:24px; display:flex; flex-direction:column; align-items:flex-start; gap:10px;}
 .cs-btn{
   display:inline-flex; align-items:center; justify-content:center; gap:8px;
   background:var(--coral); color:#fff; font-family:'Inter',sans-serif;
@@ -879,7 +962,6 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 }
 .cs-btn:hover{background:var(--ink); color:#fff;}
 .cs-btn:focus-visible{outline:2px solid var(--coral); outline-offset:2px;}
-.cs-try__note{font-family:'Inter',sans-serif; font-size:13px; color:var(--graphite); max-width:440px; margin:0;}
 @media (max-width:900px){
   .cs-btn{width:100%; max-width:360px;}
 }
@@ -1081,9 +1163,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 </div>
 
 <nav>
-  <a href="../#work" class="back-link">
-    <svg viewBox="0 0 100 100" fill="none"><path d="M75 50 H30 M50 25 L25 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    All work
+  <a href="../#work" class="back-link" id="hubNavBack">
+    <svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M75 50 H30 M50 25 L25 50 L50 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span id="hubNavBackLabel">All work</span>
   </a>
   <a href="/" class="nav-mark" aria-label="Back to home">
     <svg width="105" height="23" viewBox="150 95 465 115" xmlns="http://www.w3.org/2000/svg">
@@ -1103,60 +1185,111 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
 <div id="waveHub" data-hub="idle">
 <div class="visually-hidden" aria-live="polite" id="hubStatus"></div>
+<div class="visually-hidden" aria-live="polite" id="hubPreviewLive"></div>
 <header class="cs-header">
-  <section id="hubBanner">
-    <div class="hub-banner-inner">
-      <div class="title-row">
-        <h1>WAVE</h1>
-        <span class="tag t1">Branding</span>
-        <span class="tag">E-Commerce</span>
-        <span class="tag t2">Clinical App</span>
+  <div class="header-top">
+    <div class="hub-header-copy hub-idle-reveal">
+      <div class="hub-idle-reveal-inner">
+        <div class="title-row">
+          <h1>WAVE</h1>
+          <span class="tag t1">Branding</span>
+          <span class="tag">E-Commerce</span>
+          <span class="tag t2">Clinical App</span>
+        </div>
+        <p class="cs-sub">FDA Medical Device · Women's Health</p>
+        <div class="hub-copy-body" id="hubCopyBody">
+          <div class="block" style="margin-top:16px; margin-bottom:16px;">
+            <div class="section-eyebrow">The Challenge</div>
+            <div id="hubChallengeText">
+              <p>WAVE is an investigational, drug-free device from Hush Tech LLC, being studied for menstrual pain. It can't be sold until clinical trials lead to FDA clearance, but the company still needed visibility to build interest and support funding for those trials.</p>
+              <p>The site served three audiences, and each needed something different: women looking for options for menstrual pain, the clinicians who would recommend the device, and investors. For a regulated device, consumers and clinicians can't be shown the same claims.</p>
+              <p style="margin-bottom:0;">The deeper challenge: this wasn't an e-commerce problem yet. It was a trust and lead-generation problem, and it had to be solved by a small founding team with no budget for an agency or a development team.</p>
+            </div>
+          </div>
+          <div class="block" style="margin-bottom:0;">
+            <div class="section-eyebrow">The Solution</div>
+            <div id="hubSolutionText">
+              <p>One codebase, two experiences: a warm consumer storefront where every purchase moment becomes a "Notify Me" sign-up, and a separate clinician site for the clinical claims only clinicians should see. A status banner on every page states plainly that WAVE is an investigational device, so the site earns trust through transparency, not claims.</p>
+              <p style="margin-bottom:0;">The full purchase flow is designed and ready, so when clearance comes, launch is a switch, not a redesign.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <p class="cs-sub">FDA Medical Device · Women's Health · Brand, Product &amp; Commerce Systems</p>
-      <p class="hub-lead">Three bodies of work on one medical device.</p>
     </div>
-  </section>
-
-  <div class="hub-cards-row">
-    <button type="button" class="hub-all-projects" id="hubAllProjects" hidden>All projects</button>
-    <div class="hub-cards" id="cardsRow">
-    <button type="button" class="hub-card" data-project="0" aria-pressed="false">
-      <div class="hub-card-thumb hub-card-thumb--brand">
-        <img data-relay src="/assets/wave/wave-brand-card-img.jpg" alt="WAVE branding, device, box, and business cards">
+    <div class="hero-image hub-hero-cards" style="border:none; padding:0; background:none; overflow:hidden;">
+      <div class="hub-cards-wrap" id="hubCardsWrap">
+        <div class="hub-cards" id="cardsRow">
+          <div class="hub-card" data-project="1" data-hub-key="ecommerce" data-selected="true">
+            <div class="hub-card-thumb hub-card-thumb--commerce">
+              <button type="button" class="hub-card__select" aria-pressed="true" aria-label="Select E-Commerce Site">
+                <img data-relay src="/assets/wave/wave-ecommerce-banner.png" alt="WAVE e-commerce banner">
+              </button>
+              <button type="button" class="hub-card__open" aria-label="View case study: E-Commerce Site">
+                <span class="hub-card-title-pill hub-card__open-face hub-card__open-face--title">E-Commerce Site</span>
+                <span class="tab-cta-btn hub-card__open-face hub-card__open-face--cta">View case study
+                  <svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </button>
+            </div>
+            <div class="hub-card-body">
+              <div class="hub-card-head"><h3>E-Commerce Site</h3><span class="hub-card-selected">Selected</span></div>
+              <p class="hub-card-desc">A pre-launch storefront and gated clinician site, built solo, that turns a device no one can buy yet into a waiting list. Outcome: Built to launch the moment FDA clearance allows a sale.</p>
+            </div>
+          </div>
+          <div class="hub-card" data-project="0" data-hub-key="branding">
+            <div class="hub-card-thumb hub-card-thumb--brand">
+              <button type="button" class="hub-card__select" aria-pressed="false" aria-label="Select Product Branding">
+                <img data-relay src="/assets/wave/wave-banner-branding.png" alt="WAVE branding banner">
+              </button>
+              <button type="button" class="hub-card__open" aria-label="View case study: Product Branding">
+                <span class="hub-card-title-pill hub-card__open-face hub-card__open-face--title">Product Branding</span>
+                <span class="tab-cta-btn hub-card__open-face hub-card__open-face--cta">View case study
+                  <svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M25 50 H75 M55 25 L80 50 L55 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </button>
+            </div>
+            <div class="hub-card-body">
+              <div class="hub-card-head"><h3>Product Branding</h3><span class="hub-card-selected">Selected</span></div>
+              <p class="hub-card-desc">Evolving a clinical medical device into a warm, human-centered wellness brand. Outcome: A unified brand carried WAVE into the ACOG exhibit.</p>
+            </div>
+          </div>
+          <div class="hub-card" data-project="2" data-hub-key="epro" data-inactive="true">
+            <div class="hub-card-thumb hub-card-thumb--epro">
+              <button type="button" class="hub-card__select" aria-pressed="false" aria-disabled="true" disabled tabindex="-1">
+                <span class="placeholder-note">[IMG: ePRO app screens]</span>
+              </button>
+              <span class="hub-badge">Upcoming</span>
+              <span class="hub-card-title-pill">ePRO App</span>
+            </div>
+            <div class="hub-card-body">
+              <div class="hub-card-head"><h3>ePRO App</h3><span class="hub-card-selected">Selected</span></div>
+              <p class="hub-card-desc">Patient-reported outcomes for a $2M pivotal trial with 250+ participants. Outcome: UX and design system in progress for trial reporting.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="hub-card-body">
-        <div class="hub-card-head"><h3>Product Branding</h3><span class="hub-card-selected">Selected</span></div>
-        <p class="hub-card-desc">Evolving a clinical medical device into a warm, human-centered wellness brand. Outcome: A unified brand carried WAVE into the ACOG exhibit.</p>
-      </div>
-    </button>
-    <button type="button" class="hub-card" data-project="1" aria-pressed="false">
-      <div class="hub-card-thumb hub-card-thumb--commerce"><span class="placeholder-note">[IMG: storefront home page, desktop]</span></div>
-      <div class="hub-card-body">
-        <div class="hub-card-head"><h3>E-Commerce Site</h3><span class="hub-card-selected">Selected</span></div>
-        <p class="hub-card-desc">A pre-launch storefront and gated clinician site, built solo, that turns a device no one can buy yet into a waiting list. Outcome: Built to launch the moment FDA clearance allows a sale.</p>
-      </div>
-    </button>
-    <button type="button" class="hub-card" data-project="2" aria-pressed="false">
-      <div class="hub-card-thumb hub-card-thumb--epro"><span class="hub-badge">Upcoming</span><span class="placeholder-note">[IMG: ePRO app screens]</span></div>
-      <div class="hub-card-body">
-        <div class="hub-card-head"><h3>ePRO App</h3><span class="hub-card-selected">Selected</span></div>
-        <p class="hub-card-desc">Patient-reported outcomes for a $2M pivotal trial with 250+ participants. Outcome: UX and design system in progress for trial reporting.</p>
-      </div>
-    </button>
     </div>
-  </div>
-
-  <div class="meta-row" id="metaRow" hidden>
-    <div class="meta-item"><span>Role</span><b>Creative Director, Brand &amp; Product</b></div>
-    <div class="meta-item"><span>Scope</span><b>Logo, Visual Identity + Packaging</b></div>
-    <div class="meta-item"><span>Timeline</span><b>4 months</b></div>
-    <div class="meta-item"><span>Year</span><b>2024</b></div>
-    <div class="meta-item"><span>Team</span><b>With 3 Teammates</b></div>
   </div>
 </header>
 
 <div id="tabSection" hidden aria-hidden="true">
 <h2 class="visually-hidden" id="tabSectionHeading" tabindex="-1">Project details</h2>
+<div class="hub-project-banner" id="hubProjectBanner">
+  <div class="hub-project-banner__media" id="hubBannerMedia">
+    <img data-relay class="hub-project-banner__img" data-project-banner="0" src="/assets/wave/wave-banner-branding.png" alt="WAVE branding, Experience Good Days Every Day">
+    <img class="hub-project-banner__img" data-project-banner="1" src="/assets/wave/wave-ecommerce-banner.png" alt="WAVE e-commerce banner" width="1200" height="569" loading="lazy" decoding="async">
+  </div>
+  <div class="hub-project-banner__shade" aria-hidden="true"></div>
+  <div class="hub-project-banner__foot">
+    <div class="hub-project-banner__labels">
+      <span class="hub-card-title-pill" id="hubBannerTitle"></span>
+    </div>
+    <div class="hub-banner-switch">
+      <span class="hub-switch-hint">Switch project</span>
+      <button type="button" class="hub-switch-link" id="hubSwitchProject" hidden></button>
+    </div>
+  </div>
+</div>
 <div class="tab-nav-anchor" id="tabNavAnchor">
   <div class="tab-nav-sentinel" id="tabNavSentinel" aria-hidden="true"></div>
   <div class="tab-nav-spacer" id="tabNavSpacer" aria-hidden="true"></div>
@@ -1172,6 +1305,13 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 </div>
 </div>
 <div class="tab-content-set" data-project="0">
+<div class="meta-row hub-meta-row">
+  <div class="meta-item"><span>Role</span><b>Creative Director, Brand &amp; Product</b></div>
+  <div class="meta-item"><span>Scope</span><b>Logo, Visual Identity + Packaging</b></div>
+  <div class="meta-item"><span>Timeline</span><b>4 months</b></div>
+  <div class="meta-item"><span>Year</span><b>2024</b></div>
+  <div class="meta-item"><span>Team</span><b>With 3 Teammates</b></div>
+</div>
 <div class="tab-panel" data-panel="overview">
 
   <div class="block cs-duo">
@@ -1186,10 +1326,6 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <p>A full brand system redesign built around "warm authority", the strategic middle ground between clinical coldness and wellness softness. New logo, visual identity, color and typography system, packaging, messaging framework, and social media direction.</p>
       <p style="margin-bottom:0;">Delivered as a complete, handoff-ready brand system that became the foundation for the website and all marketing going forward.</p>
     </div>
-  </div>
-
-  <div class="cs-banner">
-    <img data-relay src="/assets/wave/hero-wave.png" alt="WAVE branding banner">
   </div>
 
 <div class="block block--split problem-split problem-split--small">
@@ -1437,6 +1573,13 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   </a>
 </div>
 </div><div class="tab-content-set" data-project="1">
+<div class="meta-row hub-meta-row">
+  <div class="meta-item"><span>Role</span><b>Sole Designer &amp; Builder</b></div>
+  <div class="meta-item"><span>Scope</span><b>Storefront + Clinician Site + Admin</b></div>
+  <div class="meta-item"><span>Timeline</span><b>1 month</b></div>
+  <div class="meta-item"><span>Year</span><b>2026</b></div>
+  <div class="meta-item"><span>Team</span><b>Solo (founding team)</b></div>
+</div>
 <div class="tab-panel" data-panel="overview">
 
   <div class="block">
@@ -1445,7 +1588,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <div class="section-eyebrow">The Challenge</div>
         <h2>Build demand for a device that can't be sold yet.</h2>
         <p>WAVE is an investigational, drug-free device from Hush Tech LLC, being studied for menstrual pain. It can't be sold until clinical trials in Nigeria and the United States lead to FDA clearance, but the company still needed visibility to build interest and support funding for those trials.</p>
-        <p>The site had three audiences with very different needs: women looking for options for menstrual pain, the clinicians who would recommend the device, and investors. For a regulated device, consumers and clinicians can't be shown the same claims.</p>
+        <p>The site served three audiences, and each needed something different: women looking for options for menstrual pain, the clinicians who would recommend the device, and investors. For a regulated device, consumers and clinicians can't be shown the same claims.</p>
         <p style="margin-bottom:0;">And it had to be built by a small founding team, with no budget for an agency or a development team.</p>
       </article>
       <article class="story__card story__card--reframe">
@@ -1477,10 +1620,6 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
         <p>When clearance comes, launch is a switch, not a redesign.</p>
       </article>
     </div>
-  </div>
-
-  <div class="cs-banner">
-    <img src="/assets/wave/wave-ecommerce-banner.png" alt="WAVE e-commerce banner" width="1200" height="569" loading="lazy" decoding="async">
   </div>
 
   <div class="block block--split audit-split reverse">
@@ -1745,6 +1884,13 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
 </div>
 </div><div class="tab-content-set" data-project="2">
+<div class="meta-row hub-meta-row">
+  <div class="meta-item"><span>Role</span><b>[PLACEHOLDER: your role on the ePRO app]</b></div>
+  <div class="meta-item"><span>Scope</span><b>UX + Design System for a Clinical Trial App</b></div>
+  <div class="meta-item"><span>Timeline</span><b>[PLACEHOLDER: timeline]</b></div>
+  <div class="meta-item"><span>Year</span><b>[PLACEHOLDER: year]</b></div>
+  <div class="meta-item"><span>Team</span><b>[PLACEHOLDER: team]</b></div>
+</div>
 <div class="tab-panel" data-panel="overview">
 
   <div class="block cs-duo">
@@ -1789,7 +1935,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="split-visual">
       <div class="gallery">
         <div class="gallery-item">
-          <!-- TODO: Replace with Figma export — <div class="gallery-item has-img"><img data-relay src="/assets/wave/epro-time-zero-gate.png" alt="Time Zero Gate — eligibility check + pain scale"></div> -->
+          <!-- TODO: Replace with Figma export: <div class="gallery-item has-img"><img data-relay src="/assets/wave/epro-time-zero-gate.png" alt="Time Zero Gate, eligibility check + pain scale"></div> -->
           Time Zero Gate, eligibility check + pain scale
         </div>
         <div class="gallery-item has-img"><img data-relay src="/assets/wave/Rescue-Logic-protocol.png" alt="Rescue Logic, arm-aware protocol branching"></div>
@@ -1836,69 +1982,214 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
 <script>
 (function(){
+  const ACTIVE_PROJECTS = ['ecommerce', 'branding'];
+  const PROJECT_SLUG = {'0':'branding', '1':'ecommerce', '2':'epro'};
+  const DEFAULT_SLUG = 'ecommerce';
+  const DEFAULT_PROJECT = '1';
+  const previewNames = {branding:'Product Branding', ecommerce:'E-Commerce Site', epro:'ePRO App'};
+  const previewCopy = {
+    ecommerce: {
+      challenge: '<p>WAVE is an investigational, drug-free device from Hush Tech LLC, being studied for menstrual pain. It can\'t be sold until clinical trials lead to FDA clearance, but the company still needed visibility to build interest and support funding for those trials.</p><p>The site served three audiences, and each needed something different: women looking for options for menstrual pain, the clinicians who would recommend the device, and investors. For a regulated device, consumers and clinicians can\'t be shown the same claims.</p><p style="margin-bottom:0;">The deeper challenge: this wasn\'t an e-commerce problem yet. It was a trust and lead-generation problem, and it had to be solved by a small founding team with no budget for an agency or a development team.</p>',
+      solution: '<p>One codebase, two experiences: a warm consumer storefront where every purchase moment becomes a "Notify Me" sign-up, and a separate clinician site for the clinical claims only clinicians should see. A status banner on every page states plainly that WAVE is an investigational device, so the site earns trust through transparency, not claims.</p><p style="margin-bottom:0;">The full purchase flow is designed and ready, so when clearance comes, launch is a switch, not a redesign.</p>'
+    },
+    branding: {
+      challenge: '<p>WAVE is an investigational medical device being studied for menstrual pain, with a clinical study being planned to seek FDA clearance. The device had serious clinical work behind it, but its brand undermined it.</p><p>Packaging, marketing, and digital presence were inconsistent, eroding trust at the exact moment the product needed to earn it.</p><p style="margin-bottom:0;">The deeper challenge: repositioning a medical device to present as human and empowering as the best consumer wellness brands, without sacrificing clinical authority.</p>',
+      solution: '<p>A full brand system redesign built around "warm authority", the strategic middle ground between clinical coldness and wellness softness. New logo, visual identity, color and typography system, packaging, messaging framework, and social media direction.</p><p style="margin-bottom:0;">Delivered as a complete, handoff-ready brand system that became the foundation for the website and all marketing going forward.</p>'
+    }
+  };
+
   const waveHub = document.getElementById('waveHub');
-  const hubBanner = document.getElementById('hubBanner');
-  const hubAllProjects = document.getElementById('hubAllProjects');
+  const hubNavBack = document.getElementById('hubNavBack');
+  const hubNavBackLabel = document.getElementById('hubNavBackLabel');
   const hubStatus = document.getElementById('hubStatus');
+  const hubPreviewLive = document.getElementById('hubPreviewLive');
+  const hubCardsWrap = document.getElementById('hubCardsWrap');
+  const hubCopyBody = document.getElementById('hubCopyBody');
+  const hubChallengeText = document.getElementById('hubChallengeText');
+  const hubSolutionText = document.getElementById('hubSolutionText');
+  const hubBannerMedia = document.getElementById('hubBannerMedia');
+  const hubBannerTitle = document.getElementById('hubBannerTitle');
+  const hubSwitchProject = document.getElementById('hubSwitchProject');
   const tabSectionHeading = document.getElementById('tabSectionHeading');
   const cards = Array.from(document.querySelectorAll('.hub-card'));
   const sets = Array.from(document.querySelectorAll('.tab-content-set'));
   const tabBtns = Array.from(document.querySelectorAll('.tab-btn'));
   const tabSection = document.getElementById('tabSection');
-  const metaRow = document.getElementById('metaRow');
-  const metaValues = metaRow ? Array.from(metaRow.querySelectorAll('.meta-item b')) : [];
   const announceNames = {'0':'Branding', '1':'E-Commerce', '2':'ePRO App'};
-  const metaByProject = {
-    '0': {
-      role: 'Creative Director, Brand & Product',
-      scope: 'Logo, Visual Identity + Packaging',
-      timeline: '4 months',
-      year: '2024',
-      team: 'With 3 Teammates'
-    },
-    '1': {
-      role: 'Sole Designer & Builder',
-      scope: 'Storefront + Clinician Site + Admin',
-      timeline: '1 month',
-      year: '2026',
-      team: 'Solo (founding team)'
-    },
-    '2': {
-      role: '[PLACEHOLDER: your role on the ePRO app]',
-      scope: 'UX + Design System for a Clinical Trial App',
-      timeline: '[PLACEHOLDER: timeline]',
-      year: '[PLACEHOLDER: year]',
-      team: '[PLACEHOLDER: team]'
-    }
-  };
-  const metaKeys = ['role', 'scope', 'timeline', 'year', 'team'];
+  const bannerTitles = {'0':'Product Branding', '1':'E-Commerce Site'};
+  const otherActiveProject = {'0':'1', '1':'0'};
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const metaFadeMs = reducedMotion ? 0 : 150;
-  let metaFadeTimer = null;
+  const previewFadeMs = reducedMotion ? 0 : 200;
+  const previewMq = window.matchMedia('(max-width:860px)');
+  let previewFadeTimer = null;
   let activeProject = null;
+  let selectedSlug = DEFAULT_SLUG;
+  let previewSlug = DEFAULT_SLUG;
   let continuesWired = false;
 
-  function applyMeta(project){
-    const data = metaByProject[project];
-    if(!data || !metaValues.length) return;
-    metaKeys.forEach((key, i)=>{
-      if(metaValues[i]) metaValues[i].textContent = data[key];
+  function isProjectActive(slug){
+    return ACTIVE_PROJECTS.indexOf(slug) !== -1;
+  }
+
+  function slugForCard(card){
+    return card.dataset.hubKey || PROJECT_SLUG[card.dataset.project] || '';
+  }
+
+  function syncIdleCardPressed(){
+    const project = projectForSlug(selectedSlug);
+    cards.forEach(c=>{
+      const on = c.dataset.project === project;
+      c.toggleAttribute('data-selected', on);
+      const sel = c.querySelector('.hub-card__select');
+      if(sel && !sel.disabled) sel.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
   }
 
-  function updateMeta(project){
-    if(!metaRow) return;
-    if(metaFadeMs === 0){
-      applyMeta(project);
+  function applySelectedCopy(announce){
+    applyPreviewCopy(selectedSlug);
+    previewSlug = selectedSlug;
+    if(announce && hubStatus){
+      const project = projectForSlug(selectedSlug);
+      if(announceNames[project]){
+        hubStatus.textContent = announceNames[project] + ' selected. Use the View case study button on its card to open it.';
+      }
+    }
+  }
+
+  function restoreSelectedCopy(){
+    if(previewFadeTimer) clearTimeout(previewFadeTimer);
+    previewFadeTimer = null;
+    if(hubCopyBody) hubCopyBody.style.opacity = '1';
+    applySelectedCopy(false);
+    if(hubPreviewLive) hubPreviewLive.textContent = '';
+  }
+
+  function scrollToHubChallenge(){
+    const target = document.querySelector('#hubCopyBody .section-eyebrow');
+    if(!target) return;
+    const top = target.getBoundingClientRect().top + window.scrollY - navHeight() - 8;
+    window.scrollTo({top: Math.max(0, top), behavior: reducedMotion ? 'auto' : 'smooth'});
+  }
+
+  function selectIdleProjectFromCard(card){
+    const slug = slugForCard(card);
+    if(!isProjectActive(slug)) return;
+    selectedSlug = slug;
+    syncIdleCardPressed();
+    applySelectedCopy(true);
+    if(previewMq.matches) scrollToHubChallenge();
+  }
+
+  function openProjectFromCard(card){
+    const slug = slugForCard(card);
+    if(!isProjectActive(slug)) return;
+    selectedSlug = slug;
+    syncIdleCardPressed();
+    applySelectedCopy(false);
+    setProjectState(projectForSlug(slug));
+    scrollToTabs();
+    focusTabSection();
+  }
+
+  function syncNavBackLink(){
+    if(!hubNavBack) return;
+    const inProject = waveHub && waveHub.dataset.hub === 'project';
+    const label = inProject ? 'All projects' : 'All work';
+    if(hubNavBackLabel) hubNavBackLabel.textContent = label;
+    hubNavBack.setAttribute('aria-label', label);
+  }
+
+  function updateProjectBanner(project){
+    if(hubBannerMedia){
+      hubBannerMedia.querySelectorAll('[data-project-banner]').forEach(img=>{
+        const on = img.getAttribute('data-project-banner') === project;
+        img.classList.toggle('is-active', on);
+        img.hidden = !on;
+      });
+      if(window.Relay && typeof Relay.initImagesIn === 'function'){
+        Relay.initImagesIn(hubBannerMedia);
+      }
+    }
+    if(hubBannerTitle) hubBannerTitle.textContent = bannerTitles[project] || '';
+    if(hubSwitchProject){
+      const other = otherActiveProject[project];
+      if(other){
+        hubSwitchProject.textContent = announceNames[other] || '';
+        hubSwitchProject.dataset.project = other;
+        hubSwitchProject.hidden = false;
+      }else{
+        hubSwitchProject.hidden = true;
+      }
+    }
+  }
+
+  function applyPreviewCopy(slug){
+    const copy = previewCopy[slug] || previewCopy[DEFAULT_SLUG];
+    if(!hubChallengeText || !hubSolutionText || !copy) return;
+    hubChallengeText.innerHTML = copy.challenge;
+    hubSolutionText.innerHTML = copy.solution;
+  }
+
+  function setPreview(slug, announce){
+    if(!slug || !previewCopy[slug]) slug = DEFAULT_SLUG;
+    previewSlug = slug;
+    if(previewFadeMs === 0){
+      applyPreviewCopy(slug);
+      if(announce && hubPreviewLive && previewNames[slug]){
+        hubPreviewLive.textContent = 'Previewing ' + previewNames[slug];
+      }
       return;
     }
-    if(metaFadeTimer) clearTimeout(metaFadeTimer);
-    metaRow.style.opacity = '0';
-    metaFadeTimer = setTimeout(()=>{
-      applyMeta(project);
-      metaRow.style.opacity = '1';
-      metaFadeTimer = null;
-    }, metaFadeMs);
+    if(hubCopyBody) hubCopyBody.style.opacity = '0';
+    if(previewFadeTimer) clearTimeout(previewFadeTimer);
+    previewFadeTimer = setTimeout(()=>{
+      applyPreviewCopy(slug);
+      if(hubCopyBody) hubCopyBody.style.opacity = '1';
+      if(announce && hubPreviewLive && previewNames[slug]){
+        hubPreviewLive.textContent = 'Previewing ' + previewNames[slug];
+      }
+      previewFadeTimer = null;
+    }, previewFadeMs);
+  }
+
+  function previewFromCard(card){
+    if(waveHub && waveHub.dataset.hub !== 'idle') return;
+    if(previewMq.matches) return;
+    const slug = slugForCard(card);
+    const inactive = !isProjectActive(slug);
+    if(inactive){
+      if(hubPreviewLive && previewNames[slug]){
+        hubPreviewLive.textContent = 'Previewing ' + previewNames[slug];
+      }
+      return;
+    }
+    setPreview(slug, true);
+  }
+
+  function projectForSlug(slug){
+    if(!slug || !isProjectActive(slug)) slug = DEFAULT_SLUG;
+    return Object.keys(PROJECT_SLUG).find(k => PROJECT_SLUG[k] === slug) || DEFAULT_PROJECT;
+  }
+
+  function lockHubCopyMinHeight(){
+    if(!hubCopyBody || !hubChallengeText || !hubSolutionText) return;
+    if(previewMq.matches || (waveHub && waveHub.dataset.hub !== 'idle')){
+      hubCopyBody.style.minHeight = '';
+      return;
+    }
+    const savedChallenge = hubChallengeText.innerHTML;
+    const savedSolution = hubSolutionText.innerHTML;
+    let maxH = 0;
+    ['ecommerce', 'branding'].forEach(slug=>{
+      const copy = previewCopy[slug];
+      if(!copy) return;
+      hubChallengeText.innerHTML = copy.challenge;
+      hubSolutionText.innerHTML = copy.solution;
+      maxH = Math.max(maxH, hubCopyBody.offsetHeight);
+    });
+    hubChallengeText.innerHTML = savedChallenge;
+    hubSolutionText.innerHTML = savedSolution;
+    hubCopyBody.style.minHeight = maxH ? (maxH + 'px') : '';
   }
 
   function activeSet(){
@@ -1998,31 +2289,14 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   }
 
   function focusTabSection(){
-    const firstTab = tabBtns.find(b => !b.hidden);
-    if(firstTab){
-      firstTab.focus({preventScroll: true});
-      return;
-    }
     if(tabSectionHeading){
       tabSectionHeading.focus({preventScroll: true});
-    }
-  }
-
-  function setBannerInert(inert){
-    if(!hubBanner) return;
-    if(inert){
-      hubBanner.setAttribute('aria-hidden', 'true');
-      hubBanner.setAttribute('inert', '');
-    } else {
-      hubBanner.removeAttribute('aria-hidden');
-      hubBanner.removeAttribute('inert');
     }
   }
 
   function setIdleState(){
     if(waveHub) waveHub.dataset.hub = 'idle';
     activeProject = null;
-    cards.forEach(c=> c.setAttribute('aria-pressed', 'false'));
     sets.forEach(s=> s.classList.remove('active'));
     sets.forEach(s=> s.querySelectorAll('.tab-panel').forEach(p=> p.classList.remove('active')));
     tabBtns.forEach(b=> b.classList.remove('active'));
@@ -2030,37 +2304,36 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       tabSection.hidden = true;
       tabSection.setAttribute('aria-hidden', 'true');
     }
-    if(metaRow) metaRow.hidden = true;
-    if(hubAllProjects) hubAllProjects.hidden = true;
-    setBannerInert(false);
+    syncIdleCardPressed();
+    restoreSelectedCopy();
+    syncNavBackLink();
     if(hubStatus) hubStatus.textContent = 'All projects';
   }
 
   function setProjectState(project){
     if(waveHub) waveHub.dataset.hub = 'project';
     activeProject = project;
-    cards.forEach(c=>{
-      const on = c.dataset.project === project;
-      c.setAttribute('aria-pressed', on ? 'true' : 'false');
-    });
+    selectedSlug = PROJECT_SLUG[project] || DEFAULT_SLUG;
+    syncIdleCardPressed();
     sets.forEach(s=>{
       s.classList.toggle('active', s.dataset.project === project);
     });
     setTab('overview');
-    updateMeta(project);
     if(tabSection){
       tabSection.hidden = false;
       tabSection.removeAttribute('aria-hidden');
     }
-    if(metaRow) metaRow.hidden = false;
-    if(hubAllProjects) hubAllProjects.hidden = false;
-    setBannerInert(true);
+    updateProjectBanner(project);
+    syncNavBackLink();
     if(hubStatus && announceNames[project]){
       hubStatus.textContent = announceNames[project] + ' selected. Overview showing.';
     }
   }
 
   function selectProject(project){
+    const slug = PROJECT_SLUG[project];
+    if(!isProjectActive(slug)) return;
+    selectedSlug = slug;
     const switching = activeProject !== null && activeProject !== project;
     setProjectState(project);
     scrollToTabs();
@@ -2072,22 +2345,80 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
   function resetToIdle(){
     setIdleState();
-    if(waveHub){
-      waveHub.scrollIntoView({behavior: reducedMotion ? 'auto' : 'smooth', block:'start'});
-    }
+    window.scrollTo({top: 0, behavior: reducedMotion ? 'auto' : 'smooth'});
   }
 
   cards.forEach(card=>{
-    card.addEventListener('click', e=>{
-      e.stopPropagation();
-      selectProject(card.dataset.project);
-    });
+    const selectBtn = card.querySelector('.hub-card__select');
+    const openBtn = card.querySelector('.hub-card__open');
+    const cardBody = card.querySelector('.hub-card-body');
+    if(selectBtn && !selectBtn.disabled){
+      selectBtn.addEventListener('click', e=>{
+        e.stopPropagation();
+        if(waveHub && waveHub.dataset.hub !== 'idle') return;
+        selectIdleProjectFromCard(card);
+      });
+      selectBtn.addEventListener('keydown', e=>{
+        if(waveHub && waveHub.dataset.hub !== 'idle') return;
+        if(e.key !== 'Enter' && e.key !== ' ') return;
+        e.preventDefault();
+        selectIdleProjectFromCard(card);
+      });
+    }
+    if(openBtn){
+      openBtn.addEventListener('click', e=>{
+        e.stopPropagation();
+        if(waveHub && waveHub.dataset.hub !== 'idle') return;
+        openProjectFromCard(card);
+      });
+    }
+    if(cardBody){
+      cardBody.addEventListener('click', e=>{
+        e.stopPropagation();
+        if(waveHub && waveHub.dataset.hub !== 'idle') return;
+        if(card.dataset.inactive === 'true') return;
+        selectIdleProjectFromCard(card);
+      });
+    }
+    card.addEventListener('mouseenter', ()=> previewFromCard(card));
+    card.addEventListener('focusin', ()=> previewFromCard(card));
   });
 
-  if(hubAllProjects){
-    hubAllProjects.addEventListener('click', e=>{
+  if(hubCardsWrap){
+    hubCardsWrap.addEventListener('mouseleave', ()=>{
+      if(waveHub && waveHub.dataset.hub === 'idle' && !previewMq.matches){
+        restoreSelectedCopy();
+      }
+    });
+    hubCardsWrap.addEventListener('focusout', e=>{
+      if(!waveHub || waveHub.dataset.hub !== 'idle' || previewMq.matches) return;
+      if(!hubCardsWrap.contains(e.relatedTarget)){
+        restoreSelectedCopy();
+      }
+    });
+  }
+
+  previewMq.addEventListener('change', ()=>{
+    if(previewMq.matches) restoreSelectedCopy();
+    lockHubCopyMinHeight();
+  });
+  window.addEventListener('resize', lockHubCopyMinHeight);
+
+  if(hubNavBack){
+    hubNavBack.addEventListener('click', e=>{
+      if(waveHub && waveHub.dataset.hub === 'project'){
+        e.preventDefault();
+        resetToIdle();
+      }
+    });
+  }
+
+  if(hubSwitchProject){
+    hubSwitchProject.addEventListener('click', e=>{
       e.stopPropagation();
-      resetToIdle();
+      const other = hubSwitchProject.dataset.project;
+      if(!other || !isProjectActive(PROJECT_SLUG[other])) return;
+      selectProject(other);
     });
   }
 
@@ -2111,6 +2442,8 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 
   wireContinueButtons();
   setIdleState();
+  syncNavBackLink();
+  lockHubCopyMinHeight();
 })();
 (function(){
   const tabWrap = document.getElementById('tabNavWrap');
