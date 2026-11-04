@@ -134,31 +134,81 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .tab-btn:focus-visible{outline:2px solid var(--coral); outline-offset:2px;}
 .tab-btn[hidden]{display:none;}
 @media (min-width:861px){
+  #tabNavWrap{--tab-shift:0px;}
   .tab-nav-wrap.is-sticky{
     position:fixed; top:var(--nav-h); left:0; right:0; width:100%; z-index:150;
     padding:14px 48px 0; box-sizing:border-box;
-    display:flex; justify-content:center;
+    transform:translateY(-6px);
+    transition:transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
   }
+  .tab-nav-wrap.is-sticky.is-sticky-settled{transform:translateY(0);}
   .tab-nav-wrap.is-sticky .tab-nav{
-    max-width:none; margin:0; width:auto; padding:0; background:transparent;
-    overflow-x:visible; justify-content:center;
-    transition:margin .2s ease, max-width .2s ease;
+    max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent;
+    overflow-x:visible; justify-content:flex-start;
   }
   .tab-nav-wrap.is-sticky .tab-track{
     width:auto; max-width:none; display:inline-flex; justify-content:flex-start; gap:8px;
-    box-sizing:border-box; box-shadow:0 8px 20px -10px #33454A33;
-    transition:width .3s ease, background .25s ease, border .25s ease, border-radius .25s ease, padding .25s ease, box-shadow .25s ease;
+    box-sizing:border-box;
+    transform:translateX(var(--tab-shift, 0px));
+    box-shadow:0 8px 20px -10px #33454A33;
+    transition:transform 600ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms ease;
   }
+  .tab-nav-wrap:not(.is-sticky) .tab-track{
+    transform:translateX(var(--tab-shift, 0px));
+    box-shadow:none;
+    transition:transform 450ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms ease;
+  }
+  .tab-nav-wrap .tab-track.tab-track--will-move{will-change:transform;}
 }
 @media (max-width:860px){
+  #tabNavWrap{--tab-shift:0px;}
   .tab-btn{color:var(--coral);}
   .tab-btn:active:not(.active){background:#F9D9D2; color:var(--coral);}
-  .tab-nav-wrap.is-sticky{position:fixed; top:var(--nav-h); left:0; right:0; width:100%; z-index:150; padding:14px 16px 0; box-sizing:border-box; background:transparent;}
-  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow:visible; justify-content:center;}
-  .tab-nav-wrap.is-sticky .tab-track{width:auto; max-width:calc(100vw - 32px); display:inline-flex; justify-content:flex-start; border-radius:100px; box-shadow:0 8px 16px -10px #33454A33; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; padding-right:12px; scroll-padding-inline-end:12px;}
+  .tab-nav-wrap{width:100%; max-width:100%; min-width:0;}
+  .tab-nav-wrap:not(.is-sticky) .tab-nav{
+    padding:0 var(--space-3); margin:0; max-width:none; width:100%; min-width:0;
+    justify-content:flex-start; overflow-x:auto; overflow-y:hidden;
+    -webkit-overflow-scrolling:touch; scrollbar-width:none;
+    scroll-padding-inline:var(--space-3);
+  }
+  .tab-nav-wrap:not(.is-sticky) .tab-nav::-webkit-scrollbar{display:none;}
+  .tab-nav-wrap:not(.is-sticky) .tab-track{
+    transform:none;
+    max-width:none;
+    transition:background .25s ease, border .25s ease, border-radius .25s ease, padding .25s ease, box-shadow .25s ease;
+  }
+  .tab-nav-wrap::after{
+    content:''; position:absolute; top:var(--space-2); right:0; width:48px; height:44px;
+    pointer-events:none; background:linear-gradient(to right, transparent, var(--paper)); z-index:151;
+  }
+  .tab-nav-wrap.is-sticky::after{display:none;}
+  .tab-nav-wrap.is-sticky{
+    position:fixed; top:var(--nav-h); left:0; right:0; width:100%; z-index:150;
+    padding:14px 16px 0; box-sizing:border-box; background:transparent;
+    transform:none;
+  }
+  .tab-nav-wrap.is-sticky .tab-nav{
+    max-width:1240px; margin:0 auto; width:100%; min-width:0; padding:0;
+    background:transparent; overflow:visible; justify-content:center;
+  }
+  .tab-nav-wrap.is-sticky .tab-track{
+    width:auto; max-width:calc(100vw - 32px); display:inline-flex; justify-content:flex-start;
+    transform:none; flex-shrink:0; gap:2px;
+    border-radius:100px; box-shadow:0 8px 16px -10px #33454A33;
+    overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch;
+    padding:3px 12px 3px 3px; scroll-padding-inline-end:12px;
+  }
+  .tab-nav-wrap .tab-track{gap:2px; padding:3px 12px 3px 3px; flex-shrink:0;}
+  .tab-btn{padding:8px clamp(6px, 2.2vw, 10px); font-size:clamp(10.5px, 2.85vw, 11.5px);}
 }
 @media (prefers-reduced-motion: reduce){
-  .tab-nav-wrap.is-sticky .tab-nav{transition:none;}
+  @media (min-width:861px){
+    .tab-nav-wrap.is-sticky{transition:none; transform:translateY(0);}
+    .tab-nav-wrap.is-sticky .tab-track,
+    .tab-nav-wrap:not(.is-sticky) .tab-track{transition:none;}
+    .tab-nav-wrap.is-sticky .tab-track{transform:translateX(var(--tab-shift, 0px));}
+    .tab-nav-wrap:not(.is-sticky) .tab-track{transform:translateX(var(--tab-shift, 0px));}
+  }
 }
 
 .tab-panel{display:none; max-width:1240px; margin:0 auto; padding:var(--space-5) var(--space-6) var(--space-6); animation:fadeIn .35s ease;}
@@ -646,17 +696,6 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   .block--split .problem-copy + .problem-visual,
   .block--split .problem-copy + .split-visual,
   .block--split .audit-copy + .audit-visual{margin-top:20px;}
-  .tab-nav-wrap{position:relative;}
-  .tab-nav-wrap::after{
-    content:''; position:absolute; top:var(--space-2); right:0; width:48px; height:44px;
-    pointer-events:none; background:linear-gradient(to right, transparent, var(--paper)); z-index:151;
-  }
-  .tab-nav-wrap.is-sticky::after{display:none;}
-  .tab-nav{
-    padding:0 var(--space-3); margin:0; justify-content:flex-start;
-    overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
-    scroll-padding-inline-end:var(--space-2);
-  }
   .tab-panel{padding-top:var(--space-5); padding-bottom:var(--space-6);}
   .tab-panel > .block{margin-bottom:var(--space-6);}
   .block{margin-bottom:var(--space-6);}
@@ -664,9 +703,6 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   .next-project{margin-bottom:var(--space-6);}
   .tab-cta{margin-top:var(--space-6);}
   .tab-panel > .panel-next + .tab-cta{margin-top:var(--space-6);}
-  .tab-nav::-webkit-scrollbar{display:none;}
-  .tab-track{gap:2px; padding:3px 12px 3px 3px; flex-shrink:0;}
-  .tab-btn{padding:8px 10px; font-size:11.5px;}
   .header-top{grid-template-columns:1fr;}
   .header-top .hero-image{height:auto; min-height:220px;}
   .gallery, .gallery-3, .reflect-grid{grid-template-columns:1fr;}
@@ -806,8 +842,25 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 }
 @media (max-width:860px){
   #waveHub[data-hub="idle"] .header-top{grid-template-columns:1fr; height:auto; max-height:none; gap:var(--space-3);}
-  #waveHub[data-hub="idle"] .hub-hero-cards{aspect-ratio:auto;}
-  #waveHub[data-hub="idle"] .hub-card{min-height:200px;}
+  #waveHub[data-hub="idle"] .hub-hero-cards{aspect-ratio:auto; height:auto; overflow:visible;}
+  #waveHub[data-hub="idle"] .hub-cards-wrap,
+  #waveHub[data-hub="idle"] .hub-cards{flex:0 0 auto; min-height:0;}
+  #waveHub[data-hub="idle"] .hub-card{flex:0 0 auto; min-height:0; height:auto; width:100%;}
+  #waveHub[data-hub="idle"] .hub-card-thumb{
+    display:block; width:100%; height:auto; flex:none;
+    aspect-ratio:16 / 9; min-height:0; overflow:hidden;
+    border-radius:20px 20px 0 0; border-bottom:1px solid var(--line);
+  }
+  #waveHub[data-hub="idle"] .hub-card-thumb .hub-card__select{
+    position:absolute; inset:0; min-height:44px;
+  }
+  #waveHub[data-hub="idle"] .hub-card-thumb .relay-image-wrap{
+    position:absolute; inset:0; width:100%; height:100%; min-height:0; border-radius:0;
+  }
+  #waveHub[data-hub="idle"] .hub-card-thumb .relay-image-wrap img,
+  #waveHub[data-hub="idle"] .hub-card-thumb .hub-card__select > img{
+    width:100%; height:100%; object-fit:cover; object-position:center; display:block;
+  }
   #waveHub[data-hub="idle"] #hubCopyBody{display:none;}
   #waveHub[data-hub="idle"] .hub-header-copy .cs-sub{margin-bottom:0;}
   #waveHub[data-hub="idle"] .hub-card:not([data-inactive="true"]):hover,
@@ -1271,7 +1324,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
           <div class="hub-card" data-project="1" data-hub-key="ecommerce" data-selected="true">
             <div class="hub-card-thumb hub-card-thumb--commerce">
               <button type="button" class="hub-card__select" aria-pressed="true" aria-label="Select E-Commerce Site">
-                <img data-relay src="/assets/wave/wave-ecommerce-banner.png" alt="WAVE e-commerce banner">
+                <img data-relay src="/assets/wave/wave-ecommerce-banner.png" alt="WAVE e-commerce banner" width="1400" height="664" loading="eager" decoding="async">
               </button>
               <button type="button" class="hub-card__open" aria-label="View case study: E-Commerce Site">
                 <span class="hub-card-title-pill hub-card__open-face hub-card__open-face--title">E-Commerce Site</span>
@@ -1288,7 +1341,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
           <div class="hub-card" data-project="0" data-hub-key="branding">
             <div class="hub-card-thumb hub-card-thumb--brand">
               <button type="button" class="hub-card__select" aria-pressed="false" aria-label="Select Product Branding">
-                <img data-relay src="/assets/wave/wave-banner-branding.png" alt="WAVE branding banner">
+                <img data-relay src="/assets/wave/wave-banner-branding.png" alt="WAVE branding banner" width="845" height="424" loading="eager" decoding="async">
               </button>
               <button type="button" class="hub-card__open" aria-label="View case study: Product Branding">
                 <span class="hub-card-title-pill hub-card__open-face hub-card__open-face--title">Product Branding</span>
@@ -1305,7 +1358,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
           <div class="hub-card" data-project="2" data-hub-key="epro" data-inactive="true">
             <div class="hub-card-thumb hub-card-thumb--epro">
               <button type="button" class="hub-card__select" aria-pressed="false" aria-disabled="true" disabled tabindex="-1">
-                <span class="placeholder-note">[IMG: ePRO app screens]</span>
+                <img data-relay src="/assets/wave/Rescue-Logic-protocol.png" alt="WAVE ePRO clinical protocol screen" width="2143" height="944" loading="eager" decoding="async">
               </button>
               <span class="hub-badge">Upcoming</span>
               <span class="hub-card-title-pill">ePRO App</span>
@@ -2549,43 +2602,142 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   const spacer = document.getElementById('tabNavSpacer');
   if(!tabWrap || !sentinel || !spacer) return;
   const stickTop = 65;
+  const releaseOffset = 8;
+  const desktopMq = window.matchMedia('(min-width: 861px)');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let isStuck = false;
   let cachedHeight = 0;
+  let resizeTimer = null;
+
+  function tabTrack(){
+    return tabWrap.querySelector('.tab-track');
+  }
+
+  function markTrackWillMove(){
+    const track = tabTrack();
+    if(track) track.classList.add('tab-track--will-move');
+  }
+
+  function unmarkTrackWillMove(){
+    const track = tabTrack();
+    if(!track) return;
+    function done(e){
+      if(e && e.target !== track) return;
+      if(e && e.propertyName && e.propertyName !== 'transform') return;
+      track.classList.remove('tab-track--will-move');
+      track.removeEventListener('transitionend', done);
+    }
+    track.addEventListener('transitionend', done);
+    if(reduceMotion) done();
+  }
+
+  function measureTabShift(){
+    if(!desktopMq.matches){
+      tabWrap.style.setProperty('--tab-shift', '0px');
+      return;
+    }
+    const track = tabTrack();
+    if(!track) return;
+    let baseLeft = track.getBoundingClientRect().left;
+    const matrix = new DOMMatrix(getComputedStyle(track).transform);
+    baseLeft -= matrix.m41;
+    const shift = (window.innerWidth - track.offsetWidth) / 2 - baseLeft;
+    tabWrap.style.setProperty('--tab-shift', shift + 'px');
+  }
+
+  function settleStickyY(){
+    if(reduceMotion){
+      tabWrap.classList.add('is-sticky-settled');
+      return;
+    }
+    tabWrap.classList.remove('is-sticky-settled');
+    requestAnimationFrame(()=>{
+      requestAnimationFrame(()=>{
+        tabWrap.classList.add('is-sticky-settled');
+      });
+    });
+  }
+
+  function clearDesktopStickyMotion(){
+    tabWrap.classList.remove('is-sticky-settled');
+    const track = tabTrack();
+    if(track) track.classList.remove('tab-track--will-move');
+  }
 
   function setSticky(stuck){
     if(stuck === isStuck) return;
+    const desktop = desktopMq.matches;
 
     if(stuck){
+      if(desktop) measureTabShift();
+      else tabWrap.style.setProperty('--tab-shift', '0px');
       cachedHeight = tabWrap.offsetHeight;
       spacer.style.height = cachedHeight + 'px';
+      if(desktop) markTrackWillMove();
       tabWrap.classList.add('is-sticky');
+      if(desktop) settleStickyY();
       isStuck = true;
+      if(desktop){
+        requestAnimationFrame(()=> measureTabShift());
+        unmarkTrackWillMove();
+      }
     } else {
+      if(desktop) markTrackWillMove();
+      clearDesktopStickyMotion();
       tabWrap.classList.remove('is-sticky');
       spacer.style.height = '0px';
       cachedHeight = 0;
       isStuck = false;
+      if(desktop){
+        requestAnimationFrame(()=> measureTabShift());
+        unmarkTrackWillMove();
+      } else {
+        tabWrap.style.setProperty('--tab-shift', '0px');
+      }
     }
   }
 
   function updateSticky(){
-    setSticky(sentinel.getBoundingClientRect().top < stickTop);
+    const top = sentinel.getBoundingClientRect().top;
+    if(isStuck){
+      if(top >= stickTop + releaseOffset) setSticky(false);
+    } else if(top < stickTop){
+      setSticky(true);
+    }
   }
 
-  const observer = new IntersectionObserver(()=>{
-    updateSticky();
-  }, { root:null, threshold:[0] });
-  observer.observe(sentinel);
-  window.addEventListener('scroll', updateSticky, {passive:true});
-
-  window.addEventListener('resize', ()=>{
+  function onLayoutChange(){
+    if(!desktopMq.matches){
+      tabWrap.style.setProperty('--tab-shift', '0px');
+      clearDesktopStickyMotion();
+    }
     if(isStuck){
       cachedHeight = tabWrap.offsetHeight;
       spacer.style.height = cachedHeight + 'px';
     }
+    measureTabShift();
     updateSticky();
+  }
+
+  const observer = new IntersectionObserver(()=>{
+    updateSticky();
+  }, {root:null, rootMargin:`-${stickTop}px 0px 0px 0px`, threshold:[0]});
+  observer.observe(sentinel);
+
+  window.addEventListener('resize', ()=>{
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(onLayoutChange, 150);
   });
-  updateSticky();
+  window.addEventListener('orientationchange', ()=>{
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(onLayoutChange, 150);
+  });
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(onLayoutChange);
+  }
+  desktopMq.addEventListener('change', onLayoutChange);
+
+  onLayoutChange();
 })();
 const backToTop = document.getElementById('backToTop');
 window.addEventListener('scroll', ()=>{
