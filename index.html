@@ -547,17 +547,19 @@ h1 .highlight{color:var(--amber);}
     position:fixed;
     bottom:calc(12px + env(safe-area-inset-bottom, 0px));
     left:0;
-    right:72px;
+    right:56px;
     width:auto;
     transform:none;
     z-index:6;
     opacity:1;
     pointer-events:none;
-    padding-left:24px;
+    padding-left:12px;
   }
   .scroll-cue.is-footer .scroll-cue-label{
     max-width:none;
     width:100%;
+    white-space:nowrap;
+    font-size:clamp(11px, 3.1vw, 13px);
   }
   .floating-back-to-top.show{
     bottom:calc(12px + env(safe-area-inset-bottom, 0px));

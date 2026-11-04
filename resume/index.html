@@ -165,7 +165,12 @@ footer .foot-row a.social{width:32px; height:32px; border-radius:50%; background
 footer .foot-row a.social:hover{background:var(--ink);}
 footer .foot-row a.social svg{width:16px; height:16px; fill:var(--ink); transition:fill .25s;}
 footer .foot-row a.social:hover svg{fill:var(--paper);}
-
+@media (max-width:860px){
+  footer{padding-left:16px; padding-right:16px;}
+  footer .foot-row{flex-wrap:nowrap; gap:8px; max-width:100%;}
+  footer .foot-row > span{white-space:nowrap; font-size:clamp(11px, 3.1vw, 13.5px);}
+  footer .foot-row a.social{flex-shrink:0;}
+}
 
 @media print{
   @page{ size:letter; margin:0.5in; }
