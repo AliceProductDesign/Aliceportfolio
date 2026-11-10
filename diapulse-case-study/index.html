@@ -84,7 +84,7 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .tab-nav-wrap{position:relative;}
 .tab-nav-sentinel{height:1px;width:100%;pointer-events:none;visibility:hidden;}
 .tab-nav-spacer{height:0;flex-shrink:0;transition:height .25s ease;}
-.tab-nav{position:relative; z-index:150; display:flex; justify-content:flex-start; max-width:1240px; margin:0 auto; padding:16px 48px 0; background:transparent; overflow-x:auto; transition:background .25s ease, padding .25s ease, border-color .25s ease, box-shadow .25s ease, max-width .25s ease;}
+.tab-nav{position:relative; z-index:150; display:flex; justify-content:center; max-width:1240px; margin:0 auto; padding:16px 48px 0; background:transparent; overflow-x:auto; transition:background .25s ease, padding .25s ease, border-color .25s ease, box-shadow .25s ease, max-width .25s ease;}
 .tab-track{display:inline-flex; gap:4px; padding:5px; background:rgba(242,102,90,0.1); border:1.5px solid #F2665A; border-radius:100px; flex-shrink:0; transition:background .25s ease, border .25s ease, border-radius .25s ease, padding .25s ease, box-shadow .25s ease;}
 .tab-btn{font-family:'Inter',sans-serif; font-weight:600; font-size:13.5px; color:#F2665A; background:transparent; border:none; padding:10px 18px; border-radius:100px; cursor:pointer; transition:background-color .2s ease, color .2s ease; white-space:nowrap;}
 .tab-btn.active{color:#fff; background:#F2665A; box-shadow:0 4px 10px -3px #F2665A66;}
@@ -92,7 +92,7 @@ h1{font-family:'Poppins',sans-serif; font-weight:600; font-size:clamp(34px,4.6vw
 .tab-btn:focus-visible{outline:2px solid var(--coral); outline-offset:2px;}
 @media (min-width:768px){
   .tab-nav-wrap.is-sticky{position:fixed; top:65px; left:0; right:0; width:100%; z-index:150; padding:14px 48px 0; box-sizing:border-box;}
-  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow-x:visible; justify-content:flex-start;}
+  .tab-nav-wrap.is-sticky .tab-nav{max-width:1240px; margin:0 auto; width:100%; padding:0; background:transparent; overflow-x:visible; justify-content:center;}
   .tab-nav-wrap.is-sticky .tab-track{width:auto; max-width:50%; display:inline-flex; justify-content:flex-start; gap:8px; box-sizing:border-box; background:#FBD4D4; box-shadow:0 8px 20px -10px #33454A33; transition:width .3s ease, background .25s ease, border .25s ease, border-radius .25s ease, padding .25s ease, box-shadow .25s ease;}
 }
 @media (max-width:767px){
@@ -249,6 +249,11 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 .reflect-card h4{font-family:'Poppins',sans-serif; font-size:17px; margin-bottom:10px;}
 .reflect-card p{font-size:14.5px;}
 
+/* ---- STATS BAND ---- */
+.stats-band{background:var(--ink); border-radius:22px; padding:44px; display:grid; grid-template-columns:repeat(3,1fr); gap:26px; color:var(--paper); margin-bottom:10px;}
+.stat b{display:block; font-family:'Poppins',sans-serif; font-size:30px; color:var(--amber);}
+.stat span{font-size:12.5px; color:#B7C0C1; line-height:1.5;}
+
 /* ---- key list ---- */
 .key-list{list-style:none; margin-top:16px;}
 .key-list li{display:flex; gap:10px; padding:10px 0; font-size:14.5px; color:var(--ink-soft); border-bottom:1px solid var(--line);}
@@ -270,10 +275,14 @@ p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:14px; 
 }
 
 /* ---- current progress ---- */
-.progress-banner{background:#5B8C5A14; border:1px solid #5B8C5A33; border-radius:16px; padding:20px 24px; display:flex; align-items:center; gap:14px; margin-bottom:36px;}
+.progress-banner{background:#5B8C5A14; border:1px solid #5B8C5A33; border-radius:16px; padding:20px 24px; display:flex; align-items:center; flex-wrap:wrap; gap:14px; margin-bottom:36px;}
 .progress-banner .dot{width:10px; height:10px; border-radius:50%; background:#3F7A3E; flex-shrink:0; animation:pulseDot 2s ease-in-out infinite;}
 @keyframes pulseDot{0%,100%{opacity:1;} 50%{opacity:.4;}}
-.progress-banner p{margin:0; font-size:14px; color:var(--ink); font-weight:600;}
+.progress-banner p{margin:0; font-size:14px; color:var(--ink); font-weight:600; flex:1 1 200px;}
+.progress-banner .panel-next{margin:0 0 0 auto; text-decoration:none;}
+@media (max-width:860px){
+  .progress-banner .panel-next{margin-left:0; width:100%;}
+}
 .progress-list{list-style:none; margin-top:16px;}
 .progress-list li{display:flex; gap:12px; padding:12px 0; border-bottom:1px solid var(--line); font-size:14.5px; color:var(--ink-soft);}
 .progress-list li:last-child{border-bottom:none;}
@@ -352,6 +361,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   .header-top{grid-template-columns:1fr;}
   .header-top .hero-image{height:auto; min-height:220px;}
   .gallery, .gallery-3, .reflect-grid{grid-template-columns:1fr;}
+  .stats-band{grid-template-columns:1fr;}
   .ba-row{grid-template-columns:1fr; text-align:center;}
   .ba-divider{width:80px; height:1px; margin:0 auto;}
   .flow-step{grid-template-columns:1fr;}
@@ -428,13 +438,12 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     </div>
   </div>
   <div class="meta-row">
-    <div class="meta-item"><span>Role</span><b>Creative Director, UX</b></div>
+    <div class="meta-item"><span>Role</span><b>Product Designer</b></div>
     <div class="meta-item"><span>Scope</span><b>Brand System + Hardware + Software UI + Website</b></div>
     <div class="meta-item"><span>Timeline</span><b>6 Weeks</b></div>
     <div class="meta-item"><span>Year</span><b>2025-2026</b></div>
     <div class="meta-item"><span>Team</span><b>With 3 Engineers</b></div>
   </div>
-  <a href="https://diapulse.com" class="panel-next cs-external-link" target="_blank" rel="noopener noreferrer" aria-label="Visit diapulse.com (opens in a new tab)">Visit diapulse.com</a>
 </header>
 
 <div class="tab-nav-anchor" id="tabNavAnchor">
@@ -490,6 +499,15 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <div class="split-visual">
       <img src="/assets/diapulse/diapulse-logo-forms.png" alt="Logo lockups and pulse mark variants" style="width:100%; height:auto; display:block; border-radius:16px">
     </div>
+  </div>
+
+  <div class="block">
+    <h3>Who I Worked With</h3>
+    <p>I worked directly with Diapulse's CEO, a VP, a manager, and the developer who builds my designs into the live site.</p>
+    <h3>What Changed Because of It</h3>
+    <p>Early on, leadership pointed out that the website could not speak only to B2B buyers. People who might want to try the device were also arriving at the site and had questions of their own. I rewrote the site's language to sit in the middle: precise enough for clinicians, clear enough for a first-time visitor.</p>
+    <h3>Where It Is Being Used</h3>
+    <p style="margin-bottom:0;">The website is now used to promote the device at trade shows, including in Ethiopia and Minneapolis, where visitors are mostly chiropractors and physicians. I have not run formal usability sessions with clinicians yet. That is the next step.</p>
   </div>
 
   <div class="block block--split design-split">
@@ -576,6 +594,11 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   <div class="block">
     <div class="section-eyebrow">The Outcome</div>
     <h2>Comprehensive. Coherent. From identity to hardware to software.</h2>
+    <div class="stats-band">
+      <div class="stat"><b>Fully adopted</b><span>Rolled out across all materials</span></div>
+      <div class="stat"><b>Live</b><span>Software in clinical environments</span></div>
+      <div class="stat"><b>Trade shows</b><span>Website used to promote the device, including in Ethiopia and Minneapolis</span></div>
+    </div>
     <p style="padding-top:24px; padding-bottom:24px;">Diapulse went from a visually fragmented, outdated presence to a unified healthcare technology brand with a coherent system across identity, hardware, and software. The rebrand was fully adopted and rolled out across all materials. The updated software is live in clinical environments.</p>
     <div class="gallery-3">
       <div class="gallery-item" style="border:none; padding:0; background:none"><img src="/assets/diapulse/diapulse-booth.jpg" alt="Trade show booth, Diapulse exhibit setup" style="width:100%; height:auto; display:block; border-radius:16px"></div>
@@ -614,6 +637,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   <div class="progress-banner">
     <div class="dot"></div>
     <p>The brand, hardware, clinical software, and redesigned website are shipped and live at diapulse.com.</p>
+    <a href="https://diapulse.com" class="panel-next" target="_blank" rel="noopener noreferrer" aria-label="Visit diapulse.com (opens in a new tab)">Visit diapulse.com</a>
   </div>
 
   <div class="block">
@@ -661,6 +685,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <span>© Alice Curiel, hello@aliceportfolio.com</span>
     <a href="https://www.linkedin.com/in/alice-curiel-800817146/" target="_blank" rel="noopener" class="social" aria-label="LinkedIn">
       <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V9.75H5.67v8.59h2.67zM7 8.63a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.34 9.71v-4.71c0-2.52-1.35-3.69-3.15-3.69a2.72 2.72 0 0 0-2.46 1.35v-1.16H10.06c.04.75 0 8.21 0 8.21h2.67v-4.59c0-.25.02-.49.09-.67.2-.49.65-1 1.4-1 1 0 1.4.75 1.4 1.86v4.4h2.72z"/></svg>
+    </a>
+    <a href="https://github.com/AliceProductDesign" target="_blank" rel="noopener noreferrer" class="social" aria-label="Alice Curiel on GitHub">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.933.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
     </a>
   </div>
 </footer>

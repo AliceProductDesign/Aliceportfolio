@@ -633,10 +633,14 @@ p{font-family:'Inter',sans-serif; font-size:15.5px; line-height:1.7; font-weight
 .stat span{font-size:12.5px; color:#B7C0C1; line-height:1.5;}
 
 /* ---- current progress ---- */
-.progress-banner{background:#5B8C5A14; border:1px solid #5B8C5A33; border-radius:16px; padding:20px 24px; display:flex; align-items:center; gap:14px; margin-bottom:36px;}
+.progress-banner{background:#5B8C5A14; border:1px solid #5B8C5A33; border-radius:16px; padding:20px 24px; display:flex; align-items:center; flex-wrap:wrap; gap:14px; margin-bottom:36px;}
 .progress-banner .dot{width:10px; height:10px; border-radius:50%; background:#3F7A3E; flex-shrink:0; animation:pulseDot 2s ease-in-out infinite;}
 @keyframes pulseDot{0%,100%{opacity:1;} 50%{opacity:.4;}}
-.progress-banner p{margin:0; font-size:14px; color:var(--ink); font-weight:600;}
+.progress-banner p{margin:0; font-size:14px; color:var(--ink); font-weight:600; flex:1 1 200px;}
+.progress-banner .panel-next{margin:0 0 0 auto; text-decoration:none;}
+@media (max-width:860px){
+  .progress-banner .panel-next{margin-left:0; width:100%;}
+}
 .progress-list{list-style:none; margin-top:16px;}
 .progress-list li{display:flex; gap:12px; padding:12px 0; border-bottom:1px solid var(--line); font-size:14.5px; color:var(--ink-soft);}
 .progress-list li:last-child{border-bottom:none;}
@@ -840,10 +844,12 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   .hub-project-banner,
   .cs-banner{border-radius:0;}
 }
-@media (min-width:1100px){
-  #waveHub[data-hub="idle"] .header-top{height:731px; max-height:731px;}
+@media (min-width:861px){
   #waveHub[data-hub="idle"] .hub-hero-cards .hub-card{flex:1 1 0; min-height:0;}
   #waveHub[data-hub="idle"] .hub-card-thumb{height:100%; flex:1 1 auto; aspect-ratio:unset; border-bottom:none;}
+}
+@media (min-width:1100px){
+  #waveHub[data-hub="idle"] .header-top{height:731px; max-height:731px;}
 }
 #waveHub[data-hub="idle"] .hub-card{
   display:flex; flex-direction:column; flex:1 1 0; min-height:0;
@@ -1186,6 +1192,24 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   border-radius:inherit;
   background:var(--paper,#FBF9F4);
 }
+.tab-content-set[data-project="1"] .block--split .split-visual:has(> .gallery-item--video){
+  aspect-ratio:auto;
+  overflow:visible;
+  height:auto;
+}
+.tab-content-set[data-project="1"] .gallery-item--video{
+  height:auto;
+  border:none;
+  padding:0;
+  background:transparent;
+  min-height:0;
+}
+.tab-content-set[data-project="1"] .gallery-item--video .gallery-video{
+  aspect-ratio:16 / 9;
+  background:transparent;
+  border-radius:16px;
+  object-fit:contain;
+}
 .tab-content-set[data-project="1"] .block--split .split-visual img,
 .tab-content-set[data-project="1"] .block--split .audit-visual img,
 .tab-content-set[data-project="1"] .block--split .problem-visual img{
@@ -1267,6 +1291,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   height:auto;
 }
 .tab-content-set[data-project="1"] .rq-card{background:#fff;border:1.5px solid #ece7dc;border-radius:28px;overflow:hidden;padding:28px 32px}
+.tab-content-set[data-project="1"] .block > .rq-card{margin-top:28px;}
 .tab-content-set[data-project="1"] .rq-card__title{margin:0 0 18px;font-size:16px;font-weight:700;color:var(--teal,#478383);max-width:none}
 .tab-content-set[data-project="1"] .rq-card__list{margin:0;padding:0;list-style:none;counter-reset:q;display:flex;flex-direction:column;gap:14px}
 .tab-content-set[data-project="1"] .rq-card__list li{counter-increment:q;position:relative;padding-left:38px}
@@ -1325,6 +1350,15 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     max-width:100%;
     height:auto;
     aspect-ratio:4/3;
+  }
+  .tab-content-set[data-project="1"] .gallery-item--video .gallery-video{
+    aspect-ratio:16 / 9;
+  }
+  .tab-content-set[data-project="1"] .block--split .split-visual:has(> .gallery-item--video){
+    aspect-ratio:auto;
+    overflow:visible;
+    height:auto;
+    max-width:100%;
   }
   .tab-content-set[data-project="1"] .story{
     grid-template-columns:1fr;
@@ -1534,7 +1568,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 </div>
 <div class="tab-content-set" data-project="0">
 <div class="meta-row hub-meta-row">
-  <div class="meta-item"><span>Role</span><b>Creative Director, Brand &amp; Product</b></div>
+  <div class="meta-item"><span>Role</span><b>Product &amp; Brand Designer</b></div>
   <div class="meta-item"><span>Scope</span><b>Logo, Visual Identity + Packaging</b></div>
   <div class="meta-item"><span>Timeline</span><b>4 months</b></div>
   <div class="meta-item"><span>Year</span><b>2024</b></div>
@@ -1757,7 +1791,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <div class="section-eyebrow">Team &amp; My Contribution</div>
       <div class="team-lead">
         <div class="team-lead__head">
-          <h3 class="team-lead__name">Me, Creative Director</h3>
+          <h3 class="team-lead__name">Me, Product &amp; Brand Designer</h3>
         </div>
         <ul class="team-tags">
           <li>Brand and product vision</li>
@@ -1802,7 +1836,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 </div>
 </div><div class="tab-content-set" data-project="1">
 <div class="meta-row hub-meta-row">
-  <div class="meta-item"><span>Role</span><b>Sole Designer &amp; Builder</b></div>
+  <div class="meta-item"><span>Role</span><b>Product Designer &amp; Builder</b></div>
   <div class="meta-item"><span>Scope</span><b>Storefront + Clinician Site + Admin</b></div>
   <div class="meta-item"><span>Timeline</span><b>1 month</b></div>
   <div class="meta-item"><span>Year</span><b>2026</b></div>
@@ -1926,6 +1960,37 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
           <li><strong>What makes you trust a medical device you find online?</strong><span>The research question, asked directly</span></li>
         </ol>
       </aside>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="section-eyebrow">Who I Asked and What I Learned</div>
+    <h2>322 women, surveyed to check the real need.</h2>
+    <p>The founding team set product direction and constraints. Together we ran an online survey of 322 US women with menstrual cramps (February 2026), showing them an image of the device, to check what the people we were designing for actually needed.</p>
+    <aside class="rq-card">
+      <h3 class="rq-card__title">What the survey showed</h3>
+      <ol class="rq-card__list">
+        <li><strong>61%</strong><span>rated their cramps 7 or higher out of 10, and about half said the pain varies a lot month to month.</span></li>
+        <li><strong>66%</strong><span>reported heavy flow or heavy flow with clots.</span></li>
+        <li><strong>93% use over-the-counter pain relievers and 79% use heat.</strong><span>Only 6% have tried TENS.</span></li>
+        <li><strong>46%</strong><span>had never reported their pain to a provider.</span></li>
+        <li><strong>53% would rather learn about a new option from their doctor.</strong><span>Social media (8%) and ads (3%) ranked far lower.</span></li>
+        <li><strong>Average interest in the concept was 6.4 out of 10, and 46% rated it 8 to 10.</strong><span>84% would pay $100 or less.</span></li>
+        <li><strong>After seeing an image of the device, about 69% of those who answered said a small, smooth design mattered.</strong><span>Many cited comfort, easy insertion and fear of slipping.</span></li>
+      </ol>
+    </aside>
+    <div class="section-eyebrow" style="margin-top:40px;">What it shaped</div>
+    <div class="calls">
+      <article class="call">
+        <span class="call__num">01</span>
+        <h3>Clinician-led messaging</h3>
+        <p>Most respondents said they would rather hear about a new option from their doctor, so the messaging leads with clinical context rather than consumer marketing.</p>
+      </article>
+      <article class="call">
+        <span class="call__num">02</span>
+        <h3>Concept positioning</h3>
+        <p>Interest was strong, and most respondents expected to pay $100 or less, so positioning and pricing assumptions were set against that range.</p>
+      </article>
     </div>
   </div>
 
@@ -2067,7 +2132,13 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <p style="margin-bottom:0;">A solo build as part of the founding team. The team set the product vision and the claims we could make, and I turned those limits into the site's structure. I owned design, development, and delivery.</p>
     </div>
     <div class="split-visual">
-      <div class="gallery-item">[IMG: The Outcome]</div>
+      <div class="gallery-item gallery-item--video">
+        <video class="gallery-video" muted loop playsinline preload="metadata"
+          width="1920" height="1080"
+          aria-label="Screen recording of the WAVE consumer storefront in light mode, from the homepage through product, how it works and checkout.">
+          <source src="/assets/wave/wave-ecommerce-light-mode-mockup.mp4" type="video/mp4">
+        </video>
+      </div>
     </div>
   </div>
   <div class="block block--split design-split reverse">
@@ -2083,7 +2154,13 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
       <p style="margin-bottom:0;">The original WAVE site gives us a baseline to compare against. If Notify Me sign-ups come in low, the first thing I'll test is the hero message and CTA placement.</p>
     </div>
     <div class="split-visual">
-      <div class="gallery-item">[IMG: what I will measure]</div>
+      <div class="gallery-item gallery-item--video">
+        <video class="gallery-video" muted loop playsinline preload="metadata"
+          width="1920" height="1080"
+          aria-label="Screen recording of the WAVE clinician site in dark mode.">
+          <source src="/assets/wave/wave-ecommerce-dark-mode-mockup.mp4" type="video/mp4">
+        </video>
+      </div>
     </div>
   </div>
 
@@ -2093,6 +2170,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
   <div class="progress-banner">
     <div class="dot"></div>
     <p>The site is built and in pre-launch. These are the next steps.</p>
+    <a href="https://wave-ecommerce-theta.vercel.app/" class="panel-next" target="_blank" rel="noopener noreferrer" aria-label="Visit pre-launch site (opens in a new tab)">Visit pre-launch site</a>
   </div>
   <div class="block block--split design-split">
     <div class="split-copy">
@@ -2114,7 +2192,7 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
 </div>
 </div><div class="tab-content-set" data-project="2">
 <div class="meta-row hub-meta-row">
-  <div class="meta-item"><span>Role</span><b>[PLACEHOLDER: your role on the ePRO app]</b></div>
+  <div class="meta-item"><span>Role</span><b>Product Designer</b></div>
   <div class="meta-item"><span>Scope</span><b>UX + Design System for a Clinical Trial App</b></div>
   <div class="meta-item"><span>Timeline</span><b>[PLACEHOLDER: timeline]</b></div>
   <div class="meta-item"><span>Year</span><b>[PLACEHOLDER: year]</b></div>
@@ -2201,6 +2279,9 @@ footer .foot-row a.social:hover svg{fill:var(--paper);}
     <span>© Alice Curiel, hello@aliceportfolio.com</span>
     <a href="https://www.linkedin.com/in/alice-curiel-800817146/" target="_blank" rel="noopener" class="social" aria-label="LinkedIn">
       <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V9.75H5.67v8.59h2.67zM7 8.63a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.34 9.71v-4.71c0-2.52-1.35-3.69-3.15-3.69a2.72 2.72 0 0 0-2.46 1.35v-1.16H10.06c.04.75 0 8.21 0 8.21h2.67v-4.59c0-.25.02-.49.09-.67.2-.49.65-1 1.4-1 1 0 1.4.75 1.4 1.86v4.4h2.72z"/></svg>
+    </a>
+    <a href="https://github.com/AliceProductDesign" target="_blank" rel="noopener noreferrer" class="social" aria-label="Alice Curiel on GitHub">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.933.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
     </a>
   </div>
 </footer>
@@ -2885,9 +2966,16 @@ window.addEventListener('scroll', ()=>{
 backToTop.addEventListener('click', ()=>{ window.scrollTo({top:0, behavior:'smooth'}); });
 
 (function(){
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const videos = document.querySelectorAll('video.gallery-video');
   if(!videos.length) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    videos.forEach((video)=>{
+      video.controls = true;
+      video.removeAttribute('autoplay');
+      video.pause();
+    });
+    return;
+  }
   const observer = new IntersectionObserver((entries)=>{
     entries.forEach((entry)=>{
       const video = entry.target;
@@ -2898,7 +2986,7 @@ backToTop.addEventListener('click', ()=>{ window.scrollTo({top:0, behavior:'smoo
         video.pause();
       }
     });
-  }, { threshold: 0.4 });
+  }, { threshold: 0.25 });
   videos.forEach((video)=> observer.observe(video));
 })();
 </script>
